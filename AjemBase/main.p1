@@ -1,0 +1,1144 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"202 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h
+[c E5350 0 1 2 3 4 .. ]
+[n E5350 . INFRARED_CNY70 ULTRASONIC INFRARED_TS INFRARED_IRM NOT_ENABLED  ]
+"384
+[s S594 `uc 1 `uc 1 `us -> 3 `i `us 1 `us 1 ]
+[n S594 . input last_input count detected anterior ]
+"459
+[c E5429 0 1 2 3 4 5 6 7 8 9 10 11 .. ]
+[n E5429 . TIMER_DELAY TIMER_DISPLAY7SEG TIMER_US TIMER_RESET TIMER_TESTEO TIMER_FIRULETE TIMER_CUENTA_REGRESIVA TIMER_PWM TIMER_X TIMER_INCREMENTO TIMER_GENERAL CANT_TIMERS  ]
+"453
+[s S595 `uc 1 `ui 1 ]
+[n S595 . state count ]
+[p mainexit ]
+"225
+[v _Inicializar `(v ~T0 @X0 0 ef ]
+"58
+[v _Display7Seg `(v ~T0 @X0 0 ef2`s`s ]
+"329
+[v _LeerSensLinea `(v ~T0 @X0 0 ef ]
+"270
+[v _loop `(v ~T0 @X0 0 ef ]
+"77 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/main.c
+[c E5604 0 1 2 3 4 5 6 7 8 .. ]
+[n E5604 . RESET MENU CUENTA_REGRESIVA ARRANQUE ANDANDO DETENIDO GIRO_DER GIRO_IZQ MOSTRAR  ]
+"280 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h
+[v _set_motor_izq `(v ~T0 @X0 0 ef1`i ]
+"281
+[v _set_motor_der `(v ~T0 @X0 0 ef1`i ]
+"463
+[v _StartTimer `(v ~T0 @X0 0 ef2`uc`ui ]
+"113 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/main.c
+[c E5328 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 .. ]
+[n E5328 . PROX1 PROX2 PROX3 PROX4 LINEA1 LINEA2 LINEA3 LINEA4 LED_A LED_B LED_C LED_D LED_E LED_F LED_G LED_DP BUZZER SW1 SW2 SW3 CANT_GPIO  ]
+"470 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h
+[v _TimerIsReady `(uc ~T0 @X0 0 ef1`uc ]
+"10241 /opt/microchip/xc8/v1.34/include/pic18f4550.h
+[v _LB2 `Vb ~T0 @X0 0 e@31826 ]
+"10251
+[v _LB7 `Vb ~T0 @X0 0 e@31831 ]
+"10237
+[v _LB0 `Vb ~T0 @X0 0 e@31824 ]
+"10249
+[v _LB6 `Vb ~T0 @X0 0 e@31830 ]
+"10247
+[v _LB5 `Vb ~T0 @X0 0 e@31829 ]
+"10245
+[v _LB4 `Vb ~T0 @X0 0 e@31828 ]
+"10243
+[v _LB3 `Vb ~T0 @X0 0 e@31827 ]
+"10239
+[v _LB1 `Vb ~T0 @X0 0 e@31825 ]
+"2577
+[s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S193 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
+"2586
+[s S194 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S194 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 ]
+"2595
+[s S195 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S195 . . VREFM VREFP . LVDIN ]
+"2602
+[s S196 :5 `uc 1 :1 `uc 1 ]
+[n S196 . . HLVDIN ]
+"2606
+[s S197 :7 `uc 1 :1 `uc 1 ]
+[n S197 . . RA7 ]
+"2610
+[s S198 :7 `uc 1 :1 `uc 1 ]
+[n S198 . . RJPU ]
+"2614
+[s S199 :1 `uc 1 ]
+[n S199 . ULPWUIN ]
+"2576
+[u S192 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 `S198 1 `S199 1 ]
+[n S192 . . . . . . . . ]
+"2618
+[v _PORTAbits `VS192 ~T0 @X0 0 e@3968 ]
+"10229
+[v _LATD7 `Vb ~T0 @X0 0 e@31847 ]
+"10227
+[v _LATD6 `Vb ~T0 @X0 0 e@31846 ]
+"10221
+[v _LATD3 `Vb ~T0 @X0 0 e@31843 ]
+"10219
+[v _LATD2 `Vb ~T0 @X0 0 e@31842 ]
+"273 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h
+[v _testeo_CNY `(v ~T0 @X0 0 ef ]
+"274
+[v _testeo_US `(v ~T0 @X0 0 ef ]
+"3115 /opt/microchip/xc8/v1.34/include/pic18f4550.h
+[s S217 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
+[n S217 . RE0 RE1 RE2 RE3 . RDPU ]
+"3123
+[s S218 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S218 . CK1SPP CK2SPP OESPP ]
+"3128
+[s S219 :2 `uc 1 :1 `uc 1 ]
+[n S219 . . CCP10 ]
+"3132
+[s S220 :7 `uc 1 :1 `uc 1 ]
+[n S220 . . CCP2E ]
+"3136
+[s S221 :6 `uc 1 :1 `uc 1 ]
+[n S221 . . CCP6E ]
+"3140
+[s S222 :5 `uc 1 :1 `uc 1 ]
+[n S222 . . CCP7E ]
+"3144
+[s S223 :4 `uc 1 :1 `uc 1 ]
+[n S223 . . CCP8E ]
+"3148
+[s S224 :3 `uc 1 :1 `uc 1 ]
+[n S224 . . CCP9E ]
+"3152
+[s S225 :2 `uc 1 :1 `uc 1 ]
+[n S225 . . CS ]
+"3156
+[s S226 :7 `uc 1 :1 `uc 1 ]
+[n S226 . . PA2E ]
+"3160
+[s S227 :6 `uc 1 :1 `uc 1 ]
+[n S227 . . PB1E ]
+"3164
+[s S228 :2 `uc 1 :1 `uc 1 ]
+[n S228 . . PB2 ]
+"3168
+[s S229 :4 `uc 1 :1 `uc 1 ]
+[n S229 . . PB3E ]
+"3172
+[s S230 :5 `uc 1 :1 `uc 1 ]
+[n S230 . . PC1E ]
+"3176
+[s S231 :1 `uc 1 :1 `uc 1 ]
+[n S231 . . PC2 ]
+"3180
+[s S232 :3 `uc 1 :1 `uc 1 ]
+[n S232 . . PC3E ]
+"3184
+[s S233 :1 `uc 1 ]
+[n S233 . PD2 ]
+"3187
+[s S234 :1 `uc 1 ]
+[n S234 . RDE ]
+"3190
+[s S235 :4 `uc 1 :1 `uc 1 ]
+[n S235 . . RE4 ]
+"3194
+[s S236 :5 `uc 1 :1 `uc 1 ]
+[n S236 . . RE5 ]
+"3198
+[s S237 :6 `uc 1 :1 `uc 1 ]
+[n S237 . . RE6 ]
+"3202
+[s S238 :7 `uc 1 :1 `uc 1 ]
+[n S238 . . RE7 ]
+"3206
+[s S239 :1 `uc 1 :1 `uc 1 ]
+[n S239 . . WRE ]
+"3114
+[u S216 `S217 1 `S218 1 `S219 1 `S220 1 `S221 1 `S222 1 `S223 1 `S224 1 `S225 1 `S226 1 `S227 1 `S228 1 `S229 1 `S230 1 `S231 1 `S232 1 `S233 1 `S234 1 `S235 1 `S236 1 `S237 1 `S238 1 `S239 1 ]
+[n S216 . . . . . . . . . . . . . . . . . . . . . . . . ]
+"3211
+[v _PORTEbits `VS216 ~T0 @X0 0 e@3972 ]
+"2995
+[s S213 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S213 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"3005
+[s S214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S214 . SPP0 SPP1 SPP2 SPP3 SPP4 SPP5 SPP6 SPP7 ]
+"3015
+[s S215 :7 `uc 1 :1 `uc 1 ]
+[n S215 . . SS2 ]
+"2994
+[u S212 `S213 1 `S214 1 `S215 1 ]
+[n S212 . . . . ]
+"3020
+[v _PORTDbits `VS212 ~T0 @X0 0 e@3971 ]
+"2842
+[s S205 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S205 . RC0 RC1 RC2 . RC4 RC5 RC6 RC7 ]
+"2852
+[s S206 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S206 . T1OSO T1OSI CCP1 . TX RX ]
+"2860
+[s S207 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S207 . T13CKI . P1A . CK DT ]
+"2868
+[s S208 :1 `uc 1 :1 `uc 1 ]
+[n S208 . . CCP2 ]
+"2872
+[s S209 :2 `uc 1 :1 `uc 1 ]
+[n S209 . . PA1 ]
+"2876
+[s S210 :1 `uc 1 :1 `uc 1 ]
+[n S210 . . PA2 ]
+"2880
+[s S211 :3 `uc 1 :1 `uc 1 ]
+[n S211 . . RC3 ]
+"2841
+[u S204 `S205 1 `S206 1 `S207 1 `S208 1 `S209 1 `S210 1 `S211 1 ]
+[n S204 . . . . . . . . ]
+"2885
+[v _PORTCbits `VS204 ~T0 @X0 0 e@3970 ]
+"13 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h
+[v _beep `(v ~T0 @X0 0 ef2`uc`uc ]
+"464
+[v _StopTimer `(v ~T0 @X0 0 ef1`uc ]
+"57
+[v _displayByte `(v ~T0 @X0 0 ef1`uc ]
+"56
+[v _firulete `(v ~T0 @X0 0 ef2`uc`uc ]
+"207 /opt/microchip/xc8/v1.34/include/stdio.h
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
+"51 /opt/microchip/xc8/v1.34/include/pic18f4550.h
+[; <" SPPDATA equ 0F62h ;# ">
+"70
+[; <" SPPCFG equ 0F63h ;# ">
+"146
+[; <" SPPEPS equ 0F64h ;# ">
+"219
+[; <" SPPCON equ 0F65h ;# ">
+"244
+[; <" UFRM equ 0F66h ;# ">
+"250
+[; <" UFRML equ 0F66h ;# ">
+"327
+[; <" UFRMH equ 0F67h ;# ">
+"366
+[; <" UIR equ 0F68h ;# ">
+"421
+[; <" UIE equ 0F69h ;# ">
+"476
+[; <" UEIR equ 0F6Ah ;# ">
+"526
+[; <" UEIE equ 0F6Bh ;# ">
+"576
+[; <" USTAT equ 0F6Ch ;# ">
+"635
+[; <" UCON equ 0F6Dh ;# ">
+"685
+[; <" UADDR equ 0F6Eh ;# ">
+"748
+[; <" UCFG equ 0F6Fh ;# ">
+"829
+[; <" UEP0 equ 0F70h ;# ">
+"960
+[; <" UEP1 equ 0F71h ;# ">
+"1091
+[; <" UEP2 equ 0F72h ;# ">
+"1222
+[; <" UEP3 equ 0F73h ;# ">
+"1353
+[; <" UEP4 equ 0F74h ;# ">
+"1484
+[; <" UEP5 equ 0F75h ;# ">
+"1615
+[; <" UEP6 equ 0F76h ;# ">
+"1746
+[; <" UEP7 equ 0F77h ;# ">
+"1877
+[; <" UEP8 equ 0F78h ;# ">
+"1964
+[; <" UEP9 equ 0F79h ;# ">
+"2051
+[; <" UEP10 equ 0F7Ah ;# ">
+"2138
+[; <" UEP11 equ 0F7Bh ;# ">
+"2225
+[; <" UEP12 equ 0F7Ch ;# ">
+"2312
+[; <" UEP13 equ 0F7Dh ;# ">
+"2399
+[; <" UEP14 equ 0F7Eh ;# ">
+"2486
+[; <" UEP15 equ 0F7Fh ;# ">
+"2573
+[; <" PORTA equ 0F80h ;# ">
+"2729
+[; <" PORTB equ 0F81h ;# ">
+"2838
+[; <" PORTC equ 0F82h ;# ">
+"2991
+[; <" PORTD equ 0F83h ;# ">
+"3111
+[; <" PORTE equ 0F84h ;# ">
+"3362
+[; <" LATA equ 0F89h ;# ">
+"3497
+[; <" LATB equ 0F8Ah ;# ">
+"3629
+[; <" LATC equ 0F8Bh ;# ">
+"3744
+[; <" LATD equ 0F8Ch ;# ">
+"3876
+[; <" LATE equ 0F8Dh ;# ">
+"3978
+[; <" TRISA equ 0F92h ;# ">
+"3983
+[; <" DDRA equ 0F92h ;# ">
+"4175
+[; <" TRISB equ 0F93h ;# ">
+"4180
+[; <" DDRB equ 0F93h ;# ">
+"4396
+[; <" TRISC equ 0F94h ;# ">
+"4401
+[; <" DDRC equ 0F94h ;# ">
+"4567
+[; <" TRISD equ 0F95h ;# ">
+"4572
+[; <" DDRD equ 0F95h ;# ">
+"4788
+[; <" TRISE equ 0F96h ;# ">
+"4793
+[; <" DDRE equ 0F96h ;# ">
+"4889
+[; <" OSCTUNE equ 0F9Bh ;# ">
+"4947
+[; <" PIE1 equ 0F9Dh ;# ">
+"5035
+[; <" PIR1 equ 0F9Eh ;# ">
+"5123
+[; <" IPR1 equ 0F9Fh ;# ">
+"5211
+[; <" PIE2 equ 0FA0h ;# ">
+"5281
+[; <" PIR2 equ 0FA1h ;# ">
+"5351
+[; <" IPR2 equ 0FA2h ;# ">
+"5421
+[; <" EECON1 equ 0FA6h ;# ">
+"5486
+[; <" EECON2 equ 0FA7h ;# ">
+"5492
+[; <" EEDATA equ 0FA8h ;# ">
+"5498
+[; <" EEADR equ 0FA9h ;# ">
+"5504
+[; <" RCSTA equ 0FABh ;# ">
+"5509
+[; <" RCSTA1 equ 0FABh ;# ">
+"5713
+[; <" TXSTA equ 0FACh ;# ">
+"5718
+[; <" TXSTA1 equ 0FACh ;# ">
+"6010
+[; <" TXREG equ 0FADh ;# ">
+"6015
+[; <" TXREG1 equ 0FADh ;# ">
+"6021
+[; <" RCREG equ 0FAEh ;# ">
+"6026
+[; <" RCREG1 equ 0FAEh ;# ">
+"6032
+[; <" SPBRG equ 0FAFh ;# ">
+"6037
+[; <" SPBRG1 equ 0FAFh ;# ">
+"6043
+[; <" SPBRGH equ 0FB0h ;# ">
+"6049
+[; <" T3CON equ 0FB1h ;# ">
+"6171
+[; <" TMR3 equ 0FB2h ;# ">
+"6177
+[; <" TMR3L equ 0FB2h ;# ">
+"6183
+[; <" TMR3H equ 0FB3h ;# ">
+"6189
+[; <" CMCON equ 0FB4h ;# ">
+"6284
+[; <" CVRCON equ 0FB5h ;# ">
+"6368
+[; <" ECCP1AS equ 0FB6h ;# ">
+"6373
+[; <" CCP1AS equ 0FB6h ;# ">
+"6529
+[; <" ECCP1DEL equ 0FB7h ;# ">
+"6534
+[; <" CCP1DEL equ 0FB7h ;# ">
+"6666
+[; <" BAUDCON equ 0FB8h ;# ">
+"6671
+[; <" BAUDCTL equ 0FB8h ;# ">
+"6845
+[; <" CCP2CON equ 0FBAh ;# ">
+"6908
+[; <" CCPR2 equ 0FBBh ;# ">
+"6914
+[; <" CCPR2L equ 0FBBh ;# ">
+"6920
+[; <" CCPR2H equ 0FBCh ;# ">
+"6926
+[; <" CCP1CON equ 0FBDh ;# ">
+"6931
+[; <" ECCP1CON equ 0FBDh ;# ">
+"7087
+[; <" CCPR1 equ 0FBEh ;# ">
+"7093
+[; <" CCPR1L equ 0FBEh ;# ">
+"7099
+[; <" CCPR1H equ 0FBFh ;# ">
+"7105
+[; <" ADCON2 equ 0FC0h ;# ">
+"7175
+[; <" ADCON1 equ 0FC1h ;# ">
+"7265
+[; <" ADCON0 equ 0FC2h ;# ">
+"7387
+[; <" ADRES equ 0FC3h ;# ">
+"7393
+[; <" ADRESL equ 0FC3h ;# ">
+"7399
+[; <" ADRESH equ 0FC4h ;# ">
+"7405
+[; <" SSPCON2 equ 0FC5h ;# ">
+"7466
+[; <" SSPCON1 equ 0FC6h ;# ">
+"7535
+[; <" SSPSTAT equ 0FC7h ;# ">
+"7801
+[; <" SSPADD equ 0FC8h ;# ">
+"7807
+[; <" SSPBUF equ 0FC9h ;# ">
+"7813
+[; <" T2CON equ 0FCAh ;# ">
+"7910
+[; <" PR2 equ 0FCBh ;# ">
+"7915
+[; <" MEMCON equ 0FCBh ;# ">
+"8019
+[; <" TMR2 equ 0FCCh ;# ">
+"8025
+[; <" T1CON equ 0FCDh ;# ">
+"8129
+[; <" TMR1 equ 0FCEh ;# ">
+"8135
+[; <" TMR1L equ 0FCEh ;# ">
+"8141
+[; <" TMR1H equ 0FCFh ;# ">
+"8147
+[; <" RCON equ 0FD0h ;# ">
+"8295
+[; <" WDTCON equ 0FD1h ;# ">
+"8322
+[; <" HLVDCON equ 0FD2h ;# ">
+"8327
+[; <" LVDCON equ 0FD2h ;# ">
+"8591
+[; <" OSCCON equ 0FD3h ;# ">
+"8673
+[; <" T0CON equ 0FD5h ;# ">
+"8742
+[; <" TMR0 equ 0FD6h ;# ">
+"8748
+[; <" TMR0L equ 0FD6h ;# ">
+"8754
+[; <" TMR0H equ 0FD7h ;# ">
+"8760
+[; <" STATUS equ 0FD8h ;# ">
+"8838
+[; <" FSR2 equ 0FD9h ;# ">
+"8844
+[; <" FSR2L equ 0FD9h ;# ">
+"8850
+[; <" FSR2H equ 0FDAh ;# ">
+"8856
+[; <" PLUSW2 equ 0FDBh ;# ">
+"8862
+[; <" PREINC2 equ 0FDCh ;# ">
+"8868
+[; <" POSTDEC2 equ 0FDDh ;# ">
+"8874
+[; <" POSTINC2 equ 0FDEh ;# ">
+"8880
+[; <" INDF2 equ 0FDFh ;# ">
+"8886
+[; <" BSR equ 0FE0h ;# ">
+"8892
+[; <" FSR1 equ 0FE1h ;# ">
+"8898
+[; <" FSR1L equ 0FE1h ;# ">
+"8904
+[; <" FSR1H equ 0FE2h ;# ">
+"8910
+[; <" PLUSW1 equ 0FE3h ;# ">
+"8916
+[; <" PREINC1 equ 0FE4h ;# ">
+"8922
+[; <" POSTDEC1 equ 0FE5h ;# ">
+"8928
+[; <" POSTINC1 equ 0FE6h ;# ">
+"8934
+[; <" INDF1 equ 0FE7h ;# ">
+"8940
+[; <" WREG equ 0FE8h ;# ">
+"8946
+[; <" FSR0 equ 0FE9h ;# ">
+"8952
+[; <" FSR0L equ 0FE9h ;# ">
+"8958
+[; <" FSR0H equ 0FEAh ;# ">
+"8964
+[; <" PLUSW0 equ 0FEBh ;# ">
+"8970
+[; <" PREINC0 equ 0FECh ;# ">
+"8976
+[; <" POSTDEC0 equ 0FEDh ;# ">
+"8982
+[; <" POSTINC0 equ 0FEEh ;# ">
+"8988
+[; <" INDF0 equ 0FEFh ;# ">
+"8994
+[; <" INTCON3 equ 0FF0h ;# ">
+"9085
+[; <" INTCON2 equ 0FF1h ;# ">
+"9161
+[; <" INTCON equ 0FF2h ;# ">
+"9297
+[; <" PROD equ 0FF3h ;# ">
+"9303
+[; <" PRODL equ 0FF3h ;# ">
+"9309
+[; <" PRODH equ 0FF4h ;# ">
+"9315
+[; <" TABLAT equ 0FF5h ;# ">
+"9323
+[; <" TBLPTR equ 0FF6h ;# ">
+"9329
+[; <" TBLPTRL equ 0FF6h ;# ">
+"9335
+[; <" TBLPTRH equ 0FF7h ;# ">
+"9341
+[; <" TBLPTRU equ 0FF8h ;# ">
+"9349
+[; <" PCLAT equ 0FF9h ;# ">
+"9356
+[; <" PC equ 0FF9h ;# ">
+"9362
+[; <" PCL equ 0FF9h ;# ">
+"9368
+[; <" PCLATH equ 0FFAh ;# ">
+"9374
+[; <" PCLATU equ 0FFBh ;# ">
+"9380
+[; <" STKPTR equ 0FFCh ;# ">
+"9455
+[; <" TOS equ 0FFDh ;# ">
+"9461
+[; <" TOSL equ 0FFDh ;# ">
+"9467
+[; <" TOSH equ 0FFEh ;# ">
+"9473
+[; <" TOSU equ 0FFFh ;# ">
+"26 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h
+[v _BCD_TABLE `Cuc ~T0 @X0 -> 0 `x e ]
+[i _BCD_TABLE
+:U ..
+"27
+-> -> 63 `i `uc
+"28
+-> -> 6 `i `uc
+"29
+-> -> 91 `i `uc
+"30
+-> -> 79 `i `uc
+"31
+-> -> 102 `i `uc
+"32
+-> -> 109 `i `uc
+"33
+-> -> 125 `i `uc
+"34
+-> -> 7 `i `uc
+"35
+-> -> 127 `i `uc
+"36
+-> -> 103 `i `uc
+"37
+-> -> 119 `i `uc
+"38
+-> -> 124 `i `uc
+"39
+-> -> 57 `i `uc
+"40
+-> -> 94 `i `uc
+"41
+-> -> 121 `i `uc
+"42
+-> -> 113 `i `uc
+..
+]
+"200
+[v _PIN_FUNCTION `Cuc ~T0 @X0 -> 8 `i e ]
+[i _PIN_FUNCTION
+:U ..
+"202
+-> . `E5350 1 `uc
+"203
+-> . `E5350 1 `uc
+"204
+-> . `E5350 1 `uc
+"205
+-> . `E5350 4 `uc
+"207
+-> . `E5350 0 `uc
+"208
+-> . `E5350 4 `uc
+"209
+-> . `E5350 4 `uc
+"210
+-> . `E5350 4 `uc
+..
+]
+"326
+[v _sensLinea `uc ~T0 @X0 -> 4 `i e ]
+"393
+[v _stSensProx `S594 ~T0 @X0 -> 4 `i e ]
+"394
+[v _US_lecturas `uc ~T0 @X0 1 e ]
+"395
+[v _flag `uc ~T0 @X0 1 e ]
+"420
+[v _datoserie `uc ~T0 @X0 1 e ]
+"459
+[v _Timer `S595 ~T0 @X0 . `E5429 11 e ]
+"56 /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/main.c
+[v _s1 `i ~T0 @X0 1 e ]
+[v _s2 `i ~T0 @X0 1 e ]
+"57
+[v _f1 `i ~T0 @X0 1 e ]
+[v _f2 `i ~T0 @X0 1 e ]
+"58
+[v _main `(v ~T0 @X0 1 ef ]
+"59
+{
+[e :U _main ]
+[f ]
+"60
+[e ( _Inicializar ..  ]
+"61
+[e ; ; ; = _s1 -> 0 `i = _s2 -> 0 `i = _f1 -> 0 `i = _f2 -> 0 `i ]
+"64
+[e :U 602 ]
+"65
+{
+"67
+[e ( _Display7Seg (2 , -> -> 0 `i `s -> -> 0 `i `s ]
+"68
+[e ( _LeerSensLinea ..  ]
+"69
+[e ( _loop ..  ]
+"70
+}
+[e :U 601 ]
+"64
+[e $U 602  ]
+[e :U 603 ]
+"71
+[e :UE 600 ]
+}
+"73
+[v _loop `(v ~T0 @X0 1 ef ]
+"74
+{
+[e :U _loop ]
+[f ]
+"75
+[v F5626 `ui ~T0 @X0 1 s i ]
+"76
+[v F5627 `i ~T0 @X0 1 s vel_der ]
+[v F5628 `i ~T0 @X0 1 s vel_izq ]
+"77
+[v F5629 `uc ~T0 @X0 1 s Estado ]
+[i F5629
+-> . `E5604 0 `uc
+]
+"82
+[e ( _set_motor_izq (1 -> 1000 `i ]
+"83
+[e ( _set_motor_der (1 -> 1000 `i ]
+"104
+[e $UE 604  ]
+"105
+[e $U 606  ]
+"106
+{
+"107
+[e :U 607 ]
+"108
+[e = F5628 -U -> 500 `i ]
+"109
+[e = F5627 -> 500 `i ]
+"110
+[e ( _StartTimer (2 , -> . `E5429 10 `uc -> -> 500 `i `ui ]
+"111
+[e ( _StartTimer (2 , -> . `E5429 4 `uc -> -> 500 `i `ui ]
+"112
+[e ( _Display7Seg (2 , -> -> 123 `i `s -> -> 350 `i `s ]
+"113
+[e = F5626 -> . `E5328 4 `ui ]
+"115
+[e = F5629 -> . `E5604 1 `uc ]
+"116
+[e $U 605  ]
+"118
+[e :U 608 ]
+"119
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 10 `uc `i -> -> -> 0 `i `uc `i 609  ]
+"120
+{
+"121
+[e ( _StartTimer (2 , -> . `E5429 10 `uc -> -> 100 `i `ui ]
+"123
+[e ? == -> . `E5328 15 `i -> . `E5328 8 `i : -> = _LB2 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 9 `i : -> = _LB0 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 10 `i : -> = _LB6 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 11 `i : -> = _LB5 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 12 `i : -> = _LB4 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 13 `i : -> = _LB3 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 14 `i : -> = _LB1 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 15 `i : -> = _LB7 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 16 `i : -> = . . _PORTAbits 0 4 -> -> ! _LB7 `i `uc `i ? == -> . `E5328 15 `i -> . `E5328 0 `i : -> = _LATD7 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 1 `i : -> = _LATD6 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 2 `i : -> = _LATD3 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 3 `i : -> = _LATD2 ! _LB7 `i -> 255 `i ]
+"124
+[e ( _testeo_CNY ..  ]
+"125
+[e ( _testeo_US ..  ]
+"128
+}
+[e :U 609 ]
+"130
+[e $ ! || == ? == -> . `E5328 17 `i -> . `E5328 4 `i : -> . . _PORTEbits 0 1 `i ? == -> . `E5328 17 `i -> . `E5328 5 `i : -> . . _PORTEbits 0 0 `i ? == -> . `E5328 17 `i -> . `E5328 6 `i : -> . . _PORTAbits 0 5 `i ? == -> . `E5328 17 `i -> . `E5328 7 `i : -> . . _PORTEbits 0 2 `i ? == -> . `E5328 17 `i -> . `E5328 0 `i : -> . . _PORTDbits 0 5 `i ? == -> . `E5328 17 `i -> . `E5328 1 `i : -> . . _PORTDbits 0 4 `i ? == -> . `E5328 17 `i -> . `E5328 2 `i : -> . . _PORTCbits 0 5 `i ? == -> . `E5328 17 `i -> . `E5328 3 `i : -> . . _PORTCbits 0 4 `i ? == -> . `E5328 17 `i -> . `E5328 17 `i : -> . . _PORTAbits 0 0 `i ? == -> . `E5328 17 `i -> . `E5328 18 `i : -> . . _PORTAbits 0 2 `i ? == -> . `E5328 17 `i -> . `E5328 19 `i : -> . . _PORTAbits 0 1 `i -> 255 `i -> 0 `i == ? == -> . `E5328 19 `i -> . `E5328 4 `i : -> . . _PORTEbits 0 1 `i ? == -> . `E5328 19 `i -> . `E5328 5 `i : -> . . _PORTEbits 0 0 `i ? == -> . `E5328 19 `i -> . `E5328 6 `i : -> . . _PORTAbits 0 5 `i ? == -> . `E5328 19 `i -> . `E5328 7 `i : -> . . _PORTEbits 0 2 `i ? == -> . `E5328 19 `i -> . `E5328 0 `i : -> . . _PORTDbits 0 5 `i ? == -> . `E5328 19 `i -> . `E5328 1 `i : -> . . _PORTDbits 0 4 `i ? == -> . `E5328 19 `i -> . `E5328 2 `i : -> . . _PORTCbits 0 5 `i ? == -> . `E5328 19 `i -> . `E5328 3 `i : -> . . _PORTCbits 0 4 `i ? == -> . `E5328 19 `i -> . `E5328 17 `i : -> . . _PORTAbits 0 0 `i ? == -> . `E5328 19 `i -> . `E5328 18 `i : -> . . _PORTAbits 0 2 `i ? == -> . `E5328 19 `i -> . `E5328 19 `i : -> . . _PORTAbits 0 1 `i -> 255 `i -> 0 `i 610  ]
+"131
+{
+"132
+[e ( _beep (2 , -> -> 30 `i `uc -> -> 2 `i `uc ]
+"133
+}
+[e :U 610 ]
+"135
+[e $ ! == ? == -> . `E5328 18 `i -> . `E5328 4 `i : -> . . _PORTEbits 0 1 `i ? == -> . `E5328 18 `i -> . `E5328 5 `i : -> . . _PORTEbits 0 0 `i ? == -> . `E5328 18 `i -> . `E5328 6 `i : -> . . _PORTAbits 0 5 `i ? == -> . `E5328 18 `i -> . `E5328 7 `i : -> . . _PORTEbits 0 2 `i ? == -> . `E5328 18 `i -> . `E5328 0 `i : -> . . _PORTDbits 0 5 `i ? == -> . `E5328 18 `i -> . `E5328 1 `i : -> . . _PORTDbits 0 4 `i ? == -> . `E5328 18 `i -> . `E5328 2 `i : -> . . _PORTCbits 0 5 `i ? == -> . `E5328 18 `i -> . `E5328 3 `i : -> . . _PORTCbits 0 4 `i ? == -> . `E5328 18 `i -> . `E5328 17 `i : -> . . _PORTAbits 0 0 `i ? == -> . `E5328 18 `i -> . `E5328 18 `i : -> . . _PORTAbits 0 2 `i ? == -> . `E5328 18 `i -> . `E5328 19 `i : -> . . _PORTAbits 0 1 `i -> 255 `i -> 0 `i 611  ]
+"136
+{
+"137
+[e ( _StopTimer (1 -> . `E5429 10 `uc ]
+"138
+[e ( _StartTimer (2 , -> . `E5429 6 `uc -> -> 0 `i `ui ]
+"139
+[e ( _beep (2 , -> -> 30 `i `uc -> -> 1 `i `uc ]
+"140
+[e = F5626 -> -> 5 `i `ui ]
+"141
+[e = F5629 -> . `E5604 2 `uc ]
+"142
+}
+[e :U 611 ]
+"143
+[e $U 605  ]
+"145
+[e :U 612 ]
+"146
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 6 `uc `i -> -> -> 0 `i `uc `i 613  ]
+"147
+{
+"148
+[e ( _StartTimer (2 , -> . `E5429 6 `uc -> -> 980 `i `ui ]
+"149
+[e ( _beep (2 , -> -> 8 `i `uc -> -> 1 `i `uc ]
+"150
+[e ( _displayByte (1 *U + &U _BCD_TABLE * -> F5626 `ux -> -> # *U &U _BCD_TABLE `ui `ux ]
+"151
+[e $ ! ! != F5626 -> -> 0 `i `ui 614  ]
+"152
+{
+"153
+[e ( _StartTimer (2 , -> . `E5429 7 `uc -> -> 10 `i `ui ]
+"154
+[e ( _displayByte (1 -> << -> 1 `i -> 6 `i `uc ]
+"156
+[e = F5629 -> . `E5604 4 `uc ]
+"157
+}
+[e :U 614 ]
+"158
+[e -- F5626 -> -> 1 `i `ui ]
+"159
+}
+[e :U 613 ]
+"160
+[e $U 605  ]
+"162
+[e :U 615 ]
+"167
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 7 `uc `i -> -> -> 0 `i `uc `i 616  ]
+"168
+{
+"169
+[e ( _StartTimer (2 , -> . `E5429 7 `uc -> -> 10 `i `ui ]
+"171
+[e =+ F5628 -> 10 `i ]
+"172
+[e $ ! >= F5628 -> 1000 `i 617  ]
+"173
+[e = F5628 -U -> 1000 `i ]
+[e :U 617 ]
+"175
+[e =+ F5627 -> 10 `i ]
+"176
+[e $ ! >= F5627 -> 1000 `i 618  ]
+"177
+[e = F5627 -U -> 1000 `i ]
+[e :U 618 ]
+"179
+[e ( _set_motor_izq (1 F5628 ]
+[e ( _set_motor_der (1 -U F5627 ]
+"180
+}
+[e :U 616 ]
+"182
+[e $ ! == ? == -> . `E5328 19 `i -> . `E5328 4 `i : -> . . _PORTEbits 0 1 `i ? == -> . `E5328 19 `i -> . `E5328 5 `i : -> . . _PORTEbits 0 0 `i ? == -> . `E5328 19 `i -> . `E5328 6 `i : -> . . _PORTAbits 0 5 `i ? == -> . `E5328 19 `i -> . `E5328 7 `i : -> . . _PORTEbits 0 2 `i ? == -> . `E5328 19 `i -> . `E5328 0 `i : -> . . _PORTDbits 0 5 `i ? == -> . `E5328 19 `i -> . `E5328 1 `i : -> . . _PORTDbits 0 4 `i ? == -> . `E5328 19 `i -> . `E5328 2 `i : -> . . _PORTCbits 0 5 `i ? == -> . `E5328 19 `i -> . `E5328 3 `i : -> . . _PORTCbits 0 4 `i ? == -> . `E5328 19 `i -> . `E5328 17 `i : -> . . _PORTAbits 0 0 `i ? == -> . `E5328 19 `i -> . `E5328 18 `i : -> . . _PORTAbits 0 2 `i ? == -> . `E5328 19 `i -> . `E5328 19 `i : -> . . _PORTAbits 0 1 `i -> 255 `i -> 0 `i 619  ]
+"183
+{
+"184
+[e =+ F5628 -> 25 `i ]
+"185
+[e =+ F5627 -> 25 `i ]
+"186
+[e ( _set_motor_izq (1 F5628 ]
+[e ( _set_motor_der (1 -U F5627 ]
+"187
+[e ( _beep (2 , -> -> 30 `i `uc -> -> 1 `i `uc ]
+"188
+[e ( _firulete (2 , -> -> 30 `i `uc -> -> 1 `i `uc ]
+"189
+}
+[e :U 619 ]
+"191
+[e $ ! == ? == -> . `E5328 18 `i -> . `E5328 4 `i : -> . . _PORTEbits 0 1 `i ? == -> . `E5328 18 `i -> . `E5328 5 `i : -> . . _PORTEbits 0 0 `i ? == -> . `E5328 18 `i -> . `E5328 6 `i : -> . . _PORTAbits 0 5 `i ? == -> . `E5328 18 `i -> . `E5328 7 `i : -> . . _PORTEbits 0 2 `i ? == -> . `E5328 18 `i -> . `E5328 0 `i : -> . . _PORTDbits 0 5 `i ? == -> . `E5328 18 `i -> . `E5328 1 `i : -> . . _PORTDbits 0 4 `i ? == -> . `E5328 18 `i -> . `E5328 2 `i : -> . . _PORTCbits 0 5 `i ? == -> . `E5328 18 `i -> . `E5328 3 `i : -> . . _PORTCbits 0 4 `i ? == -> . `E5328 18 `i -> . `E5328 17 `i : -> . . _PORTAbits 0 0 `i ? == -> . `E5328 18 `i -> . `E5328 18 `i : -> . . _PORTAbits 0 2 `i ? == -> . `E5328 18 `i -> . `E5328 19 `i : -> . . _PORTAbits 0 1 `i -> 255 `i -> 0 `i 620  ]
+"192
+{
+"193
+[e ( _beep (2 , -> -> 30 `i `uc -> -> 1 `i `uc ]
+"195
+[e = F5629 -> . `E5604 0 `uc ]
+"196
+}
+[e :U 620 ]
+"198
+[e $ ! == ? == -> . `E5328 17 `i -> . `E5328 4 `i : -> . . _PORTEbits 0 1 `i ? == -> . `E5328 17 `i -> . `E5328 5 `i : -> . . _PORTEbits 0 0 `i ? == -> . `E5328 17 `i -> . `E5328 6 `i : -> . . _PORTAbits 0 5 `i ? == -> . `E5328 17 `i -> . `E5328 7 `i : -> . . _PORTEbits 0 2 `i ? == -> . `E5328 17 `i -> . `E5328 0 `i : -> . . _PORTDbits 0 5 `i ? == -> . `E5328 17 `i -> . `E5328 1 `i : -> . . _PORTDbits 0 4 `i ? == -> . `E5328 17 `i -> . `E5328 2 `i : -> . . _PORTCbits 0 5 `i ? == -> . `E5328 17 `i -> . `E5328 3 `i : -> . . _PORTCbits 0 4 `i ? == -> . `E5328 17 `i -> . `E5328 17 `i : -> . . _PORTAbits 0 0 `i ? == -> . `E5328 17 `i -> . `E5328 18 `i : -> . . _PORTAbits 0 2 `i ? == -> . `E5328 17 `i -> . `E5328 19 `i : -> . . _PORTAbits 0 1 `i -> 255 `i -> 0 `i 621  ]
+"199
+{
+"200
+[e =- F5628 -> 25 `i ]
+"201
+[e =- F5627 -> 25 `i ]
+"202
+[e ( _beep (2 , -> -> 30 `i `uc -> -> 1 `i `uc ]
+"203
+[e ( _set_motor_izq (1 F5628 ]
+[e ( _set_motor_der (1 -U F5627 ]
+"204
+[e ( _firulete (2 , -> -> 30 `i `uc -> -> 1 `i `uc ]
+"205
+}
+[e :U 621 ]
+"206
+[e $U 605  ]
+"208
+[e :U 622 ]
+"209
+[e = F5629 -> . `E5604 0 `uc ]
+"210
+[e $U 605  ]
+"211
+}
+[e $U 605  ]
+"105
+[e :U 606 ]
+[e [\ F5629 , $ -> . `E5604 0 `uc 607
+ , $ -> . `E5604 1 `uc 608
+ , $ -> . `E5604 2 `uc 612
+ , $ -> . `E5604 4 `uc 615
+ 622 ]
+"211
+[e :U 605 ]
+"212
+[e :UE 604 ]
+}
+"214
+[v _girar `(uc ~T0 @X0 1 ef1`uc ]
+"215
+{
+[e :U _girar ]
+"214
+[v _Estado_main `uc ~T0 @X0 1 r1 ]
+"215
+[f ]
+"216
+[v F5632 `uc ~T0 @X0 1 s state ]
+"217
+[e $U 625  ]
+"218
+{
+"219
+[e :U 626 ]
+"220
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 10 `uc `i -> -> -> 0 `i `uc `i 627  ]
+"221
+{
+"222
+[e ( _set_motor_izq (1 * -> 5 `i -> 150 `i ]
+[e ( _set_motor_der (1 -U * -> 5 `i -> 150 `i ]
+"223
+[e ( _StartTimer (2 , -> . `E5429 10 `uc -> / -> 250 `i -> 5 `i `ui ]
+"224
+[e ++ F5632 -> -> 1 `i `uc ]
+"225
+}
+[e :U 627 ]
+"226
+[e $U 624  ]
+"228
+[e :U 628 ]
+"229
+[e $ ! == -> _Estado_main `i -> . `E5604 6 `i 629  ]
+"230
+{
+"231
+[e ( _set_motor_izq (1 * -> 5 `i -> 100 `i ]
+[e ( _set_motor_der (1 -U -U * -> 5 `i -> 100 `i ]
+"232
+}
+[e $U 630  ]
+"233
+[e :U 629 ]
+"234
+{
+"235
+[e ( _set_motor_izq (1 -U * -> 5 `i -> 100 `i ]
+[e ( _set_motor_der (1 -U * -> 5 `i -> 100 `i ]
+"236
+}
+[e :U 630 ]
+"238
+[e ( _StartTimer (2 , -> . `E5429 10 `uc -> / -> 2500 `i -> 5 `i `ui ]
+"239
+[e ++ F5632 -> -> 1 `i `uc ]
+"240
+[e $U 624  ]
+"242
+[e :U 631 ]
+"243
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 10 `uc `i -> -> -> 0 `i `uc `i 632  ]
+"244
+{
+"245
+[e ( _set_motor_izq (1 * -> 5 `i -> 150 `i ]
+[e ( _set_motor_der (1 -U * -> 5 `i -> 150 `i ]
+"246
+[e ( _StartTimer (2 , -> . `E5429 10 `uc -> / -> 250 `i -> 5 `i `ui ]
+"247
+[e ++ F5632 -> -> 1 `i `uc ]
+"248
+}
+[e :U 632 ]
+"249
+[e $U 624  ]
+"251
+[e :U 633 ]
+"252
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 10 `uc `i -> -> -> 0 `i `uc `i 634  ]
+"253
+{
+"254
+[e = F5632 -> -> 0 `i `uc ]
+"255
+[e ) -> -> 1 `i `uc ]
+[e $UE 623  ]
+"256
+}
+[e :U 634 ]
+"257
+}
+[e $U 624  ]
+"217
+[e :U 625 ]
+[e [\ F5632 , $ -> -> 0 `i `uc 626
+ , $ -> -> 1 `i `uc 628
+ , $ -> -> 2 `i `uc 631
+ 633 ]
+"257
+[e :U 624 ]
+"259
+[e ) -> -> 0 `i `uc ]
+[e $UE 623  ]
+"260
+[e :UE 623 ]
+}
+"262
+[v _testeo_sensores `(v ~T0 @X0 1 ef ]
+"263
+{
+[e :U _testeo_sensores ]
+[f ]
+"264
+[v _i `ui ~T0 @X0 1 a ]
+"272
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 4 `uc `i -> -> -> 0 `i `uc `i 636  ]
+"273
+{
+"274
+[e ( _StartTimer (2 , -> . `E5429 4 `uc -> -> 100 `i `ui ]
+"275
+[e ? == -> . `E5328 15 `i -> . `E5328 8 `i : -> = _LB2 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 9 `i : -> = _LB0 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 10 `i : -> = _LB6 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 11 `i : -> = _LB5 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 12 `i : -> = _LB4 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 13 `i : -> = _LB3 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 14 `i : -> = _LB1 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 15 `i : -> = _LB7 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 16 `i : -> = . . _PORTAbits 0 4 -> -> ! _LB7 `i `uc `i ? == -> . `E5328 15 `i -> . `E5328 0 `i : -> = _LATD7 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 1 `i : -> = _LATD6 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 2 `i : -> = _LATD3 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 3 `i : -> = _LATD2 ! _LB7 `i -> 255 `i ]
+"277
+{
+[e = _i -> . `E5328 0 `ui ]
+[e $ <= _i -> . `E5328 3 `ui 637  ]
+[e $U 638  ]
+"278
+[e :U 637 ]
+[e ( _printf , , (. :s 1C + _i -> -> 1 `i `ui ? != ? == -> *U + &U _PIN_FUNCTION * -> _i `ux -> -> # *U &U _PIN_FUNCTION `ui `ux `i -> . `E5350 1 `i : -> 1 `i -> 0 `i -> 0 `i : -> . *U + &U _stSensProx * -> _i `ux -> -> # *U &U _stSensProx `ui `ux 3 `ui -> 65535 `ui ]
+"277
+[e ++ _i -> -> 1 `i `ui ]
+[e $ <= _i -> . `E5328 3 `ui 637  ]
+[e :U 638 ]
+"278
+}
+"279
+[e ( _printf :s 2C ]
+"280
+}
+[e :U 636 ]
+"286
+[e :UE 635 ]
+}
+"288
+[v _test `(v ~T0 @X0 1 ef ]
+"289
+{
+[e :U _test ]
+[f ]
+"290
+[v _i `ui ~T0 @X0 1 a ]
+"292
+[e = _i -> -> 0 `i `ui ]
+"294
+[e ? == -> . `E5328 15 `i -> . `E5328 8 `i : -> = _LB2 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 9 `i : -> = _LB0 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 10 `i : -> = _LB6 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 11 `i : -> = _LB5 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 12 `i : -> = _LB4 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 13 `i : -> = _LB3 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 14 `i : -> = _LB1 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 15 `i : -> = _LB7 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 16 `i : -> = . . _PORTAbits 0 4 -> -> 0 `i `uc `i ? == -> . `E5328 15 `i -> . `E5328 0 `i : -> = _LATD7 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 1 `i : -> = _LATD6 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 2 `i : -> = _LATD3 -> -> 0 `i `b `i ? == -> . `E5328 15 `i -> . `E5328 3 `i : -> = _LATD2 -> -> 0 `i `b `i -> 255 `i ]
+"296
+[e ( _StartTimer (2 , -> . `E5429 3 `uc -> -> 500 `i `ui ]
+"297
+[e :U 642 ]
+"298
+{
+"300
+[e $ ! != -> ( _TimerIsReady (1 -> . `E5429 3 `uc `i -> -> -> 0 `i `uc `i 644  ]
+"301
+{
+"302
+[e ( _StartTimer (2 , -> . `E5429 3 `uc -> -> 100 `i `ui ]
+"303
+[e ? == -> . `E5328 15 `i -> . `E5328 8 `i : -> = _LB2 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 9 `i : -> = _LB0 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 10 `i : -> = _LB6 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 11 `i : -> = _LB5 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 12 `i : -> = _LB4 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 13 `i : -> = _LB3 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 14 `i : -> = _LB1 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 15 `i : -> = _LB7 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 16 `i : -> = . . _PORTAbits 0 4 -> -> ! _LB7 `i `uc `i ? == -> . `E5328 15 `i -> . `E5328 0 `i : -> = _LATD7 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 1 `i : -> = _LATD6 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 2 `i : -> = _LATD3 ! _LB7 `i ? == -> . `E5328 15 `i -> . `E5328 3 `i : -> = _LATD2 ! _LB7 `i -> 255 `i ]
+"305
+{
+[e = _i -> . `E5328 0 `ui ]
+[e $ <= _i -> . `E5328 3 `ui 645  ]
+[e $U 646  ]
+"306
+[e :U 645 ]
+[e ( _printf , , (. :s 3C + _i -> -> 1 `i `ui ? != ? == -> *U + &U _PIN_FUNCTION * -> _i `ux -> -> # *U &U _PIN_FUNCTION `ui `ux `i -> . `E5350 1 `i : -> 1 `i -> 0 `i -> 0 `i : -> . *U + &U _stSensProx * -> _i `ux -> -> # *U &U _stSensProx `ui `ux 3 `ui -> 65535 `ui ]
+"305
+[e ++ _i -> -> 1 `i `ui ]
+[e $ <= _i -> . `E5328 3 `ui 645  ]
+[e :U 646 ]
+"306
+}
+"307
+[e ( _printf :s 4C ]
+"308
+}
+[e :U 644 ]
+"328
+}
+[e :U 641 ]
+"297
+[e $U 642  ]
+[e :U 643 ]
+"329
+[e :UE 640 ]
+}
+"331
+[v _testeo_US `(v ~T0 @X0 1 ef ]
+"332
+{
+[e :U _testeo_US ]
+[f ]
+"333
+[v _i `ui ~T0 @X0 1 a ]
+"335
+{
+[e = _i -> . `E5328 0 `ui ]
+[e $ <= _i -> . `E5328 3 `ui 649  ]
+[e $U 650  ]
+"336
+[e :U 649 ]
+[e ( _printf , , (. :s 5C + _i -> -> 1 `i `ui ? != ? == -> *U + &U _PIN_FUNCTION * -> _i `ux -> -> # *U &U _PIN_FUNCTION `ui `ux `i -> . `E5350 1 `i : -> 1 `i -> 0 `i -> 0 `i : -> . *U + &U _stSensProx * -> _i `ux -> -> # *U &U _stSensProx `ui `ux 3 `ui -> 65535 `ui ]
+"335
+[e ++ _i -> -> 1 `i `ui ]
+[e $ <= _i -> . `E5328 3 `ui 649  ]
+[e :U 650 ]
+"336
+}
+"337
+[e ( _printf :s 6C ]
+"338
+[e :UE 648 ]
+}
+"340
+[v _testeo_CNY `(v ~T0 @X0 1 ef ]
+"341
+{
+[e :U _testeo_CNY ]
+[f ]
+"342
+[v _aux `uc ~T0 @X0 1 a ]
+[v _i `uc ~T0 @X0 1 a ]
+"344
+{
+[e ; = _aux -> -> 0 `i `uc = _i -> . `E5328 4 `uc ]
+[e $ <= -> _i `i -> . `E5328 7 `i 653  ]
+[e $U 654  ]
+"345
+[e :U 653 ]
+[e =+ _aux -> * ? == -> *U + &U _PIN_FUNCTION * -> _i `ux -> -> # *U &U _PIN_FUNCTION `ui `ux `i -> . `E5350 0 `i : -> *U + &U _sensLinea * -> -> - -> _i `i -> . `E5328 4 `i `ui `ux -> -> # *U &U _sensLinea `ui `ux `i -> 0 `i + - -> _i `i -> . `E5328 4 `i -> 1 `i `uc ]
+"344
+[e ++ _i -> -> 1 `i `uc ]
+[e $ <= -> _i `i -> . `E5328 7 `i 653  ]
+[e :U 654 ]
+"345
+}
+"347
+[e ( _displayByte (1 *U + &U _BCD_TABLE * -> _aux `ux -> -> # *U &U _BCD_TABLE `ui `ux ]
+"348
+[e :UE 652 ]
+}
+[p f _printf 8422404 ]
+[a 2C 10 13 0 ]
+[a 4C 10 13 0 ]
+[a 6C 10 13 0 ]
+[a 1C 83 37 117 58 37 48 51 117 9 0 ]
+[a 3C 83 37 117 58 37 48 51 117 9 0 ]
+[a 5C 83 37 117 58 37 48 51 117 9 0 ]

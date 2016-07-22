@@ -1,0 +1,1 @@
+ config.d  config.p1:  /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.c /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h

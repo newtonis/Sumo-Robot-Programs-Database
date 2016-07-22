@@ -1,0 +1,1 @@
+ main.d  main.p1:  /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/main.c /home/newtonis/Dropbox/robotica/programas/2016/AjemBase/config.h

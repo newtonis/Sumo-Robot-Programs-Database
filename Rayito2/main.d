@@ -1,0 +1,1 @@
+ main.d  main.p1:  /home/newtonis/Dropbox/robotica/programas/2016/Rayito2/main.c
