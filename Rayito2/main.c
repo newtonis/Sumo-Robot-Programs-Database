@@ -855,9 +855,22 @@ void Ponderado();
 int cox;
 
 int pasada;
+int fw[5] = {}; //central sensors
+
 char b2;
 
 #define C(i) ( ( ( ran ( amin[i] , V[i] , amax[i] ) )  - amin[i] ) * 1000 / (amax[i] - amin[i]) )
+
+int Line(){ // line algorithm
+    int a = 0;
+    int b = 0;
+    int i;
+    for (i = -2;i <= 2;i++){
+        a += i * 1000 * C(i);
+        b += C(i);
+    }
+    return a / b;
+}
 
 int main(int argc, char** argv) {
     initYBOT();
@@ -890,9 +903,9 @@ int main(int argc, char** argv) {
         //L_ROJO = 0;
         switch (status){
             case ST:
-                L_VERDE = 1;
-                L_AMARILLO = 1;//TIME % 2000 > 1000;
-                L_ROJO = 1;
+                L_VERDE = 0;
+                L_AMARILLO = TIME % 2000 > 1000;
+                L_ROJO = 0;
                 if (B_AMARILLO == 0){
                     printf("{'COM':'line','value':'Entering calibration'}\n");
                     status = CALIBRATION;
@@ -941,20 +954,6 @@ int main(int argc, char** argv) {
                 }
             break;
         }
-        
-        
-        /*if (TIME > 1000){
-            TIME = 0;
-            
-            L_AMARILLO = not L_AMARILLO;
-            
-            TIME = 0;
-            int i;
-            for (i = 0;i < 11;i++){
-                printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],255 - i * 10,0, i * 10);
-            }
-        }*/
-        
     }
 }
 
