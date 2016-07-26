@@ -78,13 +78,13 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #define SPECIAL 1 ///We will program the fall down area
 
 /*** SETTING STANDARD I/O NAMES FOR EACH PORT ***/
-#define L_ROJO PORTBbits.RB5
-#define L_AMARILLO PORTAbits.RA4
-#define L_VERDE PORTBbits.RB0
+#define L_RED PORTDbits.RD4
+#define L_YELLOW PORTDbits.RD5
+#define L_GREEN PORTDbits.RD6
 
-#define B_VERDE PORTDbits.RD4
-#define B_AMARILLO PORTDbits.RD5
-#define B_ROJO PORTDbits.RD6
+#define B_RED PORTDbits.RD0
+#define B_YELLOW PORTDbits.RD1
+#define B_GREEN PORTDbits.RD2
 
 #define ADIR PORTDbits.RD1
 #define BDIR PORTDbits.RD2
@@ -137,7 +137,6 @@ void UpdateYBOT();
 void InitTIMERS();
 void ResetCounter();
 void SetLeds();
-void InitButtons();
 void UpdateButtons();
 char B_VERDE_PRESS();
 char B_AMARILLO_PRESS();
@@ -338,7 +337,6 @@ void initYBOT(){
     configurations_init();
     InitAnalog();
     InitTIMERS(); 
-    InitButtons();
     InitSP();
     MotorsPWM();
     
@@ -407,27 +405,26 @@ void InitTIMERS(){
     //TRISBbits.TRISB5 = OUTPUT;
     
     /// LEDS
-    TRISBbits.TRISB5 = OUTPUT;
+    TRISDbits.TRISD4 = OUTPUT;
+    TRISDbits.TRISD5 = OUTPUT;
+    TRISDbits.TRISD6 = OUTPUT;
     
-    TRISAbits.TRISA4 = OUTPUT;
-    TRISBbits.TRISB0 = OUTPUT;
-    
-    TRISDbits.TRISD4 = INPUT;
-    TRISDbits.TRISD5 = INPUT;
-    TRISDbits.TRISD6 = INPUT;
+    TRISDbits.TRISD0 = INPUT;
+    TRISDbits.TRISD1 = INPUT;
+    TRISDbits.TRISD2 = INPUT;
     
      
-    TRISDbits.TRISD1 = OUTPUT;
+    /*TRISDbits.TRISD1 = OUTPUT;
     TRISDbits.TRISD2 = OUTPUT;
     TRISDbits.TRISD0 = INPUT; //SHORTCUT
     TRISDbits.TRISD3 = OUTPUT;
     
     
     TRISCbits.TRISC1 = OUTPUT;
-    TRISCbits.TRISC2 = OUTPUT;
+    TRISCbits.TRISC2 = OUTPUT;*/
     
     /*** SENSOR ***/
-    TRISAbits.TRISA0 = INPUT;
+    /*TRISAbits.TRISA0 = INPUT;
     TRISAbits.TRISA1 = INPUT;
     TRISAbits.TRISA2 = INPUT;
     TRISAbits.TRISA3 = INPUT;
@@ -436,15 +433,15 @@ void InitTIMERS(){
     TRISEbits.TRISE0 = INPUT;
     TRISEbits.TRISE1 = INPUT;
     TRISEbits.TRISE2 = INPUT;
-    TRISBbits.TRISB2 = INPUT;
+    TRISBbits.TRISB2 = INPUT;*/
     
-    TRISBbits.TRISB1 = INPUT;
+    //TRISBbits.TRISB1 = INPUT;
     //TRISBbits.TRISB0 = INPUT;
     
     
     
-    TRISCbits.TRISC6 = OUTPUT;
-    TRISCbits.TRISC7 = INPUT;
+    /*TRISCbits.TRISC6 = OUTPUT;
+    TRISCbits.TRISC7 = INPUT;*/
     
     PORTEbits.RDPU = 1;
 }
@@ -454,142 +451,6 @@ void ResetCounter(){
     TIME = 0;
 }
 
-void Ponderado(){
-    sum = 0;
-    division = 0;
-    nove = 0;
-    char center;
-    char sta[7];
-
-    //L_VERDE = T(0) > 500;
-    for (x = 0;x <= 6;x++){
-
-        
-        w = ran(T(x),amin[x],amax[x]);
-        
-        w -= amin[x];
-        w *= (ll)1000;
-        w /= (amax[x]-amin[x]);
-        if (w > TH){
-            nove = 1;
-        }
-        if (x == 3){
-            if (w > TH){ center = 1; }else{ center = 0; }
-        }
-        v = (1000) * (x-3);
-        ///A es la impotancia
-        ///B es la posicion de A importancia
-        sta[x] = (w > TH);
-        if (x == 0 or x == 6){ continue; }
-        sum += (w*v); //B va a ser 0 o 1000
-        division += (w);
-        
-    }
-    w = ran(J(7),amin[7],amax[7]);
-    w -= amin[7];
-    w *= (ll)1000;
-    w /= (amax[7]-amin[7]);
-    if (WAITIME == 0){
-        if ((sta[0] && sta[5] && sta[6]) or w > TH){
-            WAITIME = 100;
-
-            //L_ROJO = 1;
-           /* gstatus = -1;
-            SetStatw > THus(ST);
-            MotorsSpeed(0,0);*/
-            if (gstatus == 2){
-                if (actual == 0){ //0 = RECTA
-                    WAITFRENAR = 0;
-                    actual = 1;
-                    //TIME = RECT DURATION IN MILISECONDS
-                    ///We must translate to the memory system
-
-                    if (RWM == 0){ //Write mode
-                        SIZES[CURRENT] = TCOOL / 40;
-                    }
-                    CURRENT ++;
-                }else{
-                    actual = 0;
-                    TIME = 0; //we reset counter as the rect has just started
-                }
-            }
-        }
-    }
-    //L_ROJO = (sta[0] && sta[5] && sta[6]);
-    L_ROJO = actual == 0;
-    L_AMARILLO = actual == 0;
-    L_VERDE = actual == 0;
-    // = actual == 0;
-    //L_AMARILLO = nove == 0;
-    if (nove == 0){
-        //L_AMARILLO = 1;
-        POSICION = POSICION > 0 ? 300 : - 300;
-        
-    }else{
-        //L_AMARILLO = 0;
-        POSICION = (ll)(sum) / (ll)(division);
-        POSICION /= 10;
-    }
-    //L_VERDE = POSICION > 250;
-    //L_ROJO = POSICION < -250;
-}
-void LineFollow(){
-    double kp,kd,kr,speed;
-    if (RWM == 0){
-        speedMode = actual == 0 ? 2 : 1; ///We are tracking the track, so we go always in slow mode
-    }else if (actual == 1){
-        speedMode = 1;
-    }else if (TCOOL < RECTTIME){
-        speedMode = 0;
-    }else{
-        speedMode = 3;
-    }
-
-    if (RWM == 1 and actual == 0 && CURRENT >= AMOUNT-1 and TCOOL >= RECTTIME/2){
-        if (TCOOL <= RECTTIME){
-            speedMode = 2;
-        }else{
-            SetStatus(INITIAL); ///We end the track
-        }
-    }
-    if (RWM == 0){
-        L_AMARILLO = 1;
-    }else{
-        L_AMARILLO = 0;
-    }
-    if (RWM == 1){
-        L_VERDE = actual == 0 and TCOOL < RECTTIME;
-    }
-    if (SPECIAL == 1 && CURRENT == 3 && speedMode == 3){
-        speed = 0;
-    }else{
-        speed = SP[speedMode];
-    }
-    if (SPECIAL == 1 && (CURRENT == 7 or CURRENT == 5) && RWM == 1){
-        speed = 350;
-    }
-    kp = KP[speedMode];
-    kd = KD[speedMode];
-    kr = KR[speedMode];
-
-    DER = POSICION - LP;
-    PIDf = (POSICION* kp + DER * kd); //3.6: (POSICION*4 + DER*150); //4 y 100
-    if (WAITFRENAR == 0){
-        if (PIDf > 0){
-            MotorsSpeed(Mr(speed-PIDf,kr) , speed);
-        }else{
-            MotorsSpeed(speed , Mr(speed+PIDf,kr) );
-        }
-    }else{
-        if (PIDf > 0){
-            MotorsSpeed(-1000 , 1000);
-        }else{
-            MotorsSpeed(1000 , -1000 );
-        }
-        WAITFRENAR --;
-    }
-    LP = POSICION; 
-}
 
 void interrupt enc(void){
     if (TMR0IF){
@@ -612,59 +473,6 @@ void interrupt enc(void){
     amin[7] = min(amin[7],J(7));
 }*/
 
-
-void LineUpdate(){
-    if (WAITIME > 0){
-        WAITIME --;
-    }
-    EnhancedRead();
-    if (gstatus == 0){
-        CalRead();
-    }
-    if (gstatus >= 1){ 
-        Ponderado();
-    }
-    if (gstatus == 2){
-        LineFollow();
-    }
-}
-
-
-void InitButtons(){
-    ST_B_VERDE = WAIT_PRESS;
-    ST_B_AMARILLO = WAIT_PRESS;
-    ST_B_ROJO = WAIT_PRESS;
-}
-void UpdateButtons(){
-    if (ST_B_VERDE    == WAIT_PRESS   && B_VERDE    == 0){ ST_B_VERDE    = WAIT_CALL;  }
-    if (ST_B_AMARILLO == WAIT_PRESS   && B_AMARILLO == 0){ ST_B_AMARILLO = WAIT_CALL;  }
-    if (ST_B_ROJO     == WAIT_PRESS   && B_ROJO     == 0){ ST_B_ROJO     = WAIT_CALL;  }
-    
-    if (ST_B_VERDE    == WAIT_RELEASE && B_VERDE    == 1){ ST_B_VERDE    = WAIT_PRESS; }
-    if (ST_B_AMARILLO == WAIT_RELEASE && B_AMARILLO == 1){ ST_B_AMARILLO = WAIT_PRESS; }
-    if (ST_B_ROJO     == WAIT_RELEASE && B_ROJO     == 1){ ST_B_ROJO     = WAIT_PRESS; }
-}
-char B_VERDE_PRESS(){
-    if (ST_B_VERDE == WAIT_CALL){
-        ST_B_VERDE = WAIT_RELEASE;
-        return 1;
-    }
-    return 0;
-}
-char B_AMARILLO_PRESS(){
-    if (ST_B_AMARILLO == WAIT_CALL){
-        ST_B_AMARILLO = WAIT_RELEASE;
-        return 1;
-    }
-    return 0;
-}
-char B_ROJO_PRESS(){
-    if (ST_B_ROJO == WAIT_CALL){
-        ST_B_ROJO = WAIT_RELEASE;
-        return 1;
-    }
-    return 0;
-}
 void Delay(int ms){
     while (ms --);
 }
@@ -677,7 +485,7 @@ void InitAnalog(){
     ADCON1bits.VCFG1 = 0;
     ADCON1bits.VCFG0 = 0;
     
-    ADCON1bits.PCFG3 = 0;
+    ADCON1bits.PCFG3 = 1;
     ADCON1bits.PCFG2 = 1;
     ADCON1bits.PCFG1 = 0;
     ADCON1bits.PCFG0 = 0;
@@ -851,46 +659,9 @@ int cox;
 
 /** Motor testing variables **/
 int fns; // flag new state
-int ma = 0, mb = 0;
-int fa = 0, fb = 0;
+int ma = 0, mb = 0 , mc = 0;
+int fa = 0, fb = 0 , fc = 0; 
 /** End **/
-
-#define ns 5
-#define LOW_SPEED 450
-#define test_kp 6
-#define test_kd 50
-
-int pasada;
-int fw[ns] = {6 , 5 , 4 , 2 , 1}; //central sensors
-int pd[ns] = {-2, -1, 0 , 1 , 2}; //values
-
-char b2;
-ll prev_line;
-ll prev2_line;
-
-#define C(i) ( ( ( ran ( V[i] , amin[i]  , amax[i] ) )  - amin[i] ) * 100 / (amax[i] - amin[i]) )
-
-int Line(){ // line algorithm
-    ll a = 0;
-    ll b = 0;
-    int i;
-    ll v;
-    int g = 0;
-    for (i = 0;i < ns;i++){
-        v = C(fw[i]);
-        a += pd[i] * 100 * v;
-        b += v;
-        if (v > 50){
-            g = 1;
-        }
-    }
-    if (g == 0){
-        prev_line = prev_line > 0 ? 130 : -130;
-        return prev_line; 
-    }
-    prev_line = a / b;
-    return a / b;
-}
 
 int main(int argc, char** argv) {
     initYBOT();
@@ -904,7 +675,6 @@ int main(int argc, char** argv) {
     actual = 0;
     status = ST;
     TIME = 0;
-    prev2_line = 0;
     Wixel(); //start wixel
     
 
@@ -919,156 +689,21 @@ int main(int argc, char** argv) {
     
     fns = 1;
     while (1){
-        EnhancedRead();
-        
-        
-        //L_ROJO = 0;
-        switch (status){
-            case MOTOR_TEST:
-                L_AMARILLO = TIME % 1000 > 500;
-                if (ma == 0){
-                    L_ROJO = 0;
-                }else if(ma == 1){
-                    L_ROJO = 1;
-                }else if(ma == -1){
-                    L_ROJO = TIME % 1000 > 500;
-                }
-                if (mb == 0){
-                    L_VERDE = 0;
-                }else if(mb == 1){
-                    L_VERDE = 1;
-                }else if(mb == -1){
-                    L_VERDE = TIME % 1000 > 500;
-                }
-
-                if (fns){
-                    fns = 0;
-                    printf("{'COM':'line','value':'Motor test'}\n");
-                }
-                if (B_ROJO == 0 and fa == 0){
-                    fa = 1;
-                    ma = ma == 1 ? -1 : (ma + 1);
-                }
-                if (B_VERDE == 0 and fb == 0){
-                    fb = 1;
-                    mb = mb == 1 ? -1 : (mb + 1);
-                }
-                if (B_ROJO == 1) fa = 0;
-                if (B_VERDE == 1) fb = 0;
-
-                MotorsSpeed( ma * 1000 , mb * 1000);
-            break;
-            case ST:
-                if (fns){
-                    fns = 0;
-                    printf("{'COM':'line','value':'Rayito 2.0'}\n");
-                }
-                L_VERDE = 0;
-                L_AMARILLO = TIME % 2000 > 1000;
-                L_ROJO = 0;
-                if (B_AMARILLO == 0){
-                    printf("{'COM':'line','value':'Entering calibration'}\n");
-                    status = CALIBRATION;
-                    initLED(); // reset calibration
-                }
-            break;
-            case RED_ST:
-                L_ROJO = 1;
-                L_AMARILLO = 0;
-                L_VERDE = 0;
-                if (TIME > 2000) status = ST;
-            break;
-            case CALIBRATION:
-                EnhancedRead();
-                for (x = 0;x < 11;x++){
-                    amax[x] = max(amax[x],V[x]);
-                    amin[x] = min(amin[x],V[x]);
-                }
-                
-                L_AMARILLO = TIME % 300 > 200;
-                L_ROJO = TIME % 300 > 100 and TIME % 300 < 200;
-                L_VERDE = TIME % 300 < 100;
-                
-                if (B_ROJO == 0){
-                    printf("{'COM':'line','value':'Reset calibration'}\n");
-                    TIME = 0;
-                    status = RED_ST;
-                }
-                if (B_VERDE == 0){
-                    printf("{'COM':'line','value':'initial mode'}\n");
-                    TIME = 0;
-                    status = INITIAL;
-                }
-            break;
-            case INITIAL:
-                L_VERDE = 1;
-                L_AMARILLO = 0;
-                L_ROJO = 0;
-
-
-                MotorsSpeed(0,0);
-
-                EnhancedRead();
-                
-                if (TIME > 1000){
-                    TIME = 0;
-                    int i,j;
-                    /*for (j = 0;j < 5;j++){
-                        i = fw[j];
-                        printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,C(i),255 - i * 10,0, i * 10);
-                    }*/
-                    int line = Line();
-                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
-                }
-                if (B_AMARILLO == 0){
-                    status = WAIT;
-                }
-            break;
-            case WAIT:
-                L_VERDE = 1;
-                L_AMARILLO = 1;
-                L_ROJO = 1;
-                if (B_AMARILLO == 1){
-                    status = AVANZAR;
-                }
-            break;
-            case AVANZAR:
-                L_VERDE = 1;//TIME % 1000 > 500;
-                L_AMARILLO = 1;
-                L_ROJO = 0;
-
-                EnhancedRead();
-                ll a = Line();
-                ll b = a - prev2_line;
-                ll rt = a * test_kp + b * test_kd;
-                /*if (rt > 0){
-                    MotorsSpeed(LOW_SPEED , LOW_SPEED - rt);
-                }else{
-                    MotorsSpeed(LOW_SPEED + rt , LOW_SPEED);
-                }*/
-                //MotorsSpeed(LOW_SPEED,LOW_SPEED);
-                ll am , bm;
-                if (rt > 0){
-                    am = LOW_SPEED - rt;
-                    bm = LOW_SPEED;
-                }else{
-                    am = LOW_SPEED;
-                    bm = LOW_SPEED + rt;
-                }
-                MotorsSpeed(am,bm);
-                prev2_line = a;
-                if (TIME > 500){
-                    TIME = 0;
-                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",a);
-                    printf("{'COM':'plot','name':'rt','value':%i,'color':(0,100,200)}\n",rt);
-                    printf("{'COM':'plot','name':'a','value':%i,'color':(100,0,200)}\n",am);
-                    printf("{'COM':'plot','name':'b','value':%i,'color':(100,0,200)}\n",bm);
-                }
-                if (B_ROJO == 0){
-                    status = INITIAL;
-                }
-            break;
+        if (not B_GREEN and not ma){
+            ma = 1;
+            L_GREEN = not L_GREEN;
         }
+        if (not B_YELLOW and not mb){
+            mb = 1;
+            L_YELLOW = not L_YELLOW;
+        }
+        if (not B_RED and not mc){
+            mc = 1;
+            L_RED = not L_RED;
+        }
+        if (B_GREEN) ma = 0;
+        if (B_YELLOW) mb = 0;
+        if (B_RED) mc = 0;
     }
 }
 

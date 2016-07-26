@@ -1,4 +1,4 @@
-Device PIC18F4550
+Device PIC16f628A
 set poweroptions.powerenable true
 set voltagevalue 5
 Hwtool PICkit3 -p

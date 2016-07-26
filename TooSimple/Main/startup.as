@@ -7,8 +7,8 @@
 	;
 	; Compiler options:
 	;
-	; --chip=18f4550 /home/newtonis/Robots/Rayito2/main.c \
-	; /home/newtonis/Robots/Rayito2/config.c
+	; --chip=18f4550 /home/newtonis/Robots/TooSimple/Main/main.c \
+	; /home/newtonis/Robots/TooSimple/Main/config.c
 	;
 
 
@@ -111,7 +111,7 @@ start:
 
 ;Initialize the stack pointer (FSR1)
 	global stacklo, stackhi
-	stacklo	equ	05EAh
+	stacklo	equ	0554h
 	stackhi	equ	07FFh
 
 
