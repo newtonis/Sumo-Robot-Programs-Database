@@ -6818,7 +6818,7 @@ char sta[7];
 for (x = 0;x <= 6;x++){
 
 
-w = ((((((((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) < (amax[x])) ? ((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) : (amax[x]))) > (amin[x])) ? (((((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) < (amax[x])) ? ((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) : (amax[x]))) : (amin[x])));
+w = ((((((((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) < (V[x])) ? ((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) : (V[x]))) > (amin[x])) ? (((((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) < (V[x])) ? ((0 ? (1024 - V[x+4<7?x+4:x+4-7]) : (V[x+4<7?x+4:x+4-7]) )) : (V[x]))) : (amin[x])));
 
 w -= amin[x];
 w *= (ll)1000;
@@ -7193,7 +7193,7 @@ int fa = 0, fb = 0;
 
 # 863
 int pasada;
-int fw[5] = {6 , 5 , 4 , 2 , 1};
+int fw[5] = {6 , 5 , 4 , 3 , 2};
 int pd[5] = {-2, -1, 0 , 1 , 2};
 
 char b2;
@@ -7209,19 +7209,19 @@ int i;
 ll v;
 int g = 0;
 for (i = 0;i < 5;i++){
-v = ( ( ( (((((((V[fw[i]]) < (amax[fw[i]])) ? (V[fw[i]]) : (amax[fw[i]]))) > (amin[fw[i]])) ? ((((V[fw[i]]) < (amax[fw[i]])) ? (V[fw[i]]) : (amax[fw[i]]))) : (amin[fw[i]]))) ) - amin[fw[i]] ) * 100 / (amax[fw[i]] - amin[fw[i]]) );
+v = 100 - ( ( ( (((((((V[fw[i]]) < (amax[fw[i]])) ? (V[fw[i]]) : (amax[fw[i]]))) > (amin[fw[i]])) ? ((((V[fw[i]]) < (amax[fw[i]])) ? (V[fw[i]]) : (amax[fw[i]]))) : (amin[fw[i]]))) ) - amin[fw[i]] ) * 100 / (amax[fw[i]] - amin[fw[i]]) );
 a += pd[i] * 100 * v;
 b += v;
-if (v > 50){
+if (v > 30){
 g = 1;
 }
 }
 if (g == 0){
-prev_line = prev_line > 0 ? 130 : -130;
-return prev_line;
+prev_line = prev_line > 0 ? 180 : -180;
+return prev_line / 4;
 }
 prev_line = a / b;
-return a / b;
+return a / b / 4;
 }
 
 int main(int argc, char** argv) {
@@ -7277,6 +7277,7 @@ if (fns){
 fns = 0;
 printf("{'COM':'line','value':'Motor test'}\n");
 }
+
 if (PORTDbits.RD6 == 0 && fa == 0){
 fa = 1;
 ma = ma == 1 ? -1 : (ma + 1);
@@ -7302,6 +7303,11 @@ if (PORTDbits.RD5 == 0){
 printf("{'COM':'line','value':'Entering calibration'}\n");
 status = CALIBRATION;
 initLED();
+}
+int i,j;
+for (j = 0;j < 5;j++){
+i = fw[j];
+printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],255 - i * 10,0, i * 10);
 }
 break;
 case RED_ST:
@@ -7345,8 +7351,10 @@ EnhancedRead();
 if (TIME > 1000){
 TIME = 0;
 int i,j;
-
-# 1020
+for (j = 0;j < 5;j++){
+i = fw[j];
+printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,( ( ( (((((((V[i]) < (amax[i])) ? (V[i]) : (amax[i]))) > (amin[i])) ? ((((V[i]) < (amax[i])) ? (V[i]) : (amax[i]))) : (amin[i]))) ) - amin[i] ) * 100 / (amax[i] - amin[i]) ),255 - i * 10,0, i * 10);
+}
 int line = Line();
 printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
 }
@@ -7372,7 +7380,7 @@ ll a = Line();
 ll b = a - prev2_line;
 ll rt = a * 6 + b * 50;
 
-# 1050
+# 1056
 ll am , bm;
 if (rt > 0){
 am = 450 - rt;

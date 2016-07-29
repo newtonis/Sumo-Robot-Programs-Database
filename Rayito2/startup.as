@@ -111,7 +111,7 @@ start:
 
 ;Initialize the stack pointer (FSR1)
 	global stacklo, stackhi
-	stacklo	equ	05EAh
+	stacklo	equ	062Fh
 	stackhi	equ	07FFh
 
 

@@ -18,6 +18,8 @@
 #define OUTPUT 0
 #define INPUT  1
 
+#define not !
+
 #define IN_IR0 PORTBbits.RB2
 #define IN_IR1 PORTBbits.RB1
 #define IN_IR2 PORTBbits.RB0
@@ -91,7 +93,7 @@ void configurar_timer1(void){
     TMR1H=0xFC;
     TMR1L=0x18;
 
-    PIE1bits.TMR1IE     = 0;n //desabilita interrupcion
+    PIE1bits.TMR1IE     = 0; //desabilita interrupcion
     PIR1bits.TMR1IF     = 0; //desborde
 
     T1CONbits.T1CKPS    = 0; //prescaler
@@ -133,7 +135,7 @@ void interrupt t0_int(void){
 void sensores(){
     switch (estado){
         case INICIO:
-            CCPR1L = CERCA; //IN_DIS ? CERCA : LEJOS;
+            CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
             //CCPR1L= valores[actual]; //prender pwm
             T1CONbits.TMR1ON=1; //prender timer
             estado = PAUSA;
@@ -154,18 +156,18 @@ void sensores(){
             estado = APAGADO;
         break;
         case APAGADO:
-            if(contador >= 2){
+            if(contador >= 100){
                 estado = INICIO;
             }
         break;
     }
 }
 void read(){
-    OUT_IR0 = IN_IR0;
-    OUT_IR1 = IN_IR1;
-    OUT_IR2 = IN_IR2;
-    OUT_IR3 = IN_IR3;
-    OUT_IR4 = IN_IR4;
+    OUT_IR0 = not IN_IR0;
+    OUT_IR1 = not IN_IR1;
+    OUT_IR2 = not IN_IR2;
+    OUT_IR3 = not IN_IR3;
+    OUT_IR4 = not IN_IR4;
 }
 void DUTYSet(int value){
     CCPR1L = value / 4;

@@ -819,7 +819,7 @@ extern __bit __timeout;
 # 10 "/home/newtonis/Robots/TooSimple/Sensors/main.c"
 #pragma config BOREN = OFF, CPD = OFF, FOSC = INTOSCIO, MCLRE = OFF, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
-# 40
+# 42
 char estado;
 char contador;
 char ciclos;
@@ -916,7 +916,7 @@ contador ++;
 void sensores(){
 switch (estado){
 case 0:
-CCPR1L = 0x04;
+CCPR1L = 0x01;
 
 T1CONbits.TMR1ON=1;
 estado = 1;
@@ -937,18 +937,18 @@ CCPR1L=0;
 estado = 3;
 break;
 case 3:
-if(contador >= 2){
+if(contador >= 100){
 estado = 0;
 }
 break;
 }
 }
 void read(){
-PORTAbits.RA1 = PORTBbits.RB2;
-PORTAbits.RA0 = PORTBbits.RB1;
-PORTAbits.RA7 = PORTBbits.RB0;
-PORTAbits.RA6 = PORTAbits.RA4;
-PORTBbits.RB5 = PORTAbits.RA3;
+PORTAbits.RA1 = ! PORTBbits.RB2;
+PORTAbits.RA0 = ! PORTBbits.RB1;
+PORTAbits.RA7 = ! PORTBbits.RB0;
+PORTAbits.RA6 = ! PORTAbits.RA4;
+PORTBbits.RB5 = ! PORTAbits.RA3;
 }
 void DUTYSet(int value){
 CCPR1L = value / 4;

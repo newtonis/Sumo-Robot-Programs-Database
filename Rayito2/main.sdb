@@ -922,33 +922,39 @@ BETA 1
 [v _main main `(i  1 e 2 0 ]
 {
 "1020
+[v main@i_1927 i `i  1 a 2 49 ]
+[v main@j_1928 j `i  1 a 2 37 ]
+"1026
 [v main@line line `i  1 a 2 4 ]
-"1043
-[v main@rt rt `l  1 a 4 27 ]
-"1040
-[v main@a a `l  1 a 4 23 ]
-"1050
-[v main@bm bm `l  1 a 4 19 ]
-[v main@am am `l  1 a 4 15 ]
-"1041
+"1049
+[v main@rt rt `l  1 a 4 43 ]
+"1046
+[v main@a a `l  1 a 4 39 ]
+"1056
+[v main@bm bm `l  1 a 4 31 ]
+[v main@am am `l  1 a 4 27 ]
+"1047
 [v main@b b `l  1 a 4 0 ]
-"1073
+"975
+[v main@i i `i  1 a 2 47 ]
+[v main@j j `i  1 a 2 35 ]
+"1079
 } 0
 "464 /opt/microchip/xc8/v1.34/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "528
-[v printf@val val `ui  1 a 2 37 ]
+[v printf@val val `ui  1 a 2 51 ]
 "466
-[v printf@ap ap `[1]*.39v  1 a 2 33 ]
+[v printf@ap ap `[1]*.39v  1 a 2 47 ]
 "499
-[v printf@c c `c  1 a 1 39 ]
+[v printf@c c `c  1 a 1 53 ]
 "506
-[v printf@prec prec `c  1 a 1 36 ]
+[v printf@prec prec `c  1 a 1 50 ]
 "508
-[v printf@flag flag `uc  1 a 1 35 ]
+[v printf@flag flag `uc  1 a 1 49 ]
 "464
-[v printf@f f `*.25Cuc  1 p 2 26 ]
+[v printf@f f `*.25Cuc  1 p 2 0 ]
 "1541
 } 0
 "208 /home/newtonis/Robots/Rayito2/main.c
@@ -1074,15 +1080,15 @@ BETA 1
 [v _Line Line `(i  1 e 2 0 ]
 {
 "876
-[v Line@v v `l  1 a 4 42 ]
+[v Line@v v `l  1 a 4 46 ]
 "874
-[v Line@b b `l  1 a 4 38 ]
+[v Line@b b `l  1 a 4 42 ]
 "873
-[v Line@a a `l  1 a 4 34 ]
+[v Line@a a `l  1 a 4 38 ]
 "876
-[v Line@i i `i  1 a 2 46 ]
+[v Line@i i `i  1 a 2 50 ]
 "878
-[v Line@g g `i  1 a 2 30 ]
+[v Line@g g `i  1 a 2 34 ]
 "893
 } 0
 "15 /opt/microchip/xc8/v1.34/sources/common/Umul16.c

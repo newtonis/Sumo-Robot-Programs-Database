@@ -465,7 +465,7 @@ void Ponderado(){
     for (x = 0;x <= 6;x++){
 
         
-        w = ran(T(x),amin[x],amax[x]);
+        w = ran(T(x),amin[x],V[x]);
         
         w -= amin[x];
         w *= (ll)1000;
@@ -861,7 +861,7 @@ int fa = 0, fb = 0;
 #define test_kd 50
 
 int pasada;
-int fw[ns] = {6 , 5 , 4 , 2 , 1}; //central sensors
+int fw[ns] = {6 , 5 , 4 , 3 , 2}; //central sensors
 int pd[ns] = {-2, -1, 0 , 1 , 2}; //values
 
 char b2;
@@ -877,19 +877,19 @@ int Line(){ // line algorithm
     ll v;
     int g = 0;
     for (i = 0;i < ns;i++){
-        v = C(fw[i]);
+        v = 100 - C(fw[i]);
         a += pd[i] * 100 * v;
         b += v;
-        if (v > 50){
+        if (v > 30){
             g = 1;
         }
     }
     if (g == 0){
-        prev_line = prev_line > 0 ? 130 : -130;
-        return prev_line; 
+        prev_line = prev_line > 0 ? 180 : -180;
+        return prev_line / 4; 
     }
     prev_line = a / b;
-    return a / b;
+    return a / b / 4;
 }
 
 int main(int argc, char** argv) {
@@ -945,6 +945,7 @@ int main(int argc, char** argv) {
                     fns = 0;
                     printf("{'COM':'line','value':'Motor test'}\n");
                 }
+
                 if (B_ROJO == 0 and fa == 0){
                     fa = 1;
                     ma = ma == 1 ? -1 : (ma + 1);
@@ -970,6 +971,11 @@ int main(int argc, char** argv) {
                     printf("{'COM':'line','value':'Entering calibration'}\n");
                     status = CALIBRATION;
                     initLED(); // reset calibration
+                }
+                int i,j;
+                for (j = 0;j < 5;j++){
+                    i = fw[j];
+                    printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],255 - i * 10,0, i * 10);
                 }
             break;
             case RED_ST:
@@ -1013,10 +1019,10 @@ int main(int argc, char** argv) {
                 if (TIME > 1000){
                     TIME = 0;
                     int i,j;
-                    /*for (j = 0;j < 5;j++){
+                    for (j = 0;j < 5;j++){
                         i = fw[j];
                         printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,C(i),255 - i * 10,0, i * 10);
-                    }*/
+                    }
                     int line = Line();
                     printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
                 }

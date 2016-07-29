@@ -86,12 +86,15 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #define B_YELLOW PORTDbits.RD1
 #define B_GREEN PORTDbits.RD2
 
-#define ADIR PORTDbits.RD1
-#define BDIR PORTDbits.RD2
+#define BDIR PORTDbits.RD3
+#define ADIR PORTBbits.RB0
 
+#define V0 PORTEbits.RE2
+#define V1 PORTEbits.RE1
+#define V2 PORTEbits.RE0
+#define V3 PORTAbits.RA5
+#define V4 PORTAbits.RA4
 
-#define ENABLEA PORTDbits.RD3
-#define ENABLEB PORTDbits.RD0
 //* para blanco negro */
 /*double KP[4] = { 28, 90,90 , 28};
 double KD[4] = {300,300,300,300};
@@ -413,7 +416,20 @@ void InitTIMERS(){
     TRISDbits.TRISD1 = INPUT;
     TRISDbits.TRISD2 = INPUT;
     
-     
+    // Motor
+    TRISDbits.TRISD3 = OUTPUT;
+    TRISCbits.TRISC0 = INPUT; ///shortcut
+    TRISBbits.TRISB0 = OUTPUT;
+    TRISCbits.TRISC2 = OUTPUT;
+    TRISCbits.TRISC1 = OUTPUT;
+
+    // IR
+    TRISEbits.TRISE2 = INPUT;
+    TRISEbits.TRISE1 = INPUT;
+    TRISEbits.TRISE0 = INPUT;
+    TRISAbits.TRISA5 = INPUT;
+    TRISAbits.TRISA4 = INPUT;
+
     /*TRISDbits.TRISD1 = OUTPUT;
     TRISDbits.TRISD2 = OUTPUT;
     TRISDbits.TRISD0 = INPUT; //SHORTCUT
@@ -602,7 +618,6 @@ void MotorsPWM(){
     
 }
 void MotorASpeed(int S){
-    S = -S; //reverse
     S = min(S,1000);
     S = max(S,-1000);
     
@@ -613,7 +628,6 @@ void MotorASpeed(int S){
     CCPR1L = S / 4;
 }
 void MotorBSpeed(int S){
-    S = -S; //reverse
     S = min(S,1000);
     S = max(S,-1000);
     
@@ -661,11 +675,23 @@ int cox;
 int fns; // flag new state
 int ma = 0, mb = 0 , mc = 0;
 int fa = 0, fb = 0 , fc = 0; 
+
+int fa , ma;
+int fb , mb;
+int d1 , d2;
+
 /** End **/
 
 int main(int argc, char** argv) {
     initYBOT();
     
+    fa = 0;
+    fb = 0;
+    ma = 0;
+    mb = 0;
+    d1 = 0;
+    d2 = 0;
+
     sa = 0;
     mode = 0;
     a = 0;
@@ -679,7 +705,6 @@ int main(int argc, char** argv) {
     
 
     MotorsSpeed(0,0);
-    ENABLEA = 1;
     
     status = ST;
     while (TIME < 5000)
@@ -689,7 +714,7 @@ int main(int argc, char** argv) {
     
     fns = 1;
     while (1){
-        if (not B_GREEN and not ma){
+        /*if (not B_GREEN and not ma){
             ma = 1;
             L_GREEN = not L_GREEN;
         }
@@ -703,7 +728,35 @@ int main(int argc, char** argv) {
         }
         if (B_GREEN) ma = 0;
         if (B_YELLOW) mb = 0;
-        if (B_RED) mc = 0;
+        if (B_RED) mc = 0;*/
+        if (not B_RED and not ma){
+            ma = 1;
+            d1 = d1 == 10 ? -10 : (d1 + 1);
+        }
+        if (not B_GREEN and not mb){
+            mb = 1;
+            d2 = d2 == 10 ? -10 : (d2 + 1);
+        }
+        if (B_RED) ma = 0;
+        if (B_GREEN) mb = 0;
+        //MotorsSpeed(d1 * 100 ,d2 * 100);
+        L_RED = d1 != 0;
+        
+        L_GREEN = d2 != 0;
+
+        MotorsSpeed(1000,1000); // misma velocidad
+
+
+        /*L_YELLOW = TIME % 12000 > 6000;
+        L_RED = V2;*/
+        //L_GREEN = 0;
+        //L_RED = 0;
+        /*MotorsSpeed(0 , 0);
+        L_YELLOW = TIME % 12000 > 6000;
+        L_RED = V2;
+
+       // ADIR = 1;
+        //BDIR = 1;*/
     }
 }
 

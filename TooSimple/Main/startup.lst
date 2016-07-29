@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-                                                                                                           Tue Jul 26 15:49:49 2016
+                                                                                                           Fri Jul 29 06:49:57 2016
 
 
      1                           
@@ -116,7 +116,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    110  000018                     
    111                           ;Initialize the stack pointer (FSR1)
    112                           	global stacklo, stackhi
-   113                           	stacklo	equ	0554h
+   113                           	stacklo	equ	0559h
    114  0000                     	stackhi	equ	07FFh
    115  0000                     
    116                           
@@ -129,7 +129,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    123                           	psect	end_init
    124                           	global start_initialization
    125                           	goto start_initialization	;jump to C runtime clear & initialization
-   126  000018  EFE2  F001         
+   126  000018  EF24  F002         
    127                           ; Config register CONFIG1L @ 0x300000
    128                           ;	System Clock Postscaler Selection bits
    129                           ;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
@@ -294,10 +294,10 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Tue Jul 26 15:49:49 2016
+Symbol Table                                                                                               Fri Jul 29 06:49:57 2016
 
-                __S1 0554                 ___sp 0000                 _main 001C                 start 0018  
+                __S1 0559                 ___sp 0000                 _main 001C                 start 0018  
               __HRAM 0000                __LRAM 0001         __mediumconst 0000               stackhi 0007FF  
-             stacklo 000554           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
-            __ramtop 0800  start_initialization 03C4          __smallconst 0000             intlevel0 0000  
+             stacklo 000559           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
+            __ramtop 0800  start_initialization 0448          __smallconst 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             reset_vec 0000  

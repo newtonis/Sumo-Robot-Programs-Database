@@ -6482,7 +6482,7 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-# 100
+# 103
 double KP[4] = { 28, 80,60 , 28};
 double KD[4] = {300,300,300,300};
 double KR[4] = {0.2,0.1,0.2,0.1};
@@ -6492,7 +6492,7 @@ enum {OUTPUT,INPUT};
 enum {WAIT_PRESS , WAIT_CALL , WAIT_RELEASE };
 enum { INICIO , PAUSA , LEER , PAUSA2};
 
-# 120
+# 123
 int speedMode;
 
 long TIMEFRENO = 200;
@@ -6619,7 +6619,7 @@ int x;
 for (x = 0;x < AMOUNT;x++){
 GetValue(x, (int)&(SIZES[x]) );
 
-# 254
+# 257
 }
 }
 void Save(){
@@ -6676,7 +6676,7 @@ char nove;
 char actual;
 char gstatus;
 
-# 322
+# 325
 long long millis(){
 low = (unsigned char)TMR0L;
 high = (unsigned char)TMR0H;
@@ -6757,7 +6757,7 @@ T1CONbits.TMR1ON = 1;
 TMR1H = 0xF8;
 TMR1L = 0x2F;
 
-# 408
+# 411
 TRISDbits.TRISD4 = OUTPUT;
 TRISDbits.TRISD5 = OUTPUT;
 TRISDbits.TRISD6 = OUTPUT;
@@ -6766,7 +6766,21 @@ TRISDbits.TRISD0 = INPUT;
 TRISDbits.TRISD1 = INPUT;
 TRISDbits.TRISD2 = INPUT;
 
-# 446
+
+TRISDbits.TRISD3 = OUTPUT;
+TRISCbits.TRISC0 = INPUT;
+TRISBbits.TRISB0 = OUTPUT;
+TRISCbits.TRISC2 = OUTPUT;
+TRISCbits.TRISC1 = OUTPUT;
+
+
+TRISEbits.TRISE2 = INPUT;
+TRISEbits.TRISE1 = INPUT;
+TRISEbits.TRISE0 = INPUT;
+TRISAbits.TRISA5 = INPUT;
+TRISAbits.TRISA4 = INPUT;
+
+# 462
 PORTEbits.RDPU = 1;
 }
 
@@ -6787,12 +6801,12 @@ TMR0IF = 0;
 }
 }
 
-# 476
+# 492
 void Delay(int ms){
 while (ms --);
 }
 
-# 484
+# 500
 void InitAnalog(){
 ADCON1bits.VCFG1 = 0;
 ADCON1bits.VCFG0 = 0;
@@ -6914,22 +6928,20 @@ PR2 = 249;
 
 }
 void MotorASpeed(int S){
-S = -S;
 S = (((S) < (1000)) ? (S) : (1000));
 S = (((S) > (-1000)) ? (S) : (-1000));
 
-PORTDbits.RD1 = S > 0 ? 0 : 1;
+PORTBbits.RB0 = S > 0 ? 0 : 1;
 S = S > 0 ? S : 1000 + S;
 
 CCP1CONbits.DC1B1 = S % 4;
 CCPR1L = S / 4;
 }
 void MotorBSpeed(int S){
-S = -S;
 S = (((S) < (1000)) ? (S) : (1000));
 S = (((S) > (-1000)) ? (S) : (-1000));
 
-PORTDbits.RD2 = S > 0 ? 0 : 1;
+PORTDbits.RD3 = S > 0 ? 0 : 1;
 S = S > 0 ? S : 1000 + S;
 
 CCP2CONbits.DC2B = S % 4;
@@ -6974,9 +6986,21 @@ int fns;
 int ma = 0, mb = 0 , mc = 0;
 int fa = 0, fb = 0 , fc = 0;
 
+int fa , ma;
+int fb , mb;
+int d1 , d2;
+
+
 
 int main(int argc, char** argv) {
 initYBOT();
+
+fa = 0;
+fb = 0;
+ma = 0;
+mb = 0;
+d1 = 0;
+d2 = 0;
 
 sa = 0;
 mode = 0;
@@ -6991,7 +7015,6 @@ Wixel();
 
 
 MotorsSpeed(0,0);
-PORTDbits.RD3 = 1;
 
 status = ST;
 while (TIME < 5000)
@@ -7001,21 +7024,26 @@ while (TIME < 5000)
 
 fns = 1;
 while (1){
-if (! PORTDbits.RD2 && ! ma){
+
+# 732
+if (! PORTDbits.RD0 && ! ma){
 ma = 1;
-PORTDbits.RD6 = ! PORTDbits.RD6;
+d1 = d1 == 10 ? -10 : (d1 + 1);
 }
-if (! PORTDbits.RD1 && ! mb){
+if (! PORTDbits.RD2 && ! mb){
 mb = 1;
-PORTDbits.RD5 = ! PORTDbits.RD5;
+d2 = d2 == 10 ? -10 : (d2 + 1);
 }
-if (! PORTDbits.RD0 && ! mc){
-mc = 1;
-PORTDbits.RD4 = ! PORTDbits.RD4;
-}
-if (PORTDbits.RD2) ma = 0;
-if (PORTDbits.RD1) mb = 0;
-if (PORTDbits.RD0) mc = 0;
+if (PORTDbits.RD0) ma = 0;
+if (PORTDbits.RD2) mb = 0;
+
+PORTDbits.RD4 = d1 != 0;
+
+PORTDbits.RD6 = d2 != 0;
+
+MotorsSpeed(1000,1000);
+
+# 760
 }
 }
 
