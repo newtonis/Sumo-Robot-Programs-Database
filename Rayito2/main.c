@@ -18,6 +18,8 @@
 #define or ||
 #define and &&
 #define not !
+
+#define Rand(i,j) ( ( (i*i)*(j*j)*36 )%256)
 /*** types defines to make them easier and faster to type **/
 typedef unsigned int ui;  
 typedef unsigned char uc;
@@ -137,7 +139,6 @@ void UpdateYBOT();
 void InitTIMERS();
 void ResetCounter();
 void SetLeds();
-void InitButtons();
 void UpdateButtons();
 char B_VERDE_PRESS();
 char B_AMARILLO_PRESS();
@@ -274,8 +275,17 @@ void configurations_init(){
     UCFGbits.UTRDIS = 1;
 }
 
-char ST_B_VERDE , ST_B_AMARILLO , ST_B_ROJO;
-int V[16];
+// *** sensor vars *** //
+unsigned int V[16];
+unsigned int amax[16];
+unsigned int amin[16];
+int P[16];
+
+int line = 0;
+int last = 0;
+int der = 0;
+int formula = 0;
+// *** end *** /
 
 char PisoActual;
 char VistActual;
@@ -293,8 +303,6 @@ ui IRCounter;
 
 ull MS;
 
-ll amax[11];
-ll amin[11];
 ll POSICION;
 ll PIDf;
 ll LP;
@@ -338,7 +346,6 @@ void initYBOT(){
     configurations_init();
     InitAnalog();
     InitTIMERS(); 
-    InitButtons();
     InitSP();
     MotorsPWM();
     
@@ -630,41 +637,6 @@ void LineUpdate(){
 }
 
 
-void InitButtons(){
-    ST_B_VERDE = WAIT_PRESS;
-    ST_B_AMARILLO = WAIT_PRESS;
-    ST_B_ROJO = WAIT_PRESS;
-}
-void UpdateButtons(){
-    if (ST_B_VERDE    == WAIT_PRESS   && B_VERDE    == 0){ ST_B_VERDE    = WAIT_CALL;  }
-    if (ST_B_AMARILLO == WAIT_PRESS   && B_AMARILLO == 0){ ST_B_AMARILLO = WAIT_CALL;  }
-    if (ST_B_ROJO     == WAIT_PRESS   && B_ROJO     == 0){ ST_B_ROJO     = WAIT_CALL;  }
-    
-    if (ST_B_VERDE    == WAIT_RELEASE && B_VERDE    == 1){ ST_B_VERDE    = WAIT_PRESS; }
-    if (ST_B_AMARILLO == WAIT_RELEASE && B_AMARILLO == 1){ ST_B_AMARILLO = WAIT_PRESS; }
-    if (ST_B_ROJO     == WAIT_RELEASE && B_ROJO     == 1){ ST_B_ROJO     = WAIT_PRESS; }
-}
-char B_VERDE_PRESS(){
-    if (ST_B_VERDE == WAIT_CALL){
-        ST_B_VERDE = WAIT_RELEASE;
-        return 1;
-    }
-    return 0;
-}
-char B_AMARILLO_PRESS(){
-    if (ST_B_AMARILLO == WAIT_CALL){
-        ST_B_AMARILLO = WAIT_RELEASE;
-        return 1;
-    }
-    return 0;
-}
-char B_ROJO_PRESS(){
-    if (ST_B_ROJO == WAIT_CALL){
-        ST_B_ROJO = WAIT_RELEASE;
-        return 1;
-    }
-    return 0;
-}
 void Delay(int ms){
     while (ms --);
 }
@@ -816,7 +788,6 @@ void MotorBSpeed(int S){
     CCPR2L = S / 4;
 }
 void initLED(){
-    int x;
     for (x = 0;x < 11;x++){
         amax[x] = 0;
         amin[x] = 1024;
@@ -851,45 +822,75 @@ int cox;
 
 /** Motor testing variables **/
 int fns; // flag new state
+int rf , gf; //red flag, green flag
+
+// waste variables
 int ma = 0, mb = 0;
 int fa = 0, fb = 0;
 /** End **/
 
 #define ns 5
-#define LOW_SPEED 450
-#define test_kp 6
-#define test_kd 50
+int LOW_SPEED = 470;
+double test_kp = 7;
+double test_kd = 20;
 
 int pasada;
 int fw[ns] = {6 , 5 , 4 , 3 , 2}; //central sensors
-int pd[ns] = {-2, -1, 0 , 1 , 2}; //values
+int pd[ns] = {-200, -100, 0 , 100 , 200}; //values
+int sd[ns] = {1,7}; //side sensors
 
 char b2;
-ll prev_line;
-ll prev2_line;
 
 #define C(i) ( ( ( ran ( V[i] , amin[i]  , amax[i] ) )  - amin[i] ) * 100 / (amax[i] - amin[i]) )
 
-int Line(){ // line algorithm
-    ll a = 0;
-    ll b = 0;
-    int i;
-    ll v;
-    int g = 0;
-    for (i = 0;i < ns;i++){
-        v = 100 - C(fw[i]);
-        a += pd[i] * 100 * v;
+void Line(){ // line algorithm
+    long a = 0;
+    long b = 0;
+    char g = 0;
+    int j;
+    long v , w;
+
+    for (j = 0;j < ns;j++){
+        int i = fw[j];
+        v = V[i];  
+        if (v < amin[i]){
+            v = amin[i];
+        }
+        if (v > amax[i]){
+            v = amax[i];
+        }
+        v -= amin[i];
+        v *= 1000;
+        v /= (amax[i] - amin[i]); //importance
+        v = 1000 - v;
+        if (v < 50){
+            v = 0;
+        }
+        P[i] = v;
+        w = pd[j]; //score
+
+        // v e [0,100]
+        a += v*w;
         b += v;
-        if (v > 30){
+        if (v > 200){
             g = 1;
         }
     }
-    if (g == 0){
-        prev_line = prev_line > 0 ? 180 : -180;
-        return prev_line / 4; 
+    // bordfer line detectors
+    for (int j = 0;j < 2;j++){
+        int i = sd[j];
+        v = V[i];
+        if (v < amin[i]) v = amin[i];
+        if (v > amax[i]) v = amax[i];
+        v -= amin[i]; v *= 1000; v /= (amax[i]-amin[i]); v = 1000 - v;
+        P[i] = v;
     }
-    prev_line = a / b;
-    return a / b / 4;
+
+    if (g == 0){
+        line = line > 0 ? 200 : -200;
+        return;
+    }
+    line = a / b;
 }
 
 int main(int argc, char** argv) {
@@ -904,7 +905,6 @@ int main(int argc, char** argv) {
     actual = 0;
     status = ST;
     TIME = 0;
-    prev2_line = 0;
     Wixel(); //start wixel
     
 
@@ -919,7 +919,7 @@ int main(int argc, char** argv) {
     
     fns = 1;
     while (1){
-        EnhancedRead();
+        //EnhancedRead();
         
         
         //L_ROJO = 0;
@@ -960,6 +960,7 @@ int main(int argc, char** argv) {
                 MotorsSpeed( ma * 1000 , mb * 1000);
             break;
             case ST:
+                EnhancedRead();
                 if (fns){
                     fns = 0;
                     printf("{'COM':'line','value':'Rayito 2.0'}\n");
@@ -970,12 +971,17 @@ int main(int argc, char** argv) {
                 if (B_AMARILLO == 0){
                     printf("{'COM':'line','value':'Entering calibration'}\n");
                     status = CALIBRATION;
+                    TIME = 0;
                     initLED(); // reset calibration
                 }
                 int i,j;
-                for (j = 0;j < 5;j++){
+                /*for (j = 0;j < 5;j++){
                     i = fw[j];
-                    printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],255 - i * 10,0, i * 10);
+                    printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
+                }*/
+                for (j = 0;j < 2;j++){
+                    i = sd[j];
+                    printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
                 }
             break;
             case RED_ST:
@@ -986,9 +992,30 @@ int main(int argc, char** argv) {
             break;
             case CALIBRATION:
                 EnhancedRead();
-                for (x = 0;x < 11;x++){
-                    amax[x] = max(amax[x],V[x]);
-                    amin[x] = min(amin[x],V[x]);
+                int i,j;
+                /*for (j = 0;j < 5;j++){
+                    i = fw[j];
+                    printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
+                }*/
+                if (TIME > 1000){
+                    TIME = 0;
+                    for (j = 0;j < 2;j++){
+                        i = sd[j];
+                        printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,4),Rand(i,1),Rand(i,2)); 
+                    }
+                }
+
+                int i, j;
+                for (i = 0;i < 11;i++){
+                    //amax[i] = max(amax[i],V[i]);
+                    //amin[i] = min(amin[i],V[i]);
+                    j = i;
+                    if (V[j] > amax[j]){
+                        amax[j] = V[j];
+                    }
+                    if (V[j] < amin[j]){
+                        amin[j] = V[j];
+                    }
                 }
                 
                 L_AMARILLO = TIME % 300 > 200;
@@ -1003,10 +1030,21 @@ int main(int argc, char** argv) {
                 if (B_VERDE == 0){
                     printf("{'COM':'line','value':'initial mode'}\n");
                     TIME = 0;
+                    fns = 1;
                     status = INITIAL;
+                    int i,j;
+                    for (i = 0;i < 5;i++){
+                        j = fw[i];
+                        printf("{'COM':'line','value':'S[ %04u ] : [%04u , %04u ]'}\n" ,j,amin[j],amax[j] );
+                    }
                 }
             break;
             case INITIAL:
+                if (fns){
+                    rf = 1;
+                    gf = 1;
+                    fns = 0;
+                }
                 L_VERDE = 1;
                 L_AMARILLO = 0;
                 L_ROJO = 0;
@@ -1015,20 +1053,35 @@ int main(int argc, char** argv) {
                 MotorsSpeed(0,0);
 
                 EnhancedRead();
-                
-                if (TIME > 1000){
+                Line();
+                if (TIME > 500){
                     TIME = 0;
                     int i,j;
-                    for (j = 0;j < 5;j++){
-                        i = fw[j];
-                        printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,C(i),255 - i * 10,0, i * 10);
+                    //for (j = 0;j < 5;j++){
+                    //    i = fw[j];
+                    //    printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,P[i],Rand(i,2),Rand(i,3),Rand(i,4));
+                    //}
+                    for (j = 0;j < 2;j++){
+                        i = sd[j];
+                        printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,P[i],Rand(i,5),Rand(i,1),Rand(i,3));
                     }
-                    int line = Line();
                     printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
                 }
                 if (B_AMARILLO == 0){
                     status = WAIT;
                 }
+                if (B_ROJO == 0 and rf == 0){
+                    rf = 1;
+                    test_kp -= 0.01;
+                    printf("{'COM':'line','value':'kp = %f'}\n",test_kp);
+                }
+                if (B_VERDE == 0 and gf == 0){
+                    gf = 1;
+                    test_kp += 0.01;
+                    printf("{'COM':'line','value':'kp = %f'}\n",test_kp);
+                }
+                if (B_ROJO == 1) rf = 0;
+                if (B_VERDE == 1) gf = 0;
             break;
             case WAIT:
                 L_VERDE = 1;
@@ -1039,20 +1092,16 @@ int main(int argc, char** argv) {
                 }
             break;
             case AVANZAR:
-                L_VERDE = 1;//TIME % 1000 > 500;
+                /*L_VERDE = 1;//TIME % 1000 > 500;
                 L_AMARILLO = 1;
                 L_ROJO = 0;
 
                 EnhancedRead();
+                
                 ll a = Line();
                 ll b = a - prev2_line;
                 ll rt = a * test_kp + b * test_kd;
-                /*if (rt > 0){
-                    MotorsSpeed(LOW_SPEED , LOW_SPEED - rt);
-                }else{
-                    MotorsSpeed(LOW_SPEED + rt , LOW_SPEED);
-                }*/
-                //MotorsSpeed(LOW_SPEED,LOW_SPEED);
+                
                 ll am , bm;
                 if (rt > 0){
                     am = LOW_SPEED - rt;
@@ -1072,7 +1121,31 @@ int main(int argc, char** argv) {
                 }
                 if (B_ROJO == 0){
                     status = INITIAL;
+                }*/
+                if (B_ROJO == 0){
+                    fns = 1;
+                    status = INITIAL;
                 }
+                
+
+                L_VERDE = TIME % 500 > 250;
+                L_AMARILLO = 1;
+                L_ROJO = 0;
+
+                EnhancedRead();
+                Line();
+
+                der = line - last;
+
+                formula = line * test_kp + der * test_kd;
+
+                if (formula > 0){
+                    MotorsSpeed(LOW_SPEED - formula , LOW_SPEED);
+                }else{
+                    MotorsSpeed(LOW_SPEED , LOW_SPEED + formula);
+                }
+
+                last = line;
             break;
         }
     }
