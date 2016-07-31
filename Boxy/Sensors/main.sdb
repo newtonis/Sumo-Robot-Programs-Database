@@ -1,0 +1,243 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F628A ]
+[d frameptr 6 ]
+"60 /home/newtonis/Robots/Boxy/Sensors/main.c
+[v _main main `(i  1 e 2 0 ]
+"73
+[v _init init `(v  1 e 0 0 ]
+"82
+[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
+"91
+[v _configurar_timer1 configurar_timer1 `(v  1 e 0 0 ]
+"106
+[v _configurar_timer0 configurar_timer0 `(v  1 e 0 0 ]
+"115
+[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
+"130
+[v _t0_int t0_int `II(v  1 e 0 0 ]
+"134
+[v _sensores sensores `(v  1 e 0 0 ]
+"172
+[v _read read `(v  1 e 0 0 ]
+"6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"62 /opt/microchip/xc8/v1.34/sources/common/float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 /opt/microchip/xc8/v1.34/sources/common/ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"6 /opt/microchip/xc8/v1.34/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"40 /home/newtonis/Robots/Boxy/Sensors/main.c
+[v _estado estado `uc  1 e 1 0 ]
+"41
+[v _contador contador `uc  1 e 1 0 ]
+"42
+[v _ciclos ciclos `uc  1 e 1 0 ]
+"47
+[v _actual actual `uc  1 e 1 0 ]
+"48
+[v _cnt cnt `i  1 e 2 0 ]
+[s S259 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"177 /opt/microchip/xc8/v1.34/include/pic16f628a.h
+[u S268 . 1 `S259 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES268  1 e 1 @5 ]
+[s S238 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"238
+[u S247 . 1 `S238 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES247  1 e 1 @6 ]
+[s S190 . 1 `uc 1 RBIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 RBIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 T0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"324
+[s S199 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+[u S204 . 1 `S190 1 . 1 0 `S199 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES204  1 e 1 @11 ]
+[s S119 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 CMIF 1 0 :1:6 
+`uc 1 EEIF 1 0 :1:7 
+]
+"395
+[u S128 . 1 `S119 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES128  1 e 1 @12 ]
+"440
+[v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
+"446
+[v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
+[s S140 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 TMR1CS 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS 1 0 :2:4 
+]
+"471
+[s S146 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+]
+[u S150 . 1 `S140 1 . 1 0 `S146 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES150  1 e 1 @16 ]
+[s S44 . 1 `uc 1 T2CKPS 1 0 :2:0 
+`uc 1 TMR2ON 1 0 :1:2 
+`uc 1 TOUTPS 1 0 :4:3 
+]
+"537
+[s S48 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+`uc 1 T2CKPS1 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 TOUTPS0 1 0 :1:3 
+`uc 1 TOUTPS1 1 0 :1:4 
+`uc 1 TOUTPS2 1 0 :1:5 
+`uc 1 TOUTPS3 1 0 :1:6 
+]
+[u S56 . 1 `S44 1 . 1 0 `S48 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES56  1 e 1 @18 ]
+"592
+[v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
+"598
+[v _CCPR1H CCPR1H `VEuc  1 e 1 @22 ]
+"604
+[v _CCP1CON CCP1CON `VEuc  1 e 1 @23 ]
+"743
+[v _CMCON CMCON `VEuc  1 e 1 @31 ]
+[s S164 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nRBPU 1 0 :1:7 
+]
+"832
+[s S171 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+]
+[u S175 . 1 `S164 1 . 1 0 `S171 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES175  1 e 1 @129 ]
+[s S72 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"959
+[u S81 . 1 `S72 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES81  1 e 1 @134 ]
+[s S98 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 CMIE 1 0 :1:6 
+`uc 1 EEIE 1 0 :1:7 
+]
+"1020
+[u S107 . 1 `S98 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES107  1 e 1 @140 ]
+"1107
+[v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"1480
+[v _TRISA0 TRISA0 `VEb  1 e 0 @1064 ]
+"1482
+[v _TRISA1 TRISA1 `VEb  1 e 0 @1065 ]
+"1484
+[v _TRISA2 TRISA2 `VEb  1 e 0 @1066 ]
+"1486
+[v _TRISA3 TRISA3 `VEb  1 e 0 @1067 ]
+"1488
+[v _TRISA4 TRISA4 `VEb  1 e 0 @1068 ]
+"1494
+[v _TRISA7 TRISA7 `VEb  1 e 0 @1071 ]
+"1496
+[v _TRISB0 TRISB0 `VEb  1 e 0 @1072 ]
+"1502
+[v _TRISB3 TRISB3 `VEb  1 e 0 @1075 ]
+"1504
+[v _TRISB4 TRISB4 `VEb  1 e 0 @1076 ]
+"1506
+[v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
+"1508
+[v _TRISB6 TRISB6 `VEb  1 e 0 @1078 ]
+"60 /home/newtonis/Robots/Boxy/Sensors/main.c
+[v _main main `(i  1 e 2 0 ]
+{
+"70
+} 0
+"134
+[v _sensores sensores `(v  1 e 0 0 ]
+{
+"171
+} 0
+"172
+[v _read read `(v  1 e 0 0 ]
+{
+"178
+} 0
+"73
+[v _init init `(v  1 e 0 0 ]
+{
+"81
+} 0
+"91
+[v _configurar_timer1 configurar_timer1 `(v  1 e 0 0 ]
+{
+"105
+} 0
+"106
+[v _configurar_timer0 configurar_timer0 `(v  1 e 0 0 ]
+{
+"114
+} 0
+"82
+[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
+{
+"90
+} 0
+"115
+[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
+{
+"129
+} 0
+"130
+[v _t0_int t0_int `II(v  1 e 0 0 ]
+{
+"133
+} 0

@@ -86,8 +86,12 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #define B_YELLOW PORTDbits.RD1
 #define B_GREEN PORTDbits.RD2
 
-#define BDIR PORTDbits.RD3
-#define ADIR PORTBbits.RB0
+
+#define BSP PORTCbits.RC2
+#define ASP PORTBbits.RB2
+
+#define ADIR PORTDbits.RD3
+#define BDIR PORTBbits.RB0
 
 #define V0 PORTEbits.RE2
 #define V1 PORTEbits.RE1
@@ -341,7 +345,7 @@ void initYBOT(){
     InitAnalog();
     InitTIMERS(); 
     InitSP();
-    MotorsPWM();
+    //MotorsPWM();
     
     
 }
@@ -418,10 +422,13 @@ void InitTIMERS(){
     
     // Motor
     TRISDbits.TRISD3 = OUTPUT;
-    TRISCbits.TRISC0 = INPUT; ///shortcut
-    TRISBbits.TRISB0 = OUTPUT;
     TRISCbits.TRISC2 = OUTPUT;
-    TRISCbits.TRISC1 = OUTPUT;
+
+    TRISBbits.TRISB0 = OUTPUT;
+    TRISBbits.TRISB2 = OUTPUT;
+
+    TRISCbits.TRISC0 = INPUT; ///shortcut
+    TRISCbits.TRISC1 = INPUT; //modification
 
     // IR
     TRISEbits.TRISE2 = INPUT;
@@ -574,10 +581,10 @@ void MotorsIzquierda(){
     MAAtras();
     MBAdelante();
 }
-void MotorsSpeed(int A,int B){
+/*void MotorsSpeed(int A,int B){
     MotorASpeed(MODE == ALFA ? A : B);
     MotorBSpeed(MODE == BETA ? A : B);
-}
+}*/
 void EnhancedRead(){
     unsigned char i;
     unsigned int aux;
@@ -608,13 +615,13 @@ void MotorsPWM(){
     T2CONbits.TOUTPS=11; //postscale de 1:1 (0) a 1:16 (15) NO SE USA PARA PWM
 	T2CONbits.T2CKPS=1; //prescaler 0:1 ; 1:4 ; 2o3: 16
 	T2CONbits.TMR2ON=0;
-	PR2=249;
+	PR2=245; //249
 	T2CONbits.TMR2ON=1;	//Arranco el timer
 
 
     CCP1CONbits.CCP1M = 1100;
     CCP2CONbits.CCP2M = 1100;
-    PR2 = 249; //51;//51; //38 khz
+    PR2 = 245; //51;//51; //38 khz
     
 }
 void MotorASpeed(int S){
@@ -671,6 +678,43 @@ void Ponderado();
 
 int cox;
 
+/** pwm motor **/
+int loop = 0;
+int speedA = 0;
+int speedB = 0;
+
+void MotorsSpeed(int a,int b){
+    speedA = a;
+    speedB = b;
+}
+void MotorUpdate(){
+    if (loop < abs(speedA)){
+        if (speedA > 0){
+            ASP = 1;
+            ADIR = 0;
+        }else{
+            ASP = 0;
+            ADIR = 1;
+        }
+    }else{
+        ASP = 0;
+        ADIR = 0;
+    }
+    if (loop < abs(speedB)){
+        if (speedB > 0){
+            BSP = 1;
+            ADIR = 0;
+        }else{
+            BSP = 0;
+            BDIR = 1;
+        }
+    }else{
+        BSP = 0;
+        BDIR = 0;
+    }
+    loop = loop == 9 ? 0 : (loop + 1);
+}
+
 /** Motor testing variables **/
 int fns; // flag new state
 int ma = 0, mb = 0 , mc = 0;
@@ -704,7 +748,7 @@ int main(int argc, char** argv) {
     Wixel(); //start wixel
     
 
-    MotorsSpeed(0,0);
+    //MotorsSpeed(0,0);
     
     status = ST;
     while (TIME < 5000)
@@ -714,6 +758,7 @@ int main(int argc, char** argv) {
     
     fns = 1;
     while (1){
+        MotorUpdate();
         /*if (not B_GREEN and not ma){
             ma = 1;
             L_GREEN = not L_GREEN;
@@ -739,16 +784,22 @@ int main(int argc, char** argv) {
         }
         if (B_RED) ma = 0;
         if (B_GREEN) mb = 0;
-        //MotorsSpeed(d1 * 100 ,d2 * 100);
+        MotorsSpeed(d1 ,d2 );
         L_RED = d1 != 0;
         
         L_GREEN = d2 != 0;
 
-        MotorsSpeed(1000,1000); // misma velocidad
+        //MotorsSpeed(d1*1000,d2*1000); // misma velocidad
 
+        //ASP = 0;
+        //BSP = 0;
 
-        /*L_YELLOW = TIME % 12000 > 6000;
-        L_RED = V2;*/
+        //ADIR = 0;
+       // BDIR = 0;
+        
+
+        L_YELLOW = TIME % 12000 > 6000;
+        /*L_RED = V2;*/
         //L_GREEN = 0;
         //L_RED = 0;
         /*MotorsSpeed(0 , 0);
