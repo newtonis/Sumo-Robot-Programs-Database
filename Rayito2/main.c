@@ -24,6 +24,7 @@
 #define TH (INVERTIR?100:900) ///TH means the black/white threshold
 #define SPEEDTIME(w) (w/2-w/4-w/16) ///Ratio of max speed time in the rect
 #define RECTTIME (SPEEDTIME(SIZES[CURRENT]*40)) ///With a single word we can get rect time
+#define BORDER_LIMIT 50 ///SENSOR BORDER LIMIT
 
 /*** robot different states ***/
 enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE1 ,WINITIAL};
