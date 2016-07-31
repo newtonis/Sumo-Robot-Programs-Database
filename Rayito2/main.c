@@ -24,7 +24,7 @@
 #define TH (INVERTIR?100:900) ///TH means the black/white threshold
 #define SPEEDTIME(w) (w/2-w/4-w/16) ///Ratio of max speed time in the rect
 #define RECTTIME (SPEEDTIME(SIZES[CURRENT]*40)) ///With a single word we can get rect time
-#define BORDER_LIMIT 50 ///SENSOR BORDER LIMIT
+#define BORDER_LIMIT 300 ///SENSOR BORDER LIMIT
 
 /*** robot different states ***/
 enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE1 ,WINITIAL};
@@ -60,6 +60,7 @@ long WAITIME;
 long WAITFRENAR;
 
 ll TIME; ///Time count
+ll TIME2;
 char MF; //memory focused
 char RWM; //Read or write
 int AMOUNT; //amount of rects
@@ -222,6 +223,7 @@ void ResetCounter(){
 void interrupt enc(void){
     if (TMR0IF){
        TIME ++;
+       TIME2 ++;
        TMR0H = 0xF8;//E8;
        TMR0L = 0x2F;//90;//90;
        TMR0IF = 0;
@@ -269,7 +271,7 @@ int fa = 0, fb = 0;
 /** End **/
 
 #define ns 5
-int LOW_SPEED = 470;
+int LOW_SPEED = 520;
 double test_kp = 7;
 double test_kd = 20;
 
@@ -277,6 +279,9 @@ int pasada;
 int fw[ns] = {6 , 5 , 4 , 3 , 2}; //central sensors
 int pd[ns] = {-200, -100, 0 , 100 , 200}; //values
 int sd[ns] = {1,7}; //side sensors
+
+int flag_line = 0;
+int rcount = 0;
 
 char b2;
 
@@ -331,6 +336,11 @@ void Line(){ // line algorithm
     }
     line = a / b;
 }
+
+#define INSIDE (abs(line)<150)
+#define LSEE (P[sd[0]] > BORDER_LIMIT and INSIDE)
+#define RSEE (P[sd[1]] > BORDER_LIMIT and INSIDE)
+
 
 int main(int argc, char** argv) {
     initYBOT();
@@ -481,7 +491,7 @@ int main(int argc, char** argv) {
                     fns = 0;
                 }
                 L_VERDE = 1;
-                L_AMARILLO = 0;
+                L_AMARILLO = RSEE and LSEE;
                 L_ROJO = 0;
 
 
@@ -524,6 +534,9 @@ int main(int argc, char** argv) {
                 L_ROJO = 1;
                 if (B_AMARILLO == 1){
                     status = AVANZAR;
+                    TIME = 0;
+                    TIME2 = 0;
+                    rcount = 0;
                 }
             break;
             case AVANZAR:
@@ -563,8 +576,8 @@ int main(int argc, char** argv) {
                 }
                 
 
-                L_VERDE = TIME % 500 > 250;
-                L_AMARILLO = 1;
+                L_VERDE = 1;//TIME % 500 > 250;
+                //L_AMARILLO = 1;
                 L_ROJO = 0;
 
                 EnhancedRead();
@@ -579,7 +592,29 @@ int main(int argc, char** argv) {
                 }else{
                     MotorsSpeed(LOW_SPEED , LOW_SPEED + formula);
                 }
-
+                if (flag_line == 0){
+                    if (RSEE or LSEE){
+                        flag_line = 1;
+                        TIME = 0;
+                        L_AMARILLO = !L_AMARILLO;
+                        rcount ++ ;
+                    }
+                }
+                if (flag_line == 1){
+                    if (TIME > 700*6 ){
+                        TIME = 0;
+                        flag_line = 0;
+                        printf("{'COM':'line','value':'rcount   = %i'}\n",rcount);
+                    }
+                }
+                if (rcount == 1){
+                    fns = 1;
+                    status = INITIAL;
+                }
+                if (TIME2 > 1000){
+                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
+                    TIME2 = 0;
+                }
                 last = line;
             break;
         }
