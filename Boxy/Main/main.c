@@ -61,7 +61,6 @@ void main(void){
     while (1){
         switch (state){
             case INIT:
-                MotorsSpeed(0,0);
                 if (IR0 == 0 ){
                     L_RED = 1;
                     L_YELLOW = 1;
@@ -74,7 +73,13 @@ void main(void){
                 if (B_ORANGE == 0){
                     state = WAIT;
                     TIME = 0;
+                    //MotorsSpeed(-500,0);
+                }else if (B_RED == 0){
+                    //MotorsSpeed(0,500);
+                }else{
+                    MotorsSpeed(0,0);
                 }
+                MotorsSpeed(0,0);
             break;
             case WAIT:
                 MotorsSpeed(0,0);
@@ -87,11 +92,11 @@ void main(void){
             break;
             case MOVE:
                 if (IR0 == 0){
-                    MotorsSpeed(500,500);
+                    MotorsSpeed(-1000,1000);
                     L_RED = 1;
                 }else{
                     L_RED = 0;
-                    MotorsSpeed(100,500);
+                    MotorsSpeed(-900,-500);
                 }
                 L_YELLOW = 0;
                 L_ORANGE = 0;
