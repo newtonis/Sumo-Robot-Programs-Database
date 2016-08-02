@@ -6380,7 +6380,7 @@ int fa , ma;
 int fb , mb;
 int d1 , d2;
 
-enum {INIT , MOVE };
+enum {INIT , WAIT, MOVE };
 
 int state;
 
@@ -6411,11 +6411,52 @@ state = INIT;
 while (1){
 switch (state){
 case INIT:
+if (PORTBbits.RB5 == 0 ){
+PORTDbits.RD2 = 1;
+PORTDbits.RD3 = 1;
+PORTDbits.RD4 = 0;
+}else{
+PORTDbits.RD2 = 0;
+PORTDbits.RD3 = 0;
+PORTDbits.RD4 = 1;
+}
+if (PORTBbits.RB0 == 0){
+state = WAIT;
+TIME = 0;
 
+}else if (PORTBbits.RB2 == 0){
+
+}else{
+MotorsSpeed(0,0);
+}
+MotorsSpeed(0,0);
+break;
+case WAIT:
+MotorsSpeed(0,0);
+PORTDbits.RD2 = TIME % 1000 > 500;
+PORTDbits.RD3 = 0;
+PORTDbits.RD4 = 0;
+if (TIME > 5000){
+state = MOVE;
+}
+break;
+case MOVE:
+if (PORTBbits.RB5 == 0){
+MotorsSpeed(-1000,1000);
+PORTDbits.RD2 = 1;
+}else{
+PORTDbits.RD2 = 0;
+MotorsSpeed(-900,-500);
+}
+PORTDbits.RD3 = 0;
+PORTDbits.RD4 = 0;
+if (PORTBbits.RB0 == 0){
+state = INIT;
+}
 break;
 }
 
-# 99
+# 140
 }
 
 
