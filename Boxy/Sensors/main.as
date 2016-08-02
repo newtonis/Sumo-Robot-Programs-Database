@@ -474,7 +474,7 @@ main@argv:	; 2 bytes @ 0x3
 ;; Return value:  Size  Location     Type
 ;;                  2    1[BANK0 ] int 
 ;; Registers used:
-;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
 ;; Tracked objects:
 ;;		On entry : B00/0
 ;;		On exit  : 0/0
@@ -511,41 +511,41 @@ psect	maintext
 _main:	
 ;incstack = 0
 	opt	stack 5
-; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	62
 	
-l859:	
+l855:	
 	fcall	_init
 	line	63
 	
-l861:	
+l857:	
 	fcall	_configurar_IO
 	line	64
 	
-l863:	
+l859:	
 	fcall	_configurar_pwm
 	line	65
 	
-l865:	
+l861:	
 	fcall	_configurar_timer1
 	line	66
 	
-l867:	
+l863:	
 	fcall	_configurar_timer0
-	goto	l869
+	goto	l865
 	line	67
 	
 l85:	
 	line	68
 	
-l869:	
+l865:	
 	fcall	_sensores
-	goto	l869
+	goto	l865
 	line	69
 	
 l86:	
 	line	67
-	goto	l869
+	goto	l865
 	
 l87:	
 	line	70
@@ -561,7 +561,7 @@ GLOBAL	__end_of_main
 
 ;; *************** function _sensores *****************
 ;; Defined at:
-;;		line 134 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 136 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -569,7 +569,7 @@ GLOBAL	__end_of_main
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
-;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
 ;; Tracked objects:
 ;;		On entry : 0/0
 ;;		On exit  : 0/0
@@ -589,61 +589,57 @@ GLOBAL	__end_of_main
 ;; This function uses a non-reentrant model
 ;;
 psect	text1,local,class=CODE,delta=2,merge=1
-	line	134
+	line	136
 global __ptext1
 __ptext1:	;psect for function _sensores
 psect	text1
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	134
+	line	136
 	global	__size_of_sensores
 	__size_of_sensores	equ	__end_of_sensores-_sensores
 	
 _sensores:	
 ;incstack = 0
 	opt	stack 5
-; Regs used in _sensores: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
-	line	135
-	
-l813:	
-	goto	l853
-	line	136
-	
-l110:	
+; Regs used in _sensores: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	137
 	
+l813:	
+	goto	l849
+	line	138
+	
+l110:	
+	line	139
+	
 l815:	
-	movlw	low(03h)
+	movlw	low(01h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(21)	;volatile
-	line	138
-	
-l817:	
-	clrf	(22)	;volatile
-	line	139
-	
-l819:	
-	bsf	(16),0	;volatile
-	line	140
-	
-l821:	
-	clrf	(_estado)
-	incf	(_estado),f
 	line	141
 	
-l823:	
-	clrf	(_cnt)
-	clrf	(_cnt+1)
+l817:	
+	bsf	(16),0	;volatile
 	line	142
 	
-l825:	
-	clrf	(_contador)
+l819:	
+	clrf	(_estado)
+	incf	(_estado),f
 	line	143
-	goto	l117
+	
+l821:	
+	clrf	(_cnt)
+	clrf	(_cnt+1)
 	line	144
 	
+l823:	
+	clrf	(_contador)
+	line	145
+	goto	l117
+	line	146
+	
 l112:	
-	line	147
+	line	149
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	btfss	(12),0	;volatile
@@ -652,121 +648,103 @@ l112:
 u231:
 	goto	l117
 u230:
-	line	148
-	
-l827:	
-	bcf	(12),0	;volatile
-	line	149
-	bcf	(16),0	;volatile
 	line	150
 	
-l829:	
+l825:	
+	bcf	(12),0	;volatile
+	line	151
+	bcf	(16),0	;volatile
+	line	152
+	
+l827:	
 	movlw	low(0FCh)
 	movwf	(15)	;volatile
-	line	151
+	line	153
 	movlw	low(017h)
 	movwf	(14)	;volatile
-	line	152
+	line	154
 	movlw	low(02h)
 	movwf	(??_sensores+0)+0
 	movf	(??_sensores+0)+0,w
 	movwf	(_estado)
 	goto	l117
-	line	153
-	
-l113:	
-	line	154
-	goto	l117
 	line	155
 	
-l114:	
+l113:	
 	line	156
-	
-l831:	
-	fcall	_read
+	goto	l117
 	line	157
 	
-l833:	
+l114:	
+	line	158
+	
+l829:	
+	fcall	_read
+	line	159
+	
+l831:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(12),0	;volatile
-	line	158
-	
-l835:	
-	bcf	(16),0	;volatile
-	line	159
-	
-l837:	
-	clrf	(_contador)
 	line	160
 	
-l839:	
-	clrf	(21)	;volatile
+l833:	
+	bcf	(16),0	;volatile
 	line	161
 	
-l841:	
+l835:	
+	clrf	(_contador)
+	line	162
+	
+l837:	
+	clrf	(21)	;volatile
+	line	163
+	
+l839:	
 	movlw	low(03h)
 	movwf	(??_sensores+0)+0
 	movf	(??_sensores+0)+0,w
 	movwf	(_estado)
-	line	162
-	
-l843:	
-	clrf	(_cnt)
-	clrf	(_cnt+1)
-	line	163
-	goto	l117
 	line	164
 	
-l115:	
+l841:	
+	clrf	(_cnt)
+	clrf	(_cnt+1)
 	line	165
-	
-l845:	
-	movlw	01h
-	addwf	(_cnt),f
-	skipnc
-	incf	(_cnt+1),f
-	movlw	0
-	addwf	(_cnt+1),f
+	goto	l117
 	line	166
 	
-l847:	
-	movf	(_cnt+1),w
-	xorlw	80h
-	movwf	btemp+1
-	movlw	(0)^80h
-	subwf	btemp+1,w
-	skipz
-	goto	u245
-	movlw	032h
-	subwf	(_cnt),w
-u245:
-
+l115:	
+	line	167
+	
+l843:	
+	movlw	low(05h)
+	subwf	(_contador),w
 	skipc
 	goto	u241
 	goto	u240
 u241:
 	goto	l117
 u240:
-	line	167
-	
-l849:	
-	clrf	(_estado)
-	goto	l117
 	line	168
 	
-l116:	
+l845:	
+	clrf	(_estado)
+	goto	l117
 	line	169
-	goto	l117
-	line	170
 	
-l851:	
+l116:	
+	line	170
 	goto	l117
-	line	135
+	line	171
+	
+l847:	
+	goto	l117
+	line	137
 	
 l109:	
 	
-l853:	
+l849:	
 	movf	(_estado),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 4, Range of values is 0 to 3
@@ -782,25 +760,25 @@ l853:
 	subwf	fsr,w
 skipnc
 goto l117
-movlw high(S891)
+movlw high(S887)
 movwf pclath
-	movlw low(S891)
+	movlw low(S887)
 	addwf fsr,w
 	movwf pc
 psect	swtext1,local,class=CONST,delta=2
 global __pswtext1
 __pswtext1:
-S891:
+S887:
 	ljmp	l815
 	ljmp	l112
-	ljmp	l831
-	ljmp	l845
+	ljmp	l829
+	ljmp	l843
 psect	text1
 
-	line	170
+	line	171
 	
 l111:	
-	line	171
+	line	172
 	
 l117:	
 	return
@@ -812,7 +790,7 @@ GLOBAL	__end_of_sensores
 
 ;; *************** function _read *****************
 ;; Defined at:
-;;		line 172 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 173 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -840,12 +818,12 @@ GLOBAL	__end_of_sensores
 ;; This function uses a non-reentrant model
 ;;
 psect	text2,local,class=CODE,delta=2,merge=1
-	line	172
+	line	173
 global __ptext2
 __ptext2:	;psect for function _read
 psect	text2
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	172
+	line	173
 	global	__size_of_read
 	__size_of_read	equ	__end_of_read-_read
 	
@@ -853,9 +831,9 @@ _read:
 ;incstack = 0
 	opt	stack 5
 ; Regs used in _read: []
-	line	173
+	line	174
 	
-l759:	
+l757:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	btfsc	(5),0	;volatile
@@ -872,7 +850,7 @@ u130:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),0	;volatile
 u144:
-	line	174
+	line	175
 	btfsc	(5),1	;volatile
 	goto	u151
 	goto	u150
@@ -887,7 +865,7 @@ u150:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),4	;volatile
 u164:
-	line	175
+	line	176
 	btfsc	(5),2	;volatile
 	goto	u171
 	goto	u170
@@ -902,7 +880,7 @@ u170:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),5	;volatile
 u184:
-	line	176
+	line	177
 	btfsc	(5),3	;volatile
 	goto	u191
 	goto	u190
@@ -917,7 +895,7 @@ u190:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),6	;volatile
 u204:
-	line	177
+	line	178
 	btfsc	(5),4	;volatile
 	goto	u211
 	goto	u210
@@ -932,7 +910,7 @@ u210:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),7	;volatile
 u224:
-	line	178
+	line	179
 	
 l120:	
 	return
@@ -987,28 +965,35 @@ _init:
 ; Regs used in _init: [wreg+status,2]
 	line	74
 	
-l761:	
+l759:	
 	movlw	low(07h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(31)	;volatile
 	line	75
 	
-l763:	
+l761:	
 	clrf	(_contador)
 	line	76
 	
-l765:	
+l763:	
 	clrf	(_estado)
 	line	77
 	
-l767:	
+l765:	
 	clrf	(_ciclos)
 	line	78
 	
-l769:	
+l767:	
 	clrf	(_actual)
-	line	81
+	line	79
+	movlw	low(03h)
+	movwf	(21)	;volatile
+	line	80
+	
+l769:	
+	clrf	(22)	;volatile
+	line	83
 	
 l91:	
 	return
@@ -1020,7 +1005,7 @@ GLOBAL	__end_of_init
 
 ;; *************** function _configurar_timer1 *****************
 ;; Defined at:
-;;		line 91 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 93 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1048,12 +1033,12 @@ GLOBAL	__end_of_init
 ;; This function uses a non-reentrant model
 ;;
 psect	text4,local,class=CODE,delta=2,merge=1
-	line	91
+	line	93
 global __ptext4
 __ptext4:	;psect for function _configurar_timer1
 psect	text4
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	91
+	line	93
 	global	__size_of_configurar_timer1
 	__size_of_configurar_timer1	equ	__end_of_configurar_timer1-_configurar_timer1
 	
@@ -1061,54 +1046,54 @@ _configurar_timer1:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _configurar_timer1: [wreg+status,2+status,0]
-	line	92
+	line	94
 	
 l785:	
 	movlw	low(0FCh)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(15)	;volatile
-	line	93
+	line	95
 	movlw	low(018h)
 	movwf	(14)	;volatile
-	line	95
+	line	97
 	
 l787:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(140)^080h,0	;volatile
-	line	96
+	line	98
 	
 l789:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(12),0	;volatile
-	line	98
+	line	100
 	
 l791:	
 	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
 	andwf	(16),f	;volatile
-	line	100
+	line	102
 	
 l793:	
 	bsf	(16),2	;volatile
-	line	101
+	line	103
 	
 l795:	
 	bcf	(16),3	;volatile
-	line	102
+	line	104
 	
 l797:	
 	bcf	(16),1	;volatile
-	line	103
+	line	105
 	
 l799:	
 	bcf	(16),0	;volatile
-	line	104
+	line	106
 	
 l801:	
 	bsf	(16),0	;volatile
-	line	105
+	line	107
 	
 l97:	
 	return
@@ -1120,7 +1105,7 @@ GLOBAL	__end_of_configurar_timer1
 
 ;; *************** function _configurar_timer0 *****************
 ;; Defined at:
-;;		line 106 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 108 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1148,12 +1133,12 @@ GLOBAL	__end_of_configurar_timer1
 ;; This function uses a non-reentrant model
 ;;
 psect	text5,local,class=CODE,delta=2,merge=1
-	line	106
+	line	108
 global __ptext5
 __ptext5:	;psect for function _configurar_timer0
 psect	text5
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	106
+	line	108
 	global	__size_of_configurar_timer0
 	__size_of_configurar_timer0	equ	__end_of_configurar_timer0-_configurar_timer0
 	
@@ -1161,34 +1146,34 @@ _configurar_timer0:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _configurar_timer0: [wreg+status,2+status,0]
-	line	107
+	line	109
 	
 l803:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(129)^080h,5	;volatile
-	line	108
+	line	110
 	bcf	(129)^080h,3	;volatile
-	line	109
+	line	111
 	
 l805:	
 	movf	(129)^080h,w	;volatile
 	andlw	not (((1<<3)-1)<<0)
 	iorlw	(01h & ((1<<3)-1))<<0
 	movwf	(129)^080h	;volatile
-	line	111
+	line	113
 	
 l807:	
 	bcf	(11),2	;volatile
-	line	112
+	line	114
 	
 l809:	
 	bsf	(11),5	;volatile
-	line	113
+	line	115
 	
 l811:	
 	bsf	(11),7	;volatile
-	line	114
+	line	116
 	
 l100:	
 	return
@@ -1200,7 +1185,7 @@ GLOBAL	__end_of_configurar_timer0
 
 ;; *************** function _configurar_pwm *****************
 ;; Defined at:
-;;		line 82 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 84 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1228,12 +1213,12 @@ GLOBAL	__end_of_configurar_timer0
 ;; This function uses a non-reentrant model
 ;;
 psect	text6,local,class=CODE,delta=2,merge=1
-	line	82
+	line	84
 global __ptext6
 __ptext6:	;psect for function _configurar_pwm
 psect	text6
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	82
+	line	84
 	global	__size_of_configurar_pwm
 	__size_of_configurar_pwm	equ	__end_of_configurar_pwm-_configurar_pwm
 	
@@ -1241,43 +1226,43 @@ _configurar_pwm:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _configurar_pwm: [wreg+status,2+status,0]
-	line	83
+	line	85
 	
 l773:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(18),2	;volatile
-	line	84
+	line	86
 	
 l775:	
 	movlw	((0 & ((1<<4)-1))<<3)|not (((1<<4)-1)<<3)
 	andwf	(18),f	;volatile
-	line	85
+	line	87
 	movlw	((0 & ((1<<2)-1))<<0)|not (((1<<2)-1)<<0)
 	andwf	(18),f	;volatile
-	line	86
+	line	88
 	
 l777:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(134)^080h,3	;volatile
-	line	87
+	line	89
 	
 l779:	
 	movlw	low(011h)
 	movwf	(146)^080h	;volatile
-	line	88
+	line	90
 	
 l781:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	clrf	(21)	;volatile
-	line	89
+	line	91
 	
 l783:	
 	movlw	low(0Ch)
 	movwf	(23)	;volatile
-	line	90
+	line	92
 	
 l94:	
 	return
@@ -1289,7 +1274,7 @@ GLOBAL	__end_of_configurar_pwm
 
 ;; *************** function _configurar_IO *****************
 ;; Defined at:
-;;		line 115 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 117 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1317,12 +1302,12 @@ GLOBAL	__end_of_configurar_pwm
 ;; This function uses a non-reentrant model
 ;;
 psect	text7,local,class=CODE,delta=2,merge=1
-	line	115
+	line	117
 global __ptext7
 __ptext7:	;psect for function _configurar_IO
 psect	text7
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	115
+	line	117
 	global	__size_of_configurar_IO
 	__size_of_configurar_IO	equ	__end_of_configurar_IO-_configurar_IO
 	
@@ -1330,33 +1315,33 @@ _configurar_IO:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _configurar_IO: []
-	line	116
+	line	118
 	
 l771:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(1075/8)^080h,(1075)&7	;volatile
-	line	118
-	bsf	(1064/8)^080h,(1064)&7	;volatile
-	line	119
-	bsf	(1065/8)^080h,(1065)&7	;volatile
 	line	120
-	bsf	(1066/8)^080h,(1066)&7	;volatile
+	bsf	(1064/8)^080h,(1064)&7	;volatile
 	line	121
-	bsf	(1067/8)^080h,(1067)&7	;volatile
+	bsf	(1065/8)^080h,(1065)&7	;volatile
 	line	122
-	bsf	(1068/8)^080h,(1068)&7	;volatile
+	bsf	(1066/8)^080h,(1066)&7	;volatile
+	line	123
+	bsf	(1067/8)^080h,(1067)&7	;volatile
 	line	124
-	bcf	(1072/8)^080h,(1072)&7	;volatile
-	line	125
-	bcf	(1076/8)^080h,(1076)&7	;volatile
+	bsf	(1068/8)^080h,(1068)&7	;volatile
 	line	126
-	bcf	(1077/8)^080h,(1077)&7	;volatile
+	bcf	(1072/8)^080h,(1072)&7	;volatile
 	line	127
-	bcf	(1078/8)^080h,(1078)&7	;volatile
+	bcf	(1076/8)^080h,(1076)&7	;volatile
 	line	128
-	bcf	(1071/8)^080h,(1071)&7	;volatile
+	bcf	(1077/8)^080h,(1077)&7	;volatile
 	line	129
+	bcf	(1078/8)^080h,(1078)&7	;volatile
+	line	130
+	bcf	(1071/8)^080h,(1071)&7	;volatile
+	line	131
 	
 l103:	
 	return
@@ -1368,7 +1353,7 @@ GLOBAL	__end_of_configurar_IO
 
 ;; *************** function _t0_int *****************
 ;; Defined at:
-;;		line 130 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 132 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -1395,12 +1380,12 @@ GLOBAL	__end_of_configurar_IO
 ;; This function uses a non-reentrant model
 ;;
 psect	text8,local,class=CODE,delta=2,merge=1
-	line	130
+	line	132
 global __ptext8
 __ptext8:	;psect for function _t0_int
 psect	text8
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	130
+	line	132
 	global	__size_of_t0_int
 	__size_of_t0_int	equ	__end_of_t0_int-_t0_int
 	
@@ -1428,18 +1413,18 @@ interrupt_function:
 	movwf	(??_t0_int+4)
 	ljmp	_t0_int
 psect	text8
-	line	131
+	line	133
+	
+i1l697:	
+	bcf	(11),2	;volatile
+	line	134
 	
 i1l699:	
-	bcf	(11),2	;volatile
-	line	132
-	
-i1l701:	
 	movlw	low(01h)
 	movwf	(??_t0_int+0)+0
 	movf	(??_t0_int+0)+0,w
 	addwf	(_contador),f
-	line	133
+	line	135
 	
 i1l106:	
 	movf	(??_t0_int+4),w

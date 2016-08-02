@@ -759,6 +759,9 @@ int main(int argc, char** argv) {
     fns = 1;
     while (1){
         MotorUpdate();
+        L_RED = V1;
+        L_YELLOW = V2;
+        L_GREEN = V3;
         /*if (not B_GREEN and not ma){
             ma = 1;
             L_GREEN = not L_GREEN;
@@ -774,7 +777,7 @@ int main(int argc, char** argv) {
         if (B_GREEN) ma = 0;
         if (B_YELLOW) mb = 0;
         if (B_RED) mc = 0;*/
-        if (not B_RED and not ma){
+        /*if (not B_RED and not ma){
             ma = 1;
             d1 = d1 == 10 ? -10 : (d1 + 1);
         }
@@ -787,7 +790,7 @@ int main(int argc, char** argv) {
         MotorsSpeed(d1 ,d2 );
         L_RED = d1 != 0;
         
-        L_GREEN = d2 != 0;
+        L_GREEN = d2 != 0;*/
 
         //MotorsSpeed(d1*1000,d2*1000); // misma velocidad
 
@@ -798,7 +801,7 @@ int main(int argc, char** argv) {
        // BDIR = 0;
         
 
-        L_YELLOW = TIME % 12000 > 6000;
+        //L_YELLOW = TIME % 12000 > 6000;
         /*L_RED = V2;*/
         //L_GREEN = 0;
         //L_RED = 0;

@@ -45,38 +45,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _configurations_init `(v ~T0 @X0 0 ef ]
 "65
 [v _MotorsPWM `(v ~T0 @X0 0 ef ]
-"2733 /opt/microchip/xc8/v1.34/include/pic18f4550.h
-[s S201 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S201 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"2743
-[s S202 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S202 . INT0 INT1 INT2 . PGM PGC PGD ]
-"2752
-[s S203 :3 `uc 1 :1 `uc 1 ]
-[n S203 . . CCP2_PA2 ]
-"2732
-[u S200 `S201 1 `S202 1 `S203 1 ]
-[n S200 . . . . ]
-"2757
-[v _PORTBbits `VS200 ~T0 @X0 0 e@3969 ]
-"2995
-[s S213 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S213 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"3005
-[s S214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S214 . SPP0 SPP1 SPP2 SPP3 SPP4 SPP5 SPP6 SPP7 ]
-"3015
-[s S215 :7 `uc 1 :1 `uc 1 ]
-[n S215 . . SS2 ]
-"2994
-[u S212 `S213 1 `S214 1 `S215 1 ]
-[n S212 . . . . ]
-"3020
-[v _PORTDbits `VS212 ~T0 @X0 0 e@3971 ]
-"63 /home/newtonis/Robots/Boxy/Main/config.h
-[v _TIME `l ~T0 @X0 0 e ]
-"69
-[v _MotorsSpeed `(v ~T0 @X0 0 ef2`i`i ]
+"60 /home/newtonis/Robots/Boxy/Main/main.c
+[c E5284 0 1 .. ]
+[n E5284 . INIT MOVE  ]
 "51 /opt/microchip/xc8/v1.34/include/pic18f4550.h
 [; <" SPPDATA equ 0F62h ;# ">
 "70
@@ -535,96 +506,72 @@ Version 3.2 HI-TECH Software Intermediate Code
 "31
 [v _d1 `i ~T0 @X0 1 e ]
 [v _d2 `i ~T0 @X0 1 e ]
-"33
+"35
+[v _state `i ~T0 @X0 1 e ]
+"37
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"34
-[e = _R -> -> 0 `i `uc ]
-"35
-[e = _Y -> -> 0 `i `uc ]
-"36
-[e = _O -> -> 0 `i `uc ]
-"37
-[e = _PR -> -> 0 `i `uc ]
 "38
-[e = _PY -> -> 0 `i `uc ]
+[e = _R -> -> 0 `i `uc ]
 "39
-[e = _PO -> -> 0 `i `uc ]
+[e = _Y -> -> 0 `i `uc ]
+"40
+[e = _O -> -> 0 `i `uc ]
 "41
-[e = _fa -> 0 `i ]
+[e = _PR -> -> 0 `i `uc ]
 "42
-[e = _fb -> 0 `i ]
+[e = _PY -> -> 0 `i `uc ]
 "43
-[e = _ma -> 0 `i ]
-"44
-[e = _mb -> 0 `i ]
+[e = _PO -> -> 0 `i `uc ]
 "45
-[e = _d1 -> 0 `i ]
+[e = _fa -> 0 `i ]
 "46
-[e = _d2 -> 0 `i ]
+[e = _fb -> 0 `i ]
+"47
+[e = _ma -> 0 `i ]
 "48
-[e ( _InitTIMERS ..  ]
+[e = _mb -> 0 `i ]
 "49
-[e ( _configurations_init ..  ]
-"51
-[e ( _MotorsPWM ..  ]
+[e = _d1 -> 0 `i ]
+"50
+[e = _d2 -> 0 `i ]
 "52
+[e ( _InitTIMERS ..  ]
+"53
+[e ( _configurations_init ..  ]
+"55
+[e ( _MotorsPWM ..  ]
+"56
 [e ( _configIO ..  ]
-"57
+"60
+[e = _state -> . `E5284 0 `i ]
+"61
 [e :U 596 ]
 {
-"70
-[e $ ! && ! != -> . . _PORTBbits 0 2 `i -> -> -> 0 `i `Vuc `i ! != _ma -> 0 `i 598  ]
+"62
+[e $U 599  ]
 {
-"71
-[e = _ma -> 1 `i ]
-"72
-[e = _d1 ? == _d1 -> 10 `i : -U -> 10 `i + _d1 -> 1 `i ]
-"73
-}
-[e :U 598 ]
-"74
-[e $ ! && ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i ! != _mb -> 0 `i 599  ]
-{
-"75
-[e = _mb -> 1 `i ]
-"76
-[e = _d2 ? == _d2 -> 10 `i : -U -> 10 `i + _d2 -> 1 `i ]
-"77
-}
-[e :U 599 ]
-"78
-[e $ ! != -> . . _PORTBbits 0 2 `i -> -> -> 0 `i `Vuc `i 600  ]
-[e = _ma -> 0 `i ]
+"63
 [e :U 600 ]
-"79
-[e $ ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i 601  ]
-[e = _mb -> 0 `i ]
-[e :U 601 ]
-"81
-[e = . . _PORTDbits 0 2 -> -> != _d1 -> 0 `i `i `uc ]
-"82
-[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
-"83
-[e = . . _PORTDbits 0 4 -> -> != _d2 -> 0 `i `i `uc ]
-"84
-[e $ ! > _TIME -> -> 10000 `i `l 602  ]
-{
-"85
-[e = _TIME -> -> 0 `i `l ]
-"86
+"65
+[e $U 598  ]
+"66
 }
-[e :U 602 ]
-"87
-[e ( _MotorsSpeed (2 , * _d1 -> 100 `i * _d2 -> 100 `i ]
-"89
+[e $U 598  ]
+"62
+[e :U 599 ]
+[e [\ _state , $ -> . `E5284 0 `i 600
+ 598 ]
+"66
+[e :U 598 ]
+"99
 }
 [e :U 595 ]
-"57
+"61
 [e $U 596  ]
 [e :U 597 ]
-"92
+"102
 [e :UE 594 ]
 }

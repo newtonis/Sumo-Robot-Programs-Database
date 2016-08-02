@@ -3,23 +3,23 @@
 [d edition pro ]
 [d chip 16F628A ]
 [d frameptr 6 ]
-"61 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"63 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _main main `(i  1 e 2 0 ]
-"74
+"76
 [v _init init `(v  1 e 0 0 ]
-"83
+"85
 [v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
-"92
+"94
 [v _configurar_timer1 configurar_timer1 `(v  1 e 0 0 ]
-"107
+"109
 [v _configurar_timer0 configurar_timer0 `(v  1 e 0 0 ]
-"116
+"118
 [v _configurar_IO configurar_IO `(v  1 e 0 0 ]
-"131
+"133
 [v _t0_int t0_int `II(v  1 e 0 0 ]
-"135
+"137
 [v _sensores sensores `(v  1 e 0 0 ]
-"165
+"167
 [v _read read `(v  1 e 0 0 ]
 "6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -31,13 +31,13 @@
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
 [v _memcpyee memcpyee `(v  1 e 0 0 ]
-"42 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"44 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _estado estado `uc  1 e 1 0 ]
-"43
+"45
 [v _contador contador `uc  1 e 1 0 ]
-"44
+"46
 [v _ciclos ciclos `uc  1 e 1 0 ]
-"49
+"51
 [v _actual actual `uc  1 e 1 0 ]
 [s S237 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
@@ -192,48 +192,48 @@
 [v _TRISB3 TRISB3 `VEb  1 e 0 @1075 ]
 "1506
 [v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
-"61 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"63 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"71
+"73
 } 0
-"135
+"137
 [v _sensores sensores `(v  1 e 0 0 ]
 {
-"164
+"166
 } 0
-"165
+"167
 [v _read read `(v  1 e 0 0 ]
 {
-"171
+"173
 } 0
-"74
+"76
 [v _init init `(v  1 e 0 0 ]
 {
-"82
+"84
 } 0
-"92
+"94
 [v _configurar_timer1 configurar_timer1 `(v  1 e 0 0 ]
 {
-"106
+"108
 } 0
-"107
+"109
 [v _configurar_timer0 configurar_timer0 `(v  1 e 0 0 ]
 {
-"115
+"117
 } 0
-"83
+"85
 [v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
 {
-"91
+"93
 } 0
-"116
+"118
 [v _configurar_IO configurar_IO `(v  1 e 0 0 ]
 {
-"130
+"132
 } 0
-"131
+"133
 [v _t0_int t0_int `II(v  1 e 0 0 ]
 {
-"134
+"136
 } 0

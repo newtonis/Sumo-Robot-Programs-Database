@@ -136,7 +136,7 @@ void interrupt t0_int(void){
 void sensores(){
     switch (estado){
         case INICIO:
-           // CCPR1L = 0x03; //IN_DIS ? CERCA : LEJOS;
+            CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
             //CCPR1H = 0x00; // valores[actual]; //prender pwm
             T1CONbits.TMR1ON=1; //prender timer
             estado = PAUSA;
@@ -164,8 +164,7 @@ void sensores(){
             cnt = 0;
         break;
         case APAGADO:
-            cnt ++;
-            if(cnt >= 50){
+            if(contador >= 5){
                 estado = INICIO;
             }
         break;

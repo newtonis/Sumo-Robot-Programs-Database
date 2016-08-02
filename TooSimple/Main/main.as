@@ -485,9 +485,7 @@ TOSH equ 0FFEh ;#
 # 9473 "/opt/microchip/xc8/v1.34/include/pic18f4550.h"
 TOSU equ 0FFFh ;# 
 	FNCALL	_main,_MotorUpdate
-	FNCALL	_main,_MotorsSpeed
 	FNCALL	_main,_Wixel
-	FNCALL	_main,___almod
 	FNCALL	_main,_initYBOT
 	FNCALL	_initYBOT,_InitAnalog
 	FNCALL	_initYBOT,_InitSP
@@ -573,6 +571,8 @@ __pidataBANK0:
 	global	_a
 	global	_d1
 	global	_d2
+	global	_fa
+	global	_fb
 	global	_fns
 	global	_loop
 	global	_ma
@@ -591,23 +591,18 @@ __pidataBANK0:
 	global	_V
 	global	_MS
 	global	_WAITIME
-	global	_fa
-	global	_fb
 	global	_amax
 	global	_amin
-	global	_status
-psect	nvCOMRAM,class=COMRAM,space=1,noexec
-global __pnvCOMRAM
-__pnvCOMRAM:
-	global	_status
-_status:
-       ds      1
 	global	_gstatus
 psect	nvBANK0,class=BANK0,space=1,noexec
 global __pnvBANK0
 __pnvBANK0:
 	global	_gstatus
 _gstatus:
+       ds      1
+	global	_status
+	global	_status
+_status:
        ds      1
 	global	_ADCON0bits
 _ADCON0bits	set	0xFC2
@@ -645,6 +640,8 @@ _INTCON2bits	set	0xFF1
 _INTCONbits	set	0xFF2
 	global	_OSCCONbits
 _OSCCONbits	set	0xFD3
+	global	_PORTAbits
+_PORTAbits	set	0xF80
 	global	_PORTBbits
 _PORTBbits	set	0xF81
 	global	_PORTCbits
@@ -844,6 +841,16 @@ _d1:
 	global	_d2
 _d2:
        ds      2
+	global	_fa
+_fa:
+       ds      2
+	global	_fb
+_fb:
+       ds      2
+	global	_fc
+	global	_fc
+_fc:
+       ds      2
 	global	_fns
 _fns:
        ds      2
@@ -1006,16 +1013,6 @@ _value:
 	global	_w
 _w:
        ds      4
-	global	_fa
-_fa:
-       ds      2
-	global	_fb
-_fb:
-       ds      2
-	global	_fc
-	global	_fc
-_fc:
-       ds      2
 psect	dataBANK0,class=BANK0,space=1,noexec
 global __pdataBANK0
 __pdataBANK0:
@@ -1090,18 +1087,18 @@ clear_1:
 clrf	postinc0,c
 decf	wreg
 bnz	clear_1
-; Clear objects allocated to BANK0 (94 bytes)
+; Clear objects allocated to BANK0 (88 bytes)
 	global __pbssBANK0
 lfsr	0,__pbssBANK0
-movlw	94
+movlw	88
 clear_2:
 clrf	postinc0,c
 decf	wreg
 bnz	clear_2
-; Clear objects allocated to COMRAM (64 bytes)
+; Clear objects allocated to COMRAM (70 bytes)
 	global __pbssCOMRAM
 lfsr	0,__pbssCOMRAM
-movlw	64
+movlw	70
 clear_3:
 clrf	postinc0,c
 decf	wreg
@@ -1132,37 +1129,34 @@ global end_of_initialization,__end_of__initialization
 end_of_initialization:
 __end_of__initialization:movlb 0
 goto _main	;jump to C main() function
-psect	cstackBANK1,class=BANK1,space=1,noexec
-global __pcstackBANK1
-__pcstackBANK1:
-??_main:	; 0 bytes @ 0x0
-	ds   1
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-?_MotorsSpeed:	; 0 bytes @ 0x0
-	global	?___almod
-?___almod:	; 4 bytes @ 0x0
-	global	MotorsSpeed@a
-MotorsSpeed@a:	; 2 bytes @ 0x0
-	global	_MotorUpdate$1795
-_MotorUpdate$1795:	; 2 bytes @ 0x0
-	global	___almod@dividend
-___almod@dividend:	; 4 bytes @ 0x0
+??_ResetCounter:	; 0 bytes @ 0x0
+??_InitAnalog:	; 0 bytes @ 0x0
+??_InitTIMERS:	; 0 bytes @ 0x0
+??_ReadAnalog:	; 0 bytes @ 0x0
+??_Wixel:	; 0 bytes @ 0x0
+??_configurations_init:	; 0 bytes @ 0x0
+??_MotorUpdate:	; 0 bytes @ 0x0
+	ds   1
+	global	ReadAnalog@channel
+ReadAnalog@channel:	; 1 bytes @ 0x1
+	ds   1
+??_InitSP:	; 0 bytes @ 0x2
+??_initYBOT:	; 0 bytes @ 0x2
+	global	_MotorUpdate$1870
+_MotorUpdate$1870:	; 2 bytes @ 0x2
 	ds   2
-	global	MotorsSpeed@b
-MotorsSpeed@b:	; 2 bytes @ 0x2
-	global	_MotorUpdate$1796
-_MotorUpdate$1796:	; 2 bytes @ 0x2
+	global	_MotorUpdate$1871
+_MotorUpdate$1871:	; 2 bytes @ 0x4
 	ds   2
-	global	___almod@divisor
-___almod@divisor:	; 4 bytes @ 0x4
-	ds   4
-?_main:	; 2 bytes @ 0x8
-main@argc:	; 2 bytes @ 0x8
+?_main:	; 2 bytes @ 0x6
+main@argc:	; 2 bytes @ 0x6
 	ds   2
-main@argv:	; 3 bytes @ 0xA
+main@argv:	; 3 bytes @ 0x8
 	ds   3
+??_main:	; 0 bytes @ 0xB
 psect	cstackCOMRAM,class=COMRAM,space=1,noexec
 global __pcstackCOMRAM
 __pcstackCOMRAM:
@@ -1178,25 +1172,6 @@ __pcstackCOMRAM:
 ??_enc:	; 0 bytes @ 0x0
 ?_MotorUpdate:	; 0 bytes @ 0x0
 	ds   14
-??_ResetCounter:	; 0 bytes @ 0xE
-??_InitAnalog:	; 0 bytes @ 0xE
-??_InitTIMERS:	; 0 bytes @ 0xE
-??_ReadAnalog:	; 0 bytes @ 0xE
-??_Wixel:	; 0 bytes @ 0xE
-??_configurations_init:	; 0 bytes @ 0xE
-??_MotorsSpeed:	; 0 bytes @ 0xE
-??_MotorUpdate:	; 0 bytes @ 0xE
-??___almod:	; 0 bytes @ 0xE
-	global	___almod@counter
-___almod@counter:	; 1 bytes @ 0xE
-	ds   1
-	global	ReadAnalog@channel
-ReadAnalog@channel:	; 1 bytes @ 0xF
-	global	___almod@sign
-___almod@sign:	; 1 bytes @ 0xF
-	ds   1
-??_InitSP:	; 0 bytes @ 0x10
-??_initYBOT:	; 0 bytes @ 0x10
 ;!
 ;!Data Sizes:
 ;!    Strings     0
@@ -1208,9 +1183,9 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
-;!    COMRAM           95     16      81
-;!    BANK0           160     13     160
-;!    BANK1           256      1      89
+;!    COMRAM           95     14      84
+;!    BANK0           160     11     153
+;!    BANK1           256      0      88
 ;!    BANK2           256      0       0
 ;!    BANK3           256      0       0
 ;!    BANK4           256      0       0
@@ -1227,9 +1202,7 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;!Critical Paths under _main in COMRAM
 ;!
-;!    _main->_MotorUpdate
-;!    _main->___almod
-;!    _InitSP->_ReadAnalog
+;!    None.
 ;!
 ;!Critical Paths under _enc in COMRAM
 ;!
@@ -1237,7 +1210,8 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;!Critical Paths under _main in BANK0
 ;!
-;!    _main->___almod
+;!    _main->_MotorUpdate
+;!    _InitSP->_ReadAnalog
 ;!
 ;!Critical Paths under _enc in BANK0
 ;!
@@ -1300,7 +1274,7 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!    None.
 
 ;;
-;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
 ;;
 
 ;!
@@ -1309,16 +1283,13 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 6     1      5     965
-;!                                              8 BANK0      5     0      5
-;!                                              0 BANK1      1     1      0
+;! (0) _main                                                 5     0      5     198
+;!                                              6 BANK0      5     0      5
 ;!                        _MotorUpdate
-;!                        _MotorsSpeed
 ;!                              _Wixel
-;!                            ___almod
 ;!                           _initYBOT
 ;! ---------------------------------------------------------------------------------
-;! (1) _initYBOT                                             0     0      0      88
+;! (1) _initYBOT                                             0     0      0     124
 ;!                         _InitAnalog
 ;!                             _InitSP
 ;!                         _InitTIMERS
@@ -1331,26 +1302,18 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! ---------------------------------------------------------------------------------
 ;! (2) _InitTIMERS                                           0     0      0       0
 ;! ---------------------------------------------------------------------------------
-;! (2) _InitSP                                               0     0      0      88
+;! (2) _InitSP                                               0     0      0     124
 ;!                         _ReadAnalog
 ;! ---------------------------------------------------------------------------------
-;! (3) _ReadAnalog                                           2     2      0      88
-;!                                             14 COMRAM     2     2      0
+;! (3) _ReadAnalog                                           2     2      0     124
+;!                                              0 BANK0      2     2      0
 ;! ---------------------------------------------------------------------------------
 ;! (2) _InitAnalog                                           0     0      0       0
 ;! ---------------------------------------------------------------------------------
-;! (1) ___almod                                             10     2      8     587
-;!                                             14 COMRAM     2     2      0
-;!                                              0 BANK0      8     0      8
-;! ---------------------------------------------------------------------------------
 ;! (1) _Wixel                                                0     0      0       0
 ;! ---------------------------------------------------------------------------------
-;! (1) _MotorsSpeed                                          4     0      4     216
-;!                                              0 BANK0      4     0      4
-;! ---------------------------------------------------------------------------------
 ;! (1) _MotorUpdate                                          6     6      0      74
-;!                                             14 COMRAM     2     2      0
-;!                                              0 BANK0      4     4      0
+;!                                              0 BANK0      6     6      0
 ;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 3
 ;! ---------------------------------------------------------------------------------
@@ -1366,9 +1329,7 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;! _main (ROOT)
 ;!   _MotorUpdate
-;!   _MotorsSpeed
 ;!   _Wixel
-;!   ___almod
 ;!   _initYBOT
 ;!     _InitAnalog
 ;!     _InitSP
@@ -1398,17 +1359,17 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!BITBANK2           100      0       0       8        0.0%
 ;!BANK2              100      0       0       9        0.0%
 ;!BITBANK1           100      0       0       6        0.0%
-;!BANK1              100      1      59       7       34.8%
+;!BANK1              100      0      58       7       34.4%
 ;!BITBANK0            A0      0       0       4        0.0%
-;!BANK0               A0      D      A0       5      100.0%
+;!BANK0               A0      B      99       5       95.6%
 ;!BITCOMRAM           5F      0       0       0        0.0%
-;!COMRAM              5F     10      51       1       85.3%
+;!COMRAM              5F      E      54       1       88.4%
 ;!BITSFR               0      0       0      40        0.0%
 ;!SFR                  0      0       0      40        0.0%
 ;!STACK                0      0       0       2        0.0%
 ;!NULL                 0      0       0       0        0.0%
-;!ABS                  0      0     14A      20        0.0%
-;!DATA                 0      0     546       3        0.0%
+;!ABS                  0      0     145      20        0.0%
+;!DATA                 0      0     541       3        0.0%
 ;!CODE                 0      0       0       0        0.0%
 
 	global	_main
@@ -1417,12 +1378,12 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;; Defined at:
 ;;		line 729 in file "/home/newtonis/Robots/TooSimple/Main/main.c"
 ;; Parameters:    Size  Location     Type
-;;  argc            2    8[BANK0 ] int 
-;;  argv            3   10[BANK0 ] PTR PTR unsigned char 
+;;  argc            2    6[BANK0 ] int 
+;;  argv            3    8[BANK0 ] PTR PTR unsigned char 
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  2    8[BANK0 ] int 
+;;                  2    6[BANK0 ] int 
 ;; Registers used:
 ;;		wreg, status,2, status,0, cstack
 ;; Tracked objects:
@@ -1432,15 +1393,13 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
 ;;      Params:         0       5       0       0       0       0       0       0       0
 ;;      Locals:         0       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       1       0       0       0       0       0       0
-;;      Totals:         0       5       1       0       0       0       0       0       0
-;;Total ram usage:        6 bytes
+;;      Temps:          0       0       0       0       0       0       0       0       0
+;;      Totals:         0       5       0       0       0       0       0       0       0
+;;Total ram usage:        5 bytes
 ;; Hardware stack levels required when called:    4
 ;; This function calls:
 ;;		_MotorUpdate
-;;		_MotorsSpeed
 ;;		_Wixel
-;;		___almod
 ;;		_initYBOT
 ;; This function is called by:
 ;;		Startup code after reset
@@ -1462,90 +1421,79 @@ _main:
 	opt	stack 27
 	line	730
 	
-l2087:
+l2035:
 	call	_initYBOT	;wreg free
 	line	732
 	
-l2089:
+l2037:
 	movlw	high(0)
-	movlb	0	; () banked
-	movwf	((_fa+1))&0ffh
+	movwf	((c:_fa+1)),c
 	movlw	low(0)
-	movwf	((_fa))&0ffh
+	movwf	((c:_fa)),c
 	line	733
 	
-l2091:; BSR set to: 0
-
+l2039:
 	movlw	high(0)
-	movlb	0	; () banked
-	movwf	((_fb+1))&0ffh
+	movwf	((c:_fb+1)),c
 	movlw	low(0)
-	movwf	((_fb))&0ffh
+	movwf	((c:_fb)),c
 	line	734
 	
-l2093:; BSR set to: 0
-
+l2041:
 	movlw	high(0)
 	movwf	((c:_ma+1)),c
 	movlw	low(0)
 	movwf	((c:_ma)),c
 	line	735
 	
-l2095:; BSR set to: 0
-
+l2043:
 	movlw	high(0)
 	movwf	((c:_mb+1)),c
 	movlw	low(0)
 	movwf	((c:_mb)),c
 	line	736
 	
-l2097:; BSR set to: 0
-
+l2045:
 	movlw	high(0)
 	movwf	((c:_d1+1)),c
 	movlw	low(0)
 	movwf	((c:_d1)),c
 	line	737
 	
-l2099:; BSR set to: 0
-
+l2047:
 	movlw	high(0)
 	movwf	((c:_d2+1)),c
 	movlw	low(0)
 	movwf	((c:_d2)),c
 	line	739
 	
-l2101:; BSR set to: 0
-
+l2049:
 	movlw	high(0)
 	movwf	((c:_sa+1)),c
 	movlw	low(0)
 	movwf	((c:_sa)),c
 	line	740
 	
-l2103:; BSR set to: 0
-
+l2051:
 	movlw	high(0)
 	movwf	((c:_mode+1)),c
 	movlw	low(0)
 	movwf	((c:_mode)),c
 	line	741
 	
-l2105:; BSR set to: 0
-
+l2053:
 	movlw	high(0)
 	movwf	((c:_a+1)),c
 	movlw	low(0)
 	movwf	((c:_a)),c
 	line	742
 	
-l2107:; BSR set to: 0
-
+l2055:
 	movlb	0	; () banked
 	setf	((_gstatus))&0ffh
 	line	743
 	
-l2109:; BSR set to: 0
+l2057:; BSR set to: 0
 
 	movlw	low(0)
 	movlb	0	; () banked
@@ -1558,7 +1506,7 @@ l2109:; BSR set to: 0
 	movwf	((_WAITIME+3))&0ffh
 	line	744
 	
-l2111:; BSR set to: 0
+l2059:; BSR set to: 0
 
 	movlw	high(0)
 	movwf	((c:_CURRENT+1)),c
@@ -1566,19 +1514,20 @@ l2111:; BSR set to: 0
 	movwf	((c:_CURRENT)),c
 	line	745
 	
-l2113:; BSR set to: 0
+l2061:; BSR set to: 0
 
 	movlw	low(0)
 	movwf	((c:_actual)),c
 	line	746
 	
-l2115:; BSR set to: 0
+l2063:; BSR set to: 0
 
 	movlw	low(02h)
-	movwf	((c:_status)),c
+	movlb	0	; () banked
+	movwf	((_status))&0ffh
 	line	747
 	
-l2117:; BSR set to: 0
+l2065:; BSR set to: 0
 
 	movlw	low(0)
 	movwf	((c:_TIME)),c
@@ -1590,358 +1539,101 @@ l2117:; BSR set to: 0
 	movwf	((c:_TIME+3)),c
 	line	748
 	
-l2119:; BSR set to: 0
+l2067:; BSR set to: 0
 
 	call	_Wixel	;wreg free
 	line	753
 	
-l2121:
+l2069:
 	movlw	low(02h)
-	movwf	((c:_status)),c
+	movlb	0	; () banked
+	movwf	((_status))&0ffh
 	line	754
-	goto	l2125
+	goto	l2073
 	
-l482:
+l484:; BSR set to: 0
+
 	line	759
 	
-l2123:
+l2071:
 	movlw	high(01h)
 	movwf	((c:_fns+1)),c
 	movlw	low(01h)
 	movwf	((c:_fns)),c
-	goto	l2125
+	goto	l2073
 	
-l481:
+l483:
 	line	754
 	
-l2125:
+l2073:
 	btfsc	((c:_TIME+3)),c,7
-	goto	u1421
+	goto	u1121
 	movf	((c:_TIME+3)),c,w
 	iorwf	((c:_TIME+2)),c,w
-	bnz	u1420
+	bnz	u1120
 	movlw	136
 	subwf	 ((c:_TIME)),c,w
 	movlw	19
 	subwfb	((c:_TIME+1)),c,w
 	btfss	status,0
-	goto	u1421
-	goto	u1420
+	goto	u1121
+	goto	u1120
 
-u1421:
-	goto	l2123
-u1420:
-	goto	l2127
-	
-l483:
-	goto	l2127
-	line	760
-	
-l484:
-	line	761
-	
-l2127:
-	call	_MotorUpdate	;wreg free
-	line	777
-	
-l2129:
-	btfsc	((c:3971)),c,0	;volatile
-	goto	u1431
-	goto	u1430
-u1431:
-	goto	l2141
-u1430:
-	
-l2131:
-	movf	((c:_ma)),c,w
-iorwf	((c:_ma+1)),c,w
-	btfss	status,2
-	goto	u1441
-	goto	u1440
-
-u1441:
-	goto	l2141
-u1440:
-	line	778
-	
-l2133:
-	movlw	high(01h)
-	movwf	((c:_ma+1)),c
-	movlw	low(01h)
-	movwf	((c:_ma)),c
-	line	779
-	
-l2135:
-		movlw	10
-	xorwf	((c:_d1)),c,w
-iorwf	((c:_d1+1)),c,w
-	btfsc	status,2
-	goto	u1451
-	goto	u1450
-
-u1451:
-	goto	l2139
-u1450:
-	
-l2137:
-	movlw	low(01h)
-	addwf	((c:_d1)),c,w
-	movwf	((c:_d1)),c
-	movlw	high(01h)
-	addwfc	((c:_d1+1)),c,w
-	movwf	1+((c:_d1)),c
-	goto	l2141
-	
-l487:
-	
-l2139:
-	movlw	high(-10)
-	movwf	((c:_d1+1)),c
-	movlw	low(-10)
-	movwf	((c:_d1)),c
-	goto	l2141
-	
-l489:
-	goto	l2141
-	line	780
+u1121:
+	goto	l2071
+u1120:
+	goto	l2075
 	
 l485:
-	line	781
-	
-l2141:
-	btfsc	((c:3971)),c,2	;volatile
-	goto	u1461
-	goto	u1460
-u1461:
-	goto	l2153
-u1460:
-	
-l2143:
-	movf	((c:_mb)),c,w
-iorwf	((c:_mb+1)),c,w
-	btfss	status,2
-	goto	u1471
-	goto	u1470
-
-u1471:
-	goto	l2153
-u1470:
-	line	782
-	
-l2145:
-	movlw	high(01h)
-	movwf	((c:_mb+1)),c
-	movlw	low(01h)
-	movwf	((c:_mb)),c
-	line	783
-	
-l2147:
-		movlw	10
-	xorwf	((c:_d2)),c,w
-iorwf	((c:_d2+1)),c,w
-	btfsc	status,2
-	goto	u1481
-	goto	u1480
-
-u1481:
-	goto	l2151
-u1480:
-	
-l2149:
-	movlw	low(01h)
-	addwf	((c:_d2)),c,w
-	movwf	((c:_d2)),c
-	movlw	high(01h)
-	addwfc	((c:_d2+1)),c,w
-	movwf	1+((c:_d2)),c
-	goto	l2153
-	
-l492:
-	
-l2151:
-	movlw	high(-10)
-	movwf	((c:_d2+1)),c
-	movlw	low(-10)
-	movwf	((c:_d2)),c
-	goto	l2153
-	
-l494:
-	goto	l2153
-	line	784
-	
-l490:
-	line	785
-	
-l2153:
-	btfss	((c:3971)),c,0	;volatile
-	goto	u1491
-	goto	u1490
-u1491:
-	goto	l2157
-u1490:
-	
-l2155:
-	movlw	high(0)
-	movwf	((c:_ma+1)),c
-	movlw	low(0)
-	movwf	((c:_ma)),c
-	goto	l2157
-	
-l495:
-	line	786
-	
-l2157:
-	btfss	((c:3971)),c,2	;volatile
-	goto	u1501
-	goto	u1500
-u1501:
-	goto	l2161
-u1500:
-	
-l2159:
-	movlw	high(0)
-	movwf	((c:_mb+1)),c
-	movlw	low(0)
-	movwf	((c:_mb)),c
-	goto	l2161
-	
-l496:
-	line	787
-	
-l2161:
-	movff	(c:_d1),(MotorsSpeed@a)
-	movff	(c:_d1+1),(MotorsSpeed@a+1)
-	movff	(c:_d2),(MotorsSpeed@b)
-	movff	(c:_d2+1),(MotorsSpeed@b+1)
-	call	_MotorsSpeed	;wreg free
-	line	788
-	
-l2163:
-	movf	((c:_d1)),c,w
-iorwf	((c:_d1+1)),c,w
-	btfss	status,2
-	goto	u1511
-	goto	u1510
-
-u1511:
-	movlb	1	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1528
-u1510:
-	movlb	1	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1528:
-	movlb	1	; () banked
-	swapf	(??_main+0+0)&0ffh
-	movf	((c:3971)),c,w	;volatile
-	movlb	1	; () banked
-	xorwf	(??_main+0+0)&0ffh,w
-	andlw	not (((1<<1)-1)<<4)
-	xorwf	(??_main+0+0)&0ffh,w
-	movwf	((c:3971)),c	;volatile
-	line	790
-	
-l2165:; BSR set to: 1
-
-	movf	((c:_d2)),c,w
-iorwf	((c:_d2+1)),c,w
-	btfss	status,2
-	goto	u1531
-	goto	u1530
-
-u1531:
-	movlb	1	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1548
-u1530:
-	movlb	1	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1548:
-	movlb	1	; () banked
-	swapf	(??_main+0+0)&0ffh
-	rlncf	(??_main+0+0)&0ffh
-	rlncf	(??_main+0+0)&0ffh
-	movf	((c:3971)),c,w	;volatile
-	movlb	1	; () banked
-	xorwf	(??_main+0+0)&0ffh,w
-	andlw	not (((1<<1)-1)<<6)
-	xorwf	(??_main+0+0)&0ffh,w
-	movwf	((c:3971)),c	;volatile
-	line	801
-	
-l2167:; BSR set to: 1
-
-	movff	(c:_TIME),(___almod@dividend)
-	movff	(c:_TIME+1),(___almod@dividend+1)
-	movff	(c:_TIME+2),(___almod@dividend+2)
-	movff	(c:_TIME+3),(___almod@dividend+3)
-	movlw	low(02EE0h)
-	movlb	0	; () banked
-	movwf	((___almod@divisor))&0ffh
-	movlw	high(02EE0h)
-	movwf	((___almod@divisor+1))&0ffh
-	movlw	low highword(02EE0h)
-	movwf	((___almod@divisor+2))&0ffh
-	movlw	high highword(02EE0h)
-	movwf	((___almod@divisor+3))&0ffh
-	call	___almod	;wreg free
-	movlb	0	; () banked
-	movlb	0	; () banked
-	btfsc	(3+?___almod)&0ffh,7
-	goto	u1550
-	movlb	0	; () banked
-	movlb	0	; () banked
-	movf	(3+?___almod)&0ffh,w
-	movlb	0	; () banked
-	movlb	0	; () banked
-	iorwf	(2+?___almod)&0ffh,w
-	bnz	u1551
-	movlw	113
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwf	 (0+?___almod)&0ffh,w
-	movlw	23
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwfb	(1+?___almod)&0ffh,w
-	btfsc	status,0
-	goto	u1551
-	goto	u1550
-
-u1551:
-	movlb	1	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1568
-u1550:
-	movlb	1	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1568:
-	movlb	1	; () banked
-	swapf	(??_main+0+0)&0ffh
-	rlncf	(??_main+0+0)&0ffh
-	movf	((c:3971)),c,w	;volatile
-	movlb	1	; () banked
-	xorwf	(??_main+0+0)&0ffh,w
-	andlw	not (((1<<1)-1)<<5)
-	xorwf	(??_main+0+0)&0ffh,w
-	movwf	((c:3971)),c	;volatile
-	goto	l2127
-	line	811
-	
-l497:; BSR set to: 1
-
+	goto	l2075
 	line	760
-	goto	l2127
 	
-l498:; BSR set to: 1
-
-	line	812
+l486:
+	line	761
 	
-l499:; BSR set to: 1
-
+l2075:
+	call	_MotorUpdate	;wreg free
+	line	762
+	
+l2077:
+	btfss	((c:3972)),c,1	;volatile
+	bra	u1135
+	bsf	((c:3971)),c,4	;volatile
+	bra	u1137
+	u1135:	
+	bcf	((c:3971)),c,4	;volatile
+	u1137:
+	line	763
+	
+l2079:
+	btfss	((c:3972)),c,0	;volatile
+	bra	u1145
+	bsf	((c:3971)),c,5	;volatile
+	bra	u1147
+	u1145:	
+	bcf	((c:3971)),c,5	;volatile
+	u1147:
+	line	764
+	
+l2081:
+	btfss	((c:3968)),c,5	;volatile
+	bra	u1155
+	bsf	((c:3971)),c,6	;volatile
+	bra	u1157
+	u1155:	
+	bcf	((c:3971)),c,6	;volatile
+	u1157:
+	goto	l2075
+	line	814
+	
+l487:
+	line	760
+	goto	l2075
+	
+l488:
+	line	815
+	
+l489:
 	global	start
 	goto	start
 	opt stack 0
@@ -1993,13 +1685,12 @@ psect	text1
 	global	__size_of_initYBOT
 	__size_of_initYBOT	equ	__end_of_initYBOT-_initYBOT
 	
-_initYBOT:; BSR set to: 1
-
+_initYBOT:
 ;incstack = 0
 	opt	stack 27
 	line	339
 	
-l1711:
+l1989:
 	movlw	low(0)
 	movwf	((c:_TIME)),c
 	movlw	high(0)
@@ -2020,12 +1711,12 @@ l1711:
 	movwf	((_MS+3))&0ffh
 	line	341
 	
-l1713:; BSR set to: 0
+l1991:; BSR set to: 0
 
 	call	_ResetCounter	;wreg free
 	line	342
 	
-l1715:
+l1993:
 	movlw	low(0)
 	movlb	0	; () banked
 	movwf	((_gstatus))&0ffh
@@ -2037,11 +1728,11 @@ l1715:
 	call	_InitTIMERS	;wreg free
 	line	347
 	
-l1717:
+l1995:
 	call	_InitSP	;wreg free
 	line	351
 	
-l295:
+l297:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_initYBOT
@@ -2093,27 +1784,27 @@ _configurations_init:
 	opt	stack 28
 	line	273
 	
-l1605:
+l1883:
 		bsf	((c:4051)),c, 4+0	;volatile
 	bsf	((c:4051)),c, 4+1	;volatile
 	bsf	((c:4051)),c, 4+2	;volatile
 
 	line	276
 	
-l1607:
+l1885:
 	movlw	low(07h)
 	movwf	((c:4020)),c	;volatile
 	line	279
 	
-l1609:
+l1887:
 	bcf	((c:3949)),c,3	;volatile
 	line	280
 	
-l1611:
+l1889:
 	bsf	((c:3951)),c,3	;volatile
 	line	281
 	
-l227:
+l229:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_configurations_init
@@ -2165,7 +1856,7 @@ _ResetCounter:
 	opt	stack 28
 	line	474
 	
-l1613:
+l1891:
 	movlw	low(0)
 	movwf	((c:_TIME)),c
 	movlw	high(0)
@@ -2176,7 +1867,7 @@ l1613:
 	movwf	((c:_TIME+3)),c
 	line	475
 	
-l316:
+l318:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_ResetCounter
@@ -2228,7 +1919,7 @@ _InitTIMERS:
 	opt	stack 28
 	line	379
 	
-l1625:
+l1903:
 	bcf	((c:4053)),c,7	;volatile
 	line	380
 	bcf	((c:4053)),c,6	;volatile
@@ -2238,7 +1929,7 @@ l1625:
 	bsf	((c:4053)),c,3	;volatile
 	line	384
 	
-l1627:
+l1905:
 	movlw	low(0F8h)
 	movwf	((c:4055)),c	;volatile
 	line	385
@@ -2246,50 +1937,50 @@ l1627:
 	movwf	((c:4054)),c	;volatile
 	line	388
 	
-l1629:
+l1907:
 	bsf	((c:4081)),c,2	;volatile
 	line	389
 	
-l1631:
+l1909:
 	bcf	((c:4048)),c,7	;volatile
 	line	390
 	
-l1633:
+l1911:
 	bsf	((c:4082)),c,5	;volatile
 	line	394
 	
-l1635:
+l1913:
 	bsf	((c:4082)),c,7	;volatile
 	line	396
 	
-l1637:
+l1915:
 	bsf	((c:4053)),c,7	;volatile
 	line	398
 	
-l1639:
+l1917:
 	bcf	((c:4045)),c,0	;volatile
 	line	399
 	
-l1641:
+l1919:
 	bcf	((c:4045)),c,7	;volatile
 	line	400
 	
-l1643:
+l1921:
 	bcf	((c:4045)),c,6	;volatile
 	line	401
 	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
 	andwf	((c:4045)),c	;volatile
 	line	402
 	
-l1645:
+l1923:
 	bcf	((c:4045)),c,3	;volatile
 	line	403
 	
-l1647:
+l1925:
 	bcf	((c:4045)),c,1	;volatile
 	line	404
 	
-l1649:
+l1927:
 	bsf	((c:4045)),c,0	;volatile
 	line	406
 	movlw	low(0F8h)
@@ -2299,79 +1990,79 @@ l1649:
 	movwf	((c:4046)),c	;volatile
 	line	415
 	
-l1651:
+l1929:
 	bcf	((c:3989)),c,4	;volatile
 	line	416
 	
-l1653:
+l1931:
 	bcf	((c:3989)),c,5	;volatile
 	line	417
 	
-l1655:
+l1933:
 	bcf	((c:3989)),c,6	;volatile
 	line	419
 	
-l1657:
+l1935:
 	bsf	((c:3989)),c,0	;volatile
 	line	420
 	
-l1659:
+l1937:
 	bsf	((c:3989)),c,1	;volatile
 	line	421
 	
-l1661:
+l1939:
 	bsf	((c:3989)),c,2	;volatile
 	line	424
 	
-l1663:
+l1941:
 	bcf	((c:3989)),c,3	;volatile
 	line	425
 	
-l1665:
+l1943:
 	bcf	((c:3988)),c,2	;volatile
 	line	427
 	
-l1667:
+l1945:
 	bcf	((c:3987)),c,0	;volatile
 	line	428
 	
-l1669:
+l1947:
 	bcf	((c:3987)),c,2	;volatile
 	line	430
 	
-l1671:
+l1949:
 	bsf	((c:3988)),c,0	;volatile
 	line	431
 	
-l1673:
+l1951:
 	bsf	((c:3988)),c,1	;volatile
 	line	434
 	
-l1675:
+l1953:
 	bsf	((c:3990)),c,2	;volatile
 	line	435
 	
-l1677:
+l1955:
 	bsf	((c:3990)),c,1	;volatile
 	line	436
 	
-l1679:
+l1957:
 	bsf	((c:3990)),c,0	;volatile
 	line	437
 	
-l1681:
+l1959:
 	bsf	((c:3986)),c,5	;volatile
 	line	438
 	
-l1683:
+l1961:
 	bsf	((c:3986)),c,4	;volatile
 	line	469
 	
-l1685:
+l1963:
 	bsf	((c:3972)),c,7	;volatile
 	line	470
 	
-l313:
+l315:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_InitTIMERS
@@ -2423,18 +2114,18 @@ _InitSP:
 	opt	stack 27
 	line	526
 	
-l1687:
+l1965:
 	movlw	low(0)
 	movwf	((c:_PisoActual)),c
 	line	527
 	
-l1689:
+l1967:
 	movf	((c:_PisoActual)),c,w
 	
 	call	_ReadAnalog
 	line	528
 	
-l332:
+l334:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_InitSP
@@ -2448,7 +2139,7 @@ GLOBAL	__end_of_InitSP
 ;; Parameters:    Size  Location     Type
 ;;  channel         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
-;;  channel         1   15[COMRAM] unsigned char 
+;;  channel         1    1[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -2459,9 +2150,9 @@ GLOBAL	__end_of_InitSP
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
 ;;      Params:         0       0       0       0       0       0       0       0       0
-;;      Locals:         1       0       0       0       0       0       0       0       0
-;;      Temps:          1       0       0       0       0       0       0       0       0
-;;      Totals:         2       0       0       0       0       0       0       0       0
+;;      Locals:         0       1       0       0       0       0       0       0       0
+;;      Temps:          0       1       0       0       0       0       0       0       0
+;;      Totals:         0       2       0       0       0       0       0       0       0
 ;;Total ram usage:        2 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    1
@@ -2485,82 +2176,92 @@ psect	text6
 _ReadAnalog:
 ;incstack = 0
 	opt	stack 27
-	movwf	((c:ReadAnalog@channel)),c
+	movlb	0	; () banked
+	movwf	((ReadAnalog@channel))&0ffh
 	line	530
 	
-l1593:
+l1871:; BSR set to: 0
+
+	movlb	0	; () banked
 	
-	btfsc	((c:ReadAnalog@channel)),c,(0)&7
-	goto	u671
-	goto	u670
-u671:
+	movlb	0	; () banked
+	btfsc	((ReadAnalog@channel))&0ffh,(0)&7
+	goto	u951
+	goto	u950
+u951:
 	bsf	c:(32274/8),(32274)&7	;volatile
-	goto	u685
-u670:
+	goto	u965
+u950:
 	bcf	c:(32274/8),(32274)&7	;volatile
-u685:
+u965:
 	line	531
 	
-l1595:
-	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
+l1873:
+	movff	(ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	03h
-	andwf	(??_ReadAnalog+0+0),c
+	movlb	0	; () banked
+	andwf	(??_ReadAnalog+0+0)&0ffh
 		movlw	02h-0
-	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u691
-	goto	u690
+	movlb	0	; () banked
+	cpfslt	(??_ReadAnalog+0+0)&0ffh
+	goto	u971
+	goto	u970
 
-u691:
+u971:
 	bsf	c:(32275/8),(32275)&7	;volatile
-	goto	u705
-u690:
+	goto	u985
+u970:
 	bcf	c:(32275/8),(32275)&7	;volatile
-u705:
+u985:
 	line	532
 	
-l1597:
-	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
+l1875:
+	movff	(ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	07h
-	andwf	(??_ReadAnalog+0+0),c
+	movlb	0	; () banked
+	andwf	(??_ReadAnalog+0+0)&0ffh
 		movlw	04h-0
-	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u711
-	goto	u710
+	movlb	0	; () banked
+	cpfslt	(??_ReadAnalog+0+0)&0ffh
+	goto	u991
+	goto	u990
 
-u711:
+u991:
 	bsf	c:(32276/8),(32276)&7	;volatile
-	goto	u725
-u710:
+	goto	u1005
+u990:
 	bcf	c:(32276/8),(32276)&7	;volatile
-u725:
+u1005:
 	line	533
 	
-l1599:
-	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
+l1877:
+	movff	(ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	0Fh
-	andwf	(??_ReadAnalog+0+0),c
+	movlb	0	; () banked
+	andwf	(??_ReadAnalog+0+0)&0ffh
 		movlw	08h-0
-	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u731
-	goto	u730
+	movlb	0	; () banked
+	cpfslt	(??_ReadAnalog+0+0)&0ffh
+	goto	u1011
+	goto	u1010
 
-u731:
+u1011:
 	bsf	c:(32277/8),(32277)&7	;volatile
-	goto	u745
-u730:
+	goto	u1025
+u1010:
 	bcf	c:(32277/8),(32277)&7	;volatile
-u745:
+u1025:
 	line	535
 	
-l1601:
+l1879:
 	bsf	c:(32272/8),(32272)&7	;volatile
 	line	536
 	
-l1603:
+l1881:
 	bsf	c:(32273/8),(32273)&7	;volatile
 	line	537
 	
-l335:
+l337:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_ReadAnalog
@@ -2612,7 +2313,7 @@ _InitAnalog:
 	opt	stack 28
 	line	508
 	
-l1615:
+l1893:
 	bcf	((c:4033)),c,5	;volatile
 	line	509
 	bcf	((c:4033)),c,4	;volatile
@@ -2633,14 +2334,14 @@ l1615:
 
 	line	520
 	
-l1617:
+l1895:
 	movf	((c:4032)),c,w	;volatile
 	andlw	not (((1<<3)-1)<<0)
 	iorlw	(06h & ((1<<3)-1))<<0
 	movwf	((c:4032)),c	;volatile
 	line	521
 	
-l1619:
+l1897:
 		bcf	((c:4034)),c, 2+0	;volatile
 	bcf	((c:4034)),c, 2+1	;volatile
 	bcf	((c:4034)),c, 2+2	;volatile
@@ -2648,331 +2349,20 @@ l1619:
 
 	line	522
 	
-l1621:
+l1899:
 	bcf	((c:4034)),c,1	;volatile
 	line	523
 	
-l1623:
+l1901:
 	bsf	((c:4034)),c,0	;volatile
 	line	524
 	
-l329:
+l331:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_InitAnalog
 	__end_of_InitAnalog:
 	signat	_InitAnalog,88
-	global	___almod
-
-;; *************** function ___almod *****************
-;; Defined at:
-;;		line 8 in file "/opt/microchip/xc8/v1.34/sources/common/almod.c"
-;; Parameters:    Size  Location     Type
-;;  dividend        4    0[BANK0 ] long 
-;;  divisor         4    4[BANK0 ] long 
-;; Auto vars:     Size  Location     Type
-;;  sign            1   15[COMRAM] unsigned char 
-;;  counter         1   14[COMRAM] unsigned char 
-;; Return value:  Size  Location     Type
-;;                  4    0[BANK0 ] long 
-;; Registers used:
-;;		wreg, status,2, status,0
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       8       0       0       0       0       0       0       0
-;;      Locals:         2       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0
-;;      Totals:         2       8       0       0       0       0       0       0       0
-;;Total ram usage:       10 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text8,class=CODE,space=0,reloc=2
-	file	"/opt/microchip/xc8/v1.34/sources/common/almod.c"
-	line	8
-global __ptext8
-__ptext8:
-psect	text8
-	file	"/opt/microchip/xc8/v1.34/sources/common/almod.c"
-	line	8
-	global	__size_of___almod
-	__size_of___almod	equ	__end_of___almod-___almod
-	
-___almod:
-;incstack = 0
-	opt	stack 29
-	line	13
-	
-l2051:
-	movlw	low(0)
-	movwf	((c:___almod@sign)),c
-	line	14
-	
-l2053:
-	movlb	0	; () banked
-	btfsc	((___almod@dividend+3))&0ffh,7
-	goto	u1360
-	goto	u1361
-
-u1361:
-	goto	l2059
-u1360:
-	line	15
-	
-l2055:; BSR set to: 0
-
-	movlb	0	; () banked
-	comf	((___almod@dividend+3))&0ffh
-	comf	((___almod@dividend+2))&0ffh
-	comf	((___almod@dividend+1))&0ffh
-	negf	((___almod@dividend))&0ffh
-	movlw	0
-	addwfc	((___almod@dividend+1))&0ffh
-	addwfc	((___almod@dividend+2))&0ffh
-	addwfc	((___almod@dividend+3))&0ffh
-	line	16
-	
-l2057:; BSR set to: 0
-
-	movlw	low(01h)
-	movwf	((c:___almod@sign)),c
-	goto	l2059
-	line	17
-	
-l574:; BSR set to: 0
-
-	line	18
-	
-l2059:; BSR set to: 0
-
-	movlb	0	; () banked
-	btfsc	((___almod@divisor+3))&0ffh,7
-	goto	u1370
-	goto	u1371
-
-u1371:
-	goto	l2063
-u1370:
-	line	19
-	
-l2061:; BSR set to: 0
-
-	movlb	0	; () banked
-	comf	((___almod@divisor+3))&0ffh
-	comf	((___almod@divisor+2))&0ffh
-	comf	((___almod@divisor+1))&0ffh
-	negf	((___almod@divisor))&0ffh
-	movlw	0
-	addwfc	((___almod@divisor+1))&0ffh
-	addwfc	((___almod@divisor+2))&0ffh
-	addwfc	((___almod@divisor+3))&0ffh
-	goto	l2063
-	
-l575:; BSR set to: 0
-
-	line	20
-	
-l2063:; BSR set to: 0
-
-	movlb	0	; () banked
-	movf	((___almod@divisor))&0ffh,w
-	movlb	0	; () banked
-iorwf	((___almod@divisor+1))&0ffh,w
-	movlb	0	; () banked
-iorwf	((___almod@divisor+2))&0ffh,w
-	movlb	0	; () banked
-iorwf	((___almod@divisor+3))&0ffh,w
-	btfsc	status,2
-	goto	u1381
-	goto	u1380
-
-u1381:
-	goto	l2079
-u1380:
-	line	21
-	
-l2065:; BSR set to: 0
-
-	movlw	low(01h)
-	movwf	((c:___almod@counter)),c
-	line	22
-	goto	l2069
-	
-l578:; BSR set to: 0
-
-	line	23
-	
-l2067:; BSR set to: 0
-
-	movlb	0	; () banked
-	bcf	status,0
-	rlcf	((___almod@divisor))&0ffh
-	rlcf	((___almod@divisor+1))&0ffh
-	rlcf	((___almod@divisor+2))&0ffh
-	rlcf	((___almod@divisor+3))&0ffh
-	line	24
-	incf	((c:___almod@counter)),c
-	goto	l2069
-	line	25
-	
-l577:; BSR set to: 0
-
-	line	22
-	
-l2069:; BSR set to: 0
-
-	movlb	0	; () banked
-	
-	movlb	0	; () banked
-	btfss	((___almod@divisor+3))&0ffh,(31)&7
-	goto	u1391
-	goto	u1390
-u1391:
-	goto	l2067
-u1390:
-	goto	l2071
-	
-l579:; BSR set to: 0
-
-	goto	l2071
-	line	26
-	
-l580:; BSR set to: 0
-
-	line	27
-	
-l2071:; BSR set to: 0
-
-	movlb	0	; () banked
-		movf	((___almod@divisor))&0ffh,w
-	movlb	0	; () banked
-	subwf	((___almod@dividend))&0ffh,w
-	movlb	0	; () banked
-	movf	((___almod@divisor+1))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+1))&0ffh,w
-	movlb	0	; () banked
-	movf	((___almod@divisor+2))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+2))&0ffh,w
-	movlb	0	; () banked
-	movf	((___almod@divisor+3))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+3))&0ffh,w
-	btfss	status,0
-	goto	u1401
-	goto	u1400
-
-u1401:
-	goto	l2075
-u1400:
-	line	28
-	
-l2073:; BSR set to: 0
-
-	movlb	0	; () banked
-	movf	((___almod@divisor))&0ffh,w
-	movlb	0	; () banked
-	subwf	((___almod@dividend))&0ffh
-	movlb	0	; () banked
-	movf	((___almod@divisor+1))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+1))&0ffh
-	movlb	0	; () banked
-	movf	((___almod@divisor+2))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+2))&0ffh
-	movlb	0	; () banked
-	movf	((___almod@divisor+3))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+3))&0ffh
-	goto	l2075
-	
-l581:; BSR set to: 0
-
-	line	29
-	
-l2075:; BSR set to: 0
-
-	movlb	0	; () banked
-	bcf	status,0
-	rrcf	((___almod@divisor+3))&0ffh
-	rrcf	((___almod@divisor+2))&0ffh
-	rrcf	((___almod@divisor+1))&0ffh
-	rrcf	((___almod@divisor))&0ffh
-	line	30
-	
-l2077:; BSR set to: 0
-
-	decfsz	((c:___almod@counter)),c
-	
-	goto	l2071
-	goto	l2079
-	
-l582:; BSR set to: 0
-
-	goto	l2079
-	line	31
-	
-l576:; BSR set to: 0
-
-	line	32
-	
-l2079:; BSR set to: 0
-
-	movf	((c:___almod@sign)),c,w
-	btfsc	status,2
-	goto	u1411
-	goto	u1410
-u1411:
-	goto	l2083
-u1410:
-	line	33
-	
-l2081:; BSR set to: 0
-
-	movlb	0	; () banked
-	comf	((___almod@dividend+3))&0ffh
-	comf	((___almod@dividend+2))&0ffh
-	comf	((___almod@dividend+1))&0ffh
-	negf	((___almod@dividend))&0ffh
-	movlw	0
-	addwfc	((___almod@dividend+1))&0ffh
-	addwfc	((___almod@dividend+2))&0ffh
-	addwfc	((___almod@dividend+3))&0ffh
-	goto	l2083
-	
-l583:; BSR set to: 0
-
-	line	34
-	
-l2083:; BSR set to: 0
-
-	movff	(___almod@dividend),(?___almod)
-	movff	(___almod@dividend+1),(?___almod+1)
-	movff	(___almod@dividend+2),(?___almod+2)
-	movff	(___almod@dividend+3),(?___almod+3)
-	goto	l584
-	
-l2085:; BSR set to: 0
-
-	line	35
-	
-l584:; BSR set to: 0
-
-	return	;funcret
-	opt stack 0
-GLOBAL	__end_of___almod
-	__end_of___almod:
-	signat	___almod,8316
 	global	_Wixel
 
 ;; *************** function _Wixel *****************
@@ -3004,24 +2394,22 @@ GLOBAL	__end_of___almod
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text9,class=CODE,space=0,reloc=2
-	file	"/home/newtonis/Robots/TooSimple/Main/main.c"
+psect	text8,class=CODE,space=0,reloc=2
 	line	194
-global __ptext9
-__ptext9:
-psect	text9
+global __ptext8
+__ptext8:
+psect	text8
 	file	"/home/newtonis/Robots/TooSimple/Main/main.c"
 	line	194
 	global	__size_of_Wixel
 	__size_of_Wixel	equ	__end_of_Wixel-_Wixel
 	
-_Wixel:; BSR set to: 0
-
+_Wixel:
 ;incstack = 0
 	opt	stack 29
 	line	195
 	
-l1691:
+l1969:
 	bcf	((c:4024)),c,5	;volatile
 	line	196
 	bcf	((c:4024)),c,4	;volatile
@@ -3033,7 +2421,7 @@ l1691:
 	bcf	((c:4024)),c,0	;volatile
 	line	201
 	
-l1693:
+l1971:
 	movlw	low(033h)
 	movwf	((c:4015)),c	;volatile
 	line	202
@@ -3041,105 +2429,44 @@ l1693:
 	movwf	((c:4016)),c	;volatile
 	line	203
 	
-l1695:
+l1973:
 	bcf	((c:4012)),c,7	;volatile
 	line	204
 	
-l1697:
+l1975:
 	bcf	((c:4012)),c,6	;volatile
 	line	205
 	
-l1699:
+l1977:
 	bsf	((c:4012)),c,5	;volatile
 	line	206
 	
-l1701:
+l1979:
 	bcf	((c:4012)),c,4	;volatile
 	line	208
 	
-l1703:
+l1981:
 	bcf	((c:4012)),c,2	;volatile
 	line	209
 	
-l1705:
+l1983:
 	bcf	((c:4011)),c,6	;volatile
 	line	210
 	
-l1707:
+l1985:
 	bsf	((c:4011)),c,4	;volatile
 	line	211
 	
-l1709:
+l1987:
 	bsf	((c:4011)),c,7	;volatile
 	line	213
 	
-l179:
+l181:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_Wixel
 	__end_of_Wixel:
 	signat	_Wixel,88
-	global	_MotorsSpeed
-
-;; *************** function _MotorsSpeed *****************
-;; Defined at:
-;;		line 686 in file "/home/newtonis/Robots/TooSimple/Main/main.c"
-;; Parameters:    Size  Location     Type
-;;  a               2    0[BANK0 ] int 
-;;  b               2    2[BANK0 ] int 
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		None
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       4       0       0       0       0       0       0       0
-;;      Locals:         0       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0
-;;      Totals:         0       4       0       0       0       0       0       0       0
-;;Total ram usage:        4 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text10,class=CODE,space=0,reloc=2
-	line	686
-global __ptext10
-__ptext10:
-psect	text10
-	file	"/home/newtonis/Robots/TooSimple/Main/main.c"
-	line	686
-	global	__size_of_MotorsSpeed
-	__size_of_MotorsSpeed	equ	__end_of_MotorsSpeed-_MotorsSpeed
-	
-_MotorsSpeed:
-;incstack = 0
-	opt	stack 29
-	line	687
-	
-l2023:
-	movff	(MotorsSpeed@a),(c:_speedA)
-	movff	(MotorsSpeed@a+1),(c:_speedA+1)
-	line	688
-	movff	(MotorsSpeed@b),(c:_speedB)
-	movff	(MotorsSpeed@b+1),(c:_speedB+1)
-	line	689
-	
-l437:
-	return	;funcret
-	opt stack 0
-GLOBAL	__end_of_MotorsSpeed
-	__end_of_MotorsSpeed:
-	signat	_MotorsSpeed,8312
 	global	_MotorUpdate
 
 ;; *************** function _MotorUpdate *****************
@@ -3160,8 +2487,8 @@ GLOBAL	__end_of_MotorsSpeed
 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
 ;;      Params:         0       0       0       0       0       0       0       0       0
 ;;      Locals:         0       4       0       0       0       0       0       0       0
-;;      Temps:          2       0       0       0       0       0       0       0       0
-;;      Totals:         2       4       0       0       0       0       0       0       0
+;;      Temps:          0       2       0       0       0       0       0       0       0
+;;      Totals:         0       6       0       0       0       0       0       0       0
 ;;Total ram usage:        6 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    1
@@ -3171,11 +2498,11 @@ GLOBAL	__end_of_MotorsSpeed
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text11,class=CODE,space=0,reloc=2
+psect	text9,class=CODE,space=0,reloc=2
 	line	690
-global __ptext11
-__ptext11:
-psect	text11
+global __ptext9
+__ptext9:
+psect	text9
 	file	"/home/newtonis/Robots/TooSimple/Main/main.c"
 	line	690
 	global	__size_of_MotorUpdate
@@ -3186,231 +2513,237 @@ _MotorUpdate:
 	opt	stack 29
 	line	691
 	
-l2025:
+l1997:
 	btfsc	((c:_speedA+1)),c,7
-	goto	u1290
+	goto	u1030
 	movf	((c:_speedA+1)),c,w
-	bnz	u1291
+	bnz	u1031
 	decf	((c:_speedA)),c,w
 	btfsc	status,0
-	goto	u1291
-	goto	u1290
+	goto	u1031
+	goto	u1030
 
-u1291:
-	goto	l442
-u1290:
+u1031:
+	goto	l444
+u1030:
 	
-l2027:
+l1999:
 	movff	(c:_speedA),??_MotorUpdate+0+0
 	movff	(c:_speedA+1),??_MotorUpdate+0+0+1
-	comf	(??_MotorUpdate+0+0),c
-	comf	(??_MotorUpdate+0+1),c
-	infsnz	(??_MotorUpdate+0+0),c
-	incf	(??_MotorUpdate+0+1),c
-	movff	??_MotorUpdate+0+0,(_MotorUpdate$1795)
-	movff	??_MotorUpdate+0+1,(_MotorUpdate$1795+1)
-	goto	l2029
-	
-l442:
-	movff	(c:_speedA),(_MotorUpdate$1795)
-	movff	(c:_speedA+1),(_MotorUpdate$1795+1)
-	goto	l2029
+	movlb	0	; () banked
+	comf	(??_MotorUpdate+0+0)&0ffh
+	comf	(??_MotorUpdate+0+1)&0ffh
+	infsnz	(??_MotorUpdate+0+0)&0ffh
+	incf	(??_MotorUpdate+0+1)&0ffh
+	movff	??_MotorUpdate+0+0,(_MotorUpdate$1870)
+	movff	??_MotorUpdate+0+1,(_MotorUpdate$1870+1)
+	goto	l2001
 	
 l444:
+	movff	(c:_speedA),(_MotorUpdate$1870)
+	movff	(c:_speedA+1),(_MotorUpdate$1870+1)
+	goto	l2001
 	
-l2029:
+l446:
+	
+l2001:
 	movlb	0	; () banked
-		movf	((_MotorUpdate$1795))&0ffh,w
+		movf	((_MotorUpdate$1870))&0ffh,w
 	subwf	((c:_loop)),c,w
 	movf	((c:_loop+1)),c,w
 	xorlw	80h
-	movwf	(??_MotorUpdate+0+0)&0ffh,c
 	movlb	0	; () banked
-	movf	((_MotorUpdate$1795+1))&0ffh,w
+	movwf	(??_MotorUpdate+0+0)&0ffh
+	movlb	0	; () banked
+	movf	((_MotorUpdate$1870+1))&0ffh,w
 	xorlw	80h
-	subwfb	(??_MotorUpdate+0+0)&0ffh,c,w
+	movlb	0	; () banked
+	subwfb	(??_MotorUpdate+0+0)&0ffh,w
 	btfsc	status,0
-	goto	u1301
-	goto	u1300
+	goto	u1041
+	goto	u1040
 
-u1301:
-	goto	l440
-u1300:
+u1041:
+	goto	l442
+u1040:
 	line	692
 	
-l2031:; BSR set to: 0
+l2003:; BSR set to: 0
 
 	btfsc	((c:_speedA+1)),c,7
-	goto	u1311
+	goto	u1051
 	movf	((c:_speedA+1)),c,w
-	bnz	u1310
+	bnz	u1050
 	decf	((c:_speedA)),c,w
 	btfss	status,0
-	goto	u1311
-	goto	u1310
+	goto	u1051
+	goto	u1050
 
-u1311:
-	goto	l445
-u1310:
+u1051:
+	goto	l447
+u1050:
 	line	693
 	
-l2033:; BSR set to: 0
+l2005:; BSR set to: 0
 
 	bsf	((c:3969)),c,2	;volatile
 	line	694
 	bcf	((c:3971)),c,3	;volatile
 	line	695
-	goto	l2035
+	goto	l2007
 	
-l445:; BSR set to: 0
+l447:; BSR set to: 0
 
 	line	696
 	bcf	((c:3969)),c,2	;volatile
 	line	697
 	bsf	((c:3971)),c,3	;volatile
-	goto	l2035
+	goto	l2007
 	line	698
 	
-l446:; BSR set to: 0
+l448:; BSR set to: 0
 
 	line	699
-	goto	l2035
+	goto	l2007
 	
-l440:; BSR set to: 0
+l442:; BSR set to: 0
 
 	line	700
 	bcf	((c:3969)),c,2	;volatile
 	line	701
 	bcf	((c:3971)),c,3	;volatile
-	goto	l2035
+	goto	l2007
 	line	702
 	
-l447:; BSR set to: 0
+l449:; BSR set to: 0
 
 	line	703
 	
-l2035:; BSR set to: 0
+l2007:; BSR set to: 0
 
 	btfsc	((c:_speedB+1)),c,7
-	goto	u1320
+	goto	u1060
 	movf	((c:_speedB+1)),c,w
-	bnz	u1321
+	bnz	u1061
 	decf	((c:_speedB)),c,w
 	btfsc	status,0
-	goto	u1321
-	goto	u1320
+	goto	u1061
+	goto	u1060
 
-u1321:
-	goto	l450
-u1320:
+u1061:
+	goto	l452
+u1060:
 	
-l2037:; BSR set to: 0
+l2009:; BSR set to: 0
 
 	movff	(c:_speedB),??_MotorUpdate+0+0
 	movff	(c:_speedB+1),??_MotorUpdate+0+0+1
-	comf	(??_MotorUpdate+0+0),c
-	comf	(??_MotorUpdate+0+1),c
-	infsnz	(??_MotorUpdate+0+0),c
-	incf	(??_MotorUpdate+0+1),c
-	movff	??_MotorUpdate+0+0,(_MotorUpdate$1796)
-	movff	??_MotorUpdate+0+1,(_MotorUpdate$1796+1)
-	goto	l2039
-	
-l450:; BSR set to: 0
-
-	movff	(c:_speedB),(_MotorUpdate$1796)
-	movff	(c:_speedB+1),(_MotorUpdate$1796+1)
-	goto	l2039
+	movlb	0	; () banked
+	comf	(??_MotorUpdate+0+0)&0ffh
+	comf	(??_MotorUpdate+0+1)&0ffh
+	infsnz	(??_MotorUpdate+0+0)&0ffh
+	incf	(??_MotorUpdate+0+1)&0ffh
+	movff	??_MotorUpdate+0+0,(_MotorUpdate$1871)
+	movff	??_MotorUpdate+0+1,(_MotorUpdate$1871+1)
+	goto	l2011
 	
 l452:; BSR set to: 0
 
+	movff	(c:_speedB),(_MotorUpdate$1871)
+	movff	(c:_speedB+1),(_MotorUpdate$1871+1)
+	goto	l2011
 	
-l2039:; BSR set to: 0
+l454:; BSR set to: 0
+
+	
+l2011:; BSR set to: 0
 
 	movlb	0	; () banked
-		movf	((_MotorUpdate$1796))&0ffh,w
+		movf	((_MotorUpdate$1871))&0ffh,w
 	subwf	((c:_loop)),c,w
 	movf	((c:_loop+1)),c,w
 	xorlw	80h
-	movwf	(??_MotorUpdate+0+0)&0ffh,c
 	movlb	0	; () banked
-	movf	((_MotorUpdate$1796+1))&0ffh,w
+	movwf	(??_MotorUpdate+0+0)&0ffh
+	movlb	0	; () banked
+	movf	((_MotorUpdate$1871+1))&0ffh,w
 	xorlw	80h
-	subwfb	(??_MotorUpdate+0+0)&0ffh,c,w
+	movlb	0	; () banked
+	subwfb	(??_MotorUpdate+0+0)&0ffh,w
 	btfsc	status,0
-	goto	u1331
-	goto	u1330
+	goto	u1071
+	goto	u1070
 
-u1331:
-	goto	l448
-u1330:
+u1071:
+	goto	l450
+u1070:
 	line	704
 	
-l2041:; BSR set to: 0
+l2013:; BSR set to: 0
 
 	btfsc	((c:_speedB+1)),c,7
-	goto	u1341
+	goto	u1081
 	movf	((c:_speedB+1)),c,w
-	bnz	u1340
+	bnz	u1080
 	decf	((c:_speedB)),c,w
 	btfss	status,0
-	goto	u1341
-	goto	u1340
+	goto	u1081
+	goto	u1080
 
-u1341:
-	goto	l453
-u1340:
+u1081:
+	goto	l455
+u1080:
 	line	705
 	
-l2043:; BSR set to: 0
+l2015:; BSR set to: 0
 
 	bsf	((c:3970)),c,2	;volatile
 	line	706
 	bcf	((c:3971)),c,3	;volatile
 	line	707
-	goto	l2045
+	goto	l2017
 	
-l453:; BSR set to: 0
+l455:; BSR set to: 0
 
 	line	708
 	bcf	((c:3970)),c,2	;volatile
 	line	709
 	bsf	((c:3969)),c,0	;volatile
-	goto	l2045
+	goto	l2017
 	line	710
 	
-l454:; BSR set to: 0
+l456:; BSR set to: 0
 
 	line	711
-	goto	l2045
+	goto	l2017
 	
-l448:; BSR set to: 0
+l450:; BSR set to: 0
 
 	line	712
 	bcf	((c:3970)),c,2	;volatile
 	line	713
 	bcf	((c:3969)),c,0	;volatile
-	goto	l2045
+	goto	l2017
 	line	714
 	
-l455:; BSR set to: 0
+l457:; BSR set to: 0
 
 	line	715
 	
-l2045:; BSR set to: 0
+l2017:; BSR set to: 0
 
 		movlw	9
 	xorwf	((c:_loop)),c,w
 iorwf	((c:_loop+1)),c,w
 	btfsc	status,2
-	goto	u1351
-	goto	u1350
+	goto	u1091
+	goto	u1090
 
-u1351:
-	goto	l2049
-u1350:
+u1091:
+	goto	l2021
+u1090:
 	
-l2047:; BSR set to: 0
+l2019:; BSR set to: 0
 
 	movlw	low(01h)
 	addwf	((c:_loop)),c,w
@@ -3418,24 +2751,24 @@ l2047:; BSR set to: 0
 	movlw	high(01h)
 	addwfc	((c:_loop+1)),c,w
 	movwf	1+((c:_loop)),c
-	goto	l460
+	goto	l462
 	
-l457:; BSR set to: 0
+l459:; BSR set to: 0
 
 	
-l2049:; BSR set to: 0
+l2021:; BSR set to: 0
 
 	movlw	high(0)
 	movwf	((c:_loop+1)),c
 	movlw	low(0)
 	movwf	((c:_loop)),c
-	goto	l460
+	goto	l462
 	
-l459:; BSR set to: 0
+l461:; BSR set to: 0
 
 	line	716
 	
-l460:; BSR set to: 0
+l462:; BSR set to: 0
 
 	return	;funcret
 	opt stack 0
@@ -3509,16 +2842,16 @@ int_func:
 	movff	tablat+0,??_enc+13
 	line	479
 	
-i2l1401:
+i2l1353:
 	btfss	c:(32658/8),(32658)&7	;volatile
-	goto	i2u33_41
-	goto	i2u33_40
-i2u33_41:
-	goto	i2l320
-i2u33_40:
+	goto	i2u27_41
+	goto	i2u27_40
+i2u27_41:
+	goto	i2l322
+i2u27_40:
 	line	480
 	
-i2l1403:
+i2l1355:
 	movlw	low(01h)
 	addwf	((c:_TIME)),c
 	movlw	0
@@ -3527,25 +2860,25 @@ i2l1403:
 	addwfc	((c:_TIME+3)),c
 	line	481
 	
-i2l1405:
+i2l1357:
 	movlw	low(0F8h)
 	movwf	((c:4055)),c	;volatile
 	line	482
 	
-i2l1407:
+i2l1359:
 	movlw	low(02Fh)
 	movwf	((c:4054)),c	;volatile
 	line	485
 	
-i2l1409:
+i2l1361:
 	bcf	c:(32658/8),(32658)&7	;volatile
-	goto	i2l320
+	goto	i2l322
 	line	486
 	
-i2l319:
+i2l321:
 	line	487
 	
-i2l320:
+i2l322:
 	movff	??_enc+13,tablat+0
 	movff	??_enc+12,tblptru+0
 	movff	??_enc+11,tblptrh+0

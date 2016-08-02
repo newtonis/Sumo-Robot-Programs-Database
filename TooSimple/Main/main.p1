@@ -604,6 +604,32 @@ Version 3.2 HI-TECH Software Intermediate Code
 "746 /home/newtonis/Robots/TooSimple/Main/main.c
 [c E5442 0 1 2 3 4 5 6 7 8 9 .. ]
 [n E5442 . MOTOR_TEST RED_ST ST INITIAL CALIBRATION WAIT AVANZAR WRE2 WRE1 WINITIAL  ]
+"2577 /opt/microchip/xc8/v1.34/include/pic18f4550.h
+[s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S193 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
+"2586
+[s S194 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S194 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 ]
+"2595
+[s S195 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S195 . . VREFM VREFP . LVDIN ]
+"2602
+[s S196 :5 `uc 1 :1 `uc 1 ]
+[n S196 . . HLVDIN ]
+"2606
+[s S197 :7 `uc 1 :1 `uc 1 ]
+[n S197 . . RA7 ]
+"2610
+[s S198 :7 `uc 1 :1 `uc 1 ]
+[n S198 . . RJPU ]
+"2614
+[s S199 :1 `uc 1 ]
+[n S199 . ULPWUIN ]
+"2576
+[u S192 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 `S198 1 `S199 1 ]
+[n S192 . . . . . . . . ]
+"2618
+[v _PORTAbits `VS192 ~T0 @X0 0 e@3968 ]
 "51 /opt/microchip/xc8/v1.34/include/pic18f4550.h
 [; <" SPPDATA equ 0F62h ;# ">
 "70
@@ -2166,48 +2192,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 {
 "761
 [e ( _MotorUpdate ..  ]
-"777
-[e $ ! && ! != -> . . _PORTDbits 0 0 `i -> -> -> 0 `i `Vuc `i ! != _ma -> 0 `i 685  ]
-{
-"778
-[e = _ma -> 1 `i ]
-"779
-[e = _d1 ? == _d1 -> 10 `i : -U -> 10 `i + _d1 -> 1 `i ]
-"780
-}
-[e :U 685 ]
-"781
-[e $ ! && ! != -> . . _PORTDbits 0 2 `i -> -> -> 0 `i `Vuc `i ! != _mb -> 0 `i 686  ]
-{
-"782
-[e = _mb -> 1 `i ]
-"783
-[e = _d2 ? == _d2 -> 10 `i : -U -> 10 `i + _d2 -> 1 `i ]
-"784
-}
-[e :U 686 ]
-"785
-[e $ ! != -> . . _PORTDbits 0 0 `i -> -> -> 0 `i `Vuc `i 687  ]
-[e = _ma -> 0 `i ]
-[e :U 687 ]
-"786
-[e $ ! != -> . . _PORTDbits 0 2 `i -> -> -> 0 `i `Vuc `i 688  ]
-[e = _mb -> 0 `i ]
-[e :U 688 ]
-"787
-[e ( _MotorsSpeed (2 , _d1 _d2 ]
-"788
-[e = . . _PORTDbits 0 4 -> -> != _d1 -> 0 `i `i `uc ]
-"790
-[e = . . _PORTDbits 0 6 -> -> != _d2 -> 0 `i `i `uc ]
-"801
-[e = . . _PORTDbits 0 5 -> -> > % _TIME -> -> 12000 `i `l -> -> 6000 `i `l `i `uc ]
-"811
+"762
+[e = . . _PORTDbits 0 4 . . _PORTEbits 0 1 ]
+"763
+[e = . . _PORTDbits 0 5 . . _PORTEbits 0 0 ]
+"764
+[e = . . _PORTDbits 0 6 . . _PORTAbits 0 5 ]
+"814
 }
 [e :U 682 ]
 "760
 [e $U 683  ]
 [e :U 684 ]
-"812
+"815
 [e :UE 678 ]
 }

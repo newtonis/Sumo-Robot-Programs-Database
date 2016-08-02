@@ -7063,27 +7063,11 @@ while (TIME < 5000)
 fns = 1;
 while (1){
 MotorUpdate();
+PORTDbits.RD4 = PORTEbits.RE1;
+PORTDbits.RD5 = PORTEbits.RE0;
+PORTDbits.RD6 = PORTAbits.RA5;
 
-# 777
-if (! PORTDbits.RD0 && ! ma){
-ma = 1;
-d1 = d1 == 10 ? -10 : (d1 + 1);
-}
-if (! PORTDbits.RD2 && ! mb){
-mb = 1;
-d2 = d2 == 10 ? -10 : (d2 + 1);
-}
-if (PORTDbits.RD0) ma = 0;
-if (PORTDbits.RD2) mb = 0;
-MotorsSpeed(d1 ,d2 );
-PORTDbits.RD4 = d1 != 0;
-
-PORTDbits.RD6 = d2 != 0;
-
-# 801
-PORTDbits.RD5 = TIME % 12000 > 6000;
-
-# 811
+# 814
 }
 }
 

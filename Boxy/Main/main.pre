@@ -6380,6 +6380,10 @@ int fa , ma;
 int fb , mb;
 int d1 , d2;
 
+enum {INIT , MOVE };
+
+int state;
+
 void main(void){
 R = 0;
 Y = 0;
@@ -6403,29 +6407,15 @@ configIO();
 
 
 
-
+state = INIT;
 while (1){
+switch (state){
+case INIT:
 
-# 70
-if (! PORTBbits.RB2 && ! ma){
-ma = 1;
-d1 = d1 == 10 ? -10 : (d1 + 1);
+break;
 }
-if (! PORTBbits.RB0 && ! mb){
-mb = 1;
-d2 = d2 == 10 ? -10 : (d2 + 1);
-}
-if (PORTBbits.RB2) ma = 0;
-if (PORTBbits.RB0) mb = 0;
 
-PORTDbits.RD2 = d1 != 0;
-PORTDbits.RD3 = 1;
-PORTDbits.RD4 = d2 != 0;
-if (TIME > 10000){
-TIME = 0;
-}
-MotorsSpeed(d1 * 100, d2*100);
-
+# 99
 }
 
 

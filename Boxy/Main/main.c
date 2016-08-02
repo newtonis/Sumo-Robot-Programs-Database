@@ -30,6 +30,10 @@ int fa , ma;
 int fb , mb;
 int d1 , d2;
 
+enum {INIT , WAIT, MOVE };
+
+int state;
+
 void main(void){
     R = 0;
     Y = 0;
@@ -53,8 +57,49 @@ void main(void){
     //L_RED = 1;
     //L_YELLOW = 0;
     //L_ORANGE = 1;
-   
+    state = INIT;
     while (1){
+        switch (state){
+            case INIT:
+                MotorsSpeed(0,0);
+                if (IR0 == 0 ){
+                    L_RED = 1;
+                    L_YELLOW = 1;
+                    L_ORANGE = 0;
+                }else{
+                    L_RED = 0;
+                    L_YELLOW = 0;
+                    L_ORANGE = 1;
+                }
+                if (B_ORANGE == 0){
+                    state = WAIT;
+                    TIME = 0;
+                }
+            break;
+            case WAIT:
+                MotorsSpeed(0,0);
+                L_RED = TIME % 1000 > 500;
+                L_YELLOW = 0;
+                L_ORANGE = 0;
+                if (TIME > 5000){
+                    state = MOVE;
+                }
+            break;
+            case MOVE:
+                if (IR0 == 0){
+                    MotorsSpeed(500,500);
+                    L_RED = 1;
+                }else{
+                    L_RED = 0;
+                    MotorsSpeed(100,500);
+                }
+                L_YELLOW = 0;
+                L_ORANGE = 0;
+                if (B_ORANGE == 0){
+                    state = INIT;
+                }
+            break;
+        }
         //MotorsSpeed(500 ,500);
         /*if (IR0 == 0 ){
 
@@ -67,7 +112,8 @@ void main(void){
             L_YELLOW = 0;
             L_ORANGE = 1;
         }*/
-        if (not B_RED and not ma){
+        
+       /* if (not B_RED and not ma){
             ma = 1;
             d1 = d1 == 10 ? -10 : (d1 + 1);
         }
@@ -83,8 +129,8 @@ void main(void){
         L_ORANGE = d2 != 0;
         if (TIME > 10000){
             TIME = 0;
-        }
-        MotorsSpeed(d1 * 100, d2*100);
+        }*/
+        //MotorsSpeed(d1 * 100, d2*100);
         //MotorsSpeed(TIME / 10 ,TIME / 10);
     }
         

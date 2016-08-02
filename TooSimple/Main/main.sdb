@@ -49,14 +49,10 @@ WINITIAL 9
 [v _ReadAnalog ReadAnalog `(v  1 e 0 0 ]
 "538
 [v _GetAnalog GetAnalog `(i  1 e 2 0 ]
-"686
-[v _MotorsSpeed MotorsSpeed `(v  1 e 0 0 ]
 "690
 [v _MotorUpdate MotorUpdate `(v  1 e 0 0 ]
 "729
 [v _main main `(i  1 e 2 0 ]
-"8 /opt/microchip/xc8/v1.34/sources/common/almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
 "8 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "63 /opt/microchip/xc8/v1.34/sources/common/double.c
@@ -165,6 +161,42 @@ WINITIAL 9
 ]
 [u S292 . 1 `S276 1 . 1 0 `S284 1 . 1 0 `S287 1 . 1 0 `S289 1 . 1 0 ]
 [v _UCFGbits UCFGbits `VES292  1 e 1 @3951 ]
+[s S802 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+]
+"2618
+[s S1488 . 1 `uc 1 AN0 1 0 :1:0 
+`uc 1 AN1 1 0 :1:1 
+`uc 1 AN2 1 0 :1:2 
+`uc 1 AN3 1 0 :1:3 
+`uc 1 T0CKI 1 0 :1:4 
+`uc 1 AN4 1 0 :1:5 
+`uc 1 OSC2 1 0 :1:6 
+]
+[s S1496 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 VREFM 1 0 :1:2 
+`uc 1 VREFP 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LVDIN 1 0 :1:5 
+]
+[s S1502 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 HLVDIN 1 0 :1:5 
+]
+[s S1505 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RA7 1 0 :1:7 
+]
+[s S1508 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RJPU 1 0 :1:7 
+]
+[s S1511 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+]
+[u S1513 . 1 `S802 1 . 1 0 `S1488 1 . 1 0 `S1496 1 . 1 0 `S1502 1 . 1 0 `S1505 1 . 1 0 `S1508 1 . 1 0 `S1511 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES1513  1 e 1 @3968 ]
 [s S743 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
@@ -334,14 +366,6 @@ WINITIAL 9
 `uc 1 TRISA6 1 0 :1:6 
 ]
 "4006
-[s S802 . 1 `uc 1 RA0 1 0 :1:0 
-`uc 1 RA1 1 0 :1:1 
-`uc 1 RA2 1 0 :1:2 
-`uc 1 RA3 1 0 :1:3 
-`uc 1 RA4 1 0 :1:4 
-`uc 1 RA5 1 0 :1:5 
-`uc 1 RA6 1 0 :1:6 
-]
 [u S810 . 1 `S794 1 . 1 0 `S802 1 . 1 0 ]
 [v _TRISAbits TRISAbits `VES810  1 e 1 @3986 ]
 [s S734 . 1 `uc 1 TRISB0 1 0 :1:0 
@@ -844,7 +868,7 @@ WINITIAL 9
 "729 /home/newtonis/Robots/TooSimple/Main/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"812
+"815
 } 0
 "337
 [v _initYBOT initYBOT `(v  1 e 0 0 ]
@@ -876,7 +900,7 @@ WINITIAL 9
 {
 [v ReadAnalog@channel channel `uc  1 a 1 wreg ]
 [v ReadAnalog@channel channel `uc  1 a 1 wreg ]
-[v ReadAnalog@channel channel `uc  1 a 1 15 ]
+[v ReadAnalog@channel channel `uc  1 a 1 1 ]
 "537
 } 0
 "507
@@ -884,28 +908,10 @@ WINITIAL 9
 {
 "524
 } 0
-"8 /opt/microchip/xc8/v1.34/sources/common/almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
-{
-"11
-[v ___almod@sign sign `uc  1 a 1 15 ]
-[v ___almod@counter counter `uc  1 a 1 14 ]
-"8
-[v ___almod@dividend dividend `l  1 p 4 0 ]
-[v ___almod@divisor divisor `l  1 p 4 4 ]
-"35
-} 0
-"194 /home/newtonis/Robots/TooSimple/Main/main.c
+"194
 [v _Wixel Wixel `(v  1 e 0 0 ]
 {
 "213
-} 0
-"686
-[v _MotorsSpeed MotorsSpeed `(v  1 e 0 0 ]
-{
-[v MotorsSpeed@a a `i  1 p 2 0 ]
-[v MotorsSpeed@b b `i  1 p 2 2 ]
-"689
 } 0
 "690
 [v _MotorUpdate MotorUpdate `(v  1 e 0 0 ]

@@ -5,6 +5,8 @@
  * Created on August 16, 2014, 11:51 AM
  */
 
+ //http://www.92gag.com/top-rated/easy-make-i-love-you-895
+
 #include <xc.h>
 
 #pragma config BOREN = OFF, CPD = OFF, FOSC = INTOSCIO, MCLRE = OFF, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
@@ -156,7 +158,7 @@ void sensores(){
             estado = APAGADO;
         break;
         case APAGADO:
-            if(contador >= 100){
+            if(contador >= 50){
                 estado = INICIO;
             }
         break;
