@@ -5430,6 +5430,8 @@ long WAITFRENAR;
 
 ll TIME;
 ll TIME2;
+ll TIME3;
+
 char MF;
 char RWM;
 int AMOUNT;
@@ -5504,7 +5506,7 @@ int x;
 for (x = 0;x < AMOUNT;x++){
 GetValue(x, (int)&(SIZES[x]) );
 
-# 146
+# 148
 }
 }
 void Save(){
@@ -5535,7 +5537,7 @@ char nove;
 char actual;
 char gstatus;
 
-# 188
+# 190
 void initYBOT(){
 TIME = 0;
 ResetCounter();
@@ -5575,6 +5577,7 @@ void interrupt enc(void){
 if (TMR0IF){
 TIME ++;
 TIME2 ++;
+TIME3 ++;
 TMR0H = 0xF8;
 TMR0L = 0x2F;
 TMR0IF = 0;
@@ -5585,7 +5588,7 @@ void Delay(int ms){
 while (ms --);
 }
 
-# 243
+# 246
 void initLED(){
 for (x = 0;x < 11;x++){
 amax[x] = 0;
@@ -5620,6 +5623,10 @@ int fa = 0, fb = 0;
 int LOW_SPEED = 520;
 double test_kp = 7;
 double test_kd = 20;
+
+int VEL[2] = {450 , 700};
+double VKP[2] = { 7 , 6.3 };
+double VKD[2] = { 20 , 50 };
 
 int pasada;
 int fw[5] = {6 , 5 , 4 , 3 , 2};
@@ -5683,7 +5690,7 @@ return;
 line = a / b;
 }
 
-# 345
+# 352
 int main(int argc, char** argv) {
 initYBOT();
 
@@ -5763,7 +5770,7 @@ initLED();
 }
 int i,j;
 
-# 427
+# 434
 for (j = 0;j < 2;j++){
 i = sd[j];
 printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],( ( (i*i)*(2*2)*36 )%256),( ( (i*i)*(3*3)*36 )%256),( ( (i*i)*(4*4)*36 )%256));
@@ -5779,7 +5786,7 @@ case CALIBRATION:
 EnhancedRead();
 int i,j;
 
-# 445
+# 452
 if (TIME > 1000){
 TIME = 0;
 for (j = 0;j < 2;j++){
@@ -5829,7 +5836,7 @@ gf = 1;
 fns = 0;
 }
 PORTBbits.RB0 = 1;
-PORTAbits.RA4 = (P[sd[1]] > 300 && ((line>0?line:-(line))<150)) && (P[sd[0]] > 300 && ((line>0?line:-(line))<150));
+PORTAbits.RA4 = (P[sd[1]] > 500 && ((line>0?line:-(line))<150)) || (P[sd[0]] > 500 && ((line>0?line:-(line))<150));
 PORTBbits.RB5 = 0;
 
 
@@ -5874,12 +5881,14 @@ if (PORTDbits.RD5 == 1){
 status = AVANZAR;
 TIME = 0;
 TIME2 = 0;
+TIME3 = 0;
 rcount = 0;
+flag_line = 0;
 }
 break;
 case AVANZAR:
 
-# 573
+# 582
 if (PORTDbits.RD6 == 0){
 fns = 1;
 status = INITIAL;
@@ -5889,43 +5898,62 @@ status = INITIAL;
 PORTBbits.RB0 = 1;
 
 PORTBbits.RB5 = 0;
-
+if (TIME3 > 5){
+TIME3 = 0;
 EnhancedRead();
 Line();
 
+int speed;
+double kp , kd;
+if (rcount % 2 == 0){
+speed = VEL[0];
+kp = VKP[0];
+kd = VKD[0];
+}else{
+speed = VEL[1];
+kp = VKP[1];
+kd = VKD[1];
+}
+
 der = line - last;
 
-formula = line * test_kp + der * test_kd;
+formula = line * kp + der * kd;
 
 if (formula > 0){
-MotorsSpeed(LOW_SPEED - formula , LOW_SPEED);
+MotorsSpeed(speed - formula , speed);
 }else{
-MotorsSpeed(LOW_SPEED , LOW_SPEED + formula);
+MotorsSpeed(speed , speed + formula);
 }
+
 if (flag_line == 0){
-if ((P[sd[1]] > 300 && ((line>0?line:-(line))<150)) || (P[sd[0]] > 300 && ((line>0?line:-(line))<150))){
+if ((P[sd[1]] > 500 && ((line>0?line:-(line))<150)) || (P[sd[0]] > 500 && ((line>0?line:-(line))<150))){
 flag_line = 1;
 TIME = 0;
 PORTAbits.RA4 = !PORTAbits.RA4;
 rcount ++ ;
+
+
 }
 }
 if (flag_line == 1){
-if (TIME > 700*6 ){
+if (TIME > 500*6 ){
 TIME = 0;
 flag_line = 0;
-printf("{'COM':'line','value':'rcount   = %i'}\n",rcount);
 }
 }
-if (rcount == 1){
+if (rcount == 7){
 fns = 1;
 status = INITIAL;
 }
 if (TIME2 > 1000){
-printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
+
+
+
 TIME2 = 0;
 }
 last = line;
+}
+
 break;
 }
 }
