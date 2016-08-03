@@ -8,7 +8,7 @@
 OUTPUT 0
 INPUT 1
 ]
-"60
+"63
 [e E5284 . `uc
 INIT 0
 WAIT 1
@@ -30,7 +30,7 @@ MOVE 2
 [v _MotorsSpeed MotorsSpeed `(v  1 e 0 0 ]
 "5 /home/newtonis/Robots/Boxy/Main/main.c
 [v _configIO configIO `(v  1 e 0 0 ]
-"37
+"40
 [v _main main `(v  1 e 0 0 ]
 "8 /opt/microchip/xc8/v1.34/sources/common/almod.c
 [v ___almod __almod `(l  1 e 4 0 ]
@@ -60,24 +60,24 @@ MOVE 2
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "3 /home/newtonis/Robots/Boxy/Main/config.c
 [v _TIME TIME `l  1 e 4 0 ]
-"26 /home/newtonis/Robots/Boxy/Main/main.c
+"29 /home/newtonis/Robots/Boxy/Main/main.c
 [v _R R `uc  1 e 1 0 ]
 [v _Y Y `uc  1 e 1 0 ]
 [v _O O `uc  1 e 1 0 ]
-"27
+"30
 [v _PR PR `uc  1 e 1 0 ]
 [v _PY PY `uc  1 e 1 0 ]
 [v _PO PO `uc  1 e 1 0 ]
-"29
+"32
 [v _fa fa `i  1 e 2 0 ]
 [v _ma ma `i  1 e 2 0 ]
-"30
+"33
 [v _fb fb `i  1 e 2 0 ]
 [v _mb mb `i  1 e 2 0 ]
-"31
+"34
 [v _d1 d1 `i  1 e 2 0 ]
 [v _d2 d2 `i  1 e 2 0 ]
-"35
+"38
 [v _state state `i  1 e 2 0 ]
 [s S351 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
@@ -119,7 +119,7 @@ MOVE 2
 `uc 1 RB7 1 0 :1:7 
 ]
 "2757
-[s S168 . 1 `uc 1 INT0 1 0 :1:0 
+[s S215 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
@@ -127,11 +127,11 @@ MOVE 2
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S176 . 1 `uc 1 . 1 0 :3:0 
+[s S223 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S179 . 1 `S73 1 . 1 0 `S168 1 . 1 0 `S176 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES179  1 e 1 @3969 ]
+[u S226 . 1 `S73 1 . 1 0 `S215 1 . 1 0 `S223 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES226  1 e 1 @3969 ]
 [s S821 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
@@ -180,7 +180,7 @@ MOVE 2
 `uc 1 RD7 1 0 :1:7 
 ]
 "3020
-[s S213 . 1 `uc 1 SPP0 1 0 :1:0 
+[s S168 . 1 `uc 1 SPP0 1 0 :1:0 
 `uc 1 SPP1 1 0 :1:1 
 `uc 1 SPP2 1 0 :1:2 
 `uc 1 SPP3 1 0 :1:3 
@@ -189,11 +189,11 @@ MOVE 2
 `uc 1 SPP6 1 0 :1:6 
 `uc 1 SPP7 1 0 :1:7 
 ]
-[s S222 . 1 `uc 1 . 1 0 :7:0 
+[s S177 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
-[u S225 . 1 `S30 1 . 1 0 `S213 1 . 1 0 `S222 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES225  1 e 1 @3971 ]
+[u S180 . 1 `S30 1 . 1 0 `S168 1 . 1 0 `S177 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES180  1 e 1 @3971 ]
 [s S64 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
@@ -479,10 +479,10 @@ MOVE 2
 [v _TMR1IF TMR1IF `VEb  1 e 0 @31984 ]
 "10823
 [v _TMR2ON TMR2ON `VEb  1 e 0 @32338 ]
-"37 /home/newtonis/Robots/Boxy/Main/main.c
+"40 /home/newtonis/Robots/Boxy/Main/main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"143
+"150
 } 0
 "26 /home/newtonis/Robots/Boxy/Main/config.c
 [v _configurations_init configurations_init `(v  1 e 0 0 ]
@@ -492,7 +492,7 @@ MOVE 2
 "5 /home/newtonis/Robots/Boxy/Main/main.c
 [v _configIO configIO `(v  1 e 0 0 ]
 {
-"24
+"27
 } 0
 "8 /opt/microchip/xc8/v1.34/sources/common/almod.c
 [v ___almod __almod `(l  1 e 4 0 ]

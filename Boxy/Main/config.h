@@ -55,8 +55,15 @@ enum {OUTPUT,INPUT};
 #define B_YELLOW PORTBbits.RB1
 #define B_RED PORTBbits.RB2
 
-#define IR2 PORTDbits.RD5
+//#define IR2 PORTDbits.RD5
+//#define IR0 PORTBbits.RB5
+
 #define IR0 PORTBbits.RB5
+#define IR1 PORTDbits.RD7
+
+
+#define IR2 PORTDbits.RD5
+#define IR4 PORTBbits.RB3
 
 typedef long long ll;
 

@@ -6339,7 +6339,7 @@ extern __nonreentrant void _delay3(unsigned char);
 
 enum {OUTPUT,INPUT};
 
-# 61
+# 68
 typedef long long ll;
 
 extern ll TIME;

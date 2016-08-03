@@ -38,7 +38,7 @@ enum {ALFA,BETA};
 #define RECTTIME (SPEEDTIME(SIZES[CURRENT]*40)) ///With a single word we can get rect time
 
 /*** robot different states ***/
-enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE1 ,WINITIAL};
+enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE1 ,WINITIAL , };
 
 
 /*** CONFIGURATIONS OF THE MICROCHIP BASIC BITS ***/
@@ -625,6 +625,7 @@ void MotorsPWM(){
     
 }
 void MotorASpeed(int S){
+    S = -S;
     S = min(S,1000);
     S = max(S,-1000);
     
@@ -665,9 +666,6 @@ int ms=0;
 
 enum {NODETECT , DETECT };
 
-
-enum {QUIET , FORWARD, ROUNDLEFT , ROUNDRIGHT ,POWERFRONT , CUSTOM };
-
 char mm;
 
 
@@ -683,8 +681,8 @@ int loop = 0;
 int speedA = 0;
 int speedB = 0;
 
-void MotorsSpeed(int a,int b){
-    speedA = a;
+void MotorsSpeed(int b,int a){
+    speedA = -a;
     speedB = b;
 }
 void MotorUpdate(){
@@ -723,9 +721,12 @@ int fa = 0, fb = 0 , fc = 0;
 int fa , ma;
 int fb , mb;
 int d1 , d2;
+int sd; 
 
 /** End **/
+ //(izq)v1 - v2 - v3 (der)
 
+// der , izq
 int main(int argc, char** argv) {
     initYBOT();
     
@@ -759,9 +760,70 @@ int main(int argc, char** argv) {
     fns = 1;
     while (1){
         MotorUpdate();
-        L_RED = V1;
-        L_YELLOW = V2;
-        L_GREEN = V3;
+        /*if (not B_RED and not ma){
+            ma = 1;
+            d1 = d1 == 10 ? -10 : (d1 + 1);
+        }
+        if (not B_GREEN and not mb){
+            mb = 1;
+            d2 = d2 == 10 ? -10 : (d2 + 1);
+        }
+        if (B_RED) ma = 0;
+        if (B_GREEN) mb = 0;
+        MotorsSpeed(d1 ,d2 );
+        continue;*/
+        switch (status){
+            case ST:
+                L_RED = V1;
+                L_YELLOW = V2;
+                L_GREEN = V3;
+                MotorsSpeed(0,0);
+                if (B_RED == 0){
+                    sd = 1;
+                    status = WAIT;
+                    TIME = 0;
+                }
+                if (B_GREEN == 0){
+                    sd = 2;
+                    status = WAIT;
+                    TIME = 0;
+                }
+            break;
+            case WAIT:
+                L_RED = TIME % 3000 > 2000;
+                L_YELLOW = TIME % 3000 > 1000 and TIME % 3000 < 2000;
+                L_GREEN = TIME % 3000 < 1000;
+                if (TIME > 5000*6){
+                    status = AVANZAR;
+                }
+            break;
+            case AVANZAR:
+                L_RED = V1;
+                L_YELLOW = V2;
+                L_GREEN = V3;
+                if (V2 or (V1 and V2)){
+                    MotorsSpeed(10,10);
+                }else if(V1){
+                    MotorsSpeed(10,0);
+                    sd = 1;
+                }else if(V3){
+                    MotorsSpeed(0,10);
+                    sd = 2;
+                }else{
+                    if (sd == 1){
+                        MotorsSpeed(2,10);
+                    }else{
+                        MotorsSpeed(10,2);
+                    }
+                }
+                if (B_RED == 0){
+                    status = ST;
+                }
+            break;
+        }
+        //L_RED = V1;
+       // L_YELLOW = V2;
+        //L_GREEN = V3;
         /*if (not B_GREEN and not ma){
             ma = 1;
             L_GREEN = not L_GREEN;
@@ -777,22 +839,12 @@ int main(int argc, char** argv) {
         if (B_GREEN) ma = 0;
         if (B_YELLOW) mb = 0;
         if (B_RED) mc = 0;*/
-        /*if (not B_RED and not ma){
-            ma = 1;
-            d1 = d1 == 10 ? -10 : (d1 + 1);
-        }
-        if (not B_GREEN and not mb){
-            mb = 1;
-            d2 = d2 == 10 ? -10 : (d2 + 1);
-        }
-        if (B_RED) ma = 0;
-        if (B_GREEN) mb = 0;
-        MotorsSpeed(d1 ,d2 );
-        L_RED = d1 != 0;
         
-        L_GREEN = d2 != 0;*/
+        /*L_RED = d1 != 0;
+        L_YELLOW = TIME % 12000 > 6000;
+        L_GREEN = d2 != 0;
 
-        //MotorsSpeed(d1*1000,d2*1000); // misma velocidad
+        MotorsSpeed(d1*1000,d2*1000); // misma velocidad*/
 
         //ASP = 0;
         //BSP = 0;
@@ -811,6 +863,7 @@ int main(int argc, char** argv) {
 
        // ADIR = 1;
         //BDIR = 1;*/
+
     }
 }
 

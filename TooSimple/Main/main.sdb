@@ -8,7 +8,7 @@
 OUTPUT 0
 INPUT 1
 ]
-"746
+"747
 [e E5442 . `uc
 MOTOR_TEST 0
 RED_ST 1
@@ -49,10 +49,14 @@ WINITIAL 9
 [v _ReadAnalog ReadAnalog `(v  1 e 0 0 ]
 "538
 [v _GetAnalog GetAnalog `(i  1 e 2 0 ]
-"690
+"684
+[v _MotorsSpeed MotorsSpeed `(v  1 e 0 0 ]
+"688
 [v _MotorUpdate MotorUpdate `(v  1 e 0 0 ]
-"729
+"730
 [v _main main `(i  1 e 2 0 ]
+"8 /opt/microchip/xc8/v1.34/sources/common/almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
 "8 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "63 /opt/microchip/xc8/v1.34/sources/common/double.c
@@ -110,27 +114,29 @@ WINITIAL 9
 [v _actual actual `uc  1 e 1 0 ]
 "315
 [v _gstatus gstatus `uc  1 e 1 0 ]
-"657
+"658
 [v _sa sa `i  1 e 2 0 ]
-"659
+"660
 [v _mode mode `i  1 e 2 0 ]
-"682
+"680
 [v _loop loop `i  1 e 2 0 ]
-"683
+"681
 [v _speedA speedA `i  1 e 2 0 ]
-"684
+"682
 [v _speedB speedB `i  1 e 2 0 ]
-"719
+"717
 [v _fns fns `i  1 e 2 0 ]
-"720
+"718
 [v _ma ma `i  1 e 2 0 ]
 [v _mb mb `i  1 e 2 0 ]
-"721
+"719
 [v _fa fa `i  1 e 2 0 ]
 [v _fb fb `i  1 e 2 0 ]
-"725
+"723
 [v _d1 d1 `i  1 e 2 0 ]
 [v _d2 d2 `i  1 e 2 0 ]
+"724
+[v _sd sd `i  1 e 2 0 ]
 [s S257 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
 `uc 1 RESUME 1 0 :1:2 
@@ -865,10 +871,10 @@ WINITIAL 9
 [v _TMR2ON TMR2ON `VEb  1 e 0 @32338 ]
 "10955
 [v _TXIF TXIF `VEb  1 e 0 @31988 ]
-"729 /home/newtonis/Robots/TooSimple/Main/main.c
+"730 /home/newtonis/Robots/TooSimple/Main/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"815
+"868
 } 0
 "337
 [v _initYBOT initYBOT `(v  1 e 0 0 ]
@@ -900,7 +906,7 @@ WINITIAL 9
 {
 [v ReadAnalog@channel channel `uc  1 a 1 wreg ]
 [v ReadAnalog@channel channel `uc  1 a 1 wreg ]
-[v ReadAnalog@channel channel `uc  1 a 1 1 ]
+[v ReadAnalog@channel channel `uc  1 a 1 15 ]
 "537
 } 0
 "507
@@ -908,15 +914,33 @@ WINITIAL 9
 {
 "524
 } 0
-"194
+"8 /opt/microchip/xc8/v1.34/sources/common/almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+{
+"11
+[v ___almod@sign sign `uc  1 a 1 15 ]
+[v ___almod@counter counter `uc  1 a 1 14 ]
+"8
+[v ___almod@dividend dividend `l  1 p 4 0 ]
+[v ___almod@divisor divisor `l  1 p 4 4 ]
+"35
+} 0
+"194 /home/newtonis/Robots/TooSimple/Main/main.c
 [v _Wixel Wixel `(v  1 e 0 0 ]
 {
 "213
 } 0
-"690
+"684
+[v _MotorsSpeed MotorsSpeed `(v  1 e 0 0 ]
+{
+[v MotorsSpeed@b b `i  1 p 2 0 ]
+[v MotorsSpeed@a a `i  1 p 2 2 ]
+"687
+} 0
+"688
 [v _MotorUpdate MotorUpdate `(v  1 e 0 0 ]
 {
-"716
+"714
 } 0
 "478
 [v _enc enc `II(v  1 e 0 0 ]

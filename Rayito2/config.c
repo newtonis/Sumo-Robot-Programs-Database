@@ -26,7 +26,11 @@ void Wixel(void){
     RCSTAbits.SPEN=1; //1 = Serial port enabled (configures RX/DT and TX/CK pins as serial port pins) 0 = Serial port
     //disabled (held in Reset)
 }
-
+void putch(char data){
+    while( ! TXIF)
+    continue;
+    TXREG = data;
+}
 
 void configurations_init(){
     OSCCONbits.IRCF = 7;    /* OSCILLATOR CONTROL REGISTER -> 8MHz */
@@ -203,3 +207,25 @@ void EnhancedRead(){
             V[i]=aux;
         }
 }   
+void WriteMem(uc addr,uc data){ ///Write into memory address burocracy
+    EEADR = addr;
+    EEDATA = data;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.CFGS = 0;
+    EECON1bits.WREN = 1;
+    INTCONbits.GIE = 0;
+    EECON2 = 0x55;
+    EECON2 = 0xAA;
+    EECON1bits.WR = 1;
+    INTCONbits.GIE = 1;
+    while (EECON1bits.WR == 1){}
+    EECON1bits.WREN = 0;
+}
+void ReadMem(uc addr,uc *data){ ///Reading memory address burocracy
+    EEADR = addr;
+    EECON1bits.EEPGD = 0;
+    EECON1bits.CFGS = 0;
+    EECON1bits.RD = 1;
+    while (EECON1bits.RD == 1){}
+    *data = EEDATA;
+}

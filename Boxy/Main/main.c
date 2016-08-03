@@ -14,6 +14,9 @@ void configIO(){
     ///Infrared
     TRISDbits.TRISD5 = INPUT;  
     TRISBbits.TRISB6 = INPUT;
+    TRISDbits.TRISD6 = INPUT;
+    TRISBbits.TRISB3 = INPUT;
+    TRISDbits.TRISD7 = INPUT;
 
     //Motor
     TRISDbits.TRISD0 = OUTPUT;
@@ -61,7 +64,7 @@ void main(void){
     while (1){
         switch (state){
             case INIT:
-                if (IR0 == 0 ){
+                /*if (IR0 == 0 ){
                     L_RED = 1;
                     L_YELLOW = 1;
                     L_ORANGE = 0;
@@ -69,7 +72,11 @@ void main(void){
                     L_RED = 0;
                     L_YELLOW = 0;
                     L_ORANGE = 1;
-                }
+                }*/
+                    L_RED = !PORTDbits.RD7;
+                    L_YELLOW = !IR0;
+                    L_ORANGE = !IR2;
+
                 if (B_ORANGE == 0){
                     state = WAIT;
                     TIME = 0;

@@ -78,5 +78,8 @@ void MotorASpeed(int S);
 void MotorBSpeed(int S);
 void MotorsSpeed(int A,int B);
 void EnhancedRead();
+void putch(char data);
+void WriteMem(uc addr,uc data); ///Write eeprom register
+void ReadMem(uc addr,uc *data); ///Read eeprom register
 
 #endif
