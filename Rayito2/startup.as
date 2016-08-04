@@ -1,6 +1,6 @@
 
-	; Microchip MPLAB XC8 C Compiler V1.34
-	; Copyright (C) 1984-2015 HI-TECH Software
+	; Microchip MPLAB XC8 C Compiler V1.38
+	; Copyright (C) 1984-2016 HI-TECH Software
 
 	; Auto-generated runtime startup code for final link stage.
 
@@ -21,7 +21,7 @@
 
 	psect	config,class=CONFIG,delta=1,noexec
 	psect	idloc,class=IDLOC,delta=1,noexec
-	psect	const,class=CODE,delta=1,reloc=2,noexec
+	psect	const,class=CONST,delta=1,reloc=2,noexec
 	psect	smallconst,class=SMALLCONST,delta=1,reloc=2,noexec
 	psect	mediumconst,class=MEDIUMCONST,delta=1,reloc=2,noexec
 	psect	rbss,class=COMRAM,space=1,noexec
@@ -126,10 +126,10 @@ ___intlo_sp:
 	goto start_initialization	;jump to C runtime clear & initialization
 
 ; Config register CONFIG1L @ 0x300000
-;	System Clock Postscaler Selection bits
-;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
 ;	PLL Prescaler Selection bits
 ;	PLLDIV = 5, Divide by 5 (20 MHz oscillator input)
+;	System Clock Postscaler Selection bits
+;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
 ;	USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1)
 ;	USBDIV = 2, USB clock source comes from the 96 MHz PLL divided by 2
 
@@ -138,12 +138,12 @@ ___intlo_sp:
 		db 0x24
 
 ; Config register CONFIG1H @ 0x300001
+;	Oscillator Selection bits
+;	FOSC = HSPLL_HS, HS oscillator, PLL enabled (HSPLL)
 ;	Fail-Safe Clock Monitor Enable bit
 ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
 ;	Internal/External Oscillator Switchover bit
 ;	IESO = OFF, Oscillator Switchover mode disabled
-;	Oscillator Selection bits
-;	FOSC = HSPLL_HS, HS oscillator, PLL enabled (HSPLL)
 
 	psect	config,class=CONFIG,delta=1,noexec
 		org 0x1
@@ -152,22 +152,22 @@ ___intlo_sp:
 ; Config register CONFIG2L @ 0x300002
 ;	Power-up Timer Enable bit
 ;	PWRT = OFF, PWRT disabled
-;	USB Voltage Regulator Enable bit
-;	VREGEN = OFF, USB voltage regulator disabled
-;	Brown-out Reset Voltage bits
-;	BORV = 3, Minimum setting
 ;	Brown-out Reset Enable bits
 ;	BOR = OFF, Brown-out Reset disabled in hardware and software
+;	Brown-out Reset Voltage bits
+;	BORV = 3, Minimum setting 2.05V
+;	USB Voltage Regulator Enable bit
+;	VREGEN = OFF, USB voltage regulator disabled
 
 	psect	config,class=CONFIG,delta=1,noexec
 		org 0x2
 		db 0x19
 
 ; Config register CONFIG2H @ 0x300003
-;	Watchdog Timer Postscale Select bits
-;	WDTPS = 32768, 1:32768
 ;	Watchdog Timer Enable bit
 ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+;	Watchdog Timer Postscale Select bits
+;	WDTPS = 32768, 1:32768
 
 	psect	config,class=CONFIG,delta=1,noexec
 		org 0x3
@@ -183,10 +183,10 @@ ___intlo_sp:
 ;	CCP2MX = ON, CCP2 input/output is multiplexed with RC1
 ;	PORTB A/D Enable bit
 ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
-;	MCLR Pin Enable bit
-;	MCLRE = OFF, RE3 input pin enabled; MCLR pin disabled
 ;	Low-Power Timer 1 Oscillator Enable bit
 ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+;	MCLR Pin Enable bit
+;	MCLRE = OFF, RE3 input pin enabled; MCLR pin disabled
 
 	psect	config,class=CONFIG,delta=1,noexec
 		org 0x5
@@ -195,14 +195,14 @@ ___intlo_sp:
 ; Config register CONFIG4L @ 0x300006
 ;	Stack Full/Underflow Reset Enable bit
 ;	STVREN = ON, Stack full/underflow will cause Reset
-;	Background Debugger Enable bit
-;	DEBUG = OFF, Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins
-;	Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit
-;	ICPRT = OFF, ICPORT disabled
 ;	Single-Supply ICSP Enable bit
 ;	LVP = OFF, Single-Supply ICSP disabled
+;	Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit
+;	ICPRT = OFF, ICPORT disabled
 ;	Extended Instruction Set Enable bit
 ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mode)
+;	Background Debugger Enable bit
+;	DEBUG = OFF, Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins
 
 	psect	config,class=CONFIG,delta=1,noexec
 		org 0x6
@@ -252,10 +252,10 @@ ___intlo_sp:
 		db 0xF
 
 ; Config register CONFIG6H @ 0x30000B
-;	Boot Block Write Protection bit
-;	WRTB = OFF, Boot block (000000-0007FFh) is not write-protected
 ;	Configuration Register Write Protection bit
 ;	WRTC = OFF, Configuration registers (300000-3000FFh) are not write-protected
+;	Boot Block Write Protection bit
+;	WRTB = OFF, Boot block (000000-0007FFh) is not write-protected
 ;	Data EEPROM Write Protection bit
 ;	WRTD = OFF, Data EEPROM is not write-protected
 
