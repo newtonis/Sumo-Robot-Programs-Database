@@ -1,3 +1,5 @@
+
+
 #include <xc.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,36 +24,15 @@
 #define T1000 (TIME%6000) ///because of fast micro caused by using crystal
 #define TCOOL (TIME/6)
 #define TH (INVERTIR?100:900) ///TH means the black/white threshold
+
 #define SPEEDTIME(w) (w/2-w/4-w/16) ///Ratio of max speed time in the rect
-#define RECTTIME (SPEEDTIME(SIZES[CURRENT]*40)) ///With a single word we can get rect time
+#define RECTTIME (SPEEDTIME(LEN[rcount/2]*40)) ///With a single word we can get rect time
+#define STOPTIME (RECTTIME + 70)
+
 #define BORDER_LIMIT 500 ///SENSOR BORDER LIMIT
 
 /*** robot different states ***/
-enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE1 ,WINITIAL};
-
-//* para blanco negro */
-/*double KP[4] = { 28, 90,90 , 28};
-double KD[4] = {300,300,300,300};
-double KR[4] = {0.2,0.0,0.2,0.1};
-double SP[4] = {900,500,500,300};*/
-double KP[4] = { 28, 80,60 , 28};
-double KD[4] = {300,300,300,300};
-double KR[4] = {0.2,0.1,0.2,0.1};
-double SP[4] = {900,430,400,350};
-
-enum {WAIT_PRESS , WAIT_CALL , WAIT_RELEASE };
-enum { INICIO , PAUSA , LEER , PAUSA2};
-
-
-///////c            cC
-
-/* Para mi casa */
-/*
-double KP[4] = { 28, 28,28 , 28};
-double KD[4] = {300,300,300,300};
-double KR[4] = {0.2,0.1,0.2,0.1};
-double SP[4] = {800,450,300,200};
-*/
+enum {MOTOR_TEST, GREEN_RELEASE_INITIAL , NEW_AVANZAR , RELEASE_INIT , WAIT_FRONT , RECT_FRONT , RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE1 ,WINITIAL};
 
 int speedMode;
  
@@ -62,16 +43,10 @@ long WAITFRENAR;
 ll TIME; ///Time count
 ll TIME2;
 ll TIME3; 
-
-char MF; //memory focused
-char RWM; //Read or write
-int AMOUNT; //amount of rects
-int CURRENT; //current rect
-ll SIZES[255]; //time of each rect measured in mili-seconds
+ll TIME4;
 int status;
 
 /**** prototipos ****/
-long long millis();
 void initYBOT();
 void UpdateYBOT();
 void InitTIMERS();
@@ -85,8 +60,6 @@ void ControlSpeed();
 void LineUpdate();
 
 /**** EEPROM FUNCTIONS ***/
-void WriteMem(uc addr,uc data); ///Write eeprom register
-void ReadMem(uc addr,uc *data); ///Read eeprom register
 void CheckMem(uc *data); //Check if current memory is written
 void Length(int *data); //Check mememory length
 void GetValue(int item,int *data); //Check memory item value
@@ -96,65 +69,15 @@ void EreaseAll(); //erase all memory
 void Load(); ///Load EEPROM into RAM
 
 /*** Status machine functions ***/
-void SetStatus(uc st); ///Set new status
-uc NewStatus(); ///Check if it is the first iteration of status
 
-void putch(char data){
-    while( ! TXIF)
-    continue;
-    TXREG = data;
-}
 void EreaseAll(){
     /** WriteMem(address , data ) ***/
 
     WriteMem(0  ,0);  //We indicate the length of memory block 0 is 0
     WriteMem(128,0);  //We indicate the length of memory block 1 is 0
 }
-void CheckMem(uc *data){ ///Check if the currently foucsed memory block has data
-    uc rta;
-    if (MF == 0){ //If memory block focused is the memory 0
-        ReadMem(0,&rta);
-    }else if(MF == 1){ //If not
-        ReadMem(128,&rta);
-    }
-    *data = rta == 0 ? 0 : 1;
-}
-void Length(int *data){ ///Check memory focused block length value
-    uc add = MF ? 128 : 0; 
-    uc rta;
-    ReadMem(add,&rta);
-    *data = (int)rta;
-}
-void GetValue(int item,int *data){ ///Check the value of a memory block item
-    uc add = MF ? 128 : 0;
-    uc rta;
-    ReadMem(add + 1 + item , &rta);
-    *data = (int)rta;
-}
-void Load(){ ///We'll load the EEPROM data into the RAM memory
-    Length(&AMOUNT);
-    int x;
-    for (x = 0;x < AMOUNT;x++){
-        GetValue(x, (int)&(SIZES[x]) );
-        //TIME = 0;
-        //while (TCOOL < 500){
-        //    L_AMARILLO = 1;
-        //}
-        //TIME = 0;
-        //L_AMARILLO = 0;
-        //while (TCOOL < 500){
-         //   L_AMARILLO = 0;
-        //}
-    }
-}
-void Save(){
-    uc sum; sum = MF ? 128 : 0;
-    WriteMem(sum,(uc)CURRENT);
-    int x;
-    for (x = 0;x < CURRENT;x++){
-        WriteMem(sum + x + 1,(uc)(SIZES[x]));
-    }
-}
+
+
 
 
 // *** sensor vars *** //
@@ -196,28 +119,7 @@ void initYBOT(){
     InitTIMERS(); 
     MotorsPWM();
 }
-void WriteMem(uc addr,uc data){ ///Write into memory address burocracy
-    EEADR = addr;
-    EEDATA = data;
-    EECON1bits.EEPGD = 0;
-    EECON1bits.CFGS = 0;
-    EECON1bits.WREN = 1;
-    INTCONbits.GIE = 0;
-    EECON2 = 0x55;
-    EECON2 = 0xAA;
-    EECON1bits.WR = 1;
-    INTCONbits.GIE = 1;
-    while (EECON1bits.WR == 1){}
-    EECON1bits.WREN = 0;
-}
-void ReadMem(uc addr,uc *data){ ///Reading memory address burocracy
-    EEADR = addr;
-    EECON1bits.EEPGD = 0;
-    EECON1bits.CFGS = 0;
-    EECON1bits.RD = 1;
-    while (EECON1bits.RD == 1){}
-    *data = EEDATA;
-}
+
 void ResetCounter(){
     TIME = 0;
 }
@@ -227,14 +129,11 @@ void interrupt enc(void){
        TIME ++;
        TIME2 ++;
        TIME3 ++;
+       TIME4 ++;
        TMR0H = 0xF8;//E8;
        TMR0L = 0x2F;//90;//90;
        TMR0IF = 0;
     }
-}
-
-void Delay(int ms){
-    while (ms --);
 }
 
 /** EEPROM, memoria no volatil
@@ -278,19 +177,69 @@ int LOW_SPEED = 520;
 double test_kp = 7;
 double test_kd = 20;
 
-int    VEL[2] = {450 , 700};
-double VKP[2] = { 7  , 6.3  };
-double VKD[2] = { 20 , 50 };
+enum {TEST , CURVE , SLOW , FAST , MOD_STOP , NORMAL };
+
+int    VEL[6] = {450 , 700 , 400 , 1000 , -1000 , 400};
+double VKP[6] = { 7  , 6.3  , 5  , 6    ,  6    , 6};
+double VKD[6] = { 20 , 50  , 30  , 50   , 50    , 50};
 
 int pasada;
 int fw[ns] = {6 , 5 , 4 , 3 , 2}; //central sensors
 int pd[ns] = {-200, -100, 0 , 100 , 200}; //values
 int sd[ns] = {1,7}; //side sensors
 
+int TOTAL; //Amount of memory of rects
+int LEN[100]; // MEMORY of rects
+
+char MF = 0; //memory focused
+char RWM = 0; //Read or write
+
 int flag_line = 0;
 int rcount = 0;
 
 char b2;
+
+void ShowMem(){
+    int x;
+    for (x = 0;x < TOTAL;x++) printf("{'COM':'line','value':'[%i] = %i'}\n",x+1,LEN[x]);
+}
+void CheckMem(uc *data){ ///Check if the currently foucsed memory block has data
+    uc rta;
+    if (MF == 0){ //If memory block focused is the memory 0
+        ReadMem(0,&rta);
+    }else if(MF == 1){ //If not
+        ReadMem(128,&rta);
+    }
+    *data = (rta == 0 or rta == 255) ? 0 : 1;
+}
+void Save(){
+    uc sum; sum = MF ? 128 : 0;
+    WriteMem(sum,(uc)TOTAL);
+    int x;
+    for (x = 0;x < TOTAL;x++){
+        WriteMem(sum + x + 1,(uc)(LEN[x]));
+    }
+    ShowMem();
+}
+
+void Length(int *data){ ///Check memory focused block length value
+    uc add = MF ? 128 : 0; 
+    uc rta;
+    ReadMem(add,&rta);
+    *data = (int)rta;
+}
+void Load(){ ///We'll load the EEPROM data into the RAM memory
+    Length(&TOTAL);
+    int x;
+    for (x = 0;x < TOTAL;x++) GetValue(x, (int)&(LEN[x]) );
+}
+void GetValue(int item,int *data){ ///Check the value of a memory block item
+    uc add = MF ? 128 : 0;
+    uc rta;
+    ReadMem(add + 1 + item , &rta);
+    *data = (int)rta;
+}
+
 
 #define C(i) ( ( ( ran ( V[i] , amin[i]  , amax[i] ) )  - amin[i] ) * 100 / (amax[i] - amin[i]) )
 
@@ -344,6 +293,23 @@ void Line(){ // line algorithm
     line = a / b;
 }
 
+void AdvanceLow(){
+    int speed;
+    double kp , kd;
+    int mod;
+    speed = VEL[2];
+    kp = VKP[2];
+    kd = VKD[2];
+
+    der = line - last;
+    formula = line * kp + der * kd;
+    if (formula > 0){
+        MotorsSpeed(speed - formula , speed);
+    }else{
+        MotorsSpeed(speed , speed + formula);
+    }
+    last = line;
+}
 #define INSIDE (abs(line)<150)
 #define LSEE (P[sd[0]] > BORDER_LIMIT and INSIDE)
 #define RSEE (P[sd[1]] > BORDER_LIMIT and INSIDE)
@@ -354,7 +320,6 @@ int main(int argc, char** argv) {
     
     gstatus = -1;
     WAITIME = 0;
-    CURRENT = 0;
     actual = 0;
     status = ST;
     TIME = 0;
@@ -416,6 +381,23 @@ int main(int argc, char** argv) {
                 if (fns){
                     fns = 0;
                     printf("{'COM':'line','value':'Rayito 2.0'}\n");
+                    printf("{'COM':'line','value':'Loading eeprom'}\n");
+                    MF = 1; uc old; CheckMem(&old);
+                    if (old == 0){
+                        printf("{'COM':'line','value':'Green memory empty'}\n");
+                    }else{
+                        Load();
+                        printf("{'COM':'line','value':'Green memory'}\n");
+                        ShowMem();
+                    }
+                    MF = 0; uc old; CheckMem(&old);
+                    if (old == 0){
+                        printf("{'COM':'line','value':'Red memory empty'}\n");
+                    }else{
+                        Load();
+                        printf("{'COM':'line','value':'Red memory:'}\n");
+                        ShowMem();
+                    }
                 }
                 L_VERDE = 0;
                 L_AMARILLO = TIME % 2000 > 1000;
@@ -435,6 +417,7 @@ int main(int argc, char** argv) {
                     i = sd[j];
                     printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
                 }
+
             break;
             case RED_ST:
                 L_ROJO = 1;
@@ -483,12 +466,20 @@ int main(int argc, char** argv) {
                     printf("{'COM':'line','value':'initial mode'}\n");
                     TIME = 0;
                     fns = 1;
-                    status = INITIAL;
+                    status = GREEN_RELEASE_INITIAL;
                     int i,j;
                     for (i = 0;i < 5;i++){
                         j = fw[i];
                         printf("{'COM':'line','value':'S[ %04u ] : [%04u , %04u ]'}\n" ,j,amin[j],amax[j] );
                     }
+                }
+            break;
+            case GREEN_RELEASE_INITIAL:
+                L_VERDE = 1;
+                L_AMARILLO = 0;
+                L_ROJO = 0;
+                if (B_VERDE == 1){
+                    status = INITIAL;
                 }
             break;
             case INITIAL:
@@ -522,7 +513,41 @@ int main(int argc, char** argv) {
                 if (B_AMARILLO == 0){
                     status = WAIT;
                 }
-                if (B_ROJO == 0 and rf == 0){
+                if (B_ROJO == 0){
+                    MF = 0;
+                    uc old; CheckMem( &old );
+                    if (old == 0){
+                        RWM = 0;
+                        rcount = 0;
+                        status = WAIT_FRONT;
+                        printf("{'COM':'line','value':'Writing RED memory'}\n");
+                    }else{
+                        printf("{'COM':'line','value':'Selecting RED memory'}\n");
+                        MF = 0; uc old; CheckMem(&old);
+                        Load();
+                        printf("{'COM':'line','value':'RED memory:'}\n");
+                        ShowMem();                    
+                    }
+                    //status = WAIT;
+                }
+                if (B_VERDE == 0){
+                    MF = 1;
+                    uc old; CheckMem( &old );
+                    if (old == 0){
+                        RWM = 0;
+                        rcount = 0;
+                        status = WAIT_FRONT;
+                        printf("{'COM':'line','value':'Writing GREEN memory'}\n");
+                    }else{
+                        printf("{'COM':'line','value':'Selecting GREEN memory'}\n");
+                        MF = 1; uc old; CheckMem(&old);
+                        Load();
+                        printf("{'COM':'line','value':'GREEN memory:'}\n");
+                        ShowMem();   
+                    }
+                   // status = WAIT;
+                }
+                /*if (B_ROJO == 0 and rf == 0){
                     rf = 1;
                     test_kp -= 0.01;
                     printf("{'COM':'line','value':'kp = %f'}\n",test_kp);
@@ -531,60 +556,152 @@ int main(int argc, char** argv) {
                     gf = 1;
                     test_kp += 0.01;
                     printf("{'COM':'line','value':'kp = %f'}\n",test_kp);
-                }
-                if (B_ROJO == 1) rf = 0;
-                if (B_VERDE == 1) gf = 0;
+                }*/
+                //if (B_ROJO == 1) rf = 0;
+                //if (B_VERDE == 1) gf = 0;
             break;
             case WAIT:
                 L_VERDE = 1;
                 L_AMARILLO = 1;
                 L_ROJO = 1;
                 if (B_AMARILLO == 1){
-                    status = AVANZAR;
+                    status = NEW_AVANZAR;
+                    fns = 1;
                     TIME = 0;
                     TIME2 = 0;
                     TIME3 = 0;
+                    TIME4 = 0;
                     rcount = 0;
                     flag_line = 0;
                 }
+                if (B_VERDE == 0){
+                    EreaseAll();
+                    printf("{'COM':'line','value':'Memory erased'}\n");
+                    status = GREEN_RELEASE_INITIAL;
+                }
             break;
-            case AVANZAR:
-                /*L_VERDE = 1;//TIME % 1000 > 500;
-                L_AMARILLO = 1;
+            case WAIT_FRONT:
+                L_VERDE = 1;
+                L_AMARILLO = 0;
                 L_ROJO = 0;
-
-                EnhancedRead();
-                
-                ll a = Line();
-                ll b = a - prev2_line;
-                ll rt = a * test_kp + b * test_kd;
-                
-                ll am , bm;
-                if (rt > 0){
-                    am = LOW_SPEED - rt;
-                    bm = LOW_SPEED;
-                }else{
-                    am = LOW_SPEED;
-                    bm = LOW_SPEED + rt;
+                MotorsSpeed(0,0);
+                if (B_AMARILLO == 0){
+                    printf("{'COM':'line','value':'Writing rect %i'}\n",rcount);
+                    status = RECT_FRONT;
+                    TIME4 = 0;
+                    TIME3 = 0;
                 }
-                MotorsSpeed(am,bm);
-                prev2_line = a;
-                if (TIME > 500){
-                    TIME = 0;
-                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",a);
-                    printf("{'COM':'plot','name':'rt','value':%i,'color':(0,100,200)}\n",rt);
-                    printf("{'COM':'plot','name':'a','value':%i,'color':(100,0,200)}\n",am);
-                    printf("{'COM':'plot','name':'b','value':%i,'color':(100,0,200)}\n",bm);
+                if (B_ROJO == 0 and rcount > 0){
+                    printf("{'COM':'line','value':'Save data'}\n");
+                    TOTAL = rcount;
+                    Save();
+                    status = RELEASE_INIT;
                 }
-                if (B_ROJO == 0){
+            break;
+            case RELEASE_INIT:
+                L_VERDE = 1;
+                L_AMARILLO = 1;
+                L_ROJO = 1;
+                if (B_ROJO == 1){
                     status = INITIAL;
-                }*/
+                }
+            break;
+            case RECT_FRONT:
+                L_ROJO = 1;
+                L_AMARILLO = 1;
+                L_VERDE = 1;
+                
+                if (TIME3 > 5){
+                    EnhancedRead();
+                    Line();
+                    TIME3 = 0;
+                    AdvanceLow();
+                
+                    if (RSEE or LSEE){                    
+                        status = WAIT_FRONT;
+                        TIME = 0;
+                        LEN[rcount] = TIME4 / 40 / 6; // set on memory
+                        rcount ++ ;
+                       //printf("{'COM':'Settle','name':'Area %i','color':(100,100,255)}\n",rcount);
+                    }
+                }
+            break;
+            case NEW_AVANZAR:
+                if (fns){
+                    printf("{'COM':'line','value':'Entering rect f(%i) = (%i) (%i) (%i)'}\n" , rcount/ 2 , LEN[rcount/2],RECTTIME , STOPTIME);
+                    fns = 0;
+                }
                 if (B_ROJO == 0){
                     fns = 1;
                     status = INITIAL;
                 }
-                
 
+                if (TIME3 > 5){
+                    TIME3 = 0;
+                    EnhancedRead();
+                    Line();
+                    int speed;
+                    double kp , kd;
+                    int mod;
+
+                    if (rcount % 2 == 1){
+                        mod = CURVE;
+                    }else{
+                        if (TIME4/6 < RECTTIME){
+                            mod = FAST;
+                        }else if (TIME4/6 < STOPTIME and LEN[rcount/2] > 20){
+                            mod = MOD_STOP;
+                        }else{
+                            mod = NORMAL;
+                        }
+                    }
+                    speed = VEL[mod];
+                    kp = VKP[mod];
+                    kd = VKD[mod];
+                    der = line - last;
+                    formula = line * kp + der * kd;
+
+                    if (formula > 0){
+                        MotorsSpeed(speed - formula , speed);
+                    }else{
+                        MotorsSpeed(speed , speed + formula);
+                    }
+                    last = line;
+
+                    if (flag_line == 0){
+                        if (RSEE or LSEE){
+                            flag_line = 1;
+                            TIME = 0;
+                            TIME4 = 0;
+                            L_AMARILLO = !L_AMARILLO;
+                            rcount ++ ;
+                            if (rcount % 2 == 1){
+                                printf("{'COM':'line','value':'Entering curve'}\n");
+                            }else{
+                                printf("{'COM':'line','value':'Entering rect f(%i) = (%i) (%i) (%i)'}\n" , rcount/ 2 , LEN[rcount/2],RECTTIME , STOPTIME);
+                            }
+                            //printf("{'COM':'Settle','name':'Area %i','color':(100,100,255)}\n",rcount);
+                        }
+                    }
+                    if (flag_line == 1){
+                        if (TIME > 200*6 ){
+                            TIME = 0;
+                            flag_line = 0;
+                        }
+                    }
+                    if (rcount == TOTAL*2-1){
+                        fns = 1;
+                        status = INITIAL;
+                    }
+                }
+            break;
+
+
+            case AVANZAR:
+                if (B_ROJO == 0){
+                    fns = 1;
+                    status = INITIAL;
+                }
                 L_VERDE = 1;//TIME % 500 > 250;
                 //L_AMARILLO = 1;
                 L_ROJO = 0;
@@ -595,7 +712,12 @@ int main(int argc, char** argv) {
 
                     int speed;
                     double kp , kd;
-                    if (rcount % 2 == 0){
+                    int mod;
+
+                    if (RWM == 0){
+
+                    }
+                    /*if (rcount % 2 == 0){
                         speed = VEL[0];
                         kp = VKP[0];                
                         kd = VKD[0];
@@ -603,10 +725,9 @@ int main(int argc, char** argv) {
                         speed = VEL[1];
                         kp = VKP[1];
                         kd = VKD[1];
-                    }
+                    }*/
 
                     der = line - last;
-
                     formula = line * kp + der * kd;
 
                     if (formula > 0){
@@ -614,14 +735,12 @@ int main(int argc, char** argv) {
                     }else{
                         MotorsSpeed(speed , speed + formula);
                     }
-
                     if (flag_line == 0){
                         if (RSEE or LSEE){
                             flag_line = 1;
                             TIME = 0;
                             L_AMARILLO = !L_AMARILLO;
                             rcount ++ ;
-
                             //printf("{'COM':'Settle','name':'Area %i','color':(100,100,255)}\n",rcount);
                         }
                     }
