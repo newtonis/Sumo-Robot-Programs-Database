@@ -6339,7 +6339,7 @@ extern __nonreentrant void _delay3(unsigned char);
 
 enum {OUTPUT,INPUT};
 
-# 68
+# 71
 typedef long long ll;
 
 extern ll TIME;
@@ -6416,9 +6416,9 @@ switch (state){
 case INIT:
 
 # 76
-PORTDbits.RD2 = !PORTDbits.RD7;
-PORTDbits.RD3 = !PORTBbits.RB5;
-PORTDbits.RD4 = !PORTDbits.RD5;
+PORTDbits.RD2 = PORTDbits.RD7;
+PORTDbits.RD3 = PORTBbits.RB5;
+PORTDbits.RD4 = PORTDbits.RD7;
 
 if (PORTBbits.RB0 == 0){
 state = WAIT;

@@ -73,9 +73,9 @@ void main(void){
                     L_YELLOW = 0;
                     L_ORANGE = 1;
                 }*/
-                    L_RED = !PORTDbits.RD7;
-                    L_YELLOW = !IR0;
-                    L_ORANGE = !IR2;
+                    L_RED = IR_DER;
+                    L_YELLOW = IR_CEN;
+                    L_ORANGE = IR_DER;
 
                 if (B_ORANGE == 0){
                     state = WAIT;
