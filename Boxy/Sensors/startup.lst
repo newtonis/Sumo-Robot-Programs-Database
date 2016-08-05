@@ -1,12 +1,12 @@
 
 
-Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-                                                                                                           Mon Aug  1 03:00:48 2016
+Microchip Technology PIC Macro Assembler V1.38 build -256452561 
+                                                                                                           Fri Aug  5 19:05:36 2016
 
 
      1                           
-     2                           	; Microchip MPLAB XC8 C Compiler V1.34
-     3                           	; Copyright (C) 1984-2015 HI-TECH Software
+     2                           	; Microchip MPLAB XC8 C Compiler V1.38
+     3                           	; Copyright (C) 1984-2016 HI-TECH Software
      4                           
      5                           	; Auto-generated runtime startup code for final link stage.
      6                           
@@ -78,23 +78,23 @@ Microchip Technology PIC Macro Assembler V1.34 build -361300703
     72                           	ljmp start_initialization	;jump to C runtime clear & initialization
     73  0010  2811               
     74                           ; Config register CONFIG @ 0x2007
-    75                           ;	Watchdog Timer Enable bit
-    76                           ;	WDTE = OFF, WDT disabled
-    77                           ;	Power-up Timer Enable bit
-    78                           ;	PWRTE = OFF, PWRT disabled
-    79                           ;	Flash Program Memory Code Protection bit
-    80                           ;	CP = OFF, Code protection off
-    81                           ;	Brown-out Detect Enable bit
-    82                           ;	BOREN = OFF, BOD disabled
-    83                           ;	Low-Voltage Programming Enable bit
-    84                           ;	LVP = OFF, RB4/PGM pin has digital I/O function, HV on MCLR must be used for programming
-    85                           ;	RA5/MCLR/VPP Pin Function Select bit
-    86                           ;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD
+    75                           ;	Oscillator Selection bits
+    76                           ;	FOSC = INTOSCIO, INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/
+                                 CLKIN
+    77                           ;	Watchdog Timer Enable bit
+    78                           ;	WDTE = OFF, WDT disabled
+    79                           ;	Power-up Timer Enable bit
+    80                           ;	PWRTE = OFF, PWRT disabled
+    81                           ;	RA5/MCLR/VPP Pin Function Select bit
+    82                           ;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD
+    83                           ;	Brown-out Detect Enable bit
+    84                           ;	BOREN = OFF, BOD disabled
+    85                           ;	Low-Voltage Programming Enable bit
+    86                           ;	LVP = OFF, RB4/PGM pin has digital I/O function, HV on MCLR must be used for programming
     87                           ;	Data EE Memory Code Protection bit
     88                           ;	CPD = OFF, Data memory code protection off
-    89                           ;	Oscillator Selection bits
-    90                           ;	FOSC = INTOSCIO, INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/
-                                 CLKIN
+    89                           ;	Flash Program Memory Code Protection bit
+    90                           ;	CP = OFF, Code protection off
     91                           
     92                           	psect	config
     93                           		org 0x0
@@ -102,10 +102,10 @@ Microchip Technology PIC Macro Assembler V1.34 build -361300703
     95  2007  FF18               
 
 
-Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Mon Aug  1 03:00:48 2016
+Microchip Technology PIC Macro Assembler V1.38 build -256452561 
+Symbol Table                                                                                               Fri Aug  5 19:05:36 2016
 
-               ___sp 0000                 _main 00EF                 start 0010               stackhi 0000  
+               ___sp 0000                 _main 00F2                 start 0010               stackhi 0000  
              stacklo 0000  start_initialization 0011             ___int_sp 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
            intlevel5 0000             reset_vec 0000  

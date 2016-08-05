@@ -82,14 +82,27 @@ void init(void){
     
     ///// 0000
 }
+void SetDuty(int v){
+    // v goes from 0 to 100
+    //now goes from 0 to 78 
+    CCPR1L  = v / 4;
+}
 void configurar_pwm(void){
     T2CONbits.TMR2ON=1; // timer2 prendido
     T2CONbits.TOUTPS=0; // hasta 15
     T2CONbits.T2CKPS=0; // 00=1:1 01=1:4 1x=1:16
     TRISBbits.TRISB3=0; // pwm salida
     PR2=17;//26; // periodo 30Khz
-    CCPR1L=0; //apagado
-    CCP1CON=12;
+
+    // MENOR VALOR A MAYOR VALOR
+    // 78 -> 100 %
+
+    //SetDuty(7);
+    CCP1CON = 12; // 12
+    CCPR1L = 0x02;
+    //CCPR1L=0; //apagado
+    //CCP1CON=12;
+
 }
 void configurar_timer1(void){
     TMR1H=0xFC;
@@ -137,8 +150,10 @@ void interrupt t0_int(void){
 void sensores(){
     switch (estado){
         case INICIO:
-            CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
+            //CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
             //CCPR1L= valores[actual]; //prender pwm
+            TRISB3 = OUTPUT;
+
             T1CONbits.TMR1ON=1; //prender timer
             estado = PAUSA;
         break;
@@ -154,11 +169,12 @@ void sensores(){
         case LEER:
             read();
             contador = 0;
-            CCPR1L=0; //apagado pwm
+            TRISB3 = INPUT;
+            //CCPR1L=0; //apagado pwm
             estado = APAGADO;
         break;
         case APAGADO:
-            if(contador >= 50){
+            if(contador >= 10){
                 estado = INICIO;
             }
         break;

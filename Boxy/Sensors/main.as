@@ -1,4 +1,4 @@
-opt subtitle "Microchip Technology Omniscient Code Generator (Lite mode) build 201502162209"
+opt subtitle "Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010351"
 
 opt pagewidth 120
 
@@ -39,79 +39,79 @@ fsr0	equ	4
 c	equ	1
 z	equ	0
 pclath	equ	10
-# 51 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 51 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 INDF equ 00h ;# 
-# 57 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 57 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TMR0 equ 01h ;# 
-# 63 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 63 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PCL equ 02h ;# 
-# 69 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 69 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 STATUS equ 03h ;# 
-# 156 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 156 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 FSR equ 04h ;# 
-# 162 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 162 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PORTA equ 05h ;# 
-# 223 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 223 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PORTB equ 06h ;# 
-# 284 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 284 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PCLATH equ 0Ah ;# 
-# 303 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 303 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 INTCON equ 0Bh ;# 
-# 380 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 380 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PIR1 equ 0Ch ;# 
-# 436 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 436 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TMR1 equ 0Eh ;# 
-# 442 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 442 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TMR1L equ 0Eh ;# 
-# 448 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 448 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TMR1H equ 0Fh ;# 
-# 454 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 454 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 T1CON equ 010h ;# 
-# 512 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 512 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TMR2 equ 011h ;# 
-# 518 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 518 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 T2CON equ 012h ;# 
-# 588 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 588 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 CCPR1 equ 015h ;# 
-# 594 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 594 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 CCPR1L equ 015h ;# 
-# 600 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 600 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 CCPR1H equ 016h ;# 
-# 606 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 606 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 CCP1CON equ 017h ;# 
-# 663 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 663 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 RCSTA equ 018h ;# 
-# 733 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 733 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TXREG equ 019h ;# 
-# 739 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 739 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 RCREG equ 01Ah ;# 
-# 745 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 745 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 CMCON equ 01Fh ;# 
-# 814 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 814 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 OPTION_REG equ 081h ;# 
-# 883 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 883 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TRISA equ 085h ;# 
-# 944 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 944 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TRISB equ 086h ;# 
-# 1005 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1005 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PIE1 equ 08Ch ;# 
-# 1061 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1061 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PCON equ 08Eh ;# 
-# 1109 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1109 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 PR2 equ 092h ;# 
-# 1115 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1115 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 TXSTA equ 098h ;# 
-# 1171 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1171 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 SPBRG equ 099h ;# 
-# 1177 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1177 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 EEDATA equ 09Ah ;# 
-# 1183 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1183 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 EEADR equ 09Bh ;# 
-# 1189 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1189 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 EECON1 equ 09Ch ;# 
-# 1226 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1226 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 EECON2 equ 09Dh ;# 
-# 1232 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
+# 1232 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
 VRCON equ 09Fh ;# 
 	FNCALL	_main,_configurar_IO
 	FNCALL	_main,_configurar_pwm
@@ -143,8 +143,6 @@ __pidataBANK0:
 	global	_estado
 	global	_CCP1CON
 _CCP1CON	set	0x17
-	global	_CCPR1H
-_CCPR1H	set	0x16
 	global	_CCPR1L
 _CCPR1L	set	0x15
 	global	_CMCON
@@ -196,22 +194,22 @@ _TRISB5	set	0x435
 	global	_TRISB6
 _TRISB6	set	0x436
 ; #config settings
+global __CFG_FOSC$INTOSCIO
+__CFG_FOSC$INTOSCIO equ 0x0
 global __CFG_WDTE$OFF
 __CFG_WDTE$OFF equ 0x0
 global __CFG_PWRTE$OFF
 __CFG_PWRTE$OFF equ 0x0
-global __CFG_CP$OFF
-__CFG_CP$OFF equ 0x0
+global __CFG_MCLRE$OFF
+__CFG_MCLRE$OFF equ 0x0
 global __CFG_BOREN$OFF
 __CFG_BOREN$OFF equ 0x0
 global __CFG_LVP$OFF
 __CFG_LVP$OFF equ 0x0
-global __CFG_MCLRE$OFF
-__CFG_MCLRE$OFF equ 0x0
 global __CFG_CPD$OFF
 __CFG_CPD$OFF equ 0x0
-global __CFG_FOSC$INTOSCIO
-__CFG_FOSC$INTOSCIO equ 0x0
+global __CFG_CP$OFF
+__CFG_CP$OFF equ 0x0
 	file	"main.as"
 	line	#
 psect cinit,class=CODE,delta=2
@@ -254,22 +252,6 @@ _valores:
 
 	file	"main.as"
 	line	#
-; Clear objects allocated to COMMON
-psect cinit,class=CODE,delta=2,merge=1
-	clrf	((__pbssCOMMON)+0)&07Fh
-	clrf	((__pbssCOMMON)+1)&07Fh
-	clrf	((__pbssCOMMON)+2)&07Fh
-	clrf	((__pbssCOMMON)+3)&07Fh
-	clrf	((__pbssCOMMON)+4)&07Fh
-	clrf	((__pbssCOMMON)+5)&07Fh
-; Clear objects allocated to BANK0
-psect cinit,class=CODE,delta=2,merge=1
-	clrf	((__pbssBANK0)+0)&07Fh
-	clrf	((__pbssBANK0)+1)&07Fh
-	clrf	((__pbssBANK0)+2)&07Fh
-	clrf	((__pbssBANK0)+3)&07Fh
-	clrf	((__pbssBANK0)+4)&07Fh
-	line	#
 ; Initialize objects allocated to BANK0
 	global __pidataBANK0
 psect cinit,class=CODE,delta=2,merge=1
@@ -283,44 +265,61 @@ psect cinit,class=CODE,delta=2,merge=1
 	movwf	__pdataBANK0+3&07fh		
 	fcall	__pidataBANK0+4		;fetch initializer
 	movwf	__pdataBANK0+4&07fh		
+	line	#
+; Clear objects allocated to BANK0
+psect cinit,class=CODE,delta=2,merge=1
+	clrf	((__pbssBANK0)+0)&07Fh
+	clrf	((__pbssBANK0)+1)&07Fh
+	clrf	((__pbssBANK0)+2)&07Fh
+	clrf	((__pbssBANK0)+3)&07Fh
+	clrf	((__pbssBANK0)+4)&07Fh
+; Clear objects allocated to COMMON
+psect cinit,class=CODE,delta=2,merge=1
+	clrf	((__pbssCOMMON)+0)&07Fh
+	clrf	((__pbssCOMMON)+1)&07Fh
+	clrf	((__pbssCOMMON)+2)&07Fh
+	clrf	((__pbssCOMMON)+3)&07Fh
+	clrf	((__pbssCOMMON)+4)&07Fh
+	clrf	((__pbssCOMMON)+5)&07Fh
 psect cinit,class=CODE,delta=2,merge=1
 global end_of_initialization,__end_of__initialization
 
 ;End of C runtime variable initialization code
 
 end_of_initialization:
-__end_of__initialization:clrf status
+__end_of__initialization:
+clrf status
 ljmp _main	;jump to C main() function
 psect	cstackCOMMON,class=COMMON,space=1,noexec
 global __pcstackCOMMON
 __pcstackCOMMON:
-?_init:	; 0 bytes @ 0x0
-?_configurar_IO:	; 0 bytes @ 0x0
-?_configurar_pwm:	; 0 bytes @ 0x0
-?_configurar_timer1:	; 0 bytes @ 0x0
-?_configurar_timer0:	; 0 bytes @ 0x0
-?_sensores:	; 0 bytes @ 0x0
-?_read:	; 0 bytes @ 0x0
-?_t0_int:	; 0 bytes @ 0x0
-??_t0_int:	; 0 bytes @ 0x0
+?_init:	; 1 bytes @ 0x0
+?_configurar_IO:	; 1 bytes @ 0x0
+?_configurar_pwm:	; 1 bytes @ 0x0
+?_configurar_timer1:	; 1 bytes @ 0x0
+?_configurar_timer0:	; 1 bytes @ 0x0
+?_sensores:	; 1 bytes @ 0x0
+?_read:	; 1 bytes @ 0x0
+?_t0_int:	; 1 bytes @ 0x0
+??_t0_int:	; 1 bytes @ 0x0
 	ds	5
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-??_init:	; 0 bytes @ 0x0
-??_configurar_IO:	; 0 bytes @ 0x0
-??_configurar_pwm:	; 0 bytes @ 0x0
-??_configurar_timer1:	; 0 bytes @ 0x0
-??_configurar_timer0:	; 0 bytes @ 0x0
-??_sensores:	; 0 bytes @ 0x0
-??_read:	; 0 bytes @ 0x0
+??_init:	; 1 bytes @ 0x0
+??_configurar_IO:	; 1 bytes @ 0x0
+??_configurar_pwm:	; 1 bytes @ 0x0
+??_configurar_timer1:	; 1 bytes @ 0x0
+??_configurar_timer0:	; 1 bytes @ 0x0
+??_sensores:	; 1 bytes @ 0x0
+??_read:	; 1 bytes @ 0x0
 	ds	1
 ?_main:	; 2 bytes @ 0x1
 main@argc:	; 2 bytes @ 0x1
 	ds	2
 main@argv:	; 2 bytes @ 0x3
 	ds	2
-??_main:	; 0 bytes @ 0x5
+??_main:	; 1 bytes @ 0x5
 ;!
 ;!Data Sizes:
 ;!    Strings     0
@@ -514,43 +513,43 @@ _main:
 ; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	62
 	
-l855:	
+l833:	
 	fcall	_init
 	line	63
 	
-l857:	
+l835:	
 	fcall	_configurar_IO
 	line	64
 	
-l859:	
+l837:	
 	fcall	_configurar_pwm
 	line	65
 	
-l861:	
+l839:	
 	fcall	_configurar_timer1
 	line	66
 	
-l863:	
+l841:	
 	fcall	_configurar_timer0
-	goto	l865
+	goto	l843
 	line	67
 	
-l85:	
+l83:	
 	line	68
 	
-l865:	
+l843:	
 	fcall	_sensores
-	goto	l865
+	goto	l843
 	line	69
 	
-l86:	
+l84:	
 	line	67
-	goto	l865
+	goto	l843
 	
-l87:	
+l85:	
 	line	70
 	
-l88:	
+l86:	
 	global	start
 	ljmp	start
 	opt stack 0
@@ -567,7 +566,7 @@ GLOBAL	__end_of_main
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
 ;; Tracked objects:
@@ -604,147 +603,144 @@ _sensores:
 ; Regs used in _sensores: [wreg-fsr0h+status,2+status,0+pclath+cstack]
 	line	137
 	
-l813:	
-	goto	l849
+l799:	
+	goto	l827
 	line	138
 	
-l110:	
-	line	139
-	
-l815:	
-	movlw	low(01h)
+l108:	
+	line	141
+	bsf	status, 5	;RP0=1, select bank1
+	bcf	status, 6	;RP1=0, select bank1
+	bcf	(1075/8)^080h,(1075)&7	;volatile
+	line	142
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
-	movwf	(21)	;volatile
-	line	141
-	
-l817:	
 	bsf	(16),0	;volatile
-	line	142
-	
-l819:	
+	line	143
 	clrf	(_estado)
 	incf	(_estado),f
-	line	143
-	
-l821:	
-	clrf	(_cnt)
-	clrf	(_cnt+1)
 	line	144
 	
-l823:	
-	clrf	(_contador)
+l801:	
+	clrf	(_cnt)
+	clrf	(_cnt+1)
 	line	145
-	goto	l117
+	clrf	(_contador)
 	line	146
+	goto	l115
+	line	147
 	
-l112:	
-	line	149
+l110:	
+	line	150
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	btfss	(12),0	;volatile
 	goto	u231
 	goto	u230
 u231:
-	goto	l117
+	goto	l115
 u230:
-	line	150
-	
-l825:	
-	bcf	(12),0	;volatile
 	line	151
-	bcf	(16),0	;volatile
-	line	152
 	
-l827:	
+l803:	
+	bcf	(12),0	;volatile
+	line	152
+	bcf	(16),0	;volatile
+	line	153
+	
+l805:	
 	movlw	low(0FCh)
 	movwf	(15)	;volatile
-	line	153
+	line	154
 	movlw	low(017h)
 	movwf	(14)	;volatile
-	line	154
+	line	155
 	movlw	low(02h)
 	movwf	(??_sensores+0)+0
 	movf	(??_sensores+0)+0,w
 	movwf	(_estado)
-	goto	l117
-	line	155
-	
-l113:	
+	goto	l115
 	line	156
-	goto	l117
-	line	157
 	
-l114:	
+l111:	
+	line	157
+	goto	l115
 	line	158
 	
-l829:	
-	fcall	_read
+l112:	
 	line	159
 	
-l831:	
+l807:	
+	fcall	_read
+	line	160
+	
+l809:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(12),0	;volatile
-	line	160
-	
-l833:	
-	bcf	(16),0	;volatile
 	line	161
 	
-l835:	
-	clrf	(_contador)
+l811:	
+	bcf	(16),0	;volatile
 	line	162
 	
-l837:	
-	clrf	(21)	;volatile
-	line	163
+l813:	
+	clrf	(_contador)
+	line	164
 	
-l839:	
+l815:	
+	bsf	status, 5	;RP0=1, select bank1
+	bcf	status, 6	;RP1=0, select bank1
+	bsf	(1075/8)^080h,(1075)&7	;volatile
+	line	165
+	
+l817:	
 	movlw	low(03h)
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
 	movwf	(??_sensores+0)+0
 	movf	(??_sensores+0)+0,w
 	movwf	(_estado)
-	line	164
-	
-l841:	
-	clrf	(_cnt)
-	clrf	(_cnt+1)
-	line	165
-	goto	l117
 	line	166
 	
-l115:	
+l819:	
+	clrf	(_cnt)
+	clrf	(_cnt+1)
 	line	167
+	goto	l115
+	line	168
 	
-l843:	
-	movlw	low(05h)
+l113:	
+	line	169
+	
+l821:	
+	movlw	low(0Ah)
 	subwf	(_contador),w
 	skipc
 	goto	u241
 	goto	u240
 u241:
-	goto	l117
+	goto	l115
 u240:
-	line	168
-	
-l845:	
-	clrf	(_estado)
-	goto	l117
-	line	169
-	
-l116:	
 	line	170
-	goto	l117
+	
+l823:	
+	clrf	(_estado)
+	goto	l115
 	line	171
 	
-l847:	
-	goto	l117
+l114:	
+	line	172
+	goto	l115
+	line	173
+	
+l825:	
+	goto	l115
 	line	137
 	
-l109:	
+l107:	
 	
-l849:	
+l827:	
 	movf	(_estado),w
 	; Switch size 1, requested type "space"
 ; Number of cases is 4, Range of values is 0 to 3
@@ -759,44 +755,44 @@ l849:
 	movlw	4
 	subwf	fsr,w
 skipnc
-goto l117
-movlw high(S887)
+goto l115
+movlw high(S865)
 movwf pclath
-	movlw low(S887)
+	movlw low(S865)
 	addwf fsr,w
 	movwf pc
 psect	swtext1,local,class=CONST,delta=2
 global __pswtext1
 __pswtext1:
-S887:
-	ljmp	l815
-	ljmp	l112
-	ljmp	l829
-	ljmp	l843
+S865:
+	ljmp	l108
+	ljmp	l110
+	ljmp	l807
+	ljmp	l821
 psect	text1
 
-	line	171
+	line	173
 	
-l111:	
-	line	172
+l109:	
+	line	174
 	
-l117:	
+l115:	
 	return
 	opt stack 0
 GLOBAL	__end_of_sensores
 	__end_of_sensores:
-	signat	_sensores,88
+	signat	_sensores,89
 	global	_read
 
 ;; *************** function _read *****************
 ;; Defined at:
-;;		line 173 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 175 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		None
 ;; Tracked objects:
@@ -818,12 +814,12 @@ GLOBAL	__end_of_sensores
 ;; This function uses a non-reentrant model
 ;;
 psect	text2,local,class=CODE,delta=2,merge=1
-	line	173
+	line	175
 global __ptext2
 __ptext2:	;psect for function _read
 psect	text2
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	173
+	line	175
 	global	__size_of_read
 	__size_of_read	equ	__end_of_read-_read
 	
@@ -831,9 +827,9 @@ _read:
 ;incstack = 0
 	opt	stack 5
 ; Regs used in _read: []
-	line	174
+	line	176
 	
-l757:	
+l745:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	btfsc	(5),0	;volatile
@@ -850,7 +846,7 @@ u130:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),0	;volatile
 u144:
-	line	175
+	line	177
 	btfsc	(5),1	;volatile
 	goto	u151
 	goto	u150
@@ -865,7 +861,7 @@ u150:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),4	;volatile
 u164:
-	line	176
+	line	178
 	btfsc	(5),2	;volatile
 	goto	u171
 	goto	u170
@@ -880,7 +876,7 @@ u170:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),5	;volatile
 u184:
-	line	177
+	line	179
 	btfsc	(5),3	;volatile
 	goto	u191
 	goto	u190
@@ -895,7 +891,7 @@ u190:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),6	;volatile
 u204:
-	line	178
+	line	180
 	btfsc	(5),4	;volatile
 	goto	u211
 	goto	u210
@@ -910,14 +906,14 @@ u210:
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(6),7	;volatile
 u224:
-	line	179
+	line	181
 	
-l120:	
+l118:	
 	return
 	opt stack 0
 GLOBAL	__end_of_read
 	__end_of_read:
-	signat	_read,88
+	signat	_read,89
 	global	_init
 
 ;; *************** function _init *****************
@@ -928,7 +924,7 @@ GLOBAL	__end_of_read
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		wreg, status,2
 ;; Tracked objects:
@@ -965,42 +961,35 @@ _init:
 ; Regs used in _init: [wreg+status,2]
 	line	74
 	
-l759:	
+l747:	
 	movlw	low(07h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(31)	;volatile
 	line	75
 	
-l761:	
+l749:	
 	clrf	(_contador)
 	line	76
 	
-l763:	
+l751:	
 	clrf	(_estado)
 	line	77
 	
-l765:	
+l753:	
 	clrf	(_ciclos)
 	line	78
 	
-l767:	
+l755:	
 	clrf	(_actual)
-	line	79
-	movlw	low(03h)
-	movwf	(21)	;volatile
-	line	80
-	
-l769:	
-	clrf	(22)	;volatile
 	line	83
 	
-l91:	
+l89:	
 	return
 	opt stack 0
 GLOBAL	__end_of_init
 	__end_of_init:
-	signat	_init,88
+	signat	_init,89
 	global	_configurar_timer1
 
 ;; *************** function _configurar_timer1 *****************
@@ -1011,7 +1000,7 @@ GLOBAL	__end_of_init
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
@@ -1048,7 +1037,7 @@ _configurar_timer1:
 ; Regs used in _configurar_timer1: [wreg+status,2+status,0]
 	line	94
 	
-l785:	
+l771:	
 	movlw	low(0FCh)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
@@ -1058,49 +1047,49 @@ l785:
 	movwf	(14)	;volatile
 	line	97
 	
-l787:	
+l773:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(140)^080h,0	;volatile
 	line	98
 	
-l789:	
+l775:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bcf	(12),0	;volatile
 	line	100
 	
-l791:	
+l777:	
 	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
 	andwf	(16),f	;volatile
 	line	102
 	
-l793:	
+l779:	
 	bsf	(16),2	;volatile
 	line	103
 	
-l795:	
+l781:	
 	bcf	(16),3	;volatile
 	line	104
 	
-l797:	
+l783:	
 	bcf	(16),1	;volatile
 	line	105
 	
-l799:	
+l785:	
 	bcf	(16),0	;volatile
 	line	106
 	
-l801:	
+l787:	
 	bsf	(16),0	;volatile
 	line	107
 	
-l97:	
+l95:	
 	return
 	opt stack 0
 GLOBAL	__end_of_configurar_timer1
 	__end_of_configurar_timer1:
-	signat	_configurar_timer1,88
+	signat	_configurar_timer1,89
 	global	_configurar_timer0
 
 ;; *************** function _configurar_timer0 *****************
@@ -1111,7 +1100,7 @@ GLOBAL	__end_of_configurar_timer1
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
@@ -1148,7 +1137,7 @@ _configurar_timer0:
 ; Regs used in _configurar_timer0: [wreg+status,2+status,0]
 	line	109
 	
-l803:	
+l789:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(129)^080h,5	;volatile
@@ -1156,31 +1145,31 @@ l803:
 	bcf	(129)^080h,3	;volatile
 	line	111
 	
-l805:	
+l791:	
 	movf	(129)^080h,w	;volatile
 	andlw	not (((1<<3)-1)<<0)
 	iorlw	(01h & ((1<<3)-1))<<0
 	movwf	(129)^080h	;volatile
 	line	113
 	
-l807:	
+l793:	
 	bcf	(11),2	;volatile
 	line	114
 	
-l809:	
+l795:	
 	bsf	(11),5	;volatile
 	line	115
 	
-l811:	
+l797:	
 	bsf	(11),7	;volatile
 	line	116
 	
-l100:	
+l98:	
 	return
 	opt stack 0
 GLOBAL	__end_of_configurar_timer0
 	__end_of_configurar_timer0:
-	signat	_configurar_timer0,88
+	signat	_configurar_timer0,89
 	global	_configurar_pwm
 
 ;; *************** function _configurar_pwm *****************
@@ -1191,7 +1180,7 @@ GLOBAL	__end_of_configurar_timer0
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
@@ -1228,13 +1217,13 @@ _configurar_pwm:
 ; Regs used in _configurar_pwm: [wreg+status,2+status,0]
 	line	85
 	
-l773:	
+l759:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	bsf	(18),2	;volatile
 	line	86
 	
-l775:	
+l761:	
 	movlw	((0 & ((1<<4)-1))<<3)|not (((1<<4)-1)<<3)
 	andwf	(18),f	;volatile
 	line	87
@@ -1242,34 +1231,35 @@ l775:
 	andwf	(18),f	;volatile
 	line	88
 	
-l777:	
+l763:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(134)^080h,3	;volatile
 	line	89
 	
-l779:	
+l765:	
 	movlw	low(011h)
 	movwf	(146)^080h	;volatile
 	line	90
 	
-l781:	
+l767:	
+	movlw	low(01h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
-	clrf	(21)	;volatile
+	movwf	(21)	;volatile
 	line	91
 	
-l783:	
+l769:	
 	movlw	low(0Ch)
 	movwf	(23)	;volatile
 	line	92
 	
-l94:	
+l92:	
 	return
 	opt stack 0
 GLOBAL	__end_of_configurar_pwm
 	__end_of_configurar_pwm:
-	signat	_configurar_pwm,88
+	signat	_configurar_pwm,89
 	global	_configurar_IO
 
 ;; *************** function _configurar_IO *****************
@@ -1280,7 +1270,7 @@ GLOBAL	__end_of_configurar_pwm
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		None
 ;; Tracked objects:
@@ -1317,7 +1307,7 @@ _configurar_IO:
 ; Regs used in _configurar_IO: []
 	line	118
 	
-l771:	
+l757:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(1075/8)^080h,(1075)&7	;volatile
@@ -1343,12 +1333,12 @@ l771:
 	bcf	(1071/8)^080h,(1071)&7	;volatile
 	line	131
 	
-l103:	
+l101:	
 	return
 	opt stack 0
 GLOBAL	__end_of_configurar_IO
 	__end_of_configurar_IO:
-	signat	_configurar_IO,88
+	signat	_configurar_IO,89
 	global	_t0_int
 
 ;; *************** function _t0_int *****************
@@ -1359,7 +1349,7 @@ GLOBAL	__end_of_configurar_IO
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;		None               void
+;;                  1    wreg      void 
 ;; Registers used:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
@@ -1415,18 +1405,18 @@ interrupt_function:
 psect	text8
 	line	133
 	
-i1l697:	
+i1l685:	
 	bcf	(11),2	;volatile
 	line	134
 	
-i1l699:	
+i1l687:	
 	movlw	low(01h)
 	movwf	(??_t0_int+0)+0
 	movf	(??_t0_int+0)+0,w
 	addwf	(_contador),f
 	line	135
 	
-i1l106:	
+i1l104:	
 	movf	(??_t0_int+4),w
 	movwf	btemp+1
 	movf	(??_t0_int+3),w
@@ -1441,7 +1431,7 @@ i1l106:
 	opt stack 0
 GLOBAL	__end_of_t0_int
 	__end_of_t0_int:
-	signat	_t0_int,88
+	signat	_t0_int,89
 global	___latbits
 ___latbits	equ	0
 	global	btemp

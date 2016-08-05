@@ -1,6 +1,6 @@
 
-	; Microchip MPLAB XC8 C Compiler V1.34
-	; Copyright (C) 1984-2015 HI-TECH Software
+	; Microchip MPLAB XC8 C Compiler V1.38
+	; Copyright (C) 1984-2016 HI-TECH Software
 
 	; Auto-generated runtime startup code for final link stage.
 
@@ -73,22 +73,22 @@ start
 	ljmp start_initialization	;jump to C runtime clear & initialization
 
 ; Config register CONFIG @ 0x2007
+;	Oscillator Selection bits
+;	FOSC = INTOSCIO, INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN
 ;	Watchdog Timer Enable bit
 ;	WDTE = OFF, WDT disabled
 ;	Power-up Timer Enable bit
 ;	PWRTE = OFF, PWRT disabled
-;	Flash Program Memory Code Protection bit
-;	CP = OFF, Code protection off
+;	RA5/MCLR/VPP Pin Function Select bit
+;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD
 ;	Brown-out Detect Enable bit
 ;	BOREN = OFF, BOD disabled
 ;	Low-Voltage Programming Enable bit
 ;	LVP = OFF, RB4/PGM pin has digital I/O function, HV on MCLR must be used for programming
-;	RA5/MCLR/VPP Pin Function Select bit
-;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD
 ;	Data EE Memory Code Protection bit
 ;	CPD = OFF, Data memory code protection off
-;	Oscillator Selection bits
-;	FOSC = INTOSCIO, INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function on RA7/OSC1/CLKIN
+;	Flash Program Memory Code Protection bit
+;	CP = OFF, Code protection off
 
 	psect	config
 		org 0x0

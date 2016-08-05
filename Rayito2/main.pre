@@ -5985,14 +5985,8 @@ if (PORTDbits.RD6 == 0){
 fns = 1;
 status = INITIAL;
 }
-if (TIME5 > 400){
-TIME5 = 0;
-printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
-for (j = 0;j < 2;j++){
-i = sd[j];
-printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,P[i],( ( (i*i)*(5*5)*36 )%256),( ( (i*i)*(1*1)*36 )%256),( ( (i*i)*(3*3)*36 )%256));
-}
-}
+
+# 649
 if (TIME3 > 10){
 TIME3 = 0;
 EnhancedRead();

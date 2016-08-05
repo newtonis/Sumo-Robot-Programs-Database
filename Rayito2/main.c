@@ -638,14 +638,14 @@ int main(int argc, char** argv) {
                     fns = 1;
                     status = INITIAL;
                 }
-                if (TIME5 > 400){
+                /*if (TIME5 > 6000){
                     TIME5 = 0;
                     printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
                     for (j = 0;j < 2;j++){
                         i = sd[j];
                         printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,P[i],Rand(i,5),Rand(i,1),Rand(i,3));
                     }
-                }
+                }*/
                 if (TIME3 > 10){
                     TIME3 = 0;
                     EnhancedRead();

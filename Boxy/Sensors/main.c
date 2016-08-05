@@ -76,8 +76,8 @@ void init(void){
     estado = INICIO;
     ciclos = 0;
     actual = 0;
-    CCPR1L = 0x03; //IN_DIS ? CERCA : LEJOS;
-    CCPR1H = 0x00; // valores[actual]; //prender pwm
+    //CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
+    //CCPR1H = 0x00; // valores[actual]; //prender pwm
 
     ///// 0000
 }
@@ -87,7 +87,7 @@ void configurar_pwm(void){
     T2CONbits.T2CKPS=0; // 00=1:1 01=1:4 1x=1:16
     TRISBbits.TRISB3=0; // pwm salida
     PR2=17;//26; // periodo 30Khz
-    CCPR1L=0; //apagado
+    CCPR1L=0x01; //apagado
     CCP1CON=12;
 }
 void configurar_timer1(void){
@@ -136,8 +136,9 @@ void interrupt t0_int(void){
 void sensores(){
     switch (estado){
         case INICIO:
-            CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
+           // CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
             //CCPR1H = 0x00; // valores[actual]; //prender pwm
+            TRISB3 = OUTPUT;
             T1CONbits.TMR1ON=1; //prender timer
             estado = PAUSA;
             cnt = 0;
@@ -159,12 +160,13 @@ void sensores(){
             PIR1bits.TMR1IF=0; //borro desborde
             T1CONbits.TMR1ON=0; //apagar timer
             contador = 0;
-            CCPR1L=0; //apagado pwm
+            //CCPR1L=0; //apagado pwm
+            TRISB3 = INPUT;
             estado = APAGADO;
             cnt = 0;
         break;
         case APAGADO:
-            if(contador >= 5){
+            if(contador >= 10){
                 estado = INICIO;
             }
         break;

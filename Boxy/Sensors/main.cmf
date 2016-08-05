@@ -13,21 +13,21 @@
 %PSECTS
 $main.obj
 cinit CODE 0 11 11 17 2
-text1 CODE 0 28 28 3B 2
-text2 CODE 0 63 63 30 2
-text3 CODE 0 D7 D7 C 2
-text4 CODE 0 93 93 14 2
-text5 CODE 0 E3 E3 C 2
-text6 CODE 0 A7 A7 12 2
-text7 CODE 0 C9 C9 E 2
-text8 CODE 0 B9 B9 10 2
-maintext CODE 0 EF EF 7 2
+text1 CODE 0 28 28 40 2
+text2 CODE 0 68 68 30 2
+text3 CODE 0 E9 E9 9 2
+text4 CODE 0 98 98 14 2
+text5 CODE 0 DD DD C 2
+text6 CODE 0 AC AC 13 2
+text7 CODE 0 CF CF E 2
+text8 CODE 0 BF BF 10 2
+maintext CODE 0 F2 F2 7 2
 cstackCOMMON COMMON 1 76 76 5 1
 cstackBANK0 BANK0 1 2A 2A 5 1
 intentry CODE 0 4 4 C 2
 bssBANK0 BANK0 1 20 20 5 1
-idataBANK0 CODE 0 F6 F6 5 2
-swtext1 CONST 0 FB FB 4 2
+idataBANK0 CODE 0 F9 F9 5 2
+swtext1 CONST 0 100 100 4 2
 dataBANK0 BANK0 1 25 25 5 1
 bssCOMMON COMMON 1 70 70 6 1
 $startup.obj
@@ -47,13 +47,16 @@ BANK0 2F-6F 1
 BANK1 A0-EF 1
 BANK2 120-14F 1
 CONST 1-3 2
-CONST FF-7FF 2
+CONST FE-FF 2
+CONST 104-7FF 2
 ENTRY 1-3 2
-ENTRY FF-7FF 2
+ENTRY FE-FF 2
+ENTRY 104-7FF 2
 IDLOC 2000-2003 2
 STACK A0-EF 1
 CODE 1-3 2
-CODE FF-7FF 2
+CODE FE-FF 2
+CODE 104-7FF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-11F 1
@@ -61,9 +64,11 @@ SFR3 180-1EF 1
 COMMON 7B-7D 1
 EEDATA 2100-217F 2
 STRCODE 1-3 2
-STRCODE FF-7FF 2
+STRCODE FE-FF 2
+STRCODE 104-7FF 2
 STRING 1-3 2
-STRING FF-7FF 2
+STRING FE-FF 2
+STRING 104-7FF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -78,134 +83,135 @@ STRING FF-7FF 2
 # All other numeric values are in decimal.
 %LINETAB
 $main.obj
-4 intentry CODE >132:/home/newtonis/Robots/Boxy/Sensors/main.c
-11 cinit CODE >219:/home/newtonis/Robots/Boxy/Sensors/main.as
-11 cinit CODE >222:/home/newtonis/Robots/Boxy/Sensors/main.as
-11 cinit CODE >259:/home/newtonis/Robots/Boxy/Sensors/main.as
-12 cinit CODE >260:/home/newtonis/Robots/Boxy/Sensors/main.as
-13 cinit CODE >261:/home/newtonis/Robots/Boxy/Sensors/main.as
-14 cinit CODE >262:/home/newtonis/Robots/Boxy/Sensors/main.as
-15 cinit CODE >263:/home/newtonis/Robots/Boxy/Sensors/main.as
-16 cinit CODE >264:/home/newtonis/Robots/Boxy/Sensors/main.as
-17 cinit CODE >267:/home/newtonis/Robots/Boxy/Sensors/main.as
-18 cinit CODE >268:/home/newtonis/Robots/Boxy/Sensors/main.as
-19 cinit CODE >269:/home/newtonis/Robots/Boxy/Sensors/main.as
-1A cinit CODE >270:/home/newtonis/Robots/Boxy/Sensors/main.as
+11 cinit CODE >217:/home/newtonis/Robots/Boxy/Sensors/main.as
+11 cinit CODE >220:/home/newtonis/Robots/Boxy/Sensors/main.as
+11 cinit CODE >258:/home/newtonis/Robots/Boxy/Sensors/main.as
+12 cinit CODE >259:/home/newtonis/Robots/Boxy/Sensors/main.as
+13 cinit CODE >260:/home/newtonis/Robots/Boxy/Sensors/main.as
+14 cinit CODE >261:/home/newtonis/Robots/Boxy/Sensors/main.as
+15 cinit CODE >262:/home/newtonis/Robots/Boxy/Sensors/main.as
+16 cinit CODE >263:/home/newtonis/Robots/Boxy/Sensors/main.as
+17 cinit CODE >264:/home/newtonis/Robots/Boxy/Sensors/main.as
+18 cinit CODE >265:/home/newtonis/Robots/Boxy/Sensors/main.as
+19 cinit CODE >266:/home/newtonis/Robots/Boxy/Sensors/main.as
+1A cinit CODE >267:/home/newtonis/Robots/Boxy/Sensors/main.as
 1B cinit CODE >271:/home/newtonis/Robots/Boxy/Sensors/main.as
-1C cinit CODE >276:/home/newtonis/Robots/Boxy/Sensors/main.as
-1D cinit CODE >277:/home/newtonis/Robots/Boxy/Sensors/main.as
-1E cinit CODE >278:/home/newtonis/Robots/Boxy/Sensors/main.as
-1F cinit CODE >279:/home/newtonis/Robots/Boxy/Sensors/main.as
-20 cinit CODE >280:/home/newtonis/Robots/Boxy/Sensors/main.as
-21 cinit CODE >281:/home/newtonis/Robots/Boxy/Sensors/main.as
-22 cinit CODE >282:/home/newtonis/Robots/Boxy/Sensors/main.as
-23 cinit CODE >283:/home/newtonis/Robots/Boxy/Sensors/main.as
-24 cinit CODE >284:/home/newtonis/Robots/Boxy/Sensors/main.as
-25 cinit CODE >285:/home/newtonis/Robots/Boxy/Sensors/main.as
+1C cinit CODE >272:/home/newtonis/Robots/Boxy/Sensors/main.as
+1D cinit CODE >273:/home/newtonis/Robots/Boxy/Sensors/main.as
+1E cinit CODE >274:/home/newtonis/Robots/Boxy/Sensors/main.as
+1F cinit CODE >275:/home/newtonis/Robots/Boxy/Sensors/main.as
+20 cinit CODE >278:/home/newtonis/Robots/Boxy/Sensors/main.as
+21 cinit CODE >279:/home/newtonis/Robots/Boxy/Sensors/main.as
+22 cinit CODE >280:/home/newtonis/Robots/Boxy/Sensors/main.as
+23 cinit CODE >281:/home/newtonis/Robots/Boxy/Sensors/main.as
+24 cinit CODE >282:/home/newtonis/Robots/Boxy/Sensors/main.as
+25 cinit CODE >283:/home/newtonis/Robots/Boxy/Sensors/main.as
+26 cinit CODE >289:/home/newtonis/Robots/Boxy/Sensors/main.as
 26 cinit CODE >291:/home/newtonis/Robots/Boxy/Sensors/main.as
-26 cinit CODE >292:/home/newtonis/Robots/Boxy/Sensors/main.as
-27 cinit CODE >293:/home/newtonis/Robots/Boxy/Sensors/main.as
+27 cinit CODE >292:/home/newtonis/Robots/Boxy/Sensors/main.as
+4 intentry CODE >132:/home/newtonis/Robots/Boxy/Sensors/main.c
+BF text8 CODE >132:/home/newtonis/Robots/Boxy/Sensors/main.c
+BF text8 CODE >133:/home/newtonis/Robots/Boxy/Sensors/main.c
+C0 text8 CODE >134:/home/newtonis/Robots/Boxy/Sensors/main.c
+C4 text8 CODE >135:/home/newtonis/Robots/Boxy/Sensors/main.c
+CF text7 CODE >117:/home/newtonis/Robots/Boxy/Sensors/main.c
+CF text7 CODE >118:/home/newtonis/Robots/Boxy/Sensors/main.c
+D2 text7 CODE >120:/home/newtonis/Robots/Boxy/Sensors/main.c
+D3 text7 CODE >121:/home/newtonis/Robots/Boxy/Sensors/main.c
+D4 text7 CODE >122:/home/newtonis/Robots/Boxy/Sensors/main.c
+D5 text7 CODE >123:/home/newtonis/Robots/Boxy/Sensors/main.c
+D6 text7 CODE >124:/home/newtonis/Robots/Boxy/Sensors/main.c
+D7 text7 CODE >126:/home/newtonis/Robots/Boxy/Sensors/main.c
+D8 text7 CODE >127:/home/newtonis/Robots/Boxy/Sensors/main.c
+D9 text7 CODE >128:/home/newtonis/Robots/Boxy/Sensors/main.c
+DA text7 CODE >129:/home/newtonis/Robots/Boxy/Sensors/main.c
+DB text7 CODE >130:/home/newtonis/Robots/Boxy/Sensors/main.c
+DC text7 CODE >131:/home/newtonis/Robots/Boxy/Sensors/main.c
+AC text6 CODE >84:/home/newtonis/Robots/Boxy/Sensors/main.c
+AC text6 CODE >85:/home/newtonis/Robots/Boxy/Sensors/main.c
+AF text6 CODE >86:/home/newtonis/Robots/Boxy/Sensors/main.c
+B1 text6 CODE >87:/home/newtonis/Robots/Boxy/Sensors/main.c
+B3 text6 CODE >88:/home/newtonis/Robots/Boxy/Sensors/main.c
+B6 text6 CODE >89:/home/newtonis/Robots/Boxy/Sensors/main.c
+B8 text6 CODE >90:/home/newtonis/Robots/Boxy/Sensors/main.c
+BC text6 CODE >91:/home/newtonis/Robots/Boxy/Sensors/main.c
+BE text6 CODE >92:/home/newtonis/Robots/Boxy/Sensors/main.c
+DD text5 CODE >108:/home/newtonis/Robots/Boxy/Sensors/main.c
+DD text5 CODE >109:/home/newtonis/Robots/Boxy/Sensors/main.c
+E0 text5 CODE >110:/home/newtonis/Robots/Boxy/Sensors/main.c
+E1 text5 CODE >111:/home/newtonis/Robots/Boxy/Sensors/main.c
+E5 text5 CODE >113:/home/newtonis/Robots/Boxy/Sensors/main.c
+E6 text5 CODE >114:/home/newtonis/Robots/Boxy/Sensors/main.c
+E7 text5 CODE >115:/home/newtonis/Robots/Boxy/Sensors/main.c
+E8 text5 CODE >116:/home/newtonis/Robots/Boxy/Sensors/main.c
+98 text4 CODE >93:/home/newtonis/Robots/Boxy/Sensors/main.c
+98 text4 CODE >94:/home/newtonis/Robots/Boxy/Sensors/main.c
+9C text4 CODE >95:/home/newtonis/Robots/Boxy/Sensors/main.c
+9E text4 CODE >97:/home/newtonis/Robots/Boxy/Sensors/main.c
+A1 text4 CODE >98:/home/newtonis/Robots/Boxy/Sensors/main.c
+A4 text4 CODE >100:/home/newtonis/Robots/Boxy/Sensors/main.c
+A6 text4 CODE >102:/home/newtonis/Robots/Boxy/Sensors/main.c
+A7 text4 CODE >103:/home/newtonis/Robots/Boxy/Sensors/main.c
+A8 text4 CODE >104:/home/newtonis/Robots/Boxy/Sensors/main.c
+A9 text4 CODE >105:/home/newtonis/Robots/Boxy/Sensors/main.c
+AA text4 CODE >106:/home/newtonis/Robots/Boxy/Sensors/main.c
+AB text4 CODE >107:/home/newtonis/Robots/Boxy/Sensors/main.c
+E9 text3 CODE >73:/home/newtonis/Robots/Boxy/Sensors/main.c
+E9 text3 CODE >74:/home/newtonis/Robots/Boxy/Sensors/main.c
+ED text3 CODE >75:/home/newtonis/Robots/Boxy/Sensors/main.c
+EE text3 CODE >76:/home/newtonis/Robots/Boxy/Sensors/main.c
+EF text3 CODE >77:/home/newtonis/Robots/Boxy/Sensors/main.c
+F0 text3 CODE >78:/home/newtonis/Robots/Boxy/Sensors/main.c
+F1 text3 CODE >83:/home/newtonis/Robots/Boxy/Sensors/main.c
+68 text2 CODE >175:/home/newtonis/Robots/Boxy/Sensors/main.c
+68 text2 CODE >176:/home/newtonis/Robots/Boxy/Sensors/main.c
+73 text2 CODE >177:/home/newtonis/Robots/Boxy/Sensors/main.c
+7C text2 CODE >178:/home/newtonis/Robots/Boxy/Sensors/main.c
+85 text2 CODE >179:/home/newtonis/Robots/Boxy/Sensors/main.c
+8E text2 CODE >180:/home/newtonis/Robots/Boxy/Sensors/main.c
+97 text2 CODE >181:/home/newtonis/Robots/Boxy/Sensors/main.c
+100 swtext1 CONST >137:/home/newtonis/Robots/Boxy/Sensors/main.c
 28 text1 CODE >136:/home/newtonis/Robots/Boxy/Sensors/main.c
 28 text1 CODE >137:/home/newtonis/Robots/Boxy/Sensors/main.c
-29 text1 CODE >139:/home/newtonis/Robots/Boxy/Sensors/main.c
-2D text1 CODE >141:/home/newtonis/Robots/Boxy/Sensors/main.c
-2E text1 CODE >142:/home/newtonis/Robots/Boxy/Sensors/main.c
-30 text1 CODE >143:/home/newtonis/Robots/Boxy/Sensors/main.c
-32 text1 CODE >144:/home/newtonis/Robots/Boxy/Sensors/main.c
+29 text1 CODE >138:/home/newtonis/Robots/Boxy/Sensors/main.c
+29 text1 CODE >141:/home/newtonis/Robots/Boxy/Sensors/main.c
+2C text1 CODE >142:/home/newtonis/Robots/Boxy/Sensors/main.c
+2F text1 CODE >143:/home/newtonis/Robots/Boxy/Sensors/main.c
+31 text1 CODE >144:/home/newtonis/Robots/Boxy/Sensors/main.c
 33 text1 CODE >145:/home/newtonis/Robots/Boxy/Sensors/main.c
 34 text1 CODE >146:/home/newtonis/Robots/Boxy/Sensors/main.c
-34 text1 CODE >149:/home/newtonis/Robots/Boxy/Sensors/main.c
-38 text1 CODE >150:/home/newtonis/Robots/Boxy/Sensors/main.c
+35 text1 CODE >147:/home/newtonis/Robots/Boxy/Sensors/main.c
+35 text1 CODE >150:/home/newtonis/Robots/Boxy/Sensors/main.c
 39 text1 CODE >151:/home/newtonis/Robots/Boxy/Sensors/main.c
 3A text1 CODE >152:/home/newtonis/Robots/Boxy/Sensors/main.c
-3C text1 CODE >153:/home/newtonis/Robots/Boxy/Sensors/main.c
-3E text1 CODE >154:/home/newtonis/Robots/Boxy/Sensors/main.c
-42 text1 CODE >156:/home/newtonis/Robots/Boxy/Sensors/main.c
-43 text1 CODE >158:/home/newtonis/Robots/Boxy/Sensors/main.c
+3B text1 CODE >153:/home/newtonis/Robots/Boxy/Sensors/main.c
+3D text1 CODE >154:/home/newtonis/Robots/Boxy/Sensors/main.c
+3F text1 CODE >155:/home/newtonis/Robots/Boxy/Sensors/main.c
+43 text1 CODE >157:/home/newtonis/Robots/Boxy/Sensors/main.c
 44 text1 CODE >159:/home/newtonis/Robots/Boxy/Sensors/main.c
-47 text1 CODE >160:/home/newtonis/Robots/Boxy/Sensors/main.c
+45 text1 CODE >160:/home/newtonis/Robots/Boxy/Sensors/main.c
 48 text1 CODE >161:/home/newtonis/Robots/Boxy/Sensors/main.c
 49 text1 CODE >162:/home/newtonis/Robots/Boxy/Sensors/main.c
-4A text1 CODE >163:/home/newtonis/Robots/Boxy/Sensors/main.c
-4E text1 CODE >164:/home/newtonis/Robots/Boxy/Sensors/main.c
-50 text1 CODE >165:/home/newtonis/Robots/Boxy/Sensors/main.c
-51 text1 CODE >167:/home/newtonis/Robots/Boxy/Sensors/main.c
-55 text1 CODE >168:/home/newtonis/Robots/Boxy/Sensors/main.c
-56 text1 CODE >171:/home/newtonis/Robots/Boxy/Sensors/main.c
-57 text1 CODE >137:/home/newtonis/Robots/Boxy/Sensors/main.c
-62 text1 CODE >172:/home/newtonis/Robots/Boxy/Sensors/main.c
-63 text2 CODE >173:/home/newtonis/Robots/Boxy/Sensors/main.c
-63 text2 CODE >174:/home/newtonis/Robots/Boxy/Sensors/main.c
-6E text2 CODE >175:/home/newtonis/Robots/Boxy/Sensors/main.c
-77 text2 CODE >176:/home/newtonis/Robots/Boxy/Sensors/main.c
-80 text2 CODE >177:/home/newtonis/Robots/Boxy/Sensors/main.c
-89 text2 CODE >178:/home/newtonis/Robots/Boxy/Sensors/main.c
-92 text2 CODE >179:/home/newtonis/Robots/Boxy/Sensors/main.c
-93 text4 CODE >93:/home/newtonis/Robots/Boxy/Sensors/main.c
-93 text4 CODE >94:/home/newtonis/Robots/Boxy/Sensors/main.c
-97 text4 CODE >95:/home/newtonis/Robots/Boxy/Sensors/main.c
-99 text4 CODE >97:/home/newtonis/Robots/Boxy/Sensors/main.c
-9C text4 CODE >98:/home/newtonis/Robots/Boxy/Sensors/main.c
-9F text4 CODE >100:/home/newtonis/Robots/Boxy/Sensors/main.c
-A1 text4 CODE >102:/home/newtonis/Robots/Boxy/Sensors/main.c
-A2 text4 CODE >103:/home/newtonis/Robots/Boxy/Sensors/main.c
-A3 text4 CODE >104:/home/newtonis/Robots/Boxy/Sensors/main.c
-A4 text4 CODE >105:/home/newtonis/Robots/Boxy/Sensors/main.c
-A5 text4 CODE >106:/home/newtonis/Robots/Boxy/Sensors/main.c
-A6 text4 CODE >107:/home/newtonis/Robots/Boxy/Sensors/main.c
-A7 text6 CODE >84:/home/newtonis/Robots/Boxy/Sensors/main.c
-A7 text6 CODE >85:/home/newtonis/Robots/Boxy/Sensors/main.c
-AA text6 CODE >86:/home/newtonis/Robots/Boxy/Sensors/main.c
-AC text6 CODE >87:/home/newtonis/Robots/Boxy/Sensors/main.c
-AE text6 CODE >88:/home/newtonis/Robots/Boxy/Sensors/main.c
-B1 text6 CODE >89:/home/newtonis/Robots/Boxy/Sensors/main.c
-B3 text6 CODE >90:/home/newtonis/Robots/Boxy/Sensors/main.c
-B6 text6 CODE >91:/home/newtonis/Robots/Boxy/Sensors/main.c
-B8 text6 CODE >92:/home/newtonis/Robots/Boxy/Sensors/main.c
-B9 text8 CODE >132:/home/newtonis/Robots/Boxy/Sensors/main.c
-B9 text8 CODE >133:/home/newtonis/Robots/Boxy/Sensors/main.c
-BA text8 CODE >134:/home/newtonis/Robots/Boxy/Sensors/main.c
-BE text8 CODE >135:/home/newtonis/Robots/Boxy/Sensors/main.c
-C9 text7 CODE >117:/home/newtonis/Robots/Boxy/Sensors/main.c
-C9 text7 CODE >118:/home/newtonis/Robots/Boxy/Sensors/main.c
-CC text7 CODE >120:/home/newtonis/Robots/Boxy/Sensors/main.c
-CD text7 CODE >121:/home/newtonis/Robots/Boxy/Sensors/main.c
-CE text7 CODE >122:/home/newtonis/Robots/Boxy/Sensors/main.c
-CF text7 CODE >123:/home/newtonis/Robots/Boxy/Sensors/main.c
-D0 text7 CODE >124:/home/newtonis/Robots/Boxy/Sensors/main.c
-D1 text7 CODE >126:/home/newtonis/Robots/Boxy/Sensors/main.c
-D2 text7 CODE >127:/home/newtonis/Robots/Boxy/Sensors/main.c
-D3 text7 CODE >128:/home/newtonis/Robots/Boxy/Sensors/main.c
-D4 text7 CODE >129:/home/newtonis/Robots/Boxy/Sensors/main.c
-D5 text7 CODE >130:/home/newtonis/Robots/Boxy/Sensors/main.c
-D6 text7 CODE >131:/home/newtonis/Robots/Boxy/Sensors/main.c
-D7 text3 CODE >73:/home/newtonis/Robots/Boxy/Sensors/main.c
-D7 text3 CODE >74:/home/newtonis/Robots/Boxy/Sensors/main.c
-DB text3 CODE >75:/home/newtonis/Robots/Boxy/Sensors/main.c
-DC text3 CODE >76:/home/newtonis/Robots/Boxy/Sensors/main.c
-DD text3 CODE >77:/home/newtonis/Robots/Boxy/Sensors/main.c
-DE text3 CODE >78:/home/newtonis/Robots/Boxy/Sensors/main.c
-DF text3 CODE >79:/home/newtonis/Robots/Boxy/Sensors/main.c
-E1 text3 CODE >80:/home/newtonis/Robots/Boxy/Sensors/main.c
-E2 text3 CODE >83:/home/newtonis/Robots/Boxy/Sensors/main.c
-E3 text5 CODE >108:/home/newtonis/Robots/Boxy/Sensors/main.c
-E3 text5 CODE >109:/home/newtonis/Robots/Boxy/Sensors/main.c
-E6 text5 CODE >110:/home/newtonis/Robots/Boxy/Sensors/main.c
-E7 text5 CODE >111:/home/newtonis/Robots/Boxy/Sensors/main.c
-EB text5 CODE >113:/home/newtonis/Robots/Boxy/Sensors/main.c
-EC text5 CODE >114:/home/newtonis/Robots/Boxy/Sensors/main.c
-ED text5 CODE >115:/home/newtonis/Robots/Boxy/Sensors/main.c
-EE text5 CODE >116:/home/newtonis/Robots/Boxy/Sensors/main.c
-EF maintext CODE >60:/home/newtonis/Robots/Boxy/Sensors/main.c
-EF maintext CODE >62:/home/newtonis/Robots/Boxy/Sensors/main.c
-F0 maintext CODE >63:/home/newtonis/Robots/Boxy/Sensors/main.c
-F1 maintext CODE >64:/home/newtonis/Robots/Boxy/Sensors/main.c
-F2 maintext CODE >65:/home/newtonis/Robots/Boxy/Sensors/main.c
-F3 maintext CODE >66:/home/newtonis/Robots/Boxy/Sensors/main.c
-F4 maintext CODE >68:/home/newtonis/Robots/Boxy/Sensors/main.c
-F5 maintext CODE >67:/home/newtonis/Robots/Boxy/Sensors/main.c
-FB swtext1 CONST >137:/home/newtonis/Robots/Boxy/Sensors/main.c
+4A text1 CODE >164:/home/newtonis/Robots/Boxy/Sensors/main.c
+4D text1 CODE >165:/home/newtonis/Robots/Boxy/Sensors/main.c
+53 text1 CODE >166:/home/newtonis/Robots/Boxy/Sensors/main.c
+55 text1 CODE >167:/home/newtonis/Robots/Boxy/Sensors/main.c
+56 text1 CODE >169:/home/newtonis/Robots/Boxy/Sensors/main.c
+5A text1 CODE >170:/home/newtonis/Robots/Boxy/Sensors/main.c
+5B text1 CODE >173:/home/newtonis/Robots/Boxy/Sensors/main.c
+5C text1 CODE >137:/home/newtonis/Robots/Boxy/Sensors/main.c
+67 text1 CODE >174:/home/newtonis/Robots/Boxy/Sensors/main.c
+F2 maintext CODE >60:/home/newtonis/Robots/Boxy/Sensors/main.c
+F2 maintext CODE >62:/home/newtonis/Robots/Boxy/Sensors/main.c
+F3 maintext CODE >63:/home/newtonis/Robots/Boxy/Sensors/main.c
+F4 maintext CODE >64:/home/newtonis/Robots/Boxy/Sensors/main.c
+F5 maintext CODE >65:/home/newtonis/Robots/Boxy/Sensors/main.c
+F6 maintext CODE >66:/home/newtonis/Robots/Boxy/Sensors/main.c
+F7 maintext CODE >68:/home/newtonis/Robots/Boxy/Sensors/main.c
+F8 maintext CODE >67:/home/newtonis/Robots/Boxy/Sensors/main.c
 $startup.obj
+10 end_init CODE >73:/home/newtonis/Robots/Boxy/Sensors/startup.as
+10 init CODE >70:/home/newtonis/Robots/Boxy/Sensors/startup.as
 0 functab CODE >36:/home/newtonis/Robots/Boxy/Sensors/startup.as
 0 functab CODE >37:/home/newtonis/Robots/Boxy/Sensors/startup.as
 0 functab CODE >38:/home/newtonis/Robots/Boxy/Sensors/startup.as
@@ -214,8 +220,6 @@ $startup.obj
 0 functab CODE >41:/home/newtonis/Robots/Boxy/Sensors/startup.as
 0 reset_vec CODE >60:/home/newtonis/Robots/Boxy/Sensors/startup.as
 0 reset_vec CODE >65:/home/newtonis/Robots/Boxy/Sensors/startup.as
-10 init CODE >70:/home/newtonis/Robots/Boxy/Sensors/startup.as
-10 end_init CODE >73:/home/newtonis/Robots/Boxy/Sensors/startup.as
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -243,9 +247,9 @@ ltemp2 86 0 ABS 0 - main.obj
 ltemp3 80 0 ABS 0 - main.obj
 __Hstrings 0 0 ABS 0 strings -
 ___sp 0 0 STACK 2 stack startup.obj
-_init 1AE 0 CODE 0 text3 main.obj
-_main 1DE 0 CODE 0 maintext main.obj
-_read C6 0 CODE 0 text2 main.obj
+_init 1D2 0 CODE 0 text3 main.obj
+_main 1E4 0 CODE 0 maintext main.obj
+_read D0 0 CODE 0 text2 main.obj
 btemp 7E 0 ABS 0 - main.obj
 ltemp 7E 0 ABS 0 - main.obj
 start 20 0 CODE 0 init startup.obj
@@ -283,9 +287,8 @@ __Hfunctab 0 0 CODE 0 functab -
 __size_of_configurar_timer0 0 0 ABS 0 - main.obj
 __size_of_configurar_timer1 0 0 ABS 0 - main.obj
 __Hclrtext 0 0 ABS 0 clrtext -
-_CCPR1H 16 0 ABS 0 - main.obj
 _CCPR1L 15 0 ABS 0 - main.obj
-__end_of_configurar_IO 1AE 0 CODE 0 text7 main.obj
+__end_of_configurar_IO 1BA 0 CODE 0 text7 main.obj
 __Lmaintext 0 0 ABS 0 maintext -
 __CFG_MCLRE$OFF 0 0 ABS 0 - main.obj
 start_initialization 22 0 CODE 0 cinit main.obj
@@ -303,10 +306,10 @@ _TRISB3 433 0 ABS 0 - main.obj
 _TRISB4 434 0 ABS 0 - main.obj
 _TRISB5 435 0 ABS 0 - main.obj
 _TRISB6 436 0 ABS 0 - main.obj
-_configurar_pwm 14E 0 CODE 0 text6 main.obj
-__end_of_configurar_timer0 1DE 0 CODE 0 text5 main.obj
-__end_of_configurar_timer1 14E 0 CODE 0 text4 main.obj
-__end_of_t0_int 192 0 CODE 0 text8 main.obj
+_configurar_pwm 158 0 CODE 0 text6 main.obj
+__end_of_configurar_timer0 1D2 0 CODE 0 text5 main.obj
+__end_of_configurar_timer1 158 0 CODE 0 text4 main.obj
+__end_of_t0_int 19E 0 CODE 0 text8 main.obj
 ___int_sp 0 0 STACK 2 stack startup.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -353,24 +356,24 @@ __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 _cnt 70 0 COMMON 1 bssCOMMON main.obj
 _actual 72 0 COMMON 1 bssCOMMON main.obj
-__end_of_configurar_pwm 172 0 CODE 0 text6 main.obj
+__end_of_configurar_pwm 17E 0 CODE 0 text6 main.obj
 saved_w 7E 0 ABS 0 - main.obj
 _ciclos 73 0 COMMON 1 bssCOMMON main.obj
 _estado 75 0 COMMON 1 bssCOMMON main.obj
 __Lintentry 8 0 CODE 0 intentry -
 reset_vec 0 0 CODE 0 reset_vec startup.obj
-_configurar_timer0 1C6 0 CODE 0 text5 main.obj
-_configurar_timer1 126 0 CODE 0 text4 main.obj
+_configurar_timer0 1BA 0 CODE 0 text5 main.obj
+_configurar_timer1 130 0 CODE 0 text4 main.obj
 __pdataBANK0 25 0 BANK0 1 dataBANK0 main.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 __size_of_sensores 0 0 ABS 0 - main.obj
 _PIE1bits 8C 0 ABS 0 - main.obj
-__pmaintext 1DE 0 CODE 0 maintext main.obj
+__pmaintext 1E4 0 CODE 0 maintext main.obj
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 400E 0 CONFIG 0 config -
 __CFG_CP$OFF 0 0 ABS 0 - main.obj
 __CFG_WDTE$OFF 0 0 ABS 0 - main.obj
-_t0_int 172 0 CODE 0 text8 main.obj
+_t0_int 17E 0 CODE 0 text8 main.obj
 stackhi 0 0 ABS 0 - startup.obj
 stacklo 0 0 ABS 0 - startup.obj
 __CFG_LVP$OFF 0 0 ABS 0 - main.obj
@@ -386,31 +389,31 @@ __Lend_init 20 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
 end_of_initialization 4C 0 CODE 0 cinit main.obj
 __Hintentry 20 0 CODE 0 intentry -
-__end_of_sensores C6 0 CODE 0 text1 main.obj
+__end_of_sensores D0 0 CODE 0 text1 main.obj
 __Lstrings 0 0 ABS 0 strings -
 __Hreset_vec 2 0 CODE 0 reset_vec -
 __size_of_t0_int 0 0 ABS 0 - main.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 -
 __ptext1 50 0 CODE 0 text1 main.obj
-__ptext2 C6 0 CODE 0 text2 main.obj
-__ptext3 1AE 0 CODE 0 text3 main.obj
-__ptext4 126 0 CODE 0 text4 main.obj
-__ptext5 1C6 0 CODE 0 text5 main.obj
-__ptext6 14E 0 CODE 0 text6 main.obj
-__ptext7 192 0 CODE 0 text7 main.obj
-__ptext8 172 0 CODE 0 text8 main.obj
+__ptext2 D0 0 CODE 0 text2 main.obj
+__ptext3 1D2 0 CODE 0 text3 main.obj
+__ptext4 130 0 CODE 0 text4 main.obj
+__ptext5 1BA 0 CODE 0 text5 main.obj
+__ptext6 158 0 CODE 0 text6 main.obj
+__ptext7 19E 0 CODE 0 text7 main.obj
+__ptext8 17E 0 CODE 0 text8 main.obj
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
 __Lreset_vec 0 0 CODE 0 reset_vec -
 __end_of__initialization 4C 0 CODE 0 cinit main.obj
 __Lfunctab 0 0 CODE 0 functab -
-__pidataBANK0 1EC 0 CODE 0 idataBANK0 main.obj
+__pidataBANK0 1F2 0 CODE 0 idataBANK0 main.obj
 __Lclrtext 0 0 ABS 0 clrtext -
 __pcstackCOMMON 76 0 COMMON 1 cstackCOMMON main.obj
 __Hend_init 22 0 CODE 0 end_init -
-__end_of_init 1C6 0 CODE 0 text3 main.obj
-__end_of_main 1EC 0 CODE 0 maintext main.obj
-__end_of_read 126 0 CODE 0 text2 main.obj
+__end_of_init 1E4 0 CODE 0 text3 main.obj
+__end_of_main 1F2 0 CODE 0 maintext main.obj
+__end_of_read 130 0 CODE 0 text2 main.obj
 _CMCON 1F 0 ABS 0 - main.obj
 _TMR1H F 0 ABS 0 - main.obj
 _TMR1L E 0 ABS 0 - main.obj
@@ -423,12 +426,12 @@ __pintentry 8 0 CODE 0 intentry main.obj
 __size_of_configurar_pwm 0 0 ABS 0 - main.obj
 __HdataBANK0 0 0 ABS 0 dataBANK0 -
 _contador 74 0 COMMON 1 bssCOMMON main.obj
-_configurar_IO 192 0 CODE 0 text7 main.obj
+_configurar_IO 19E 0 CODE 0 text7 main.obj
 __initialization 22 0 CODE 0 cinit main.obj
 __CFG_PWRTE$OFF 0 0 ABS 0 - main.obj
 __pbssBANK0 20 0 BANK0 1 bssBANK0 main.obj
 _T2CONbits 12 0 ABS 0 - main.obj
-__pswtext1 1F6 0 CONST 0 swtext1 main.obj
+__pswtext1 200 0 CONST 0 swtext1 main.obj
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -454,9 +457,9 @@ __pswtext1 1F6 0 CONST 0 swtext1 main.obj
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-intentry 0 4 8 F7 2
+intentry 0 4 8 FA 2
 reset_vec 0 0 0 1 2
 bssBANK0 1 20 20 F 1
-swtext1 0 FB 1F6 4 2
+swtext1 0 100 200 4 2
 bssCOMMON 1 70 70 B 1
 config 0 2007 400E 1 2

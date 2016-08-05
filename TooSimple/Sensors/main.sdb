@@ -6,31 +6,31 @@
 "63 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _main main `(i  1 e 2 0 ]
 "76
-[v _init init `(v  1 e 0 0 ]
-"85
-[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
-"94
-[v _configurar_timer1 configurar_timer1 `(v  1 e 0 0 ]
-"109
-[v _configurar_timer0 configurar_timer0 `(v  1 e 0 0 ]
-"118
-[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
-"133
-[v _t0_int t0_int `II(v  1 e 0 0 ]
-"137
-[v _sensores sensores `(v  1 e 0 0 ]
-"167
-[v _read read `(v  1 e 0 0 ]
-"6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
+[v _init init `(v  1 e 1 0 ]
+"90
+[v _configurar_pwm configurar_pwm `(v  1 e 1 0 ]
+"107
+[v _configurar_timer1 configurar_timer1 `(v  1 e 1 0 ]
+"122
+[v _configurar_timer0 configurar_timer0 `(v  1 e 1 0 ]
+"131
+[v _configurar_IO configurar_IO `(v  1 e 1 0 ]
+"146
+[v _t0_int t0_int `II(v  1 e 1 0 ]
+"150
+[v _sensores sensores `(v  1 e 1 0 ]
+"183
+[v _read read `(v  1 e 1 0 ]
+"6 /opt/microchip/xc8/v1.38/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"62 /opt/microchip/xc8/v1.34/sources/common/float.c
+"62 /opt/microchip/xc8/v1.38/sources/common/float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 /opt/microchip/xc8/v1.34/sources/common/ftadd.c
+"86 /opt/microchip/xc8/v1.38/sources/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"6 /opt/microchip/xc8/v1.34/sources/pic/eeprom.c
-[v _eecpymem eecpymem `(v  1 e 0 0 ]
-"24
-[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"6 /opt/microchip/xc8/v1.38/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 1 0 ]
+"39
+[v _memcpyee memcpyee `(v  1 e 1 0 ]
 "44 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _estado estado `uc  1 e 1 0 ]
 "45
@@ -48,7 +48,7 @@
 `uc 1 RA6 1 0 :1:6 
 `uc 1 RA7 1 0 :1:7 
 ]
-"177 /opt/microchip/xc8/v1.34/include/pic16f628a.h
+"177 /opt/microchip/xc8/v1.38/include/pic16f628a.h
 [u S246 . 1 `S237 1 . 1 0 ]
 [v _PORTAbits PORTAbits `VES246  1 e 1 @5 ]
 [s S258 . 1 `uc 1 RB0 1 0 :1:0 
@@ -109,12 +109,12 @@
 ]
 [u S150 . 1 `S140 1 . 1 0 `S146 1 . 1 0 ]
 [v _T1CONbits T1CONbits `VES150  1 e 1 @16 ]
-[s S44 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S45 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 TOUTPS 1 0 :4:3 
 ]
 "537
-[s S48 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S49 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 TOUTPS0 1 0 :1:3 
@@ -122,8 +122,8 @@
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S56 . 1 `S44 1 . 1 0 `S48 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES56  1 e 1 @18 ]
+[u S57 . 1 `S45 1 . 1 0 `S49 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES57  1 e 1 @18 ]
 "592
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
 "604
@@ -144,7 +144,7 @@
 ]
 [u S175 . 1 `S164 1 . 1 0 `S171 1 . 1 0 ]
 [v _OPTION_REGbits OPTION_REGbits `VES175  1 e 1 @129 ]
-[s S72 . 1 `uc 1 TRISB0 1 0 :1:0 
+[s S73 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -154,8 +154,8 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "959
-[u S81 . 1 `S72 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES81  1 e 1 @134 ]
+[u S82 . 1 `S73 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES82  1 e 1 @134 ]
 [s S98 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
@@ -197,43 +197,43 @@
 {
 "73
 } 0
-"137
-[v _sensores sensores `(v  1 e 0 0 ]
+"150
+[v _sensores sensores `(v  1 e 1 0 ]
 {
-"166
+"182
 } 0
-"167
-[v _read read `(v  1 e 0 0 ]
+"183
+[v _read read `(v  1 e 1 0 ]
 {
-"173
+"189
 } 0
 "76
-[v _init init `(v  1 e 0 0 ]
+[v _init init `(v  1 e 1 0 ]
 {
 "84
 } 0
-"94
-[v _configurar_timer1 configurar_timer1 `(v  1 e 0 0 ]
+"107
+[v _configurar_timer1 configurar_timer1 `(v  1 e 1 0 ]
 {
-"108
+"121
 } 0
-"109
-[v _configurar_timer0 configurar_timer0 `(v  1 e 0 0 ]
+"122
+[v _configurar_timer0 configurar_timer0 `(v  1 e 1 0 ]
 {
-"117
+"130
 } 0
-"85
-[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
+"90
+[v _configurar_pwm configurar_pwm `(v  1 e 1 0 ]
 {
-"93
+"106
 } 0
-"118
-[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
+"131
+[v _configurar_IO configurar_IO `(v  1 e 1 0 ]
 {
-"132
+"145
 } 0
-"133
-[v _t0_int t0_int `II(v  1 e 0 0 ]
+"146
+[v _t0_int t0_int `II(v  1 e 1 0 ]
 {
-"136
+"149
 } 0
