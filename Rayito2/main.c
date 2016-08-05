@@ -1,5 +1,3 @@
-
-
 #include <xc.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -27,7 +25,7 @@
 
 #define SPEEDTIME(w) (w/2-w/4-w/16) ///Ratio of max speed time in the rect
 #define RECTTIME (SPEEDTIME(LEN[rcount/2]*40)) ///With a single word we can get rect time
-#define STOPTIME (RECTTIME + 70)
+#define STOPTIME (RECTTIME + 40)
 
 #define BORDER_LIMIT 500 ///SENSOR BORDER LIMIT
 
@@ -44,6 +42,7 @@ ll TIME; ///Time count
 ll TIME2;
 ll TIME3; 
 ll TIME4;
+ll TIME5;
 int status;
 
 /**** prototipos ****/
@@ -130,6 +129,7 @@ void interrupt enc(void){
        TIME2 ++;
        TIME3 ++;
        TIME4 ++;
+       TIME5 ++;
        TMR0H = 0xF8;//E8;
        TMR0L = 0x2F;//90;//90;
        TMR0IF = 0;
@@ -179,9 +179,9 @@ double test_kd = 20;
 
 enum {TEST , CURVE , SLOW , FAST , MOD_STOP , NORMAL };
 
-int    VEL[6] = {450 , 700 , 400 , 1000 , -1000 , 400};
-double VKP[6] = { 7  , 6.3  , 5  , 6    ,  6    , 6};
-double VKD[6] = { 20 , 50  , 30  , 50   , 50    , 50};
+int    VEL[6] = {450 , 730 , 420 , 1000 , -1000 , 400};
+double VKP[6] = { 5  , 6  , 6  , 6    ,  6    , 6};
+double VKD[6] = { 50 , 70  , 30  , 50   , 50    , 50};
 
 int pasada;
 int fw[ns] = {6 , 5 , 4 , 3 , 2}; //central sensors
@@ -511,7 +511,7 @@ int main(int argc, char** argv) {
                     printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
                 }
                 if (B_AMARILLO == 0){
-                    status = WAIT;
+                    status =  WAIT;
                 }
                 if (B_ROJO == 0){
                     MF = 0;
@@ -571,8 +571,11 @@ int main(int argc, char** argv) {
                     TIME2 = 0;
                     TIME3 = 0;
                     TIME4 = 0;
+                    TIME5 = 0;
                     rcount = 0;
                     flag_line = 0;
+
+                    printf("{'COM':'Release'}\n");
                 }
                 if (B_VERDE == 0){
                     EreaseAll();
@@ -635,8 +638,15 @@ int main(int argc, char** argv) {
                     fns = 1;
                     status = INITIAL;
                 }
-
-                if (TIME3 > 5){
+                if (TIME5 > 400){
+                    TIME5 = 0;
+                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
+                    for (j = 0;j < 2;j++){
+                        i = sd[j];
+                        printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,P[i],Rand(i,5),Rand(i,1),Rand(i,3));
+                    }
+                }
+                if (TIME3 > 10){
                     TIME3 = 0;
                     EnhancedRead();
                     Line();
@@ -680,7 +690,7 @@ int main(int argc, char** argv) {
                             }else{
                                 printf("{'COM':'line','value':'Entering rect f(%i) = (%i) (%i) (%i)'}\n" , rcount/ 2 , LEN[rcount/2],RECTTIME , STOPTIME);
                             }
-                            //printf("{'COM':'Settle','name':'Area %i','color':(100,100,255)}\n",rcount);
+                            printf("{'COM':'Settle','name':'Area %i','color':(100,100,255)}\n",rcount);
                         }
                     }
                     if (flag_line == 1){
@@ -690,6 +700,7 @@ int main(int argc, char** argv) {
                         }
                     }
                     if (rcount == TOTAL*2-1){
+                        printf("{'COM':'Hold'}\n");
                         fns = 1;
                         status = INITIAL;
                     }
@@ -717,15 +728,14 @@ int main(int argc, char** argv) {
                     if (RWM == 0){
 
                     }
-                    /*if (rcount % 2 == 0){
-                        speed = VEL[0];
-                        kp = VKP[0];                
-                        kd = VKD[0];
+                    if (rcount % 2 == 0){
+                        mod = TEST;
                     }else{
-                        speed = VEL[1];
-                        kp = VKP[1];
-                        kd = VKD[1];
-                    }*/
+                        mod = CURVE;
+                    }
+                    speed = VEL[mod];
+                    kp = VKP[mod];
+                    kd = VKD[mod];
 
                     der = line - last;
                     formula = line * kp + der * kd;

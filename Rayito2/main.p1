@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "82 /home/newtonis/Robots/Rayito2/config.h
 [v _WriteMem `(v ~T0 @X0 0 ef2`uc`uc ]
-"53 /home/newtonis/Robots/Rayito2/main.c
+"52 /home/newtonis/Robots/Rayito2/main.c
 [v _ResetCounter `(v ~T0 @X0 0 ef ]
 "73 /home/newtonis/Robots/Rayito2/config.h
 [v _configurations_init `(v ~T0 @X0 0 ef ]
@@ -11,17 +11,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _InitTIMERS `(v ~T0 @X0 0 ef ]
 "76
 [v _MotorsPWM `(v ~T0 @X0 0 ef ]
-"10801 /opt/microchip/xc8/v1.34/include/pic18f4550.h
+"10509 /opt/microchip/xc8/v1.38/include/pic18f4550.h
 [v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
-"8752
+"8524
 [v _TMR0H `Vuc ~T0 @X0 0 e@4055 ]
-"8746
+"8518
 [v _TMR0L `Vuc ~T0 @X0 0 e@4054 ]
-"207 /opt/microchip/xc8/v1.34/include/stdio.h
+"195 /opt/microchip/xc8/v1.38/include/stdio.h
 [v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 "83 /home/newtonis/Robots/Rayito2/config.h
 [v _ReadMem `(v ~T0 @X0 0 ef2`uc`*uc ]
-"65 /home/newtonis/Robots/Rayito2/main.c
+"64 /home/newtonis/Robots/Rayito2/main.c
 [v _GetValue `(v ~T0 @X0 0 ef2`i`*i ]
 "71 /home/newtonis/Robots/Rayito2/config.h
 [v _V `ui ~T0 @X0 -> 0 `x e ]
@@ -29,24 +29,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _MotorsSpeed `(v ~T0 @X0 0 ef2`i`i ]
 [p mainexit ]
 "324 /home/newtonis/Robots/Rayito2/main.c
-[c E5481 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 .. ]
-[n E5481 . MOTOR_TEST GREEN_RELEASE_INITIAL NEW_AVANZAR RELEASE_INIT WAIT_FRONT RECT_FRONT RED_ST ST INITIAL CALIBRATION WAIT AVANZAR WRE2 WRE1 WINITIAL  ]
+[c E4480 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 .. ]
+[n E4480 . MOTOR_TEST GREEN_RELEASE_INITIAL NEW_AVANZAR RELEASE_INIT WAIT_FRONT RECT_FRONT RED_ST ST INITIAL CALIBRATION WAIT AVANZAR WRE2 WRE1 WINITIAL  ]
 "72 /home/newtonis/Robots/Rayito2/config.h
 [v _Wixel `(v ~T0 @X0 0 ef ]
-"2995 /opt/microchip/xc8/v1.34/include/pic18f4550.h
-[s S213 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S213 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"3005
-[s S214 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S214 . SPP0 SPP1 SPP2 SPP3 SPP4 SPP5 SPP6 SPP7 ]
-"3015
-[s S215 :7 `uc 1 :1 `uc 1 ]
-[n S215 . . SS2 ]
-"2994
-[u S212 `S213 1 `S214 1 `S215 1 ]
-[n S212 . . . . ]
-"3020
-[v _PORTDbits `VS212 ~T0 @X0 0 e@3971 ]
+"2968 /opt/microchip/xc8/v1.38/include/pic18f4550.h
+[s S210 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S210 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
+"2978
+[s S211 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S211 . SPP0 SPP1 SPP2 SPP3 SPP4 SPP5 SPP6 SPP7 ]
+"2988
+[s S212 :7 `uc 1 :1 `uc 1 ]
+[n S212 . . SS2 ]
+"2967
+[u S209 `S210 1 `S211 1 `S212 1 ]
+[n S209 . . . . ]
+"2993
+[v _PORTDbits `VS209 ~T0 @X0 0 e@3971 ]
 "2577
 [s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S193 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
@@ -60,39 +60,33 @@ Version 3.2 HI-TECH Software Intermediate Code
 [s S196 :5 `uc 1 :1 `uc 1 ]
 [n S196 . . HLVDIN ]
 "2606
-[s S197 :7 `uc 1 :1 `uc 1 ]
-[n S197 . . RA7 ]
-"2610
-[s S198 :7 `uc 1 :1 `uc 1 ]
-[n S198 . . RJPU ]
-"2614
-[s S199 :1 `uc 1 ]
-[n S199 . ULPWUIN ]
+[s S197 :1 `uc 1 ]
+[n S197 . ULPWUIN ]
 "2576
-[u S192 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 `S198 1 `S199 1 ]
-[n S192 . . . . . . . . ]
-"2618
+[u S192 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 ]
+[n S192 . . . . . . ]
+"2610
 [v _PORTAbits `VS192 ~T0 @X0 0 e@3968 ]
-"2733
-[s S201 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S201 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"2743
-[s S202 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S202 . INT0 INT1 INT2 . PGM PGC PGD ]
-"2752
-[s S203 :3 `uc 1 :1 `uc 1 ]
-[n S203 . . CCP2_PA2 ]
-"2732
-[u S200 `S201 1 `S202 1 `S203 1 ]
-[n S200 . . . . ]
-"2757
-[v _PORTBbits `VS200 ~T0 @X0 0 e@3969 ]
+"2715
+[s S199 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S199 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"2725
+[s S200 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S200 . INT0 INT1 INT2 . PGM PGC PGD ]
+"2734
+[s S201 :3 `uc 1 :1 `uc 1 ]
+[n S201 . . CCP2_PA2 ]
+"2714
+[u S198 `S199 1 `S200 1 `S201 1 ]
+[n S198 . . . . ]
+"2739
+[v _PORTBbits `VS198 ~T0 @X0 0 e@3969 ]
 "80 /home/newtonis/Robots/Rayito2/config.h
 [v _EnhancedRead `(v ~T0 @X0 0 ef ]
-"648 /home/newtonis/Robots/Rayito2/main.c
-[c E5563 0 1 2 3 4 5 .. ]
-[n E5563 . TEST CURVE SLOW FAST MOD_STOP NORMAL  ]
-"51 /opt/microchip/xc8/v1.34/include/pic18f4550.h
+"658 /home/newtonis/Robots/Rayito2/main.c
+[c E4563 0 1 2 3 4 5 .. ]
+[n E4563 . TEST CURVE SLOW FAST MOD_STOP NORMAL  ]
+"51 /opt/microchip/xc8/v1.38/include/pic18f4550.h
 [; <" SPPDATA equ 0F62h ;# ">
 "70
 [; <" SPPCFG equ 0F63h ;# ">
@@ -156,281 +150,281 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; <" UEP15 equ 0F7Fh ;# ">
 "2573
 [; <" PORTA equ 0F80h ;# ">
-"2729
+"2711
 [; <" PORTB equ 0F81h ;# ">
-"2838
+"2820
 [; <" PORTC equ 0F82h ;# ">
-"2991
+"2964
 [; <" PORTD equ 0F83h ;# ">
-"3111
+"3084
 [; <" PORTE equ 0F84h ;# ">
-"3362
+"3254
 [; <" LATA equ 0F89h ;# ">
-"3497
+"3371
 [; <" LATB equ 0F8Ah ;# ">
-"3629
+"3503
 [; <" LATC equ 0F8Bh ;# ">
-"3744
+"3591
 [; <" LATD equ 0F8Ch ;# ">
-"3876
+"3723
 [; <" LATE equ 0F8Dh ;# ">
-"3978
+"3780
 [; <" TRISA equ 0F92h ;# ">
-"3983
+"3785
 [; <" DDRA equ 0F92h ;# ">
-"4175
+"3977
 [; <" TRISB equ 0F93h ;# ">
-"4180
+"3982
 [; <" DDRB equ 0F93h ;# ">
-"4396
+"4198
 [; <" TRISC equ 0F94h ;# ">
-"4401
+"4203
 [; <" DDRC equ 0F94h ;# ">
-"4567
+"4351
 [; <" TRISD equ 0F95h ;# ">
-"4572
+"4356
 [; <" DDRD equ 0F95h ;# ">
-"4788
+"4572
 [; <" TRISE equ 0F96h ;# ">
-"4793
+"4577
 [; <" DDRE equ 0F96h ;# ">
-"4889
+"4673
 [; <" OSCTUNE equ 0F9Bh ;# ">
-"4947
+"4731
 [; <" PIE1 equ 0F9Dh ;# ">
-"5035
+"4819
 [; <" PIR1 equ 0F9Eh ;# ">
-"5123
+"4907
 [; <" IPR1 equ 0F9Fh ;# ">
-"5211
+"4995
 [; <" PIE2 equ 0FA0h ;# ">
-"5281
+"5065
 [; <" PIR2 equ 0FA1h ;# ">
-"5351
+"5135
 [; <" IPR2 equ 0FA2h ;# ">
-"5421
+"5205
 [; <" EECON1 equ 0FA6h ;# ">
-"5486
+"5270
 [; <" EECON2 equ 0FA7h ;# ">
-"5492
+"5276
 [; <" EEDATA equ 0FA8h ;# ">
-"5498
+"5282
 [; <" EEADR equ 0FA9h ;# ">
-"5504
+"5288
 [; <" RCSTA equ 0FABh ;# ">
-"5509
+"5293
 [; <" RCSTA1 equ 0FABh ;# ">
-"5713
+"5497
 [; <" TXSTA equ 0FACh ;# ">
-"5718
+"5502
 [; <" TXSTA1 equ 0FACh ;# ">
-"6010
+"5794
 [; <" TXREG equ 0FADh ;# ">
-"6015
+"5799
 [; <" TXREG1 equ 0FADh ;# ">
-"6021
+"5805
 [; <" RCREG equ 0FAEh ;# ">
-"6026
+"5810
 [; <" RCREG1 equ 0FAEh ;# ">
-"6032
+"5816
 [; <" SPBRG equ 0FAFh ;# ">
-"6037
+"5821
 [; <" SPBRG1 equ 0FAFh ;# ">
-"6043
+"5827
 [; <" SPBRGH equ 0FB0h ;# ">
-"6049
+"5833
 [; <" T3CON equ 0FB1h ;# ">
-"6171
+"5955
 [; <" TMR3 equ 0FB2h ;# ">
-"6177
+"5961
 [; <" TMR3L equ 0FB2h ;# ">
-"6183
+"5967
 [; <" TMR3H equ 0FB3h ;# ">
-"6189
+"5973
 [; <" CMCON equ 0FB4h ;# ">
-"6284
+"6068
 [; <" CVRCON equ 0FB5h ;# ">
-"6368
+"6152
 [; <" ECCP1AS equ 0FB6h ;# ">
-"6373
+"6157
 [; <" CCP1AS equ 0FB6h ;# ">
-"6529
+"6313
 [; <" ECCP1DEL equ 0FB7h ;# ">
-"6534
+"6318
 [; <" CCP1DEL equ 0FB7h ;# ">
-"6666
+"6450
 [; <" BAUDCON equ 0FB8h ;# ">
-"6671
+"6455
 [; <" BAUDCTL equ 0FB8h ;# ">
-"6845
+"6629
 [; <" CCP2CON equ 0FBAh ;# ">
-"6908
+"6692
 [; <" CCPR2 equ 0FBBh ;# ">
-"6914
+"6698
 [; <" CCPR2L equ 0FBBh ;# ">
-"6920
+"6704
 [; <" CCPR2H equ 0FBCh ;# ">
-"6926
+"6710
 [; <" CCP1CON equ 0FBDh ;# ">
-"6931
+"6715
 [; <" ECCP1CON equ 0FBDh ;# ">
-"7087
+"6871
 [; <" CCPR1 equ 0FBEh ;# ">
-"7093
+"6877
 [; <" CCPR1L equ 0FBEh ;# ">
-"7099
+"6883
 [; <" CCPR1H equ 0FBFh ;# ">
-"7105
+"6889
 [; <" ADCON2 equ 0FC0h ;# ">
-"7175
+"6959
 [; <" ADCON1 equ 0FC1h ;# ">
-"7265
+"7049
 [; <" ADCON0 equ 0FC2h ;# ">
-"7387
+"7167
 [; <" ADRES equ 0FC3h ;# ">
-"7393
+"7173
 [; <" ADRESL equ 0FC3h ;# ">
-"7399
+"7179
 [; <" ADRESH equ 0FC4h ;# ">
-"7405
+"7185
 [; <" SSPCON2 equ 0FC5h ;# ">
-"7466
+"7246
 [; <" SSPCON1 equ 0FC6h ;# ">
-"7535
+"7315
 [; <" SSPSTAT equ 0FC7h ;# ">
-"7801
+"7573
 [; <" SSPADD equ 0FC8h ;# ">
-"7807
+"7579
 [; <" SSPBUF equ 0FC9h ;# ">
-"7813
+"7585
 [; <" T2CON equ 0FCAh ;# ">
-"7910
+"7682
 [; <" PR2 equ 0FCBh ;# ">
-"7915
+"7687
 [; <" MEMCON equ 0FCBh ;# ">
-"8019
+"7791
 [; <" TMR2 equ 0FCCh ;# ">
-"8025
+"7797
 [; <" T1CON equ 0FCDh ;# ">
-"8129
+"7901
 [; <" TMR1 equ 0FCEh ;# ">
-"8135
+"7907
 [; <" TMR1L equ 0FCEh ;# ">
-"8141
+"7913
 [; <" TMR1H equ 0FCFh ;# ">
-"8147
+"7919
 [; <" RCON equ 0FD0h ;# ">
-"8295
+"8067
 [; <" WDTCON equ 0FD1h ;# ">
-"8322
+"8094
 [; <" HLVDCON equ 0FD2h ;# ">
-"8327
+"8099
 [; <" LVDCON equ 0FD2h ;# ">
-"8591
+"8363
 [; <" OSCCON equ 0FD3h ;# ">
-"8673
+"8445
 [; <" T0CON equ 0FD5h ;# ">
-"8742
+"8514
 [; <" TMR0 equ 0FD6h ;# ">
-"8748
+"8520
 [; <" TMR0L equ 0FD6h ;# ">
-"8754
+"8526
 [; <" TMR0H equ 0FD7h ;# ">
-"8760
+"8532
 [; <" STATUS equ 0FD8h ;# ">
-"8838
+"8610
 [; <" FSR2 equ 0FD9h ;# ">
-"8844
+"8616
 [; <" FSR2L equ 0FD9h ;# ">
-"8850
+"8622
 [; <" FSR2H equ 0FDAh ;# ">
-"8856
+"8628
 [; <" PLUSW2 equ 0FDBh ;# ">
-"8862
+"8634
 [; <" PREINC2 equ 0FDCh ;# ">
-"8868
+"8640
 [; <" POSTDEC2 equ 0FDDh ;# ">
-"8874
+"8646
 [; <" POSTINC2 equ 0FDEh ;# ">
-"8880
+"8652
 [; <" INDF2 equ 0FDFh ;# ">
-"8886
+"8658
 [; <" BSR equ 0FE0h ;# ">
-"8892
+"8664
 [; <" FSR1 equ 0FE1h ;# ">
-"8898
+"8670
 [; <" FSR1L equ 0FE1h ;# ">
-"8904
+"8676
 [; <" FSR1H equ 0FE2h ;# ">
-"8910
+"8682
 [; <" PLUSW1 equ 0FE3h ;# ">
-"8916
+"8688
 [; <" PREINC1 equ 0FE4h ;# ">
-"8922
+"8694
 [; <" POSTDEC1 equ 0FE5h ;# ">
-"8928
+"8700
 [; <" POSTINC1 equ 0FE6h ;# ">
-"8934
+"8706
 [; <" INDF1 equ 0FE7h ;# ">
-"8940
+"8712
 [; <" WREG equ 0FE8h ;# ">
-"8946
+"8718
 [; <" FSR0 equ 0FE9h ;# ">
-"8952
+"8724
 [; <" FSR0L equ 0FE9h ;# ">
-"8958
+"8730
 [; <" FSR0H equ 0FEAh ;# ">
-"8964
+"8736
 [; <" PLUSW0 equ 0FEBh ;# ">
-"8970
+"8742
 [; <" PREINC0 equ 0FECh ;# ">
-"8976
+"8748
 [; <" POSTDEC0 equ 0FEDh ;# ">
-"8982
+"8754
 [; <" POSTINC0 equ 0FEEh ;# ">
-"8988
+"8760
 [; <" INDF0 equ 0FEFh ;# ">
-"8994
+"8766
 [; <" INTCON3 equ 0FF0h ;# ">
-"9085
+"8857
 [; <" INTCON2 equ 0FF1h ;# ">
-"9161
+"8933
 [; <" INTCON equ 0FF2h ;# ">
-"9297
+"9049
 [; <" PROD equ 0FF3h ;# ">
-"9303
+"9055
 [; <" PRODL equ 0FF3h ;# ">
-"9309
+"9061
 [; <" PRODH equ 0FF4h ;# ">
-"9315
+"9067
 [; <" TABLAT equ 0FF5h ;# ">
-"9323
+"9075
 [; <" TBLPTR equ 0FF6h ;# ">
-"9329
+"9081
 [; <" TBLPTRL equ 0FF6h ;# ">
-"9335
+"9087
 [; <" TBLPTRH equ 0FF7h ;# ">
-"9341
+"9093
 [; <" TBLPTRU equ 0FF8h ;# ">
-"9349
+"9101
 [; <" PCLAT equ 0FF9h ;# ">
-"9356
+"9108
 [; <" PC equ 0FF9h ;# ">
-"9362
+"9114
 [; <" PCL equ 0FF9h ;# ">
-"9368
+"9120
 [; <" PCLATH equ 0FFAh ;# ">
-"9374
+"9126
 [; <" PCLATU equ 0FFBh ;# ">
-"9380
+"9132
 [; <" STKPTR equ 0FFCh ;# ">
-"9455
+"9207
 [; <" TOS equ 0FFDh ;# ">
-"9461
+"9213
 [; <" TOSL equ 0FFDh ;# ">
-"9467
+"9219
 [; <" TOSH equ 0FFEh ;# ">
-"9473
+"9225
 [; <" TOSU equ 0FFFh ;# ">
 "17 /home/newtonis/Robots/Rayito2/config.h
 [p x VREGEN=OFF ]
@@ -501,128 +495,132 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBTR3=OFF ]
 "46
 [p x EBTRB=OFF ]
-"37 /home/newtonis/Robots/Rayito2/main.c
+"35 /home/newtonis/Robots/Rayito2/main.c
 [v _speedMode `i ~T0 @X0 1 e ]
-"39
+"37
 [v _TIMEFRENO `l ~T0 @X0 1 e ]
 [i _TIMEFRENO
 -> -> 200 `i `l
 ]
-"40
+"38
 [v _WAITIME `l ~T0 @X0 1 e ]
-"41
+"39
 [v _WAITFRENAR `l ~T0 @X0 1 e ]
-"43
+"41
 [v _TIME `l ~T0 @X0 1 e ]
-"44
+"42
 [v _TIME2 `l ~T0 @X0 1 e ]
-"45
+"43
 [v _TIME3 `l ~T0 @X0 1 e ]
-"46
+"44
 [v _TIME4 `l ~T0 @X0 1 e ]
-"47
+"45
+[v _TIME5 `l ~T0 @X0 1 e ]
+"46
 [v _status `i ~T0 @X0 1 e ]
-"73
+"72
 [v _EreaseAll `(v ~T0 @X0 1 ef ]
 {
 [e :U _EreaseAll ]
 [f ]
-"76
+"75
 [e ( _WriteMem (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"77
+"76
 [e ( _WriteMem (2 , -> -> 128 `i `uc -> -> 0 `i `uc ]
-"78
-[e :UE 598 ]
+"77
+[e :UE 533 ]
 }
-"84
+"83
 [v _amax `ui ~T0 @X0 -> 16 `i e ]
-"85
+"84
 [v _amin `ui ~T0 @X0 -> 16 `i e ]
-"86
+"85
 [v _P `i ~T0 @X0 -> 16 `i e ]
-"88
+"87
 [v _line `i ~T0 @X0 1 e ]
 [i _line
 -> 0 `i
 ]
-"89
+"88
 [v _last `i ~T0 @X0 1 e ]
 [i _last
 -> 0 `i
 ]
-"90
+"89
 [v _der `i ~T0 @X0 1 e ]
 [i _der
 -> 0 `i
 ]
-"91
+"90
 [v _formula `i ~T0 @X0 1 e ]
 [i _formula
 -> 0 `i
 ]
-"94
+"93
 [v _x `i ~T0 @X0 1 e ]
-"95
+"94
 [v _a `i ~T0 @X0 1 e ]
 [v _b `i ~T0 @X0 1 e ]
-"96
+"95
 [v _w `l ~T0 @X0 1 e ]
 [v _v `l ~T0 @X0 1 e ]
-"97
+"96
 [v _nove `uc ~T0 @X0 1 e ]
-"98
+"97
 [v _actual `uc ~T0 @X0 1 e ]
-"99
+"98
 [v _gstatus `uc ~T0 @X0 1 e ]
-"113
+"112
 [v _initYBOT `(v ~T0 @X0 1 ef ]
 {
 [e :U _initYBOT ]
 [f ]
-"114
+"113
 [e = _TIME -> -> 0 `i `l ]
-"115
+"114
 [e ( _ResetCounter ..  ]
-"116
+"115
 [e = _gstatus -> -> 0 `i `uc ]
-"117
+"116
 [e ( _configurations_init ..  ]
-"118
+"117
 [e ( _InitAnalog ..  ]
-"119
+"118
 [e ( _InitTIMERS ..  ]
-"120
+"119
 [e ( _MotorsPWM ..  ]
-"121
-[e :UE 599 ]
+"120
+[e :UE 534 ]
 }
-"123
+"122
 [v _ResetCounter `(v ~T0 @X0 1 ef ]
 {
 [e :U _ResetCounter ]
 [f ]
-"124
+"123
 [e = _TIME -> -> 0 `i `l ]
-"125
-[e :UE 600 ]
+"124
+[e :UE 535 ]
 }
-[v F5544 `(v ~T0 @X0 1 tf ]
-"127
-[v _enc `IF5544 ~T0 @X0 1 e ]
+[v F4544 `(v ~T0 @X0 1 tf ]
+"126
+[v _enc `IF4544 ~T0 @X0 1 e ]
 {
 [e :U _enc ]
 [f ]
-"128
-[e $ ! _TMR0IF 602  ]
+"127
+[e $ ! _TMR0IF 537  ]
 {
-"129
+"128
 [e ++ _TIME -> -> 1 `i `l ]
-"130
+"129
 [e ++ _TIME2 -> -> 1 `i `l ]
-"131
+"130
 [e ++ _TIME3 -> -> 1 `i `l ]
-"132
+"131
 [e ++ _TIME4 -> -> 1 `i `l ]
+"132
+[e ++ _TIME5 -> -> 1 `i `l ]
 "133
 [e = _TMR0H -> -> 248 `i `uc ]
 "134
@@ -631,9 +629,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TMR0IF -> -> 0 `i `b ]
 "136
 }
-[e :U 602 ]
+[e :U 537 ]
 "137
-[e :UE 601 ]
+[e :UE 536 ]
 }
 "145
 [v _initLED `(v ~T0 @X0 1 ef ]
@@ -643,9 +641,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "146
 {
 [e = _x -> 0 `i ]
-[e $ < _x -> 11 `i 604  ]
-[e $U 605  ]
-[e :U 604 ]
+[e $ < _x -> 11 `i 539  ]
+[e $U 540  ]
+[e :U 539 ]
 {
 "147
 [e = *U + &U _amax * -> -> _x `ui `ux -> -> # *U &U _amax `ui `ux -> -> 0 `i `ui ]
@@ -655,12 +653,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "146
 [e ++ _x -> 1 `i ]
-[e $ < _x -> 11 `i 604  ]
-[e :U 605 ]
+[e $ < _x -> 11 `i 539  ]
+[e :U 540 ]
 "149
 }
 "150
-[e :UE 603 ]
+[e :UE 538 ]
 }
 "156
 [v _mm `uc ~T0 @X0 1 e ]
@@ -709,8 +707,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [i _VEL
 :U ..
 -> 450 `i
--> 700 `i
--> 400 `i
+-> 730 `i
+-> 420 `i
 -> 1000 `i
 -U -> 1000 `i
 -> 400 `i
@@ -720,9 +718,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _VKP `d ~T0 @X0 -> 6 `i e ]
 [i _VKP
 :U ..
--> -> 7 `i `d
-.6.3
 -> -> 5 `i `d
+-> -> 6 `i `d
+-> -> 6 `i `d
 -> -> 6 `i `d
 -> -> 6 `i `d
 -> -> 6 `i `d
@@ -732,8 +730,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _VKD `d ~T0 @X0 -> 6 `i e ]
 [i _VKD
 :U ..
--> -> 20 `i `d
 -> -> 50 `i `d
+-> -> 70 `i `d
 -> -> 30 `i `d
 -> -> 50 `i `d
 -> -> 50 `i `d
@@ -807,16 +805,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "204
 {
 [e = _x -> 0 `i ]
-[e $U 611  ]
-[e :U 608 ]
+[e $U 546  ]
+[e :U 543 ]
 [e ( _printf , , (. :s 1C + _x -> 1 `i *U + &U _LEN * -> -> _x `ui `ux -> -> # *U &U _LEN `ui `ux ]
 [e ++ _x -> 1 `i ]
-[e :U 611 ]
-[e $ < _x _TOTAL 608  ]
-[e :U 609 ]
+[e :U 546 ]
+[e $ < _x _TOTAL 543  ]
+[e :U 544 ]
 }
 "205
-[e :UE 607 ]
+[e :UE 542 ]
 }
 "206
 [v _CheckMem `(v ~T0 @X0 1 ef1`*uc ]
@@ -827,26 +825,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 "207
 [v _rta `uc ~T0 @X0 1 a ]
 "208
-[e $ ! == -> _MF `i -> 0 `i 613  ]
+[e $ ! == -> _MF `i -> 0 `i 548  ]
 {
 "209
 [e ( _ReadMem (2 , -> -> 0 `i `uc &U _rta ]
 "210
 }
-[e $U 614  ]
-[e :U 613 ]
-[e $ ! == -> _MF `i -> 1 `i 615  ]
+[e $U 549  ]
+[e :U 548 ]
+[e $ ! == -> _MF `i -> 1 `i 550  ]
 {
 "211
 [e ( _ReadMem (2 , -> -> 128 `i `uc &U _rta ]
 "212
 }
-[e :U 615 ]
+[e :U 550 ]
 "213
-[e :U 614 ]
+[e :U 549 ]
 [e = *U _data -> ? || == -> _rta `i -> 0 `i == -> _rta `i -> 255 `i : -> 0 `i -> 1 `i `uc ]
 "214
-[e :UE 612 ]
+[e :UE 547 ]
 }
 "215
 [v _Save `(v ~T0 @X0 1 ef ]
@@ -862,8 +860,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 "219
 {
 [e = _x -> 0 `i ]
-[e $U 620  ]
-[e :U 617 ]
+[e $U 555  ]
+[e :U 552 ]
 {
 "220
 [e ( _WriteMem (2 , -> + + -> _sum `i _x -> 1 `i `uc -> *U + &U _LEN * -> -> _x `ui `ux -> -> # *U &U _LEN `ui `ux `uc ]
@@ -871,15 +869,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "219
 [e ++ _x -> 1 `i ]
-[e :U 620 ]
-[e $ < _x _TOTAL 617  ]
-[e :U 618 ]
+[e :U 555 ]
+[e $ < _x _TOTAL 552  ]
+[e :U 553 ]
 "221
 }
 "222
 [e ( _ShowMem ..  ]
 "223
-[e :UE 616 ]
+[e :UE 551 ]
 }
 "225
 [v _Length `(v ~T0 @X0 1 ef1`*i ]
@@ -897,7 +895,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "229
 [e = *U _data -> _rta `i ]
 "230
-[e :UE 621 ]
+[e :UE 556 ]
 }
 "231
 [v _Load `(v ~T0 @X0 1 ef ]
@@ -910,16 +908,16 @@ Version 3.2 HI-TECH Software Intermediate Code
 "234
 {
 [e = _x -> 0 `i ]
-[e $U 626  ]
-[e :U 623 ]
+[e $U 561  ]
+[e :U 558 ]
 [e ( _GetValue (2 , _x -> -> &U *U + &U _LEN * -> -> _x `ui `ux -> -> # *U &U _LEN `ui `ux `i `*i ]
 [e ++ _x -> 1 `i ]
-[e :U 626 ]
-[e $ < _x _TOTAL 623  ]
-[e :U 624 ]
+[e :U 561 ]
+[e $ < _x _TOTAL 558  ]
+[e :U 559 ]
 }
 "235
-[e :UE 622 ]
+[e :UE 557 ]
 }
 "236
 [v _GetValue `(v ~T0 @X0 1 ef2`i`*i ]
@@ -938,7 +936,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "240
 [e = *U _data -> _rta `i ]
 "241
-[e :UE 627 ]
+[e :UE 562 ]
 }
 "246
 [v _Line `(v ~T0 @X0 1 ef ]
@@ -961,9 +959,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "253
 {
 [e = _j -> 0 `i ]
-[e $ < _j -> 5 `i 629  ]
-[e $U 630  ]
-[e :U 629 ]
+[e $ < _j -> 5 `i 564  ]
+[e $U 565  ]
+[e :U 564 ]
 {
 "254
 [v _i `i ~T0 @X0 1 a ]
@@ -971,21 +969,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "255
 [e = _v -> *U + &U _V * -> -> _i `ui `ux -> -> # *U &U _V `ui `ux `l ]
 "256
-[e $ ! < _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l 632  ]
+[e $ ! < _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l 567  ]
 {
 "257
 [e = _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l ]
 "258
 }
-[e :U 632 ]
+[e :U 567 ]
 "259
-[e $ ! > _v -> *U + &U _amax * -> -> _i `ui `ux -> -> # *U &U _amax `ui `ux `l 633  ]
+[e $ ! > _v -> *U + &U _amax * -> -> _i `ui `ux -> -> # *U &U _amax `ui `ux `l 568  ]
 {
 "260
 [e = _v -> *U + &U _amax * -> -> _i `ui `ux -> -> # *U &U _amax `ui `ux `l ]
 "261
 }
-[e :U 633 ]
+[e :U 568 ]
 "262
 [e =- _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l ]
 "263
@@ -995,13 +993,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "265
 [e = _v - -> -> 1000 `i `l _v ]
 "266
-[e $ ! < _v -> -> 50 `i `l 634  ]
+[e $ ! < _v -> -> 50 `i `l 569  ]
 {
 "267
 [e = _v -> -> 0 `i `l ]
 "268
 }
-[e :U 634 ]
+[e :U 569 ]
 "269
 [e = *U + &U _P * -> -> _i `ui `ux -> -> # *U &U _P `ui `ux -> _v `i ]
 "270
@@ -1011,28 +1009,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 "274
 [e =+ _b _v ]
 "275
-[e $ ! > _v -> -> 200 `i `l 635  ]
+[e $ ! > _v -> -> 200 `i `l 570  ]
 {
 "276
 [e = _g -> -> 1 `i `uc ]
 "277
 }
-[e :U 635 ]
+[e :U 570 ]
 "278
 }
 "253
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 5 `i 629  ]
-[e :U 630 ]
+[e $ < _j -> 5 `i 564  ]
+[e :U 565 ]
 "278
 }
 "280
 {
 [v _j `i ~T0 @X0 1 a ]
 [e = _j -> 0 `i ]
-[e $ < _j -> 2 `i 636  ]
-[e $U 637  ]
-[e :U 636 ]
+[e $ < _j -> 2 `i 571  ]
+[e $U 572  ]
+[e :U 571 ]
 {
 "281
 [v _i `i ~T0 @X0 1 a ]
@@ -1040,13 +1038,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 "282
 [e = _v -> *U + &U _V * -> -> _i `ui `ux -> -> # *U &U _V `ui `ux `l ]
 "283
-[e $ ! < _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l 639  ]
+[e $ ! < _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l 574  ]
 [e = _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l ]
-[e :U 639 ]
+[e :U 574 ]
 "284
-[e $ ! > _v -> *U + &U _amax * -> -> _i `ui `ux -> -> # *U &U _amax `ui `ux `l 640  ]
+[e $ ! > _v -> *U + &U _amax * -> -> _i `ui `ux -> -> # *U &U _amax `ui `ux `l 575  ]
 [e = _v -> *U + &U _amax * -> -> _i `ui `ux -> -> # *U &U _amax `ui `ux `l ]
-[e :U 640 ]
+[e :U 575 ]
 "285
 [e =- _v -> *U + &U _amin * -> -> _i `ui `ux -> -> # *U &U _amin `ui `ux `l ]
 [e =* _v -> -> 1000 `i `l ]
@@ -1058,24 +1056,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "280
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 2 `i 636  ]
-[e :U 637 ]
+[e $ < _j -> 2 `i 571  ]
+[e :U 572 ]
 "287
 }
 "289
-[e $ ! == -> _g `i -> 0 `i 641  ]
+[e $ ! == -> _g `i -> 0 `i 576  ]
 {
 "290
 [e = _line ? > _line -> 0 `i : -> 200 `i -U -> 200 `i ]
 "291
-[e $UE 628  ]
+[e $UE 563  ]
 "292
 }
-[e :U 641 ]
+[e :U 576 ]
 "293
 [e = _line -> / _a _b `i ]
 "294
-[e :UE 628 ]
+[e :UE 563 ]
 }
 "296
 [v _AdvanceLow `(v ~T0 @X0 1 ef ]
@@ -1100,24 +1098,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "305
 [e = _formula -> + * -> _line `d _kp * -> _der `d _kd `i ]
 "306
-[e $ ! > _formula -> 0 `i 643  ]
+[e $ ! > _formula -> 0 `i 578  ]
 {
 "307
 [e ( _MotorsSpeed (2 , - _speed _formula _speed ]
 "308
 }
-[e $U 644  ]
-[e :U 643 ]
+[e $U 579  ]
+[e :U 578 ]
 {
 "309
 [e ( _MotorsSpeed (2 , _speed + _speed _formula ]
 "310
 }
-[e :U 644 ]
+[e :U 579 ]
 "311
 [e = _last _line ]
 "312
-[e :UE 642 ]
+[e :UE 577 ]
 }
 "318
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
@@ -1135,7 +1133,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "323
 [e = _actual -> -> 0 `i `uc ]
 "324
-[e = _status -> . `E5481 7 `i ]
+[e = _status -> . `E4480 7 `i ]
 "325
 [e = _TIME -> -> 0 `i `l ]
 "326
@@ -1145,80 +1143,80 @@ Version 3.2 HI-TECH Software Intermediate Code
 "329
 [e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
 "331
-[e = _status -> . `E5481 7 `i ]
+[e = _status -> . `E4480 7 `i ]
 "332
-[e $U 646  ]
-[e :U 647 ]
+[e $U 581  ]
+[e :U 582 ]
 "337
 [e = _fns -> 1 `i ]
-[e :U 646 ]
+[e :U 581 ]
 "332
-[e $ < _TIME -> -> 5000 `i `l 647  ]
-[e :U 648 ]
+[e $ < _TIME -> -> 5000 `i `l 582  ]
+[e :U 583 ]
 "338
-[e :U 650 ]
+[e :U 585 ]
 {
 "343
-[e $U 653  ]
+[e $U 588  ]
 {
 "344
-[e :U 654 ]
+[e :U 589 ]
 "345
 [e = . . _PORTAbits 0 4 -> -> > % _TIME -> -> 1000 `i `l -> -> 500 `i `l `i `uc ]
 "346
-[e $ ! == _ma -> 0 `i 655  ]
+[e $ ! == _ma -> 0 `i 590  ]
 {
 "347
 [e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
 "348
 }
-[e $U 656  ]
-[e :U 655 ]
-[e $ ! == _ma -> 1 `i 657  ]
+[e $U 591  ]
+[e :U 590 ]
+[e $ ! == _ma -> 1 `i 592  ]
 {
 "349
 [e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
 "350
 }
-[e $U 658  ]
-[e :U 657 ]
-[e $ ! == _ma -U -> 1 `i 659  ]
+[e $U 593  ]
+[e :U 592 ]
+[e $ ! == _ma -U -> 1 `i 594  ]
 {
 "351
 [e = . . _PORTBbits 0 5 -> -> > % _TIME -> -> 1000 `i `l -> -> 500 `i `l `i `uc ]
 "352
 }
-[e :U 659 ]
+[e :U 594 ]
 "353
-[e :U 658 ]
-[e :U 656 ]
-[e $ ! == _mb -> 0 `i 660  ]
+[e :U 593 ]
+[e :U 591 ]
+[e $ ! == _mb -> 0 `i 595  ]
 {
 "354
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
 "355
 }
-[e $U 661  ]
-[e :U 660 ]
-[e $ ! == _mb -> 1 `i 662  ]
+[e $U 596  ]
+[e :U 595 ]
+[e $ ! == _mb -> 1 `i 597  ]
 {
 "356
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
 "357
 }
-[e $U 663  ]
-[e :U 662 ]
-[e $ ! == _mb -U -> 1 `i 664  ]
+[e $U 598  ]
+[e :U 597 ]
+[e $ ! == _mb -U -> 1 `i 599  ]
 {
 "358
 [e = . . _PORTBbits 0 0 -> -> > % _TIME -> -> 1000 `i `l -> -> 500 `i `l `i `uc ]
 "359
 }
-[e :U 664 ]
+[e :U 599 ]
 "361
-[e :U 663 ]
-[e :U 661 ]
-[e $ ! != _fns -> 0 `i 665  ]
+[e :U 598 ]
+[e :U 596 ]
+[e $ ! != _fns -> 0 `i 600  ]
 {
 "362
 [e = _fns -> 0 `i ]
@@ -1226,9 +1224,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _printf :s 2C ]
 "364
 }
-[e :U 665 ]
+[e :U 600 ]
 "366
-[e $ ! && == -> . . _PORTDbits 0 6 `i -> 0 `i == _fa -> 0 `i 666  ]
+[e $ ! && == -> . . _PORTDbits 0 6 `i -> 0 `i == _fa -> 0 `i 601  ]
 {
 "367
 [e = _fa -> 1 `i ]
@@ -1236,9 +1234,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _ma ? == _ma -> 1 `i : -U -> 1 `i + _ma -> 1 `i ]
 "369
 }
-[e :U 666 ]
+[e :U 601 ]
 "370
-[e $ ! && == -> . . _PORTDbits 0 4 `i -> 0 `i == _fb -> 0 `i 667  ]
+[e $ ! && == -> . . _PORTDbits 0 4 `i -> 0 `i == _fb -> 0 `i 602  ]
 {
 "371
 [e = _fb -> 1 `i ]
@@ -1246,25 +1244,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _mb ? == _mb -> 1 `i : -U -> 1 `i + _mb -> 1 `i ]
 "373
 }
-[e :U 667 ]
+[e :U 602 ]
 "374
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 1 `i 668  ]
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 1 `i 603  ]
 [e = _fa -> 0 `i ]
-[e :U 668 ]
+[e :U 603 ]
 "375
-[e $ ! == -> . . _PORTDbits 0 4 `i -> 1 `i 669  ]
+[e $ ! == -> . . _PORTDbits 0 4 `i -> 1 `i 604  ]
 [e = _fb -> 0 `i ]
-[e :U 669 ]
+[e :U 604 ]
 "377
 [e ( _MotorsSpeed (2 , * _ma -> 1000 `i * _mb -> 1000 `i ]
 "378
-[e $U 652  ]
+[e $U 587  ]
 "379
-[e :U 670 ]
+[e :U 605 ]
 "380
 [e ( _EnhancedRead ..  ]
 "381
-[e $ ! != _fns -> 0 `i 671  ]
+[e $ ! != _fns -> 0 `i 606  ]
 {
 "382
 [e = _fns -> 0 `i ]
@@ -1277,14 +1275,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _old `uc ~T0 @X0 1 a ]
 [e ( _CheckMem (1 &U _old ]
 "386
-[e $ ! == -> _old `i -> 0 `i 672  ]
+[e $ ! == -> _old `i -> 0 `i 607  ]
 {
 "387
 [e ( _printf :s 5C ]
 "388
 }
-[e $U 673  ]
-[e :U 672 ]
+[e $U 608  ]
+[e :U 607 ]
 {
 "389
 [e ( _Load ..  ]
@@ -1294,19 +1292,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ShowMem ..  ]
 "392
 }
-[e :U 673 ]
+[e :U 608 ]
 "393
 [e = _MF -> -> 0 `i `uc ]
 [e ( _CheckMem (1 &U _old ]
 "394
-[e $ ! == -> _old `i -> 0 `i 674  ]
+[e $ ! == -> _old `i -> 0 `i 609  ]
 {
 "395
 [e ( _printf :s 7C ]
 "396
 }
-[e $U 675  ]
-[e :U 674 ]
+[e $U 610  ]
+[e :U 609 ]
 {
 "397
 [e ( _Load ..  ]
@@ -1316,10 +1314,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ShowMem ..  ]
 "400
 }
-[e :U 675 ]
+[e :U 610 ]
 "401
 }
-[e :U 671 ]
+[e :U 606 ]
 "402
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
 "403
@@ -1327,28 +1325,28 @@ Version 3.2 HI-TECH Software Intermediate Code
 "404
 [e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
 "405
-[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 676  ]
+[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 611  ]
 {
 "406
 [e ( _printf :s 9C ]
 "407
-[e = _status -> . `E5481 9 `i ]
+[e = _status -> . `E4480 9 `i ]
 "408
 [e = _TIME -> -> 0 `i `l ]
 "409
 [e ( _initLED ..  ]
 "410
 }
-[e :U 676 ]
+[e :U 611 ]
 "411
 [v _i `i ~T0 @X0 1 a ]
 [v _j `i ~T0 @X0 1 a ]
 "416
 {
 [e = _j -> 0 `i ]
-[e $ < _j -> 2 `i 677  ]
-[e $U 678  ]
-[e :U 677 ]
+[e $ < _j -> 2 `i 612  ]
+[e $U 613  ]
+[e :U 612 ]
 {
 "417
 [e = _i *U + &U _sd * -> -> _j `ui `ux -> -> # *U &U _sd `ui `ux ]
@@ -1358,14 +1356,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "416
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 2 `i 677  ]
-[e :U 678 ]
+[e $ < _j -> 2 `i 612  ]
+[e :U 613 ]
 "419
 }
 "421
-[e $U 652  ]
+[e $U 587  ]
 "422
-[e :U 680 ]
+[e :U 615 ]
 "423
 [e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
 "424
@@ -1373,26 +1371,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 "425
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
 "426
-[e $ ! > _TIME -> -> 2000 `i `l 681  ]
-[e = _status -> . `E5481 7 `i ]
-[e :U 681 ]
+[e $ ! > _TIME -> -> 2000 `i `l 616  ]
+[e = _status -> . `E4480 7 `i ]
+[e :U 616 ]
 "427
-[e $U 652  ]
+[e $U 587  ]
 "428
-[e :U 682 ]
+[e :U 617 ]
 "429
 [e ( _EnhancedRead ..  ]
 "435
-[e $ ! > _TIME -> -> 1000 `i `l 683  ]
+[e $ ! > _TIME -> -> 1000 `i `l 618  ]
 {
 "436
 [e = _TIME -> -> 0 `i `l ]
 "437
 {
 [e = _j -> 0 `i ]
-[e $ < _j -> 2 `i 684  ]
-[e $U 685  ]
-[e :U 684 ]
+[e $ < _j -> 2 `i 619  ]
+[e $U 620  ]
+[e :U 619 ]
 {
 "438
 [e = _i *U + &U _sd * -> -> _j `ui `ux -> -> # *U &U _sd `ui `ux ]
@@ -1402,44 +1400,44 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "437
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 2 `i 684  ]
-[e :U 685 ]
+[e $ < _j -> 2 `i 619  ]
+[e :U 620 ]
 "440
 }
 "441
 }
-[e :U 683 ]
+[e :U 618 ]
 "444
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 11 `i 687  ]
-[e $U 688  ]
-[e :U 687 ]
+[e $ < _i -> 11 `i 622  ]
+[e $U 623  ]
+[e :U 622 ]
 {
 "447
 [e = _j _i ]
 "448
-[e $ ! > *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux *U + &U _amax * -> -> _j `ui `ux -> -> # *U &U _amax `ui `ux 690  ]
+[e $ ! > *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux *U + &U _amax * -> -> _j `ui `ux -> -> # *U &U _amax `ui `ux 625  ]
 {
 "449
 [e = *U + &U _amax * -> -> _j `ui `ux -> -> # *U &U _amax `ui `ux *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux ]
 "450
 }
-[e :U 690 ]
+[e :U 625 ]
 "451
-[e $ ! < *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux *U + &U _amin * -> -> _j `ui `ux -> -> # *U &U _amin `ui `ux 691  ]
+[e $ ! < *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux *U + &U _amin * -> -> _j `ui `ux -> -> # *U &U _amin `ui `ux 626  ]
 {
 "452
 [e = *U + &U _amin * -> -> _j `ui `ux -> -> # *U &U _amin `ui `ux *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux ]
 "453
 }
-[e :U 691 ]
+[e :U 626 ]
 "454
 }
 "444
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 11 `i 687  ]
-[e :U 688 ]
+[e $ < _i -> 11 `i 622  ]
+[e :U 623 ]
 "454
 }
 "456
@@ -1449,19 +1447,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "458
 [e = . . _PORTBbits 0 0 -> -> < % _TIME -> -> 300 `i `l -> -> 100 `i `l `i `uc ]
 "460
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 692  ]
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 627  ]
 {
 "461
 [e ( _printf :s 12C ]
 "462
 [e = _TIME -> -> 0 `i `l ]
 "463
-[e = _status -> . `E5481 6 `i ]
+[e = _status -> . `E4480 6 `i ]
 "464
 }
-[e :U 692 ]
+[e :U 627 ]
 "465
-[e $ ! == -> . . _PORTDbits 0 4 `i -> 0 `i 693  ]
+[e $ ! == -> . . _PORTDbits 0 4 `i -> 0 `i 628  ]
 {
 "466
 [e ( _printf :s 13C ]
@@ -1470,15 +1468,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "468
 [e = _fns -> 1 `i ]
 "469
-[e = _status -> . `E5481 1 `i ]
+[e = _status -> . `E4480 1 `i ]
 [v _i `i ~T0 @X0 1 a ]
 [v _j `i ~T0 @X0 1 a ]
 "471
 {
 [e = _i -> 0 `i ]
-[e $ < _i -> 5 `i 694  ]
-[e $U 695  ]
-[e :U 694 ]
+[e $ < _i -> 5 `i 629  ]
+[e $U 630  ]
+[e :U 629 ]
 {
 "472
 [e = _j *U + &U _fw * -> -> _i `ui `ux -> -> # *U &U _fw `ui `ux ]
@@ -1488,17 +1486,17 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "471
 [e ++ _i -> 1 `i ]
-[e $ < _i -> 5 `i 694  ]
-[e :U 695 ]
+[e $ < _i -> 5 `i 629  ]
+[e :U 630 ]
 "474
 }
 "475
 }
-[e :U 693 ]
+[e :U 628 ]
 "476
-[e $U 652  ]
+[e $U 587  ]
 "477
-[e :U 697 ]
+[e :U 632 ]
 "478
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
 "479
@@ -1506,19 +1504,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 "480
 [e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
 "481
-[e $ ! == -> . . _PORTDbits 0 4 `i -> 1 `i 698  ]
+[e $ ! == -> . . _PORTDbits 0 4 `i -> 1 `i 633  ]
 {
 "482
-[e = _status -> . `E5481 8 `i ]
+[e = _status -> . `E4480 8 `i ]
 "483
 }
-[e :U 698 ]
+[e :U 633 ]
 "484
-[e $U 652  ]
+[e $U 587  ]
 "485
-[e :U 699 ]
+[e :U 634 ]
 "486
-[e $ ! != _fns -> 0 `i 700  ]
+[e $ ! != _fns -> 0 `i 635  ]
 {
 "487
 [e = _rf -> 1 `i ]
@@ -1528,7 +1526,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _fns -> 0 `i ]
 "490
 }
-[e :U 700 ]
+[e :U 635 ]
 "491
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
 "492
@@ -1542,7 +1540,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "499
 [e ( _Line ..  ]
 "500
-[e $ ! > _TIME -> -> 500 `i `l 701  ]
+[e $ ! > _TIME -> -> 500 `i `l 636  ]
 {
 "501
 [e = _TIME -> -> 0 `i `l ]
@@ -1551,9 +1549,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "507
 {
 [e = _j -> 0 `i ]
-[e $ < _j -> 2 `i 702  ]
-[e $U 703  ]
-[e :U 702 ]
+[e $ < _j -> 2 `i 637  ]
+[e $U 638  ]
+[e :U 637 ]
 {
 "508
 [e = _i *U + &U _sd * -> -> _j `ui `ux -> -> # *U &U _sd `ui `ux ]
@@ -1563,25 +1561,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 "507
 [e ++ _j -> 1 `i ]
-[e $ < _j -> 2 `i 702  ]
-[e :U 703 ]
+[e $ < _j -> 2 `i 637  ]
+[e :U 638 ]
 "510
 }
 "511
 [e ( _printf , (. :s 16C _line ]
 "512
 }
-[e :U 701 ]
+[e :U 636 ]
 "513
-[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 705  ]
+[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 640  ]
 {
 "514
-[e = _status -> . `E5481 10 `i ]
+[e = _status -> . `E4480 10 `i ]
 "515
 }
-[e :U 705 ]
+[e :U 640 ]
 "516
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 706  ]
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 641  ]
 {
 "517
 [e = _MF -> -> 0 `i `uc ]
@@ -1589,20 +1587,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _old `uc ~T0 @X0 1 a ]
 [e ( _CheckMem (1 &U _old ]
 "519
-[e $ ! == -> _old `i -> 0 `i 707  ]
+[e $ ! == -> _old `i -> 0 `i 642  ]
 {
 "520
 [e = _RWM -> -> 0 `i `uc ]
 "521
 [e = _rcount -> 0 `i ]
 "522
-[e = _status -> . `E5481 4 `i ]
+[e = _status -> . `E4480 4 `i ]
 "523
 [e ( _printf :s 17C ]
 "524
 }
-[e $U 708  ]
-[e :U 707 ]
+[e $U 643  ]
+[e :U 642 ]
 {
 "525
 [e ( _printf :s 18C ]
@@ -1618,12 +1616,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ShowMem ..  ]
 "530
 }
-[e :U 708 ]
+[e :U 643 ]
 "532
 }
-[e :U 706 ]
+[e :U 641 ]
 "533
-[e $ ! == -> . . _PORTDbits 0 4 `i -> 0 `i 709  ]
+[e $ ! == -> . . _PORTDbits 0 4 `i -> 0 `i 644  ]
 {
 "534
 [e = _MF -> -> 1 `i `uc ]
@@ -1631,20 +1629,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _old `uc ~T0 @X0 1 a ]
 [e ( _CheckMem (1 &U _old ]
 "536
-[e $ ! == -> _old `i -> 0 `i 710  ]
+[e $ ! == -> _old `i -> 0 `i 645  ]
 {
 "537
 [e = _RWM -> -> 0 `i `uc ]
 "538
 [e = _rcount -> 0 `i ]
 "539
-[e = _status -> . `E5481 4 `i ]
+[e = _status -> . `E4480 4 `i ]
 "540
 [e ( _printf :s 20C ]
 "541
 }
-[e $U 711  ]
-[e :U 710 ]
+[e $U 646  ]
+[e :U 645 ]
 {
 "542
 [e ( _printf :s 21C ]
@@ -1660,14 +1658,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e ( _ShowMem ..  ]
 "547
 }
-[e :U 711 ]
+[e :U 646 ]
 "549
 }
-[e :U 709 ]
+[e :U 644 ]
 "562
-[e $U 652  ]
+[e $U 587  ]
 "563
-[e :U 712 ]
+[e :U 647 ]
 "564
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
 "565
@@ -1675,10 +1673,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 "566
 [e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
 "567
-[e $ ! == -> . . _PORTDbits 0 5 `i -> 1 `i 713  ]
+[e $ ! == -> . . _PORTDbits 0 5 `i -> 1 `i 648  ]
 {
 "568
-[e = _status -> . `E5481 2 `i ]
+[e = _status -> . `E4480 2 `i ]
 "569
 [e = _fns -> 1 `i ]
 "570
@@ -1690,444 +1688,505 @@ Version 3.2 HI-TECH Software Intermediate Code
 "573
 [e = _TIME4 -> -> 0 `i `l ]
 "574
-[e = _rcount -> 0 `i ]
+[e = _TIME5 -> -> 0 `i `l ]
 "575
-[e = _flag_line -> 0 `i ]
+[e = _rcount -> 0 `i ]
 "576
-}
-[e :U 713 ]
-"577
-[e $ ! == -> . . _PORTDbits 0 4 `i -> 0 `i 714  ]
-{
+[e = _flag_line -> 0 `i ]
 "578
-[e ( _EreaseAll ..  ]
-"579
 [e ( _printf :s 23C ]
+"579
+}
+[e :U 648 ]
 "580
-[e = _status -> . `E5481 1 `i ]
+[e $ ! == -> . . _PORTDbits 0 4 `i -> 0 `i 649  ]
+{
 "581
-}
-[e :U 714 ]
+[e ( _EreaseAll ..  ]
 "582
-[e $U 652  ]
+[e ( _printf :s 24C ]
 "583
-[e :U 715 ]
+[e = _status -> . `E4480 1 `i ]
 "584
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"585
-[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
-"586
-[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
-"587
-[e ( _MotorsSpeed (2 , -> 0 `i -> 0 `i ]
-"588
-[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 716  ]
-{
-"589
-[e ( _printf , (. :s 24C _rcount ]
-"590
-[e = _status -> . `E5481 5 `i ]
-"591
-[e = _TIME4 -> -> 0 `i `l ]
-"592
-[e = _TIME3 -> -> 0 `i `l ]
-"593
-}
-[e :U 716 ]
-"594
-[e $ ! && == -> . . _PORTDbits 0 6 `i -> 0 `i > _rcount -> 0 `i 717  ]
-{
-"595
-[e ( _printf :s 25C ]
-"596
-[e = _TOTAL _rcount ]
-"597
-[e ( _Save ..  ]
-"598
-[e = _status -> . `E5481 3 `i ]
-"599
-}
-[e :U 717 ]
-"600
-[e $U 652  ]
-"601
-[e :U 718 ]
-"602
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"603
-[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
-"604
-[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
-"605
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 1 `i 719  ]
-{
-"606
-[e = _status -> . `E5481 8 `i ]
-"607
-}
-[e :U 719 ]
-"608
-[e $U 652  ]
-"609
-[e :U 720 ]
-"610
-[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
-"611
-[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
-"612
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"614
-[e $ ! > _TIME3 -> -> 5 `i `l 721  ]
-{
-"615
-[e ( _EnhancedRead ..  ]
-"616
-[e ( _Line ..  ]
-"617
-[e = _TIME3 -> -> 0 `i `l ]
-"618
-[e ( _AdvanceLow ..  ]
-"620
-[e $ ! || && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 1 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 0 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i 722  ]
-{
-"621
-[e = _status -> . `E5481 4 `i ]
-"622
-[e = _TIME -> -> 0 `i `l ]
-"623
-[e = *U + &U _LEN * -> -> _rcount `ui `ux -> -> # *U &U _LEN `ui `ux -> / / _TIME4 -> -> 40 `i `l -> -> 6 `i `l `i ]
-"624
-[e ++ _rcount -> 1 `i ]
-"626
-}
-[e :U 722 ]
-"627
-}
-[e :U 721 ]
-"628
-[e $U 652  ]
-"629
-[e :U 723 ]
-"630
-[e $ ! != _fns -> 0 `i 724  ]
-{
-"631
-[e ( _printf , , , , (. :s 26C / _rcount -> 2 `i *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i + - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i -> 70 `i ]
-"632
-[e = _fns -> 0 `i ]
-"633
-}
-[e :U 724 ]
-"634
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 725  ]
-{
-"635
-[e = _fns -> 1 `i ]
-"636
-[e = _status -> . `E5481 8 `i ]
-"637
-}
-[e :U 725 ]
-"639
-[e $ ! > _TIME3 -> -> 5 `i `l 726  ]
-{
-"640
-[e = _TIME3 -> -> 0 `i `l ]
-"641
-[e ( _EnhancedRead ..  ]
-"642
-[e ( _Line ..  ]
-"643
-[v _speed `i ~T0 @X0 1 a ]
-"644
-[v _kp `d ~T0 @X0 1 a ]
-[v _kd `d ~T0 @X0 1 a ]
-"645
-[v _mod `i ~T0 @X0 1 a ]
-"647
-[e $ ! == % _rcount -> 2 `i -> 1 `i 727  ]
-{
-"648
-[e = _mod -> . `E5563 1 `i ]
-"649
-}
-[e $U 728  ]
-[e :U 727 ]
-{
-"650
-[e $ ! < / _TIME4 -> -> 6 `i `l -> - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i `l 729  ]
-{
-"651
-[e = _mod -> . `E5563 3 `i ]
-"652
-}
-[e $U 730  ]
-[e :U 729 ]
-[e $ ! && < / _TIME4 -> -> 6 `i `l -> + - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i -> 70 `i `l > *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 20 `i 731  ]
-{
-"653
-[e = _mod -> . `E5563 4 `i ]
-"654
-}
-[e $U 732  ]
-[e :U 731 ]
-{
-"655
-[e = _mod -> . `E5563 5 `i ]
-"656
-}
-[e :U 732 ]
-[e :U 730 ]
-"657
-}
-[e :U 728 ]
-"658
-[e = _speed *U + &U _VEL * -> -> _mod `ui `ux -> -> # *U &U _VEL `ui `ux ]
-"659
-[e = _kp *U + &U _VKP * -> -> _mod `ui `ux -> -> # *U &U _VKP `ui `ux ]
-"660
-[e = _kd *U + &U _VKD * -> -> _mod `ui `ux -> -> # *U &U _VKD `ui `ux ]
-"661
-[e = _der - _line _last ]
-"662
-[e = _formula -> + * -> _line `d _kp * -> _der `d _kd `i ]
-"664
-[e $ ! > _formula -> 0 `i 733  ]
-{
-"665
-[e ( _MotorsSpeed (2 , - _speed _formula _speed ]
-"666
-}
-[e $U 734  ]
-[e :U 733 ]
-{
-"667
-[e ( _MotorsSpeed (2 , _speed + _speed _formula ]
-"668
-}
-[e :U 734 ]
-"669
-[e = _last _line ]
-"671
-[e $ ! == _flag_line -> 0 `i 735  ]
-{
-"672
-[e $ ! || && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 1 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 0 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i 736  ]
-{
-"673
-[e = _flag_line -> 1 `i ]
-"674
-[e = _TIME -> -> 0 `i `l ]
-"675
-[e = _TIME4 -> -> 0 `i `l ]
-"676
-[e = . . _PORTAbits 0 4 -> -> ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"677
-[e ++ _rcount -> 1 `i ]
-"678
-[e $ ! == % _rcount -> 2 `i -> 1 `i 737  ]
-{
-"679
-[e ( _printf :s 27C ]
-"680
-}
-[e $U 738  ]
-[e :U 737 ]
-{
-"681
-[e ( _printf , , , , (. :s 28C / _rcount -> 2 `i *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i + - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i -> 70 `i ]
-"682
-}
-[e :U 738 ]
-"684
-}
-[e :U 736 ]
-"685
-}
-[e :U 735 ]
-"686
-[e $ ! == _flag_line -> 1 `i 739  ]
-{
-"687
-[e $ ! > _TIME -> * -> 200 `i -> 6 `i `l 740  ]
-{
-"688
-[e = _TIME -> -> 0 `i `l ]
-"689
-[e = _flag_line -> 0 `i ]
-"690
-}
-[e :U 740 ]
-"691
-}
-[e :U 739 ]
-"692
-[e $ ! == _rcount - * _TOTAL -> 2 `i -> 1 `i 741  ]
-{
-"693
-[e = _fns -> 1 `i ]
-"694
-[e = _status -> . `E5481 8 `i ]
-"695
-}
-[e :U 741 ]
-"696
-}
-[e :U 726 ]
-"697
-[e $U 652  ]
-"700
-[e :U 742 ]
-"701
-[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 743  ]
-{
-"702
-[e = _fns -> 1 `i ]
-"703
-[e = _status -> . `E5481 8 `i ]
-"704
-}
-[e :U 743 ]
-"705
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"707
-[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
-"708
-[e $ ! > _TIME3 -> -> 5 `i `l 744  ]
-{
-"709
-[e = _TIME3 -> -> 0 `i `l ]
-"710
-[e ( _EnhancedRead ..  ]
-"711
-[e ( _Line ..  ]
-"713
-[v _speed `i ~T0 @X0 1 a ]
-"714
-[v _kp `d ~T0 @X0 1 a ]
-[v _kd `d ~T0 @X0 1 a ]
-"715
-[v _mod `i ~T0 @X0 1 a ]
-"717
-[e $ ! == -> _RWM `i -> 0 `i 745  ]
-{
-"719
-}
-[e :U 745 ]
-"730
-[e = _der - _line _last ]
-"731
-[e = _formula -> + * -> _line `d _kp * -> _der `d _kd `i ]
-"733
-[e $ ! > _formula -> 0 `i 746  ]
-{
-"734
-[e ( _MotorsSpeed (2 , - _speed _formula _speed ]
-"735
-}
-[e $U 747  ]
-[e :U 746 ]
-{
-"736
-[e ( _MotorsSpeed (2 , _speed + _speed _formula ]
-"737
-}
-[e :U 747 ]
-"738
-[e $ ! == _flag_line -> 0 `i 748  ]
-{
-"739
-[e $ ! || && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 1 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 0 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i 749  ]
-{
-"740
-[e = _flag_line -> 1 `i ]
-"741
-[e = _TIME -> -> 0 `i `l ]
-"742
-[e = . . _PORTAbits 0 4 -> -> ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"743
-[e ++ _rcount -> 1 `i ]
-"745
-}
-[e :U 749 ]
-"746
-}
-[e :U 748 ]
-"747
-[e $ ! == _flag_line -> 1 `i 750  ]
-{
-"748
-[e $ ! > _TIME -> * -> 500 `i -> 6 `i `l 751  ]
-{
-"749
-[e = _TIME -> -> 0 `i `l ]
-"750
-[e = _flag_line -> 0 `i ]
-"751
-}
-[e :U 751 ]
-"752
-}
-[e :U 750 ]
-"753
-[e $ ! == _rcount -> 7 `i 752  ]
-{
-"754
-[e = _fns -> 1 `i ]
-"755
-[e = _status -> . `E5481 8 `i ]
-"756
-}
-[e :U 752 ]
-"757
-[e $ ! > _TIME2 -> -> 1000 `i `l 753  ]
-{
-"761
-[e = _TIME2 -> -> 0 `i `l ]
-"762
-}
-[e :U 753 ]
-"763
-[e = _last _line ]
-"764
-}
-[e :U 744 ]
-"766
-[e $U 652  ]
-"767
-}
-[e $U 652  ]
-"343
-[e :U 653 ]
-[e [\ _status , $ -> . `E5481 0 `i 654
- , $ -> . `E5481 7 `i 670
- , $ -> . `E5481 6 `i 680
- , $ -> . `E5481 9 `i 682
- , $ -> . `E5481 1 `i 697
- , $ -> . `E5481 8 `i 699
- , $ -> . `E5481 10 `i 712
- , $ -> . `E5481 4 `i 715
- , $ -> . `E5481 3 `i 718
- , $ -> . `E5481 5 `i 720
- , $ -> . `E5481 2 `i 723
- , $ -> . `E5481 11 `i 742
- 652 ]
-"767
-[e :U 652 ]
-"768
 }
 [e :U 649 ]
-"338
-[e $U 650  ]
+"585
+[e $U 587  ]
+"586
+[e :U 650 ]
+"587
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"588
+[e = . . _PORTAbits 0 4 -> -> 0 `i `uc ]
+"589
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"590
+[e ( _MotorsSpeed (2 , -> 0 `i -> 0 `i ]
+"591
+[e $ ! == -> . . _PORTDbits 0 5 `i -> 0 `i 651  ]
+{
+"592
+[e ( _printf , (. :s 25C _rcount ]
+"593
+[e = _status -> . `E4480 5 `i ]
+"594
+[e = _TIME4 -> -> 0 `i `l ]
+"595
+[e = _TIME3 -> -> 0 `i `l ]
+"596
+}
 [e :U 651 ]
-"769
-[e :UE 645 ]
+"597
+[e $ ! && == -> . . _PORTDbits 0 6 `i -> 0 `i > _rcount -> 0 `i 652  ]
+{
+"598
+[e ( _printf :s 26C ]
+"599
+[e = _TOTAL _rcount ]
+"600
+[e ( _Save ..  ]
+"601
+[e = _status -> . `E4480 3 `i ]
+"602
+}
+[e :U 652 ]
+"603
+[e $U 587  ]
+"604
+[e :U 653 ]
+"605
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"606
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"607
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"608
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 1 `i 654  ]
+{
+"609
+[e = _status -> . `E4480 8 `i ]
+"610
+}
+[e :U 654 ]
+"611
+[e $U 587  ]
+"612
+[e :U 655 ]
+"613
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"614
+[e = . . _PORTAbits 0 4 -> -> 1 `i `uc ]
+"615
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"617
+[e $ ! > _TIME3 -> -> 5 `i `l 656  ]
+{
+"618
+[e ( _EnhancedRead ..  ]
+"619
+[e ( _Line ..  ]
+"620
+[e = _TIME3 -> -> 0 `i `l ]
+"621
+[e ( _AdvanceLow ..  ]
+"623
+[e $ ! || && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 1 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 0 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i 657  ]
+{
+"624
+[e = _status -> . `E4480 4 `i ]
+"625
+[e = _TIME -> -> 0 `i `l ]
+"626
+[e = *U + &U _LEN * -> -> _rcount `ui `ux -> -> # *U &U _LEN `ui `ux -> / / _TIME4 -> -> 40 `i `l -> -> 6 `i `l `i ]
+"627
+[e ++ _rcount -> 1 `i ]
+"629
+}
+[e :U 657 ]
+"630
+}
+[e :U 656 ]
+"631
+[e $U 587  ]
+"632
+[e :U 658 ]
+"633
+[e $ ! != _fns -> 0 `i 659  ]
+{
+"634
+[e ( _printf , , , , (. :s 27C / _rcount -> 2 `i *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i + - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i -> 40 `i ]
+"635
+[e = _fns -> 0 `i ]
+"636
+}
+[e :U 659 ]
+"637
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 660  ]
+{
+"638
+[e = _fns -> 1 `i ]
+"639
+[e = _status -> . `E4480 8 `i ]
+"640
+}
+[e :U 660 ]
+"641
+[e $ ! > _TIME5 -> -> 400 `i `l 661  ]
+{
+"642
+[e = _TIME5 -> -> 0 `i `l ]
+"643
+[e ( _printf , (. :s 28C _line ]
+"644
+{
+[e = _j -> 0 `i ]
+[e $ < _j -> 2 `i 662  ]
+[e $U 663  ]
+[e :U 662 ]
+{
+"645
+[e = _i *U + &U _sd * -> -> _j `ui `ux -> -> # *U &U _sd `ui `ux ]
+"646
+[e ( _printf , , , , , (. :s 29C _i *U + &U _P * -> -> _i `ui `ux -> -> # *U &U _P `ui `ux % * * * _i _i * -> 5 `i -> 5 `i -> 36 `i -> 256 `i % * * * _i _i * -> 1 `i -> 1 `i -> 36 `i -> 256 `i % * * * _i _i * -> 3 `i -> 3 `i -> 36 `i -> 256 `i ]
+"647
+}
+"644
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 2 `i 662  ]
+[e :U 663 ]
+"647
+}
+"648
+}
+[e :U 661 ]
+"649
+[e $ ! > _TIME3 -> -> 10 `i `l 665  ]
+{
+"650
+[e = _TIME3 -> -> 0 `i `l ]
+"651
+[e ( _EnhancedRead ..  ]
+"652
+[e ( _Line ..  ]
+"653
+[v _speed `i ~T0 @X0 1 a ]
+"654
+[v _kp `d ~T0 @X0 1 a ]
+[v _kd `d ~T0 @X0 1 a ]
+"655
+[v _mod `i ~T0 @X0 1 a ]
+"657
+[e $ ! == % _rcount -> 2 `i -> 1 `i 666  ]
+{
+"658
+[e = _mod -> . `E4563 1 `i ]
+"659
+}
+[e $U 667  ]
+[e :U 666 ]
+{
+"660
+[e $ ! < / _TIME4 -> -> 6 `i `l -> - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i `l 668  ]
+{
+"661
+[e = _mod -> . `E4563 3 `i ]
+"662
+}
+[e $U 669  ]
+[e :U 668 ]
+[e $ ! && < / _TIME4 -> -> 6 `i `l -> + - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i -> 40 `i `l > *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 20 `i 670  ]
+{
+"663
+[e = _mod -> . `E4563 4 `i ]
+"664
+}
+[e $U 671  ]
+[e :U 670 ]
+{
+"665
+[e = _mod -> . `E4563 5 `i ]
+"666
+}
+[e :U 671 ]
+[e :U 669 ]
+"667
+}
+[e :U 667 ]
+"668
+[e = _speed *U + &U _VEL * -> -> _mod `ui `ux -> -> # *U &U _VEL `ui `ux ]
+"669
+[e = _kp *U + &U _VKP * -> -> _mod `ui `ux -> -> # *U &U _VKP `ui `ux ]
+"670
+[e = _kd *U + &U _VKD * -> -> _mod `ui `ux -> -> # *U &U _VKD `ui `ux ]
+"671
+[e = _der - _line _last ]
+"672
+[e = _formula -> + * -> _line `d _kp * -> _der `d _kd `i ]
+"674
+[e $ ! > _formula -> 0 `i 672  ]
+{
+"675
+[e ( _MotorsSpeed (2 , - _speed _formula _speed ]
+"676
+}
+[e $U 673  ]
+[e :U 672 ]
+{
+"677
+[e ( _MotorsSpeed (2 , _speed + _speed _formula ]
+"678
+}
+[e :U 673 ]
+"679
+[e = _last _line ]
+"681
+[e $ ! == _flag_line -> 0 `i 674  ]
+{
+"682
+[e $ ! || && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 1 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 0 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i 675  ]
+{
+"683
+[e = _flag_line -> 1 `i ]
+"684
+[e = _TIME -> -> 0 `i `l ]
+"685
+[e = _TIME4 -> -> 0 `i `l ]
+"686
+[e = . . _PORTAbits 0 4 -> -> ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"687
+[e ++ _rcount -> 1 `i ]
+"688
+[e $ ! == % _rcount -> 2 `i -> 1 `i 676  ]
+{
+"689
+[e ( _printf :s 30C ]
+"690
+}
+[e $U 677  ]
+[e :U 676 ]
+{
+"691
+[e ( _printf , , , , (. :s 31C / _rcount -> 2 `i *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i + - - / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 2 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 4 `i / * *U + &U _LEN * -> -> / _rcount -> 2 `i `ui `ux -> -> # *U &U _LEN `ui `ux -> 40 `i -> 16 `i -> 40 `i ]
+"692
+}
+[e :U 677 ]
+"693
+[e ( _printf , (. :s 32C _rcount ]
+"694
+}
+[e :U 675 ]
+"695
+}
+[e :U 674 ]
+"696
+[e $ ! == _flag_line -> 1 `i 678  ]
+{
+"697
+[e $ ! > _TIME -> * -> 200 `i -> 6 `i `l 679  ]
+{
+"698
+[e = _TIME -> -> 0 `i `l ]
+"699
+[e = _flag_line -> 0 `i ]
+"700
+}
+[e :U 679 ]
+"701
+}
+[e :U 678 ]
+"702
+[e $ ! == _rcount - * _TOTAL -> 2 `i -> 1 `i 680  ]
+{
+"703
+[e ( _printf :s 33C ]
+"704
+[e = _fns -> 1 `i ]
+"705
+[e = _status -> . `E4480 8 `i ]
+"706
+}
+[e :U 680 ]
+"707
+}
+[e :U 665 ]
+"708
+[e $U 587  ]
+"711
+[e :U 681 ]
+"712
+[e $ ! == -> . . _PORTDbits 0 6 `i -> 0 `i 682  ]
+{
+"713
+[e = _fns -> 1 `i ]
+"714
+[e = _status -> . `E4480 8 `i ]
+"715
+}
+[e :U 682 ]
+"716
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"718
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"719
+[e $ ! > _TIME3 -> -> 5 `i `l 683  ]
+{
+"720
+[e = _TIME3 -> -> 0 `i `l ]
+"721
+[e ( _EnhancedRead ..  ]
+"722
+[e ( _Line ..  ]
+"724
+[v _speed `i ~T0 @X0 1 a ]
+"725
+[v _kp `d ~T0 @X0 1 a ]
+[v _kd `d ~T0 @X0 1 a ]
+"726
+[v _mod `i ~T0 @X0 1 a ]
+"728
+[e $ ! == -> _RWM `i -> 0 `i 684  ]
+{
+"730
+}
+[e :U 684 ]
+"731
+[e $ ! == % _rcount -> 2 `i -> 0 `i 685  ]
+{
+"732
+[e = _mod -> . `E4563 0 `i ]
+"733
+}
+[e $U 686  ]
+[e :U 685 ]
+{
+"734
+[e = _mod -> . `E4563 1 `i ]
+"735
+}
+[e :U 686 ]
+"736
+[e = _speed *U + &U _VEL * -> -> _mod `ui `ux -> -> # *U &U _VEL `ui `ux ]
+"737
+[e = _kp *U + &U _VKP * -> -> _mod `ui `ux -> -> # *U &U _VKP `ui `ux ]
+"738
+[e = _kd *U + &U _VKD * -> -> _mod `ui `ux -> -> # *U &U _VKD `ui `ux ]
+"740
+[e = _der - _line _last ]
+"741
+[e = _formula -> + * -> _line `d _kp * -> _der `d _kd `i ]
+"743
+[e $ ! > _formula -> 0 `i 687  ]
+{
+"744
+[e ( _MotorsSpeed (2 , - _speed _formula _speed ]
+"745
+}
+[e $U 688  ]
+[e :U 687 ]
+{
+"746
+[e ( _MotorsSpeed (2 , _speed + _speed _formula ]
+"747
+}
+[e :U 688 ]
+"748
+[e $ ! == _flag_line -> 0 `i 689  ]
+{
+"749
+[e $ ! || && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 1 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i && > *U + &U _P * -> -> *U + &U _sd * -> -> -> 0 `i `ui `ux -> -> # *U &U _sd `ui `ux `ui `ux -> -> # *U &U _P `ui `ux -> 500 `i < ? > _line -> 0 `i : _line -U _line -> 150 `i 690  ]
+{
+"750
+[e = _flag_line -> 1 `i ]
+"751
+[e = _TIME -> -> 0 `i `l ]
+"752
+[e = . . _PORTAbits 0 4 -> -> ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"753
+[e ++ _rcount -> 1 `i ]
+"755
+}
+[e :U 690 ]
+"756
+}
+[e :U 689 ]
+"757
+[e $ ! == _flag_line -> 1 `i 691  ]
+{
+"758
+[e $ ! > _TIME -> * -> 500 `i -> 6 `i `l 692  ]
+{
+"759
+[e = _TIME -> -> 0 `i `l ]
+"760
+[e = _flag_line -> 0 `i ]
+"761
+}
+[e :U 692 ]
+"762
+}
+[e :U 691 ]
+"763
+[e $ ! == _rcount -> 7 `i 693  ]
+{
+"764
+[e = _fns -> 1 `i ]
+"765
+[e = _status -> . `E4480 8 `i ]
+"766
+}
+[e :U 693 ]
+"767
+[e $ ! > _TIME2 -> -> 1000 `i `l 694  ]
+{
+"771
+[e = _TIME2 -> -> 0 `i `l ]
+"772
+}
+[e :U 694 ]
+"773
+[e = _last _line ]
+"774
+}
+[e :U 683 ]
+"776
+[e $U 587  ]
+"777
+}
+[e $U 587  ]
+"343
+[e :U 588 ]
+[e [\ _status , $ -> . `E4480 0 `i 589
+ , $ -> . `E4480 7 `i 605
+ , $ -> . `E4480 6 `i 615
+ , $ -> . `E4480 9 `i 617
+ , $ -> . `E4480 1 `i 632
+ , $ -> . `E4480 8 `i 634
+ , $ -> . `E4480 10 `i 647
+ , $ -> . `E4480 4 `i 650
+ , $ -> . `E4480 3 `i 653
+ , $ -> . `E4480 5 `i 655
+ , $ -> . `E4480 2 `i 658
+ , $ -> . `E4480 11 `i 681
+ 587 ]
+"777
+[e :U 587 ]
+"778
+}
+[e :U 584 ]
+"338
+[e $U 585  ]
+[e :U 586 ]
+"779
+[e :UE 580 ]
 }
 [p f _printf 8422532 ]
 [a 10C 123 39 67 79 77 39 58 39 112 108 111 116 39 44 39 110 97 109 101 39 58 39 83 37 105 39 44 39 118 97 108 117 101 39 58 37 105 44 32 39 99 111 108 111 114 39 58 40 37 100 44 37 100 44 37 100 41 125 10 0 ]
 [a 11C 123 39 67 79 77 39 58 39 112 108 111 116 39 44 39 110 97 109 101 39 58 39 83 37 105 39 44 39 118 97 108 117 101 39 58 37 105 44 32 39 99 111 108 111 114 39 58 40 37 100 44 37 100 44 37 100 41 125 10 0 ]
 [a 15C 123 39 67 79 77 39 58 39 112 108 111 116 39 44 39 110 97 109 101 39 58 39 83 37 105 39 44 39 118 97 108 117 101 39 58 37 105 44 32 39 99 111 108 111 114 39 58 40 37 100 44 37 100 44 37 100 41 125 10 0 ]
+[a 29C 123 39 67 79 77 39 58 39 112 108 111 116 39 44 39 110 97 109 101 39 58 39 83 37 105 39 44 39 118 97 108 117 101 39 58 37 105 44 32 39 99 111 108 111 114 39 58 40 37 100 44 37 100 44 37 100 41 125 10 0 ]
+[a 32C 123 39 67 79 77 39 58 39 83 101 116 116 108 101 39 44 39 110 97 109 101 39 58 39 65 114 101 97 32 37 105 39 44 39 99 111 108 111 114 39 58 40 49 48 48 44 49 48 48 44 50 53 53 41 125 10 0 ]
 [a 16C 123 39 67 79 77 39 58 39 112 108 111 116 39 44 39 110 97 109 101 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 37 105 44 39 99 111 108 111 114 39 58 40 48 44 49 48 48 44 50 48 48 41 125 10 0 ]
+[a 28C 123 39 67 79 77 39 58 39 112 108 111 116 39 44 39 110 97 109 101 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 37 105 44 39 99 111 108 111 114 39 58 40 48 44 49 48 48 44 50 48 48 41 125 10 0 ]
 [a 5C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 71 114 101 101 110 32 109 101 109 111 114 121 32 101 109 112 116 121 39 125 10 0 ]
 [a 7C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 82 101 100 32 109 101 109 111 114 121 32 101 109 112 116 121 39 125 10 0 ]
 [a 6C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 71 114 101 101 110 32 109 101 109 111 114 121 39 125 10 0 ]
@@ -2139,16 +2198,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 12C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 82 101 115 101 116 32 99 97 108 105 98 114 97 116 105 111 110 39 125 10 0 ]
 [a 9C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 99 97 108 105 98 114 97 116 105 111 110 39 125 10 0 ]
 [a 4C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 76 111 97 100 105 110 103 32 101 101 112 114 111 109 39 125 10 0 ]
-[a 24C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 87 114 105 116 105 110 103 32 114 101 99 116 32 37 105 39 125 10 0 ]
+[a 25C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 87 114 105 116 105 110 103 32 114 101 99 116 32 37 105 39 125 10 0 ]
 [a 1C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 91 37 105 93 32 61 32 37 105 39 125 10 0 ]
-[a 27C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 99 117 114 118 101 39 125 10 0 ]
+[a 30C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 99 117 114 118 101 39 125 10 0 ]
+[a 23C 123 39 67 79 77 39 58 39 82 101 108 101 97 115 101 39 125 10 0 ]
 [a 13C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 105 110 105 116 105 97 108 32 109 111 100 101 39 125 10 0 ]
-[a 23C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 77 101 109 111 114 121 32 101 114 97 115 101 100 39 125 10 0 ]
-[a 25C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 83 97 118 101 32 100 97 116 97 39 125 10 0 ]
+[a 33C 123 39 67 79 77 39 58 39 72 111 108 100 39 125 10 0 ]
+[a 24C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 77 101 109 111 114 121 32 101 114 97 115 101 100 39 125 10 0 ]
+[a 26C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 83 97 118 101 32 100 97 116 97 39 125 10 0 ]
 [a 14C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 83 91 32 37 48 52 117 32 93 32 58 32 91 37 48 52 117 32 44 32 37 48 52 117 32 93 39 125 10 0 ]
 [a 8C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 82 101 100 32 109 101 109 111 114 121 58 39 125 10 0 ]
 [a 22C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 71 82 69 69 78 32 109 101 109 111 114 121 58 39 125 10 0 ]
 [a 19C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 82 69 68 32 109 101 109 111 114 121 58 39 125 10 0 ]
 [a 3C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 82 97 121 105 116 111 32 50 46 48 39 125 10 0 ]
-[a 26C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 114 101 99 116 32 102 40 37 105 41 32 61 32 40 37 105 41 32 40 37 105 41 32 40 37 105 41 39 125 10 0 ]
-[a 28C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 114 101 99 116 32 102 40 37 105 41 32 61 32 40 37 105 41 32 40 37 105 41 32 40 37 105 41 39 125 10 0 ]
+[a 27C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 114 101 99 116 32 102 40 37 105 41 32 61 32 40 37 105 41 32 40 37 105 41 32 40 37 105 41 39 125 10 0 ]
+[a 31C 123 39 67 79 77 39 58 39 108 105 110 101 39 44 39 118 97 108 117 101 39 58 39 69 110 116 101 114 105 110 103 32 114 101 99 116 32 102 40 37 105 41 32 61 32 40 37 105 41 32 40 37 105 41 32 40 37 105 41 39 125 10 0 ]

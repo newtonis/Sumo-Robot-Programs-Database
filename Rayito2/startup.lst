@@ -1,12 +1,12 @@
 
 
-Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-                                                                                                           Thu Aug  4 17:26:31 2016
+Microchip Technology PIC18 Macro Assembler V1.38 build -256452561 
+                                                                                                           Thu Aug  4 19:41:33 2016
 
 
      1                           
-     2                           	; Microchip MPLAB XC8 C Compiler V1.34
-     3                           	; Copyright (C) 1984-2015 HI-TECH Software
+     2                           	; Microchip MPLAB XC8 C Compiler V1.38
+     3                           	; Copyright (C) 1984-2016 HI-TECH Software
      4                           
      5                           	; Auto-generated runtime startup code for final link stage.
      6                           
@@ -26,7 +26,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
     20  0000                     
     21                           	psect	config,class=CONFIG,delta=1,noexec
     22                           	psect	idloc,class=IDLOC,delta=1,noexec
-    23                           	psect	const,class=CODE,delta=1,reloc=2,noexec
+    23                           	psect	const,class=CONST,delta=1,reloc=2,noexec
     24                           	psect	smallconst,class=SMALLCONST,delta=1,reloc=2,noexec
     25                           	psect	mediumconst,class=MEDIUMCONST,delta=1,reloc=2,noexec
     26                           	psect	rbss,class=COMRAM,space=1,noexec
@@ -76,7 +76,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
     70  000000                     	psect	mediumconst
     71                           	GLOBAL	__mediumconst
     72                           __mediumconst:
-    73  007BA0                     wreg	EQU	0FE8h
+    73  007B44                     wreg	EQU	0FE8h
     74  0000                     fsr0l	EQU	0FE9h
     75  0000                     fsr0h	EQU	0FEAh
     76  0000                     fsr1l	EQU	0FE1h
@@ -107,16 +107,16 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    101                           
    102                           ; jump to start
    103                           	goto start
-   104  000000  EF0C  F000         	GLOBAL __accesstop
+   104  000000  EF0B  F000         	GLOBAL __accesstop
    105                           __accesstop EQU 96
    106  0000                     
    107                           
    108                           	psect	init
    109                           start:
-   110  000018                     
+   110  000016                     
    111                           ;Initialize the stack pointer (FSR1)
    112                           	global stacklo, stackhi
-   113                           	stacklo	equ	034Fh
+   113                           	stacklo	equ	0351h
    114  0000                     	stackhi	equ	07FFh
    115  0000                     
    116                           
@@ -129,12 +129,12 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    123                           	psect	end_init
    124                           	global start_initialization
    125                           	goto start_initialization	;jump to C runtime clear & initialization
-   126  000018  EFD3  F01A         
+   126  000016  EF89  F01B         
    127                           ; Config register CONFIG1L @ 0x300000
-   128                           ;	System Clock Postscaler Selection bits
-   129                           ;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
-   130                           ;	PLL Prescaler Selection bits
-   131                           ;	PLLDIV = 5, Divide by 5 (20 MHz oscillator input)
+   128                           ;	PLL Prescaler Selection bits
+   129                           ;	PLLDIV = 5, Divide by 5 (20 MHz oscillator input)
+   130                           ;	System Clock Postscaler Selection bits
+   131                           ;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
    132                           ;	USB Clock Selection bit (used in Full-Speed USB mode only; UCFG:FSEN = 1)
    133                           ;	USBDIV = 2, USB clock source comes from the 96 MHz PLL divided by 2
    134                           
@@ -143,12 +143,12 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    137  300000                     		db 0x24
    138  300000  24                 
    139                           ; Config register CONFIG1H @ 0x300001
-   140                           ;	Fail-Safe Clock Monitor Enable bit
-   141                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
-   142                           ;	Internal/External Oscillator Switchover bit
-   143                           ;	IESO = OFF, Oscillator Switchover mode disabled
-   144                           ;	Oscillator Selection bits
-   145                           ;	FOSC = HSPLL_HS, HS oscillator, PLL enabled (HSPLL)
+   140                           ;	Oscillator Selection bits
+   141                           ;	FOSC = HSPLL_HS, HS oscillator, PLL enabled (HSPLL)
+   142                           ;	Fail-Safe Clock Monitor Enable bit
+   143                           ;	FCMEN = OFF, Fail-Safe Clock Monitor disabled
+   144                           ;	Internal/External Oscillator Switchover bit
+   145                           ;	IESO = OFF, Oscillator Switchover mode disabled
    146                           
    147                           	psect	config,class=CONFIG,delta=1,noexec
    148                           		org 0x1
@@ -157,22 +157,22 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    151                           ; Config register CONFIG2L @ 0x300002
    152                           ;	Power-up Timer Enable bit
    153                           ;	PWRT = OFF, PWRT disabled
-   154                           ;	USB Voltage Regulator Enable bit
-   155                           ;	VREGEN = OFF, USB voltage regulator disabled
+   154                           ;	Brown-out Reset Enable bits
+   155                           ;	BOR = OFF, Brown-out Reset disabled in hardware and software
    156                           ;	Brown-out Reset Voltage bits
-   157                           ;	BORV = 3, Minimum setting
-   158                           ;	Brown-out Reset Enable bits
-   159                           ;	BOR = OFF, Brown-out Reset disabled in hardware and software
+   157                           ;	BORV = 3, Minimum setting 2.05V
+   158                           ;	USB Voltage Regulator Enable bit
+   159                           ;	VREGEN = OFF, USB voltage regulator disabled
    160                           
    161                           	psect	config,class=CONFIG,delta=1,noexec
    162                           		org 0x2
    163  300002                     		db 0x19
    164  300002  19                 
    165                           ; Config register CONFIG2H @ 0x300003
-   166                           ;	Watchdog Timer Postscale Select bits
-   167                           ;	WDTPS = 32768, 1:32768
-   168                           ;	Watchdog Timer Enable bit
-   169                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+   166                           ;	Watchdog Timer Enable bit
+   167                           ;	WDT = OFF, WDT disabled (control is placed on the SWDTEN bit)
+   168                           ;	Watchdog Timer Postscale Select bits
+   169                           ;	WDTPS = 32768, 1:32768
    170                           
    171                           	psect	config,class=CONFIG,delta=1,noexec
    172                           		org 0x3
@@ -188,10 +188,10 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    182                           ;	CCP2MX = ON, CCP2 input/output is multiplexed with RC1
    183                           ;	PORTB A/D Enable bit
    184                           ;	PBADEN = OFF, PORTB<4:0> pins are configured as digital I/O on Reset
-   185                           ;	MCLR Pin Enable bit
-   186                           ;	MCLRE = OFF, RE3 input pin enabled; MCLR pin disabled
-   187                           ;	Low-Power Timer 1 Oscillator Enable bit
-   188                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+   185                           ;	Low-Power Timer 1 Oscillator Enable bit
+   186                           ;	LPT1OSC = OFF, Timer1 configured for higher power operation
+   187                           ;	MCLR Pin Enable bit
+   188                           ;	MCLRE = OFF, RE3 input pin enabled; MCLR pin disabled
    189                           
    190                           	psect	config,class=CONFIG,delta=1,noexec
    191                           		org 0x5
@@ -200,14 +200,14 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    194                           ; Config register CONFIG4L @ 0x300006
    195                           ;	Stack Full/Underflow Reset Enable bit
    196                           ;	STVREN = ON, Stack full/underflow will cause Reset
-   197                           ;	Background Debugger Enable bit
-   198                           ;	DEBUG = OFF, Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins
+   197                           ;	Single-Supply ICSP Enable bit
+   198                           ;	LVP = OFF, Single-Supply ICSP disabled
    199                           ;	Dedicated In-Circuit Debug/Programming Port (ICPORT) Enable bit
    200                           ;	ICPRT = OFF, ICPORT disabled
-   201                           ;	Single-Supply ICSP Enable bit
-   202                           ;	LVP = OFF, Single-Supply ICSP disabled
-   203                           ;	Extended Instruction Set Enable bit
-   204                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mode)
+   201                           ;	Extended Instruction Set Enable bit
+   202                           ;	XINST = OFF, Instruction set extension and Indexed Addressing mode disabled (Legacy mode)
+   203                           ;	Background Debugger Enable bit
+   204                           ;	DEBUG = OFF, Background debugger disabled, RB6 and RB7 configured as general purpose I/O pins
    205                           
    206                           	psect	config,class=CONFIG,delta=1,noexec
    207                           		org 0x6
@@ -257,10 +257,10 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    251  30000A                     		db 0xF
    252  30000A  0F                 
    253                           ; Config register CONFIG6H @ 0x30000B
-   254                           ;	Boot Block Write Protection bit
-   255                           ;	WRTB = OFF, Boot block (000000-0007FFh) is not write-protected
-   256                           ;	Configuration Register Write Protection bit
-   257                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) are not write-protected
+   254                           ;	Configuration Register Write Protection bit
+   255                           ;	WRTC = OFF, Configuration registers (300000-3000FFh) are not write-protected
+   256                           ;	Boot Block Write Protection bit
+   257                           ;	WRTB = OFF, Boot block (000000-0007FFh) is not write-protected
    258                           ;	Data EEPROM Write Protection bit
    259                           ;	WRTD = OFF, Data EEPROM is not write-protected
    260                           
@@ -293,11 +293,11 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    286  30000D  40                 
 
 
-Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Thu Aug  4 17:26:31 2016
+Microchip Technology PIC18 Macro Assembler V1.38 build -256452561 
+Symbol Table                                                                                               Thu Aug  4 19:41:33 2016
 
-                __S1 034F                 ___sp 0000                 _main 001C                 start 0018  
-              __HRAM 0000                __LRAM 0001         __mediumconst 7BA0               stackhi 0007FF  
-             stacklo 00034F           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
-            __ramtop 0800  start_initialization 35A6          __smallconst 0000             intlevel0 0000  
+                __S1 0351                 ___sp 0000                 _main 001A                 start 0016  
+              __HRAM 0000                __LRAM 0001         __mediumconst 7B44               stackhi 0007FF  
+             stacklo 000351           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
+            __ramtop 0800  start_initialization 3712          __smallconst 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             reset_vec 0000  
