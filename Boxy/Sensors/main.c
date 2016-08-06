@@ -30,6 +30,10 @@
 #define OUT_IR3 PORTBbits.RB6
 #define OUT_IR4 PORTBbits.RB7
 
+#define or ||
+#define and &&
+#define not !
+
 #define IN_DIS PORTAbits.RA0
 
 #define CVALORES 5
@@ -42,10 +46,13 @@ char contador;
 char ciclos;
 
 char sensor[CVALORES];
+char V[CVALORES];
 
+long long times;
 char valores[CVALORES] = {1,2,6,8,12};
 char actual;
 int cnt = 0;
+char st;
 
 void init(void);
 void configurar_pwm(void);
@@ -57,18 +64,78 @@ void read();
 void actualizar_salidas(void);
 void DUTYSet(int value);
 
-int main(int argc, char** argv) {
+void SetDuty(int S){
+    // v goes from 0 to 100
+    //now goes from 0 to 78 
+    CCP1CONbits.CCP1X = (S % 4) > 1;
+    CCP1CONbits.CCP1Y = (S % 4) % 2;
+    CCPR1L = S / 4;
+}
 
-    init();
-    configurar_IO();
-    configurar_pwm();
-    configurar_timer1();
-    configurar_timer0();
-    while (1){
-        sensores();
+void store(){
+    int i;
+    V[0] = V[0] or (not IN_IR0);
+    V[1] = V[1] or (not IN_IR1);
+    V[2] = V[2] or (not IN_IR2);
+    V[3] = V[3] or (not IN_IR3);
+    V[4] = V[4] or (not IN_IR4);
+    st = 0;// flag set to update
+}
+void set(){
+    if (st == 0){
+        OUT_IR0 = V[0];
+        OUT_IR1 = V[1];
+        OUT_IR2 = V[2];
+        OUT_IR3 = V[3];
+        OUT_IR4 = V[4];
+        int j;
+        for (j = 0;j < CVALORES;j++) V[j] = 0;
+        st = 1;
     }
 }
 
+int main(int argc, char** argv) {
+    times = 0;
+    init();
+    configurar_IO();
+    configurar_pwm();
+
+    TMR2IE=1;
+    PEIE=1;
+    GIE=1;
+    set();
+    SetDuty(2);
+    //onfigurar_timer1();
+    //configurar_timer0();
+    while (1){
+        if (times > 540 && times < 55l0){
+            store();
+        }else{
+            set();
+        }
+        /*OUT_IR0 = 1;
+        OUT_IR1 = 0;
+        OUT_IR2 = 0;
+        OUT_IR3 = 0;
+        OUT_IR4 = 0;*/
+        //sensores();
+    }
+}
+
+void interrupt ISR(){
+    if(TMR2IE && TMR2IF){
+        //TMR2 overflow
+        times++;
+        if(times == 504){
+            TRISB3 = 0;
+        }
+        if(times == 560){
+            TRISB3 = 1;
+            times = 0;
+        }
+        TMR2IF= 0;
+    }
+}
 
 void init(void){
     CMCON = 0x07;
@@ -87,7 +154,7 @@ void configurar_pwm(void){
     T2CONbits.T2CKPS=0; // 00=1:1 01=1:4 1x=1:16
     TRISBbits.TRISB3=0; // pwm salida
     PR2=17;//26; // periodo 30Khz
-    CCPR1L=0x01; //apagado
+    //CCPR1L=0x01; //apagado
     CCP1CON=12;
 }
 void configurar_timer1(void){
@@ -129,10 +196,10 @@ void configurar_IO(void){
     TRISB6 = OUTPUT;
     TRISA7 = OUTPUT;
 }
-void interrupt t0_int(void){
+/*void interrupt t0_int(void){
     INTCONbits.T0IF=0;
     contador ++;
-}
+}*/
 void sensores(){
     switch (estado){
         case INICIO:

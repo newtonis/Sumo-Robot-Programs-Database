@@ -1,19 +1,50 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"227 /opt/microchip/xc8/v1.34/include/pic16f628a.h
+[s S9 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S9 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"226
+[u S8 `S9 1 ]
+[n S8 . . ]
+"238
+[v _PORTBbits `VS8 ~T0 @X0 0 e@6 ]
+"166
+[s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S7 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
+"165
+[u S6 `S7 1 ]
+[n S6 . . ]
+"177
+[v _PORTAbits `VS6 ~T0 @X0 0 e@5 ]
 [p mainexit ]
-"53 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"59 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _init `(v ~T0 @X0 0 ef ]
-"55
+"61
 [v _configurar_IO `(v ~T0 @X0 0 ef ]
-"54
+"60
 [v _configurar_pwm `(v ~T0 @X0 0 ef ]
-"57
-[v _configurar_timer1 `(v ~T0 @X0 0 ef ]
-"56
-[v _configurar_timer0 `(v ~T0 @X0 0 ef ]
-"58
-[v _sensores `(v ~T0 @X0 0 ef ]
-"743 /opt/microchip/xc8/v1.38/include/pic16f628a.h
+"1466 /opt/microchip/xc8/v1.34/include/pic16f628a.h
+[v _TMR2IE `Vb ~T0 @X0 0 e@1121 ]
+"1370
+[v _PEIE `Vb ~T0 @X0 0 e@94 ]
+"1356
+[v _GIE `Vb ~T0 @X0 0 e@95 ]
+"1468
+[v _TMR2IF `Vb ~T0 @X0 0 e@97 ]
+"1502
+[v _TRISB3 `Vb ~T0 @X0 0 e@1075 ]
+"743
 [v _CMCON `Vuc ~T0 @X0 0 e@31 ]
+"610
+[s S24 :4 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S24 . CCP1M CCP1Y CCP1X ]
+"615
+[s S25 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S25 . CCP1M0 CCP1M1 CCP1M2 CCP1M3 ]
+"609
+[u S23 `S24 1 `S25 1 ]
+[n S23 . . . ]
+"622
+[v _CCP1CONbits `VS23 ~T0 @X0 0 e@23 ]
 "592
 [v _CCPR1L `Vuc ~T0 @X0 0 e@21 ]
 "522
@@ -92,8 +123,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S12 . . . ]
 "324
 [v _INTCONbits `VS12 ~T0 @X0 0 e@11 ]
-"1502
-[v _TRISB3 `Vb ~T0 @X0 0 e@1075 ]
 "1500
 [v _TRISB2 `Vb ~T0 @X0 0 e@1074 ]
 "1498
@@ -114,25 +143,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA6 `Vb ~T0 @X0 0 e@1070 ]
 "1506
 [v _TRISB5 `Vb ~T0 @X0 0 e@1077 ]
-"59 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"65 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _read `(v ~T0 @X0 0 ef ]
-"166 /opt/microchip/xc8/v1.38/include/pic16f628a.h
-[s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S7 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 RA7 ]
-"165
-[u S6 `S7 1 ]
-[n S6 . . ]
-"177
-[v _PORTAbits `VS6 ~T0 @X0 0 e@5 ]
-"227
-[s S9 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S9 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"226
-[u S8 `S9 1 ]
-[n S8 . . ]
-"238
-[v _PORTBbits `VS8 ~T0 @X0 0 e@6 ]
-"51 /opt/microchip/xc8/v1.38/include/pic16f628a.h
+"51 /opt/microchip/xc8/v1.34/include/pic16f628a.h
 [; <" INDF equ 00h ;# ">
 "57
 [; <" TMR0 equ 01h ;# ">
@@ -215,15 +228,19 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x CP=OFF ]
 [p x LVP=OFF ]
 [p x PWRTE=OFF ]
-"44
-[v _estado `uc ~T0 @X0 1 e ]
-"45
-[v _contador `uc ~T0 @X0 1 e ]
 "46
-[v _ciclos `uc ~T0 @X0 1 e ]
+[v _times `l ~T0 @X0 1 e ]
+"47
+[v _estado `uc ~T0 @X0 1 e ]
 "48
+[v _contador `uc ~T0 @X0 1 e ]
+"49
+[v _ciclos `uc ~T0 @X0 1 e ]
+"51
 [v _sensor `uc ~T0 @X0 -> 5 `i e ]
-"50
+"52
+[v _V `uc ~T0 @X0 -> 5 `i e ]
+"55
 [v _valores `uc ~T0 @X0 -> 5 `i e ]
 [i _valores
 :U ..
@@ -234,286 +251,399 @@ Version 3.2 HI-TECH Software Intermediate Code
 -> -> 12 `i `uc
 ..
 ]
-"51
+"56
 [v _actual `uc ~T0 @X0 1 e ]
-"63
+"57
+[v _st `uc ~T0 @X0 1 e ]
+"68
+[v _store `(v ~T0 @X0 1 ef ]
+{
+[e :U _store ]
+[f ]
+"69
+[v _i `i ~T0 @X0 1 a ]
+"70
+[e = *U + &U _V * -> -> -> 0 `i `ui `ux -> -> # *U &U _V `ui `ux -> -> || != -> *U + &U _V * -> -> -> 0 `i `ui `ux -> -> # *U &U _V `ui `ux `i -> -> -> 0 `i `uc `i ! != -> . . _PORTBbits 0 2 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"71
+[e = *U + &U _V * -> -> -> 1 `i `ui `ux -> -> # *U &U _V `ui `ux -> -> || != -> *U + &U _V * -> -> -> 1 `i `ui `ux -> -> # *U &U _V `ui `ux `i -> -> -> 0 `i `uc `i ! != -> . . _PORTBbits 0 1 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"72
+[e = *U + &U _V * -> -> -> 2 `i `ui `ux -> -> # *U &U _V `ui `ux -> -> || != -> *U + &U _V * -> -> -> 2 `i `ui `ux -> -> # *U &U _V `ui `ux `i -> -> -> 0 `i `uc `i ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"73
+[e = *U + &U _V * -> -> -> 3 `i `ui `ux -> -> # *U &U _V `ui `ux -> -> || != -> *U + &U _V * -> -> -> 3 `i `ui `ux -> -> # *U &U _V `ui `ux `i -> -> -> 0 `i `uc `i ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"74
+[e = *U + &U _V * -> -> -> 4 `i `ui `ux -> -> # *U &U _V `ui `ux -> -> || != -> *U + &U _V * -> -> -> 4 `i `ui `ux -> -> # *U &U _V `ui `ux `i -> -> -> 0 `i `uc `i ! != -> . . _PORTAbits 0 3 `i -> -> -> 0 `i `Vuc `i `i `uc ]
+"75
+[e = _st -> -> 0 `i `uc ]
+"76
+[e :UE 52 ]
+}
+"77
+[v _set `(v ~T0 @X0 1 ef ]
+{
+[e :U _set ]
+[f ]
+"78
+[e $ ! == -> _st `i -> 0 `i 54  ]
+{
+"79
+[e = . . _PORTAbits 0 1 *U + &U _V * -> -> -> 0 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"80
+[e = . . _PORTAbits 0 0 *U + &U _V * -> -> -> 1 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"81
+[e = . . _PORTAbits 0 7 *U + &U _V * -> -> -> 2 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"82
+[e = . . _PORTAbits 0 6 *U + &U _V * -> -> -> 3 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"83
+[e = . . _PORTBbits 0 5 *U + &U _V * -> -> -> 4 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"84
+[v _j `i ~T0 @X0 1 a ]
+"85
+{
+[e = _j -> 0 `i ]
+[e $ < _j -> 5 `i 55  ]
+[e $U 56  ]
+[e :U 55 ]
+[e = *U + &U _V * -> -> _j `ui `ux -> -> # *U &U _V `ui `ux -> -> 0 `i `uc ]
+[e ++ _j -> 1 `i ]
+[e $ < _j -> 5 `i 55  ]
+[e :U 56 ]
+}
+"86
+[e = _st -> -> 1 `i `uc ]
+"87
+}
+[e :U 54 ]
+"88
+[e :UE 53 ]
+}
+"89
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"65
+"90
+[e = _st -> -> 1 `i `uc ]
+"91
+[e = _times -> -> 0 `i `l ]
+"92
 [e ( _init ..  ]
-"66
+"93
 [e ( _configurar_IO ..  ]
-"67
+"94
 [e ( _configurar_pwm ..  ]
-"68
-[e ( _configurar_timer1 ..  ]
-"69
-[e ( _configurar_timer0 ..  ]
-"70
-[e :U 54 ]
+"95
+[e ( _set ..  ]
+"98
+[e = _TMR2IE -> -> 1 `i `b ]
+"99
+[e = _PEIE -> -> 1 `i `b ]
+"100
+[e = _GIE -> -> 1 `i `b ]
+"101
+[e :U 60 ]
 {
-"71
-[e ( _sensores ..  ]
-"72
+"116
+[e $ ! && > _times -> -> 540 `i `l < _times -> -> 560 `i `l 62  ]
+{
+"117
+[e ( _store ..  ]
+"118
 }
-[e :U 53 ]
-"70
-[e $U 54  ]
-[e :U 55 ]
-"73
-[e :UE 52 ]
+[e $U 63  ]
+[e :U 62 ]
+{
+"119
+[e ( _set ..  ]
+"120
 }
-"76
+[e :U 63 ]
+"122
+}
+[e :U 59 ]
+"101
+[e $U 60  ]
+[e :U 61 ]
+"123
+[e :UE 58 ]
+}
+[v F637 `(v ~T0 @X0 1 tf ]
+"125
+[v _ISR `IF637 ~T0 @X0 1 e ]
+{
+[e :U _ISR ]
+[f ]
+"126
+[e $ ! && _TMR2IE _TMR2IF 65  ]
+{
+"128
+[e ++ _times -> -> 1 `i `l ]
+"129
+[e $ ! == _times -> -> 504 `i `l 66  ]
+{
+"130
+[e = _TRISB3 -> -> 0 `i `b ]
+"131
+}
+[e :U 66 ]
+"132
+[e $ ! == _times -> -> 560 `i `l 67  ]
+{
+"133
+[e = _TRISB3 -> -> 1 `i `b ]
+"134
+[e = _times -> -> 0 `i `l ]
+"135
+}
+[e :U 67 ]
+"136
+[e = _TMR2IF -> -> 0 `i `b ]
+"137
+}
+[e :U 65 ]
+"138
+[e :UE 64 ]
+}
+"139
 [v _init `(v ~T0 @X0 1 ef ]
 {
 [e :U _init ]
 [f ]
-"77
+"140
 [e = _CMCON -> -> 7 `i `uc ]
-"78
+"141
 [e = _contador -> -> 0 `i `uc ]
-"79
+"142
 [e = _estado -> -> 0 `i `uc ]
-"80
+"143
 [e = _ciclos -> -> 0 `i `uc ]
-"81
+"144
 [e = _actual -> -> 0 `i `uc ]
-"84
-[e :UE 56 ]
+"147
+[e :UE 68 ]
 }
-"85
+"148
 [v _SetDuty `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _SetDuty ]
-[v _v `i ~T0 @X0 1 r1 ]
+[v _S `i ~T0 @X0 1 r1 ]
 [f ]
-"88
-[e = _CCPR1L -> / _v -> 4 `i `uc ]
-"89
-[e :UE 57 ]
+"151
+[e = . . _CCP1CONbits 0 2 -> -> > % _S -> 4 `i -> 1 `i `i `uc ]
+"152
+[e = . . _CCP1CONbits 0 1 -> % % _S -> 4 `i -> 2 `i `uc ]
+"153
+[e = _CCPR1L -> / _S -> 4 `i `uc ]
+"154
+[e :UE 69 ]
 }
-"90
+"155
 [v _configurar_pwm `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_pwm ]
 [f ]
-"91
+"156
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"92
+"157
 [e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
-"93
+"158
 [e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
-"94
+"160
 [e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-"95
+"161
 [e = _PR2 -> -> 17 `i `uc ]
-"101
+"167
 [e = _CCP1CON -> -> 12 `i `uc ]
-"102
-[e = _CCPR1L -> -> 2 `i `uc ]
-"106
-[e :UE 58 ]
+"171
+[e ( _SetDuty (1 -> 1 `i ]
+"172
+[e :UE 70 ]
 }
-"107
+"173
 [v _configurar_timer1 `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_timer1 ]
 [f ]
-"108
+"174
 [e = _TMR1H -> -> 252 `i `uc ]
-"109
+"175
 [e = _TMR1L -> -> 24 `i `uc ]
-"111
+"177
 [e = . . _PIE1bits 0 0 -> -> 0 `i `uc ]
-"112
+"178
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"114
+"180
 [e = . . _T1CONbits 0 4 -> -> 0 `i `uc ]
-"116
+"182
 [e = . . _T1CONbits 0 2 -> -> 1 `i `uc ]
-"117
+"183
 [e = . . _T1CONbits 0 3 -> -> 0 `i `uc ]
-"118
+"184
 [e = . . _T1CONbits 0 1 -> -> 0 `i `uc ]
-"119
+"185
 [e = . . _T1CONbits 0 0 -> -> 0 `i `uc ]
-"120
+"186
 [e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"121
-[e :UE 59 ]
+"187
+[e :UE 71 ]
 }
-"122
+"188
 [v _configurar_timer0 `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_timer0 ]
 [f ]
-"123
+"189
 [e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-"124
+"190
 [e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-"125
+"191
 [e = . . _OPTION_REGbits 0 0 -> -> 1 `i `uc ]
-"127
+"193
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"128
+"194
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"129
+"195
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"130
-[e :UE 60 ]
+"196
+[e :UE 72 ]
 }
-"131
+"197
 [v _configurar_IO `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_IO ]
 [f ]
-"132
+"198
 [e = _TRISB3 -> -> 0 `i `b ]
-"134
+"200
 [e = _TRISB2 -> -> 1 `i `b ]
-"135
+"201
 [e = _TRISB1 -> -> 1 `i `b ]
-"136
+"202
 [e = _TRISB0 -> -> 1 `i `b ]
-"137
+"203
 [e = _TRISA4 -> -> 1 `i `b ]
-"138
+"204
 [e = _TRISA3 -> -> 1 `i `b ]
-"140
+"206
 [e = _TRISA1 -> -> 0 `i `b ]
-"141
+"207
 [e = _TRISA0 -> -> 0 `i `b ]
-"142
+"208
 [e = _TRISA7 -> -> 0 `i `b ]
-"143
+"209
 [e = _TRISA6 -> -> 0 `i `b ]
-"144
+"210
 [e = _TRISB5 -> -> 0 `i `b ]
-"145
-[e :UE 61 ]
+"211
+[e :UE 73 ]
 }
-[v F640 `(v ~T0 @X0 1 tf ]
-"146
-[v _t0_int `IF640 ~T0 @X0 1 e ]
+"222
+[v _OnTIMER2 `(v ~T0 @X0 1 ef ]
 {
-[e :U _t0_int ]
+[e :U _OnTIMER2 ]
 [f ]
-"147
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"148
-[e ++ _contador -> -> 1 `i `uc ]
-"149
-[e :UE 62 ]
+"223
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+"224
+[e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
+"225
+[e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
+"226
+[e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
+"227
+[e :UE 74 ]
 }
-"150
+"228
 [v _sensores `(v ~T0 @X0 1 ef ]
 {
 [e :U _sensores ]
 [f ]
-"151
-[e $U 65  ]
+"229
+[e $U 77  ]
 {
-"152
-[e :U 66 ]
-"155
+"230
+[e :U 78 ]
+"234
 [e = _TRISB3 -> -> 0 `i `b ]
-"157
-[e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"158
+"235
 [e = _estado -> -> 1 `i `uc ]
-"159
-[e $U 64  ]
-"160
-[e :U 67 ]
-"161
-[e $ ! == -> . . _PIR1bits 0 0 `i -> 1 `i 68  ]
+"236
+[e = _times -> -> 0 `i `l ]
+"237
+[e $U 76  ]
+"238
+[e :U 79 ]
+"239
+[e $ ! > _times -> -> 100 `i `l 80  ]
 {
-"162
-[e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"163
-[e = . . _T1CONbits 0 0 -> -> 0 `i `uc ]
-"164
-[e = _TMR1H -> -> 252 `i `uc ]
-"165
-[e = _TMR1L -> -> 23 `i `uc ]
-"166
-[e = _estado -> -> 2 `i `uc ]
-"167
-}
-[e :U 68 ]
-"168
-[e $U 64  ]
-"169
-[e :U 69 ]
-"170
+"244
 [e ( _read ..  ]
-"171
-[e = _contador -> -> 0 `i `uc ]
-"172
+"245
 [e = _TRISB3 -> -> 1 `i `b ]
-"174
+"247
 [e = _estado -> -> 3 `i `uc ]
-"175
-[e $U 64  ]
-"176
-[e :U 70 ]
-"177
-[e $ ! >= -> _contador `i -> 10 `i 71  ]
+"248
+[e = _times -> -> 0 `i `l ]
+"249
+}
+[e :U 80 ]
+"250
+[e $U 76  ]
+"251
+[e :U 81 ]
+"252
+[e $ ! > _times -> -> 100 `i `l 82  ]
 {
-"178
+"253
 [e = _estado -> -> 0 `i `uc ]
-"179
+"254
 }
-[e :U 71 ]
-"180
-[e $U 64  ]
-"181
+[e :U 82 ]
+"255
+[e $U 76  ]
+"256
 }
-[e $U 64  ]
-"151
-[e :U 65 ]
-[e [\ _estado , $ -> -> 0 `i `uc 66
- , $ -> -> 1 `i `uc 67
- , $ -> -> 2 `i `uc 69
- , $ -> -> 3 `i `uc 70
- 64 ]
-"181
-[e :U 64 ]
-"182
-[e :UE 63 ]
+[e $U 76  ]
+"229
+[e :U 77 ]
+[e [\ _estado , $ -> -> 0 `i `uc 78
+ , $ -> -> 1 `i `uc 79
+ , $ -> -> 3 `i `uc 81
+ 76 ]
+"256
+[e :U 76 ]
+"257
+[e :UE 75 ]
 }
-"183
+"258
 [v _read `(v ~T0 @X0 1 ef ]
 {
 [e :U _read ]
 [f ]
-"184
+"259
 [e = . . _PORTAbits 0 1 -> -> ! != -> . . _PORTBbits 0 2 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"185
+"260
 [e = . . _PORTAbits 0 0 -> -> ! != -> . . _PORTBbits 0 1 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"186
+"261
 [e = . . _PORTAbits 0 7 -> -> ! != -> . . _PORTBbits 0 0 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"187
+"262
 [e = . . _PORTAbits 0 6 -> -> ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"188
+"263
 [e = . . _PORTBbits 0 5 -> -> ! != -> . . _PORTAbits 0 3 `i -> -> -> 0 `i `Vuc `i `i `uc ]
-"189
-[e :UE 72 ]
+"264
+[e :UE 83 ]
 }
-"190
+"265
 [v _DUTYSet `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _DUTYSet ]
 [v _value `i ~T0 @X0 1 r1 ]
 [f ]
-"191
+"266
 [e = _CCPR1L -> / _value -> 4 `i `uc ]
-"192
+"267
 [e = _CCP1CON -> % _value -> 4 `i `uc ]
-"193
-[e :UE 73 ]
+"268
+[e :UE 84 ]
 }

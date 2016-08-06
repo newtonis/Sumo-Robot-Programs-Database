@@ -4,6 +4,16 @@
 
 #include "config.h"
 
+
+
+enum {TEST , CURVE , SLOW , FAST , MOD_STOP , NORMAL };
+int    VEL[6] = {450 , 800 , 420 , 1000 , -1000 , 450};
+double VKP[6] = { 5  , 6.5   , 6   , 6    ,  6    , 6};
+double VKD[6] = { 50 , 70  , 30  , 50   , 50    , 50};
+
+int CURVE_ACEL_TIME = 500; // MS
+int RECT_ACEL_TIME = 10;  // MS
+int RECT_STOP_TIME = 50;
 /*** COOL MACROS DEFINES ***/
 #define ran(a,b,c) (max(min(a,c),b))
     
@@ -23,7 +33,7 @@
 #define TCOOL (TIME/6)
 #define TH (INVERTIR?100:900) ///TH means the black/white threshold
 
-#define SPEEDTIME(w) (w/2-w/4-w/16) ///Ratio of max speed time in the rect
+#define SPEEDTIME(w) ((double)(w) * 0.13) ///Ratio of max speed time in the rect
 #define RECTTIME (SPEEDTIME(LEN[rcount/2]*40)) ///With a single word we can get rect time
 #define STOPTIME (RECTTIME + 40)
 
@@ -84,35 +94,15 @@ unsigned int amax[16];
 unsigned int amin[16];
 int P[16];
 
+int x;
 int line = 0;
 int last = 0;
 int der = 0;
 int formula = 0;
-// *** end *** /
-
-int x;
-int a,b;
-ll w,v;
-char nove; 
-char actual; //0 RECTA, 1 CURVA
-char gstatus;
-
-/*** CARACTERISTICAS ENCODER POLOLU
- * 
- * CAMBIA DE ESTADO 15 VECES POR GIRO
- * LA CIRCUNFERENCIA DE LA RUEDA ES DE 100,48 mm=10cm
- * POR GIRO SE AVANZA 6.6 mm
  
- * Entonces calculando, si avanzo 15 veces por segundo, estoy llendo a 1rps
- * por lo tanto la velocidad entre ticks de encoder tiene que ser de 1/15s = 0.06s
- * 
- * 66666
- 
- */
 void initYBOT(){
     TIME = 0;
     ResetCounter();
-    gstatus = 0;
     configurations_init();
     InitAnalog();
     InitTIMERS(); 
@@ -177,11 +167,6 @@ int LOW_SPEED = 520;
 double test_kp = 7;
 double test_kd = 20;
 
-enum {TEST , CURVE , SLOW , FAST , MOD_STOP , NORMAL };
-
-int    VEL[6] = {450 , 730 , 420 , 1000 , -1000 , 400};
-double VKP[6] = { 5  , 6  , 6  , 6    ,  6    , 6};
-double VKD[6] = { 50 , 70  , 30  , 50   , 50    , 50};
 
 int pasada;
 int fw[ns] = {6 , 5 , 4 , 3 , 2}; //central sensors
@@ -198,6 +183,12 @@ int flag_line = 0;
 int rcount = 0;
 
 char b2;
+
+int speed;
+double kp , kd;
+int mod;
+int ca = 0 , cb = 0;
+int f;
 
 void ShowMem(){
     int x;
@@ -243,6 +234,16 @@ void GetValue(int item,int *data){ ///Check the value of a memory block item
 
 #define C(i) ( ( ( ran ( V[i] , amin[i]  , amax[i] ) )  - amin[i] ) * 100 / (amax[i] - amin[i]) )
 
+void UpdateDir(){ // All PID!
+    der = line - last;
+    formula = line * kp + der * kd;
+    if (formula > 0){
+        MotorsSpeed(speed - formula , speed);
+    }else{
+        MotorsSpeed(speed , speed + formula);
+    }
+    last = line;
+}
 void Line(){ // line algorithm
     long a = 0;
     long b = 0;
@@ -310,7 +311,7 @@ void AdvanceLow(){
     }
     last = line;
 }
-#define INSIDE (abs(line)<150)
+#define INSIDE (abs(line)<50)
 #define LSEE (P[sd[0]] > BORDER_LIMIT and INSIDE)
 #define RSEE (P[sd[1]] > BORDER_LIMIT and INSIDE)
 
@@ -318,9 +319,6 @@ void AdvanceLow(){
 int main(int argc, char** argv) {
     initYBOT();
     
-    gstatus = -1;
-    WAITIME = 0;
-    actual = 0;
     status = ST;
     TIME = 0;
     Wixel(); //start wixel
@@ -398,7 +396,23 @@ int main(int argc, char** argv) {
                         printf("{'COM':'line','value':'Red memory:'}\n");
                         ShowMem();
                     }
+
+                    printf("{'COM':'line','value':'Writting GREEN Memory'}\n");
+                    /*LEN[0] = 80;
+                    LEN[1] = 80;
+                    LEN[2] = 80;
+                    LEN[3] = 80;
+                    LEN[4] = 80;
+                    LEN[5] = 80;
+                    LEN[6] = 80;
+                    LEN[7] = 80;
+                    TOTAL = 8;
+                    Save();*/
+
                 }
+                
+
+                
                 L_VERDE = 0;
                 L_AMARILLO = TIME % 2000 > 1000;
                 L_ROJO = 0;
@@ -413,10 +427,10 @@ int main(int argc, char** argv) {
                     i = fw[j];
                     printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
                 }*/
-                for (j = 0;j < 2;j++){
+                /*for (j = 0;j < 2;j++){
                     i = sd[j];
                     printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
-                }
+                }*/
 
             break;
             case RED_ST:
@@ -432,13 +446,13 @@ int main(int argc, char** argv) {
                     i = fw[j];
                     printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,2),Rand(i,3),Rand(i,4));
                 }*/
-                if (TIME > 1000){
+                /*if (TIME > 1000){
                     TIME = 0;
                     for (j = 0;j < 2;j++){
                         i = sd[j];
                         printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,V[i],Rand(i,4),Rand(i,1),Rand(i,2)); 
                     }
-                }
+                }*/
 
                 int i, j;
                 for (i = 0;i < 11;i++){
@@ -488,9 +502,9 @@ int main(int argc, char** argv) {
                     gf = 1;
                     fns = 0;
                 }
-                L_VERDE = 1;
+                L_VERDE = MF == 1;
                 L_AMARILLO = RSEE or LSEE;
-                L_ROJO = 0;
+                L_ROJO = MF == 0;
 
 
                 MotorsSpeed(0,0);
@@ -540,7 +554,7 @@ int main(int argc, char** argv) {
                         printf("{'COM':'line','value':'Writing GREEN memory'}\n");
                     }else{
                         printf("{'COM':'line','value':'Selecting GREEN memory'}\n");
-                        MF = 1; uc old; CheckMem(&old);
+                        uc old; CheckMem(&old);
                         Load();
                         printf("{'COM':'line','value':'GREEN memory:'}\n");
                         ShowMem();   
@@ -584,15 +598,16 @@ int main(int argc, char** argv) {
                 }
             break;
             case WAIT_FRONT:
-                L_VERDE = 1;
-                L_AMARILLO = 0;
-                L_ROJO = 0;
+                L_VERDE = MF == 1;
+                L_AMARILLO = TIME % 6000 > 3000;
+                L_ROJO = MF == 0;
                 MotorsSpeed(0,0);
                 if (B_AMARILLO == 0){
                     printf("{'COM':'line','value':'Writing rect %i'}\n",rcount);
                     status = RECT_FRONT;
                     TIME4 = 0;
                     TIME3 = 0;
+                    fns = 1;
                 }
                 if (B_ROJO == 0 and rcount > 0){
                     printf("{'COM':'line','value':'Save data'}\n");
@@ -610,22 +625,39 @@ int main(int argc, char** argv) {
                 }
             break;
             case RECT_FRONT:
-                L_ROJO = 1;
-                L_AMARILLO = 1;
-                L_VERDE = 1;
+                if (fns){
+                    fns = 0;
+                    f = 0;
+                }
+                L_ROJO = MF == 1;
+                L_AMARILLO = f != 0;
+                L_VERDE = MF == 0;
                 
                 if (TIME3 > 5){
                     EnhancedRead();
                     Line();
                     TIME3 = 0;
                     AdvanceLow();
-                
-                    if (RSEE or LSEE){                    
-                        status = WAIT_FRONT;
+
+                    if (f == 0 and (RSEE or LSEE)){                    
+                        //status = WAIT_FRONT;
+                        f = 1;
                         TIME = 0;
-                        LEN[rcount] = TIME4 / 40 / 6; // set on memory
-                        rcount ++ ;
+                        //LEN[rcount] = TIME4 / 40 / 6; // set on memory
+                        TIME4 = 0; // start counting stars
+                        //rcount ++ ;
                        //printf("{'COM':'Settle','name':'Area %i','color':(100,100,255)}\n",rcount);
+                    }
+                    if (f == 1){
+                        if (TIME > 200*6 ){
+                            TIME = 0;
+                            f = 2;
+                        }
+                    }
+                    if (f == 2 and (RSEE or LSEE)){
+                        LEN[rcount] = TIME4 / 40 / 6;
+                        rcount ++;
+                        status = WAIT_FRONT;
                     }
                 }
             break;
@@ -638,45 +670,79 @@ int main(int argc, char** argv) {
                     fns = 1;
                     status = INITIAL;
                 }
-                /*if (TIME5 > 6000){
+                /*if (TIME5 > 1000){
                     TIME5 = 0;
-                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
+                    printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line*10);
                     for (j = 0;j < 2;j++){
                         i = sd[j];
                         printf("{'COM':'plot','name':'S%i','value':%i, 'color':(%d,%d,%d)}\n",i,P[i],Rand(i,5),Rand(i,1),Rand(i,3));
                     }
+                    printf("{'COM':'plot','name':'Border','value':%i, 'color':(%d,%d,%d)}\n",BORDER_LIMIT,200,0,200);
                 }*/
                 if (TIME3 > 10){
                     TIME3 = 0;
                     EnhancedRead();
                     Line();
-                    int speed;
-                    double kp , kd;
-                    int mod;
 
-                    if (rcount % 2 == 1){
+                    if (rcount % 2 == 1){ // we are in a curve
+                        if (TIME4 / 6 < CURVE_ACEL_TIME){
+                            // we are acceleration
+                            speed = ( VEL[CURVE] - VEL[NORMAL] )  * (TIME4 / 6) / CURVE_ACEL_TIME + VEL[NORMAL];
+                            L_VERDE = 0;
+                            L_ROJO = 0;
+                            L_AMARILLO = 0;
+                        }else{
+                            L_VERDE = 1;
+                            L_ROJO = 0;
+                            L_AMARILLO = 0;
+                            speed = VEL[CURVE];
+                        }
+                        kp = VKP[CURVE];
+                        kd = VKD[CURVE];
+                      
+                    }else{ // we're in a rect
+                        L_VERDE = 0;
+                        L_ROJO = 0;
+                        L_AMARILLO = 1;
+
+                        /*speed = VEL[NORMAL];
+                        kp = VKP[NORMAL];
+                        kd = VKD[NORMAL];*/
+                        if (TIME4 / 6 < RECT_ACEL_TIME){
+                            speed = (VEL[FAST] - VEL[CURVE]) * (TIME4 / 6) / RECT_ACEL_TIME + VEL[CURVE];
+                        }else if (TIME4 / 6 < RECTTIME){
+                            speed = VEL[FAST];
+                        }else if (TIME4 / 6 < RECTTIME + RECT_STOP_TIME){
+                            int v = TIME4 / 6 - RECTTIME;
+                            speed = VEL[FAST] - (VEL[FAST] - VEL[NORMAL]) * v / RECT_STOP_TIME;
+                        }else{
+                            speed = VEL[NORMAL];
+                        }
+                    }
+                    /*kp = VKP[NORMAL];
+                    kd = VKD[NORMAL];
+                    speed = 420;*/
+
+                    UpdateDir();
+                   /* if (rcount % 2 == 1){
                         mod = CURVE;
                     }else{
                         if (TIME4/6 < RECTTIME){
                             mod = FAST;
                         }else if (TIME4/6 < STOPTIME and LEN[rcount/2] > 20){
-                            mod = MOD_STOP;
+                            mod = NORMAL;
                         }else{
                             mod = NORMAL;
                         }
                     }
                     speed = VEL[mod];
                     kp = VKP[mod];
-                    kd = VKD[mod];
-                    der = line - last;
-                    formula = line * kp + der * kd;
+                    kd = VKD[mod];*/
 
-                    if (formula > 0){
-                        MotorsSpeed(speed - formula , speed);
-                    }else{
-                        MotorsSpeed(speed , speed + formula);
-                    }
-                    last = line;
+                    /*if (rcount % 2 == 1){ //CURVE
+
+                    }*/
+
 
                     if (flag_line == 0){
                         if (RSEE or LSEE){

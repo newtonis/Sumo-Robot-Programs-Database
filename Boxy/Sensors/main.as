@@ -1,4 +1,4 @@
-opt subtitle "Microchip Technology Omniscient Code Generator v1.38 (Free mode) build 201607010351"
+opt subtitle "Microchip Technology Omniscient Code Generator (Lite mode) build 201502162209"
 
 opt pagewidth 120
 
@@ -39,96 +39,96 @@ fsr0	equ	4
 c	equ	1
 z	equ	0
 pclath	equ	10
-# 51 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 51 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 INDF equ 00h ;# 
-# 57 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 57 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TMR0 equ 01h ;# 
-# 63 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 63 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PCL equ 02h ;# 
-# 69 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 69 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 STATUS equ 03h ;# 
-# 156 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 156 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 FSR equ 04h ;# 
-# 162 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 162 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PORTA equ 05h ;# 
-# 223 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 223 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PORTB equ 06h ;# 
-# 284 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 284 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PCLATH equ 0Ah ;# 
-# 303 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 303 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 INTCON equ 0Bh ;# 
-# 380 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 380 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PIR1 equ 0Ch ;# 
-# 436 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 436 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TMR1 equ 0Eh ;# 
-# 442 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 442 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TMR1L equ 0Eh ;# 
-# 448 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 448 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TMR1H equ 0Fh ;# 
-# 454 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 454 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 T1CON equ 010h ;# 
-# 512 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 512 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TMR2 equ 011h ;# 
-# 518 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 518 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 T2CON equ 012h ;# 
-# 588 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 588 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 CCPR1 equ 015h ;# 
-# 594 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 594 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 CCPR1L equ 015h ;# 
-# 600 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 600 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 CCPR1H equ 016h ;# 
-# 606 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 606 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 CCP1CON equ 017h ;# 
-# 663 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 663 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 RCSTA equ 018h ;# 
-# 733 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 733 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TXREG equ 019h ;# 
-# 739 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 739 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 RCREG equ 01Ah ;# 
-# 745 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 745 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 CMCON equ 01Fh ;# 
-# 814 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 814 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 OPTION_REG equ 081h ;# 
-# 883 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 883 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TRISA equ 085h ;# 
-# 944 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 944 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TRISB equ 086h ;# 
-# 1005 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1005 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PIE1 equ 08Ch ;# 
-# 1061 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1061 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PCON equ 08Eh ;# 
-# 1109 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1109 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 PR2 equ 092h ;# 
-# 1115 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1115 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 TXSTA equ 098h ;# 
-# 1171 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1171 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 SPBRG equ 099h ;# 
-# 1177 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1177 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 EEDATA equ 09Ah ;# 
-# 1183 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1183 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 EEADR equ 09Bh ;# 
-# 1189 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1189 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 EECON1 equ 09Ch ;# 
-# 1226 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1226 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 EECON2 equ 09Dh ;# 
-# 1232 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 1232 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 VRCON equ 09Fh ;# 
+	FNCALL	_main,_SetDuty
 	FNCALL	_main,_configurar_IO
 	FNCALL	_main,_configurar_pwm
-	FNCALL	_main,_configurar_timer0
-	FNCALL	_main,_configurar_timer1
 	FNCALL	_main,_init
-	FNCALL	_main,_sensores
-	FNCALL	_sensores,_read
+	FNCALL	_main,_set
+	FNCALL	_main,_store
+	FNCALL	_SetDuty,___awdiv
 	FNROOT	_main
-	FNCALL	intlevel1,_t0_int
+	FNCALL	intlevel1,_ISR
 	global	intlevel1
 	FNROOT	intlevel1
 psect	idataBANK0,class=CODE,space=0,delta=2,noexec
 global __pidataBANK0
 __pidataBANK0:
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	46
+	line	52
 
 ;initializer for _valores
 	retlw	01h
@@ -136,13 +136,18 @@ __pidataBANK0:
 	retlw	06h
 	retlw	08h
 	retlw	0Ch
-	global	_cnt
-	global	_actual
 	global	_ciclos
 	global	_contador
 	global	_estado
+	global	_st
+	global	_V
+	global	_times
+	global	_cnt
+	global	_actual
 	global	_CCP1CON
 _CCP1CON	set	0x17
+	global	_CCP1CONbits
+_CCP1CONbits	set	0x17
 	global	_CCPR1L
 _CCPR1L	set	0x15
 	global	_CMCON
@@ -163,6 +168,12 @@ _T2CONbits	set	0x12
 _TMR1H	set	0xF
 	global	_TMR1L
 _TMR1L	set	0xE
+	global	_GIE
+_GIE	set	0x5F
+	global	_PEIE
+_PEIE	set	0x5E
+	global	_TMR2IF
+_TMR2IF	set	0x61
 	global	_OPTION_REGbits
 _OPTION_REGbits	set	0x81
 	global	_PIE1bits
@@ -171,6 +182,8 @@ _PIE1bits	set	0x8C
 _PR2	set	0x92
 	global	_TRISBbits
 _TRISBbits	set	0x86
+	global	_TMR2IE
+_TMR2IE	set	0x461
 	global	_TRISA0
 _TRISA0	set	0x428
 	global	_TRISA1
@@ -194,22 +207,22 @@ _TRISB5	set	0x435
 	global	_TRISB6
 _TRISB6	set	0x436
 ; #config settings
-global __CFG_FOSC$INTOSCIO
-__CFG_FOSC$INTOSCIO equ 0x0
 global __CFG_WDTE$OFF
 __CFG_WDTE$OFF equ 0x0
 global __CFG_PWRTE$OFF
 __CFG_PWRTE$OFF equ 0x0
-global __CFG_MCLRE$OFF
-__CFG_MCLRE$OFF equ 0x0
+global __CFG_CP$OFF
+__CFG_CP$OFF equ 0x0
 global __CFG_BOREN$OFF
 __CFG_BOREN$OFF equ 0x0
 global __CFG_LVP$OFF
 __CFG_LVP$OFF equ 0x0
+global __CFG_MCLRE$OFF
+__CFG_MCLRE$OFF equ 0x0
 global __CFG_CPD$OFF
 __CFG_CPD$OFF equ 0x0
-global __CFG_CP$OFF
-__CFG_CP$OFF equ 0x0
+global __CFG_FOSC$INTOSCIO
+__CFG_FOSC$INTOSCIO equ 0x0
 	file	"main.as"
 	line	#
 psect cinit,class=CODE,delta=2
@@ -221,12 +234,6 @@ __initialization:
 psect	bssCOMMON,class=COMMON,space=1,noexec
 global __pbssCOMMON
 __pbssCOMMON:
-_cnt:
-       ds      2
-
-_actual:
-       ds      1
-
 _ciclos:
        ds      1
 
@@ -236,21 +243,65 @@ _contador:
 _estado:
        ds      1
 
+_st:
+       ds      1
+
 psect	bssBANK0,class=BANK0,space=1,noexec
 global __pbssBANK0
 __pbssBANK0:
+_V:
+       ds      5
+
 _sensor:
        ds      5
+
+_times:
+       ds      4
+
+_cnt:
+       ds      2
+
+_actual:
+       ds      1
 
 psect	dataBANK0,class=BANK0,space=1,noexec
 global __pdataBANK0
 __pdataBANK0:
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	46
+	line	52
 _valores:
        ds      5
 
 	file	"main.as"
+	line	#
+psect clrtext,class=CODE,delta=2
+global clear_ram0
+;	Called with FSR containing the base address, and
+;	W with the last address+1
+clear_ram0:
+	clrwdt			;clear the watchdog before getting into this loop
+clrloop0:
+	clrf	indf		;clear RAM location pointed to by FSR
+	incf	fsr,f		;increment pointer
+	xorwf	fsr,w		;XOR with final address
+	btfsc	status,2	;have we reached the end yet?
+	retlw	0		;all done for this memory range, return
+	xorwf	fsr,w		;XOR again to restore value
+	goto	clrloop0		;do the next byte
+
+; Clear objects allocated to COMMON
+psect cinit,class=CODE,delta=2,merge=1
+	movlw	low(__pbssCOMMON)
+	movwf	fsr
+	movlw	low((__pbssCOMMON)+04h)
+	fcall	clear_ram0
+; Clear objects allocated to BANK0
+psect cinit,class=CODE,delta=2,merge=1
+	bcf	status, 7	;select IRP bank0
+	movlw	low(__pbssBANK0)
+	movwf	fsr
+	movlw	low((__pbssBANK0)+011h)
+	fcall	clear_ram0
 	line	#
 ; Initialize objects allocated to BANK0
 	global __pidataBANK0
@@ -265,74 +316,91 @@ psect cinit,class=CODE,delta=2,merge=1
 	movwf	__pdataBANK0+3&07fh		
 	fcall	__pidataBANK0+4		;fetch initializer
 	movwf	__pdataBANK0+4&07fh		
-	line	#
-; Clear objects allocated to BANK0
-psect cinit,class=CODE,delta=2,merge=1
-	clrf	((__pbssBANK0)+0)&07Fh
-	clrf	((__pbssBANK0)+1)&07Fh
-	clrf	((__pbssBANK0)+2)&07Fh
-	clrf	((__pbssBANK0)+3)&07Fh
-	clrf	((__pbssBANK0)+4)&07Fh
-; Clear objects allocated to COMMON
-psect cinit,class=CODE,delta=2,merge=1
-	clrf	((__pbssCOMMON)+0)&07Fh
-	clrf	((__pbssCOMMON)+1)&07Fh
-	clrf	((__pbssCOMMON)+2)&07Fh
-	clrf	((__pbssCOMMON)+3)&07Fh
-	clrf	((__pbssCOMMON)+4)&07Fh
-	clrf	((__pbssCOMMON)+5)&07Fh
 psect cinit,class=CODE,delta=2,merge=1
 global end_of_initialization,__end_of__initialization
 
 ;End of C runtime variable initialization code
 
 end_of_initialization:
-__end_of__initialization:
-clrf status
+__end_of__initialization:clrf status
 ljmp _main	;jump to C main() function
 psect	cstackCOMMON,class=COMMON,space=1,noexec
 global __pcstackCOMMON
 __pcstackCOMMON:
-?_init:	; 1 bytes @ 0x0
-?_configurar_IO:	; 1 bytes @ 0x0
-?_configurar_pwm:	; 1 bytes @ 0x0
-?_configurar_timer1:	; 1 bytes @ 0x0
-?_configurar_timer0:	; 1 bytes @ 0x0
-?_sensores:	; 1 bytes @ 0x0
-?_read:	; 1 bytes @ 0x0
-?_t0_int:	; 1 bytes @ 0x0
-??_t0_int:	; 1 bytes @ 0x0
-	ds	5
+?_init:	; 0 bytes @ 0x0
+?_configurar_IO:	; 0 bytes @ 0x0
+?_configurar_pwm:	; 0 bytes @ 0x0
+?_store:	; 0 bytes @ 0x0
+?_set:	; 0 bytes @ 0x0
+?_ISR:	; 0 bytes @ 0x0
+??_ISR:	; 0 bytes @ 0x0
+	ds	4
+??_init:	; 0 bytes @ 0x4
+??_configurar_IO:	; 0 bytes @ 0x4
+??_configurar_pwm:	; 0 bytes @ 0x4
+??_store:	; 0 bytes @ 0x4
+??_set:	; 0 bytes @ 0x4
+??___awdiv:	; 0 bytes @ 0x4
+	global	set@j
+set@j:	; 2 bytes @ 0x4
+	ds	2
+??_main:	; 0 bytes @ 0x6
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-??_init:	; 1 bytes @ 0x0
-??_configurar_IO:	; 1 bytes @ 0x0
-??_configurar_pwm:	; 1 bytes @ 0x0
-??_configurar_timer1:	; 1 bytes @ 0x0
-??_configurar_timer0:	; 1 bytes @ 0x0
-??_sensores:	; 1 bytes @ 0x0
-??_read:	; 1 bytes @ 0x0
+	global	?___awdiv
+?___awdiv:	; 2 bytes @ 0x0
+	global	_store$318
+_store$318:	; 1 bytes @ 0x0
+	global	___awdiv@divisor
+___awdiv@divisor:	; 2 bytes @ 0x0
 	ds	1
-?_main:	; 2 bytes @ 0x1
-main@argc:	; 2 bytes @ 0x1
+	global	_store$319
+_store$319:	; 1 bytes @ 0x1
+	ds	1
+	global	_store$320
+_store$320:	; 1 bytes @ 0x2
+	global	___awdiv@dividend
+___awdiv@dividend:	; 2 bytes @ 0x2
+	ds	1
+	global	_store$321
+_store$321:	; 1 bytes @ 0x3
+	ds	1
+	global	_store$322
+_store$322:	; 1 bytes @ 0x4
+	global	___awdiv@counter
+___awdiv@counter:	; 1 bytes @ 0x4
+	ds	1
+	global	___awdiv@sign
+___awdiv@sign:	; 1 bytes @ 0x5
+	ds	1
+	global	___awdiv@quotient
+___awdiv@quotient:	; 2 bytes @ 0x6
 	ds	2
-main@argv:	; 2 bytes @ 0x3
+?_SetDuty:	; 0 bytes @ 0x8
+	global	SetDuty@S
+SetDuty@S:	; 2 bytes @ 0x8
 	ds	2
-??_main:	; 1 bytes @ 0x5
+??_SetDuty:	; 0 bytes @ 0xA
+	ds	2
+?_main:	; 2 bytes @ 0xC
+main@argc:	; 2 bytes @ 0xC
+	ds	2
+main@argv:	; 2 bytes @ 0xE
+	ds	2
 ;!
 ;!Data Sizes:
 ;!    Strings     0
 ;!    Constant    0
 ;!    Data        5
-;!    BSS         11
+;!    BSS         21
 ;!    Persistent  0
 ;!    Stack       0
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
-;!    COMMON           14      5      11
-;!    BANK0            80      5      15
+;!    COMMON           14      6      10
+;!    BANK0            80     16      38
 ;!    BANK1            80      0       0
 ;!    BANK2            48      0       0
 
@@ -345,17 +413,19 @@ main@argv:	; 2 bytes @ 0x3
 ;!
 ;!Critical Paths under _main in COMMON
 ;!
-;!    None.
+;!    _main->_set
+;!    _SetDuty->___awdiv
 ;!
-;!Critical Paths under _t0_int in COMMON
+;!Critical Paths under _ISR in COMMON
 ;!
 ;!    None.
 ;!
 ;!Critical Paths under _main in BANK0
 ;!
-;!    _main->_sensores
+;!    _main->_SetDuty
+;!    _SetDuty->___awdiv
 ;!
-;!Critical Paths under _t0_int in BANK0
+;!Critical Paths under _ISR in BANK0
 ;!
 ;!    None.
 ;!
@@ -363,7 +433,7 @@ main@argv:	; 2 bytes @ 0x3
 ;!
 ;!    None.
 ;!
-;!Critical Paths under _t0_int in BANK1
+;!Critical Paths under _ISR in BANK1
 ;!
 ;!    None.
 ;!
@@ -371,7 +441,7 @@ main@argv:	; 2 bytes @ 0x3
 ;!
 ;!    None.
 ;!
-;!Critical Paths under _t0_int in BANK2
+;!Critical Paths under _ISR in BANK2
 ;!
 ;!    None.
 
@@ -385,37 +455,42 @@ main@argv:	; 2 bytes @ 0x3
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 4     0      4       0
-;!                                              1 BANK0      4     0      4
+;! (0) _main                                                 4     0      4    1176
+;!                                             12 BANK0      4     0      4
+;!                            _SetDuty
 ;!                      _configurar_IO
 ;!                     _configurar_pwm
-;!                  _configurar_timer0
-;!                  _configurar_timer1
 ;!                               _init
-;!                           _sensores
+;!                                _set
+;!                              _store
 ;! ---------------------------------------------------------------------------------
-;! (1) _sensores                                             1     1      0       0
-;!                                              0 BANK0      1     1      0
-;!                               _read
+;! (1) _store                                                8     8      0     185
+;!                                              4 COMMON     1     1      0
+;!                                              0 BANK0      5     5      0
 ;! ---------------------------------------------------------------------------------
-;! (2) _read                                                 0     0      0       0
+;! (1) _set                                                  2     2      0      68
+;!                                              4 COMMON     2     2      0
 ;! ---------------------------------------------------------------------------------
 ;! (1) _init                                                 0     0      0       0
-;! ---------------------------------------------------------------------------------
-;! (1) _configurar_timer1                                    0     0      0       0
-;! ---------------------------------------------------------------------------------
-;! (1) _configurar_timer0                                    0     0      0       0
 ;! ---------------------------------------------------------------------------------
 ;! (1) _configurar_pwm                                       0     0      0       0
 ;! ---------------------------------------------------------------------------------
 ;! (1) _configurar_IO                                        0     0      0       0
 ;! ---------------------------------------------------------------------------------
+;! (1) _SetDuty                                              4     2      2     923
+;!                                              8 BANK0      4     2      2
+;!                            ___awdiv
+;! ---------------------------------------------------------------------------------
+;! (2) ___awdiv                                              9     5      4     753
+;!                                              4 COMMON     1     1      0
+;!                                              0 BANK0      8     4      4
+;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 2
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (3) _t0_int                                               5     5      0       0
-;!                                              0 COMMON     5     5      0
+;! (3) _ISR                                                  4     4      0       0
+;!                                              0 COMMON     4     4      0
 ;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 3
 ;! ---------------------------------------------------------------------------------
@@ -423,15 +498,15 @@ main@argv:	; 2 bytes @ 0x3
 ;! Call Graph Graphs:
 ;!
 ;! _main (ROOT)
+;!   _SetDuty
+;!     ___awdiv
 ;!   _configurar_IO
 ;!   _configurar_pwm
-;!   _configurar_timer0
-;!   _configurar_timer1
 ;!   _init
-;!   _sensores
-;!     _read
+;!   _set
+;!   _store
 ;!
-;! _t0_int (ROOT)
+;! _ISR (ROOT)
 ;!
 
 ;! Address spaces:
@@ -447,15 +522,15 @@ main@argv:	; 2 bytes @ 0x3
 ;!BITBANK1            50      0       0       6        0.0%
 ;!SFR1                 0      0       0       2        0.0%
 ;!BITSFR1              0      0       0       2        0.0%
-;!BANK0               50      5       F       3       18.8%
+;!BANK0               50     10      26       3       47.5%
 ;!BITBANK0            50      0       0       5        0.0%
 ;!SFR0                 0      0       0       1        0.0%
 ;!BITSFR0              0      0       0       1        0.0%
-;!COMMON               E      5       B       1       78.6%
+;!COMMON               E      6       A       1       71.4%
 ;!BITCOMMON            E      0       0       0        0.0%
 ;!CODE                 0      0       0       0        0.0%
-;!DATA                 0      0      1A      10        0.0%
-;!ABS                  0      0      1A       4        0.0%
+;!DATA                 0      0      30      10        0.0%
+;!ABS                  0      0      30       4        0.0%
 ;!NULL                 0      0       0       0        0.0%
 ;!STACK                0      0       0       2        0.0%
 ;!EEDATA              80      0       0       0        0.0%
@@ -464,16 +539,16 @@ main@argv:	; 2 bytes @ 0x3
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 60 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 97 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
-;;  argc            2    1[BANK0 ] int 
-;;  argv            2    3[BANK0 ] PTR PTR unsigned char 
+;;  argc            2   12[BANK0 ] int 
+;;  argv            2   14[BANK0 ] PTR PTR unsigned char 
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  2    1[BANK0 ] int 
+;;                  2   12[BANK0 ] int 
 ;; Registers used:
-;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
 ;; Tracked objects:
 ;;		On entry : B00/0
 ;;		On exit  : 0/0
@@ -486,445 +561,585 @@ main@argv:	; 2 bytes @ 0x3
 ;;Total ram usage:        4 bytes
 ;; Hardware stack levels required when called:    3
 ;; This function calls:
+;;		_SetDuty
 ;;		_configurar_IO
 ;;		_configurar_pwm
-;;		_configurar_timer0
-;;		_configurar_timer1
 ;;		_init
-;;		_sensores
+;;		_set
+;;		_store
 ;; This function is called by:
 ;;		Startup code after reset
 ;; This function uses a non-reentrant model
 ;;
 psect	maintext,global,class=CODE,delta=2,split=1
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	60
+	line	97
 global __pmaintext
 __pmaintext:	;psect for function _main
 psect	maintext
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	60
+	line	97
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
 	
 _main:	
 ;incstack = 0
 	opt	stack 5
-; Regs used in _main: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-	line	62
+; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+	line	98
 	
-l833:	
+l1196:	
+	movlw	high highword(0)
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	movwf	(_times+3)
+	movlw	low highword(0)
+	movwf	(_times+2)
+	movlw	high(0)
+	movwf	(_times+1)
+	movlw	low(0)
+	movwf	(_times)
+
+	line	99
+	
+l1198:	
 	fcall	_init
-	line	63
-	
-l835:	
+	line	100
 	fcall	_configurar_IO
-	line	64
+	line	101
 	
-l837:	
+l1200:	
 	fcall	_configurar_pwm
-	line	65
+	line	103
 	
-l839:	
-	fcall	_configurar_timer1
-	line	66
+l1202:	
+	bsf	status, 5	;RP0=1, select bank1
+	bcf	status, 6	;RP1=0, select bank1
+	bsf	(1121/8)^080h,(1121)&7	;volatile
+	line	104
 	
-l841:	
-	fcall	_configurar_timer0
-	goto	l843
-	line	67
+l1204:	
+	bsf	(94/8),(94)&7	;volatile
+	line	105
 	
-l83:	
-	line	68
+l1206:	
+	bsf	(95/8),(95)&7	;volatile
+	line	106
 	
-l843:	
-	fcall	_sensores
-	goto	l843
-	line	69
+l1208:	
+	fcall	_set
+	line	107
 	
-l84:	
-	line	67
-	goto	l843
+l1210:	
+	movlw	02h
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	movwf	(SetDuty@S)
+	movlw	0
+	movwf	((SetDuty@S))+1
+	fcall	_SetDuty
+	goto	l1212
+	line	110
 	
-l85:	
-	line	70
+l115:	
+	line	111
 	
-l86:	
+l1212:	
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	btfsc	(_times+3),7
+	goto	u1091
+	movf	(_times+3),w
+	btfss	status,2
+	goto	u1090
+	movf	(_times+2),w
+	btfss	status,2
+	goto	u1090
+	movlw	2
+	subwf	(_times+1),w
+	skipz
+	goto	u1093
+	movlw	29
+	subwf	(_times),w
+	skipz
+	goto	u1093
+u1093:
+	btfss	status,0
+	goto	u1091
+	goto	u1090
+
+u1091:
+	goto	l1218
+u1090:
+	
+l1214:	
+	btfsc	(_times+3),7
+	goto	u1100
+	movf	(_times+3),w
+	btfss	status,2
+	goto	u1101
+	movf	(_times+2),w
+	btfss	status,2
+	goto	u1101
+	movlw	2
+	subwf	(_times+1),w
+	skipz
+	goto	u1103
+	movlw	38
+	subwf	(_times),w
+	skipz
+	goto	u1103
+u1103:
+	btfsc	status,0
+	goto	u1101
+	goto	u1100
+
+u1101:
+	goto	l1218
+u1100:
+	line	112
+	
+l1216:	
+	fcall	_store
+	line	113
+	goto	l1212
+	
+l116:	
+	line	114
+	
+l1218:	
+	fcall	_set
+	goto	l1212
+	line	115
+	
+l117:	
+	goto	l1212
+	line	122
+	
+l118:	
+	line	110
+	goto	l1212
+	
+l119:	
+	line	123
+	
+l120:	
 	global	start
 	ljmp	start
 	opt stack 0
 GLOBAL	__end_of_main
 	__end_of_main:
 	signat	_main,8314
-	global	_sensores
+	global	_store
 
-;; *************** function _sensores *****************
+;; *************** function _store *****************
 ;; Defined at:
-;;		line 136 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 75 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
-;;		None
+;;  i               2    0        int 
 ;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
+;;		None               void
 ;; Registers used:
-;;		wreg, fsr0l, fsr0h, status,2, status,0, pclath, cstack
+;;		wreg, status,2, status,0
 ;; Tracked objects:
 ;;		On entry : 0/0
 ;;		On exit  : 0/0
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
 ;;      Params:         0       0       0       0
-;;      Locals:         0       0       0       0
-;;      Temps:          0       1       0       0
-;;      Totals:         0       1       0       0
-;;Total ram usage:        1 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    2
-;; This function calls:
-;;		_read
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text1,local,class=CODE,delta=2,merge=1
-	line	136
-global __ptext1
-__ptext1:	;psect for function _sensores
-psect	text1
-	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	136
-	global	__size_of_sensores
-	__size_of_sensores	equ	__end_of_sensores-_sensores
-	
-_sensores:	
-;incstack = 0
-	opt	stack 5
-; Regs used in _sensores: [wreg-fsr0h+status,2+status,0+pclath+cstack]
-	line	137
-	
-l799:	
-	goto	l827
-	line	138
-	
-l108:	
-	line	141
-	bsf	status, 5	;RP0=1, select bank1
-	bcf	status, 6	;RP1=0, select bank1
-	bcf	(1075/8)^080h,(1075)&7	;volatile
-	line	142
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	bsf	(16),0	;volatile
-	line	143
-	clrf	(_estado)
-	incf	(_estado),f
-	line	144
-	
-l801:	
-	clrf	(_cnt)
-	clrf	(_cnt+1)
-	line	145
-	clrf	(_contador)
-	line	146
-	goto	l115
-	line	147
-	
-l110:	
-	line	150
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	btfss	(12),0	;volatile
-	goto	u231
-	goto	u230
-u231:
-	goto	l115
-u230:
-	line	151
-	
-l803:	
-	bcf	(12),0	;volatile
-	line	152
-	bcf	(16),0	;volatile
-	line	153
-	
-l805:	
-	movlw	low(0FCh)
-	movwf	(15)	;volatile
-	line	154
-	movlw	low(017h)
-	movwf	(14)	;volatile
-	line	155
-	movlw	low(02h)
-	movwf	(??_sensores+0)+0
-	movf	(??_sensores+0)+0,w
-	movwf	(_estado)
-	goto	l115
-	line	156
-	
-l111:	
-	line	157
-	goto	l115
-	line	158
-	
-l112:	
-	line	159
-	
-l807:	
-	fcall	_read
-	line	160
-	
-l809:	
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	bcf	(12),0	;volatile
-	line	161
-	
-l811:	
-	bcf	(16),0	;volatile
-	line	162
-	
-l813:	
-	clrf	(_contador)
-	line	164
-	
-l815:	
-	bsf	status, 5	;RP0=1, select bank1
-	bcf	status, 6	;RP1=0, select bank1
-	bsf	(1075/8)^080h,(1075)&7	;volatile
-	line	165
-	
-l817:	
-	movlw	low(03h)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	movwf	(??_sensores+0)+0
-	movf	(??_sensores+0)+0,w
-	movwf	(_estado)
-	line	166
-	
-l819:	
-	clrf	(_cnt)
-	clrf	(_cnt+1)
-	line	167
-	goto	l115
-	line	168
-	
-l113:	
-	line	169
-	
-l821:	
-	movlw	low(0Ah)
-	subwf	(_contador),w
-	skipc
-	goto	u241
-	goto	u240
-u241:
-	goto	l115
-u240:
-	line	170
-	
-l823:	
-	clrf	(_estado)
-	goto	l115
-	line	171
-	
-l114:	
-	line	172
-	goto	l115
-	line	173
-	
-l825:	
-	goto	l115
-	line	137
-	
-l107:	
-	
-l827:	
-	movf	(_estado),w
-	; Switch size 1, requested type "space"
-; Number of cases is 4, Range of values is 0 to 3
-; switch strategies available:
-; Name         Instructions Cycles
-; direct_byte           10     6 (fixed)
-; simple_byte           13     7 (average)
-; jumptable            260     6 (fixed)
-;	Chosen strategy is direct_byte
-
-	movwf fsr
-	movlw	4
-	subwf	fsr,w
-skipnc
-goto l115
-movlw high(S865)
-movwf pclath
-	movlw low(S865)
-	addwf fsr,w
-	movwf pc
-psect	swtext1,local,class=CONST,delta=2
-global __pswtext1
-__pswtext1:
-S865:
-	ljmp	l108
-	ljmp	l110
-	ljmp	l807
-	ljmp	l821
-psect	text1
-
-	line	173
-	
-l109:	
-	line	174
-	
-l115:	
-	return
-	opt stack 0
-GLOBAL	__end_of_sensores
-	__end_of_sensores:
-	signat	_sensores,89
-	global	_read
-
-;; *************** function _read *****************
-;; Defined at:
-;;		line 175 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
-;; Registers used:
-;;		None
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-;;      Params:         0       0       0       0
-;;      Locals:         0       0       0       0
-;;      Temps:          0       0       0       0
-;;      Totals:         0       0       0       0
-;;Total ram usage:        0 bytes
+;;      Locals:         0       5       0       0
+;;      Temps:          1       0       0       0
+;;      Totals:         1       5       0       0
+;;Total ram usage:        6 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    1
 ;; This function calls:
 ;;		Nothing
 ;; This function is called by:
-;;		_sensores
+;;		_main
+;; This function uses a non-reentrant model
+;;
+psect	text1,local,class=CODE,delta=2,merge=1
+	line	75
+global __ptext1
+__ptext1:	;psect for function _store
+psect	text1
+	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
+	line	75
+	global	__size_of_store
+	__size_of_store	equ	__end_of_store-_store
+	
+_store:	
+;incstack = 0
+	opt	stack 6
+; Regs used in _store: [wreg+status,2+status,0]
+	line	77
+	
+l1144:	
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	clrf	(_store$318)
+	incf	(_store$318),f
+	
+l1146:	
+	movf	((_V)),w
+	btfss	status,2
+	goto	u991
+	goto	u990
+u991:
+	goto	l1152
+u990:
+	
+l1148:	
+	btfss	(5),0	;volatile
+	goto	u1001
+	goto	u1000
+u1001:
+	goto	l1152
+u1000:
+	
+l1150:	
+	clrf	(_store$318)
+	goto	l1152
+	
+l97:	
+	
+l1152:	
+	movf	(_store$318),w
+	movwf	(??_store+0)+0
+	movf	(??_store+0)+0,w
+	movwf	(_V)
+	line	78
+	
+l1154:	
+	clrf	(_store$319)
+	incf	(_store$319),f
+	
+l1156:	
+	movf	(0+(_V)+01h),w
+	btfss	status,2
+	goto	u1011
+	goto	u1010
+u1011:
+	goto	l1162
+u1010:
+	
+l1158:	
+	btfss	(5),1	;volatile
+	goto	u1021
+	goto	u1020
+u1021:
+	goto	l1162
+u1020:
+	
+l1160:	
+	clrf	(_store$319)
+	goto	l1162
+	
+l99:	
+	
+l1162:	
+	movf	(_store$319),w
+	movwf	(??_store+0)+0
+	movf	(??_store+0)+0,w
+	movwf	0+(_V)+01h
+	line	79
+	
+l1164:	
+	clrf	(_store$320)
+	incf	(_store$320),f
+	
+l1166:	
+	movf	(0+(_V)+02h),w
+	btfss	status,2
+	goto	u1031
+	goto	u1030
+u1031:
+	goto	l1172
+u1030:
+	
+l1168:	
+	btfss	(5),2	;volatile
+	goto	u1041
+	goto	u1040
+u1041:
+	goto	l1172
+u1040:
+	
+l1170:	
+	clrf	(_store$320)
+	goto	l1172
+	
+l101:	
+	
+l1172:	
+	movf	(_store$320),w
+	movwf	(??_store+0)+0
+	movf	(??_store+0)+0,w
+	movwf	0+(_V)+02h
+	line	80
+	
+l1174:	
+	clrf	(_store$321)
+	incf	(_store$321),f
+	
+l1176:	
+	movf	(0+(_V)+03h),w
+	btfss	status,2
+	goto	u1051
+	goto	u1050
+u1051:
+	goto	l1182
+u1050:
+	
+l1178:	
+	btfss	(5),3	;volatile
+	goto	u1061
+	goto	u1060
+u1061:
+	goto	l1182
+u1060:
+	
+l1180:	
+	clrf	(_store$321)
+	goto	l1182
+	
+l103:	
+	
+l1182:	
+	movf	(_store$321),w
+	movwf	(??_store+0)+0
+	movf	(??_store+0)+0,w
+	movwf	0+(_V)+03h
+	line	81
+	
+l1184:	
+	clrf	(_store$322)
+	incf	(_store$322),f
+	
+l1186:	
+	movf	(0+(_V)+04h),w
+	btfss	status,2
+	goto	u1071
+	goto	u1070
+u1071:
+	goto	l1192
+u1070:
+	
+l1188:	
+	btfss	(5),4	;volatile
+	goto	u1081
+	goto	u1080
+u1081:
+	goto	l1192
+u1080:
+	
+l1190:	
+	clrf	(_store$322)
+	goto	l1192
+	
+l105:	
+	
+l1192:	
+	movf	(_store$322),w
+	movwf	(??_store+0)+0
+	movf	(??_store+0)+0,w
+	movwf	0+(_V)+04h
+	line	82
+	
+l1194:	
+	clrf	(_st)
+	line	83
+	
+l106:	
+	return
+	opt stack 0
+GLOBAL	__end_of_store
+	__end_of_store:
+	signat	_store,88
+	global	_set
+
+;; *************** function _set *****************
+;; Defined at:
+;;		line 84 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;; Parameters:    Size  Location     Type
+;;		None
+;; Auto vars:     Size  Location     Type
+;;  j               2    4[COMMON] int 
+;; Return value:  Size  Location     Type
+;;		None               void
+;; Registers used:
+;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+;;      Params:         0       0       0       0
+;;      Locals:         2       0       0       0
+;;      Temps:          0       0       0       0
+;;      Totals:         2       0       0       0
+;;Total ram usage:        2 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    1
+;; This function calls:
+;;		Nothing
+;; This function is called by:
+;;		_main
 ;; This function uses a non-reentrant model
 ;;
 psect	text2,local,class=CODE,delta=2,merge=1
-	line	175
+	line	84
 global __ptext2
-__ptext2:	;psect for function _read
+__ptext2:	;psect for function _set
 psect	text2
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	175
-	global	__size_of_read
-	__size_of_read	equ	__end_of_read-_read
+	line	84
+	global	__size_of_set
+	__size_of_set	equ	__end_of_set-_set
 	
-_read:	
+_set:	
 ;incstack = 0
-	opt	stack 5
-; Regs used in _read: []
-	line	176
+	opt	stack 6
+; Regs used in _set: [wreg-fsr0h+status,2+status,0+btemp+1]
+	line	85
 	
-l745:	
+l974:	
+	movf	((_st)),w
+	btfss	status,2
+	goto	u661
+	goto	u660
+u661:
+	goto	l112
+u660:
+	line	86
+	
+l976:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
-	btfsc	(5),0	;volatile
-	goto	u131
-	goto	u130
-	
-u131:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	movf	(_V),w
+	skipz
 	bsf	(6),0	;volatile
-	goto	u144
-u130:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	skipnz
 	bcf	(6),0	;volatile
-u144:
-	line	177
-	btfsc	(5),1	;volatile
-	goto	u151
-	goto	u150
-	
-u151:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	line	87
+	movf	0+(_V)+01h,w
+	skipz
 	bsf	(6),4	;volatile
-	goto	u164
-u150:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	skipnz
 	bcf	(6),4	;volatile
-u164:
-	line	178
-	btfsc	(5),2	;volatile
-	goto	u171
-	goto	u170
-	
-u171:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	line	88
+	movf	0+(_V)+02h,w
+	skipz
 	bsf	(6),5	;volatile
-	goto	u184
-u170:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	skipnz
 	bcf	(6),5	;volatile
-u184:
-	line	179
-	btfsc	(5),3	;volatile
-	goto	u191
-	goto	u190
-	
-u191:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	line	89
+	movf	0+(_V)+03h,w
+	skipz
 	bsf	(6),6	;volatile
-	goto	u204
-u190:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	skipnz
 	bcf	(6),6	;volatile
-u204:
-	line	180
-	btfsc	(5),4	;volatile
-	goto	u211
-	goto	u210
-	
-u211:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	line	90
+	movf	0+(_V)+04h,w
+	skipz
 	bsf	(6),7	;volatile
-	goto	u224
-u210:
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
+	skipnz
 	bcf	(6),7	;volatile
-u224:
-	line	181
+	line	92
 	
-l118:	
+l978:	
+	clrf	(set@j)
+	clrf	(set@j+1)
+	
+l980:	
+	movf	(set@j+1),w
+	xorlw	80h
+	movwf	btemp+1
+	movlw	(0)^80h
+	subwf	btemp+1,w
+	skipz
+	goto	u675
+	movlw	05h
+	subwf	(set@j),w
+u675:
+
+	skipc
+	goto	u671
+	goto	u670
+u671:
+	goto	l984
+u670:
+	goto	l111
+	
+l982:	
+	goto	l111
+	
+l110:	
+	
+l984:	
+	movf	(set@j),w
+	addlw	low(_V|((0x0)<<8))&0ffh
+	movwf	fsr0
+	bcf	status, 7	;select IRP bank0
+	clrf	indf
+	
+l986:	
+	movlw	01h
+	addwf	(set@j),f
+	skipnc
+	incf	(set@j+1),f
+	movlw	0
+	addwf	(set@j+1),f
+	
+l988:	
+	movf	(set@j+1),w
+	xorlw	80h
+	movwf	btemp+1
+	movlw	(0)^80h
+	subwf	btemp+1,w
+	skipz
+	goto	u685
+	movlw	05h
+	subwf	(set@j),w
+u685:
+
+	skipc
+	goto	u681
+	goto	u680
+u681:
+	goto	l984
+u680:
+	
+l111:	
+	line	93
+	clrf	(_st)
+	incf	(_st),f
+	goto	l112
+	line	94
+	
+l109:	
+	line	95
+	
+l112:	
 	return
 	opt stack 0
-GLOBAL	__end_of_read
-	__end_of_read:
-	signat	_read,89
+GLOBAL	__end_of_set
+	__end_of_set:
+	signat	_set,88
 	global	_init
 
 ;; *************** function _init *****************
 ;; Defined at:
-;;		line 73 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 140 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
+;;		None               void
 ;; Registers used:
 ;;		wreg, status,2
 ;; Tracked objects:
@@ -946,12 +1161,12 @@ GLOBAL	__end_of_read
 ;; This function uses a non-reentrant model
 ;;
 psect	text3,local,class=CODE,delta=2,merge=1
-	line	73
+	line	140
 global __ptext3
 __ptext3:	;psect for function _init
 psect	text3
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	73
+	line	140
 	global	__size_of_init
 	__size_of_init	equ	__end_of_init-_init
 	
@@ -959,48 +1174,48 @@ _init:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _init: [wreg+status,2]
-	line	74
+	line	141
 	
-l747:	
+l990:	
 	movlw	low(07h)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movwf	(31)	;volatile
-	line	75
+	line	142
 	
-l749:	
+l992:	
 	clrf	(_contador)
-	line	76
+	line	143
 	
-l751:	
+l994:	
 	clrf	(_estado)
-	line	77
+	line	144
 	
-l753:	
+l996:	
 	clrf	(_ciclos)
-	line	78
+	line	145
 	
-l755:	
+l998:	
 	clrf	(_actual)
-	line	83
+	line	150
 	
-l89:	
+l129:	
 	return
 	opt stack 0
 GLOBAL	__end_of_init
 	__end_of_init:
-	signat	_init,89
-	global	_configurar_timer1
+	signat	_init,88
+	global	_configurar_pwm
 
-;; *************** function _configurar_timer1 *****************
+;; *************** function _configurar_pwm *****************
 ;; Defined at:
-;;		line 93 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 151 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
+;;		None               void
 ;; Registers used:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
@@ -1022,87 +1237,72 @@ GLOBAL	__end_of_init
 ;; This function uses a non-reentrant model
 ;;
 psect	text4,local,class=CODE,delta=2,merge=1
-	line	93
+	line	151
 global __ptext4
-__ptext4:	;psect for function _configurar_timer1
+__ptext4:	;psect for function _configurar_pwm
 psect	text4
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	93
-	global	__size_of_configurar_timer1
-	__size_of_configurar_timer1	equ	__end_of_configurar_timer1-_configurar_timer1
+	line	151
+	global	__size_of_configurar_pwm
+	__size_of_configurar_pwm	equ	__end_of_configurar_pwm-_configurar_pwm
 	
-_configurar_timer1:	
+_configurar_pwm:	
 ;incstack = 0
 	opt	stack 6
-; Regs used in _configurar_timer1: [wreg+status,2+status,0]
-	line	94
+; Regs used in _configurar_pwm: [wreg+status,2+status,0]
+	line	152
 	
-l771:	
-	movlw	low(0FCh)
+l1002:	
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
-	movwf	(15)	;volatile
-	line	95
-	movlw	low(018h)
-	movwf	(14)	;volatile
-	line	97
+	bsf	(18),2	;volatile
+	line	153
 	
-l773:	
+l1004:	
+	movlw	((0 & ((1<<4)-1))<<3)|not (((1<<4)-1)<<3)
+	andwf	(18),f	;volatile
+	line	154
+	movlw	((0 & ((1<<2)-1))<<0)|not (((1<<2)-1)<<0)
+	andwf	(18),f	;volatile
+	line	155
+	
+l1006:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
-	bcf	(140)^080h,0	;volatile
-	line	98
+	bcf	(134)^080h,3	;volatile
+	line	156
 	
-l775:	
+l1008:	
+	movlw	low(011h)
+	movwf	(146)^080h	;volatile
+	line	158
+	
+l1010:	
+	movlw	low(0Ch)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
-	bcf	(12),0	;volatile
-	line	100
+	movwf	(23)	;volatile
+	line	159
 	
-l777:	
-	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
-	andwf	(16),f	;volatile
-	line	102
-	
-l779:	
-	bsf	(16),2	;volatile
-	line	103
-	
-l781:	
-	bcf	(16),3	;volatile
-	line	104
-	
-l783:	
-	bcf	(16),1	;volatile
-	line	105
-	
-l785:	
-	bcf	(16),0	;volatile
-	line	106
-	
-l787:	
-	bsf	(16),0	;volatile
-	line	107
-	
-l95:	
+l132:	
 	return
 	opt stack 0
-GLOBAL	__end_of_configurar_timer1
-	__end_of_configurar_timer1:
-	signat	_configurar_timer1,89
-	global	_configurar_timer0
+GLOBAL	__end_of_configurar_pwm
+	__end_of_configurar_pwm:
+	signat	_configurar_pwm,88
+	global	_configurar_IO
 
-;; *************** function _configurar_timer0 *****************
+;; *************** function _configurar_IO *****************
 ;; Defined at:
-;;		line 108 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 184 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
+;;		None               void
 ;; Registers used:
-;;		wreg, status,2, status,0
+;;		None
 ;; Tracked objects:
 ;;		On entry : 0/0
 ;;		On exit  : 0/0
@@ -1122,182 +1322,12 @@ GLOBAL	__end_of_configurar_timer1
 ;; This function uses a non-reentrant model
 ;;
 psect	text5,local,class=CODE,delta=2,merge=1
-	line	108
+	line	184
 global __ptext5
-__ptext5:	;psect for function _configurar_timer0
+__ptext5:	;psect for function _configurar_IO
 psect	text5
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	108
-	global	__size_of_configurar_timer0
-	__size_of_configurar_timer0	equ	__end_of_configurar_timer0-_configurar_timer0
-	
-_configurar_timer0:	
-;incstack = 0
-	opt	stack 6
-; Regs used in _configurar_timer0: [wreg+status,2+status,0]
-	line	109
-	
-l789:	
-	bsf	status, 5	;RP0=1, select bank1
-	bcf	status, 6	;RP1=0, select bank1
-	bcf	(129)^080h,5	;volatile
-	line	110
-	bcf	(129)^080h,3	;volatile
-	line	111
-	
-l791:	
-	movf	(129)^080h,w	;volatile
-	andlw	not (((1<<3)-1)<<0)
-	iorlw	(01h & ((1<<3)-1))<<0
-	movwf	(129)^080h	;volatile
-	line	113
-	
-l793:	
-	bcf	(11),2	;volatile
-	line	114
-	
-l795:	
-	bsf	(11),5	;volatile
-	line	115
-	
-l797:	
-	bsf	(11),7	;volatile
-	line	116
-	
-l98:	
-	return
-	opt stack 0
-GLOBAL	__end_of_configurar_timer0
-	__end_of_configurar_timer0:
-	signat	_configurar_timer0,89
-	global	_configurar_pwm
-
-;; *************** function _configurar_pwm *****************
-;; Defined at:
-;;		line 84 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
-;; Registers used:
-;;		wreg, status,2, status,0
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-;;      Params:         0       0       0       0
-;;      Locals:         0       0       0       0
-;;      Temps:          0       0       0       0
-;;      Totals:         0       0       0       0
-;;Total ram usage:        0 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text6,local,class=CODE,delta=2,merge=1
-	line	84
-global __ptext6
-__ptext6:	;psect for function _configurar_pwm
-psect	text6
-	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	84
-	global	__size_of_configurar_pwm
-	__size_of_configurar_pwm	equ	__end_of_configurar_pwm-_configurar_pwm
-	
-_configurar_pwm:	
-;incstack = 0
-	opt	stack 6
-; Regs used in _configurar_pwm: [wreg+status,2+status,0]
-	line	85
-	
-l759:	
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	bsf	(18),2	;volatile
-	line	86
-	
-l761:	
-	movlw	((0 & ((1<<4)-1))<<3)|not (((1<<4)-1)<<3)
-	andwf	(18),f	;volatile
-	line	87
-	movlw	((0 & ((1<<2)-1))<<0)|not (((1<<2)-1)<<0)
-	andwf	(18),f	;volatile
-	line	88
-	
-l763:	
-	bsf	status, 5	;RP0=1, select bank1
-	bcf	status, 6	;RP1=0, select bank1
-	bcf	(134)^080h,3	;volatile
-	line	89
-	
-l765:	
-	movlw	low(011h)
-	movwf	(146)^080h	;volatile
-	line	90
-	
-l767:	
-	movlw	low(01h)
-	bcf	status, 5	;RP0=0, select bank0
-	bcf	status, 6	;RP1=0, select bank0
-	movwf	(21)	;volatile
-	line	91
-	
-l769:	
-	movlw	low(0Ch)
-	movwf	(23)	;volatile
-	line	92
-	
-l92:	
-	return
-	opt stack 0
-GLOBAL	__end_of_configurar_pwm
-	__end_of_configurar_pwm:
-	signat	_configurar_pwm,89
-	global	_configurar_IO
-
-;; *************** function _configurar_IO *****************
-;; Defined at:
-;;		line 117 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
-;; Registers used:
-;;		None
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMMON   BANK0   BANK1   BANK2
-;;      Params:         0       0       0       0
-;;      Locals:         0       0       0       0
-;;      Temps:          0       0       0       0
-;;      Totals:         0       0       0       0
-;;Total ram usage:        0 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text7,local,class=CODE,delta=2,merge=1
-	line	117
-global __ptext7
-__ptext7:	;psect for function _configurar_IO
-psect	text7
-	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	117
+	line	184
 	global	__size_of_configurar_IO
 	__size_of_configurar_IO	equ	__end_of_configurar_IO-_configurar_IO
 	
@@ -1305,51 +1335,454 @@ _configurar_IO:
 ;incstack = 0
 	opt	stack 6
 ; Regs used in _configurar_IO: []
-	line	118
+	line	185
 	
-l757:	
+l1000:	
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	bcf	(1075/8)^080h,(1075)&7	;volatile
-	line	120
+	line	187
 	bsf	(1064/8)^080h,(1064)&7	;volatile
-	line	121
+	line	188
 	bsf	(1065/8)^080h,(1065)&7	;volatile
-	line	122
+	line	189
 	bsf	(1066/8)^080h,(1066)&7	;volatile
-	line	123
+	line	190
 	bsf	(1067/8)^080h,(1067)&7	;volatile
-	line	124
+	line	191
 	bsf	(1068/8)^080h,(1068)&7	;volatile
-	line	126
+	line	193
 	bcf	(1072/8)^080h,(1072)&7	;volatile
-	line	127
+	line	194
 	bcf	(1076/8)^080h,(1076)&7	;volatile
-	line	128
+	line	195
 	bcf	(1077/8)^080h,(1077)&7	;volatile
-	line	129
+	line	196
 	bcf	(1078/8)^080h,(1078)&7	;volatile
-	line	130
+	line	197
 	bcf	(1071/8)^080h,(1071)&7	;volatile
-	line	131
+	line	198
 	
-l101:	
+l141:	
 	return
 	opt stack 0
 GLOBAL	__end_of_configurar_IO
 	__end_of_configurar_IO:
-	signat	_configurar_IO,89
-	global	_t0_int
+	signat	_configurar_IO,88
+	global	_SetDuty
 
-;; *************** function _t0_int *****************
+;; *************** function _SetDuty *****************
 ;; Defined at:
-;;		line 132 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;;		line 67 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
+;; Parameters:    Size  Location     Type
+;;  S               2    8[BANK0 ] int 
+;; Auto vars:     Size  Location     Type
+;;		None
+;; Return value:  Size  Location     Type
+;;		None               void
+;; Registers used:
+;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+;;      Params:         0       2       0       0
+;;      Locals:         0       0       0       0
+;;      Temps:          0       2       0       0
+;;      Totals:         0       4       0       0
+;;Total ram usage:        4 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    2
+;; This function calls:
+;;		___awdiv
+;; This function is called by:
+;;		_main
+;; This function uses a non-reentrant model
+;;
+psect	text6,local,class=CODE,delta=2,merge=1
+	line	67
+global __ptext6
+__ptext6:	;psect for function _SetDuty
+psect	text6
+	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
+	line	67
+	global	__size_of_SetDuty
+	__size_of_SetDuty	equ	__end_of_SetDuty-_SetDuty
+	
+_SetDuty:	
+;incstack = 0
+	opt	stack 5
+; Regs used in _SetDuty: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+	line	70
+	
+l1138:	
+	movlw	03h
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	andwf	(SetDuty@S),w
+	movwf	(??_SetDuty+0)+0
+	movlw	0
+	andwf	(SetDuty@S+1),w
+	movwf	1+(??_SetDuty+0)+0
+	movf	1+(??_SetDuty+0)+0,w
+	xorlw	80h
+	movwf	btemp+1
+	movlw	(0)^80h
+	subwf	btemp+1,w
+	skipz
+	goto	u975
+	movlw	02h
+	subwf	0+(??_SetDuty+0)+0,w
+u975:
+
+	skipnc
+	goto	u971
+	goto	u970
+	
+u971:
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	bsf	(23),5	;volatile
+	goto	u984
+u970:
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	bcf	(23),5	;volatile
+u984:
+	line	71
+	
+l1140:	
+	movf	(SetDuty@S),w
+	andlw	01h
+	movwf	(??_SetDuty+0)+0
+	swapf	(??_SetDuty+0)+0,f
+	movf	(23),w	;volatile
+	xorwf	(??_SetDuty+0)+0,w
+	andlw	not (((1<<1)-1)<<4)
+	xorwf	(??_SetDuty+0)+0,w
+	movwf	(23)	;volatile
+	line	72
+	
+l1142:	
+	movlw	04h
+	movwf	(___awdiv@divisor)
+	movlw	0
+	movwf	((___awdiv@divisor))+1
+	movf	(SetDuty@S+1),w
+	movwf	(___awdiv@dividend+1)
+	movf	(SetDuty@S),w
+	movwf	(___awdiv@dividend)
+	fcall	___awdiv
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	movf	(0+(?___awdiv)),w
+	movwf	(21)	;volatile
+	line	73
+	
+l93:	
+	return
+	opt stack 0
+GLOBAL	__end_of_SetDuty
+	__end_of_SetDuty:
+	signat	_SetDuty,4216
+	global	___awdiv
+
+;; *************** function ___awdiv *****************
+;; Defined at:
+;;		line 6 in file "/opt/microchip/xc8/v1.34/sources/common/awdiv.c"
+;; Parameters:    Size  Location     Type
+;;  divisor         2    0[BANK0 ] int 
+;;  dividend        2    2[BANK0 ] int 
+;; Auto vars:     Size  Location     Type
+;;  quotient        2    6[BANK0 ] int 
+;;  sign            1    5[BANK0 ] unsigned char 
+;;  counter         1    4[BANK0 ] unsigned char 
+;; Return value:  Size  Location     Type
+;;                  2    0[BANK0 ] int 
+;; Registers used:
+;;		wreg, status,2, status,0
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+;;      Params:         0       4       0       0
+;;      Locals:         0       4       0       0
+;;      Temps:          1       0       0       0
+;;      Totals:         1       8       0       0
+;;Total ram usage:        9 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    1
+;; This function calls:
+;;		Nothing
+;; This function is called by:
+;;		_SetDuty
+;;		_DUTYSet
+;; This function uses a non-reentrant model
+;;
+psect	text7,local,class=CODE,delta=2,merge=1
+	file	"/opt/microchip/xc8/v1.34/sources/common/awdiv.c"
+	line	6
+global __ptext7
+__ptext7:	;psect for function ___awdiv
+psect	text7
+	file	"/opt/microchip/xc8/v1.34/sources/common/awdiv.c"
+	line	6
+	global	__size_of___awdiv
+	__size_of___awdiv	equ	__end_of___awdiv-___awdiv
+	
+___awdiv:	
+;incstack = 0
+	opt	stack 5
+; Regs used in ___awdiv: [wreg+status,2+status,0]
+	line	14
+	
+l1094:	
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	clrf	(___awdiv@sign)
+	line	15
+	
+l1096:	
+	btfss	(___awdiv@divisor+1),7
+	goto	u871
+	goto	u870
+u871:
+	goto	l1102
+u870:
+	line	16
+	
+l1098:	
+	comf	(___awdiv@divisor),f
+	comf	(___awdiv@divisor+1),f
+	incf	(___awdiv@divisor),f
+	skipnz
+	incf	(___awdiv@divisor+1),f
+	line	17
+	
+l1100:	
+	clrf	(___awdiv@sign)
+	incf	(___awdiv@sign),f
+	goto	l1102
+	line	18
+	
+l364:	
+	line	19
+	
+l1102:	
+	btfss	(___awdiv@dividend+1),7
+	goto	u881
+	goto	u880
+u881:
+	goto	l1108
+u880:
+	line	20
+	
+l1104:	
+	comf	(___awdiv@dividend),f
+	comf	(___awdiv@dividend+1),f
+	incf	(___awdiv@dividend),f
+	skipnz
+	incf	(___awdiv@dividend+1),f
+	line	21
+	
+l1106:	
+	movlw	low(01h)
+	movwf	(??___awdiv+0)+0
+	movf	(??___awdiv+0)+0,w
+	xorwf	(___awdiv@sign),f
+	goto	l1108
+	line	22
+	
+l365:	
+	line	23
+	
+l1108:	
+	clrf	(___awdiv@quotient)
+	clrf	(___awdiv@quotient+1)
+	line	24
+	
+l1110:	
+	movf	((___awdiv@divisor)),w
+iorwf	((___awdiv@divisor+1)),w
+	btfsc	status,2
+	goto	u891
+	goto	u890
+u891:
+	goto	l1130
+u890:
+	line	25
+	
+l1112:	
+	clrf	(___awdiv@counter)
+	incf	(___awdiv@counter),f
+	line	26
+	goto	l1118
+	
+l368:	
+	line	27
+	
+l1114:	
+	movlw	01h
+	
+u905:
+	clrc
+	rlf	(___awdiv@divisor),f
+	rlf	(___awdiv@divisor+1),f
+	addlw	-1
+	skipz
+	goto	u905
+	line	28
+	
+l1116:	
+	movlw	low(01h)
+	movwf	(??___awdiv+0)+0
+	movf	(??___awdiv+0)+0,w
+	addwf	(___awdiv@counter),f
+	goto	l1118
+	line	29
+	
+l367:	
+	line	26
+	
+l1118:	
+	btfss	(___awdiv@divisor+1),(15)&7
+	goto	u911
+	goto	u910
+u911:
+	goto	l1114
+u910:
+	goto	l1120
+	
+l369:	
+	goto	l1120
+	line	30
+	
+l370:	
+	line	31
+	
+l1120:	
+	movlw	01h
+	
+u925:
+	clrc
+	rlf	(___awdiv@quotient),f
+	rlf	(___awdiv@quotient+1),f
+	addlw	-1
+	skipz
+	goto	u925
+	line	32
+	movf	(___awdiv@divisor+1),w
+	subwf	(___awdiv@dividend+1),w
+	skipz
+	goto	u935
+	movf	(___awdiv@divisor),w
+	subwf	(___awdiv@dividend),w
+u935:
+	skipc
+	goto	u931
+	goto	u930
+u931:
+	goto	l1126
+u930:
+	line	33
+	
+l1122:	
+	movf	(___awdiv@divisor),w
+	subwf	(___awdiv@dividend),f
+	movf	(___awdiv@divisor+1),w
+	skipc
+	decf	(___awdiv@dividend+1),f
+	subwf	(___awdiv@dividend+1),f
+	line	34
+	
+l1124:	
+	bsf	(___awdiv@quotient)+(0/8),(0)&7
+	goto	l1126
+	line	35
+	
+l371:	
+	line	36
+	
+l1126:	
+	movlw	01h
+	
+u945:
+	clrc
+	rrf	(___awdiv@divisor+1),f
+	rrf	(___awdiv@divisor),f
+	addlw	-1
+	skipz
+	goto	u945
+	line	37
+	
+l1128:	
+	movlw	01h
+	subwf	(___awdiv@counter),f
+	btfss	status,2
+	goto	u951
+	goto	u950
+u951:
+	goto	l1120
+u950:
+	goto	l1130
+	
+l372:	
+	goto	l1130
+	line	38
+	
+l366:	
+	line	39
+	
+l1130:	
+	movf	((___awdiv@sign)),w
+	btfsc	status,2
+	goto	u961
+	goto	u960
+u961:
+	goto	l1134
+u960:
+	line	40
+	
+l1132:	
+	comf	(___awdiv@quotient),f
+	comf	(___awdiv@quotient+1),f
+	incf	(___awdiv@quotient),f
+	skipnz
+	incf	(___awdiv@quotient+1),f
+	goto	l1134
+	
+l373:	
+	line	41
+	
+l1134:	
+	movf	(___awdiv@quotient+1),w
+	movwf	(?___awdiv+1)
+	movf	(___awdiv@quotient),w
+	movwf	(?___awdiv)
+	goto	l374
+	
+l1136:	
+	line	42
+	
+l374:	
+	return
+	opt stack 0
+GLOBAL	__end_of___awdiv
+	__end_of___awdiv:
+	signat	___awdiv,8314
+	global	_ISR
+
+;; *************** function _ISR *****************
+;; Defined at:
+;;		line 125 in file "/home/newtonis/Robots/Boxy/Sensors/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  1    wreg      void 
+;;		None               void
 ;; Registers used:
 ;;		wreg, status,2, status,0
 ;; Tracked objects:
@@ -1359,9 +1792,9 @@ GLOBAL	__end_of_configurar_IO
 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
 ;;      Params:         0       0       0       0
 ;;      Locals:         0       0       0       0
-;;      Temps:          5       0       0       0
-;;      Totals:         5       0       0       0
-;;Total ram usage:        5 bytes
+;;      Temps:          4       0       0       0
+;;      Totals:         4       0       0       0
+;;Total ram usage:        4 bytes
 ;; Hardware stack levels used:    1
 ;; This function calls:
 ;;		Nothing
@@ -1370,19 +1803,20 @@ GLOBAL	__end_of_configurar_IO
 ;; This function uses a non-reentrant model
 ;;
 psect	text8,local,class=CODE,delta=2,merge=1
-	line	132
+	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
+	line	125
 global __ptext8
-__ptext8:	;psect for function _t0_int
+__ptext8:	;psect for function _ISR
 psect	text8
 	file	"/home/newtonis/Robots/Boxy/Sensors/main.c"
-	line	132
-	global	__size_of_t0_int
-	__size_of_t0_int	equ	__end_of_t0_int-_t0_int
+	line	125
+	global	__size_of_ISR
+	__size_of_ISR	equ	__end_of_ISR-_ISR
 	
-_t0_int:	
+_ISR:	
 ;incstack = 0
 	opt	stack 5
-; Regs used in _t0_int: [wreg+status,2+status,0]
+; Regs used in _ISR: [wreg+status,2+status,0]
 psect	intentry,class=CODE,delta=2
 global __pintentry
 __pintentry:
@@ -1392,46 +1826,149 @@ interrupt_function:
 	saved_w	set	btemp+0
 	movwf	saved_w
 	swapf	status,w
-	movwf	(??_t0_int+1)
+	movwf	(??_ISR+0)
 	movf	fsr0,w
-	movwf	(??_t0_int+2)
+	movwf	(??_ISR+1)
 	movf	pclath,w
-	movwf	(??_t0_int+3)
+	movwf	(??_ISR+2)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
 	movf	btemp+1,w
-	movwf	(??_t0_int+4)
-	ljmp	_t0_int
+	movwf	(??_ISR+3)
+	ljmp	_ISR
 psect	text8
+	line	126
+	
+i1l1036:	
+	bsf	status, 5	;RP0=1, select bank1
+	bcf	status, 6	;RP1=0, select bank1
+	btfss	(1121/8)^080h,(1121)&7	;volatile
+	goto	u71_21
+	goto	u71_20
+u71_21:
+	goto	i1l126
+u71_20:
+	
+i1l1038:	
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	btfss	(97/8),(97)&7	;volatile
+	goto	u72_21
+	goto	u72_20
+u72_21:
+	goto	i1l126
+u72_20:
+	line	128
+	
+i1l1040:	
+	movlw	01h
+	addwf	(_times),f
+	movlw	0
+	skipnc
+movlw 1
+	addwf	(_times+1),f
+	movlw	0
+	skipnc
+movlw 1
+	addwf	(_times+2),f
+	movlw	0
+	skipnc
+movlw 1
+	addwf	(_times+3),f
+	line	129
+	
+i1l1042:	
+		movlw	248
+	xorwf	((_times)),w
+	skipz
+	goto	u73_21
+	decf	((_times+1)),w
+iorwf	((_times+2)),w
+iorwf	((_times+3)),w
+	btfss	status,2
+	goto	u73_21
+	goto	u73_20
+u73_21:
+	goto	i1l1046
+u73_20:
+	line	130
+	
+i1l1044:	
+	bsf	status, 5	;RP0=1, select bank1
+	bcf	status, 6	;RP1=0, select bank1
+	bcf	(1075/8)^080h,(1075)&7	;volatile
+	goto	i1l1046
+	line	131
+	
+i1l124:	
+	line	132
+	
+i1l1046:	
+		movlw	48
+	bcf	status, 5	;RP0=0, select bank0
+	xorwf	((_times)),w
+	movlw	2
+	skipnz
+	xorwf	((_times+1)),w
+iorwf	((_times+2)),w
+iorwf	((_times+3)),w
+	btfss	status,2
+	goto	u74_21
+	goto	u74_20
+u74_21:
+	goto	i1l1052
+u74_20:
 	line	133
 	
-i1l685:	
-	bcf	(11),2	;volatile
+i1l1048:	
+	bsf	status, 5	;RP0=1, select bank1
+	bcf	status, 6	;RP1=0, select bank1
+	bsf	(1075/8)^080h,(1075)&7	;volatile
 	line	134
 	
-i1l687:	
-	movlw	low(01h)
-	movwf	(??_t0_int+0)+0
-	movf	(??_t0_int+0)+0,w
-	addwf	(_contador),f
+i1l1050:	
+	movlw	high highword(0)
+	bcf	status, 5	;RP0=0, select bank0
+	bcf	status, 6	;RP1=0, select bank0
+	movwf	(_times+3)
+	movlw	low highword(0)
+	movwf	(_times+2)
+	movlw	high(0)
+	movwf	(_times+1)
+	movlw	low(0)
+	movwf	(_times)
+
+	goto	i1l1052
 	line	135
 	
-i1l104:	
-	movf	(??_t0_int+4),w
+i1l125:	
+	line	136
+	
+i1l1052:	
+	bcf	(97/8),(97)&7	;volatile
+	goto	i1l126
+	line	137
+	
+i1l123:	
+	line	138
+	
+i1l126:	
+	movf	(??_ISR+3),w
+	bcf	status, 5	;RP0=0, select bank0
 	movwf	btemp+1
-	movf	(??_t0_int+3),w
+	movf	(??_ISR+2),w
 	movwf	pclath
-	movf	(??_t0_int+2),w
+	movf	(??_ISR+1),w
 	movwf	fsr0
-	swapf	(??_t0_int+1)^0FFFFFF80h,w
+	swapf	(??_ISR+0)^0FFFFFF80h,w
 	movwf	status
 	swapf	saved_w,f
 	swapf	saved_w,w
 	retfie
 	opt stack 0
-GLOBAL	__end_of_t0_int
-	__end_of_t0_int:
-	signat	_t0_int,89
+GLOBAL	__end_of_ISR
+	__end_of_ISR:
+	signat	_ISR,88
 global	___latbits
 ___latbits	equ	0
 	global	btemp

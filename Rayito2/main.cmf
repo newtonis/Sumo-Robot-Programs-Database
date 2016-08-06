@@ -12,65 +12,65 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $main.obj
-cinit CODE 0 3584 3584 7E 1
-intcode_body CODE 0 319C 319C C2 1
-text0 CODE 0 1A 1A 2370 1
-text1 CODE 0 3ABA 3ABA 2E 1
-text2 CODE 0 3C24 3C24 10 1
-text3 CODE 0 3BFE 3BFE 14 1
-text4 CODE 0 3A44 3A44 3E 1
-text5 CODE 0 36DA 36DA 66 1
-text6 CODE 0 3AE8 3AE8 2A 1
-text7 CODE 0 3842 3842 54 1
-text8 CODE 0 330C 330C AC 1
-text9 CODE 0 3B88 3B88 24 1
-text10 CODE 0 3602 3602 6E 1
-text11 CODE 0 3740 3740 56 1
-text12 CODE 0 2980 2980 272 1
-text13 CODE 0 3C34 3C34 C 1
-text14 CODE 0 3BAC 3BAC 1E 1
-text15 CODE 0 3B3C 3B3C 26 1
-text16 CODE 0 39C2 39C2 42 1
-text17 CODE 0 3896 3896 52 1
-text18 CODE 0 3796 3796 56 1
-text19 CODE 0 3A04 3A04 40 1
-text20 CODE 0 397C 397C 46 1
-text21 CODE 0 238A 238A 5F6 1
-text22 CODE 0 37EC 37EC 56 1
-text23 CODE 0 30D0 30D0 CC 1
-text24 CODE 0 3BE8 3BE8 16 1
-text25 CODE 0 3B62 3B62 26 1
-text26 CODE 0 3670 3670 6A 1
-text27 CODE 0 38E8 38E8 4C 1
-text28 CODE 0 3BCA 3BCA 1E 1
-text29 CODE 0 2D9E 2D9E 122 1
-text30 CODE 0 2EC0 2EC0 11C 1
-text31 CODE 0 2FDC 2FDC F4 1
-text32 CODE 0 2BF2 2BF2 1AC 1
-text33 CODE 0 3A82 3A82 38 1
-text34 CODE 0 325E 325E AE 1
-text35 CODE 0 3B12 3B12 2A 1
-text36 CODE 0 33B8 33B8 A4 1
-text37 CODE 0 345C 345C A4 1
-text38 CODE 0 3500 3500 84 1
-nvBANK0 BANK0 1 BA BA 3 1
+cinit CODE 0 3454 3454 7A 1
+intcode_body CODE 0 31AC 31AC BE 1
+text0 CODE 0 1C 1C 1F9A 1
+text1 CODE 0 3A2E 3A2E 28 1
+text2 CODE 0 3B4A 3B4A 10 1
+text3 CODE 0 3B22 3B22 14 1
+text4 CODE 0 398A 398A 3E 1
+text5 CODE 0 35AE 35AE 66 1
+text6 CODE 0 3A04 3A04 2A 1
+text7 CODE 0 3670 3670 5A 1
+text8 CODE 0 30EE 30EE BE 1
+text9 CODE 0 3AA6 3AA6 24 1
+text10 CODE 0 2D56 2D56 FC 1
+text11 CODE 0 34CE 34CE 72 1
+text12 CODE 0 3724 3724 58 1
+text13 CODE 0 26B2 26B2 2AE 1
+text14 CODE 0 3B5A 3B5A E 1
+text15 CODE 0 3ACA 3ACA 22 1
+text16 CODE 0 3A56 3A56 28 1
+text17 CODE 0 3824 3824 4C 1
+text18 CODE 0 3614 3614 5C 1
+text19 CODE 0 377C 377C 58 1
+text20 CODE 0 3948 3948 42 1
+text21 CODE 0 38BC 38BC 48 1
+text22 CODE 0 1FB6 1FB6 6FC 1
+text23 CODE 0 36CA 36CA 5A 1
+text24 CODE 0 2F4A 2F4A DE 1
+text25 CODE 0 3B0C 3B0C 16 1
+text26 CODE 0 3A7E 3A7E 28 1
+text27 CODE 0 3540 3540 6E 1
+text28 CODE 0 37D4 37D4 50 1
+text29 CODE 0 3AEC 3AEC 20 1
+text30 CODE 0 2B24 2B24 124 1
+text31 CODE 0 2C48 2C48 10E 1
+text32 CODE 0 2E52 2E52 F8 1
+text33 CODE 0 2960 2960 1C4 1
+text34 CODE 0 39C8 39C8 3C 1
+text35 CODE 0 3028 3028 C6 1
+text36 CODE 0 3904 3904 44 1
+text37 CODE 0 326A 326A AA 1
+text38 CODE 0 3314 3314 AA 1
+text39 CODE 0 33BE 33BE 96 1
+nvBANK1 BANK1 1 1D7 1D7 2 1
 cstackCOMRAM COMRAM 1 1 1 40 1
-cstackBANK0 BANK0 1 8E 8E 1A 1
-cstackBANK3 BANK3 1 300 300 51 1
-temp COMRAM 1 51 51 1 1
-bssBANK0 BANK0 1 60 60 2E 1
-bssBANK1 BANK1 1 100 100 94 1
+cstackBANK0 BANK0 1 97 97 23 1
+cstackBANK3 BANK3 1 300 300 4B 1
+bssBANK0 BANK0 1 60 60 37 1
+bssBANK1 BANK1 1 100 100 8C 1
 bssBANK2 BANK2 1 200 200 C8 1
-intcode CODE 0 8 8 E 1
-idataBANK0 CODE 0 3C12 3C12 12 1
-idataBANK1 CODE 0 3934 3934 48 1
-dataBANK0 BANK0 1 A8 A8 12 1
-dataBANK1 BANK1 1 194 194 48 1
-bssCOMRAM COMRAM 1 41 41 10 1
-mediumconst MEDIUMCONST 0 7B44 7B44 4BC 1
+intcode CODE 0 8 8 10 1
+idataBANK0 CODE 0 3B36 3B36 13 1
+idataBANK1 CODE 0 3870 3870 4B 1
+dataBANK0 BANK0 1 BA BA 13 1
+dataBANK1 BANK1 1 18C 18C 4B 1
+bssCOMRAM COMRAM 1 41 41 11 1
+mediumconst MEDIUMCONST 0 7B14 7B14 4EC 1
 $startup.obj
 reset_vec CODE 0 0 0 4 1
-end_init CODE 0 16 16 4 1
+end_init CODE 0 18 18 4 1
 config CONFIG 0 300000 300000 E 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -78,34 +78,42 @@ config CONFIG 0 300000 300000 E 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM BD-FF 1
-RAM 1DC-1FF 1
+RAM CD-FF 1
+RAM 1D9-1FF 1
 RAM 2C8-2FF 1
-RAM 351-7FF 1
+RAM 34B-7FF 1
 SFR F60-FFF 1
-BANK0 BD-FF 1
-BANK1 1DC-1FF 1
+BANK0 CD-FF 1
+BANK1 1D9-1FF 1
 BANK2 2C8-2FF 1
-BANK3 351-3FF 1
+BANK3 34B-3FF 1
 BANK4 400-4FF 1
 BANK5 500-5FF 1
 BANK6 600-6FF 1
 BANK7 700-7FF 1
 CONST 4-7 1
-CONST 3C40-7B43 1
+CONST 38BB-38BB 1
+CONST 3B49-3B49 1
+CONST 3B68-7B13 1
 IDLOC 200000-200007 1
-STACK 351-7FF 1
-SMALLCONST 3C40-7B43 1
+STACK 34B-7FF 1
+SMALLCONST 38BB-38BB 1
+SMALLCONST 3B49-3B49 1
+SMALLCONST 3B68-7B13 1
 CODE 4-7 1
-CODE 3C40-7B43 1
+CODE 38BB-38BB 1
+CODE 3B49-3B49 1
+CODE 3B68-7B13 1
 BIGRAM 52-5F 1
-BIGRAM BD-FF 1
-BIGRAM 1DC-1FF 1
+BIGRAM CD-FF 1
+BIGRAM 1D9-1FF 1
 BIGRAM 2C8-2FF 1
-BIGRAM 351-7FF 1
+BIGRAM 34B-7FF 1
 COMRAM 52-5F 1
 EEDATA F00000-F000FF 1
-MEDIUMCONST 3C40-7B43 1
+MEDIUMCONST 38BB-38BB 1
+MEDIUMCONST 3B49-3B49 1
+MEDIUMCONST 3B68-7B13 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -120,945 +128,997 @@ MEDIUMCONST 3C40-7B43 1
 # All other numeric values are in decimal.
 %LINETAB
 $main.obj
-8 intcode CODE >126:/home/newtonis/Robots/Rayito2/main.c
-8 intcode CODE >42:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-319C intcode_body CODE >126:/home/newtonis/Robots/Rayito2/main.c
-31CE intcode_body CODE >127:/home/newtonis/Robots/Rayito2/main.c
-31D2 intcode_body CODE >128:/home/newtonis/Robots/Rayito2/main.c
-31E0 intcode_body CODE >129:/home/newtonis/Robots/Rayito2/main.c
-31EE intcode_body CODE >130:/home/newtonis/Robots/Rayito2/main.c
-31FC intcode_body CODE >131:/home/newtonis/Robots/Rayito2/main.c
-320A intcode_body CODE >132:/home/newtonis/Robots/Rayito2/main.c
-3218 intcode_body CODE >133:/home/newtonis/Robots/Rayito2/main.c
-321C intcode_body CODE >134:/home/newtonis/Robots/Rayito2/main.c
-3220 intcode_body CODE >135:/home/newtonis/Robots/Rayito2/main.c
-3222 intcode_body CODE >137:/home/newtonis/Robots/Rayito2/main.c
-3500 text38 CODE >8:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3500 text38 CODE >14:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3504 text38 CODE >15:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3508 text38 CODE >16:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3510 text38 CODE >17:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3514 text38 CODE >19:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3518 text38 CODE >20:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3520 text38 CODE >21:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3524 text38 CODE >23:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-352C text38 CODE >24:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3534 text38 CODE >25:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3538 text38 CODE >26:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-353A text38 CODE >27:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3540 text38 CODE >28:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3542 text38 CODE >26:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3546 text38 CODE >31:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-354C text38 CODE >32:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3558 text38 CODE >33:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3560 text38 CODE >34:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3562 text38 CODE >36:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3568 text38 CODE >37:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-356C text38 CODE >39:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-3572 text38 CODE >40:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-357A text38 CODE >41:/opt/microchip/xc8/v1.38/sources/common/awdiv.c
-345C text37 CODE >170:/home/newtonis/Robots/Rayito2/config.c
-345C text37 CODE >171:/home/newtonis/Robots/Rayito2/config.c
-3464 text37 CODE >172:/home/newtonis/Robots/Rayito2/config.c
-347C text37 CODE >173:/home/newtonis/Robots/Rayito2/config.c
-3494 text37 CODE >175:/home/newtonis/Robots/Rayito2/config.c
-34B6 text37 CODE >176:/home/newtonis/Robots/Rayito2/config.c
-34D0 text37 CODE >178:/home/newtonis/Robots/Rayito2/config.c
-34E6 text37 CODE >179:/home/newtonis/Robots/Rayito2/config.c
-34FE text37 CODE >180:/home/newtonis/Robots/Rayito2/config.c
-33B8 text36 CODE >181:/home/newtonis/Robots/Rayito2/config.c
-33B8 text36 CODE >182:/home/newtonis/Robots/Rayito2/config.c
-33C0 text36 CODE >183:/home/newtonis/Robots/Rayito2/config.c
-33D8 text36 CODE >184:/home/newtonis/Robots/Rayito2/config.c
-33F0 text36 CODE >186:/home/newtonis/Robots/Rayito2/config.c
-3414 text36 CODE >187:/home/newtonis/Robots/Rayito2/config.c
-342E text36 CODE >189:/home/newtonis/Robots/Rayito2/config.c
-3442 text36 CODE >190:/home/newtonis/Robots/Rayito2/config.c
-345A text36 CODE >191:/home/newtonis/Robots/Rayito2/config.c
-3B12 text35 CODE >193:/home/newtonis/Robots/Rayito2/config.c
-3B12 text35 CODE >194:/home/newtonis/Robots/Rayito2/config.c
-3B26 text35 CODE >195:/home/newtonis/Robots/Rayito2/config.c
-3B3A text35 CODE >196:/home/newtonis/Robots/Rayito2/config.c
-325E text34 CODE >62:/opt/microchip/xc8/v1.38/sources/common/float.c
-325E text34 CODE >64:/opt/microchip/xc8/v1.38/sources/common/float.c
-326E text34 CODE >65:/opt/microchip/xc8/v1.38/sources/common/float.c
-327C text34 CODE >67:/opt/microchip/xc8/v1.38/sources/common/float.c
-327E text34 CODE >68:/opt/microchip/xc8/v1.38/sources/common/float.c
-3286 text34 CODE >66:/opt/microchip/xc8/v1.38/sources/common/float.c
-32A4 text34 CODE >71:/opt/microchip/xc8/v1.38/sources/common/float.c
-32A6 text34 CODE >72:/opt/microchip/xc8/v1.38/sources/common/float.c
-32B2 text34 CODE >73:/opt/microchip/xc8/v1.38/sources/common/float.c
-32BA text34 CODE >70:/opt/microchip/xc8/v1.38/sources/common/float.c
-32D8 text34 CODE >76:/opt/microchip/xc8/v1.38/sources/common/float.c
-32DA text34 CODE >77:/opt/microchip/xc8/v1.38/sources/common/float.c
-32E2 text34 CODE >75:/opt/microchip/xc8/v1.38/sources/common/float.c
-32EC text34 CODE >79:/opt/microchip/xc8/v1.38/sources/common/float.c
-32EE text34 CODE >80:/opt/microchip/xc8/v1.38/sources/common/float.c
-32F0 text34 CODE >81:/opt/microchip/xc8/v1.38/sources/common/float.c
-32F4 text34 CODE >82:/opt/microchip/xc8/v1.38/sources/common/float.c
-32F8 text34 CODE >83:/opt/microchip/xc8/v1.38/sources/common/float.c
-32FC text34 CODE >84:/opt/microchip/xc8/v1.38/sources/common/float.c
-32FE text34 CODE >85:/opt/microchip/xc8/v1.38/sources/common/float.c
-3A82 text33 CODE >32:/opt/microchip/xc8/v1.38/sources/common/awtoft.c
-3A82 text33 CODE >36:/opt/microchip/xc8/v1.38/sources/common/awtoft.c
-3A86 text33 CODE >37:/opt/microchip/xc8/v1.38/sources/common/awtoft.c
-3A8A text33 CODE >38:/opt/microchip/xc8/v1.38/sources/common/awtoft.c
-3A92 text33 CODE >39:/opt/microchip/xc8/v1.38/sources/common/awtoft.c
-3A96 text33 CODE >41:/opt/microchip/xc8/v1.38/sources/common/awtoft.c
-2BF2 text32 CODE >86:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2BF2 text32 CODE >90:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C06 text32 CODE >91:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C1A text32 CODE >92:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C36 text32 CODE >93:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C44 text32 CODE >94:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C60 text32 CODE >95:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C6E text32 CODE >96:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C72 text32 CODE >97:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C74 text32 CODE >98:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C76 text32 CODE >99:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C78 text32 CODE >100:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C7A text32 CODE >101:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C7C text32 CODE >102:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C88 text32 CODE >103:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C8A text32 CODE >104:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C96 text32 CODE >106:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2C9E text32 CODE >110:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CA6 text32 CODE >111:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CA8 text32 CODE >112:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CC0 text32 CODE >114:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CC8 text32 CODE >115:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CCA text32 CODE >113:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CD4 text32 CODE >117:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CDC text32 CODE >121:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CE4 text32 CODE >122:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CE6 text32 CODE >123:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2CFE text32 CODE >125:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D06 text32 CODE >126:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D08 text32 CODE >124:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D10 text32 CODE >129:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D14 text32 CODE >131:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D20 text32 CODE >132:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D2C text32 CODE >133:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D2C text32 CODE >134:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D30 text32 CODE >136:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D3C text32 CODE >137:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D48 text32 CODE >139:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D4C text32 CODE >140:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D58 text32 CODE >141:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D5C text32 CODE >142:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D68 text32 CODE >143:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D74 text32 CODE >144:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2D78 text32 CODE >146:/opt/microchip/xc8/v1.38/sources/common/ftadd.c
-2FDC text31 CODE >62:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-2FDC text31 CODE >67:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-2FF6 text31 CODE >68:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3004 text31 CODE >69:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-301E text31 CODE >70:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-302C text31 CODE >71:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3032 text31 CODE >72:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3036 text31 CODE >73:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-303A text31 CODE >74:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-303E text31 CODE >75:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3040 text31 CODE >77:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3042 text31 CODE >78:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-304E text31 CODE >79:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-305A text31 CODE >134:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-305E text31 CODE >136:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3062 text31 CODE >137:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-306E text31 CODE >138:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3076 text31 CODE >139:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-307E text31 CODE >140:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3082 text31 CODE >143:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3086 text31 CODE >145:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-308A text31 CODE >146:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-3096 text31 CODE >147:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-309E text31 CODE >148:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-30A6 text31 CODE >149:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-30AA text31 CODE >156:/opt/microchip/xc8/v1.38/sources/common/ftmul.c
-2EC0 text30 CODE >44:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2EC0 text30 CODE >49:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2EDE text30 CODE >50:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2EF0 text30 CODE >51:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F18 text30 CODE >52:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F1A text30 CODE >53:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F26 text30 CODE >54:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F3C text30 CODE >55:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F42 text30 CODE >56:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F48 text30 CODE >57:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F54 text30 CODE >58:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F66 text30 CODE >60:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F72 text30 CODE >61:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F78 text30 CODE >62:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F7A text30 CODE >63:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F82 text30 CODE >64:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2F94 text30 CODE >66:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2FA0 text30 CODE >67:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2FA4 text30 CODE >65:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2FAE text30 CODE >70:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2FB8 text30 CODE >71:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2FCA text30 CODE >72:/opt/microchip/xc8/v1.38/sources/common/fttol.c
-2D9E text29 CODE >296:/home/newtonis/Robots/Rayito2/main.c
-2D9E text29 CODE >300:/home/newtonis/Robots/Rayito2/main.c
-2DA6 text29 CODE >301:/home/newtonis/Robots/Rayito2/main.c
-2DB2 text29 CODE >302:/home/newtonis/Robots/Rayito2/main.c
-2DBE text29 CODE >304:/home/newtonis/Robots/Rayito2/main.c
-2DDA text29 CODE >305:/home/newtonis/Robots/Rayito2/main.c
-2E5E text29 CODE >306:/home/newtonis/Robots/Rayito2/main.c
-2E6C text29 CODE >307:/home/newtonis/Robots/Rayito2/main.c
-2E98 text29 CODE >308:/home/newtonis/Robots/Rayito2/main.c
-2E9A text29 CODE >309:/home/newtonis/Robots/Rayito2/main.c
-2EB6 text29 CODE >311:/home/newtonis/Robots/Rayito2/main.c
-2EBE text29 CODE >312:/home/newtonis/Robots/Rayito2/main.c
-3BCA text28 CODE >224:/home/newtonis/Robots/Rayito2/config.c
-3BCC text28 CODE >225:/home/newtonis/Robots/Rayito2/config.c
-3BD0 text28 CODE >226:/home/newtonis/Robots/Rayito2/config.c
-3BD2 text28 CODE >227:/home/newtonis/Robots/Rayito2/config.c
-3BD4 text28 CODE >228:/home/newtonis/Robots/Rayito2/config.c
-3BD6 text28 CODE >229:/home/newtonis/Robots/Rayito2/config.c
-3BDA text28 CODE >230:/home/newtonis/Robots/Rayito2/config.c
-3BE6 text28 CODE >231:/home/newtonis/Robots/Rayito2/config.c
-38E8 text27 CODE >206:/home/newtonis/Robots/Rayito2/main.c
-38E8 text27 CODE >208:/home/newtonis/Robots/Rayito2/main.c
-38EE text27 CODE >209:/home/newtonis/Robots/Rayito2/main.c
-38FC text27 CODE >210:/home/newtonis/Robots/Rayito2/main.c
-3904 text27 CODE >211:/home/newtonis/Robots/Rayito2/main.c
-3912 text27 CODE >213:/home/newtonis/Robots/Rayito2/main.c
-3932 text27 CODE >214:/home/newtonis/Robots/Rayito2/main.c
-3670 text26 CODE >198:/home/newtonis/Robots/Rayito2/config.c
-3670 text26 CODE >201:/home/newtonis/Robots/Rayito2/config.c
-367C text26 CODE >202:/home/newtonis/Robots/Rayito2/config.c
-368E text26 CODE >203:/home/newtonis/Robots/Rayito2/config.c
-3690 text26 CODE >204:/home/newtonis/Robots/Rayito2/config.c
-3694 text26 CODE >205:/home/newtonis/Robots/Rayito2/config.c
-36A0 text26 CODE >206:/home/newtonis/Robots/Rayito2/config.c
-36BE text26 CODE >207:/home/newtonis/Robots/Rayito2/config.c
-36D6 text26 CODE >201:/home/newtonis/Robots/Rayito2/config.c
-3B62 text25 CODE >210:/home/newtonis/Robots/Rayito2/config.c
-3B64 text25 CODE >211:/home/newtonis/Robots/Rayito2/config.c
-3B68 text25 CODE >212:/home/newtonis/Robots/Rayito2/config.c
-3B6C text25 CODE >213:/home/newtonis/Robots/Rayito2/config.c
-3B6E text25 CODE >214:/home/newtonis/Robots/Rayito2/config.c
-3B70 text25 CODE >215:/home/newtonis/Robots/Rayito2/config.c
-3B72 text25 CODE >216:/home/newtonis/Robots/Rayito2/config.c
-3B74 text25 CODE >217:/home/newtonis/Robots/Rayito2/config.c
-3B78 text25 CODE >218:/home/newtonis/Robots/Rayito2/config.c
-3B7C text25 CODE >219:/home/newtonis/Robots/Rayito2/config.c
-3B7E text25 CODE >220:/home/newtonis/Robots/Rayito2/config.c
-3B80 text25 CODE >221:/home/newtonis/Robots/Rayito2/config.c
-3B84 text25 CODE >222:/home/newtonis/Robots/Rayito2/config.c
-3B86 text25 CODE >223:/home/newtonis/Robots/Rayito2/config.c
-3BE8 text24 CODE >72:/home/newtonis/Robots/Rayito2/main.c
-3BE8 text24 CODE >75:/home/newtonis/Robots/Rayito2/main.c
-3BF2 text24 CODE >76:/home/newtonis/Robots/Rayito2/main.c
-3BFC text24 CODE >77:/home/newtonis/Robots/Rayito2/main.c
-30D0 text23 CODE >8:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-30D0 text23 CODE >14:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-30D4 text23 CODE >15:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-30D8 text23 CODE >16:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-30E8 text23 CODE >17:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-30EC text23 CODE >19:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-30F0 text23 CODE >20:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3100 text23 CODE >21:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3104 text23 CODE >23:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3114 text23 CODE >24:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3120 text23 CODE >25:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3124 text23 CODE >26:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3126 text23 CODE >27:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3130 text23 CODE >28:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3132 text23 CODE >26:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3136 text23 CODE >31:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3140 text23 CODE >32:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3154 text23 CODE >33:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3164 text23 CODE >34:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3166 text23 CODE >36:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3170 text23 CODE >37:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-3174 text23 CODE >39:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-317A text23 CODE >40:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-318A text23 CODE >41:/opt/microchip/xc8/v1.38/sources/common/aldiv.c
-37EC text22 CODE >15:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-37EC text22 CODE >119:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-37FC text22 CODE >121:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-3800 text22 CODE >122:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-3810 text22 CODE >123:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-381A text22 CODE >124:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-3824 text22 CODE >125:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-3830 text22 CODE >128:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-3840 text22 CODE >129:/opt/microchip/xc8/v1.38/sources/common/Umul32.c
-238A text21 CODE >246:/home/newtonis/Robots/Rayito2/main.c
-238A text21 CODE >247:/home/newtonis/Robots/Rayito2/main.c
-239A text21 CODE >248:/home/newtonis/Robots/Rayito2/main.c
-23AA text21 CODE >249:/home/newtonis/Robots/Rayito2/main.c
-23AE text21 CODE >253:/home/newtonis/Robots/Rayito2/main.c
-23CA text21 CODE >254:/home/newtonis/Robots/Rayito2/main.c
-23E4 text21 CODE >255:/home/newtonis/Robots/Rayito2/main.c
-240A text21 CODE >256:/home/newtonis/Robots/Rayito2/main.c
-244C text21 CODE >257:/home/newtonis/Robots/Rayito2/main.c
-2472 text21 CODE >259:/home/newtonis/Robots/Rayito2/main.c
-24B4 text21 CODE >260:/home/newtonis/Robots/Rayito2/main.c
-24DA text21 CODE >262:/home/newtonis/Robots/Rayito2/main.c
-2510 text21 CODE >263:/home/newtonis/Robots/Rayito2/main.c
-2544 text21 CODE >264:/home/newtonis/Robots/Rayito2/main.c
-25B8 text21 CODE >265:/home/newtonis/Robots/Rayito2/main.c
-25F2 text21 CODE >266:/home/newtonis/Robots/Rayito2/main.c
-2606 text21 CODE >267:/home/newtonis/Robots/Rayito2/main.c
-2616 text21 CODE >269:/home/newtonis/Robots/Rayito2/main.c
-2630 text21 CODE >270:/home/newtonis/Robots/Rayito2/main.c
-2654 text21 CODE >273:/home/newtonis/Robots/Rayito2/main.c
-2688 text21 CODE >274:/home/newtonis/Robots/Rayito2/main.c
-2698 text21 CODE >275:/home/newtonis/Robots/Rayito2/main.c
-26AC text21 CODE >276:/home/newtonis/Robots/Rayito2/main.c
-26B0 text21 CODE >253:/home/newtonis/Robots/Rayito2/main.c
-26BE text21 CODE >280:/home/newtonis/Robots/Rayito2/main.c
-26DA text21 CODE >281:/home/newtonis/Robots/Rayito2/main.c
-26F4 text21 CODE >282:/home/newtonis/Robots/Rayito2/main.c
-271A text21 CODE >283:/home/newtonis/Robots/Rayito2/main.c
-2782 text21 CODE >284:/home/newtonis/Robots/Rayito2/main.c
-27EA text21 CODE >285:/home/newtonis/Robots/Rayito2/main.c
-2902 text21 CODE >286:/home/newtonis/Robots/Rayito2/main.c
-291C text21 CODE >280:/home/newtonis/Robots/Rayito2/main.c
-292A text21 CODE >289:/home/newtonis/Robots/Rayito2/main.c
-2930 text21 CODE >290:/home/newtonis/Robots/Rayito2/main.c
-2950 text21 CODE >291:/home/newtonis/Robots/Rayito2/main.c
-2952 text21 CODE >293:/home/newtonis/Robots/Rayito2/main.c
-297E text21 CODE >294:/home/newtonis/Robots/Rayito2/main.c
-397C text20 CODE >236:/home/newtonis/Robots/Rayito2/main.c
-397C text20 CODE >237:/home/newtonis/Robots/Rayito2/main.c
-3996 text20 CODE >239:/home/newtonis/Robots/Rayito2/main.c
-39AA text20 CODE >240:/home/newtonis/Robots/Rayito2/main.c
-39C0 text20 CODE >241:/home/newtonis/Robots/Rayito2/main.c
-3A04 text19 CODE >225:/home/newtonis/Robots/Rayito2/main.c
-3A04 text19 CODE >226:/home/newtonis/Robots/Rayito2/main.c
-3A1E text19 CODE >228:/home/newtonis/Robots/Rayito2/main.c
-3A2C text19 CODE >229:/home/newtonis/Robots/Rayito2/main.c
-3A42 text19 CODE >230:/home/newtonis/Robots/Rayito2/main.c
-3796 text18 CODE >231:/home/newtonis/Robots/Rayito2/main.c
-3796 text18 CODE >232:/home/newtonis/Robots/Rayito2/main.c
-37A2 text18 CODE >234:/home/newtonis/Robots/Rayito2/main.c
-3896 text17 CODE >8:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-3896 text17 CODE >14:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-389E text17 CODE >15:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38A6 text17 CODE >16:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38AA text17 CODE >17:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38AC text17 CODE >18:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38B2 text17 CODE >19:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38B4 text17 CODE >17:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38B8 text17 CODE >22:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38BE text17 CODE >23:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38CA text17 CODE >24:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38D2 text17 CODE >25:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38D4 text17 CODE >27:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38DA text17 CODE >28:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38DE text17 CODE >29:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38DE text17 CODE >30:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-38E6 text17 CODE >31:/opt/microchip/xc8/v1.38/sources/common/lwdiv.c
-39C2 text16 CODE >8:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39C2 text16 CODE >13:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39CA text16 CODE >14:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39CE text16 CODE >15:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39D0 text16 CODE >16:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39D6 text16 CODE >17:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39D8 text16 CODE >15:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39DC text16 CODE >20:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39E8 text16 CODE >21:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39F0 text16 CODE >22:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39F6 text16 CODE >23:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39FA text16 CODE >24:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-39FA text16 CODE >25:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-3A02 text16 CODE >26:/opt/microchip/xc8/v1.38/sources/common/lwmod.c
-3B3C text15 CODE >15:/opt/microchip/xc8/v1.38/sources/common/Umul16.c
-3B3C text15 CODE >37:/opt/microchip/xc8/v1.38/sources/common/Umul16.c
-3B48 text15 CODE >38:/opt/microchip/xc8/v1.38/sources/common/Umul16.c
-3B50 text15 CODE >39:/opt/microchip/xc8/v1.38/sources/common/Umul16.c
-3B58 text15 CODE >52:/opt/microchip/xc8/v1.38/sources/common/Umul16.c
-3BAC text14 CODE >8:/opt/microchip/xc8/v1.38/sources/common/isdigit.c
-3BAE text14 CODE >14:/opt/microchip/xc8/v1.38/sources/common/isdigit.c
-3C34 text13 CODE >29:/home/newtonis/Robots/Rayito2/config.c
-3C36 text13 CODE >30:/home/newtonis/Robots/Rayito2/config.c
-3C36 text13 CODE >31:/home/newtonis/Robots/Rayito2/config.c
-3C3A text13 CODE >32:/home/newtonis/Robots/Rayito2/config.c
-3C3E text13 CODE >33:/home/newtonis/Robots/Rayito2/config.c
-2980 text12 CODE >464:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2980 text12 CODE >533:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2988 text12 CODE >536:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-298A text12 CODE >538:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2992 text12 CODE >541:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2998 text12 CODE >542:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-299A text12 CODE >546:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29A2 text12 CODE >548:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29A6 text12 CODE >551:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29A8 text12 CODE >580:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29AA text12 CODE >581:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29AE text12 CODE >551:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29C0 text12 CODE >597:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29D4 text12 CODE >598:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29DC text12 CODE >600:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-29F8 text12 CODE >601:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A24 text12 CODE >602:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A3A text12 CODE >818:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A3C text12 CODE >822:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A3E text12 CODE >635:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A6C text12 CODE >822:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A6C text12 CODE >1251:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A70 text12 CODE >1259:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A88 text12 CODE >1261:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A8C text12 CODE >1262:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A90 text12 CODE >1263:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A98 text12 CODE >1266:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2A9A text12 CODE >1286:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2AB2 text12 CODE >1305:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2ABE text12 CODE >1306:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2ADE text12 CODE >1305:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2AE2 text12 CODE >1345:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2AF6 text12 CODE >1346:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2AFC text12 CODE >1381:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B12 text12 CODE >1382:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B20 text12 CODE >1384:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B28 text12 CODE >1387:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B2C text12 CODE >1392:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B38 text12 CODE >1393:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B3E text12 CODE >1415:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B46 text12 CODE >1417:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B4C text12 CODE >1418:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B54 text12 CODE >1428:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B5C text12 CODE >1430:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B62 text12 CODE >1431:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B70 text12 CODE >1438:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B7C text12 CODE >1439:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B82 text12 CODE >1472:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B86 text12 CODE >1474:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2B88 text12 CODE >1489:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2BCA text12 CODE >1524:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2BD0 text12 CODE >1474:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-2BD8 text12 CODE >536:/opt/microchip/xc8/v1.38/sources/common/doprnt.c
-3740 text11 CODE >202:/home/newtonis/Robots/Rayito2/main.c
-3740 text11 CODE >204:/home/newtonis/Robots/Rayito2/main.c
-3602 text10 CODE >215:/home/newtonis/Robots/Rayito2/main.c
-3602 text10 CODE >216:/home/newtonis/Robots/Rayito2/main.c
-361C text10 CODE >217:/home/newtonis/Robots/Rayito2/main.c
-3626 text10 CODE >219:/home/newtonis/Robots/Rayito2/main.c
-3630 text10 CODE >220:/home/newtonis/Robots/Rayito2/main.c
-3652 text10 CODE >219:/home/newtonis/Robots/Rayito2/main.c
-366A text10 CODE >222:/home/newtonis/Robots/Rayito2/main.c
-366E text10 CODE >223:/home/newtonis/Robots/Rayito2/main.c
-3B88 text9 CODE >9:/home/newtonis/Robots/Rayito2/config.c
-3B88 text9 CODE >10:/home/newtonis/Robots/Rayito2/config.c
-3B8A text9 CODE >11:/home/newtonis/Robots/Rayito2/config.c
-3B8C text9 CODE >12:/home/newtonis/Robots/Rayito2/config.c
-3B8E text9 CODE >14:/home/newtonis/Robots/Rayito2/config.c
-3B90 text9 CODE >15:/home/newtonis/Robots/Rayito2/config.c
-3B92 text9 CODE >16:/home/newtonis/Robots/Rayito2/config.c
-3B96 text9 CODE >17:/home/newtonis/Robots/Rayito2/config.c
-3B9A text9 CODE >18:/home/newtonis/Robots/Rayito2/config.c
-3B9C text9 CODE >19:/home/newtonis/Robots/Rayito2/config.c
-3B9E text9 CODE >20:/home/newtonis/Robots/Rayito2/config.c
-3BA0 text9 CODE >21:/home/newtonis/Robots/Rayito2/config.c
-3BA2 text9 CODE >23:/home/newtonis/Robots/Rayito2/config.c
-3BA4 text9 CODE >24:/home/newtonis/Robots/Rayito2/config.c
-3BA6 text9 CODE >25:/home/newtonis/Robots/Rayito2/config.c
-3BA8 text9 CODE >26:/home/newtonis/Robots/Rayito2/config.c
-3BAA text9 CODE >28:/home/newtonis/Robots/Rayito2/config.c
-330C text8 CODE >8:/opt/microchip/xc8/v1.38/sources/common/almod.c
-330C text8 CODE >13:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3310 text8 CODE >14:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3314 text8 CODE >15:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3324 text8 CODE >16:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3328 text8 CODE >18:/opt/microchip/xc8/v1.38/sources/common/almod.c
-332C text8 CODE >19:/opt/microchip/xc8/v1.38/sources/common/almod.c
-333C text8 CODE >20:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3348 text8 CODE >21:/opt/microchip/xc8/v1.38/sources/common/almod.c
-334C text8 CODE >22:/opt/microchip/xc8/v1.38/sources/common/almod.c
-334E text8 CODE >23:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3358 text8 CODE >24:/opt/microchip/xc8/v1.38/sources/common/almod.c
-335A text8 CODE >22:/opt/microchip/xc8/v1.38/sources/common/almod.c
-335E text8 CODE >27:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3372 text8 CODE >28:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3382 text8 CODE >29:/opt/microchip/xc8/v1.38/sources/common/almod.c
-338C text8 CODE >30:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3390 text8 CODE >32:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3396 text8 CODE >33:/opt/microchip/xc8/v1.38/sources/common/almod.c
-33A6 text8 CODE >34:/opt/microchip/xc8/v1.38/sources/common/almod.c
-3842 text7 CODE >145:/home/newtonis/Robots/Rayito2/main.c
-3842 text7 CODE >146:/home/newtonis/Robots/Rayito2/main.c
-385A text7 CODE >147:/home/newtonis/Robots/Rayito2/main.c
-3874 text7 CODE >148:/home/newtonis/Robots/Rayito2/main.c
-388E text7 CODE >146:/home/newtonis/Robots/Rayito2/main.c
-3894 text7 CODE >150:/home/newtonis/Robots/Rayito2/main.c
-3AE8 text6 CODE >125:/home/newtonis/Robots/Rayito2/config.c
-3AE8 text6 CODE >126:/home/newtonis/Robots/Rayito2/config.c
-3AEA text6 CODE >127:/home/newtonis/Robots/Rayito2/config.c
-3AEC text6 CODE >129:/home/newtonis/Robots/Rayito2/config.c
-3AEE text6 CODE >130:/home/newtonis/Robots/Rayito2/config.c
-3AF0 text6 CODE >131:/home/newtonis/Robots/Rayito2/config.c
-3AF2 text6 CODE >132:/home/newtonis/Robots/Rayito2/config.c
-3AF4 text6 CODE >136:/home/newtonis/Robots/Rayito2/config.c
-3AF6 text6 CODE >137:/home/newtonis/Robots/Rayito2/config.c
-3AFC text6 CODE >138:/home/newtonis/Robots/Rayito2/config.c
-3B04 text6 CODE >139:/home/newtonis/Robots/Rayito2/config.c
-3B0C text6 CODE >140:/home/newtonis/Robots/Rayito2/config.c
-3B0E text6 CODE >141:/home/newtonis/Robots/Rayito2/config.c
-3B10 text6 CODE >142:/home/newtonis/Robots/Rayito2/config.c
-36DA text5 CODE >46:/home/newtonis/Robots/Rayito2/config.c
-36DA text5 CODE >47:/home/newtonis/Robots/Rayito2/config.c
-36DC text5 CODE >48:/home/newtonis/Robots/Rayito2/config.c
-36DE text5 CODE >49:/home/newtonis/Robots/Rayito2/config.c
-36E0 text5 CODE >51:/home/newtonis/Robots/Rayito2/config.c
-36E2 text5 CODE >52:/home/newtonis/Robots/Rayito2/config.c
-36E6 text5 CODE >53:/home/newtonis/Robots/Rayito2/config.c
-36EA text5 CODE >56:/home/newtonis/Robots/Rayito2/config.c
-36EC text5 CODE >57:/home/newtonis/Robots/Rayito2/config.c
-36EE text5 CODE >58:/home/newtonis/Robots/Rayito2/config.c
-36F0 text5 CODE >62:/home/newtonis/Robots/Rayito2/config.c
-36F2 text5 CODE >64:/home/newtonis/Robots/Rayito2/config.c
-36F4 text5 CODE >66:/home/newtonis/Robots/Rayito2/config.c
-36F6 text5 CODE >67:/home/newtonis/Robots/Rayito2/config.c
-36F8 text5 CODE >68:/home/newtonis/Robots/Rayito2/config.c
-36FA text5 CODE >69:/home/newtonis/Robots/Rayito2/config.c
-36FE text5 CODE >70:/home/newtonis/Robots/Rayito2/config.c
-3700 text5 CODE >71:/home/newtonis/Robots/Rayito2/config.c
-3702 text5 CODE >72:/home/newtonis/Robots/Rayito2/config.c
-3704 text5 CODE >74:/home/newtonis/Robots/Rayito2/config.c
-3708 text5 CODE >75:/home/newtonis/Robots/Rayito2/config.c
-370C text5 CODE >83:/home/newtonis/Robots/Rayito2/config.c
-370E text5 CODE >85:/home/newtonis/Robots/Rayito2/config.c
-3710 text5 CODE >86:/home/newtonis/Robots/Rayito2/config.c
-3712 text5 CODE >88:/home/newtonis/Robots/Rayito2/config.c
-3714 text5 CODE >89:/home/newtonis/Robots/Rayito2/config.c
-3716 text5 CODE >90:/home/newtonis/Robots/Rayito2/config.c
-3718 text5 CODE >93:/home/newtonis/Robots/Rayito2/config.c
-371A text5 CODE >94:/home/newtonis/Robots/Rayito2/config.c
-371C text5 CODE >95:/home/newtonis/Robots/Rayito2/config.c
-371E text5 CODE >96:/home/newtonis/Robots/Rayito2/config.c
-3720 text5 CODE >99:/home/newtonis/Robots/Rayito2/config.c
-3722 text5 CODE >100:/home/newtonis/Robots/Rayito2/config.c
-3724 text5 CODE >103:/home/newtonis/Robots/Rayito2/config.c
-3726 text5 CODE >104:/home/newtonis/Robots/Rayito2/config.c
-3728 text5 CODE >105:/home/newtonis/Robots/Rayito2/config.c
-372A text5 CODE >106:/home/newtonis/Robots/Rayito2/config.c
-372C text5 CODE >107:/home/newtonis/Robots/Rayito2/config.c
-372E text5 CODE >109:/home/newtonis/Robots/Rayito2/config.c
-3730 text5 CODE >110:/home/newtonis/Robots/Rayito2/config.c
-3732 text5 CODE >111:/home/newtonis/Robots/Rayito2/config.c
-3734 text5 CODE >112:/home/newtonis/Robots/Rayito2/config.c
-3736 text5 CODE >114:/home/newtonis/Robots/Rayito2/config.c
-3738 text5 CODE >119:/home/newtonis/Robots/Rayito2/config.c
-373A text5 CODE >120:/home/newtonis/Robots/Rayito2/config.c
-373C text5 CODE >122:/home/newtonis/Robots/Rayito2/config.c
-373E text5 CODE >123:/home/newtonis/Robots/Rayito2/config.c
-3A44 text4 CODE >144:/home/newtonis/Robots/Rayito2/config.c
-3A44 text4 CODE >146:/home/newtonis/Robots/Rayito2/config.c
-3A46 text4 CODE >147:/home/newtonis/Robots/Rayito2/config.c
-3A48 text4 CODE >148:/home/newtonis/Robots/Rayito2/config.c
-3A4A text4 CODE >149:/home/newtonis/Robots/Rayito2/config.c
-3A4C text4 CODE >151:/home/newtonis/Robots/Rayito2/config.c
-3A4E text4 CODE >152:/home/newtonis/Robots/Rayito2/config.c
-3A50 text4 CODE >153:/home/newtonis/Robots/Rayito2/config.c
-3A52 text4 CODE >155:/home/newtonis/Robots/Rayito2/config.c
-3A54 text4 CODE >158:/home/newtonis/Robots/Rayito2/config.c
-3A5C text4 CODE >159:/home/newtonis/Robots/Rayito2/config.c
-3A64 text4 CODE >160:/home/newtonis/Robots/Rayito2/config.c
-3A66 text4 CODE >161:/home/newtonis/Robots/Rayito2/config.c
-3A6A text4 CODE >162:/home/newtonis/Robots/Rayito2/config.c
-3A6C text4 CODE >165:/home/newtonis/Robots/Rayito2/config.c
-3A74 text4 CODE >166:/home/newtonis/Robots/Rayito2/config.c
-3A7C text4 CODE >167:/home/newtonis/Robots/Rayito2/config.c
-3A80 text4 CODE >169:/home/newtonis/Robots/Rayito2/config.c
-3BFE text3 CODE >122:/home/newtonis/Robots/Rayito2/main.c
-3BFE text3 CODE >123:/home/newtonis/Robots/Rayito2/main.c
-3C10 text3 CODE >124:/home/newtonis/Robots/Rayito2/main.c
-3C24 text2 CODE >35:/home/newtonis/Robots/Rayito2/config.c
-3C24 text2 CODE >36:/home/newtonis/Robots/Rayito2/config.c
-3C2A text2 CODE >39:/home/newtonis/Robots/Rayito2/config.c
-3C2E text2 CODE >42:/home/newtonis/Robots/Rayito2/config.c
-3C30 text2 CODE >43:/home/newtonis/Robots/Rayito2/config.c
-3C32 text2 CODE >44:/home/newtonis/Robots/Rayito2/config.c
-3ABA text1 CODE >112:/home/newtonis/Robots/Rayito2/main.c
-3ABA text1 CODE >113:/home/newtonis/Robots/Rayito2/main.c
-3ACC text1 CODE >114:/home/newtonis/Robots/Rayito2/main.c
-3AD0 text1 CODE >115:/home/newtonis/Robots/Rayito2/main.c
-3AD6 text1 CODE >116:/home/newtonis/Robots/Rayito2/main.c
-3ADA text1 CODE >117:/home/newtonis/Robots/Rayito2/main.c
-3ADE text1 CODE >118:/home/newtonis/Robots/Rayito2/main.c
-3AE2 text1 CODE >119:/home/newtonis/Robots/Rayito2/main.c
-3AE6 text1 CODE >120:/home/newtonis/Robots/Rayito2/main.c
-1A text0 CODE >318:/home/newtonis/Robots/Rayito2/main.c
-1A text0 CODE >319:/home/newtonis/Robots/Rayito2/main.c
-1E text0 CODE >321:/home/newtonis/Robots/Rayito2/main.c
-22 text0 CODE >322:/home/newtonis/Robots/Rayito2/main.c
-34 text0 CODE >323:/home/newtonis/Robots/Rayito2/main.c
-3A text0 CODE >324:/home/newtonis/Robots/Rayito2/main.c
-44 text0 CODE >325:/home/newtonis/Robots/Rayito2/main.c
-56 text0 CODE >326:/home/newtonis/Robots/Rayito2/main.c
-5A text0 CODE >328:/home/newtonis/Robots/Rayito2/main.c
-6E text0 CODE >329:/home/newtonis/Robots/Rayito2/main.c
-70 text0 CODE >331:/home/newtonis/Robots/Rayito2/main.c
-7A text0 CODE >332:/home/newtonis/Robots/Rayito2/main.c
-7C text0 CODE >337:/home/newtonis/Robots/Rayito2/main.c
-86 text0 CODE >332:/home/newtonis/Robots/Rayito2/main.c
-AA text0 CODE >343:/home/newtonis/Robots/Rayito2/main.c
-AE text0 CODE >345:/home/newtonis/Robots/Rayito2/main.c
-104 text0 CODE >346:/home/newtonis/Robots/Rayito2/main.c
-110 text0 CODE >347:/home/newtonis/Robots/Rayito2/main.c
-112 text0 CODE >348:/home/newtonis/Robots/Rayito2/main.c
-120 text0 CODE >349:/home/newtonis/Robots/Rayito2/main.c
-122 text0 CODE >350:/home/newtonis/Robots/Rayito2/main.c
-132 text0 CODE >351:/home/newtonis/Robots/Rayito2/main.c
-18A text0 CODE >353:/home/newtonis/Robots/Rayito2/main.c
-196 text0 CODE >354:/home/newtonis/Robots/Rayito2/main.c
-198 text0 CODE >355:/home/newtonis/Robots/Rayito2/main.c
-1A6 text0 CODE >356:/home/newtonis/Robots/Rayito2/main.c
-1A8 text0 CODE >357:/home/newtonis/Robots/Rayito2/main.c
-1B8 text0 CODE >358:/home/newtonis/Robots/Rayito2/main.c
-20A text0 CODE >361:/home/newtonis/Robots/Rayito2/main.c
-216 text0 CODE >362:/home/newtonis/Robots/Rayito2/main.c
-220 text0 CODE >363:/home/newtonis/Robots/Rayito2/main.c
-22C text0 CODE >366:/home/newtonis/Robots/Rayito2/main.c
-23C text0 CODE >367:/home/newtonis/Robots/Rayito2/main.c
-246 text0 CODE >368:/home/newtonis/Robots/Rayito2/main.c
+8 intcode CODE >116:/home/newtonis/Robots/Rayito2/main.c
+8 intcode CODE >42:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+1C text0 CODE >319:/home/newtonis/Robots/Rayito2/main.c
+1C text0 CODE >320:/home/newtonis/Robots/Rayito2/main.c
+20 text0 CODE >322:/home/newtonis/Robots/Rayito2/main.c
+2A text0 CODE >323:/home/newtonis/Robots/Rayito2/main.c
+3C text0 CODE >324:/home/newtonis/Robots/Rayito2/main.c
+40 text0 CODE >326:/home/newtonis/Robots/Rayito2/main.c
+54 text0 CODE >327:/home/newtonis/Robots/Rayito2/main.c
+56 text0 CODE >329:/home/newtonis/Robots/Rayito2/main.c
+60 text0 CODE >330:/home/newtonis/Robots/Rayito2/main.c
+62 text0 CODE >335:/home/newtonis/Robots/Rayito2/main.c
+6E text0 CODE >330:/home/newtonis/Robots/Rayito2/main.c
+92 text0 CODE >341:/home/newtonis/Robots/Rayito2/main.c
+96 text0 CODE >343:/home/newtonis/Robots/Rayito2/main.c
+EC text0 CODE >344:/home/newtonis/Robots/Rayito2/main.c
+F8 text0 CODE >345:/home/newtonis/Robots/Rayito2/main.c
+FA text0 CODE >346:/home/newtonis/Robots/Rayito2/main.c
+108 text0 CODE >347:/home/newtonis/Robots/Rayito2/main.c
+10A text0 CODE >348:/home/newtonis/Robots/Rayito2/main.c
+11A text0 CODE >349:/home/newtonis/Robots/Rayito2/main.c
+172 text0 CODE >351:/home/newtonis/Robots/Rayito2/main.c
+180 text0 CODE >352:/home/newtonis/Robots/Rayito2/main.c
+182 text0 CODE >353:/home/newtonis/Robots/Rayito2/main.c
+190 text0 CODE >354:/home/newtonis/Robots/Rayito2/main.c
+192 text0 CODE >355:/home/newtonis/Robots/Rayito2/main.c
+1A2 text0 CODE >356:/home/newtonis/Robots/Rayito2/main.c
+1F4 text0 CODE >359:/home/newtonis/Robots/Rayito2/main.c
+202 text0 CODE >360:/home/newtonis/Robots/Rayito2/main.c
+20C text0 CODE >361:/home/newtonis/Robots/Rayito2/main.c
+21A text0 CODE >364:/home/newtonis/Robots/Rayito2/main.c
+22A text0 CODE >365:/home/newtonis/Robots/Rayito2/main.c
+234 text0 CODE >366:/home/newtonis/Robots/Rayito2/main.c
+25E text0 CODE >367:/home/newtonis/Robots/Rayito2/main.c
+25E text0 CODE >368:/home/newtonis/Robots/Rayito2/main.c
 26E text0 CODE >369:/home/newtonis/Robots/Rayito2/main.c
-26E text0 CODE >370:/home/newtonis/Robots/Rayito2/main.c
-27E text0 CODE >371:/home/newtonis/Robots/Rayito2/main.c
-288 text0 CODE >372:/home/newtonis/Robots/Rayito2/main.c
-2B0 text0 CODE >373:/home/newtonis/Robots/Rayito2/main.c
-2B0 text0 CODE >374:/home/newtonis/Robots/Rayito2/main.c
-2BE text0 CODE >375:/home/newtonis/Robots/Rayito2/main.c
-2CC text0 CODE >377:/home/newtonis/Robots/Rayito2/main.c
-308 text0 CODE >378:/home/newtonis/Robots/Rayito2/main.c
-30C text0 CODE >380:/home/newtonis/Robots/Rayito2/main.c
-310 text0 CODE >381:/home/newtonis/Robots/Rayito2/main.c
-31C text0 CODE >382:/home/newtonis/Robots/Rayito2/main.c
-326 text0 CODE >383:/home/newtonis/Robots/Rayito2/main.c
-332 text0 CODE >384:/home/newtonis/Robots/Rayito2/main.c
-33E text0 CODE >385:/home/newtonis/Robots/Rayito2/main.c
-34E text0 CODE >386:/home/newtonis/Robots/Rayito2/main.c
-358 text0 CODE >387:/home/newtonis/Robots/Rayito2/main.c
-364 text0 CODE >388:/home/newtonis/Robots/Rayito2/main.c
-366 text0 CODE >389:/home/newtonis/Robots/Rayito2/main.c
-36A text0 CODE >390:/home/newtonis/Robots/Rayito2/main.c
-376 text0 CODE >391:/home/newtonis/Robots/Rayito2/main.c
-37A text0 CODE >393:/home/newtonis/Robots/Rayito2/main.c
-38A text0 CODE >394:/home/newtonis/Robots/Rayito2/main.c
-394 text0 CODE >395:/home/newtonis/Robots/Rayito2/main.c
-3A0 text0 CODE >396:/home/newtonis/Robots/Rayito2/main.c
-3A2 text0 CODE >397:/home/newtonis/Robots/Rayito2/main.c
-3A6 text0 CODE >398:/home/newtonis/Robots/Rayito2/main.c
-3B2 text0 CODE >399:/home/newtonis/Robots/Rayito2/main.c
-3B6 text0 CODE >402:/home/newtonis/Robots/Rayito2/main.c
-3B8 text0 CODE >403:/home/newtonis/Robots/Rayito2/main.c
-40E text0 CODE >404:/home/newtonis/Robots/Rayito2/main.c
-410 text0 CODE >405:/home/newtonis/Robots/Rayito2/main.c
-414 text0 CODE >406:/home/newtonis/Robots/Rayito2/main.c
-420 text0 CODE >407:/home/newtonis/Robots/Rayito2/main.c
-42A text0 CODE >408:/home/newtonis/Robots/Rayito2/main.c
-43C text0 CODE >409:/home/newtonis/Robots/Rayito2/main.c
-440 text0 CODE >416:/home/newtonis/Robots/Rayito2/main.c
-468 text0 CODE >417:/home/newtonis/Robots/Rayito2/main.c
-486 text0 CODE >418:/home/newtonis/Robots/Rayito2/main.c
-5AC text0 CODE >416:/home/newtonis/Robots/Rayito2/main.c
-5C0 text0 CODE >421:/home/newtonis/Robots/Rayito2/main.c
-5C4 text0 CODE >422:/home/newtonis/Robots/Rayito2/main.c
-5C4 text0 CODE >423:/home/newtonis/Robots/Rayito2/main.c
-5C6 text0 CODE >424:/home/newtonis/Robots/Rayito2/main.c
-5C8 text0 CODE >425:/home/newtonis/Robots/Rayito2/main.c
-5CA text0 CODE >426:/home/newtonis/Robots/Rayito2/main.c
-5FA text0 CODE >429:/home/newtonis/Robots/Rayito2/main.c
-5FE text0 CODE >435:/home/newtonis/Robots/Rayito2/main.c
-61E text0 CODE >436:/home/newtonis/Robots/Rayito2/main.c
-630 text0 CODE >437:/home/newtonis/Robots/Rayito2/main.c
-654 text0 CODE >438:/home/newtonis/Robots/Rayito2/main.c
-672 text0 CODE >439:/home/newtonis/Robots/Rayito2/main.c
-798 text0 CODE >437:/home/newtonis/Robots/Rayito2/main.c
-7AC text0 CODE >444:/home/newtonis/Robots/Rayito2/main.c
-7D0 text0 CODE >447:/home/newtonis/Robots/Rayito2/main.c
-7D8 text0 CODE >448:/home/newtonis/Robots/Rayito2/main.c
-810 text0 CODE >449:/home/newtonis/Robots/Rayito2/main.c
-844 text0 CODE >451:/home/newtonis/Robots/Rayito2/main.c
-87C text0 CODE >452:/home/newtonis/Robots/Rayito2/main.c
-8B0 text0 CODE >444:/home/newtonis/Robots/Rayito2/main.c
-8C4 text0 CODE >456:/home/newtonis/Robots/Rayito2/main.c
-918 text0 CODE >457:/home/newtonis/Robots/Rayito2/main.c
-9A0 text0 CODE >458:/home/newtonis/Robots/Rayito2/main.c
-9F0 text0 CODE >460:/home/newtonis/Robots/Rayito2/main.c
-9F4 text0 CODE >461:/home/newtonis/Robots/Rayito2/main.c
-A00 text0 CODE >462:/home/newtonis/Robots/Rayito2/main.c
-A12 text0 CODE >463:/home/newtonis/Robots/Rayito2/main.c
-A1C text0 CODE >465:/home/newtonis/Robots/Rayito2/main.c
-A22 text0 CODE >466:/home/newtonis/Robots/Rayito2/main.c
-A2E text0 CODE >467:/home/newtonis/Robots/Rayito2/main.c
-A40 text0 CODE >468:/home/newtonis/Robots/Rayito2/main.c
-A4A text0 CODE >469:/home/newtonis/Robots/Rayito2/main.c
-A54 text0 CODE >471:/home/newtonis/Robots/Rayito2/main.c
-A7C text0 CODE >472:/home/newtonis/Robots/Rayito2/main.c
-A9A text0 CODE >473:/home/newtonis/Robots/Rayito2/main.c
-AEA text0 CODE >471:/home/newtonis/Robots/Rayito2/main.c
-AFE text0 CODE >476:/home/newtonis/Robots/Rayito2/main.c
-B02 text0 CODE >477:/home/newtonis/Robots/Rayito2/main.c
-B02 text0 CODE >478:/home/newtonis/Robots/Rayito2/main.c
-B04 text0 CODE >479:/home/newtonis/Robots/Rayito2/main.c
-B06 text0 CODE >480:/home/newtonis/Robots/Rayito2/main.c
-B08 text0 CODE >481:/home/newtonis/Robots/Rayito2/main.c
-B0E text0 CODE >482:/home/newtonis/Robots/Rayito2/main.c
-B12 text0 CODE >486:/home/newtonis/Robots/Rayito2/main.c
-B1E text0 CODE >487:/home/newtonis/Robots/Rayito2/main.c
-B28 text0 CODE >488:/home/newtonis/Robots/Rayito2/main.c
-B32 text0 CODE >489:/home/newtonis/Robots/Rayito2/main.c
-B3C text0 CODE >491:/home/newtonis/Robots/Rayito2/main.c
-B3E text0 CODE >492:/home/newtonis/Robots/Rayito2/main.c
-C36 text0 CODE >493:/home/newtonis/Robots/Rayito2/main.c
-C38 text0 CODE >496:/home/newtonis/Robots/Rayito2/main.c
-C4C text0 CODE >498:/home/newtonis/Robots/Rayito2/main.c
-C50 text0 CODE >499:/home/newtonis/Robots/Rayito2/main.c
-C54 text0 CODE >500:/home/newtonis/Robots/Rayito2/main.c
-C74 text0 CODE >501:/home/newtonis/Robots/Rayito2/main.c
-C86 text0 CODE >507:/home/newtonis/Robots/Rayito2/main.c
-CAA text0 CODE >508:/home/newtonis/Robots/Rayito2/main.c
-CC8 text0 CODE >509:/home/newtonis/Robots/Rayito2/main.c
-DBA text0 CODE >507:/home/newtonis/Robots/Rayito2/main.c
-DCE text0 CODE >511:/home/newtonis/Robots/Rayito2/main.c
-DE2 text0 CODE >513:/home/newtonis/Robots/Rayito2/main.c
-DE6 text0 CODE >514:/home/newtonis/Robots/Rayito2/main.c
-DF0 text0 CODE >516:/home/newtonis/Robots/Rayito2/main.c
-DF4 text0 CODE >517:/home/newtonis/Robots/Rayito2/main.c
-DF8 text0 CODE >518:/home/newtonis/Robots/Rayito2/main.c
-E04 text0 CODE >519:/home/newtonis/Robots/Rayito2/main.c
-E0E text0 CODE >520:/home/newtonis/Robots/Rayito2/main.c
-E14 text0 CODE >521:/home/newtonis/Robots/Rayito2/main.c
-E1E text0 CODE >522:/home/newtonis/Robots/Rayito2/main.c
-E28 text0 CODE >523:/home/newtonis/Robots/Rayito2/main.c
-E34 text0 CODE >524:/home/newtonis/Robots/Rayito2/main.c
-E36 text0 CODE >525:/home/newtonis/Robots/Rayito2/main.c
-E42 text0 CODE >526:/home/newtonis/Robots/Rayito2/main.c
-E52 text0 CODE >527:/home/newtonis/Robots/Rayito2/main.c
-E56 text0 CODE >528:/home/newtonis/Robots/Rayito2/main.c
-E62 text0 CODE >529:/home/newtonis/Robots/Rayito2/main.c
-E66 text0 CODE >533:/home/newtonis/Robots/Rayito2/main.c
-E6C text0 CODE >534:/home/newtonis/Robots/Rayito2/main.c
-E70 text0 CODE >535:/home/newtonis/Robots/Rayito2/main.c
-E7C text0 CODE >536:/home/newtonis/Robots/Rayito2/main.c
-E86 text0 CODE >537:/home/newtonis/Robots/Rayito2/main.c
-E8C text0 CODE >538:/home/newtonis/Robots/Rayito2/main.c
-E96 text0 CODE >539:/home/newtonis/Robots/Rayito2/main.c
-EA0 text0 CODE >540:/home/newtonis/Robots/Rayito2/main.c
-EAC text0 CODE >541:/home/newtonis/Robots/Rayito2/main.c
-EB0 text0 CODE >542:/home/newtonis/Robots/Rayito2/main.c
-EBC text0 CODE >543:/home/newtonis/Robots/Rayito2/main.c
-ECC text0 CODE >544:/home/newtonis/Robots/Rayito2/main.c
-ED0 text0 CODE >545:/home/newtonis/Robots/Rayito2/main.c
-EDC text0 CODE >546:/home/newtonis/Robots/Rayito2/main.c
-EE0 text0 CODE >562:/home/newtonis/Robots/Rayito2/main.c
-EE4 text0 CODE >563:/home/newtonis/Robots/Rayito2/main.c
-EE4 text0 CODE >564:/home/newtonis/Robots/Rayito2/main.c
-EE6 text0 CODE >565:/home/newtonis/Robots/Rayito2/main.c
-EE8 text0 CODE >566:/home/newtonis/Robots/Rayito2/main.c
-EEA text0 CODE >567:/home/newtonis/Robots/Rayito2/main.c
-EEE text0 CODE >568:/home/newtonis/Robots/Rayito2/main.c
-EF8 text0 CODE >569:/home/newtonis/Robots/Rayito2/main.c
-F02 text0 CODE >570:/home/newtonis/Robots/Rayito2/main.c
-F14 text0 CODE >571:/home/newtonis/Robots/Rayito2/main.c
-F26 text0 CODE >572:/home/newtonis/Robots/Rayito2/main.c
-F38 text0 CODE >573:/home/newtonis/Robots/Rayito2/main.c
-F4A text0 CODE >574:/home/newtonis/Robots/Rayito2/main.c
-F5C text0 CODE >575:/home/newtonis/Robots/Rayito2/main.c
-F66 text0 CODE >576:/home/newtonis/Robots/Rayito2/main.c
-F70 text0 CODE >578:/home/newtonis/Robots/Rayito2/main.c
-F7C text0 CODE >580:/home/newtonis/Robots/Rayito2/main.c
-F82 text0 CODE >581:/home/newtonis/Robots/Rayito2/main.c
-F86 text0 CODE >582:/home/newtonis/Robots/Rayito2/main.c
-F92 text0 CODE >583:/home/newtonis/Robots/Rayito2/main.c
-F9C text0 CODE >586:/home/newtonis/Robots/Rayito2/main.c
-F9C text0 CODE >587:/home/newtonis/Robots/Rayito2/main.c
-F9E text0 CODE >588:/home/newtonis/Robots/Rayito2/main.c
-FA0 text0 CODE >589:/home/newtonis/Robots/Rayito2/main.c
-FA2 text0 CODE >590:/home/newtonis/Robots/Rayito2/main.c
-FB6 text0 CODE >591:/home/newtonis/Robots/Rayito2/main.c
-FBA text0 CODE >592:/home/newtonis/Robots/Rayito2/main.c
-FCE text0 CODE >593:/home/newtonis/Robots/Rayito2/main.c
-FD8 text0 CODE >594:/home/newtonis/Robots/Rayito2/main.c
-FEA text0 CODE >595:/home/newtonis/Robots/Rayito2/main.c
-FFC text0 CODE >597:/home/newtonis/Robots/Rayito2/main.c
-101A text0 CODE >598:/home/newtonis/Robots/Rayito2/main.c
-1026 text0 CODE >599:/home/newtonis/Robots/Rayito2/main.c
-102E text0 CODE >600:/home/newtonis/Robots/Rayito2/main.c
-1032 text0 CODE >601:/home/newtonis/Robots/Rayito2/main.c
-103C text0 CODE >604:/home/newtonis/Robots/Rayito2/main.c
-103C text0 CODE >605:/home/newtonis/Robots/Rayito2/main.c
-103E text0 CODE >606:/home/newtonis/Robots/Rayito2/main.c
-1040 text0 CODE >607:/home/newtonis/Robots/Rayito2/main.c
-1042 text0 CODE >608:/home/newtonis/Robots/Rayito2/main.c
-1048 text0 CODE >609:/home/newtonis/Robots/Rayito2/main.c
-104E text0 CODE >611:/home/newtonis/Robots/Rayito2/main.c
-1052 text0 CODE >612:/home/newtonis/Robots/Rayito2/main.c
-1052 text0 CODE >613:/home/newtonis/Robots/Rayito2/main.c
-1054 text0 CODE >614:/home/newtonis/Robots/Rayito2/main.c
-1056 text0 CODE >615:/home/newtonis/Robots/Rayito2/main.c
-1058 text0 CODE >617:/home/newtonis/Robots/Rayito2/main.c
-107A text0 CODE >618:/home/newtonis/Robots/Rayito2/main.c
-107E text0 CODE >619:/home/newtonis/Robots/Rayito2/main.c
-1082 text0 CODE >620:/home/newtonis/Robots/Rayito2/main.c
-1094 text0 CODE >621:/home/newtonis/Robots/Rayito2/main.c
-1098 text0 CODE >623:/home/newtonis/Robots/Rayito2/main.c
-117E text0 CODE >624:/home/newtonis/Robots/Rayito2/main.c
-1188 text0 CODE >625:/home/newtonis/Robots/Rayito2/main.c
-119A text0 CODE >626:/home/newtonis/Robots/Rayito2/main.c
-1210 text0 CODE >627:/home/newtonis/Robots/Rayito2/main.c
-1216 text0 CODE >631:/home/newtonis/Robots/Rayito2/main.c
-121A text0 CODE >633:/home/newtonis/Robots/Rayito2/main.c
-1226 text0 CODE >634:/home/newtonis/Robots/Rayito2/main.c
-14F4 text0 CODE >635:/home/newtonis/Robots/Rayito2/main.c
-14FE text0 CODE >637:/home/newtonis/Robots/Rayito2/main.c
-1502 text0 CODE >638:/home/newtonis/Robots/Rayito2/main.c
-150C text0 CODE >639:/home/newtonis/Robots/Rayito2/main.c
-1516 text0 CODE >649:/home/newtonis/Robots/Rayito2/main.c
-1538 text0 CODE >650:/home/newtonis/Robots/Rayito2/main.c
-154A text0 CODE >651:/home/newtonis/Robots/Rayito2/main.c
-154E text0 CODE >652:/home/newtonis/Robots/Rayito2/main.c
-1552 text0 CODE >657:/home/newtonis/Robots/Rayito2/main.c
-1558 text0 CODE >658:/home/newtonis/Robots/Rayito2/main.c
-1562 text0 CODE >660:/home/newtonis/Robots/Rayito2/main.c
-16FA text0 CODE >661:/home/newtonis/Robots/Rayito2/main.c
-1704 text0 CODE >662:/home/newtonis/Robots/Rayito2/main.c
-18E2 text0 CODE >663:/home/newtonis/Robots/Rayito2/main.c
-18EC text0 CODE >665:/home/newtonis/Robots/Rayito2/main.c
-18F6 text0 CODE >668:/home/newtonis/Robots/Rayito2/main.c
-1914 text0 CODE >669:/home/newtonis/Robots/Rayito2/main.c
-1940 text0 CODE >670:/home/newtonis/Robots/Rayito2/main.c
-196C text0 CODE >671:/home/newtonis/Robots/Rayito2/main.c
-198E text0 CODE >672:/home/newtonis/Robots/Rayito2/main.c
-1A12 text0 CODE >674:/home/newtonis/Robots/Rayito2/main.c
-1A20 text0 CODE >675:/home/newtonis/Robots/Rayito2/main.c
-1A52 text0 CODE >676:/home/newtonis/Robots/Rayito2/main.c
-1A54 text0 CODE >677:/home/newtonis/Robots/Rayito2/main.c
-1A70 text0 CODE >679:/home/newtonis/Robots/Rayito2/main.c
-1A78 text0 CODE >681:/home/newtonis/Robots/Rayito2/main.c
-1A84 text0 CODE >682:/home/newtonis/Robots/Rayito2/main.c
-1B64 text0 CODE >683:/home/newtonis/Robots/Rayito2/main.c
-1B6E text0 CODE >684:/home/newtonis/Robots/Rayito2/main.c
-1B80 text0 CODE >685:/home/newtonis/Robots/Rayito2/main.c
-1B92 text0 CODE >686:/home/newtonis/Robots/Rayito2/main.c
-1BB2 text0 CODE >687:/home/newtonis/Robots/Rayito2/main.c
-1BB8 text0 CODE >688:/home/newtonis/Robots/Rayito2/main.c
-1BBE text0 CODE >689:/home/newtonis/Robots/Rayito2/main.c
-1BCA text0 CODE >690:/home/newtonis/Robots/Rayito2/main.c
-1BCC text0 CODE >691:/home/newtonis/Robots/Rayito2/main.c
-1E9A text0 CODE >693:/home/newtonis/Robots/Rayito2/main.c
-1EAE text0 CODE >696:/home/newtonis/Robots/Rayito2/main.c
-1EBA text0 CODE >697:/home/newtonis/Robots/Rayito2/main.c
-1EDA text0 CODE >698:/home/newtonis/Robots/Rayito2/main.c
-1EEC text0 CODE >699:/home/newtonis/Robots/Rayito2/main.c
-1EF6 text0 CODE >702:/home/newtonis/Robots/Rayito2/main.c
-1F38 text0 CODE >703:/home/newtonis/Robots/Rayito2/main.c
-1F44 text0 CODE >704:/home/newtonis/Robots/Rayito2/main.c
-1F4E text0 CODE >705:/home/newtonis/Robots/Rayito2/main.c
-1F5A text0 CODE >711:/home/newtonis/Robots/Rayito2/main.c
-1F5A text0 CODE >712:/home/newtonis/Robots/Rayito2/main.c
-1F5E text0 CODE >713:/home/newtonis/Robots/Rayito2/main.c
-1F68 text0 CODE >714:/home/newtonis/Robots/Rayito2/main.c
-1F72 text0 CODE >716:/home/newtonis/Robots/Rayito2/main.c
-1F74 text0 CODE >718:/home/newtonis/Robots/Rayito2/main.c
-1F76 text0 CODE >719:/home/newtonis/Robots/Rayito2/main.c
-1F94 text0 CODE >720:/home/newtonis/Robots/Rayito2/main.c
-1FA6 text0 CODE >721:/home/newtonis/Robots/Rayito2/main.c
-1FAA text0 CODE >722:/home/newtonis/Robots/Rayito2/main.c
-1FAE text0 CODE >731:/home/newtonis/Robots/Rayito2/main.c
-1FB4 text0 CODE >732:/home/newtonis/Robots/Rayito2/main.c
-1FBE text0 CODE >734:/home/newtonis/Robots/Rayito2/main.c
-1FC8 text0 CODE >736:/home/newtonis/Robots/Rayito2/main.c
-1FE6 text0 CODE >737:/home/newtonis/Robots/Rayito2/main.c
-2012 text0 CODE >738:/home/newtonis/Robots/Rayito2/main.c
-203E text0 CODE >740:/home/newtonis/Robots/Rayito2/main.c
-2060 text0 CODE >741:/home/newtonis/Robots/Rayito2/main.c
-20E4 text0 CODE >743:/home/newtonis/Robots/Rayito2/main.c
-20F2 text0 CODE >744:/home/newtonis/Robots/Rayito2/main.c
-2124 text0 CODE >745:/home/newtonis/Robots/Rayito2/main.c
-2126 text0 CODE >746:/home/newtonis/Robots/Rayito2/main.c
-2142 text0 CODE >748:/home/newtonis/Robots/Rayito2/main.c
-214E text0 CODE >749:/home/newtonis/Robots/Rayito2/main.c
-222E text0 CODE >750:/home/newtonis/Robots/Rayito2/main.c
-2238 text0 CODE >751:/home/newtonis/Robots/Rayito2/main.c
-224A text0 CODE >752:/home/newtonis/Robots/Rayito2/main.c
-226A text0 CODE >753:/home/newtonis/Robots/Rayito2/main.c
-2270 text0 CODE >757:/home/newtonis/Robots/Rayito2/main.c
-227C text0 CODE >758:/home/newtonis/Robots/Rayito2/main.c
-229C text0 CODE >759:/home/newtonis/Robots/Rayito2/main.c
-22AE text0 CODE >760:/home/newtonis/Robots/Rayito2/main.c
-22B8 text0 CODE >763:/home/newtonis/Robots/Rayito2/main.c
-22C6 text0 CODE >764:/home/newtonis/Robots/Rayito2/main.c
-22D0 text0 CODE >765:/home/newtonis/Robots/Rayito2/main.c
-22DA text0 CODE >767:/home/newtonis/Robots/Rayito2/main.c
-22FA text0 CODE >771:/home/newtonis/Robots/Rayito2/main.c
-230C text0 CODE >773:/home/newtonis/Robots/Rayito2/main.c
-2314 text0 CODE >343:/home/newtonis/Robots/Rayito2/main.c
-2388 text0 CODE >338:/home/newtonis/Robots/Rayito2/main.c
-3584 cinit CODE >2501:/home/newtonis/Robots/Rayito2/main.as
-3584 cinit CODE >2503:/home/newtonis/Robots/Rayito2/main.as
-3584 cinit CODE >2506:/home/newtonis/Robots/Rayito2/main.as
-3584 cinit CODE >2724:/home/newtonis/Robots/Rayito2/main.as
-3586 cinit CODE >2725:/home/newtonis/Robots/Rayito2/main.as
-3588 cinit CODE >2726:/home/newtonis/Robots/Rayito2/main.as
-358A cinit CODE >2727:/home/newtonis/Robots/Rayito2/main.as
-358C cinit CODE >2728:/home/newtonis/Robots/Rayito2/main.as
-358E cinit CODE >2729:/home/newtonis/Robots/Rayito2/main.as
-3590 cinit CODE >2730:/home/newtonis/Robots/Rayito2/main.as
-3594 cinit CODE >2731:/home/newtonis/Robots/Rayito2/main.as
-3598 cinit CODE >2732:/home/newtonis/Robots/Rayito2/main.as
-3598 cinit CODE >2733:/home/newtonis/Robots/Rayito2/main.as
-359A cinit CODE >2734:/home/newtonis/Robots/Rayito2/main.as
-359E cinit CODE >2735:/home/newtonis/Robots/Rayito2/main.as
-35A0 cinit CODE >2736:/home/newtonis/Robots/Rayito2/main.as
-35A2 cinit CODE >2737:/home/newtonis/Robots/Rayito2/main.as
-35A4 cinit CODE >2741:/home/newtonis/Robots/Rayito2/main.as
-35A6 cinit CODE >2742:/home/newtonis/Robots/Rayito2/main.as
-35A8 cinit CODE >2743:/home/newtonis/Robots/Rayito2/main.as
-35AA cinit CODE >2744:/home/newtonis/Robots/Rayito2/main.as
-35AC cinit CODE >2745:/home/newtonis/Robots/Rayito2/main.as
-35AE cinit CODE >2746:/home/newtonis/Robots/Rayito2/main.as
-35B0 cinit CODE >2747:/home/newtonis/Robots/Rayito2/main.as
-35B4 cinit CODE >2748:/home/newtonis/Robots/Rayito2/main.as
-35B8 cinit CODE >2749:/home/newtonis/Robots/Rayito2/main.as
-35B8 cinit CODE >2750:/home/newtonis/Robots/Rayito2/main.as
-35BA cinit CODE >2751:/home/newtonis/Robots/Rayito2/main.as
-35BE cinit CODE >2752:/home/newtonis/Robots/Rayito2/main.as
-35C0 cinit CODE >2753:/home/newtonis/Robots/Rayito2/main.as
-35C2 cinit CODE >2754:/home/newtonis/Robots/Rayito2/main.as
-35C4 cinit CODE >2758:/home/newtonis/Robots/Rayito2/main.as
-35C8 cinit CODE >2759:/home/newtonis/Robots/Rayito2/main.as
-35CA cinit CODE >2760:/home/newtonis/Robots/Rayito2/main.as
-35CA cinit CODE >2761:/home/newtonis/Robots/Rayito2/main.as
-35CC cinit CODE >2762:/home/newtonis/Robots/Rayito2/main.as
-35CE cinit CODE >2763:/home/newtonis/Robots/Rayito2/main.as
-35D0 cinit CODE >2766:/home/newtonis/Robots/Rayito2/main.as
-35D4 cinit CODE >2767:/home/newtonis/Robots/Rayito2/main.as
-35D6 cinit CODE >2768:/home/newtonis/Robots/Rayito2/main.as
-35D6 cinit CODE >2769:/home/newtonis/Robots/Rayito2/main.as
-35D8 cinit CODE >2770:/home/newtonis/Robots/Rayito2/main.as
-35DA cinit CODE >2771:/home/newtonis/Robots/Rayito2/main.as
-35DC cinit CODE >2774:/home/newtonis/Robots/Rayito2/main.as
-35E0 cinit CODE >2775:/home/newtonis/Robots/Rayito2/main.as
-35E2 cinit CODE >2776:/home/newtonis/Robots/Rayito2/main.as
-35E2 cinit CODE >2777:/home/newtonis/Robots/Rayito2/main.as
-35E4 cinit CODE >2778:/home/newtonis/Robots/Rayito2/main.as
-35E6 cinit CODE >2779:/home/newtonis/Robots/Rayito2/main.as
-35E8 cinit CODE >2782:/home/newtonis/Robots/Rayito2/main.as
-35EC cinit CODE >2783:/home/newtonis/Robots/Rayito2/main.as
-35EE cinit CODE >2784:/home/newtonis/Robots/Rayito2/main.as
-35EE cinit CODE >2785:/home/newtonis/Robots/Rayito2/main.as
-35F0 cinit CODE >2786:/home/newtonis/Robots/Rayito2/main.as
-35F2 cinit CODE >2787:/home/newtonis/Robots/Rayito2/main.as
-35F4 cinit CODE >2793:/home/newtonis/Robots/Rayito2/main.as
-35F4 cinit CODE >2795:/home/newtonis/Robots/Rayito2/main.as
-35F6 cinit CODE >2796:/home/newtonis/Robots/Rayito2/main.as
-35F8 cinit CODE >2798:/home/newtonis/Robots/Rayito2/main.as
-35FA cinit CODE >2799:/home/newtonis/Robots/Rayito2/main.as
-35FC cinit CODE >2800:/home/newtonis/Robots/Rayito2/main.as
-35FE cinit CODE >2801:/home/newtonis/Robots/Rayito2/main.as
+278 text0 CODE >370:/home/newtonis/Robots/Rayito2/main.c
+2A2 text0 CODE >371:/home/newtonis/Robots/Rayito2/main.c
+2A2 text0 CODE >372:/home/newtonis/Robots/Rayito2/main.c
+2B2 text0 CODE >373:/home/newtonis/Robots/Rayito2/main.c
+2C2 text0 CODE >375:/home/newtonis/Robots/Rayito2/main.c
+2FE text0 CODE >376:/home/newtonis/Robots/Rayito2/main.c
+302 text0 CODE >378:/home/newtonis/Robots/Rayito2/main.c
+306 text0 CODE >379:/home/newtonis/Robots/Rayito2/main.c
+312 text0 CODE >380:/home/newtonis/Robots/Rayito2/main.c
+31C text0 CODE >381:/home/newtonis/Robots/Rayito2/main.c
+328 text0 CODE >382:/home/newtonis/Robots/Rayito2/main.c
+334 text0 CODE >383:/home/newtonis/Robots/Rayito2/main.c
+344 text0 CODE >384:/home/newtonis/Robots/Rayito2/main.c
+34E text0 CODE >385:/home/newtonis/Robots/Rayito2/main.c
+35A text0 CODE >386:/home/newtonis/Robots/Rayito2/main.c
+35C text0 CODE >387:/home/newtonis/Robots/Rayito2/main.c
+360 text0 CODE >388:/home/newtonis/Robots/Rayito2/main.c
+36C text0 CODE >389:/home/newtonis/Robots/Rayito2/main.c
+372 text0 CODE >391:/home/newtonis/Robots/Rayito2/main.c
+382 text0 CODE >392:/home/newtonis/Robots/Rayito2/main.c
+38C text0 CODE >393:/home/newtonis/Robots/Rayito2/main.c
+398 text0 CODE >394:/home/newtonis/Robots/Rayito2/main.c
+39A text0 CODE >395:/home/newtonis/Robots/Rayito2/main.c
+39E text0 CODE >396:/home/newtonis/Robots/Rayito2/main.c
+3AA text0 CODE >397:/home/newtonis/Robots/Rayito2/main.c
+3B0 text0 CODE >400:/home/newtonis/Robots/Rayito2/main.c
+3BE text0 CODE >416:/home/newtonis/Robots/Rayito2/main.c
+3C0 text0 CODE >417:/home/newtonis/Robots/Rayito2/main.c
+416 text0 CODE >418:/home/newtonis/Robots/Rayito2/main.c
+418 text0 CODE >419:/home/newtonis/Robots/Rayito2/main.c
+41E text0 CODE >420:/home/newtonis/Robots/Rayito2/main.c
+42A text0 CODE >421:/home/newtonis/Robots/Rayito2/main.c
+434 text0 CODE >422:/home/newtonis/Robots/Rayito2/main.c
+446 text0 CODE >423:/home/newtonis/Robots/Rayito2/main.c
+44A text0 CODE >435:/home/newtonis/Robots/Rayito2/main.c
+44E text0 CODE >436:/home/newtonis/Robots/Rayito2/main.c
+44E text0 CODE >437:/home/newtonis/Robots/Rayito2/main.c
+450 text0 CODE >438:/home/newtonis/Robots/Rayito2/main.c
+452 text0 CODE >439:/home/newtonis/Robots/Rayito2/main.c
+454 text0 CODE >440:/home/newtonis/Robots/Rayito2/main.c
+484 text0 CODE >441:/home/newtonis/Robots/Rayito2/main.c
+488 text0 CODE >443:/home/newtonis/Robots/Rayito2/main.c
+48C text0 CODE >458:/home/newtonis/Robots/Rayito2/main.c
+4B0 text0 CODE >461:/home/newtonis/Robots/Rayito2/main.c
+4B8 text0 CODE >462:/home/newtonis/Robots/Rayito2/main.c
+4F0 text0 CODE >463:/home/newtonis/Robots/Rayito2/main.c
+526 text0 CODE >465:/home/newtonis/Robots/Rayito2/main.c
+55E text0 CODE >466:/home/newtonis/Robots/Rayito2/main.c
+594 text0 CODE >458:/home/newtonis/Robots/Rayito2/main.c
+5AA text0 CODE >470:/home/newtonis/Robots/Rayito2/main.c
+5FE text0 CODE >471:/home/newtonis/Robots/Rayito2/main.c
+688 text0 CODE >472:/home/newtonis/Robots/Rayito2/main.c
+6D8 text0 CODE >474:/home/newtonis/Robots/Rayito2/main.c
+6DC text0 CODE >475:/home/newtonis/Robots/Rayito2/main.c
+6E8 text0 CODE >476:/home/newtonis/Robots/Rayito2/main.c
+6FA text0 CODE >477:/home/newtonis/Robots/Rayito2/main.c
+706 text0 CODE >479:/home/newtonis/Robots/Rayito2/main.c
+70C text0 CODE >480:/home/newtonis/Robots/Rayito2/main.c
+718 text0 CODE >481:/home/newtonis/Robots/Rayito2/main.c
+72A text0 CODE >482:/home/newtonis/Robots/Rayito2/main.c
+734 text0 CODE >483:/home/newtonis/Robots/Rayito2/main.c
+73E text0 CODE >485:/home/newtonis/Robots/Rayito2/main.c
+766 text0 CODE >486:/home/newtonis/Robots/Rayito2/main.c
+784 text0 CODE >487:/home/newtonis/Robots/Rayito2/main.c
+7D4 text0 CODE >485:/home/newtonis/Robots/Rayito2/main.c
+7E8 text0 CODE >490:/home/newtonis/Robots/Rayito2/main.c
+7EC text0 CODE >491:/home/newtonis/Robots/Rayito2/main.c
+7EC text0 CODE >492:/home/newtonis/Robots/Rayito2/main.c
+7EE text0 CODE >493:/home/newtonis/Robots/Rayito2/main.c
+7F0 text0 CODE >494:/home/newtonis/Robots/Rayito2/main.c
+7F2 text0 CODE >495:/home/newtonis/Robots/Rayito2/main.c
+7FC text0 CODE >498:/home/newtonis/Robots/Rayito2/main.c
+800 text0 CODE >500:/home/newtonis/Robots/Rayito2/main.c
+80C text0 CODE >501:/home/newtonis/Robots/Rayito2/main.c
+816 text0 CODE >502:/home/newtonis/Robots/Rayito2/main.c
+820 text0 CODE >503:/home/newtonis/Robots/Rayito2/main.c
+82C text0 CODE >505:/home/newtonis/Robots/Rayito2/main.c
+84A text0 CODE >506:/home/newtonis/Robots/Rayito2/main.c
+950 text0 CODE >507:/home/newtonis/Robots/Rayito2/main.c
+974 text0 CODE >510:/home/newtonis/Robots/Rayito2/main.c
+988 text0 CODE >512:/home/newtonis/Robots/Rayito2/main.c
+98C text0 CODE >513:/home/newtonis/Robots/Rayito2/main.c
+990 text0 CODE >514:/home/newtonis/Robots/Rayito2/main.c
+9B0 text0 CODE >515:/home/newtonis/Robots/Rayito2/main.c
+9C2 text0 CODE >521:/home/newtonis/Robots/Rayito2/main.c
+9E6 text0 CODE >522:/home/newtonis/Robots/Rayito2/main.c
+A04 text0 CODE >523:/home/newtonis/Robots/Rayito2/main.c
+AF6 text0 CODE >521:/home/newtonis/Robots/Rayito2/main.c
+B0C text0 CODE >525:/home/newtonis/Robots/Rayito2/main.c
+B22 text0 CODE >527:/home/newtonis/Robots/Rayito2/main.c
+B26 text0 CODE >528:/home/newtonis/Robots/Rayito2/main.c
+B32 text0 CODE >530:/home/newtonis/Robots/Rayito2/main.c
+B36 text0 CODE >531:/home/newtonis/Robots/Rayito2/main.c
+B3A text0 CODE >532:/home/newtonis/Robots/Rayito2/main.c
+B46 text0 CODE >533:/home/newtonis/Robots/Rayito2/main.c
+B50 text0 CODE >534:/home/newtonis/Robots/Rayito2/main.c
+B56 text0 CODE >535:/home/newtonis/Robots/Rayito2/main.c
+B60 text0 CODE >536:/home/newtonis/Robots/Rayito2/main.c
+B6A text0 CODE >537:/home/newtonis/Robots/Rayito2/main.c
+B76 text0 CODE >538:/home/newtonis/Robots/Rayito2/main.c
+B78 text0 CODE >539:/home/newtonis/Robots/Rayito2/main.c
+B84 text0 CODE >540:/home/newtonis/Robots/Rayito2/main.c
+B94 text0 CODE >541:/home/newtonis/Robots/Rayito2/main.c
+B98 text0 CODE >542:/home/newtonis/Robots/Rayito2/main.c
+BA4 text0 CODE >543:/home/newtonis/Robots/Rayito2/main.c
+BA8 text0 CODE >544:/home/newtonis/Robots/Rayito2/main.c
+BAA text0 CODE >547:/home/newtonis/Robots/Rayito2/main.c
+BB0 text0 CODE >548:/home/newtonis/Robots/Rayito2/main.c
+BB4 text0 CODE >549:/home/newtonis/Robots/Rayito2/main.c
+BC0 text0 CODE >550:/home/newtonis/Robots/Rayito2/main.c
+BCA text0 CODE >551:/home/newtonis/Robots/Rayito2/main.c
+BD0 text0 CODE >552:/home/newtonis/Robots/Rayito2/main.c
+BDA text0 CODE >553:/home/newtonis/Robots/Rayito2/main.c
+BE4 text0 CODE >554:/home/newtonis/Robots/Rayito2/main.c
+BF0 text0 CODE >555:/home/newtonis/Robots/Rayito2/main.c
+BF4 text0 CODE >556:/home/newtonis/Robots/Rayito2/main.c
+C00 text0 CODE >557:/home/newtonis/Robots/Rayito2/main.c
+C0C text0 CODE >558:/home/newtonis/Robots/Rayito2/main.c
+C10 text0 CODE >559:/home/newtonis/Robots/Rayito2/main.c
+C1C text0 CODE >560:/home/newtonis/Robots/Rayito2/main.c
+C20 text0 CODE >576:/home/newtonis/Robots/Rayito2/main.c
+C24 text0 CODE >577:/home/newtonis/Robots/Rayito2/main.c
+C24 text0 CODE >578:/home/newtonis/Robots/Rayito2/main.c
+C26 text0 CODE >579:/home/newtonis/Robots/Rayito2/main.c
+C28 text0 CODE >580:/home/newtonis/Robots/Rayito2/main.c
+C2A text0 CODE >581:/home/newtonis/Robots/Rayito2/main.c
+C2E text0 CODE >582:/home/newtonis/Robots/Rayito2/main.c
+C38 text0 CODE >583:/home/newtonis/Robots/Rayito2/main.c
+C42 text0 CODE >584:/home/newtonis/Robots/Rayito2/main.c
+C54 text0 CODE >585:/home/newtonis/Robots/Rayito2/main.c
+C66 text0 CODE >586:/home/newtonis/Robots/Rayito2/main.c
+C78 text0 CODE >587:/home/newtonis/Robots/Rayito2/main.c
+C8A text0 CODE >588:/home/newtonis/Robots/Rayito2/main.c
+C9C text0 CODE >589:/home/newtonis/Robots/Rayito2/main.c
+CA6 text0 CODE >590:/home/newtonis/Robots/Rayito2/main.c
+CB0 text0 CODE >592:/home/newtonis/Robots/Rayito2/main.c
+CBE text0 CODE >594:/home/newtonis/Robots/Rayito2/main.c
+CC4 text0 CODE >595:/home/newtonis/Robots/Rayito2/main.c
+CC8 text0 CODE >596:/home/newtonis/Robots/Rayito2/main.c
+CD4 text0 CODE >597:/home/newtonis/Robots/Rayito2/main.c
+CE0 text0 CODE >599:/home/newtonis/Robots/Rayito2/main.c
+CE4 text0 CODE >601:/home/newtonis/Robots/Rayito2/main.c
+D02 text0 CODE >602:/home/newtonis/Robots/Rayito2/main.c
+D58 text0 CODE >603:/home/newtonis/Robots/Rayito2/main.c
+D7C text0 CODE >604:/home/newtonis/Robots/Rayito2/main.c
+D90 text0 CODE >605:/home/newtonis/Robots/Rayito2/main.c
+D94 text0 CODE >606:/home/newtonis/Robots/Rayito2/main.c
+DA8 text0 CODE >607:/home/newtonis/Robots/Rayito2/main.c
+DB2 text0 CODE >608:/home/newtonis/Robots/Rayito2/main.c
+DC4 text0 CODE >609:/home/newtonis/Robots/Rayito2/main.c
+DD6 text0 CODE >610:/home/newtonis/Robots/Rayito2/main.c
+DE2 text0 CODE >612:/home/newtonis/Robots/Rayito2/main.c
+E00 text0 CODE >613:/home/newtonis/Robots/Rayito2/main.c
+E0C text0 CODE >614:/home/newtonis/Robots/Rayito2/main.c
+E14 text0 CODE >615:/home/newtonis/Robots/Rayito2/main.c
+E18 text0 CODE >616:/home/newtonis/Robots/Rayito2/main.c
+E24 text0 CODE >618:/home/newtonis/Robots/Rayito2/main.c
+E28 text0 CODE >619:/home/newtonis/Robots/Rayito2/main.c
+E28 text0 CODE >620:/home/newtonis/Robots/Rayito2/main.c
+E2A text0 CODE >621:/home/newtonis/Robots/Rayito2/main.c
+E2C text0 CODE >622:/home/newtonis/Robots/Rayito2/main.c
+E2E text0 CODE >623:/home/newtonis/Robots/Rayito2/main.c
+E38 text0 CODE >626:/home/newtonis/Robots/Rayito2/main.c
+E3C text0 CODE >628:/home/newtonis/Robots/Rayito2/main.c
+E48 text0 CODE >629:/home/newtonis/Robots/Rayito2/main.c
+E52 text0 CODE >630:/home/newtonis/Robots/Rayito2/main.c
+E5E text0 CODE >632:/home/newtonis/Robots/Rayito2/main.c
+E82 text0 CODE >633:/home/newtonis/Robots/Rayito2/main.c
+EAA text0 CODE >634:/home/newtonis/Robots/Rayito2/main.c
+EC8 text0 CODE >636:/home/newtonis/Robots/Rayito2/main.c
+EEA text0 CODE >637:/home/newtonis/Robots/Rayito2/main.c
+EEE text0 CODE >638:/home/newtonis/Robots/Rayito2/main.c
+EF2 text0 CODE >639:/home/newtonis/Robots/Rayito2/main.c
+F04 text0 CODE >640:/home/newtonis/Robots/Rayito2/main.c
+F08 text0 CODE >642:/home/newtonis/Robots/Rayito2/main.c
+FFC text0 CODE >644:/home/newtonis/Robots/Rayito2/main.c
+1006 text0 CODE >645:/home/newtonis/Robots/Rayito2/main.c
+1018 text0 CODE >647:/home/newtonis/Robots/Rayito2/main.c
+102C text0 CODE >651:/home/newtonis/Robots/Rayito2/main.c
+1038 text0 CODE >652:/home/newtonis/Robots/Rayito2/main.c
+1058 text0 CODE >653:/home/newtonis/Robots/Rayito2/main.c
+106A text0 CODE >654:/home/newtonis/Robots/Rayito2/main.c
+1074 text0 CODE >655:/home/newtonis/Robots/Rayito2/main.c
+1076 text0 CODE >657:/home/newtonis/Robots/Rayito2/main.c
+1174 text0 CODE >658:/home/newtonis/Robots/Rayito2/main.c
+11EA text0 CODE >659:/home/newtonis/Robots/Rayito2/main.c
+11F0 text0 CODE >660:/home/newtonis/Robots/Rayito2/main.c
+11FC text0 CODE >663:/home/newtonis/Robots/Rayito2/main.c
+1200 text0 CODE >665:/home/newtonis/Robots/Rayito2/main.c
+120C text0 CODE >666:/home/newtonis/Robots/Rayito2/main.c
+14DA text0 CODE >667:/home/newtonis/Robots/Rayito2/main.c
+14E6 text0 CODE >669:/home/newtonis/Robots/Rayito2/main.c
+14EA text0 CODE >670:/home/newtonis/Robots/Rayito2/main.c
+14F4 text0 CODE >671:/home/newtonis/Robots/Rayito2/main.c
+1500 text0 CODE >682:/home/newtonis/Robots/Rayito2/main.c
+1522 text0 CODE >683:/home/newtonis/Robots/Rayito2/main.c
+1534 text0 CODE >684:/home/newtonis/Robots/Rayito2/main.c
+1538 text0 CODE >685:/home/newtonis/Robots/Rayito2/main.c
+153C text0 CODE >687:/home/newtonis/Robots/Rayito2/main.c
+1542 text0 CODE >688:/home/newtonis/Robots/Rayito2/main.c
+15A2 text0 CODE >690:/home/newtonis/Robots/Rayito2/main.c
+1658 text0 CODE >691:/home/newtonis/Robots/Rayito2/main.c
+165A text0 CODE >692:/home/newtonis/Robots/Rayito2/main.c
+165C text0 CODE >693:/home/newtonis/Robots/Rayito2/main.c
+165E text0 CODE >694:/home/newtonis/Robots/Rayito2/main.c
+1660 text0 CODE >695:/home/newtonis/Robots/Rayito2/main.c
+1662 text0 CODE >696:/home/newtonis/Robots/Rayito2/main.c
+1664 text0 CODE >697:/home/newtonis/Robots/Rayito2/main.c
+1666 text0 CODE >698:/home/newtonis/Robots/Rayito2/main.c
+166E text0 CODE >699:/home/newtonis/Robots/Rayito2/main.c
+166E text0 CODE >700:/home/newtonis/Robots/Rayito2/main.c
+167A text0 CODE >701:/home/newtonis/Robots/Rayito2/main.c
+1686 text0 CODE >703:/home/newtonis/Robots/Rayito2/main.c
+1688 text0 CODE >704:/home/newtonis/Robots/Rayito2/main.c
+168A text0 CODE >705:/home/newtonis/Robots/Rayito2/main.c
+168C text0 CODE >706:/home/newtonis/Robots/Rayito2/main.c
+168E text0 CODE >708:/home/newtonis/Robots/Rayito2/main.c
+1696 text0 CODE >709:/home/newtonis/Robots/Rayito2/main.c
+16A2 text0 CODE >710:/home/newtonis/Robots/Rayito2/main.c
+16B0 text0 CODE >716:/home/newtonis/Robots/Rayito2/main.c
+16B4 text0 CODE >737:/home/newtonis/Robots/Rayito2/main.c
+16C0 text0 CODE >738:/home/newtonis/Robots/Rayito2/main.c
+17A8 text0 CODE >739:/home/newtonis/Robots/Rayito2/main.c
+17B2 text0 CODE >740:/home/newtonis/Robots/Rayito2/main.c
+17C4 text0 CODE >741:/home/newtonis/Robots/Rayito2/main.c
+17D6 text0 CODE >742:/home/newtonis/Robots/Rayito2/main.c
+17D8 text0 CODE >743:/home/newtonis/Robots/Rayito2/main.c
+17DE text0 CODE >744:/home/newtonis/Robots/Rayito2/main.c
+17E4 text0 CODE >745:/home/newtonis/Robots/Rayito2/main.c
+17F0 text0 CODE >746:/home/newtonis/Robots/Rayito2/main.c
+17F2 text0 CODE >747:/home/newtonis/Robots/Rayito2/main.c
+1AC2 text0 CODE >749:/home/newtonis/Robots/Rayito2/main.c
+1AD6 text0 CODE >750:/home/newtonis/Robots/Rayito2/main.c
+1AD8 text0 CODE >752:/home/newtonis/Robots/Rayito2/main.c
+1AE4 text0 CODE >753:/home/newtonis/Robots/Rayito2/main.c
+1B04 text0 CODE >754:/home/newtonis/Robots/Rayito2/main.c
+1B16 text0 CODE >755:/home/newtonis/Robots/Rayito2/main.c
+1B20 text0 CODE >756:/home/newtonis/Robots/Rayito2/main.c
+1B22 text0 CODE >758:/home/newtonis/Robots/Rayito2/main.c
+1B64 text0 CODE >759:/home/newtonis/Robots/Rayito2/main.c
+1B70 text0 CODE >760:/home/newtonis/Robots/Rayito2/main.c
+1B7A text0 CODE >761:/home/newtonis/Robots/Rayito2/main.c
+1B84 text0 CODE >764:/home/newtonis/Robots/Rayito2/main.c
+1B86 text0 CODE >767:/home/newtonis/Robots/Rayito2/main.c
+1B86 text0 CODE >768:/home/newtonis/Robots/Rayito2/main.c
+1B8A text0 CODE >769:/home/newtonis/Robots/Rayito2/main.c
+1B94 text0 CODE >770:/home/newtonis/Robots/Rayito2/main.c
+1BA0 text0 CODE >772:/home/newtonis/Robots/Rayito2/main.c
+1BA2 text0 CODE >774:/home/newtonis/Robots/Rayito2/main.c
+1BA4 text0 CODE >775:/home/newtonis/Robots/Rayito2/main.c
+1BC2 text0 CODE >776:/home/newtonis/Robots/Rayito2/main.c
+1BD4 text0 CODE >777:/home/newtonis/Robots/Rayito2/main.c
+1BD8 text0 CODE >778:/home/newtonis/Robots/Rayito2/main.c
+1BDE text0 CODE >786:/home/newtonis/Robots/Rayito2/main.c
+1BDE text0 CODE >787:/home/newtonis/Robots/Rayito2/main.c
+1BE4 text0 CODE >788:/home/newtonis/Robots/Rayito2/main.c
+1BEE text0 CODE >790:/home/newtonis/Robots/Rayito2/main.c
+1BFA text0 CODE >792:/home/newtonis/Robots/Rayito2/main.c
+1C18 text0 CODE >793:/home/newtonis/Robots/Rayito2/main.c
+1C44 text0 CODE >794:/home/newtonis/Robots/Rayito2/main.c
+1C70 text0 CODE >796:/home/newtonis/Robots/Rayito2/main.c
+1C92 text0 CODE >797:/home/newtonis/Robots/Rayito2/main.c
+1D16 text0 CODE >799:/home/newtonis/Robots/Rayito2/main.c
+1D24 text0 CODE >800:/home/newtonis/Robots/Rayito2/main.c
+1D56 text0 CODE >801:/home/newtonis/Robots/Rayito2/main.c
+1D58 text0 CODE >802:/home/newtonis/Robots/Rayito2/main.c
+1D76 text0 CODE >804:/home/newtonis/Robots/Rayito2/main.c
+1D82 text0 CODE >805:/home/newtonis/Robots/Rayito2/main.c
+1E6A text0 CODE >806:/home/newtonis/Robots/Rayito2/main.c
+1E74 text0 CODE >807:/home/newtonis/Robots/Rayito2/main.c
+1E86 text0 CODE >808:/home/newtonis/Robots/Rayito2/main.c
+1E88 text0 CODE >809:/home/newtonis/Robots/Rayito2/main.c
+1E8E text0 CODE >811:/home/newtonis/Robots/Rayito2/main.c
+1E90 text0 CODE >813:/home/newtonis/Robots/Rayito2/main.c
+1E9C text0 CODE >814:/home/newtonis/Robots/Rayito2/main.c
+1EBC text0 CODE >815:/home/newtonis/Robots/Rayito2/main.c
+1ECE text0 CODE >816:/home/newtonis/Robots/Rayito2/main.c
+1ED8 text0 CODE >817:/home/newtonis/Robots/Rayito2/main.c
+1EDA text0 CODE >819:/home/newtonis/Robots/Rayito2/main.c
+1EE8 text0 CODE >820:/home/newtonis/Robots/Rayito2/main.c
+1EF2 text0 CODE >821:/home/newtonis/Robots/Rayito2/main.c
+1EFE text0 CODE >823:/home/newtonis/Robots/Rayito2/main.c
+1F1E text0 CODE >827:/home/newtonis/Robots/Rayito2/main.c
+1F32 text0 CODE >829:/home/newtonis/Robots/Rayito2/main.c
+1F3A text0 CODE >833:/home/newtonis/Robots/Rayito2/main.c
+1F3C text0 CODE >341:/home/newtonis/Robots/Rayito2/main.c
+1FB0 text0 CODE >336:/home/newtonis/Robots/Rayito2/main.c
+1FB2 text0 CODE >835:/home/newtonis/Robots/Rayito2/main.c
+1FB6 text22 CODE >247:/home/newtonis/Robots/Rayito2/main.c
+1FB6 text22 CODE >248:/home/newtonis/Robots/Rayito2/main.c
+1FC8 text22 CODE >249:/home/newtonis/Robots/Rayito2/main.c
+1FDA text22 CODE >250:/home/newtonis/Robots/Rayito2/main.c
+1FE0 text22 CODE >254:/home/newtonis/Robots/Rayito2/main.c
+2004 text22 CODE >255:/home/newtonis/Robots/Rayito2/main.c
+2022 text22 CODE >256:/home/newtonis/Robots/Rayito2/main.c
+204E text22 CODE >257:/home/newtonis/Robots/Rayito2/main.c
+209C text22 CODE >258:/home/newtonis/Robots/Rayito2/main.c
+20CA text22 CODE >260:/home/newtonis/Robots/Rayito2/main.c
+2118 text22 CODE >261:/home/newtonis/Robots/Rayito2/main.c
+2146 text22 CODE >263:/home/newtonis/Robots/Rayito2/main.c
+2188 text22 CODE >264:/home/newtonis/Robots/Rayito2/main.c
+21BC text22 CODE >265:/home/newtonis/Robots/Rayito2/main.c
+2238 text22 CODE >266:/home/newtonis/Robots/Rayito2/main.c
+227A text22 CODE >267:/home/newtonis/Robots/Rayito2/main.c
+2298 text22 CODE >268:/home/newtonis/Robots/Rayito2/main.c
+22AC text22 CODE >270:/home/newtonis/Robots/Rayito2/main.c
+22CA text22 CODE >271:/home/newtonis/Robots/Rayito2/main.c
+22F4 text22 CODE >274:/home/newtonis/Robots/Rayito2/main.c
+2330 text22 CODE >275:/home/newtonis/Robots/Rayito2/main.c
+2350 text22 CODE >276:/home/newtonis/Robots/Rayito2/main.c
+236E text22 CODE >277:/home/newtonis/Robots/Rayito2/main.c
+2376 text22 CODE >254:/home/newtonis/Robots/Rayito2/main.c
+238C text22 CODE >281:/home/newtonis/Robots/Rayito2/main.c
+23B0 text22 CODE >282:/home/newtonis/Robots/Rayito2/main.c
+23CE text22 CODE >283:/home/newtonis/Robots/Rayito2/main.c
+23FA text22 CODE >284:/home/newtonis/Robots/Rayito2/main.c
+2476 text22 CODE >285:/home/newtonis/Robots/Rayito2/main.c
+24F2 text22 CODE >286:/home/newtonis/Robots/Rayito2/main.c
+2626 text22 CODE >287:/home/newtonis/Robots/Rayito2/main.c
+2644 text22 CODE >281:/home/newtonis/Robots/Rayito2/main.c
+265A text22 CODE >290:/home/newtonis/Robots/Rayito2/main.c
+2664 text22 CODE >291:/home/newtonis/Robots/Rayito2/main.c
+2682 text22 CODE >292:/home/newtonis/Robots/Rayito2/main.c
+2684 text22 CODE >294:/home/newtonis/Robots/Rayito2/main.c
+26B0 text22 CODE >295:/home/newtonis/Robots/Rayito2/main.c
+26B2 text13 CODE >464:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26B2 text13 CODE >533:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26BA text13 CODE >536:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26BC text13 CODE >538:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26C4 text13 CODE >541:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26CA text13 CODE >542:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26CC text13 CODE >546:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26D4 text13 CODE >548:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26D8 text13 CODE >551:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26DA text13 CODE >580:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26DC text13 CODE >581:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26E0 text13 CODE >582:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26E2 text13 CODE >584:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26E4 text13 CODE >551:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26F6 text13 CODE >585:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26F8 text13 CODE >586:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+26FA text13 CODE >597:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+270E text13 CODE >598:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2718 text13 CODE >600:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2734 text13 CODE >601:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2760 text13 CODE >602:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2776 text13 CODE >635:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2778 text13 CODE >638:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+277A text13 CODE >699:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+277C text13 CODE >813:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+277E text13 CODE >818:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2780 text13 CODE >822:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2782 text13 CODE >635:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27B0 text13 CODE >822:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27B0 text13 CODE >1251:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27B4 text13 CODE >1259:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27CC text13 CODE >1261:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27D0 text13 CODE >1262:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27D4 text13 CODE >1263:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27DC text13 CODE >1266:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27DE text13 CODE >1286:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+27F8 text13 CODE >1305:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2808 text13 CODE >1306:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+282A text13 CODE >1307:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+282C text13 CODE >1305:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2830 text13 CODE >1345:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2844 text13 CODE >1346:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+284C text13 CODE >1381:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2862 text13 CODE >1382:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2870 text13 CODE >1384:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+287A text13 CODE >1387:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+287E text13 CODE >1392:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+288A text13 CODE >1393:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2892 text13 CODE >1415:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+289A text13 CODE >1417:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28A0 text13 CODE >1418:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28B0 text13 CODE >1420:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28B2 text13 CODE >1428:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28BA text13 CODE >1430:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28C0 text13 CODE >1431:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28D2 text13 CODE >1438:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28DE text13 CODE >1439:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28E6 text13 CODE >1472:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28EA text13 CODE >1474:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+28EC text13 CODE >1489:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+292E text13 CODE >1524:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2936 text13 CODE >1474:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2942 text13 CODE >536:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+295E text13 CODE >1541:/opt/microchip/xc8/v1.34/sources/common/doprnt.c
+2960 text33 CODE >86:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2960 text33 CODE >90:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2974 text33 CODE >91:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2988 text33 CODE >92:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29A4 text33 CODE >93:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29B2 text33 CODE >94:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29CE text33 CODE >95:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29DC text33 CODE >96:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29E0 text33 CODE >97:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29E4 text33 CODE >98:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29E8 text33 CODE >99:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29EA text33 CODE >100:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29EC text33 CODE >101:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29EE text33 CODE >102:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29FA text33 CODE >103:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+29FC text33 CODE >104:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A08 text33 CODE >106:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A10 text33 CODE >110:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A18 text33 CODE >111:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A1A text33 CODE >112:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A32 text33 CODE >113:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A34 text33 CODE >114:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A3C text33 CODE >115:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A40 text33 CODE >113:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A4A text33 CODE >117:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A54 text33 CODE >121:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A5C text33 CODE >122:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A5E text33 CODE >123:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A76 text33 CODE >124:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A78 text33 CODE >125:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A80 text33 CODE >126:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A84 text33 CODE >124:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A90 text33 CODE >129:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2A94 text33 CODE >131:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AA0 text33 CODE >132:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AAC text33 CODE >133:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AAC text33 CODE >134:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AB0 text33 CODE >136:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2ABC text33 CODE >137:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2ACA text33 CODE >139:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2ACE text33 CODE >140:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2ADA text33 CODE >141:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2ADE text33 CODE >142:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AEA text33 CODE >143:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AF6 text33 CODE >144:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2AFC text33 CODE >146:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2B22 text33 CODE >148:/opt/microchip/xc8/v1.34/sources/common/ftadd.c
+2B24 text30 CODE >297:/home/newtonis/Robots/Rayito2/main.c
+2B24 text30 CODE >301:/home/newtonis/Robots/Rayito2/main.c
+2B2C text30 CODE >302:/home/newtonis/Robots/Rayito2/main.c
+2B38 text30 CODE >303:/home/newtonis/Robots/Rayito2/main.c
+2B44 text30 CODE >305:/home/newtonis/Robots/Rayito2/main.c
+2B60 text30 CODE >306:/home/newtonis/Robots/Rayito2/main.c
+2BE4 text30 CODE >307:/home/newtonis/Robots/Rayito2/main.c
+2BF2 text30 CODE >308:/home/newtonis/Robots/Rayito2/main.c
+2C1E text30 CODE >309:/home/newtonis/Robots/Rayito2/main.c
+2C20 text30 CODE >310:/home/newtonis/Robots/Rayito2/main.c
+2C3E text30 CODE >312:/home/newtonis/Robots/Rayito2/main.c
+2C46 text30 CODE >313:/home/newtonis/Robots/Rayito2/main.c
+2C48 text31 CODE >44:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2C48 text31 CODE >49:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2C66 text31 CODE >50:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2C6A text31 CODE >51:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2C92 text31 CODE >52:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2C94 text31 CODE >53:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CA0 text31 CODE >54:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CB6 text31 CODE >55:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CBC text31 CODE >56:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CC2 text31 CODE >57:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CCE text31 CODE >58:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CD4 text31 CODE >60:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CE0 text31 CODE >61:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CE6 text31 CODE >62:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CE8 text31 CODE >63:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2CF0 text31 CODE >64:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D02 text31 CODE >65:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D04 text31 CODE >66:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D10 text31 CODE >67:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D16 text31 CODE >65:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D24 text31 CODE >70:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D2E text31 CODE >71:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D42 text31 CODE >72:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D54 text31 CODE >73:/opt/microchip/xc8/v1.34/sources/common/fttol.c
+2D56 text10 CODE >237:/home/newtonis/Robots/Rayito2/main.c
+2D56 text10 CODE >238:/home/newtonis/Robots/Rayito2/main.c
+2D72 text10 CODE >239:/home/newtonis/Robots/Rayito2/main.c
+2DF6 text10 CODE >240:/home/newtonis/Robots/Rayito2/main.c
+2E04 text10 CODE >241:/home/newtonis/Robots/Rayito2/main.c
+2E2C text10 CODE >242:/home/newtonis/Robots/Rayito2/main.c
+2E2E text10 CODE >243:/home/newtonis/Robots/Rayito2/main.c
+2E48 text10 CODE >245:/home/newtonis/Robots/Rayito2/main.c
+2E50 text10 CODE >246:/home/newtonis/Robots/Rayito2/main.c
+2E52 text32 CODE >62:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2E52 text32 CODE >67:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2E6C text32 CODE >68:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2E70 text32 CODE >69:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2E8A text32 CODE >70:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2E98 text32 CODE >71:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2E9E text32 CODE >72:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EA2 text32 CODE >73:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EA6 text32 CODE >74:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EAA text32 CODE >75:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EAC text32 CODE >77:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EAE text32 CODE >78:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EBA text32 CODE >79:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EC6 text32 CODE >134:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2ECC text32 CODE >136:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2ED0 text32 CODE >137:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EDE text32 CODE >138:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EE6 text32 CODE >139:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EEE text32 CODE >140:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EF4 text32 CODE >143:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EFA text32 CODE >145:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2EFE text32 CODE >146:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2F0C text32 CODE >147:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2F14 text32 CODE >148:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2F1C text32 CODE >149:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2F22 text32 CODE >156:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2F48 text32 CODE >157:/opt/microchip/xc8/v1.34/sources/common/ftmul.c
+2F4A text24 CODE >8:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F4A text24 CODE >14:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F4E text24 CODE >15:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F52 text24 CODE >16:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F62 text24 CODE >17:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F68 text24 CODE >19:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F6C text24 CODE >20:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F7C text24 CODE >21:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F82 text24 CODE >23:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F92 text24 CODE >24:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2F9E text24 CODE >25:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FA2 text24 CODE >26:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FA4 text24 CODE >27:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FAE text24 CODE >28:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FB2 text24 CODE >26:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FBA text24 CODE >31:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FC4 text24 CODE >32:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FD8 text24 CODE >33:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FE8 text24 CODE >34:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FEC text24 CODE >36:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FF6 text24 CODE >37:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+2FFC text24 CODE >39:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+3002 text24 CODE >40:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+3014 text24 CODE >41:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+3026 text24 CODE >42:/opt/microchip/xc8/v1.34/sources/common/aldiv.c
+3028 text35 CODE >62:/opt/microchip/xc8/v1.34/sources/common/float.c
+3028 text35 CODE >64:/opt/microchip/xc8/v1.34/sources/common/float.c
+3038 text35 CODE >65:/opt/microchip/xc8/v1.34/sources/common/float.c
+3046 text35 CODE >66:/opt/microchip/xc8/v1.34/sources/common/float.c
+3048 text35 CODE >67:/opt/microchip/xc8/v1.34/sources/common/float.c
+304A text35 CODE >68:/opt/microchip/xc8/v1.34/sources/common/float.c
+3054 text35 CODE >66:/opt/microchip/xc8/v1.34/sources/common/float.c
+3072 text35 CODE >70:/opt/microchip/xc8/v1.34/sources/common/float.c
+3074 text35 CODE >71:/opt/microchip/xc8/v1.34/sources/common/float.c
+3076 text35 CODE >72:/opt/microchip/xc8/v1.34/sources/common/float.c
+3082 text35 CODE >73:/opt/microchip/xc8/v1.34/sources/common/float.c
+308C text35 CODE >70:/opt/microchip/xc8/v1.34/sources/common/float.c
+30AA text35 CODE >75:/opt/microchip/xc8/v1.34/sources/common/float.c
+30AC text35 CODE >76:/opt/microchip/xc8/v1.34/sources/common/float.c
+30AE text35 CODE >77:/opt/microchip/xc8/v1.34/sources/common/float.c
+30B8 text35 CODE >75:/opt/microchip/xc8/v1.34/sources/common/float.c
+30C4 text35 CODE >79:/opt/microchip/xc8/v1.34/sources/common/float.c
+30C8 text35 CODE >80:/opt/microchip/xc8/v1.34/sources/common/float.c
+30CC text35 CODE >81:/opt/microchip/xc8/v1.34/sources/common/float.c
+30D0 text35 CODE >82:/opt/microchip/xc8/v1.34/sources/common/float.c
+30D4 text35 CODE >83:/opt/microchip/xc8/v1.34/sources/common/float.c
+30DA text35 CODE >84:/opt/microchip/xc8/v1.34/sources/common/float.c
+30DE text35 CODE >85:/opt/microchip/xc8/v1.34/sources/common/float.c
+30EC text35 CODE >86:/opt/microchip/xc8/v1.34/sources/common/float.c
+30EE text8 CODE >8:/opt/microchip/xc8/v1.34/sources/common/almod.c
+30EE text8 CODE >13:/opt/microchip/xc8/v1.34/sources/common/almod.c
+30F2 text8 CODE >14:/opt/microchip/xc8/v1.34/sources/common/almod.c
+30F6 text8 CODE >15:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3106 text8 CODE >16:/opt/microchip/xc8/v1.34/sources/common/almod.c
+310C text8 CODE >18:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3110 text8 CODE >19:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3122 text8 CODE >20:/opt/microchip/xc8/v1.34/sources/common/almod.c
+312E text8 CODE >21:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3132 text8 CODE >22:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3134 text8 CODE >23:/opt/microchip/xc8/v1.34/sources/common/almod.c
+313E text8 CODE >24:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3142 text8 CODE >22:/opt/microchip/xc8/v1.34/sources/common/almod.c
+314A text8 CODE >27:/opt/microchip/xc8/v1.34/sources/common/almod.c
+315E text8 CODE >28:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3170 text8 CODE >29:/opt/microchip/xc8/v1.34/sources/common/almod.c
+317A text8 CODE >30:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3180 text8 CODE >32:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3186 text8 CODE >33:/opt/microchip/xc8/v1.34/sources/common/almod.c
+3198 text8 CODE >34:/opt/microchip/xc8/v1.34/sources/common/almod.c
+31AA text8 CODE >35:/opt/microchip/xc8/v1.34/sources/common/almod.c
+31AC intcode_body CODE >116:/home/newtonis/Robots/Rayito2/main.c
+31DA intcode_body CODE >117:/home/newtonis/Robots/Rayito2/main.c
+31DE intcode_body CODE >118:/home/newtonis/Robots/Rayito2/main.c
+31EC intcode_body CODE >119:/home/newtonis/Robots/Rayito2/main.c
+31FA intcode_body CODE >120:/home/newtonis/Robots/Rayito2/main.c
+3208 intcode_body CODE >121:/home/newtonis/Robots/Rayito2/main.c
+3216 intcode_body CODE >122:/home/newtonis/Robots/Rayito2/main.c
+3224 intcode_body CODE >123:/home/newtonis/Robots/Rayito2/main.c
+3228 intcode_body CODE >124:/home/newtonis/Robots/Rayito2/main.c
+322C intcode_body CODE >125:/home/newtonis/Robots/Rayito2/main.c
+3230 intcode_body CODE >127:/home/newtonis/Robots/Rayito2/main.c
+326A text37 CODE >181:/home/newtonis/Robots/Rayito2/config.c
+326A text37 CODE >182:/home/newtonis/Robots/Rayito2/config.c
+3272 text37 CODE >183:/home/newtonis/Robots/Rayito2/config.c
+328C text37 CODE >184:/home/newtonis/Robots/Rayito2/config.c
+32A6 text37 CODE >186:/home/newtonis/Robots/Rayito2/config.c
+32CA text37 CODE >187:/home/newtonis/Robots/Rayito2/config.c
+32E6 text37 CODE >189:/home/newtonis/Robots/Rayito2/config.c
+32FA text37 CODE >190:/home/newtonis/Robots/Rayito2/config.c
+3312 text37 CODE >191:/home/newtonis/Robots/Rayito2/config.c
+3314 text38 CODE >170:/home/newtonis/Robots/Rayito2/config.c
+3314 text38 CODE >171:/home/newtonis/Robots/Rayito2/config.c
+331C text38 CODE >172:/home/newtonis/Robots/Rayito2/config.c
+3336 text38 CODE >173:/home/newtonis/Robots/Rayito2/config.c
+3350 text38 CODE >175:/home/newtonis/Robots/Rayito2/config.c
+3372 text38 CODE >176:/home/newtonis/Robots/Rayito2/config.c
+338E text38 CODE >178:/home/newtonis/Robots/Rayito2/config.c
+33A4 text38 CODE >179:/home/newtonis/Robots/Rayito2/config.c
+33BC text38 CODE >180:/home/newtonis/Robots/Rayito2/config.c
+33BE text39 CODE >8:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33BE text39 CODE >14:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33C2 text39 CODE >15:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33C6 text39 CODE >16:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33CE text39 CODE >17:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33D4 text39 CODE >19:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33D8 text39 CODE >20:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33E0 text39 CODE >21:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33E6 text39 CODE >23:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33EE text39 CODE >24:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33F6 text39 CODE >25:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33FA text39 CODE >26:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+33FC text39 CODE >27:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3402 text39 CODE >28:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3406 text39 CODE >26:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+340E text39 CODE >31:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3414 text39 CODE >32:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3420 text39 CODE >33:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3428 text39 CODE >34:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+342C text39 CODE >36:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3432 text39 CODE >37:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3438 text39 CODE >39:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+343E text39 CODE >40:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3448 text39 CODE >41:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3452 text39 CODE >42:/opt/microchip/xc8/v1.34/sources/common/awdiv.c
+3454 cinit CODE >2563:/home/newtonis/Robots/Rayito2/main.as
+3454 cinit CODE >2565:/home/newtonis/Robots/Rayito2/main.as
+3454 cinit CODE >2568:/home/newtonis/Robots/Rayito2/main.as
+3454 cinit CODE >2800:/home/newtonis/Robots/Rayito2/main.as
+3458 cinit CODE >2801:/home/newtonis/Robots/Rayito2/main.as
+345A cinit CODE >2802:/home/newtonis/Robots/Rayito2/main.as
+345A cinit CODE >2803:/home/newtonis/Robots/Rayito2/main.as
+345C cinit CODE >2804:/home/newtonis/Robots/Rayito2/main.as
+345E cinit CODE >2805:/home/newtonis/Robots/Rayito2/main.as
+3460 cinit CODE >2808:/home/newtonis/Robots/Rayito2/main.as
+3464 cinit CODE >2809:/home/newtonis/Robots/Rayito2/main.as
+3466 cinit CODE >2810:/home/newtonis/Robots/Rayito2/main.as
+3466 cinit CODE >2811:/home/newtonis/Robots/Rayito2/main.as
+3468 cinit CODE >2812:/home/newtonis/Robots/Rayito2/main.as
+346A cinit CODE >2813:/home/newtonis/Robots/Rayito2/main.as
+346C cinit CODE >2816:/home/newtonis/Robots/Rayito2/main.as
+3470 cinit CODE >2817:/home/newtonis/Robots/Rayito2/main.as
+3472 cinit CODE >2818:/home/newtonis/Robots/Rayito2/main.as
+3472 cinit CODE >2819:/home/newtonis/Robots/Rayito2/main.as
+3474 cinit CODE >2820:/home/newtonis/Robots/Rayito2/main.as
+3476 cinit CODE >2821:/home/newtonis/Robots/Rayito2/main.as
+3478 cinit CODE >2824:/home/newtonis/Robots/Rayito2/main.as
+347C cinit CODE >2825:/home/newtonis/Robots/Rayito2/main.as
+347E cinit CODE >2826:/home/newtonis/Robots/Rayito2/main.as
+347E cinit CODE >2827:/home/newtonis/Robots/Rayito2/main.as
+3480 cinit CODE >2828:/home/newtonis/Robots/Rayito2/main.as
+3482 cinit CODE >2829:/home/newtonis/Robots/Rayito2/main.as
+3484 cinit CODE >2834:/home/newtonis/Robots/Rayito2/main.as
+3486 cinit CODE >2835:/home/newtonis/Robots/Rayito2/main.as
+3488 cinit CODE >2836:/home/newtonis/Robots/Rayito2/main.as
+348A cinit CODE >2837:/home/newtonis/Robots/Rayito2/main.as
+348C cinit CODE >2838:/home/newtonis/Robots/Rayito2/main.as
+348E cinit CODE >2839:/home/newtonis/Robots/Rayito2/main.as
+3490 cinit CODE >2840:/home/newtonis/Robots/Rayito2/main.as
+3494 cinit CODE >2841:/home/newtonis/Robots/Rayito2/main.as
+3498 cinit CODE >2842:/home/newtonis/Robots/Rayito2/main.as
+3498 cinit CODE >2843:/home/newtonis/Robots/Rayito2/main.as
+349A cinit CODE >2844:/home/newtonis/Robots/Rayito2/main.as
+349E cinit CODE >2845:/home/newtonis/Robots/Rayito2/main.as
+34A0 cinit CODE >2846:/home/newtonis/Robots/Rayito2/main.as
+34A2 cinit CODE >2847:/home/newtonis/Robots/Rayito2/main.as
+34A4 cinit CODE >2851:/home/newtonis/Robots/Rayito2/main.as
+34A6 cinit CODE >2852:/home/newtonis/Robots/Rayito2/main.as
+34A8 cinit CODE >2853:/home/newtonis/Robots/Rayito2/main.as
+34AA cinit CODE >2854:/home/newtonis/Robots/Rayito2/main.as
+34AC cinit CODE >2855:/home/newtonis/Robots/Rayito2/main.as
+34AE cinit CODE >2856:/home/newtonis/Robots/Rayito2/main.as
+34B0 cinit CODE >2857:/home/newtonis/Robots/Rayito2/main.as
+34B4 cinit CODE >2858:/home/newtonis/Robots/Rayito2/main.as
+34B8 cinit CODE >2859:/home/newtonis/Robots/Rayito2/main.as
+34B8 cinit CODE >2860:/home/newtonis/Robots/Rayito2/main.as
+34BA cinit CODE >2861:/home/newtonis/Robots/Rayito2/main.as
+34BE cinit CODE >2862:/home/newtonis/Robots/Rayito2/main.as
+34C0 cinit CODE >2863:/home/newtonis/Robots/Rayito2/main.as
+34C2 cinit CODE >2864:/home/newtonis/Robots/Rayito2/main.as
+34C4 cinit CODE >2870:/home/newtonis/Robots/Rayito2/main.as
+34C4 cinit CODE >2872:/home/newtonis/Robots/Rayito2/main.as
+34C6 cinit CODE >2873:/home/newtonis/Robots/Rayito2/main.as
+34C8 cinit CODE >2874:/home/newtonis/Robots/Rayito2/main.as
+34CA cinit CODE >2875:/home/newtonis/Robots/Rayito2/main.as
+34CE text11 CODE >206:/home/newtonis/Robots/Rayito2/main.c
+34CE text11 CODE >207:/home/newtonis/Robots/Rayito2/main.c
+34EA text11 CODE >208:/home/newtonis/Robots/Rayito2/main.c
+34F4 text11 CODE >210:/home/newtonis/Robots/Rayito2/main.c
+34FE text11 CODE >211:/home/newtonis/Robots/Rayito2/main.c
+3520 text11 CODE >210:/home/newtonis/Robots/Rayito2/main.c
+353A text11 CODE >213:/home/newtonis/Robots/Rayito2/main.c
+353E text11 CODE >214:/home/newtonis/Robots/Rayito2/main.c
+3540 text27 CODE >198:/home/newtonis/Robots/Rayito2/config.c
+3540 text27 CODE >201:/home/newtonis/Robots/Rayito2/config.c
+354C text27 CODE >202:/home/newtonis/Robots/Rayito2/config.c
+355E text27 CODE >203:/home/newtonis/Robots/Rayito2/config.c
+3560 text27 CODE >204:/home/newtonis/Robots/Rayito2/config.c
+3566 text27 CODE >205:/home/newtonis/Robots/Rayito2/config.c
+3572 text27 CODE >206:/home/newtonis/Robots/Rayito2/config.c
+3590 text27 CODE >207:/home/newtonis/Robots/Rayito2/config.c
+35A8 text27 CODE >201:/home/newtonis/Robots/Rayito2/config.c
+35AC text27 CODE >209:/home/newtonis/Robots/Rayito2/config.c
+35AE text5 CODE >46:/home/newtonis/Robots/Rayito2/config.c
+35AE text5 CODE >47:/home/newtonis/Robots/Rayito2/config.c
+35B0 text5 CODE >48:/home/newtonis/Robots/Rayito2/config.c
+35B2 text5 CODE >49:/home/newtonis/Robots/Rayito2/config.c
+35B4 text5 CODE >51:/home/newtonis/Robots/Rayito2/config.c
+35B6 text5 CODE >52:/home/newtonis/Robots/Rayito2/config.c
+35BA text5 CODE >53:/home/newtonis/Robots/Rayito2/config.c
+35BE text5 CODE >56:/home/newtonis/Robots/Rayito2/config.c
+35C0 text5 CODE >57:/home/newtonis/Robots/Rayito2/config.c
+35C2 text5 CODE >58:/home/newtonis/Robots/Rayito2/config.c
+35C4 text5 CODE >62:/home/newtonis/Robots/Rayito2/config.c
+35C6 text5 CODE >64:/home/newtonis/Robots/Rayito2/config.c
+35C8 text5 CODE >66:/home/newtonis/Robots/Rayito2/config.c
+35CA text5 CODE >67:/home/newtonis/Robots/Rayito2/config.c
+35CC text5 CODE >68:/home/newtonis/Robots/Rayito2/config.c
+35CE text5 CODE >69:/home/newtonis/Robots/Rayito2/config.c
+35D2 text5 CODE >70:/home/newtonis/Robots/Rayito2/config.c
+35D4 text5 CODE >71:/home/newtonis/Robots/Rayito2/config.c
+35D6 text5 CODE >72:/home/newtonis/Robots/Rayito2/config.c
+35D8 text5 CODE >74:/home/newtonis/Robots/Rayito2/config.c
+35DC text5 CODE >75:/home/newtonis/Robots/Rayito2/config.c
+35E0 text5 CODE >83:/home/newtonis/Robots/Rayito2/config.c
+35E2 text5 CODE >85:/home/newtonis/Robots/Rayito2/config.c
+35E4 text5 CODE >86:/home/newtonis/Robots/Rayito2/config.c
+35E6 text5 CODE >88:/home/newtonis/Robots/Rayito2/config.c
+35E8 text5 CODE >89:/home/newtonis/Robots/Rayito2/config.c
+35EA text5 CODE >90:/home/newtonis/Robots/Rayito2/config.c
+35EC text5 CODE >93:/home/newtonis/Robots/Rayito2/config.c
+35EE text5 CODE >94:/home/newtonis/Robots/Rayito2/config.c
+35F0 text5 CODE >95:/home/newtonis/Robots/Rayito2/config.c
+35F2 text5 CODE >96:/home/newtonis/Robots/Rayito2/config.c
+35F4 text5 CODE >99:/home/newtonis/Robots/Rayito2/config.c
+35F6 text5 CODE >100:/home/newtonis/Robots/Rayito2/config.c
+35F8 text5 CODE >103:/home/newtonis/Robots/Rayito2/config.c
+35FA text5 CODE >104:/home/newtonis/Robots/Rayito2/config.c
+35FC text5 CODE >105:/home/newtonis/Robots/Rayito2/config.c
+35FE text5 CODE >106:/home/newtonis/Robots/Rayito2/config.c
+3600 text5 CODE >107:/home/newtonis/Robots/Rayito2/config.c
+3602 text5 CODE >109:/home/newtonis/Robots/Rayito2/config.c
+3604 text5 CODE >110:/home/newtonis/Robots/Rayito2/config.c
+3606 text5 CODE >111:/home/newtonis/Robots/Rayito2/config.c
+3608 text5 CODE >112:/home/newtonis/Robots/Rayito2/config.c
+360A text5 CODE >114:/home/newtonis/Robots/Rayito2/config.c
+360C text5 CODE >119:/home/newtonis/Robots/Rayito2/config.c
+360E text5 CODE >120:/home/newtonis/Robots/Rayito2/config.c
+3610 text5 CODE >122:/home/newtonis/Robots/Rayito2/config.c
+3612 text5 CODE >123:/home/newtonis/Robots/Rayito2/config.c
+3614 text18 CODE >8:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3614 text18 CODE >14:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+361C text18 CODE >15:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3624 text18 CODE >16:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3628 text18 CODE >17:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+362A text18 CODE >18:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3630 text18 CODE >19:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3634 text18 CODE >17:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+363C text18 CODE >22:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3642 text18 CODE >23:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+364E text18 CODE >24:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3656 text18 CODE >25:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+365A text18 CODE >27:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3660 text18 CODE >28:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3666 text18 CODE >29:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3666 text18 CODE >30:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+366E text18 CODE >31:/opt/microchip/xc8/v1.34/sources/common/lwdiv.c
+3670 text7 CODE >135:/home/newtonis/Robots/Rayito2/main.c
+3670 text7 CODE >136:/home/newtonis/Robots/Rayito2/main.c
+368C text7 CODE >137:/home/newtonis/Robots/Rayito2/main.c
+36A6 text7 CODE >138:/home/newtonis/Robots/Rayito2/main.c
+36C0 text7 CODE >136:/home/newtonis/Robots/Rayito2/main.c
+36C8 text7 CODE >140:/home/newtonis/Robots/Rayito2/main.c
+36CA text23 CODE >15:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+36CA text23 CODE >119:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+36DC text23 CODE >121:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+36E0 text23 CODE >122:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+36F2 text23 CODE >123:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+36FC text23 CODE >124:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+3706 text23 CODE >125:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+3712 text23 CODE >128:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+3722 text23 CODE >129:/opt/microchip/xc8/v1.34/sources/common/Umul32.c
+3724 text12 CODE >193:/home/newtonis/Robots/Rayito2/main.c
+3724 text12 CODE >195:/home/newtonis/Robots/Rayito2/main.c
+377A text12 CODE >196:/home/newtonis/Robots/Rayito2/main.c
+377C text19 CODE >222:/home/newtonis/Robots/Rayito2/main.c
+377C text19 CODE >223:/home/newtonis/Robots/Rayito2/main.c
+3788 text19 CODE >225:/home/newtonis/Robots/Rayito2/main.c
+37D2 text19 CODE >226:/home/newtonis/Robots/Rayito2/main.c
+37D4 text28 CODE >197:/home/newtonis/Robots/Rayito2/main.c
+37D4 text28 CODE >199:/home/newtonis/Robots/Rayito2/main.c
+37DA text28 CODE >200:/home/newtonis/Robots/Rayito2/main.c
+37E8 text28 CODE >201:/home/newtonis/Robots/Rayito2/main.c
+37F0 text28 CODE >202:/home/newtonis/Robots/Rayito2/main.c
+37FE text28 CODE >203:/home/newtonis/Robots/Rayito2/main.c
+3800 text28 CODE >204:/home/newtonis/Robots/Rayito2/main.c
+3822 text28 CODE >205:/home/newtonis/Robots/Rayito2/main.c
+3824 text17 CODE >8:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3824 text17 CODE >13:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+382C text17 CODE >14:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3830 text17 CODE >15:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3832 text17 CODE >16:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3838 text17 CODE >17:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+383C text17 CODE >15:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3844 text17 CODE >20:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3850 text17 CODE >21:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+385A text17 CODE >22:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3860 text17 CODE >23:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3866 text17 CODE >24:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+3866 text17 CODE >25:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+386E text17 CODE >26:/opt/microchip/xc8/v1.34/sources/common/lwmod.c
+38BC text21 CODE >227:/home/newtonis/Robots/Rayito2/main.c
+38BC text21 CODE >228:/home/newtonis/Robots/Rayito2/main.c
+38D8 text21 CODE >230:/home/newtonis/Robots/Rayito2/main.c
+38EC text21 CODE >231:/home/newtonis/Robots/Rayito2/main.c
+3902 text21 CODE >232:/home/newtonis/Robots/Rayito2/main.c
+3904 text36 CODE >193:/home/newtonis/Robots/Rayito2/config.c
+3904 text36 CODE >194:/home/newtonis/Robots/Rayito2/config.c
+3926 text36 CODE >195:/home/newtonis/Robots/Rayito2/config.c
+3946 text36 CODE >196:/home/newtonis/Robots/Rayito2/config.c
+3948 text20 CODE >216:/home/newtonis/Robots/Rayito2/main.c
+3948 text20 CODE >217:/home/newtonis/Robots/Rayito2/main.c
+3964 text20 CODE >219:/home/newtonis/Robots/Rayito2/main.c
+3972 text20 CODE >220:/home/newtonis/Robots/Rayito2/main.c
+3988 text20 CODE >221:/home/newtonis/Robots/Rayito2/main.c
+398A text4 CODE >144:/home/newtonis/Robots/Rayito2/config.c
+398A text4 CODE >146:/home/newtonis/Robots/Rayito2/config.c
+398C text4 CODE >147:/home/newtonis/Robots/Rayito2/config.c
+398E text4 CODE >148:/home/newtonis/Robots/Rayito2/config.c
+3990 text4 CODE >149:/home/newtonis/Robots/Rayito2/config.c
+3992 text4 CODE >151:/home/newtonis/Robots/Rayito2/config.c
+3994 text4 CODE >152:/home/newtonis/Robots/Rayito2/config.c
+3996 text4 CODE >153:/home/newtonis/Robots/Rayito2/config.c
+3998 text4 CODE >155:/home/newtonis/Robots/Rayito2/config.c
+399A text4 CODE >158:/home/newtonis/Robots/Rayito2/config.c
+39A2 text4 CODE >159:/home/newtonis/Robots/Rayito2/config.c
+39AA text4 CODE >160:/home/newtonis/Robots/Rayito2/config.c
+39AC text4 CODE >161:/home/newtonis/Robots/Rayito2/config.c
+39B0 text4 CODE >162:/home/newtonis/Robots/Rayito2/config.c
+39B2 text4 CODE >165:/home/newtonis/Robots/Rayito2/config.c
+39BA text4 CODE >166:/home/newtonis/Robots/Rayito2/config.c
+39C2 text4 CODE >167:/home/newtonis/Robots/Rayito2/config.c
+39C6 text4 CODE >169:/home/newtonis/Robots/Rayito2/config.c
+39C8 text34 CODE >32:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+39C8 text34 CODE >36:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+39CC text34 CODE >37:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+39D0 text34 CODE >38:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+39D8 text34 CODE >39:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+39DE text34 CODE >41:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+3A02 text34 CODE >42:/opt/microchip/xc8/v1.34/sources/common/awtoft.c
+3A04 text6 CODE >125:/home/newtonis/Robots/Rayito2/config.c
+3A04 text6 CODE >126:/home/newtonis/Robots/Rayito2/config.c
+3A06 text6 CODE >127:/home/newtonis/Robots/Rayito2/config.c
+3A08 text6 CODE >129:/home/newtonis/Robots/Rayito2/config.c
+3A0A text6 CODE >130:/home/newtonis/Robots/Rayito2/config.c
+3A0C text6 CODE >131:/home/newtonis/Robots/Rayito2/config.c
+3A0E text6 CODE >132:/home/newtonis/Robots/Rayito2/config.c
+3A10 text6 CODE >136:/home/newtonis/Robots/Rayito2/config.c
+3A12 text6 CODE >137:/home/newtonis/Robots/Rayito2/config.c
+3A18 text6 CODE >138:/home/newtonis/Robots/Rayito2/config.c
+3A20 text6 CODE >139:/home/newtonis/Robots/Rayito2/config.c
+3A28 text6 CODE >140:/home/newtonis/Robots/Rayito2/config.c
+3A2A text6 CODE >141:/home/newtonis/Robots/Rayito2/config.c
+3A2C text6 CODE >142:/home/newtonis/Robots/Rayito2/config.c
+3A2E text1 CODE >103:/home/newtonis/Robots/Rayito2/main.c
+3A2E text1 CODE >104:/home/newtonis/Robots/Rayito2/main.c
+3A40 text1 CODE >105:/home/newtonis/Robots/Rayito2/main.c
+3A44 text1 CODE >106:/home/newtonis/Robots/Rayito2/main.c
+3A48 text1 CODE >107:/home/newtonis/Robots/Rayito2/main.c
+3A4C text1 CODE >108:/home/newtonis/Robots/Rayito2/main.c
+3A50 text1 CODE >109:/home/newtonis/Robots/Rayito2/main.c
+3A54 text1 CODE >110:/home/newtonis/Robots/Rayito2/main.c
+3A56 text16 CODE >15:/opt/microchip/xc8/v1.34/sources/common/Umul16.c
+3A56 text16 CODE >37:/opt/microchip/xc8/v1.34/sources/common/Umul16.c
+3A62 text16 CODE >38:/opt/microchip/xc8/v1.34/sources/common/Umul16.c
+3A6A text16 CODE >39:/opt/microchip/xc8/v1.34/sources/common/Umul16.c
+3A72 text16 CODE >52:/opt/microchip/xc8/v1.34/sources/common/Umul16.c
+3A7C text16 CODE >53:/opt/microchip/xc8/v1.34/sources/common/Umul16.c
+3A7E text26 CODE >210:/home/newtonis/Robots/Rayito2/config.c
+3A80 text26 CODE >211:/home/newtonis/Robots/Rayito2/config.c
+3A84 text26 CODE >212:/home/newtonis/Robots/Rayito2/config.c
+3A88 text26 CODE >213:/home/newtonis/Robots/Rayito2/config.c
+3A8A text26 CODE >214:/home/newtonis/Robots/Rayito2/config.c
+3A8C text26 CODE >215:/home/newtonis/Robots/Rayito2/config.c
+3A8E text26 CODE >216:/home/newtonis/Robots/Rayito2/config.c
+3A90 text26 CODE >217:/home/newtonis/Robots/Rayito2/config.c
+3A94 text26 CODE >218:/home/newtonis/Robots/Rayito2/config.c
+3A98 text26 CODE >219:/home/newtonis/Robots/Rayito2/config.c
+3A9A text26 CODE >220:/home/newtonis/Robots/Rayito2/config.c
+3A9C text26 CODE >221:/home/newtonis/Robots/Rayito2/config.c
+3AA2 text26 CODE >222:/home/newtonis/Robots/Rayito2/config.c
+3AA4 text26 CODE >223:/home/newtonis/Robots/Rayito2/config.c
+3AA6 text9 CODE >9:/home/newtonis/Robots/Rayito2/config.c
+3AA6 text9 CODE >10:/home/newtonis/Robots/Rayito2/config.c
+3AA8 text9 CODE >11:/home/newtonis/Robots/Rayito2/config.c
+3AAA text9 CODE >12:/home/newtonis/Robots/Rayito2/config.c
+3AAC text9 CODE >14:/home/newtonis/Robots/Rayito2/config.c
+3AAE text9 CODE >15:/home/newtonis/Robots/Rayito2/config.c
+3AB0 text9 CODE >16:/home/newtonis/Robots/Rayito2/config.c
+3AB4 text9 CODE >17:/home/newtonis/Robots/Rayito2/config.c
+3AB8 text9 CODE >18:/home/newtonis/Robots/Rayito2/config.c
+3ABA text9 CODE >19:/home/newtonis/Robots/Rayito2/config.c
+3ABC text9 CODE >20:/home/newtonis/Robots/Rayito2/config.c
+3ABE text9 CODE >21:/home/newtonis/Robots/Rayito2/config.c
+3AC0 text9 CODE >23:/home/newtonis/Robots/Rayito2/config.c
+3AC2 text9 CODE >24:/home/newtonis/Robots/Rayito2/config.c
+3AC4 text9 CODE >25:/home/newtonis/Robots/Rayito2/config.c
+3AC6 text9 CODE >26:/home/newtonis/Robots/Rayito2/config.c
+3AC8 text9 CODE >28:/home/newtonis/Robots/Rayito2/config.c
+3ACA text15 CODE >8:/opt/microchip/xc8/v1.34/sources/common/isdigit.c
+3ACC text15 CODE >14:/opt/microchip/xc8/v1.34/sources/common/isdigit.c
+3AEA text15 CODE >15:/opt/microchip/xc8/v1.34/sources/common/isdigit.c
+3AEC text29 CODE >224:/home/newtonis/Robots/Rayito2/config.c
+3AEE text29 CODE >225:/home/newtonis/Robots/Rayito2/config.c
+3AF2 text29 CODE >226:/home/newtonis/Robots/Rayito2/config.c
+3AF4 text29 CODE >227:/home/newtonis/Robots/Rayito2/config.c
+3AF6 text29 CODE >228:/home/newtonis/Robots/Rayito2/config.c
+3AF8 text29 CODE >229:/home/newtonis/Robots/Rayito2/config.c
+3AFE text29 CODE >230:/home/newtonis/Robots/Rayito2/config.c
+3B0A text29 CODE >231:/home/newtonis/Robots/Rayito2/config.c
+3B0C text25 CODE >82:/home/newtonis/Robots/Rayito2/main.c
+3B0C text25 CODE >85:/home/newtonis/Robots/Rayito2/main.c
+3B16 text25 CODE >86:/home/newtonis/Robots/Rayito2/main.c
+3B20 text25 CODE >87:/home/newtonis/Robots/Rayito2/main.c
+3B22 text3 CODE >112:/home/newtonis/Robots/Rayito2/main.c
+3B22 text3 CODE >113:/home/newtonis/Robots/Rayito2/main.c
+3B34 text3 CODE >114:/home/newtonis/Robots/Rayito2/main.c
+3B4A text2 CODE >35:/home/newtonis/Robots/Rayito2/config.c
+3B4A text2 CODE >36:/home/newtonis/Robots/Rayito2/config.c
+3B50 text2 CODE >39:/home/newtonis/Robots/Rayito2/config.c
+3B54 text2 CODE >42:/home/newtonis/Robots/Rayito2/config.c
+3B56 text2 CODE >43:/home/newtonis/Robots/Rayito2/config.c
+3B58 text2 CODE >44:/home/newtonis/Robots/Rayito2/config.c
+3B5A text14 CODE >29:/home/newtonis/Robots/Rayito2/config.c
+3B5C text14 CODE >30:/home/newtonis/Robots/Rayito2/config.c
+3B5E text14 CODE >30:/home/newtonis/Robots/Rayito2/config.c
+3B5E text14 CODE >31:/home/newtonis/Robots/Rayito2/config.c
+3B62 text14 CODE >32:/home/newtonis/Robots/Rayito2/config.c
+3B66 text14 CODE >33:/home/newtonis/Robots/Rayito2/config.c
 $startup.obj
-16 end_init CODE >126:/home/newtonis/Robots/Rayito2/startup.as
 0 text CODE >59:/home/newtonis/Robots/Rayito2/startup.as
 0 text CODE >60:/home/newtonis/Robots/Rayito2/startup.as
 0 text CODE >61:/home/newtonis/Robots/Rayito2/startup.as
 0 text CODE >63:/home/newtonis/Robots/Rayito2/startup.as
-16 init CODE >110:/home/newtonis/Robots/Rayito2/startup.as
 0 reset_vec CODE >99:/home/newtonis/Robots/Rayito2/startup.as
 0 reset_vec CODE >104:/home/newtonis/Robots/Rayito2/startup.as
+18 init CODE >110:/home/newtonis/Robots/Rayito2/startup.as
+18 end_init CODE >126:/home/newtonis/Robots/Rayito2/startup.as
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1073,53 +1133,54 @@ $startup.obj
 %SYMTAB
 _P 100 0 BANK1 1 bssBANK1 main.obj
 _V 120 0 BANK1 1 bssBANK1 main.obj
-_a 70 0 BANK0 1 bssBANK0 main.obj
-_b 72 0 BANK0 1 bssBANK0 main.obj
-_v 18C 0 BANK1 1 bssBANK1 main.obj
-_w 190 0 BANK1 1 bssBANK1 main.obj
-_x 49 0 COMRAM 1 bssCOMRAM main.obj
+_f 7C 0 BANK0 1 bssBANK0 main.obj
+_x 4B 0 COMRAM 1 bssCOMRAM main.obj
 ___awdiv@counter 13 0 COMRAM 1 cstackCOMRAM main.obj
 putch@data F 0 COMRAM 1 cstackCOMRAM main.obj
 ___lwmod@counter 1A 0 COMRAM 1 cstackCOMRAM main.obj
 __LdataBANK0 0 0 ABS 0 dataBANK0 main.obj
 __LdataBANK1 0 0 ABS 0 dataBANK1 main.obj
-__Lmediumconst 7B44 0 MEDIUMCONST 0 mediumconst main.obj
+__Lmediumconst 7B14 0 MEDIUMCONST 0 mediumconst main.obj
 __Hspace_0 30000E 0 ABS 0 - main.obj
-__Hspace_1 351 0 ABS 0 - main.obj
+__Hspace_1 34B 0 ABS 0 - main.obj
 __Hspace_2 0 0 ABS 0 - main.obj
 __CFG_IESO$OFF 0 0 ABS 0 - main.obj
 __HidataBANK0 0 0 ABS 0 idataBANK0 main.obj
 __HidataBANK1 0 0 ABS 0 idataBANK1 main.obj
 __size_of_initYBOT 0 0 ABS 0 - main.obj
-_InitAnalog 3AE8 0 CODE 0 text6 main.obj
+_InitAnalog 3A04 0 CODE 0 text6 main.obj
 __size_of_GetValue 0 0 ABS 0 - main.obj
 __Hibigdata 0 0 CODE 0 ibigdata main.obj
-__mediumconst 7B44 0 MEDIUMCONST 0 mediumconst startup.obj
+__mediumconst 7B14 0 MEDIUMCONST 0 mediumconst startup.obj
 ___awtoft@sign 1A 0 COMRAM 1 cstackCOMRAM main.obj
-_AdvanceLow 2D9E 0 CODE 0 text29 main.obj
+_AdvanceLow 2B24 0 CODE 0 text30 main.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data main.obj
 _T1CONbits FCD 0 ABS 0 - main.obj
-_Save$324 3A 0 COMRAM 1 cstackCOMRAM main.obj
-_MF 4B 0 COMRAM 1 bssCOMRAM main.obj
-_b2 4C 0 COMRAM 1 bssCOMRAM main.obj
-_fa 76 0 BANK0 1 bssBANK0 main.obj
-_fb 78 0 BANK0 1 bssBANK0 main.obj
-_fw 1C4 0 BANK1 1 dataBANK1 main.obj
-_gf 7E 0 BANK0 1 bssBANK0 main.obj
-_ma 80 0 BANK0 1 bssBANK0 main.obj
-_mb 82 0 BANK0 1 bssBANK0 main.obj
-_mm 4D 0 COMRAM 1 bssCOMRAM main.obj
-_pd 1CE 0 BANK1 1 dataBANK1 main.obj
-_rf 88 0 BANK0 1 bssBANK0 main.obj
-_sd A8 0 BANK0 1 dataBANK0 main.obj
-__end_of_Length 3A44 0 CODE 0 text19 main.obj
-main@i 34F 0 BANK3 1 cstackBANK3 main.obj
-main@j 34D 0 BANK3 1 cstackBANK3 main.obj
-__end_of_MotorsPWM 3A82 0 CODE 0 text4 main.obj
+_Save$340 3A 0 COMRAM 1 cstackCOMRAM main.obj
+_MF 4D 0 COMRAM 1 bssCOMRAM main.obj
+_b2 4E 0 COMRAM 1 bssCOMRAM main.obj
+_ca 76 0 BANK0 1 bssBANK0 main.obj
+_cb 78 0 BANK0 1 bssBANK0 main.obj
+_fa 7E 0 BANK0 1 bssBANK0 main.obj
+_fb 80 0 BANK0 1 bssBANK0 main.obj
+_fw 1BC 0 BANK1 1 dataBANK1 main.obj
+_gf 86 0 BANK0 1 bssBANK0 main.obj
+_kd 70 0 BANK0 1 bssBANK0 main.obj
+_kp 73 0 BANK0 1 bssBANK0 main.obj
+_ma 88 0 BANK0 1 bssBANK0 main.obj
+_mb 8A 0 BANK0 1 bssBANK0 main.obj
+_mm 4F 0 COMRAM 1 bssCOMRAM main.obj
+_pd 1C6 0 BANK1 1 dataBANK1 main.obj
+_rf 92 0 BANK0 1 bssBANK0 main.obj
+_sd BA 0 BANK0 1 dataBANK0 main.obj
+__end_of_Length 398A 0 CODE 0 text20 main.obj
+main@i 33C 0 BANK3 1 cstackBANK3 main.obj
+main@j 347 0 BANK3 1 cstackBANK3 main.obj
+__end_of_MotorsPWM 39C8 0 CODE 0 text4 main.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst main.obj
-_Line 238A 0 CODE 0 text21 main.obj
-_Load 3796 0 CODE 0 text18 main.obj
-_Save 3602 0 CODE 0 text10 main.obj
+_Line 1FB6 0 CODE 0 text22 main.obj
+_Load 377C 0 CODE 0 text19 main.obj
+_Save 34CE 0 CODE 0 text11 main.obj
 _TIME 60 0 BANK0 1 bssBANK0 main.obj
 _TXIF 7CF4 0 ABS 0 - main.obj
 ___sp 0 0 STACK 2 stack startup.obj
@@ -1127,14 +1188,12 @@ _amax 140 0 BANK1 1 bssBANK1 main.obj
 _amin 160 0 BANK1 1 bssBANK1 main.obj
 _last 45 0 COMRAM 1 bssCOMRAM main.obj
 _line 47 0 COMRAM 1 bssCOMRAM main.obj
-_main 1A 0 CODE 0 text0 main.obj
-_nove 4E 0 COMRAM 1 bssCOMRAM main.obj
-btemp 51 0 COMRAM 1 temp main.obj
+_main 1C 0 CODE 0 text0 main.obj
 Length@data 12 0 COMRAM 1 cstackCOMRAM main.obj
 ___ftadd@f1 2A 0 COMRAM 1 cstackCOMRAM main.obj
 ___ftadd@f2 2D 0 COMRAM 1 cstackCOMRAM main.obj
 __size_of_MotorsPWM 0 0 ABS 0 - main.obj
-start 16 0 CODE 0 init startup.obj
+start 18 0 CODE 0 init startup.obj
 __size_of___aldiv 0 0 ABS 0 - main.obj
 __size_of___almod 0 0 ABS 0 - main.obj
 __size_of___awdiv 0 0 ABS 0 - main.obj
@@ -1149,22 +1208,22 @@ __size_of___lwdiv 0 0 ABS 0 - main.obj
 __size_of___lwmod 0 0 ABS 0 - main.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM main.obj
 __CFG_DEBUG$OFF 0 0 ABS 0 - main.obj
-?___lmul F 0 COMRAM 1 cstackCOMRAM main.obj
+?___lmul 1D 0 COMRAM 1 cstackCOMRAM main.obj
 ?___wmul 17 0 COMRAM 1 cstackCOMRAM main.obj
-_ShowMem 3740 0 CODE 0 text11 main.obj
+_ShowMem 3724 0 CODE 0 text12 main.obj
 __LidataBANK0 0 0 ABS 0 idataBANK0 main.obj
 __LidataBANK1 0 0 ABS 0 idataBANK1 main.obj
-_TIMEFRENO 1D8 0 BANK1 1 dataBANK1 main.obj
+_TIMEFRENO 1D0 0 BANK1 1 dataBANK1 main.obj
 __size_of_CheckMem 0 0 ABS 0 - main.obj
-__Hpowerup 16 0 CODE 0 powerup main.obj
+__Hpowerup 18 0 CODE 0 powerup main.obj
 ___almod@sign 18 0 COMRAM 1 cstackCOMRAM main.obj
-_MotorsPWM 3A44 0 CODE 0 text4 main.obj
+_MotorsPWM 398A 0 CODE 0 text4 main.obj
 printf@c 35 0 COMRAM 1 cstackCOMRAM main.obj
 printf@f 1D 0 COMRAM 1 cstackCOMRAM main.obj
 _T0CONbits FD5 0 ABS 0 - main.obj
 ReadMem@addr 11 0 COMRAM 1 cstackCOMRAM main.obj
 ReadMem@data F 0 COMRAM 1 cstackCOMRAM main.obj
-_GetValue$340 19 0 COMRAM 1 cstackCOMRAM main.obj
+_GetValue$356 19 0 COMRAM 1 cstackCOMRAM main.obj
 WriteMem@addr 10 0 COMRAM 1 cstackCOMRAM main.obj
 WriteMem@data F 0 COMRAM 1 cstackCOMRAM main.obj
 __accesstop 60 0 ABS 0 - startup.obj
@@ -1174,8 +1233,8 @@ intlevel2 0 0 CODE 0 text startup.obj
 intlevel3 0 0 CODE 0 text startup.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM main.obj
 __CFG_USBDIV$2 0 0 ABS 0 - main.obj
-_Length$330 17 0 COMRAM 1 cstackCOMRAM main.obj
-_initYBOT 3ABA 0 CODE 0 text1 main.obj
+_Length$346 17 0 COMRAM 1 cstackCOMRAM main.obj
+_initYBOT 3A2E 0 CODE 0 text1 main.obj
 ___aldiv@divisor 13 0 COMRAM 1 cstackCOMRAM main.obj
 _OSCCONbits FD3 0 ABS 0 - main.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM main.obj
@@ -1183,88 +1242,86 @@ __CFG_EBTR0$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTR1$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTR2$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTR3$OFF 0 0 ABS 0 - main.obj
-_GetValue 397C 0 CODE 0 text20 main.obj
+_GetValue 38BC 0 CODE 0 text21 main.obj
 __CFG_EBTRB$OFF 0 0 ABS 0 - main.obj
-__end_of_InitAnalog 3B12 0 CODE 0 text6 main.obj
+__end_of_InitAnalog 3A2E 0 CODE 0 text6 main.obj
 __Hifardata 0 0 CODE 0 ifardata main.obj
 ___aldiv@sign 18 0 COMRAM 1 cstackCOMRAM main.obj
 __size_of_MotorASpeed 0 0 ABS 0 - main.obj
 ___awdiv@sign 14 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of_AdvanceLow 2EC0 0 CODE 0 text29 main.obj
+__end_of_AdvanceLow 2C48 0 CODE 0 text30 main.obj
 __Hclrtext 0 0 ABS 0 clrtext main.obj
-__end_of_initYBOT 3AE8 0 CODE 0 text1 main.obj
+__end_of_initYBOT 3A56 0 CODE 0 text1 main.obj
 __size_of_MotorBSpeed 0 0 ABS 0 - main.obj
-_MotorsSpeed$1738 21 0 COMRAM 1 cstackCOMRAM main.obj
-_MotorsSpeed$1740 23 0 COMRAM 1 cstackCOMRAM main.obj
+_MotorsSpeed$1868 21 0 COMRAM 1 cstackCOMRAM main.obj
+_MotorsSpeed$1870 23 0 COMRAM 1 cstackCOMRAM main.obj
 ShowMem@x 37 0 COMRAM 1 cstackCOMRAM main.obj
 ___ftmul@f1 1B 0 COMRAM 1 cstackCOMRAM main.obj
 ___ftmul@f2 1E 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of_GetValue 39C2 0 CODE 0 text20 main.obj
-_InitTIMERS 36DA 0 CODE 0 text5 main.obj
+__end_of_GetValue 3904 0 CODE 0 text21 main.obj
+_InitTIMERS 35AE 0 CODE 0 text5 main.obj
 ___wmul@multiplicand 19 0 COMRAM 1 cstackCOMRAM main.obj
 printf@flag 32 0 COMRAM 1 cstackCOMRAM main.obj
 printf@prec 2D 0 COMRAM 1 cstackCOMRAM main.obj
 _ADRESH FC4 0 ABS 0 - main.obj
 _ADRESL FC3 0 ABS 0 - main.obj
-_ResetCounter 3BFE 0 CODE 0 text3 main.obj
+_ResetCounter 3B22 0 CODE 0 text3 main.obj
 ___awdiv@dividend F 0 COMRAM 1 cstackCOMRAM main.obj
 ___inthi_sp 0 0 STACK 2 stack startup.obj
 printf@width 33 0 COMRAM 1 cstackCOMRAM main.obj
 ___intlo_sp 0 0 STACK 2 stack startup.obj
 __size_of___awtoft 0 0 ABS 0 - main.obj
 _EECON1bits FA6 0 ABS 0 - main.obj
-_gstatus BC 0 BANK0 1 nvBANK0 main.obj
 _CCPR1L FBE 0 ABS 0 - main.obj
 _CCPR2L FBB 0 ABS 0 - main.obj
 __size_of_ReadMem 0 0 ABS 0 - main.obj
 __size_of_initLED 0 0 ABS 0 - main.obj
-AdvanceLow@kd 97 0 BANK0 1 cstackBANK0 main.obj
-AdvanceLow@kp 94 0 BANK0 1 cstackBANK0 main.obj
+AdvanceLow@kd A0 0 BANK0 1 cstackBANK0 main.obj
+AdvanceLow@kp 9D 0 BANK0 1 cstackBANK0 main.obj
 __Hintcode_body 0 0 ABS 0 intcode_body main.obj
-__end_of___lmul 3842 0 CODE 0 text22 main.obj
-__end_of___wmul 3B62 0 CODE 0 text15 main.obj
-_CheckMem 38E8 0 CODE 0 text27 main.obj
+__end_of___lmul 3724 0 CODE 0 text23 main.obj
+__end_of___wmul 3A7E 0 CODE 0 text16 main.obj
+_CheckMem 37D4 0 CODE 0 text28 main.obj
 _EECON2 FA7 0 ABS 0 - main.obj
 _EEDATA FA8 0 ABS 0 - main.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs main.obj
-main@mod 33E 0 BANK3 1 cstackBANK3 main.obj
-main@old 344 0 BANK3 1 cstackBANK3 main.obj
+main@mod 342 0 BANK3 1 cstackBANK3 main.obj
+main@old 346 0 BANK3 1 cstackBANK3 main.obj
 ___fttol@f1 36 0 COMRAM 1 cstackCOMRAM main.obj
 _BAUDCONbits FB8 0 ABS 0 - main.obj
 __Hmediumconst 8000 0 MEDIUMCONST 0 mediumconst main.obj
 ?_printf 1D 0 COMRAM 1 cstackCOMRAM main.obj
-__LnvBANK0 0 0 ABS 0 nvBANK0 main.obj
-__Hintcodelo 16 0 CODE 0 intcodelo main.obj
-_LOW_SPEED B8 0 BANK0 1 dataBANK0 main.obj
+__LnvBANK1 0 0 ABS 0 nvBANK1 main.obj
+__Hintcodelo 18 0 CODE 0 intcodelo main.obj
+_LOW_SPEED C9 0 BANK0 1 dataBANK0 main.obj
 ___awdiv@divisor 11 0 COMRAM 1 cstackCOMRAM main.obj
 ___lwmod@divisor 18 0 COMRAM 1 cstackCOMRAM main.obj
 __size_of___ftpack 0 0 ABS 0 - main.obj
-__end_of___aldiv 319C 0 CODE 0 text23 main.obj
-__end_of___almod 33B8 0 CODE 0 text8 main.obj
-__end_of___awdiv 3584 0 CODE 0 text38 main.obj
-__end_of___ftadd 2D9E 0 CODE 0 text32 main.obj
-__end_of___ftmul 30D0 0 CODE 0 text31 main.obj
-__end_of___fttol 2FDC 0 CODE 0 text30 main.obj
-__end_of_CheckMem 3934 0 CODE 0 text27 main.obj
-__end_of___lwdiv 38E8 0 CODE 0 text17 main.obj
-__end_of___lwmod 3A04 0 CODE 0 text16 main.obj
+__end_of___aldiv 3028 0 CODE 0 text24 main.obj
+__end_of___almod 31AC 0 CODE 0 text8 main.obj
+__end_of___awdiv 3454 0 CODE 0 text39 main.obj
+__end_of___ftadd 2B24 0 CODE 0 text33 main.obj
+__end_of___ftmul 2F4A 0 CODE 0 text32 main.obj
+__end_of___fttol 2D56 0 CODE 0 text31 main.obj
+__end_of_CheckMem 3824 0 CODE 0 text28 main.obj
+__end_of___lwdiv 3670 0 CODE 0 text18 main.obj
+__end_of___lwmod 3870 0 CODE 0 text17 main.obj
 __size_of_isdigit 0 0 ABS 0 - main.obj
-_dpowers 7B45 0 MEDIUMCONST 0 mediumconst main.obj
+_dpowers 7B15 0 MEDIUMCONST 0 mediumconst main.obj
 __size_of_Wixel 0 0 ABS 0 - main.obj
 __size_of_ResetCounter 0 0 ABS 0 - main.obj
 ___lwdiv@quotient 14 0 COMRAM 1 cstackCOMRAM main.obj
 __size_of_putch 0 0 ABS 0 - main.obj
-_Length 3A04 0 CODE 0 text19 main.obj
+_Length 3948 0 CODE 0 text20 main.obj
 _INTCON2bits FF1 0 ABS 0 - main.obj
 ___lwmod@dividend 16 0 COMRAM 1 cstackCOMRAM main.obj
-__Lintcodelo 16 0 CODE 0 intcodelo main.obj
-main@mod_445 330 0 BANK3 1 cstackBANK3 main.obj
+__Lintcodelo 18 0 CODE 0 intcodelo main.obj
 __CFG_FCMEN$OFF 0 0 ABS 0 - main.obj
 __CFG_MCLRE$OFF 0 0 ABS 0 - main.obj
-start_initialization 3584 0 CODE 0 cinit main.obj
-__end_of_InitTIMERS 3740 0 CODE 0 text5 main.obj
+start_initialization 3454 0 CODE 0 cinit main.obj
+__end_of_InitTIMERS 3614 0 CODE 0 text5 main.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM main.obj
-___awtoft 3A82 0 CODE 0 text33 main.obj
+___awtoft 39C8 0 CODE 0 text34 main.obj
 _TRISAbits F92 0 ABS 0 - main.obj
 _TRISBbits F93 0 ABS 0 - main.obj
 _TRISCbits F94 0 ABS 0 - main.obj
@@ -1272,30 +1329,30 @@ _TRISDbits F95 0 ABS 0 - main.obj
 _TRISEbits F96 0 ABS 0 - main.obj
 ___aldiv@quotient 19 0 COMRAM 1 cstackCOMRAM main.obj
 ___rparam_used 1 0 ABS 0 - main.obj
-__end_of_MotorsSpeed 3B3C 0 CODE 0 text35 main.obj
+__end_of_MotorsSpeed 3948 0 CODE 0 text36 main.obj
 ___almod@dividend F 0 COMRAM 1 cstackCOMRAM main.obj
 __CFG_WDTPS$32768 0 0 ABS 0 - main.obj
-__end_of_ResetCounter 3C12 0 CODE 0 text3 main.obj
+__end_of_ResetCounter 3B36 0 CODE 0 text3 main.obj
 Save@sum 3C 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of___awtoft 3ABA 0 CODE 0 text33 main.obj
+__end_of___awtoft 3A04 0 CODE 0 text34 main.obj
 _SPBRGH FB0 0 ABS 0 - main.obj
-__pcstackBANK0 8E 0 BANK0 1 cstackBANK0 main.obj
+__pcstackBANK0 97 0 BANK0 1 cstackBANK0 main.obj
 __pcstackBANK3 300 0 BANK3 1 cstackBANK3 main.obj
-___fttol@exp1 93 0 BANK0 1 cstackBANK0 main.obj
-___fttol@lval 8F 0 BANK0 1 cstackBANK0 main.obj
-_CheckMem$321 14 0 COMRAM 1 cstackCOMRAM main.obj
+___fttol@exp1 9C 0 BANK0 1 cstackBANK0 main.obj
+___fttol@lval 98 0 BANK0 1 cstackBANK0 main.obj
+_CheckMem$337 14 0 COMRAM 1 cstackCOMRAM main.obj
 _TMR0IF 7F92 0 ABS 0 - main.obj
 _TMR2ON 7E52 0 ABS 0 - main.obj
-___ftpack 325E 0 CODE 0 text34 main.obj
-__end_of_printf 2BF2 0 CODE 0 text12 main.obj
+___ftpack 3028 0 CODE 0 text35 main.obj
+__end_of_printf 2960 0 CODE 0 text13 main.obj
 EnhancedRead@i 1A 0 COMRAM 1 cstackCOMRAM main.obj
 ___ftpack@arg F 0 COMRAM 1 cstackCOMRAM main.obj
 ___ftpack@exp 12 0 COMRAM 1 cstackCOMRAM main.obj
-_EnhancedRead 3670 0 CODE 0 text26 main.obj
+_EnhancedRead 3540 0 CODE 0 text27 main.obj
 CheckMem@data 12 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of_ReadMem 3BE8 0 CODE 0 text28 main.obj
-__end_of_initLED 3896 0 CODE 0 text7 main.obj
-__end_of___ftpack 330C 0 CODE 0 text34 main.obj
+__end_of_ReadMem 3B0C 0 CODE 0 text29 main.obj
+__end_of_initLED 36CA 0 CODE 0 text7 main.obj
+__end_of___ftpack 30EE 0 CODE 0 text35 main.obj
 __size_of_Length 0 0 ABS 0 - main.obj
 __Hbank0 0 0 ABS 0 bank0 main.obj
 __Hbank1 0 0 ABS 0 bank1 main.obj
@@ -1306,7 +1363,7 @@ __Hbank5 0 0 ABS 0 bank5 main.obj
 __Hbank6 0 0 ABS 0 bank6 main.obj
 __Hbank7 0 0 ABS 0 bank7 main.obj
 __Hcinit 0 0 ABS 0 cinit main.obj
-__Hconst 0 0 CONST 0 const main.obj
+__Hconst 0 0 CODE 0 const main.obj
 __Hidata 0 0 CODE 0 idata main.obj
 __Hidloc 0 0 IDLOC 0 idloc main.obj
 __Hnvbit 0 0 COMRAM 1 nvbit main.obj
@@ -1323,19 +1380,19 @@ __Htext6 0 0 ABS 0 text6 main.obj
 __Htext7 0 0 ABS 0 text7 main.obj
 __Htext8 0 0 ABS 0 text8 main.obj
 __Htext9 0 0 ABS 0 text9 main.obj
-_main$2344 332 0 BANK3 1 cstackBANK3 main.obj
-_main$2345 334 0 BANK3 1 cstackBANK3 main.obj
-_main$2346 336 0 BANK3 1 cstackBANK3 main.obj
-_main$2347 338 0 BANK3 1 cstackBANK3 main.obj
-_main$2348 33A 0 BANK3 1 cstackBANK3 main.obj
-_main$2349 33C 0 BANK3 1 cstackBANK3 main.obj
-_main$2350 300 0 BANK3 1 cstackBANK3 main.obj
-_main$2351 345 0 BANK3 1 cstackBANK3 main.obj
-_main$2352 347 0 BANK3 1 cstackBANK3 main.obj
-_main$2353 349 0 BANK3 1 cstackBANK3 main.obj
-_main$2354 31E 0 BANK3 1 cstackBANK3 main.obj
-_main$2355 320 0 BANK3 1 cstackBANK3 main.obj
-_main$2356 322 0 BANK3 1 cstackBANK3 main.obj
+_main$2438 306 0 BANK3 1 cstackBANK3 main.obj
+_main$2439 308 0 BANK3 1 cstackBANK3 main.obj
+_main$2440 30A 0 BANK3 1 cstackBANK3 main.obj
+_main$2441 30C 0 BANK3 1 cstackBANK3 main.obj
+_main$2442 30E 0 BANK3 1 cstackBANK3 main.obj
+_main$2443 310 0 BANK3 1 cstackBANK3 main.obj
+_main$2444 324 0 BANK3 1 cstackBANK3 main.obj
+_main$2445 328 0 BANK3 1 cstackBANK3 main.obj
+_main$2446 32A 0 BANK3 1 cstackBANK3 main.obj
+_main$2447 32C 0 BANK3 1 cstackBANK3 main.obj
+_main$2448 32E 0 BANK3 1 cstackBANK3 main.obj
+_main$2449 330 0 BANK3 1 cstackBANK3 main.obj
+_main$2450 332 0 BANK3 1 cstackBANK3 main.obj
 ___lwdiv@counter 13 0 COMRAM 1 cstackCOMRAM main.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss main.obj
 __Hbigram 0 0 ABS 0 bigram main.obj
@@ -1352,9 +1409,9 @@ __Lbank4 0 0 ABS 0 bank4 main.obj
 __Lbank5 0 0 ABS 0 bank5 main.obj
 __Lbank6 0 0 ABS 0 bank6 main.obj
 __Lbank7 0 0 ABS 0 bank7 main.obj
-__end_of_isdigit 3BCA 0 CODE 0 text14 main.obj
+__end_of_isdigit 3AEC 0 CODE 0 text15 main.obj
 __Lcinit 0 0 ABS 0 cinit main.obj
-__Lconst 0 0 CONST 0 const main.obj
+__Lconst 0 0 CODE 0 const main.obj
 __Lidata 0 0 CODE 0 idata main.obj
 __Lidloc 0 0 IDLOC 0 idloc main.obj
 ___ftadd@exp1 35 0 COMRAM 1 cstackCOMRAM main.obj
@@ -1384,75 +1441,75 @@ _INTCONbits FF2 0 ABS 0 - main.obj
 __size_of_InitAnalog 0 0 ABS 0 - main.obj
 __Habs1 0 0 ABS 0 abs1 main.obj
 __Hdata 0 0 ABS 0 data main.obj
-__Hinit 16 0 CODE 0 init main.obj
+__Hinit 18 0 CODE 0 init main.obj
 GetValue@data 14 0 COMRAM 1 cstackCOMRAM main.obj
 __Hrbit 0 0 COMRAM 1 rbit main.obj
 __Hrbss 0 0 COMRAM 1 rbss main.obj
-__Htemp 52 0 COMRAM 1 temp main.obj
+__Htemp 0 0 COMRAM 1 temp main.obj
 __Htext 0 0 ABS 0 text main.obj
 GetValue@item 12 0 COMRAM 1 cstackCOMRAM main.obj
 __Labs1 0 0 ABS 0 abs1 main.obj
 __Ldata 0 0 ABS 0 data main.obj
-__Linit 16 0 CODE 0 init main.obj
+__Linit 18 0 CODE 0 init main.obj
 __Lrbit 0 0 COMRAM 1 rbit main.obj
 __Lrbss 0 0 COMRAM 1 rbss main.obj
-__Ltemp 51 0 COMRAM 1 temp main.obj
+__Ltemp 0 0 COMRAM 1 temp main.obj
 __Ltext 0 0 ABS 0 text main.obj
 __CFG_XINST$OFF 0 0 ABS 0 - main.obj
-__pnvBANK0 BA 0 BANK0 1 nvBANK0 main.obj
-___lmul 37EC 0 CODE 0 text22 main.obj
-___wmul 3B3C 0 CODE 0 text15 main.obj
+__pnvBANK1 1D7 0 BANK1 1 nvBANK1 main.obj
+___lmul 36CA 0 CODE 0 text23 main.obj
+___wmul 3A56 0 CODE 0 text16 main.obj
 _T2OUTPS0 7E53 0 ABS 0 - main.obj
 _T2OUTPS1 7E54 0 ABS 0 - main.obj
 _T2OUTPS2 7E55 0 ABS 0 - main.obj
 _T2OUTPS3 7E56 0 ABS 0 - main.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 main.obj
 __LcstackBANK3 0 0 ABS 0 cstackBANK3 main.obj
-int$flags 51 0 COMRAM 1 temp main.obj
 __size_of_AdvanceLow 0 0 ABS 0 - main.obj
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM main.obj
 __Hintret 0 0 ABS 0 intret main.obj
 __Hirdata 0 0 CODE 0 irdata main.obj
 _LEN 200 0 BANK2 1 bssBANK2 main.obj
 _PR2 FCB 0 ABS 0 - main.obj
-_RWM 8C 0 BANK0 1 bssBANK0 main.obj
-_VEL 1B8 0 BANK1 1 dataBANK1 main.obj
-_VKD 194 0 BANK1 1 dataBANK1 main.obj
-_VKP 1A6 0 BANK1 1 dataBANK1 main.obj
+_RWM 96 0 BANK0 1 bssBANK0 main.obj
+_VEL 1B0 0 BANK1 1 dataBANK1 main.obj
+_VKD 18C 0 BANK1 1 dataBANK1 main.obj
+_VKP 19E 0 BANK1 1 dataBANK1 main.obj
 __S0 30000E 0 ABS 0 - main.obj
-__S1 351 0 ABS 0 - main.obj
+__S1 34B 0 ABS 0 - main.obj
 __S2 0 0 ABS 0 - main.obj
-_cox 74 0 BANK0 1 bssBANK0 main.obj
+_cox 7A 0 BANK0 1 bssBANK0 main.obj
 _der 41 0 COMRAM 1 bssCOMRAM main.obj
 _enc 8 0 CODE 0 intcode main.obj
-_fns 7C 0 BANK0 1 bssBANK0 main.obj
+_fns 84 0 BANK0 1 bssBANK0 main.obj
+_mod 8C 0 BANK0 1 bssBANK0 main.obj
 __CFG_VREGEN$OFF 0 0 ABS 0 - main.obj
 __size_of_EnhancedRead 0 0 ABS 0 - main.obj
 ___almod@counter 17 0 COMRAM 1 cstackCOMRAM main.obj
-_actual 8D 0 BANK0 1 bssBANK0 main.obj
-_MotorASpeed 345C 0 CODE 0 text37 main.obj
+_MotorASpeed 3314 0 CODE 0 text38 main.obj
 MotorBSpeed@S 17 0 COMRAM 1 cstackCOMRAM main.obj
-_MotorBSpeed 33B8 0 CODE 0 text36 main.obj
+_MotorBSpeed 326A 0 CODE 0 text37 main.obj
 __size_of_configurations_init 0 0 ABS 0 - main.obj
 _UCONbits F6D 0 ABS 0 - main.obj
+_RECT_ACEL_TIME CB 0 BANK0 1 dataBANK0 main.obj
 __CFG_PLLDIV$5 0 0 ABS 0 - main.obj
 __CFG_PBADEN$OFF 0 0 ABS 0 - main.obj
 ___awtoft@c 17 0 COMRAM 1 cstackCOMRAM main.obj
 __Lbigdata 0 0 BIGRAM 1 bigdata main.obj
 __Hnvrram 0 0 COMRAM 1 nvrram main.obj
-__end_of_enc 325E 0 CODE 0 intcode_body main.obj
-__end_of_EreaseAll 3BFE 0 CODE 0 text24 main.obj
+__end_of_enc 326A 0 CODE 0 intcode_body main.obj
+__end_of_EreaseAll 3B22 0 CODE 0 text25 main.obj
 __size_of_ShowMem 0 0 ABS 0 - main.obj
-int_func 319C 0 CODE 0 intcode_body main.obj
-__end_of_EnhancedRead 36DA 0 CODE 0 text26 main.obj
+int_func 31AC 0 CODE 0 intcode_body main.obj
+__end_of_EnhancedRead 35AE 0 CODE 0 text27 main.obj
 __size_of_EreaseAll 0 0 ABS 0 - main.obj
-__HnvBANK0 0 0 ABS 0 nvBANK0 main.obj
+__HnvBANK1 0 0 ABS 0 nvBANK1 main.obj
 __Lintentry 0 0 ABS 0 intentry main.obj
 __Hramtop 800 0 RAM 0 ramtop main.obj
 __Hrparam 0 0 COMRAM 1 rparam main.obj
 MotorASpeed@S 17 0 COMRAM 1 cstackCOMRAM main.obj
-__pdataBANK0 A8 0 BANK0 1 dataBANK0 main.obj
-__pdataBANK1 194 0 BANK1 1 dataBANK1 main.obj
+__pdataBANK0 BA 0 BANK0 1 dataBANK0 main.obj
+__pdataBANK1 18C 0 BANK1 1 dataBANK1 main.obj
 __activetblptr 2 0 ABS 0 - main.obj
 __Hstruct 0 0 COMRAM 1 struct main.obj
 __size_of___lmul 0 0 ABS 0 - main.obj
@@ -1489,83 +1546,87 @@ __Htext35 0 0 ABS 0 text35 main.obj
 __Htext36 0 0 ABS 0 text36 main.obj
 __Htext37 0 0 ABS 0 text37 main.obj
 __Htext38 0 0 ABS 0 text38 main.obj
+__Htext39 0 0 ABS 0 text39 main.obj
 ?___awtoft 17 0 COMRAM 1 cstackCOMRAM main.obj
 GetValue@add 18 0 COMRAM 1 cstackCOMRAM main.obj
 GetValue@rta 1B 0 COMRAM 1 cstackCOMRAM main.obj
 _RCSTAbits FAB 0 ABS 0 - main.obj
-_EreaseAll 3BE8 0 CODE 0 text24 main.obj
+_EreaseAll 3B0C 0 CODE 0 text25 main.obj
 __size_of_WriteMem 0 0 ABS 0 - main.obj
-__ptext10 3602 0 CODE 0 text10 main.obj
-__ptext11 3740 0 CODE 0 text11 main.obj
-__ptext12 2980 0 CODE 0 text12 main.obj
-__ptext13 3C34 0 CODE 0 text13 main.obj
-__ptext14 3BAC 0 CODE 0 text14 main.obj
-__ptext15 3B3C 0 CODE 0 text15 main.obj
-__ptext16 39C2 0 CODE 0 text16 main.obj
-__ptext17 3896 0 CODE 0 text17 main.obj
-__ptext18 3796 0 CODE 0 text18 main.obj
-__ptext19 3A04 0 CODE 0 text19 main.obj
-__ptext20 397C 0 CODE 0 text20 main.obj
-__ptext21 238A 0 CODE 0 text21 main.obj
-__ptext22 37EC 0 CODE 0 text22 main.obj
-__ptext23 30D0 0 CODE 0 text23 main.obj
-__ptext24 3BE8 0 CODE 0 text24 main.obj
-__ptext25 3B62 0 CODE 0 text25 main.obj
-__ptext26 3670 0 CODE 0 text26 main.obj
-__ptext27 38E8 0 CODE 0 text27 main.obj
-__ptext28 3BCA 0 CODE 0 text28 main.obj
-__ptext29 2D9E 0 CODE 0 text29 main.obj
-__ptext30 2EC0 0 CODE 0 text30 main.obj
-__ptext31 2FDC 0 CODE 0 text31 main.obj
-__ptext32 2BF2 0 CODE 0 text32 main.obj
-__ptext33 3A82 0 CODE 0 text33 main.obj
-__ptext34 325E 0 CODE 0 text34 main.obj
-__ptext35 3B12 0 CODE 0 text35 main.obj
-__ptext36 33B8 0 CODE 0 text36 main.obj
-__ptext37 345C 0 CODE 0 text37 main.obj
-__ptext38 3500 0 CODE 0 text38 main.obj
-_configurations_init 3C24 0 CODE 0 text2 main.obj
-___aldiv 30D0 0 CODE 0 text23 main.obj
-___almod 330C 0 CODE 0 text8 main.obj
-___awdiv 3500 0 CODE 0 text38 main.obj
-___ftadd 2BF2 0 CODE 0 text32 main.obj
-___ftmul 2FDC 0 CODE 0 text31 main.obj
-___fttol 2EC0 0 CODE 0 text30 main.obj
-__pintcode_body 319C 0 CODE 0 intcode_body main.obj
-___lwdiv 3896 0 CODE 0 text17 main.obj
-___lwmod 39C2 0 CODE 0 text16 main.obj
+__ptext10 2D56 0 CODE 0 text10 main.obj
+__ptext11 34CE 0 CODE 0 text11 main.obj
+__ptext12 3724 0 CODE 0 text12 main.obj
+__ptext13 26B2 0 CODE 0 text13 main.obj
+__ptext14 3B5A 0 CODE 0 text14 main.obj
+__ptext15 3ACA 0 CODE 0 text15 main.obj
+__ptext16 3A56 0 CODE 0 text16 main.obj
+__ptext17 3824 0 CODE 0 text17 main.obj
+__ptext18 3614 0 CODE 0 text18 main.obj
+__ptext19 377C 0 CODE 0 text19 main.obj
+__ptext20 3948 0 CODE 0 text20 main.obj
+__ptext21 38BC 0 CODE 0 text21 main.obj
+__ptext22 1FB6 0 CODE 0 text22 main.obj
+__ptext23 36CA 0 CODE 0 text23 main.obj
+__ptext24 2F4A 0 CODE 0 text24 main.obj
+__ptext25 3B0C 0 CODE 0 text25 main.obj
+__ptext26 3A7E 0 CODE 0 text26 main.obj
+__ptext27 3540 0 CODE 0 text27 main.obj
+__ptext28 37D4 0 CODE 0 text28 main.obj
+__ptext29 3AEC 0 CODE 0 text29 main.obj
+__ptext30 2B24 0 CODE 0 text30 main.obj
+__ptext31 2C48 0 CODE 0 text31 main.obj
+__ptext32 2E52 0 CODE 0 text32 main.obj
+__ptext33 2960 0 CODE 0 text33 main.obj
+__ptext34 39C8 0 CODE 0 text34 main.obj
+__ptext35 3028 0 CODE 0 text35 main.obj
+__ptext36 3904 0 CODE 0 text36 main.obj
+__ptext37 326A 0 CODE 0 text37 main.obj
+__ptext38 3314 0 CODE 0 text38 main.obj
+__ptext39 33BE 0 CODE 0 text39 main.obj
+_configurations_init 3B4A 0 CODE 0 text2 main.obj
+___aldiv 2F4A 0 CODE 0 text24 main.obj
+___almod 30EE 0 CODE 0 text8 main.obj
+___awdiv 33BE 0 CODE 0 text39 main.obj
+___ftadd 2960 0 CODE 0 text33 main.obj
+___ftmul 2E52 0 CODE 0 text32 main.obj
+___fttol 2C48 0 CODE 0 text31 main.obj
+__pintcode_body 31AC 0 CODE 0 intcode_body main.obj
+___lwdiv 3614 0 CODE 0 text18 main.obj
+___lwmod 3824 0 CODE 0 text17 main.obj
 __size_of_MotorsSpeed 0 0 ABS 0 - main.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss main.obj
 __Lbigram 0 0 ABS 0 bigram main.obj
 __CFG_BOR$OFF 0 0 ABS 0 - main.obj
-___lmul@multiplier F 0 COMRAM 1 cstackCOMRAM main.obj
+___lmul@multiplier 1D 0 COMRAM 1 cstackCOMRAM main.obj
 __CFG_BORV$3 0 0 ABS 0 - main.obj
 __size_of_InitTIMERS 0 0 ABS 0 - main.obj
-AdvanceLow@speed 9A 0 BANK0 1 cstackBANK0 main.obj
-_pasada 84 0 BANK0 1 bssBANK0 main.obj
+AdvanceLow@speed A3 0 BANK0 1 cstackBANK0 main.obj
+_pasada 8E 0 BANK0 1 bssBANK0 main.obj
 __Lcomram 0 0 ABS 0 comram main.obj
 __Lconfig 300000 0 CONFIG 0 config main.obj
 ?___ftpack F 0 COMRAM 1 cstackCOMRAM main.obj
-_printf 2980 0 CODE 0 text12 main.obj
+_printf 26B2 0 CODE 0 text13 main.obj
 ___wmul@multiplier 17 0 COMRAM 1 cstackCOMRAM main.obj
-_rcount 86 0 BANK0 1 bssBANK0 main.obj
+_rcount 90 0 BANK0 1 bssBANK0 main.obj
 _WAITFRENAR 184 0 BANK1 1 bssBANK1 main.obj
 __Lfarbss 0 0 FARRAM 0 farbss main.obj
 ___lwdiv@divisor 11 0 COMRAM 1 cstackCOMRAM main.obj
-main@i_403 32C 0 BANK3 1 cstackBANK3 main.obj
-main@i_408 34B 0 BANK3 1 cstackBANK3 main.obj
-main@j_404 32A 0 BANK3 1 cstackBANK3 main.obj
-main@j_409 32E 0 BANK3 1 cstackBANK3 main.obj
-_status BA 0 BANK0 1 nvBANK0 main.obj
-main@speed 340 0 BANK3 1 cstackBANK3 main.obj
+main@i_419 33E 0 BANK3 1 cstackBANK3 main.obj
+main@i_424 349 0 BANK3 1 cstackBANK3 main.obj
+main@j_420 33A 0 BANK3 1 cstackBANK3 main.obj
+main@j_425 340 0 BANK3 1 cstackBANK3 main.obj
+_status 1D7 0 BANK1 1 nvBANK1 main.obj
+main@speed 344 0 BANK3 1 cstackBANK3 main.obj
 __Lfardata 0 0 FARRAM 0 fardata main.obj
 __CFG_CCP2MX$ON 0 0 ABS 0 - main.obj
+__end_of_UpdateDir 2E52 0 CODE 0 text10 main.obj
 stackhi 7FF 0 ABS 0 - startup.obj
-stacklo 351 0 ABS 0 - startup.obj
+stacklo 34B 0 ABS 0 - startup.obj
 __Lintcode 8 0 CODE 0 intcode main.obj
-Line@i_351 37 0 COMRAM 1 cstackCOMRAM main.obj
-Line@j_350 31 0 COMRAM 1 cstackCOMRAM main.obj
+Line@i_368 AA 0 BANK0 1 cstackBANK0 main.obj
+Line@j_367 A4 0 BANK0 1 cstackBANK0 main.obj
 __Lintret 0 0 ABS 0 intret main.obj
+__size_of_UpdateDir 0 0 ABS 0 - main.obj
 __Lirdata 0 0 CODE 0 irdata main.obj
 _ADCON0bits FC2 0 ABS 0 - main.obj
 _ADCON1bits FC1 0 ABS 0 - main.obj
@@ -1575,23 +1636,24 @@ __CFG_ICPRT$OFF 0 0 ABS 0 - main.obj
 __Lspace_0 0 0 ABS 0 - main.obj
 __Lspace_1 0 0 ABS 0 - main.obj
 __Lspace_2 0 0 ABS 0 - main.obj
-main@kd 307 0 BANK3 1 cstackBANK3 main.obj
-main@kp 304 0 BANK3 1 cstackBANK3 main.obj
+main@kd 303 0 BANK3 1 cstackBANK3 main.obj
+main@kp 300 0 BANK3 1 cstackBANK3 main.obj
 ___ftmul@cntr 28 0 COMRAM 1 cstackCOMRAM main.obj
 __pbssCOMRAM 41 0 COMRAM 1 bssCOMRAM main.obj
 ___ftmul@sign 29 0 COMRAM 1 cstackCOMRAM main.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 main.obj
 __HcstackBANK3 0 0 ABS 0 cstackBANK3 main.obj
-__Lend_init 16 0 CODE 0 end_init main.obj
+__Lend_init 18 0 CODE 0 end_init main.obj
 MotorsSpeed@A 1D 0 COMRAM 1 cstackCOMRAM main.obj
 MotorsSpeed@B 1F 0 COMRAM 1 cstackCOMRAM main.obj
-_speedMode 8A 0 BANK0 1 bssBANK0 main.obj
+_speedMode 94 0 BANK0 1 bssBANK0 main.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM main.obj
 printf@ap 2E 0 COMRAM 1 cstackCOMRAM main.obj
 __CFG_CPUDIV$OSC1_PLL2 0 0 ABS 0 - main.obj
-end_of_initialization 35F4 0 CODE 0 cinit main.obj
-__end_of_ShowMem 3796 0 CODE 0 text11 main.obj
-_WriteMem 3B62 0 CODE 0 text25 main.obj
+end_of_initialization 34C4 0 CODE 0 cinit main.obj
+__end_of_ShowMem 377C 0 CODE 0 text12 main.obj
+_WriteMem 3A7E 0 CODE 0 text26 main.obj
+_UpdateDir 2D56 0 CODE 0 text10 main.obj
 __Lnvrram 0 0 COMRAM 1 nvrram main.obj
 __Hintentry 0 0 ABS 0 intentry main.obj
 __CFG_STVREN$ON 0 0 ABS 0 - main.obj
@@ -1608,37 +1670,34 @@ ___lwdiv@dividend F 0 COMRAM 1 cstackCOMRAM main.obj
 ?___fttol 36 0 COMRAM 1 cstackCOMRAM main.obj
 ?___lwdiv F 0 COMRAM 1 cstackCOMRAM main.obj
 ?___lwmod 16 0 COMRAM 1 cstackCOMRAM main.obj
-main@speed_442 342 0 BANK3 1 cstackBANK3 main.obj
-Line@a 28 0 COMRAM 1 cstackCOMRAM main.obj
-Line@b 2C 0 COMRAM 1 cstackCOMRAM main.obj
-Line@g 30 0 COMRAM 1 cstackCOMRAM main.obj
-Line@i 35 0 COMRAM 1 cstackCOMRAM main.obj
-Line@j 33 0 COMRAM 1 cstackCOMRAM main.obj
-Line@v 39 0 COMRAM 1 cstackCOMRAM main.obj
-Line@w 24 0 COMRAM 1 cstackCOMRAM main.obj
+Line@a 9B 0 BANK0 1 cstackBANK0 main.obj
+Line@b 9F 0 BANK0 1 cstackBANK0 main.obj
+Line@g A3 0 BANK0 1 cstackBANK0 main.obj
+Line@i A8 0 BANK0 1 cstackBANK0 main.obj
+Line@j A6 0 BANK0 1 cstackBANK0 main.obj
+Line@v AC 0 BANK0 1 cstackBANK0 main.obj
+Line@w 97 0 BANK0 1 cstackBANK0 main.obj
 __Hreset_vec 4 0 CODE 0 reset_vec main.obj
 Load@x 1E 0 COMRAM 1 cstackCOMRAM main.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 main.obj
 __HbssBANK1 0 0 ABS 0 bssBANK1 main.obj
 __HbssBANK2 0 0 ABS 0 bssBANK2 main.obj
-__end_of_WriteMem 3B88 0 CODE 0 text25 main.obj
-_ReadMem 3BCA 0 CODE 0 text28 main.obj
-_initLED 3842 0 CODE 0 text7 main.obj
+__end_of_WriteMem 3AA6 0 CODE 0 text26 main.obj
+_ReadMem 3AEC 0 CODE 0 text29 main.obj
+_initLED 3670 0 CODE 0 text7 main.obj
 __Lramtop 800 0 RAM 0 ramtop main.obj
 __Lrparam 0 0 COMRAM 1 rparam main.obj
-__pcinit 3584 0 CODE 0 cinit main.obj
-main@kd_444 30D 0 BANK3 1 cstackBANK3 main.obj
-__ptext0 1A 0 CODE 0 text0 main.obj
-__ptext1 3ABA 0 CODE 0 text1 main.obj
-__ptext2 3C24 0 CODE 0 text2 main.obj
-__ptext3 3BFE 0 CODE 0 text3 main.obj
-__ptext4 3A44 0 CODE 0 text4 main.obj
-__ptext5 36DA 0 CODE 0 text5 main.obj
-__ptext6 3AE8 0 CODE 0 text6 main.obj
-__ptext7 3842 0 CODE 0 text7 main.obj
-__ptext8 330C 0 CODE 0 text8 main.obj
-__ptext9 3B88 0 CODE 0 text9 main.obj
-main@kp_443 30A 0 BANK3 1 cstackBANK3 main.obj
+__pcinit 3454 0 CODE 0 cinit main.obj
+__ptext0 1C 0 CODE 0 text0 main.obj
+__ptext1 3A2E 0 CODE 0 text1 main.obj
+__ptext2 3B4A 0 CODE 0 text2 main.obj
+__ptext3 3B22 0 CODE 0 text3 main.obj
+__ptext4 398A 0 CODE 0 text4 main.obj
+__ptext5 35AE 0 CODE 0 text5 main.obj
+__ptext6 3A04 0 CODE 0 text6 main.obj
+__ptext7 3670 0 CODE 0 text7 main.obj
+__ptext8 30EE 0 CODE 0 text8 main.obj
+__ptext9 3AA6 0 CODE 0 text9 main.obj
 __Lstruct 0 0 COMRAM 1 struct main.obj
 __Ltext10 0 0 ABS 0 text10 main.obj
 __Ltext11 0 0 ABS 0 text11 main.obj
@@ -1669,12 +1728,13 @@ __Ltext35 0 0 ABS 0 text35 main.obj
 __Ltext36 0 0 ABS 0 text36 main.obj
 __Ltext37 0 0 ABS 0 text37 main.obj
 __Ltext38 0 0 ABS 0 text38 main.obj
+__Ltext39 0 0 ABS 0 text39 main.obj
 __ramtop 800 0 RAM 0 ramtop startup.obj
 ___aldiv@dividend F 0 COMRAM 1 cstackCOMRAM main.obj
-__Lpowerup 16 0 CODE 0 powerup main.obj
+__Lpowerup 18 0 CODE 0 powerup main.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data main.obj
-_isdigit 3BAC 0 CODE 0 text14 main.obj
-__end_of_configurations_init 3C34 0 CODE 0 text2 main.obj
+_isdigit 3ACA 0 CODE 0 text15 main.obj
+__end_of_configurations_init 3B5A 0 CODE 0 text2 main.obj
 Save@x 3D 0 COMRAM 1 cstackCOMRAM main.obj
 __Lreset_vec 0 0 CODE 0 reset_vec main.obj
 CheckMem@rta 15 0 COMRAM 1 cstackCOMRAM main.obj
@@ -1682,7 +1742,7 @@ ___param_bank 10 0 ABS 0 - main.obj
 __CFG_WDT$OFF 0 0 ABS 0 - main.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata main.obj
 ___ftmul@exp 24 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of__initialization 35F4 0 CODE 0 cinit main.obj
+__end_of__initialization 34C4 0 CODE 0 cinit main.obj
 __CFG_WRT0$OFF 0 0 ABS 0 - main.obj
 __CFG_WRT1$OFF 0 0 ABS 0 - main.obj
 __CFG_WRT2$OFF 0 0 ABS 0 - main.obj
@@ -1691,41 +1751,42 @@ __CFG_WRTB$OFF 0 0 ABS 0 - main.obj
 __Libigdata 0 0 CODE 0 ibigdata main.obj
 __CFG_WRTC$OFF 0 0 ABS 0 - main.obj
 __CFG_WRTD$OFF 0 0 ABS 0 - main.obj
-__pidataBANK0 3C12 0 CODE 0 idataBANK0 main.obj
-__pidataBANK1 3934 0 CODE 0 idataBANK1 main.obj
+__pidataBANK0 3B36 0 CODE 0 idataBANK0 main.obj
+__pidataBANK1 3870 0 CODE 0 idataBANK1 main.obj
 __Lclrtext 0 0 ABS 0 clrtext main.obj
 ___ftpack@sign 13 0 COMRAM 1 cstackCOMRAM main.obj
-___lmul@product 17 0 COMRAM 1 cstackCOMRAM main.obj
+_CURVE_ACEL_TIME C7 0 BANK0 1 dataBANK0 main.obj
+___lmul@product 25 0 COMRAM 1 cstackCOMRAM main.obj
 __CFG_FOSC$HSPLL_HS 0 0 ABS 0 - main.obj
 _formula 43 0 COMRAM 1 bssCOMRAM main.obj
-___lmul@multiplicand 13 0 COMRAM 1 cstackCOMRAM main.obj
+___lmul@multiplicand 21 0 COMRAM 1 cstackCOMRAM main.obj
 __CFG_PWRT$OFF 0 0 ABS 0 - main.obj
 __pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM main.obj
-main@old_412 324 0 BANK3 1 cstackBANK3 main.obj
-main@old_415 31C 0 BANK3 1 cstackBANK3 main.obj
-main@old_417 325 0 BANK3 1 cstackBANK3 main.obj
-main@old_420 31D 0 BANK3 1 cstackBANK3 main.obj
+main@old_428 334 0 BANK3 1 cstackBANK3 main.obj
+main@old_431 322 0 BANK3 1 cstackBANK3 main.obj
+main@old_433 335 0 BANK3 1 cstackBANK3 main.obj
+main@old_436 323 0 BANK3 1 cstackBANK3 main.obj
 _TXSTAbits FAC 0 ABS 0 - main.obj
 _T2CKPS0 7E50 0 ABS 0 - main.obj
 _T2CKPS1 7E51 0 ABS 0 - main.obj
-__pmediumconst 7B44 0 MEDIUMCONST 0 mediumconst main.obj
-__end_of_MotorASpeed 3500 0 CODE 0 text37 main.obj
-__Hend_init 1A 0 CODE 0 end_init main.obj
+__pmediumconst 7B14 0 MEDIUMCONST 0 mediumconst main.obj
+__end_of_MotorASpeed 33BE 0 CODE 0 text38 main.obj
+__Hend_init 1C 0 CODE 0 end_init main.obj
 ___aldiv@counter 17 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of_MotorBSpeed 345C 0 CODE 0 text36 main.obj
-__end_of_Line 2980 0 CODE 0 text21 main.obj
-__end_of_Load 37EC 0 CODE 0 text18 main.obj
-__end_of_Save 3670 0 CODE 0 text10 main.obj
-__end_of_main 238A 0 CODE 0 text0 main.obj
+__end_of_MotorBSpeed 3314 0 CODE 0 text37 main.obj
+__end_of_Line 26B2 0 CODE 0 text22 main.obj
+__end_of_Load 37D4 0 CODE 0 text19 main.obj
+__end_of_Save 3540 0 CODE 0 text11 main.obj
+__end_of_main 1FB6 0 CODE 0 text0 main.obj
 _CCP2CONbits FBA 0 ABS 0 - main.obj
 __pintcode 8 0 CODE 0 intcode main.obj
 isdigit@c 11 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of_Wixel 3BAC 0 CODE 0 text9 main.obj
+__end_of_Wixel 3ACA 0 CODE 0 text9 main.obj
 printf@val 30 0 COMRAM 1 cstackCOMRAM main.obj
-__end_of_dpowers 7B4F 0 MEDIUMCONST 0 mediumconst main.obj
+__end_of_dpowers 7B1F 0 MEDIUMCONST 0 mediumconst main.obj
 _CMCON FB4 0 ABS 0 - main.obj
 _EEADR FA9 0 ABS 0 - main.obj
-_isdigit$2004 10 0 COMRAM 1 cstackCOMRAM main.obj
+_isdigit$2189 10 0 COMRAM 1 cstackCOMRAM main.obj
 _SPBRG FAF 0 ABS 0 - main.obj
 _TIME2 64 0 BANK0 1 bssBANK0 main.obj
 _TIME3 68 0 BANK0 1 bssBANK0 main.obj
@@ -1735,18 +1796,20 @@ _TMR0H FD7 0 ABS 0 - main.obj
 _TMR0L FD6 0 ABS 0 - main.obj
 _TMR1H FCF 0 ABS 0 - main.obj
 _TMR1L FCE 0 ABS 0 - main.obj
-_TOTAL 4F 0 COMRAM 1 bssCOMRAM main.obj
+_TOTAL 50 0 COMRAM 1 bssCOMRAM main.obj
 _TXREG FAD 0 ABS 0 - main.obj
-__end_of_putch 3C40 0 CODE 0 text13 main.obj
-_Wixel 3B88 0 CODE 0 text9 main.obj
-_main$400 326 0 BANK3 1 cstackBANK3 main.obj
-_main$406 328 0 BANK3 1 cstackBANK3 main.obj
-_main$429 310 0 BANK3 1 cstackBANK3 main.obj
-_main$430 312 0 BANK3 1 cstackBANK3 main.obj
-_main$436 314 0 BANK3 1 cstackBANK3 main.obj
-_main$437 316 0 BANK3 1 cstackBANK3 main.obj
-_main$446 318 0 BANK3 1 cstackBANK3 main.obj
-_main$447 31A 0 BANK3 1 cstackBANK3 main.obj
+__end_of_putch 3B68 0 CODE 0 text14 main.obj
+_Wixel 3AA6 0 CODE 0 text9 main.obj
+_main$416 336 0 BANK3 1 cstackBANK3 main.obj
+_main$422 338 0 BANK3 1 cstackBANK3 main.obj
+_main$445 312 0 BANK3 1 cstackBANK3 main.obj
+_main$446 314 0 BANK3 1 cstackBANK3 main.obj
+_main$447 316 0 BANK3 1 cstackBANK3 main.obj
+_main$448 318 0 BANK3 1 cstackBANK3 main.obj
+_main$451 31A 0 BANK3 1 cstackBANK3 main.obj
+_main$452 31C 0 BANK3 1 cstackBANK3 main.obj
+_main$461 31E 0 BANK3 1 cstackBANK3 main.obj
+_main$462 320 0 BANK3 1 cstackBANK3 main.obj
 __CFG_CP0$OFF 0 0 ABS 0 - main.obj
 __CFG_CP1$OFF 0 0 ABS 0 - main.obj
 __HRAM 0 0 ABS 0 - main.obj
@@ -1759,19 +1822,20 @@ __Lram 0 0 ABS 0 ram main.obj
 __Lsfr 0 0 ABS 0 sfr main.obj
 __CFG_CP2$OFF 0 0 ABS 0 - main.obj
 __CFG_CP3$OFF 0 0 ABS 0 - main.obj
-_flag_line 7A 0 BANK0 1 bssBANK0 main.obj
+_flag_line 82 0 BANK0 1 bssBANK0 main.obj
 __CFG_CPB$OFF 0 0 ABS 0 - main.obj
-_putch 3C34 0 CODE 0 text13 main.obj
+_putch 3B5A 0 CODE 0 text14 main.obj
 __CFG_CPD$OFF 0 0 ABS 0 - main.obj
+_speed 49 0 COMRAM 1 bssCOMRAM main.obj
 _WAITIME 188 0 BANK1 1 bssBANK1 main.obj
-___fttol@sign1 8E 0 BANK0 1 cstackBANK0 main.obj
+___fttol@sign1 97 0 BANK0 1 cstackBANK0 main.obj
 Length@add 16 0 COMRAM 1 cstackCOMRAM main.obj
 Length@rta 19 0 COMRAM 1 cstackCOMRAM main.obj
 __size_of_enc 0 0 ABS 0 - main.obj
 __HdataBANK0 0 0 ABS 0 dataBANK0 main.obj
 __HdataBANK1 0 0 ABS 0 dataBANK1 main.obj
-_MotorsSpeed 3B12 0 CODE 0 text35 main.obj
-__initialization 3584 0 CODE 0 cinit main.obj
+_MotorsSpeed 3904 0 CODE 0 text36 main.obj
+__initialization 3454 0 CODE 0 cinit main.obj
 __pbssBANK0 60 0 BANK0 1 bssBANK0 main.obj
 __pbssBANK1 100 0 BANK1 1 bssBANK1 main.obj
 __pbssBANK2 200 0 BANK2 1 bssBANK2 main.obj
@@ -1782,9 +1846,9 @@ __Hsmallconst 0 0 SMALLCONST 0 smallconst main.obj
 __Lifardata 0 0 CODE 0 ifardata main.obj
 _CCP1CONbits FBD 0 ABS 0 - main.obj
 __Hintsave_regs 0 0 BIGRAM 1 intsave_regs main.obj
-_test_kd B2 0 BANK0 1 dataBANK0 main.obj
-_test_kp B5 0 BANK0 1 dataBANK0 main.obj
-__Hintcode 16 0 CODE 0 intcode main.obj
+_test_kd 1D4 0 BANK1 1 dataBANK1 main.obj
+_test_kp C4 0 BANK0 1 dataBANK0 main.obj
+__Hintcode 18 0 CODE 0 intcode main.obj
 ___ftmul@f3_as_product 25 0 COMRAM 1 cstackCOMRAM main.obj
 EnhancedRead@aux 18 0 COMRAM 1 cstackCOMRAM main.obj
 # %SPLITSTAB Section
@@ -1811,12 +1875,14 @@ EnhancedRead@aux 18 0 COMRAM 1 cstackCOMRAM main.obj
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
+text2 0 3B4A 3B4A 1E 1
+text21 0 38BC 38BC 28D 1
 cstackCOMRAM 1 1 1 51 1
-cstackBANK3 1 300 300 51 1
+cstackBANK3 1 300 300 4B 1
 reset_vec 0 0 0 4 1
-bssBANK0 1 60 60 5D 1
-bssBANK1 1 100 100 DC 1
+bssBANK0 1 60 60 6D 1
+bssBANK1 1 100 100 D9 1
 bssBANK2 1 200 200 C8 1
-intcode 0 8 8 3C38 1
-mediumconst 0 7B44 7B44 4BC 1
+intcode 0 8 8 38B3 1
+mediumconst 0 7B14 7B14 4EC 1
 config 0 300000 300000 E 1

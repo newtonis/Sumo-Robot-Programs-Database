@@ -1,17 +1,15 @@
 
 # 1 "/home/newtonis/Robots/TooSimple/Sensors/main.c"
 
-# 26 "/opt/microchip/xc8/v1.38/include/htc.h"
+# 26 "/opt/microchip/xc8/v1.34/include/htc.h"
 extern const char __xc8_OPTIM_SPEED;
 
-extern double __fpnormalize(double);
 
-
-# 13 "/opt/microchip/xc8/v1.38/include/xc8debug.h"
+# 13 "/opt/microchip/xc8/v1.34/include/xc8debug.h"
 #pragma intrinsic(__builtin_software_breakpoint)
 extern void __builtin_software_breakpoint(void);
 
-# 49 "/opt/microchip/xc8/v1.38/include/pic16f628a.h"
+# 49 "/opt/microchip/xc8/v1.34/include/pic16f628a.h"
 extern volatile unsigned char INDF @ 0x000;
 
 asm("INDF equ 00h");
@@ -791,28 +789,28 @@ extern volatile __bit nT1SYNC @ (((unsigned) &T1CON)*8) + 2;
 extern volatile __bit nTO @ (((unsigned) &STATUS)*8) + 4;
 
 
-# 27 "/opt/microchip/xc8/v1.38/include/pic.h"
+# 27 "/opt/microchip/xc8/v1.34/include/pic.h"
 #pragma intrinsic(__nop)
 extern void __nop(void);
 
-# 77
+# 76
 extern unsigned int flash_read(unsigned short addr);
 
-# 141
+# 140
 extern void flash_erase(unsigned short addr);
 
-# 114 "/opt/microchip/xc8/v1.38/include/eeprom_routines.h"
+# 41 "/opt/microchip/xc8/v1.34/include/eeprom_routines.h"
 extern void eeprom_write(unsigned char addr, unsigned char value);
 extern unsigned char eeprom_read(unsigned char addr);
 extern void eecpymem(volatile unsigned char *to, __eeprom unsigned char *from, unsigned char size);
 extern void memcpyee(__eeprom unsigned char *to, const unsigned char *from, unsigned char size);
 
 
-# 151 "/opt/microchip/xc8/v1.38/include/pic.h"
+# 149 "/opt/microchip/xc8/v1.34/include/pic.h"
 #pragma intrinsic(_delay)
 extern __nonreentrant void _delay(unsigned long);
 
-# 186
+# 184
 extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
@@ -821,15 +819,19 @@ extern __bit __timeout;
 # 12 "/home/newtonis/Robots/TooSimple/Sensors/main.c"
 #pragma config BOREN = OFF, CPD = OFF, FOSC = INTOSCIO, MCLRE = OFF, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
-# 44
+# 46
+long long times;
 char estado;
 char contador;
 char ciclos;
 
 char sensor[5];
+char V[5];
+
 
 char valores[5] = {1,2,6,8,12};
 char actual;
+char st;
 
 void init(void);
 void configurar_pwm(void);
@@ -840,20 +842,65 @@ void sensores(void);
 void read();
 void actualizar_salidas(void);
 void DUTYSet(int value);
-
+void store(){
+int i;
+V[0] = V[0] || (! PORTBbits.RB2);
+V[1] = V[1] || (! PORTBbits.RB1);
+V[2] = V[2] || (! PORTBbits.RB0);
+V[3] = V[3] || (! PORTAbits.RA4);
+V[4] = V[4] || (! PORTAbits.RA3);
+st = 0;
+}
+void set(){
+if (st == 0){
+PORTAbits.RA1 = V[0];
+PORTAbits.RA0 = V[1];
+PORTAbits.RA7 = V[2];
+PORTAbits.RA6 = V[3];
+PORTBbits.RB5 = V[4];
+int j;
+for (j = 0;j < 5;j++) V[j] = 0;
+st = 1;
+}
+}
 int main(int argc, char** argv) {
-
+st = 1;
+times = 0;
 init();
 configurar_IO();
 configurar_pwm();
-configurar_timer1();
-configurar_timer0();
+set();
+
+# 98
+TMR2IE=1;
+PEIE=1;
+GIE=1;
 while (1){
-sensores();
+
+# 116
+if (times > 540 && times < 560){
+store();
+}else{
+set();
+}
+
 }
 }
 
+void interrupt ISR(){
+if(TMR2IE && TMR2IF){
 
+times++;
+if(times == 504){
+TRISB3 = 0;
+}
+if(times == 560){
+TRISB3 = 1;
+times = 0;
+}
+TMR2IF= 0;
+}
+}
 void init(void){
 CMCON = 0x07;
 contador = 0;
@@ -863,24 +910,27 @@ actual = 0;
 
 
 }
-void SetDuty(int v){
+void SetDuty(int S){
 
 
-CCPR1L = v / 4;
+CCP1CONbits.CCP1X = (S % 4) > 1;
+CCP1CONbits.CCP1Y = (S % 4) % 2;
+CCPR1L = S / 4;
 }
 void configurar_pwm(void){
 T2CONbits.TMR2ON=1;
 T2CONbits.TOUTPS=0;
 T2CONbits.T2CKPS=0;
+
 TRISBbits.TRISB3=0;
 PR2=17;
 
-# 101
+# 167
 CCP1CON = 12;
-CCPR1L = 0x02;
 
 
 
+SetDuty(1);
 }
 void configurar_timer1(void){
 TMR1H=0xFC;
@@ -921,38 +971,39 @@ TRISA7 = 0;
 TRISA6 = 0;
 TRISB5 = 0;
 }
-void interrupt t0_int(void){
-INTCONbits.T0IF=0;
-contador ++;
+
+# 222
+void OnTIMER2(){
+T2CONbits.TMR2ON=1;
+T2CONbits.TOUTPS=0;
+T2CONbits.T2CKPS=0;
+TRISBbits.TRISB3=0;
 }
 void sensores(){
 switch (estado){
 case 0:
 
 
-TRISB3 = 0;
 
-T1CONbits.TMR1ON=1;
+TRISB3 = 0;
 estado = 1;
+times = 0;
 break;
 case 1:
-if(PIR1bits.TMR1IF==1){
-PIR1bits.TMR1IF=0;
-T1CONbits.TMR1ON=0;
-TMR1H=0xFC;
-TMR1L=0x17;
-estado = 2;
-}
-break;
-case 2:
+if(times > 100){
+
+
+
+
 read();
-contador = 0;
 TRISB3 = 1;
 
 estado = 3;
+times = 0;
+}
 break;
 case 3:
-if(contador >= 10){
+if(times > 100){
 estado = 0;
 }
 break;

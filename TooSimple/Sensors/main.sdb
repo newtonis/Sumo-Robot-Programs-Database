@@ -3,43 +3,49 @@
 [d edition pro ]
 [d chip 16F628A ]
 [d frameptr 6 ]
-"63 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"68 /home/newtonis/Robots/TooSimple/Sensors/main.c
+[v _store store `(v  1 e 0 0 ]
+"77
+[v _set set `(v  1 e 0 0 ]
+"89
 [v _main main `(i  1 e 2 0 ]
-"76
-[v _init init `(v  1 e 1 0 ]
-"90
-[v _configurar_pwm configurar_pwm `(v  1 e 1 0 ]
-"107
-[v _configurar_timer1 configurar_timer1 `(v  1 e 1 0 ]
-"122
-[v _configurar_timer0 configurar_timer0 `(v  1 e 1 0 ]
-"131
-[v _configurar_IO configurar_IO `(v  1 e 1 0 ]
-"146
-[v _t0_int t0_int `II(v  1 e 1 0 ]
-"150
-[v _sensores sensores `(v  1 e 1 0 ]
-"183
-[v _read read `(v  1 e 1 0 ]
-"6 /opt/microchip/xc8/v1.38/sources/common/awdiv.c
+"125
+[v _ISR ISR `II(v  1 e 0 0 ]
+"139
+[v _init init `(v  1 e 0 0 ]
+"148
+[v _SetDuty SetDuty `(v  1 e 0 0 ]
+"155
+[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
+"197
+[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
+"258
+[v _read read `(v  1 e 0 0 ]
+"6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"62 /opt/microchip/xc8/v1.38/sources/common/float.c
+"62 /opt/microchip/xc8/v1.34/sources/common/float.c
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
-"86 /opt/microchip/xc8/v1.38/sources/common/ftadd.c
+"86 /opt/microchip/xc8/v1.34/sources/common/ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
-"6 /opt/microchip/xc8/v1.38/sources/pic/eeprom.c
-[v _eecpymem eecpymem `(v  1 e 1 0 ]
-"39
-[v _memcpyee memcpyee `(v  1 e 1 0 ]
-"44 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"6 /opt/microchip/xc8/v1.34/sources/pic/eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"46 /home/newtonis/Robots/TooSimple/Sensors/main.c
+[v _times times `l  1 e 4 0 ]
+"47
 [v _estado estado `uc  1 e 1 0 ]
-"45
+"48
 [v _contador contador `uc  1 e 1 0 ]
-"46
+"49
 [v _ciclos ciclos `uc  1 e 1 0 ]
-"51
+"52
+[v _V V `[5]uc  1 e 5 0 ]
+"56
 [v _actual actual `uc  1 e 1 0 ]
-[s S237 . 1 `uc 1 RA0 1 0 :1:0 
+"57
+[v _st st `uc  1 e 1 0 ]
+[s S40 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -48,10 +54,10 @@
 `uc 1 RA6 1 0 :1:6 
 `uc 1 RA7 1 0 :1:7 
 ]
-"177 /opt/microchip/xc8/v1.38/include/pic16f628a.h
-[u S246 . 1 `S237 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES246  1 e 1 @5 ]
-[s S258 . 1 `uc 1 RB0 1 0 :1:0 
+"177 /opt/microchip/xc8/v1.34/include/pic16f628a.h
+[u S49 . 1 `S40 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES49  1 e 1 @5 ]
+[s S19 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -61,9 +67,9 @@
 `uc 1 RB7 1 0 :1:7 
 ]
 "238
-[u S267 . 1 `S258 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES267  1 e 1 @6 ]
-[s S190 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S28 . 1 `S19 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES28  1 e 1 @6 ]
+[s S247 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -73,14 +79,14 @@
 `uc 1 GIE 1 0 :1:7 
 ]
 "324
-[s S199 . 1 `uc 1 . 1 0 :2:0 
+[s S256 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S204 . 1 `S190 1 . 1 0 `S199 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES204  1 e 1 @11 ]
-[s S119 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S261 . 1 `S247 1 . 1 0 `S256 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES261  1 e 1 @11 ]
+[s S176 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -90,31 +96,31 @@
 `uc 1 EEIF 1 0 :1:7 
 ]
 "395
-[u S128 . 1 `S119 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES128  1 e 1 @12 ]
+[u S185 . 1 `S176 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES185  1 e 1 @12 ]
 "440
 [v _TMR1L TMR1L `VEuc  1 e 1 @14 ]
 "446
 [v _TMR1H TMR1H `VEuc  1 e 1 @15 ]
-[s S140 . 1 `uc 1 TMR1ON 1 0 :1:0 
+[s S197 . 1 `uc 1 TMR1ON 1 0 :1:0 
 `uc 1 TMR1CS 1 0 :1:1 
 `uc 1 nT1SYNC 1 0 :1:2 
 `uc 1 T1OSCEN 1 0 :1:3 
 `uc 1 T1CKPS 1 0 :2:4 
 ]
 "471
-[s S146 . 1 `uc 1 . 1 0 :4:0 
+[s S203 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 T1CKPS0 1 0 :1:4 
 `uc 1 T1CKPS1 1 0 :1:5 
 ]
-[u S150 . 1 `S140 1 . 1 0 `S146 1 . 1 0 ]
-[v _T1CONbits T1CONbits `VES150  1 e 1 @16 ]
-[s S45 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[u S207 . 1 `S197 1 . 1 0 `S203 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES207  1 e 1 @16 ]
+[s S102 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 TOUTPS 1 0 :4:3 
 ]
 "537
-[s S49 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S106 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 TOUTPS0 1 0 :1:3 
@@ -122,15 +128,27 @@
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S57 . 1 `S45 1 . 1 0 `S49 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES57  1 e 1 @18 ]
+[u S114 . 1 `S102 1 . 1 0 `S106 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES114  1 e 1 @18 ]
 "592
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @21 ]
 "604
 [v _CCP1CON CCP1CON `VEuc  1 e 1 @23 ]
+[s S79 . 1 `uc 1 CCP1M 1 0 :4:0 
+`uc 1 CCP1Y 1 0 :1:4 
+`uc 1 CCP1X 1 0 :1:5 
+]
+"622
+[s S83 . 1 `uc 1 CCP1M0 1 0 :1:0 
+`uc 1 CCP1M1 1 0 :1:1 
+`uc 1 CCP1M2 1 0 :1:2 
+`uc 1 CCP1M3 1 0 :1:3 
+]
+[u S88 . 1 `S79 1 . 1 0 `S83 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES88  1 e 1 @23 ]
 "743
 [v _CMCON CMCON `VEuc  1 e 1 @31 ]
-[s S164 . 1 `uc 1 PS 1 0 :3:0 
+[s S221 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -138,13 +156,13 @@
 `uc 1 nRBPU 1 0 :1:7 
 ]
 "832
-[s S171 . 1 `uc 1 PS0 1 0 :1:0 
+[s S228 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 ]
-[u S175 . 1 `S164 1 . 1 0 `S171 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES175  1 e 1 @129 ]
-[s S73 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S232 . 1 `S221 1 . 1 0 `S228 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES232  1 e 1 @129 ]
+[s S130 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -154,9 +172,9 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "959
-[u S82 . 1 `S73 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES82  1 e 1 @134 ]
-[s S98 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[u S139 . 1 `S130 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES139  1 e 1 @134 ]
+[s S155 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -166,10 +184,18 @@
 `uc 1 EEIE 1 0 :1:7 
 ]
 "1020
-[u S107 . 1 `S98 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES107  1 e 1 @140 ]
+[u S164 . 1 `S155 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES164  1 e 1 @140 ]
 "1107
 [v _PR2 PR2 `VEuc  1 e 1 @146 ]
+"1356
+[v _GIE GIE `VEb  1 e 0 @95 ]
+"1370
+[v _PEIE PEIE `VEb  1 e 0 @94 ]
+"1466
+[v _TMR2IE TMR2IE `VEb  1 e 0 @1121 ]
+"1468
+[v _TMR2IF TMR2IF `VEb  1 e 0 @97 ]
 "1480
 [v _TRISA0 TRISA0 `VEb  1 e 0 @1064 ]
 "1482
@@ -192,48 +218,59 @@
 [v _TRISB3 TRISB3 `VEb  1 e 0 @1075 ]
 "1506
 [v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
-"63 /home/newtonis/Robots/TooSimple/Sensors/main.c
+"89 /home/newtonis/Robots/TooSimple/Sensors/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"73
+"123
 } 0
-"150
-[v _sensores sensores `(v  1 e 1 0 ]
+"68
+[v _store store `(v  1 e 0 0 ]
 {
-"182
-} 0
-"183
-[v _read read `(v  1 e 1 0 ]
-{
-"189
-} 0
 "76
-[v _init init `(v  1 e 1 0 ]
+} 0
+"77
+[v _set set `(v  1 e 0 0 ]
 {
 "84
+[v set@j j `i  1 a 2 4 ]
+"88
 } 0
-"107
-[v _configurar_timer1 configurar_timer1 `(v  1 e 1 0 ]
+"139
+[v _init init `(v  1 e 0 0 ]
 {
-"121
+"147
 } 0
-"122
-[v _configurar_timer0 configurar_timer0 `(v  1 e 1 0 ]
+"155
+[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
 {
-"130
+"172
 } 0
-"90
-[v _configurar_pwm configurar_pwm `(v  1 e 1 0 ]
+"148
+[v _SetDuty SetDuty `(v  1 e 0 0 ]
 {
-"106
+[v SetDuty@S S `i  1 p 2 8 ]
+"154
 } 0
-"131
-[v _configurar_IO configurar_IO `(v  1 e 1 0 ]
+"6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
-"145
+"11
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"12
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"6
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"42
 } 0
-"146
-[v _t0_int t0_int `II(v  1 e 1 0 ]
+"197 /home/newtonis/Robots/TooSimple/Sensors/main.c
+[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
 {
-"149
+"211
+} 0
+"125
+[v _ISR ISR `II(v  1 e 0 0 ]
+{
+"138
 } 0

@@ -12,6 +12,7 @@ void configIO(){
     TRISBbits.TRISB2 = INPUT;
     
     ///Infrared
+    TRISBbits.TRISB5 = INPUT;
     TRISDbits.TRISD5 = INPUT;  
     TRISBbits.TRISB6 = INPUT;
     TRISDbits.TRISD6 = INPUT;
@@ -64,7 +65,7 @@ void main(void){
     while (1){
         switch (state){
             case INIT:
-                /*if (IR0 == 0 ){
+                if (IR0 == 0 ){
                     L_RED = 1;
                     L_YELLOW = 1;
                     L_ORANGE = 0;
@@ -72,10 +73,13 @@ void main(void){
                     L_RED = 0;
                     L_YELLOW = 0;
                     L_ORANGE = 1;
-                }*/
-                    L_RED = IR_DER;
-                    L_YELLOW = IR_CEN;
-                    L_ORANGE = IR_DER;
+                }
+                    //L_RED = IR_DER;
+                    //L_YELLOW = IR_CEN;
+                    //L_ORANGE = IR_DER;
+                //L_YELLOW = 1;
+                //L_ORANGE = 0;
+                //L_RED = 0;
 
                 if (B_ORANGE == 0){
                     state = WAIT;

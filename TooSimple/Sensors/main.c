@@ -20,6 +20,8 @@
 #define OUTPUT 0
 #define INPUT  1
 
+#define or ||
+#define and &&
 #define not !
 
 #define IN_IR0 PORTBbits.RB2
@@ -41,14 +43,18 @@
 #define CERCA 0x04
 #define LEJOS 0x10
 
+long long times;
 char estado;
 char contador;
 char ciclos;
 
 char sensor[CVALORES];
+char V[CVALORES];
+
 
 char valores[CVALORES] = {1,2,6,8,12};
 char actual;
+char st;
 
 void init(void);
 void configurar_pwm(void);
@@ -59,20 +65,77 @@ void sensores(void);
 void read();
 void actualizar_salidas(void);
 void DUTYSet(int value);
-
+void store(){
+    int i;
+    V[0] = V[0] or (not IN_IR0);
+    V[1] = V[1] or (not IN_IR1);
+    V[2] = V[2] or (not IN_IR2);
+    V[3] = V[3] or (not IN_IR3);
+    V[4] = V[4] or (not IN_IR4);
+    st = 0;// flag set to update
+}
+void set(){
+    if (st == 0){
+        OUT_IR0 = V[0];
+        OUT_IR1 = V[1];
+        OUT_IR2 = V[2];
+        OUT_IR3 = V[3];
+        OUT_IR4 = V[4];
+        int j;
+        for (j = 0;j < CVALORES;j++) V[j] = 0;
+        st = 1;
+    }
+}
 int main(int argc, char** argv) {
-
+    st = 1;
+    times = 0;
     init();
     configurar_IO();
     configurar_pwm();
-    configurar_timer1();
-    configurar_timer0();
+    set();
+    /*configurar_timer1();
+    configurar_timer0();*/
+    TMR2IE=1;
+    PEIE=1;
+    GIE=1;
     while (1){
-        sensores();
+        //sensores();
+
+       /* if (times >= 20){
+            TRISB3 = 1;
+        }
+        if (times >= 50){
+            read();
+        }
+        if (times >= 100){
+            TRISB3 = 0;
+            times = 0;
+        }*/
+
+        //read();
+        if (times > 540 && times < 560){
+            store();
+        }else{
+            set();
+        }
+
     }
 }
 
-
+void interrupt ISR(){
+    if(TMR2IE && TMR2IF){
+        //TMR2 overflow
+        times++;
+        if(times == 504){
+            TRISB3 = 0;
+        }
+        if(times == 560){
+            TRISB3 = 1;
+            times = 0;
+        }
+        TMR2IF= 0;
+    }
+}
 void init(void){
     CMCON = 0x07;
     contador = 0;
@@ -82,27 +145,30 @@ void init(void){
     
     ///// 0000
 }
-void SetDuty(int v){
+void SetDuty(int S){
     // v goes from 0 to 100
     //now goes from 0 to 78 
-    CCPR1L  = v / 4;
+    CCP1CONbits.CCP1X = (S % 4) > 1;
+    CCP1CONbits.CCP1Y = (S % 4) % 2;
+    CCPR1L = S / 4;
 }
 void configurar_pwm(void){
     T2CONbits.TMR2ON=1; // timer2 prendido
     T2CONbits.TOUTPS=0; // hasta 15
     T2CONbits.T2CKPS=0; // 00=1:1 01=1:4 1x=1:16
+
     TRISBbits.TRISB3=0; // pwm salida
     PR2=17;//26; // periodo 30Khz
 
     // MENOR VALOR A MAYOR VALOR
     // 78 -> 100 %
-
+    /// 72 is the max cycle to send
     //SetDuty(7);
     CCP1CON = 12; // 12
-    CCPR1L = 0x02;
+   // CCPR1L = 0x02;
     //CCPR1L=0; //apagado
     //CCP1CON=12;
-
+    SetDuty(1);
 }
 void configurar_timer1(void){
     TMR1H=0xFC;
@@ -143,38 +209,47 @@ void configurar_IO(void){
     TRISA6 = OUTPUT;
     TRISB5 = OUTPUT;
 }
-void interrupt t0_int(void){
+/*void interrupt t0_int(void){
     INTCONbits.T0IF=0;
     contador ++;
+}*/
+/*void interrupt t2_int(void){
+    if (PIR1bits.TMR2IF){
+        PIR1bits.TMR2IF=0;
+        times ++;
+    }
+}*/
+void OnTIMER2(){
+    T2CONbits.TMR2ON=1; // timer2 prendido
+    T2CONbits.TOUTPS=0; // hasta 15
+    T2CONbits.T2CKPS=0; // 00=1:1 01=1:4 1x=1:16
+    TRISBbits.TRISB3=0; // pwm salida
 }
 void sensores(){
     switch (estado){
         case INICIO:
             //CCPR1L = 0x01; //IN_DIS ? CERCA : LEJOS;
             //CCPR1L= valores[actual]; //prender pwm
+            //OnTIMER2();
             TRISB3 = OUTPUT;
-
-            T1CONbits.TMR1ON=1; //prender timer
             estado = PAUSA;
+            times = 0;
         break;
         case PAUSA:
-            if(PIR1bits.TMR1IF==1){  //desborde
-                PIR1bits.TMR1IF=0; //borro desborde
-                T1CONbits.TMR1ON=0; //apagar timer
-                TMR1H=0xFC;
-                TMR1L=0x17;
-                estado = LEER;
+            if(times > 100){  //desborde timer 2
+                //PIR1bits.TMR1IF=0; //borro desborde
+                //T1CONbits.TMR1ON=0; //apagar timer
+                //TMR1H=0xFC;
+                //TMR1L=0x17;
+                read();
+                TRISB3 = INPUT;
+                //CCPR1L=0; //apagado pwm
+                estado = APAGADO;
+                times = 0;
             }
         break;
-        case LEER:
-            read();
-            contador = 0;
-            TRISB3 = INPUT;
-            //CCPR1L=0; //apagado pwm
-            estado = APAGADO;
-        break;
         case APAGADO:
-            if(contador >= 10){
+            if(times > 100){  //desborde timer 2
                 estado = INICIO;
             }
         break;

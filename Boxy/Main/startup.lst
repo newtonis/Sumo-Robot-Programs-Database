@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-                                                                                                           Thu Aug  4 02:52:22 2016
+                                                                                                           Sat Aug  6 05:56:40 2016
 
 
      1                           
@@ -129,7 +129,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    123                           	psect	end_init
    124                           	global start_initialization
    125                           	goto start_initialization	;jump to C runtime clear & initialization
-   126  000018  EFEA  F002         
+   126  000018  EFE5  F002         
    127                           ; Config register CONFIG1L @ 0x300000
    128                           ;	System Clock Postscaler Selection bits
    129                           ;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
@@ -294,10 +294,10 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Thu Aug  4 02:52:22 2016
+Symbol Table                                                                                               Sat Aug  6 05:56:40 2016
 
                 __S1 0038                 ___sp 0000                 _main 001C                 start 0018  
               __HRAM 0000                __LRAM 0001         __mediumconst 0000               stackhi 0007FF  
              stacklo 000060           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
-            __ramtop 0800  start_initialization 05D4          __smallconst 0000             intlevel0 0000  
+            __ramtop 0800  start_initialization 05CA          __smallconst 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             reset_vec 0000  
