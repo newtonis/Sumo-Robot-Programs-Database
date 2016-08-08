@@ -6362,7 +6362,7 @@ TRISBbits.TRISB1 = INPUT;
 TRISBbits.TRISB2 = INPUT;
 
 
-TRISBbits.RB5 = INPUT;
+TRISBbits.TRISB5 = INPUT;
 TRISDbits.TRISD5 = INPUT;
 TRISBbits.TRISB6 = INPUT;
 TRISDbits.TRISD6 = INPUT;
@@ -6387,6 +6387,7 @@ int d1 , d2;
 enum {INIT , WAIT, MOVE };
 
 int state;
+int sd;
 
 void main(void){
 R = 0;
@@ -6403,6 +6404,7 @@ mb = 0;
 d1 = 0;
 d2 = 0;
 
+
 InitTIMERS();
 configurations_init();
 
@@ -6415,54 +6417,81 @@ state = INIT;
 while (1){
 switch (state){
 case INIT:
-if (PORTBbits.RB5 == 0 ){
-PORTDbits.RD2 = 1;
-PORTDbits.RD3 = 1;
-PORTDbits.RD4 = 0;
-}else{
-PORTDbits.RD2 = 0;
-PORTDbits.RD3 = 0;
-PORTDbits.RD4 = 1;
-}
 
-# 84
-if (PORTBbits.RB0 == 0){
+# 79
+PORTDbits.RD2 = PORTDbits.RD7;
+PORTDbits.RD3 = PORTBbits.RB5;
+PORTDbits.RD4 = PORTDbits.RD5;
+
+# 96
+MotorsSpeed(0,0);
+if (PORTBbits.RB2 == 0){
+sd = 1;
 state = WAIT;
 TIME = 0;
-
-}else if (PORTBbits.RB2 == 0){
-
-}else{
-MotorsSpeed(0,0);
 }
-MotorsSpeed(0,0);
+if (PORTBbits.RB0 == 0){
+sd = 2;
+state = WAIT;
+TIME = 0;
+}
 break;
 case WAIT:
 MotorsSpeed(0,0);
-PORTDbits.RD2 = TIME % 1000 > 500;
-PORTDbits.RD3 = 0;
-PORTDbits.RD4 = 0;
+
+# 113
+PORTDbits.RD3 = TIME % 1000 > 500;
+PORTDbits.RD2 = sd == 1;
+PORTDbits.RD4 = sd == 2;
 if (TIME > 5000){
 state = MOVE;
 }
 break;
 case MOVE:
-if (PORTBbits.RB5 == 0){
-MotorsSpeed(-1000,1000);
-PORTDbits.RD2 = 1;
-}else{
-PORTDbits.RD2 = 0;
-MotorsSpeed(-900,-500);
+
+# 133
+PORTDbits.RD2 = sd == 1;
+PORTDbits.RD4 = sd == 2;
+
+if (PORTBbits.RB5){
+if (PORTDbits.RD5 && PORTDbits.RD7){
+MotorsSpeed(1000,1000);
+PORTDbits.RD3 = TIME % 200 > 100;
+}else if(!(PORTDbits.RD5) && !(PORTDbits.RD7)){
+PORTDbits.RD3 = TIME % 400 > 200;
+MotorsSpeed(1000,1000);
+}else if (PORTDbits.RD5 && !(PORTDbits.RD7)){
+PORTDbits.RD3 = 1;
+MotorsSpeed(1000,400);
+}else if(PORTDbits.RD7 && !(PORTDbits.RD5)){
+PORTDbits.RD3 = 1;
+MotorsSpeed(400,1000);
 }
+}else if(PORTDbits.RD5 && !(PORTDbits.RD7)){
 PORTDbits.RD3 = 0;
-PORTDbits.RD4 = 0;
-if (PORTBbits.RB0 == 0){
-state = INIT;
+MotorsSpeed(1000,-500);
+}else if(PORTDbits.RD7 && !(PORTDbits.RD5)){
+PORTDbits.RD3 = 0;
+MotorsSpeed(-500,1000);
+}else if(sd == 1){
+PORTDbits.RD3 = 0;
+MotorsSpeed(1000,-500);
+}else if(sd == 2){
+PORTDbits.RD3 = 0;
+MotorsSpeed(-500,1000);
 }
+
+if(PORTDbits.RD5 && !(PORTDbits.RD7)){
+sd = 2;
+}
+if(PORTDbits.RD7 && !(PORTDbits.RD5)){
+sd = 1;
+}
+
 break;
 }
 
-# 151
+# 205
 }
 
 

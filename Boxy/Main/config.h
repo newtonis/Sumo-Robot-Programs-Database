@@ -60,7 +60,7 @@ enum {OUTPUT,INPUT};
 
 #define IR_DER PORTDbits.RD7
 #define IR_CEN PORTBbits.RB5
-
+#define IR_IZQ PORTDbits.RD5
 
 #define IR0 PORTBbits.RB5
 #define IR1 PORTDbits.RD7

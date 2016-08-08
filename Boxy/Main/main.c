@@ -37,6 +37,7 @@ int d1 , d2;
 enum {INIT , WAIT, MOVE };
 
 int state;
+int sd;
 
 void main(void){
     R = 0;
@@ -53,6 +54,7 @@ void main(void){
     d1 = 0;
     d2 = 0;
 
+
     InitTIMERS();
     configurations_init();
 
@@ -65,7 +67,7 @@ void main(void){
     while (1){
         switch (state){
             case INIT:
-                if (IR0 == 0 ){
+               /* if (IR0 == 0 ){
                     L_RED = 1;
                     L_YELLOW = 1;
                     L_ORANGE = 0;
@@ -73,15 +75,15 @@ void main(void){
                     L_RED = 0;
                     L_YELLOW = 0;
                     L_ORANGE = 1;
-                }
-                    //L_RED = IR_DER;
-                    //L_YELLOW = IR_CEN;
-                    //L_ORANGE = IR_DER;
+                }*/
+                L_RED = IR_DER;
+                L_YELLOW = IR_CEN;
+                L_ORANGE = IR_IZQ;
                 //L_YELLOW = 1;
                 //L_ORANGE = 0;
                 //L_RED = 0;
 
-                if (B_ORANGE == 0){
+                /*if (B_ORANGE == 0){
                     state = WAIT;
                     TIME = 0;
                     //MotorsSpeed(-500,0);
@@ -90,19 +92,33 @@ void main(void){
                 }else{
                     MotorsSpeed(0,0);
                 }
+                MotorsSpeed(0,0);*/
                 MotorsSpeed(0,0);
+                if (B_RED == 0){
+                    sd = 1;
+                    state = WAIT;
+                    TIME = 0;
+                }
+                if (B_ORANGE == 0){
+                    sd = 2;
+                    state = WAIT;
+                    TIME = 0;
+                }
             break;
             case WAIT:
                 MotorsSpeed(0,0);
-                L_RED = TIME % 1000 > 500;
+                /*L_RED = TIME % 1000 > 500;
                 L_YELLOW = 0;
-                L_ORANGE = 0;
+                L_ORANGE = 0;*/
+                L_YELLOW = TIME % 1000 > 500;
+                L_RED = sd == 1;
+                L_ORANGE = sd == 2;
                 if (TIME > 5000){
                     state = MOVE;
                 }
             break;
             case MOVE:
-                if (IR0 == 0){
+                /*if (IR0 == 0){
                     MotorsSpeed(-1000,1000);
                     L_RED = 1;
                 }else{
@@ -113,7 +129,45 @@ void main(void){
                 L_ORANGE = 0;
                 if (B_ORANGE == 0){
                     state = INIT;
+                }*/
+                L_RED = sd == 1;
+                L_ORANGE = sd == 2;
+
+                if (IR_CEN){
+                    if (IR_IZQ and IR_DER){
+                        MotorsSpeed(1000,1000);
+                        L_YELLOW = TIME % 200 > 100;
+                    }else if(not(IR_IZQ) and not(IR_DER)){
+                        L_YELLOW = TIME % 400 > 200;
+                        MotorsSpeed(1000,1000);
+                    }else if (IR_IZQ and not(IR_DER)){
+                        L_YELLOW = 1;
+                        MotorsSpeed(1000,400);
+                    }else if(IR_DER and not(IR_IZQ)){
+                        L_YELLOW = 1;
+                        MotorsSpeed(400,1000);
+                    }
+                }else if(IR_IZQ and not(IR_DER)){
+                    L_YELLOW = 0;
+                    MotorsSpeed(1000,-500);
+                }else if(IR_DER and not(IR_IZQ)){
+                    L_YELLOW = 0;
+                    MotorsSpeed(-500,1000);
+                }else if(sd == 1){
+                    L_YELLOW = 0;
+                    MotorsSpeed(1000,-500);
+                }else if(sd == 2){
+                    L_YELLOW = 0;
+                    MotorsSpeed(-500,1000);
                 }
+
+                if(IR_IZQ and not(IR_DER)){
+                    sd = 2;
+                }
+                if(IR_DER and not(IR_IZQ)){
+                    sd = 1;
+                }
+
             break;
         }
         //MotorsSpeed(500 ,500);

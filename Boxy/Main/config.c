@@ -2,6 +2,8 @@
 
 ll TIME;
 
+// tosc = 5/4 * 10^-7
+
 void interrupt enc(void){
     if (TMR0IF){
        TIME ++;
@@ -122,6 +124,6 @@ void MotorBSpeed(int S){
 }
 
 void MotorsSpeed(int A,int B){
-    MotorASpeed(A);
+    MotorASpeed(-A);
     MotorBSpeed(B);
 }

@@ -45,24 +45,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _configurations_init `(v ~T0 @X0 0 ef ]
 "74
 [v _MotorsPWM `(v ~T0 @X0 0 ef ]
-"64 /home/newtonis/Robots/Boxy/Main/main.c
+"66 /home/newtonis/Robots/Boxy/Main/main.c
 [c E5284 0 1 2 .. ]
 [n E5284 . INIT WAIT MOVE  ]
-"2733 /opt/microchip/xc8/v1.34/include/pic18f4550.h
-[s S201 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S201 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"2743
-[s S202 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S202 . INT0 INT1 INT2 . PGM PGC PGD ]
-"2752
-[s S203 :3 `uc 1 :1 `uc 1 ]
-[n S203 . . CCP2_PA2 ]
-"2732
-[u S200 `S201 1 `S202 1 `S203 1 ]
-[n S200 . . . . ]
-"2757
-[v _PORTBbits `VS200 ~T0 @X0 0 e@3969 ]
-"2995
+"2995 /opt/microchip/xc8/v1.34/include/pic18f4550.h
 [s S213 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S213 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
 "3005
@@ -76,10 +62,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S212 . . . . ]
 "3020
 [v _PORTDbits `VS212 ~T0 @X0 0 e@3971 ]
-"72 /home/newtonis/Robots/Boxy/Main/config.h
-[v _TIME `l ~T0 @X0 0 e ]
-"78
+"2733
+[s S201 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S201 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+"2743
+[s S202 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S202 . INT0 INT1 INT2 . PGM PGC PGD ]
+"2752
+[s S203 :3 `uc 1 :1 `uc 1 ]
+[n S203 . . CCP2_PA2 ]
+"2732
+[u S200 `S201 1 `S202 1 `S203 1 ]
+[n S200 . . . . ]
+"2757
+[v _PORTBbits `VS200 ~T0 @X0 0 e@3969 ]
+"78 /home/newtonis/Robots/Boxy/Main/config.h
 [v _MotorsSpeed `(v ~T0 @X0 0 ef2`i`i ]
+"72
+[v _TIME `l ~T0 @X0 0 e ]
 "51 /opt/microchip/xc8/v1.34/include/pic18f4550.h
 [; <" SPPDATA equ 0F62h ;# ">
 "70
@@ -507,7 +507,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "12
 [e = . . _TRISBbits 0 2 -> . `E5256 1 `uc ]
 "15
-[e = . . _TRISBbits 1 5 -> . `E5256 1 `uc ]
+[e = . . _TRISBbits 0 5 -> . `E5256 1 `uc ]
 "16
 [e = . . _TRISDbits 0 5 -> . `E5256 1 `uc ]
 "17
@@ -548,176 +548,243 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _d2 `i ~T0 @X0 1 e ]
 "39
 [v _state `i ~T0 @X0 1 e ]
-"41
+"40
+[v _sd `i ~T0 @X0 1 e ]
+"42
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"42
-[e = _R -> -> 0 `i `uc ]
 "43
-[e = _Y -> -> 0 `i `uc ]
+[e = _R -> -> 0 `i `uc ]
 "44
-[e = _O -> -> 0 `i `uc ]
+[e = _Y -> -> 0 `i `uc ]
 "45
-[e = _PR -> -> 0 `i `uc ]
+[e = _O -> -> 0 `i `uc ]
 "46
-[e = _PY -> -> 0 `i `uc ]
+[e = _PR -> -> 0 `i `uc ]
 "47
+[e = _PY -> -> 0 `i `uc ]
+"48
 [e = _PO -> -> 0 `i `uc ]
-"49
-[e = _fa -> 0 `i ]
 "50
-[e = _fb -> 0 `i ]
+[e = _fa -> 0 `i ]
 "51
-[e = _ma -> 0 `i ]
+[e = _fb -> 0 `i ]
 "52
-[e = _mb -> 0 `i ]
+[e = _ma -> 0 `i ]
 "53
-[e = _d1 -> 0 `i ]
+[e = _mb -> 0 `i ]
 "54
+[e = _d1 -> 0 `i ]
+"55
 [e = _d2 -> 0 `i ]
-"56
+"58
 [e ( _InitTIMERS ..  ]
-"57
-[e ( _configurations_init ..  ]
 "59
+[e ( _configurations_init ..  ]
+"61
 [e ( _MotorsPWM ..  ]
-"60
+"62
 [e ( _configIO ..  ]
-"64
+"66
 [e = _state -> . `E5284 0 `i ]
-"65
+"67
 [e :U 596 ]
 {
-"66
+"68
 [e $U 599  ]
 {
-"67
-[e :U 600 ]
-"68
-[e $ ! == -> . . _PORTBbits 0 5 `i -> 0 `i 601  ]
-{
 "69
-[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
-"70
-[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
-"71
-[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
-"72
-}
-[e $U 602  ]
-[e :U 601 ]
-{
-"73
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"74
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
-"75
-[e = . . _PORTDbits 0 4 -> -> 1 `i `uc ]
-"76
-}
-[e :U 602 ]
-"84
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 603  ]
-{
-"85
-[e = _state -> . `E5284 1 `i ]
-"86
-[e = _TIME -> -> 0 `i `l ]
-"88
-}
-[e $U 604  ]
-[e :U 603 ]
-[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 605  ]
-{
-"90
-}
-[e $U 606  ]
-[e :U 605 ]
-{
-"91
-[e ( _MotorsSpeed (2 , -> 0 `i -> 0 `i ]
-"92
-}
-[e :U 606 ]
-[e :U 604 ]
-"93
-[e ( _MotorsSpeed (2 , -> 0 `i -> 0 `i ]
-"94
-[e $U 598  ]
-"95
-[e :U 607 ]
+[e :U 600 ]
+"79
+[e = . . _PORTDbits 0 2 . . _PORTDbits 0 7 ]
+"80
+[e = . . _PORTDbits 0 3 . . _PORTBbits 0 5 ]
+"81
+[e = . . _PORTDbits 0 4 . . _PORTDbits 0 5 ]
 "96
 [e ( _MotorsSpeed (2 , -> 0 `i -> 0 `i ]
 "97
-[e = . . _PORTDbits 0 2 -> -> > % _TIME -> -> 1000 `i `l -> -> 500 `i `l `i `uc ]
+[e $ ! == -> . . _PORTBbits 0 2 `i -> 0 `i 601  ]
+{
 "98
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+[e = _sd -> 1 `i ]
 "99
-[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
+[e = _state -> . `E5284 1 `i ]
 "100
-[e $ ! > _TIME -> -> 5000 `i `l 608  ]
-{
+[e = _TIME -> -> 0 `i `l ]
 "101
-[e = _state -> . `E5284 2 `i ]
+}
+[e :U 601 ]
 "102
-}
-[e :U 608 ]
+[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 602  ]
+{
 "103
-[e $U 598  ]
+[e = _sd -> 2 `i ]
 "104
-[e :U 609 ]
+[e = _state -> . `E5284 1 `i ]
 "105
-[e $ ! == -> . . _PORTBbits 0 5 `i -> 0 `i 610  ]
-{
+[e = _TIME -> -> 0 `i `l ]
 "106
-[e ( _MotorsSpeed (2 , -U -> 1000 `i -> 1000 `i ]
+}
+[e :U 602 ]
 "107
-[e = . . _PORTDbits 0 2 -> -> 1 `i `uc ]
-"108
-}
-[e $U 611  ]
-[e :U 610 ]
-{
-"109
-[e = . . _PORTDbits 0 2 -> -> 0 `i `uc ]
-"110
-[e ( _MotorsSpeed (2 , -U -> 900 `i -U -> 500 `i ]
-"111
-}
-[e :U 611 ]
-"112
-[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
-"113
-[e = . . _PORTDbits 0 4 -> -> 0 `i `uc ]
-"114
-[e $ ! == -> . . _PORTBbits 0 0 `i -> 0 `i 612  ]
-{
-"115
-[e = _state -> . `E5284 0 `i ]
-"116
-}
-[e :U 612 ]
-"117
 [e $U 598  ]
+"108
+[e :U 603 ]
+"109
+[e ( _MotorsSpeed (2 , -> 0 `i -> 0 `i ]
+"113
+[e = . . _PORTDbits 0 3 -> -> > % _TIME -> -> 1000 `i `l -> -> 500 `i `l `i `uc ]
+"114
+[e = . . _PORTDbits 0 2 -> -> == _sd -> 1 `i `i `uc ]
+"115
+[e = . . _PORTDbits 0 4 -> -> == _sd -> 2 `i `i `uc ]
+"116
+[e $ ! > _TIME -> -> 5000 `i `l 604  ]
+{
+"117
+[e = _state -> . `E5284 2 `i ]
 "118
 }
+[e :U 604 ]
+"119
 [e $U 598  ]
-"66
+"120
+[e :U 605 ]
+"133
+[e = . . _PORTDbits 0 2 -> -> == _sd -> 1 `i `i `uc ]
+"134
+[e = . . _PORTDbits 0 4 -> -> == _sd -> 2 `i `i `uc ]
+"136
+[e $ ! != -> . . _PORTBbits 0 5 `i -> -> -> 0 `i `Vuc `i 606  ]
+{
+"137
+[e $ ! && != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i 607  ]
+{
+"138
+[e ( _MotorsSpeed (2 , -> 1000 `i -> 1000 `i ]
+"139
+[e = . . _PORTDbits 0 3 -> -> > % _TIME -> -> 200 `i `l -> -> 100 `i `l `i `uc ]
+"140
+}
+[e $U 608  ]
+[e :U 607 ]
+[e $ ! && ! != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i 609  ]
+{
+"141
+[e = . . _PORTDbits 0 3 -> -> > % _TIME -> -> 400 `i `l -> -> 200 `i `l `i `uc ]
+"142
+[e ( _MotorsSpeed (2 , -> 1000 `i -> 1000 `i ]
+"143
+}
+[e $U 610  ]
+[e :U 609 ]
+[e $ ! && != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i 611  ]
+{
+"144
+[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
+"145
+[e ( _MotorsSpeed (2 , -> 1000 `i -> 400 `i ]
+"146
+}
+[e $U 612  ]
+[e :U 611 ]
+[e $ ! && != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i 613  ]
+{
+"147
+[e = . . _PORTDbits 0 3 -> -> 1 `i `uc ]
+"148
+[e ( _MotorsSpeed (2 , -> 400 `i -> 1000 `i ]
+"149
+}
+[e :U 613 ]
+"150
+[e :U 612 ]
+[e :U 610 ]
+[e :U 608 ]
+}
+[e $U 614  ]
+[e :U 606 ]
+[e $ ! && != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i 615  ]
+{
+"151
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"152
+[e ( _MotorsSpeed (2 , -> 1000 `i -U -> 500 `i ]
+"153
+}
+[e $U 616  ]
+[e :U 615 ]
+[e $ ! && != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i 617  ]
+{
+"154
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"155
+[e ( _MotorsSpeed (2 , -U -> 500 `i -> 1000 `i ]
+"156
+}
+[e $U 618  ]
+[e :U 617 ]
+[e $ ! == _sd -> 1 `i 619  ]
+{
+"157
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"158
+[e ( _MotorsSpeed (2 , -> 1000 `i -U -> 500 `i ]
+"159
+}
+[e $U 620  ]
+[e :U 619 ]
+[e $ ! == _sd -> 2 `i 621  ]
+{
+"160
+[e = . . _PORTDbits 0 3 -> -> 0 `i `uc ]
+"161
+[e ( _MotorsSpeed (2 , -U -> 500 `i -> 1000 `i ]
+"162
+}
+[e :U 621 ]
+"164
+[e :U 620 ]
+[e :U 618 ]
+[e :U 616 ]
+[e :U 614 ]
+[e $ ! && != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i 622  ]
+{
+"165
+[e = _sd -> 2 `i ]
+"166
+}
+[e :U 622 ]
+"167
+[e $ ! && != -> . . _PORTDbits 0 7 `i -> -> -> 0 `i `Vuc `i ! != -> . . _PORTDbits 0 5 `i -> -> -> 0 `i `Vuc `i 623  ]
+{
+"168
+[e = _sd -> 1 `i ]
+"169
+}
+[e :U 623 ]
+"171
+[e $U 598  ]
+"172
+}
+[e $U 598  ]
+"68
 [e :U 599 ]
 [e [\ _state , $ -> . `E5284 0 `i 600
- , $ -> . `E5284 1 `i 607
- , $ -> . `E5284 2 `i 609
+ , $ -> . `E5284 1 `i 603
+ , $ -> . `E5284 2 `i 605
  598 ]
-"118
+"172
 [e :U 598 ]
-"151
+"205
 }
 [e :U 595 ]
-"65
+"67
 [e $U 596  ]
 [e :U 597 ]
-"154
+"208
 [e :UE 594 ]
 }

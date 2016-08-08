@@ -1,19 +1,24 @@
 #include <xc.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
 #include "config.h"
 
-
-
 enum {TEST , CURVE , SLOW , FAST , MOD_STOP , NORMAL };
-int    VEL[6] = {450 , 800 , 420 , 1000 , -1000 , 450};
-double VKP[6] = { 5  , 6.5   , 6   , 6    ,  6    , 6};
-double VKD[6] = { 50 , 70  , 30  , 50   , 50    , 50};
+int    VEL[6] = {450 , 800 , 420 , 1000 , -1000 , 485};
+double VKP[6] = { 5  , 7   , 6   , 6    ,  6    , 6};
+double VKD[6] = { 50 , 70  , 30  , 50   , 50    , 70};
 
 int CURVE_ACEL_TIME = 500; // MS
 int RECT_ACEL_TIME = 10;  // MS
 int RECT_STOP_TIME = 50;
+
+
+double ACEL[105]; // RANGE ACEL
+double ICEL[105]; // RANGE STOP
+
+//char LINES[100];
+
 /*** COOL MACROS DEFINES ***/
 #define ran(a,b,c) (max(min(a,c),b))
     
@@ -33,7 +38,7 @@ int RECT_STOP_TIME = 50;
 #define TCOOL (TIME/6)
 #define TH (INVERTIR?100:900) ///TH means the black/white threshold
 
-#define SPEEDTIME(w) ((double)(w) * 0.13) ///Ratio of max speed time in the rect
+#define SPEEDTIME(w) ((double)(w) * 0.15) ///Ratio of max speed time in the rect
 #define RECTTIME (SPEEDTIME(LEN[rcount/2]*40)) ///With a single word we can get rect time
 #define STOPTIME (RECTTIME + 40)
 
@@ -53,7 +58,10 @@ ll TIME2;
 ll TIME3; 
 ll TIME4;
 ll TIME5;
+ll TIME6;
+
 int status;
+
 
 /**** prototipos ****/
 void initYBOT();
@@ -76,6 +84,35 @@ void CheckMem(uc *data); //Check if current memory is writte
 void GetValue(int item,int *data); //Check memory item value
 void EreaseAll(); //erase all memory
 void Load(); ///Load EEPROM into RAM
+
+int Interval(int start , int stop , int t , int total);
+
+void Compute(){
+    int x;
+    for (x = 0;x < 101;x++){
+        ACEL[x] = 1.0 - pow( 2.718 , - (double)(x)/(double)20.0);
+        ICEL[x] = 1.0 - pow( 2.718 , - (double)(100-x)/(double)20.0);
+    }
+}
+void PlotCompute(){
+    int x;
+    /*for (x = 0;x < 100;x++){
+        printf("{'COM':'plot','name':'POW1','value':%i,'color':(100,200,200)}\n", (int)(ACEL[x]*100.0) );
+        printf("{'COM':'plot','name':'POW2','value':%i,'color':(200,100,100)}\n", (int)(ICEL[x]*100.0) );
+    }*/
+   
+    for (x = 0;x < 700;x++){
+        printf("{'COM':'plot','name':'POW3','value':%i,'color':(200,100,100)}\n", Interval(400,1000,x,700) );
+    }
+}
+int Interval(int start , int end , int t , int total){
+    int a; a = (double)t / (double)total * 100.0;
+    if (start < end){ // acel
+        return (int) (start + ACEL[a] * (double)(end - start));
+    }else{
+        return (int) (start + ICEL[a] * (double)(end - start));
+    }
+}
 
 /*** Status machine functions ***/
 
@@ -120,6 +157,7 @@ void interrupt enc(void){
        TIME3 ++;
        TIME4 ++;
        TIME5 ++;
+       TIME6 ++;
        TMR0H = 0xF8;//E8;
        TMR0L = 0x2F;//90;//90;
        TMR0IF = 0;
@@ -318,8 +356,9 @@ void AdvanceLow(){
 
 int main(int argc, char** argv) {
     initYBOT();
-    
-    status = ST;
+    ma = 0;
+    mb = 0;
+    //status = MOTOR_TEST;
     TIME = 0;
     Wixel(); //start wixel
     
@@ -327,8 +366,9 @@ int main(int argc, char** argv) {
     ENABLEA = 1;
     
     status = ST;
-    while (TIME < 5000)
-    
+    while (TIME < 1000)
+    Compute();
+    PlotCompute();
     //v[8] no existe
    // printf("{'COM':'line','value':'Rayito 2.0'}\n");
     
@@ -372,7 +412,7 @@ int main(int argc, char** argv) {
                 if (B_ROJO == 1) fa = 0;
                 if (B_VERDE == 1) fb = 0;
 
-                MotorsSpeed( ma * 1000 , mb * 1000);
+                MotorsSpeed( ma * 1000.0 , mb * 1000.0);
             break;
             case ST:
                 EnhancedRead();
@@ -586,6 +626,7 @@ int main(int argc, char** argv) {
                     TIME3 = 0;
                     TIME4 = 0;
                     TIME5 = 0;
+                    TIME6 = 0;
                     rcount = 0;
                     flag_line = 0;
 
@@ -714,6 +755,7 @@ int main(int argc, char** argv) {
                             speed = VEL[FAST];
                         }else if (TIME4 / 6 < RECTTIME + RECT_STOP_TIME){
                             int v = TIME4 / 6 - RECTTIME;
+                            /// stop
                             speed = VEL[FAST] - (VEL[FAST] - VEL[NORMAL]) * v / RECT_STOP_TIME;
                         }else{
                             speed = VEL[NORMAL];
@@ -766,6 +808,9 @@ int main(int argc, char** argv) {
                         }
                     }
                     if (rcount == TOTAL*2-1){
+                        int ms = TIME6 % 60;
+                        int s = TIME6 / 60;
+                        printf("{'COM':'line','value':'Time = %02u:%02u'}\n",s,ms);
                         printf("{'COM':'Hold'}\n");
                         fns = 1;
                         status = INITIAL;
@@ -833,7 +878,7 @@ int main(int argc, char** argv) {
                     if (TIME2 > 1000){
                         //printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",line);
                         //printf("{'COM':'plot','name':'line','value':%i,'color':(0,100,200)}\n",RSEE );
-                        //printf("{'COM':'plot','name':'line','value':%i,'color':(100,200,200)}\n",LSEE );
+                        //printf("{'COM':'plot','name':'line','value':%i,'color':(100,200,200)}\n",LprintfSEE );
                         TIME2 = 0;
                     }
                     last = line;

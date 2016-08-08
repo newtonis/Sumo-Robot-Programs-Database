@@ -651,205 +651,205 @@ Version 3.2 HI-TECH Software Intermediate Code
 "3 /home/newtonis/Robots/Boxy/Main/config.c
 [v _TIME `l ~T0 @X0 1 e ]
 [v F5273 `(v ~T0 @X0 1 tf ]
-"5
+"7
 [v _enc `IF5273 ~T0 @X0 1 e ]
 {
 [e :U _enc ]
 [f ]
-"6
+"8
 [e $ ! _TMR0IF 594  ]
 {
-"7
-[e ++ _TIME -> -> 1 `i `l ]
-"8
-[e = _TMR0H -> -> 248 `i `uc ]
 "9
+[e ++ _TIME -> -> 1 `i `l ]
+"10
+[e = _TMR0H -> -> 248 `i `uc ]
+"11
 [e = _TMR0L -> -> 47 `i `uc ]
-"12
+"14
 [e = _TMR0IF -> -> 0 `i `b ]
-"13
+"15
 }
 [e :U 594 ]
-"14
+"16
 [e $ ! _TMR1IF 595  ]
 {
-"15
+"17
 [e = _TMR1H -> -> 248 `i `uc ]
-"16
+"18
 [e = _TMR1L -> -> 47 `i `uc ]
-"22
+"24
 [e = _TMR1IF -> -> 0 `i `b ]
-"23
+"25
 }
 [e :U 595 ]
-"24
+"26
 [e :UE 593 ]
 }
-"26
+"28
 [v _configurations_init `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurations_init ]
 [f ]
-"27
+"29
 [e = . . _OSCCONbits 0 3 -> -> 7 `i `uc ]
-"30
+"32
 [e = _CMCON -> -> 7 `i `uc ]
-"33
+"35
 [e = . . _UCONbits 0 3 -> -> 0 `i `uc ]
-"34
-[e = . . _UCFGbits 0 2 -> -> 1 `i `uc ]
 "36
+[e = . . _UCFGbits 0 2 -> -> 1 `i `uc ]
+"38
 [e :UE 596 ]
 }
-"38
+"40
 [v _InitTIMERS `(v ~T0 @X0 1 ef ]
 {
 [e :U _InitTIMERS ]
 [f ]
-"39
-[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
-"40
-[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
 "41
-[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
+[e = . . _T0CONbits 0 5 -> -> 0 `i `uc ]
+"42
+[e = . . _T0CONbits 0 4 -> -> 0 `i `uc ]
 "43
-[e = . . _T0CONbits 0 1 -> -> 1 `i `uc ]
-"44
-[e = _TMR0H -> -> 248 `i `uc ]
+[e = . . _T0CONbits 0 3 -> -> 0 `i `uc ]
 "45
+[e = . . _T0CONbits 0 1 -> -> 1 `i `uc ]
+"46
+[e = _TMR0H -> -> 248 `i `uc ]
+"47
 [e = _TMR0L -> -> 47 `i `uc ]
-"48
-[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
-"49
-[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
 "50
+[e = . . _INTCON2bits 1 2 -> -> 1 `i `uc ]
+"51
+[e = . . _RCONbits 5 7 -> -> 0 `i `uc ]
+"52
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"54
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "56
-[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
 "58
-[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
-"59
-[e = . . _T1CONbits 4 1 -> -> 0 `i `uc ]
+[e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
 "60
-[e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
+[e = . . _T1CONbits 1 0 -> -> 0 `i `uc ]
 "61
-[e = . . _T1CONbits 1 4 -> -> 0 `i `uc ]
+[e = . . _T1CONbits 4 1 -> -> 0 `i `uc ]
 "62
-[e = . . _T1CONbits 1 3 -> -> 0 `i `uc ]
+[e = . . _T1CONbits 1 5 -> -> 0 `i `uc ]
 "63
-[e = . . _T1CONbits 1 1 -> -> 0 `i `uc ]
+[e = . . _T1CONbits 1 4 -> -> 0 `i `uc ]
 "64
-[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+[e = . . _T1CONbits 1 3 -> -> 0 `i `uc ]
+"65
+[e = . . _T1CONbits 1 1 -> -> 0 `i `uc ]
 "66
+[e = . . _T1CONbits 1 0 -> -> 1 `i `uc ]
+"68
 [e = _TMR1H -> -> 248 `i `uc ]
-"67
-[e = _TMR1L -> -> 47 `i `uc ]
 "69
-[e = . . _INTCON2bits 2 3 -> -> 0 `i `uc ]
+[e = _TMR1L -> -> 47 `i `uc ]
 "71
+[e = . . _INTCON2bits 2 3 -> -> 0 `i `uc ]
+"73
 [e = _TIME -> -> 0 `i `l ]
-"72
+"74
 [e :UE 597 ]
 }
-"74
+"76
 [v _MotorsPWM `(v ~T0 @X0 1 ef ]
 {
 [e :U _MotorsPWM ]
 [f ]
-"76
-[e = _T2OUTPS0 -> -> 0 `i `b ]
-"77
-[e = _T2OUTPS1 -> -> 0 `i `b ]
 "78
-[e = _T2OUTPS2 -> -> 0 `i `b ]
+[e = _T2OUTPS0 -> -> 0 `i `b ]
 "79
-[e = _T2OUTPS3 -> -> 0 `i `b ]
+[e = _T2OUTPS1 -> -> 0 `i `b ]
+"80
+[e = _T2OUTPS2 -> -> 0 `i `b ]
 "81
-[e = _TMR2ON -> -> 1 `i `b ]
-"82
-[e = _T2CKPS0 -> -> 0 `i `b ]
+[e = _T2OUTPS3 -> -> 0 `i `b ]
 "83
-[e = _T2CKPS1 -> -> 0 `i `b ]
-"85
 [e = _TMR2ON -> -> 1 `i `b ]
-"88
-[e = . . _T2CONbits 0 2 -> -> 11 `i `uc ]
-"89
-[e = . . _T2CONbits 0 0 -> -> 1 `i `uc ]
+"84
+[e = _T2CKPS0 -> -> 0 `i `b ]
+"85
+[e = _T2CKPS1 -> -> 0 `i `b ]
+"87
+[e = _TMR2ON -> -> 1 `i `b ]
 "90
-[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
+[e = . . _T2CONbits 0 2 -> -> 11 `i `uc ]
 "91
-[e = _PR2 -> -> 249 `i `uc ]
+[e = . . _T2CONbits 0 0 -> -> 1 `i `uc ]
 "92
-[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"95
-[e = . . _CCP1CONbits 0 0 -> -> 1100 `i `uc ]
-"96
-[e = . . _CCP2CONbits 0 0 -> -> 1100 `i `uc ]
-"97
+[e = . . _T2CONbits 0 1 -> -> 0 `i `uc ]
+"93
 [e = _PR2 -> -> 249 `i `uc ]
+"94
+[e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
+"97
+[e = . . _CCP1CONbits 0 0 -> -> 1100 `i `uc ]
+"98
+[e = . . _CCP2CONbits 0 0 -> -> 1100 `i `uc ]
 "99
+[e = _PR2 -> -> 249 `i `uc ]
+"101
 [e :UE 598 ]
 }
-"101
+"103
 [v _MotorASpeed `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _MotorASpeed ]
 [v _S `i ~T0 @X0 1 r1 ]
 [f ]
-"102
-[e = _S -U _S ]
-"103
-[e = _S ? < _S -> 1000 `i : _S -> 1000 `i ]
 "104
-[e = _S ? > _S -U -> 1000 `i : _S -U -> 1000 `i ]
+[e = _S -U _S ]
+"105
+[e = _S ? < _S -> 1000 `i : _S -> 1000 `i ]
 "106
+[e = _S ? > _S -U -> 1000 `i : _S -U -> 1000 `i ]
+"108
 [e = . . _PORTDbits 0 0 -> ? > _S -> 0 `i : -> 0 `i -> 1 `i `uc ]
-"107
-[e = _S ? > _S -> 0 `i : _S + -> 1000 `i _S ]
 "109
-[e = . . _CCP1CONbits 1 5 -> % _S -> 4 `i `uc ]
-"110
-[e = _CCPR1L -> / _S -> 4 `i `uc ]
+[e = _S ? > _S -> 0 `i : _S + -> 1000 `i _S ]
 "111
+[e = . . _CCP1CONbits 1 5 -> % _S -> 4 `i `uc ]
+"112
+[e = _CCPR1L -> / _S -> 4 `i `uc ]
+"113
 [e :UE 599 ]
 }
-"112
+"114
 [v _MotorBSpeed `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _MotorBSpeed ]
 [v _S `i ~T0 @X0 1 r1 ]
 [f ]
-"113
-[e = _S -U _S ]
-"114
-[e = _S ? < _S -> 1000 `i : _S -> 1000 `i ]
 "115
-[e = _S ? > _S -U -> 1000 `i : _S -U -> 1000 `i ]
+[e = _S -U _S ]
+"116
+[e = _S ? < _S -> 1000 `i : _S -> 1000 `i ]
 "117
+[e = _S ? > _S -U -> 1000 `i : _S -U -> 1000 `i ]
+"119
 [e = . . _PORTCbits 0 0 -> ? > _S -> 0 `i : -> 0 `i -> 1 `i `uc ]
-"118
-[e = _S ? > _S -> 0 `i : _S + -> 1000 `i _S ]
 "120
-[e = . . _CCP2CONbits 0 1 -> % _S -> 4 `i `uc ]
-"121
-[e = _CCPR2L -> / _S -> 4 `i `uc ]
+[e = _S ? > _S -> 0 `i : _S + -> 1000 `i _S ]
 "122
+[e = . . _CCP2CONbits 0 1 -> % _S -> 4 `i `uc ]
+"123
+[e = _CCPR2L -> / _S -> 4 `i `uc ]
+"124
 [e :UE 600 ]
 }
-"124
+"126
 [v _MotorsSpeed `(v ~T0 @X0 1 ef2`i`i ]
 {
 [e :U _MotorsSpeed ]
 [v _A `i ~T0 @X0 1 r1 ]
 [v _B `i ~T0 @X0 1 r2 ]
 [f ]
-"125
-[e ( _MotorASpeed (1 _A ]
-"126
-[e ( _MotorBSpeed (1 _B ]
 "127
+[e ( _MotorASpeed (1 -U _A ]
+"128
+[e ( _MotorBSpeed (1 _B ]
+"129
 [e :UE 601 ]
 }
