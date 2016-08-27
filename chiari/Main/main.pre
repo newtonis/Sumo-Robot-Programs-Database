@@ -1,5 +1,5 @@
 
-# 1 "/home/newtonis/Robots/TooSimple/Main/main.c"
+# 1 "/home/newtonis/Robots/chiari/Main/main.c"
 
 # 26 "/opt/microchip/xc8/v1.34/include/htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -6434,7 +6434,7 @@ extern char * ultoa(char * buf, unsigned long val, int base);
 
 extern char * ftoa(float f, int * status);
 
-# 22 "/home/newtonis/Robots/TooSimple/Main/main.c"
+# 22 "/home/newtonis/Robots/chiari/Main/main.c"
 typedef unsigned int ui;
 typedef unsigned char uc;
 typedef long long ull;
@@ -6482,7 +6482,7 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
 
-# 107
+# 120
 double KP[4] = { 28, 80,60 , 28};
 double KD[4] = {300,300,300,300};
 double KR[4] = {0.2,0.1,0.2,0.1};
@@ -6492,7 +6492,7 @@ enum {OUTPUT,INPUT};
 enum {WAIT_PRESS , WAIT_CALL , WAIT_RELEASE };
 enum { INICIO , PAUSA , LEER , PAUSA2};
 
-# 127
+# 140
 int speedMode;
 
 long TIMEFRENO = 200;
@@ -6619,7 +6619,7 @@ int x;
 for (x = 0;x < AMOUNT;x++){
 GetValue(x, (int)&(SIZES[x]) );
 
-# 261
+# 274
 }
 }
 void Save(){
@@ -6676,7 +6676,7 @@ char nove;
 char actual;
 char gstatus;
 
-# 329
+# 342
 long long millis(){
 low = (unsigned char)TMR0L;
 high = (unsigned char)TMR0H;
@@ -6757,33 +6757,26 @@ T1CONbits.TMR1ON = 1;
 TMR1H = 0xF8;
 TMR1L = 0x2F;
 
-# 415
-TRISDbits.TRISD4 = OUTPUT;
-TRISDbits.TRISD5 = OUTPUT;
-TRISDbits.TRISD6 = OUTPUT;
-
-TRISDbits.TRISD0 = INPUT;
-TRISDbits.TRISD1 = INPUT;
-TRISDbits.TRISD2 = INPUT;
-
-
+# 435
+TRISDbits.TRISD1 = OUTPUT;
+TRISDbits.TRISD2 = OUTPUT;
 TRISDbits.TRISD3 = OUTPUT;
+
+
 TRISCbits.TRISC2 = OUTPUT;
+TRISCbits.TRISC1 = OUTPUT;
 
-TRISBbits.TRISB0 = OUTPUT;
-TRISBbits.TRISB2 = OUTPUT;
+TRISDbits.TRISD0 = OUTPUT;
+TRISCbits.TRISC0 = OUTPUT;
 
-TRISCbits.TRISC0 = INPUT;
-TRISCbits.TRISC1 = INPUT;
-
-
+# 455
 TRISEbits.TRISE2 = INPUT;
 TRISEbits.TRISE1 = INPUT;
 TRISEbits.TRISE0 = INPUT;
 TRISAbits.TRISA5 = INPUT;
 TRISAbits.TRISA4 = INPUT;
 
-# 469
+# 490
 PORTEbits.RDPU = 1;
 }
 
@@ -6804,12 +6797,12 @@ TMR0IF = 0;
 }
 }
 
-# 499
+# 520
 void Delay(int ms){
 while (ms --);
 }
 
-# 507
+# 528
 void InitAnalog(){
 ADCON1bits.VCFG1 = 0;
 ADCON1bits.VCFG0 = 0;
@@ -6888,7 +6881,7 @@ MAAtras();
 MBAdelante();
 }
 
-# 588
+# 609
 void EnhancedRead(){
 unsigned char i;
 unsigned int aux;
@@ -6933,7 +6926,7 @@ S = -S;
 S = (((S) < (1000)) ? (S) : (1000));
 S = (((S) > (-1000)) ? (S) : (-1000));
 
-PORTBbits.RB2 = S > 0 ? 0 : 1;
+PORTDbits.RD0 = S > 0 ? 0 : 1;
 S = S > 0 ? S : 1000 + S;
 
 CCP1CONbits.DC1B1 = S % 4;
@@ -6943,7 +6936,7 @@ void MotorBSpeed(int S){
 S = (((S) < (1000)) ? (S) : (1000));
 S = (((S) > (-1000)) ? (S) : (-1000));
 
-PORTBbits.RB0 = S > 0 ? 0 : 1;
+PORTDbits.RC0 = S > 0 ? 0 : 1;
 S = S > 0 ? S : 1000 + S;
 
 CCP2CONbits.DC2B = S % 4;
@@ -6992,27 +6985,27 @@ speedB = b;
 void MotorUpdate(){
 if (loop < ((speedA)>0?(speedA):(-(speedA)))){
 if (speedA > 0){
-PORTDbits.RD3 = 1;
-PORTBbits.RB2 = 0;
+ASP = 1;
+PORTDbits.RD0 = 0;
 }else{
-PORTDbits.RD3 = 0;
-PORTBbits.RB2 = 1;
+ASP = 0;
+PORTDbits.RD0 = 1;
 }
 }else{
-PORTDbits.RD3 = 0;
-PORTBbits.RB2 = 0;
+ASP = 0;
+PORTDbits.RD0 = 0;
 }
 if (loop < ((speedB)>0?(speedB):(-(speedB)))){
 if (speedB > 0){
-PORTCbits.RC2 = 1;
-PORTBbits.RB2 = 0;
+BSP = 1;
+PORTDbits.RD0 = 0;
 }else{
-PORTCbits.RC2 = 0;
-PORTBbits.RB0 = 1;
+BSP = 0;
+PORTDbits.RC0 = 1;
 }
 }else{
-PORTCbits.RC2 = 0;
-PORTBbits.RB0 = 0;
+BSP = 0;
+PORTDbits.RC0 = 0;
 }
 loop = loop == 9 ? 0 : (loop + 1);
 }
@@ -7028,11 +7021,7 @@ int d1 , d2;
 int sd;
 int fca = 0;
 
-int fr;
-
-
-
-
+# 752
 int main(int argc, char** argv) {
 initYBOT();
 
@@ -7042,7 +7031,6 @@ ma = 0;
 mb = 0;
 d1 = 0;
 d2 = 0;
-fr = 0;
 
 sa = 0;
 mode = 0;
@@ -7061,76 +7049,59 @@ Wixel();
 
 status = ST;
 
-# 764
+# 783
 fns = 1;
 while (1){
 MotorUpdate();
 
-# 785
+# 804
 switch (status){
 case ST:
-PORTDbits.RD4 = PORTEbits.RE1;
-PORTDbits.RD5 = PORTEbits.RE0;
-PORTDbits.RD6 = PORTAbits.RA5;
+L_RED = V1;
+L_YELLOW = V2;
+L_GREEN = V3;
 MotorsSpeed(0,0);
-if (PORTDbits.RD0 == 0){
+if (B_RED == 0){
 sd = 1;
 status = WAIT;
 TIME = 0;
 }
-if (PORTDbits.RD2 == 0){
+if (B_GREEN == 0){
 sd = 2;
 status = WAIT;
 TIME = 0;
 }
 break;
 case WAIT:
-PORTDbits.RD4 = TIME % 3000 > 2000;
-PORTDbits.RD5 = TIME % 3000 > 1000 && TIME % 3000 < 2000;
-PORTDbits.RD6 = TIME % 3000 < 1000;
+L_RED = TIME % 3000 > 2000;
+L_YELLOW = TIME % 3000 > 1000 && TIME % 3000 < 2000;
+L_GREEN = TIME % 3000 < 1000;
 if (TIME > 5000*6){
 status = AVANZAR;
 }
-if (PORTDbits.RD1 == 0){
-fr = 1;
-}
 break;
 case AVANZAR:
-
-# 830
-if (PORTEbits.RE0){
-
-if (PORTEbits.RE1 && !PORTAbits.RA5){
-MotorsSpeed(10,5);
-sd = 1;
-}else if (!PORTEbits.RE1 && PORTAbits.RA5){
-MotorsSpeed(5,10);
-sd = 2;
-}else{
-if (fr){
-MotorsSpeed(0,0);
-}else{
+if (V2){
+if (fca == 0){
+fca = 1;
+if (sd == 1){ sd = 2; }else{ sd = 1; }
+}
 MotorsSpeed(10,10);
-}
-}
 }else{
-if (PORTEbits.RE1){
-sd = 1;
-}else if (PORTAbits.RA5){
-sd = 2;
-}
+TIME = 0;
+fc = 0;
 if (sd == 1){
-MotorsSpeed(10,0);
+MotorsSpeed(10,1);
 }else{
-MotorsSpeed(0,10);
+MotorsSpeed(1,10);
 }
 }
 
-# 880
+# 867
 break;
 }
 
-# 925
+# 912
 }
 }
 

@@ -3,12 +3,12 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"415 /home/newtonis/Robots/TooSimple/Main/main.c
+"415 /home/newtonis/Robots/chiari/Main/main.c
 [e E5457 . `uc
 OUTPUT 0
 INPUT 1
 ]
-"750
+"748
 [e E5442 . `uc
 MOTOR_TEST 0
 RED_ST 1
@@ -53,7 +53,7 @@ WINITIAL 9
 [v _MotorsSpeed MotorsSpeed `(v  1 e 0 0 ]
 "688
 [v _MotorUpdate MotorUpdate `(v  1 e 0 0 ]
-"732
+"731
 [v _main main `(i  1 e 2 0 ]
 "8 /opt/microchip/xc8/v1.34/sources/common/almod.c
 [v ___almod __almod `(l  1 e 4 0 ]
@@ -81,7 +81,7 @@ WINITIAL 9
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
 "15 /opt/microchip/xc8/v1.34/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"130 /home/newtonis/Robots/TooSimple/Main/main.c
+"130 /home/newtonis/Robots/chiari/Main/main.c
 [v _WAITIME WAITIME `l  1 e 4 0 ]
 "133
 [v _TIME TIME `l  1 e 4 0 ]
@@ -132,13 +132,14 @@ WINITIAL 9
 "719
 [v _fa fa `i  1 e 2 0 ]
 [v _fb fb `i  1 e 2 0 ]
+[v _fc fc `i  1 e 2 0 ]
 "723
 [v _d1 d1 `i  1 e 2 0 ]
 [v _d2 d2 `i  1 e 2 0 ]
 "724
 [v _sd sd `i  1 e 2 0 ]
-"727
-[v _fr fr `i  1 e 2 0 ]
+"725
+[v _fca fca `i  1 e 2 0 ]
 [s S257 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
 `uc 1 RESUME 1 0 :1:2 
@@ -873,10 +874,10 @@ WINITIAL 9
 [v _TMR2ON TMR2ON `VEb  1 e 0 @32338 ]
 "10955
 [v _TXIF TXIF `VEb  1 e 0 @31988 ]
-"732 /home/newtonis/Robots/TooSimple/Main/main.c
+"731 /home/newtonis/Robots/chiari/Main/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"926
+"892
 } 0
 "337
 [v _initYBOT initYBOT `(v  1 e 0 0 ]
@@ -927,7 +928,7 @@ WINITIAL 9
 [v ___almod@divisor divisor `l  1 p 4 4 ]
 "35
 } 0
-"194 /home/newtonis/Robots/TooSimple/Main/main.c
+"194 /home/newtonis/Robots/chiari/Main/main.c
 [v _Wixel Wixel `(v  1 e 0 0 ]
 {
 "213

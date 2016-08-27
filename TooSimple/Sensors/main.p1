@@ -456,7 +456,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "167
 [e = _CCP1CON -> -> 12 `i `uc ]
 "171
-[e ( _SetDuty (1 -> 1 `i ]
+[e ( _SetDuty (1 -> 15 `i ]
 "172
 [e :UE 70 ]
 }

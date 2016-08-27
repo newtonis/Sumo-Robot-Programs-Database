@@ -724,7 +724,6 @@ int d1 , d2;
 int sd; 
 int fca = 0;
 
-int fr;
 /** End **/
  //(izq)v1 - v2 - v3 (der)
 
@@ -738,7 +737,6 @@ int main(int argc, char** argv) {
     mb = 0;
     d1 = 0;
     d2 = 0;
-    fr = 0;
 
     sa = 0;
     mode = 0;
@@ -749,14 +747,13 @@ int main(int argc, char** argv) {
     actual = 0;
     status = ST;
     TIME = 0;
-    //
     Wixel(); //start wixel
     
 
     //MotorsSpeed(0,0);
     
     status = ST;
-    //while (TIME < 5000)
+    while (TIME < 5000)
     
     //v[8] no existe
    // printf("{'COM':'line','value':'Rayito 2.0'}\n");
@@ -784,9 +781,9 @@ int main(int argc, char** argv) {
        
         switch (status){
             case ST:
-                L_RED = V1;
+                L_RED = 1;
                 L_YELLOW = V2;
-                L_GREEN = V3;
+                L_GREEN = 1;
                 MotorsSpeed(0,0);
                 if (B_RED == 0){
                     sd = 1;
@@ -806,12 +803,9 @@ int main(int argc, char** argv) {
                 if (TIME > 5000*6){
                     status = AVANZAR;
                 }
-                if (B_YELLOW == 0){
-                    fr = 1;
-                }
             break;
             case AVANZAR:
-                /*if (V2){
+                if (V2){
                     if (fca == 0){
                         fca = 1;
                         if (sd == 1){ sd = 2; }else{ sd = 1; }
@@ -819,42 +813,13 @@ int main(int argc, char** argv) {
                     MotorsSpeed(10,10);
                 }else{
                     TIME = 0;
-                    
+                    fc = 0;
                     if (sd == 1){
-                        MotorsSpeed(8,10);
+                        MotorsSpeed(10,1);
                     }else{
-                        MotorsSpeed(10,8);
-                    }
-                }*/
-
-                if (V2){
-                    
-                    if (V1 and !V3){
-                        MotorsSpeed(10,5);
-                        sd = 1;
-                    }else if (!V1 and V3){
-                        MotorsSpeed(5,10);
-                        sd = 2;
-                    }else{
-                        if (fr){
-                            MotorsSpeed(0,0);
-                        }else{
-                            MotorsSpeed(10,10);
-                        }
-                    }
-                }else{
-                    if (V1){
-                        sd = 1;
-                    }else if (V3){
-                        sd = 2;
-                    }
-                    if (sd == 1){
-                        MotorsSpeed(10,0);
-                    }else{
-                        MotorsSpeed(0,10);
+                        MotorsSpeed(1,10);
                     }
                 }
-                
                 /*L_RED = V1;
                 L_YELLOW = V2;
                 L_GREEN = V3;

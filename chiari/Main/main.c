@@ -78,26 +78,39 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #define SPECIAL 1 ///We will program the fall down area
 
 /*** SETTING STANDARD I/O NAMES FOR EACH PORT ***/
-#define L_RED PORTDbits.RD4
+/*#define L_RED PORTDbits.RD4
 #define L_YELLOW PORTDbits.RD5
 #define L_GREEN PORTDbits.RD6
 
 #define B_RED PORTDbits.RD0
 #define B_YELLOW PORTDbits.RD1
-#define B_GREEN PORTDbits.RD2
+#define B_GREEN PORTDbits.RD2*/
+#define LED_0 PORTDbits.RD1
+#define LED_1 PORTDbits.RD2
+#define LED_2 PORTDbits.RD3
+
+#define BTN PORTCbits.RC4
 
 
-#define BSP PORTCbits.RC2
+/*#define BSP PORTCbits.RC2
 #define ADIR PORTBbits.RB2
 
 #define ASP PORTDbits.RD3
-#define BDIR PORTBbits.RB0
+#define BDIR PORTBbits.RB0*/
+#define ADIR PORTDbits.RD0
+#define BDIR PORTDbits.RC0
 
-#define V0 PORTEbits.RE2
+/*#define V0 PORTEbits.RE2
 #define V1 PORTEbits.RE1
 #define V2 PORTEbits.RE0
 #define V3 PORTAbits.RA5
-#define V4 PORTAbits.RA4
+#define V4 PORTAbits.RA4*/
+#define PCLK PORTAbits.RA4
+#define P0 PORTAbits.RA3
+#define P1 PORTAbits.RA2
+#define P2 PORTBbits.RB5
+#define P3 PORTBbits.RB4
+
 
 //* para blanco negro */
 /*double KP[4] = { 28, 90,90 , 28};
@@ -412,23 +425,31 @@ void InitTIMERS(){
     //TRISBbits.TRISB5 = OUTPUT;
     
     /// LEDS
-    TRISDbits.TRISD4 = OUTPUT;
+    /*TRISDbits.TRISD4 = OUTPUT;
     TRISDbits.TRISD5 = OUTPUT;
     TRISDbits.TRISD6 = OUTPUT;
     
     TRISDbits.TRISD0 = INPUT;
     TRISDbits.TRISD1 = INPUT;
-    TRISDbits.TRISD2 = INPUT;
+    TRISDbits.TRISD2 = INPUT;*/
+    TRISDbits.TRISD1 = OUTPUT;
+    TRISDbits.TRISD2 = OUTPUT;
+    TRISDbits.TRISD3 = OUTPUT;
     
     // Motor
-    TRISDbits.TRISD3 = OUTPUT;
+    TRISCbits.TRISC2 = OUTPUT;
+    TRISCbits.TRISC1 = OUTPUT;
+
+    TRISDbits.TRISD0 = OUTPUT;
+    TRISCbits.TRISC0 = OUTPUT;
+    /*TRISDbits.TRISD3 = OUTPUT;
     TRISCbits.TRISC2 = OUTPUT;
 
     TRISBbits.TRISB0 = OUTPUT;
-    TRISBbits.TRISB2 = OUTPUT;
+    TRISBbits.TRISB2 = OUTPUT;*/
 
-    TRISCbits.TRISC0 = INPUT; ///shortcut
-    TRISCbits.TRISC1 = INPUT; //modification
+    //TRISCbits.TRISC0 = INPUT; ///shortcut
+    //TRISCbits.TRISC1 = INPUT; //modification
 
     // IR
     TRISEbits.TRISE2 = INPUT;
@@ -724,7 +745,6 @@ int d1 , d2;
 int sd; 
 int fca = 0;
 
-int fr;
 /** End **/
  //(izq)v1 - v2 - v3 (der)
 
@@ -738,7 +758,6 @@ int main(int argc, char** argv) {
     mb = 0;
     d1 = 0;
     d2 = 0;
-    fr = 0;
 
     sa = 0;
     mode = 0;
@@ -806,12 +825,9 @@ int main(int argc, char** argv) {
                 if (TIME > 5000*6){
                     status = AVANZAR;
                 }
-                if (B_YELLOW == 0){
-                    fr = 1;
-                }
             break;
             case AVANZAR:
-                /*if (V2){
+                if (V2){
                     if (fca == 0){
                         fca = 1;
                         if (sd == 1){ sd = 2; }else{ sd = 1; }
@@ -819,42 +835,13 @@ int main(int argc, char** argv) {
                     MotorsSpeed(10,10);
                 }else{
                     TIME = 0;
-                    
+                    fc = 0;
                     if (sd == 1){
-                        MotorsSpeed(8,10);
+                        MotorsSpeed(10,1);
                     }else{
-                        MotorsSpeed(10,8);
-                    }
-                }*/
-
-                if (V2){
-                    
-                    if (V1 and !V3){
-                        MotorsSpeed(10,5);
-                        sd = 1;
-                    }else if (!V1 and V3){
-                        MotorsSpeed(5,10);
-                        sd = 2;
-                    }else{
-                        if (fr){
-                            MotorsSpeed(0,0);
-                        }else{
-                            MotorsSpeed(10,10);
-                        }
-                    }
-                }else{
-                    if (V1){
-                        sd = 1;
-                    }else if (V3){
-                        sd = 2;
-                    }
-                    if (sd == 1){
-                        MotorsSpeed(10,0);
-                    }else{
-                        MotorsSpeed(0,10);
+                        MotorsSpeed(1,10);
                     }
                 }
-                
                 /*L_RED = V1;
                 L_YELLOW = V2;
                 L_GREEN = V3;

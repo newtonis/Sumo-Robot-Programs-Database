@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-                                                                                                           Sat Aug 27 05:08:42 2016
+                                                                                                           Sat Aug 27 00:31:18 2016
 
 
      1                           
@@ -13,8 +13,8 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
      7                           	;
      8                           	; Compiler options:
      9                           	;
-    10                           	; --chip=18f4550 /home/newtonis/Robots/TooSimple/Main/main.c \
-    11                           	; /home/newtonis/Robots/TooSimple/Main/config.c
+    10                           	; --chip=18f4550 /home/newtonis/Robots/chiari/Main/main.c \
+    11                           	; /home/newtonis/Robots/chiari/Main/config.c
     12                           	;
     13                           
     14                           
@@ -116,7 +116,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    110  000018                     
    111                           ;Initialize the stack pointer (FSR1)
    112                           	global stacklo, stackhi
-   113                           	stacklo	equ	0561h
+   113                           	stacklo	equ	055Ah
    114  0000                     	stackhi	equ	07FFh
    115  0000                     
    116                           
@@ -129,7 +129,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    123                           	psect	end_init
    124                           	global start_initialization
    125                           	goto start_initialization	;jump to C runtime clear & initialization
-   126  000018  EF21  F003         
+   126  000018  EFF3  F002         
    127                           ; Config register CONFIG1L @ 0x300000
    128                           ;	System Clock Postscaler Selection bits
    129                           ;	CPUDIV = OSC1_PLL2, [Primary Oscillator Src: /1][96 MHz PLL Src: /2]
@@ -294,10 +294,10 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Sat Aug 27 05:08:42 2016
+Symbol Table                                                                                               Sat Aug 27 00:31:18 2016
 
-                __S1 0561                 ___sp 0000                 _main 001C                 start 0018  
+                __S1 055A                 ___sp 0000                 _main 001C                 start 0018  
               __HRAM 0000                __LRAM 0001         __mediumconst 0000               stackhi 0007FF  
-             stacklo 000561           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
-            __ramtop 0800  start_initialization 0642          __smallconst 0000             intlevel0 0000  
+             stacklo 00055A           __accesstop 000060           ___inthi_sp 0000           ___intlo_sp 0000  
+            __ramtop 0800  start_initialization 05E6          __smallconst 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             reset_vec 0000  

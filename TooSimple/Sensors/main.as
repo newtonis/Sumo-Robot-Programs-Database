@@ -1281,7 +1281,7 @@ l1198:
 	line	171
 	
 l1200:	
-	movlw	01h
+	movlw	0Fh
 	movwf	(SetDuty@S)
 	movlw	0
 	movwf	((SetDuty@S))+1

@@ -7,8 +7,8 @@
 	;
 	; Compiler options:
 	;
-	; --chip=18f4550 /home/newtonis/Robots/TooSimple/Main/main.c \
-	; /home/newtonis/Robots/TooSimple/Main/config.c
+	; --chip=18f4550 /home/newtonis/Robots/chiari/Main/main.c \
+	; /home/newtonis/Robots/chiari/Main/config.c
 	;
 
 
@@ -111,7 +111,7 @@ start:
 
 ;Initialize the stack pointer (FSR1)
 	global stacklo, stackhi
-	stacklo	equ	0561h
+	stacklo	equ	055Ah
 	stackhi	equ	07FFh
 
 

@@ -168,7 +168,7 @@ void configurar_pwm(void){
    // CCPR1L = 0x02;
     //CCPR1L=0; //apagado
     //CCP1CON=12;
-    SetDuty(1);
+    SetDuty(15);
 }
 void configurar_timer1(void){
     TMR1H=0xFC;
