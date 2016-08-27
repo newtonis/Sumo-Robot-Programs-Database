@@ -143,11 +143,11 @@ ___intlo_sp:
 ;	Internal/External Oscillator Switchover bit
 ;	IESO = OFF, Oscillator Switchover mode disabled
 ;	Oscillator Selection bits
-;	FOSC = HSPLL_HS, HS oscillator, PLL enabled (HSPLL)
+;	FOSC = INTOSCIO_EC, Internal oscillator, port function on RA6, EC used by USB (INTIO)
 
 	psect	config,class=CONFIG,delta=1,noexec
 		org 0x1
-		db 0xE
+		db 0x8
 
 ; Config register CONFIG2L @ 0x300002
 ;	Power-up Timer Enable bit

@@ -98,7 +98,7 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #define ASP PORTDbits.RD3
 #define BDIR PORTBbits.RB0*/
 #define ADIR PORTDbits.RD0
-#define BDIR PORTDbits.RC0
+#define BDIR PORTCbits.RC0
 
 /*#define V0 PORTEbits.RE2
 #define V1 PORTEbits.RE1
@@ -149,6 +149,7 @@ char RWM; //Read or write
 int AMOUNT; //amount of rects
 int CURRENT; //current rect
 ll SIZES[255]; //time of each rect measured in mili-seconds
+int SS[10];
 
 /**** prototipos ****/
 long long millis();
@@ -283,14 +284,14 @@ void Save(){
 }
 
 void configurations_init(){
-    OSCCONbits.IRCF = 7;    /* OSCILLATOR CONTROL REGISTER -> 8MHz */
+    /*OSCCONbits.IRCF = 7;    /* OSCILLATOR CONTROL REGISTER -> 8MHz */
     // Set all pins as digital I/O
     
-    CMCON=0x07;             // Set all comparators as digital I/O
+    //CMCON=0x07;             // Set all comparators as digital I/O
 
    //disable usb
-    UCONbits.USBEN = 0;
-    UCFGbits.UTRDIS = 1;
+    //UCONbits.USBEN = 0;
+    //UCFGbits.UTRDIS = 1;
 }
 
 char ST_B_VERDE , ST_B_AMARILLO , ST_B_ROJO;
@@ -358,7 +359,7 @@ void initYBOT(){
     InitAnalog();
     InitTIMERS(); 
     InitSP();
-    //MotorsPWM();
+    MotorsPWM();
     
     
 }
@@ -432,6 +433,7 @@ void InitTIMERS(){
     TRISDbits.TRISD0 = INPUT;
     TRISDbits.TRISD1 = INPUT;
     TRISDbits.TRISD2 = INPUT;*/
+
     TRISDbits.TRISD1 = OUTPUT;
     TRISDbits.TRISD2 = OUTPUT;
     TRISDbits.TRISD3 = OUTPUT;
@@ -442,52 +444,14 @@ void InitTIMERS(){
 
     TRISDbits.TRISD0 = OUTPUT;
     TRISCbits.TRISC0 = OUTPUT;
-    /*TRISDbits.TRISD3 = OUTPUT;
-    TRISCbits.TRISC2 = OUTPUT;
 
-    TRISBbits.TRISB0 = OUTPUT;
-    TRISBbits.TRISB2 = OUTPUT;*/
 
-    //TRISCbits.TRISC0 = INPUT; ///shortcut
-    //TRISCbits.TRISC1 = INPUT; //modification
-
-    // IR
-    TRISEbits.TRISE2 = INPUT;
-    TRISEbits.TRISE1 = INPUT;
-    TRISEbits.TRISE0 = INPUT;
-    TRISAbits.TRISA5 = INPUT;
     TRISAbits.TRISA4 = INPUT;
-
-    /*TRISDbits.TRISD1 = OUTPUT;
-    TRISDbits.TRISD2 = OUTPUT;
-    TRISDbits.TRISD0 = INPUT; //SHORTCUT
-    TRISDbits.TRISD3 = OUTPUT;
-    
-    
-    TRISCbits.TRISC1 = OUTPUT;
-    TRISCbits.TRISC2 = OUTPUT;*/
-    
-    /*** SENSOR ***/
-    /*TRISAbits.TRISA0 = INPUT;
-    TRISAbits.TRISA1 = INPUT;
-    TRISAbits.TRISA2 = INPUT;
     TRISAbits.TRISA3 = INPUT;
-    TRISAbits.TRISA5 = INPUT;
-    
-    TRISEbits.TRISE0 = INPUT;
-    TRISEbits.TRISE1 = INPUT;
-    TRISEbits.TRISE2 = INPUT;
-    TRISBbits.TRISB2 = INPUT;*/
-    
-    //TRISBbits.TRISB1 = INPUT;
-    //TRISBbits.TRISB0 = INPUT;
-    
-    
-    
-    /*TRISCbits.TRISC6 = OUTPUT;
-    TRISCbits.TRISC7 = INPUT;*/
-    
-    PORTEbits.RDPU = 1;
+    TRISAbits.TRISA2 = INPUT;
+    TRISBbits.TRISB5 = INPUT;
+    TRISBbits.TRISB4 = INPUT;
+
 }
 
 
@@ -703,35 +667,8 @@ int speedA = 0;
 int speedB = 0;
 
 void MotorsSpeed(int b,int a){
-    speedA = a; //-a
-    speedB = b;
-}
-void MotorUpdate(){
-    if (loop < abs(speedA)){
-        if (speedA > 0){
-            ASP = 1;
-            ADIR = 0;
-        }else{
-            ASP = 0;
-            ADIR = 1;
-        }
-    }else{
-        ASP = 0;
-        ADIR = 0;
-    }
-    if (loop < abs(speedB)){
-        if (speedB > 0){
-            BSP = 1;
-            ADIR = 0;
-        }else{
-            BSP = 0;
-            BDIR = 1;
-        }
-    }else{
-        BSP = 0;
-        BDIR = 0;
-    }
-    loop = loop == 9 ? 0 : (loop + 1);
+    MotorASpeed(a);
+    MotorBSpeed(b);
 }
 
 /** Motor testing variables **/
@@ -769,7 +706,7 @@ int main(int argc, char** argv) {
     status = ST;
     TIME = 0;
     //
-    Wixel(); //start wixel
+    //Wixel(); //start wixel
     
 
     //MotorsSpeed(0,0);
@@ -780,9 +717,26 @@ int main(int argc, char** argv) {
     //v[8] no existe
    // printf("{'COM':'line','value':'Rayito 2.0'}\n");
     
+  
+
+
     fns = 1;
     while (1){
-        MotorUpdate();
+        //MotorUpdate();
+        //PORTDbits.RD1 = 1;
+        
+        if (PCLK == 0){
+            SS[0] = P0;
+            SS[1] = P1;
+            SS[2] = P2;
+            SS[3] = P3;
+        }else{
+            SS[4] = P0;
+            SS[5] = P1;
+            SS[6] = P2;
+            SS[7] = P3;
+        }
+
         //AP = 1;
         //ADIR = 0;
         //BSP = 1;
@@ -803,7 +757,8 @@ int main(int argc, char** argv) {
        
         switch (status){
             case ST:
-                L_RED = V1;
+                LED_0 = TIME % 1000 > 500;
+                /*L_RED = V1;
                 L_YELLOW = V2;
                 L_GREEN = V3;
                 MotorsSpeed(0,0);
@@ -816,55 +771,9 @@ int main(int argc, char** argv) {
                     sd = 2;
                     status = WAIT;
                     TIME = 0;
-                }
-            break;
-            case WAIT:
-                L_RED = TIME % 3000 > 2000;
-                L_YELLOW = TIME % 3000 > 1000 and TIME % 3000 < 2000;
-                L_GREEN = TIME % 3000 < 1000;
-                if (TIME > 5000*6){
-                    status = AVANZAR;
-                }
-            break;
-            case AVANZAR:
-                if (V2){
-                    if (fca == 0){
-                        fca = 1;
-                        if (sd == 1){ sd = 2; }else{ sd = 1; }
-                    }
-                    MotorsSpeed(10,10);
-                }else{
-                    TIME = 0;
-                    fc = 0;
-                    if (sd == 1){
-                        MotorsSpeed(10,1);
-                    }else{
-                        MotorsSpeed(1,10);
-                    }
-                }
-                /*L_RED = V1;
-                L_YELLOW = V2;
-                L_GREEN = V3;
-                if (V2 or (V1 and V2)){
-                    MotorsSpeed(10,10);
-                }else if(V1){
-                    MotorsSpeed(10,0);
-                    sd = 1;
-                }else if(V3){
-                    MotorsSpeed(0,10);
-                    sd = 2;
-                }else{
-                    if (sd == 1){
-                        MotorsSpeed(2,10);
-                    }else{
-                        MotorsSpeed(10,2);
-                    }
-                }
-                if (B_RED == 0){
-                    status = ST;
                 }*/
-                
             break;
+            
         }
         //L_RED = V1;
        // L_YELLOW = V2;

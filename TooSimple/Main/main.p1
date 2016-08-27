@@ -989,7 +989,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "55
 [p x USBDIV=2 ]
 "56
-[p x FOSC=HSPLL_HS ]
+[p x FOSC=INTOSCIO_EC ]
 "57
 [p x FCMEN=OFF ]
 "58

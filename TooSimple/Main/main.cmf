@@ -742,6 +742,7 @@ __Lpowerup 18 0 CODE 0 powerup main.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data main.obj
 __end_of_configurations_init 844 0 CODE 0 text2 main.obj
 __Lreset_vec 0 0 CODE 0 reset_vec main.obj
+__CFG_FOSC$INTOSCIO_EC 0 0 ABS 0 - main.obj
 ___param_bank 10 0 ABS 0 - main.obj
 __CFG_WDT$OFF 0 0 ABS 0 - main.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata main.obj
@@ -756,7 +757,6 @@ __CFG_WRTC$OFF 0 0 ABS 0 - main.obj
 __CFG_WRTD$OFF 0 0 ABS 0 - main.obj
 __pidataBANK0 78E 0 CODE 0 idataBANK0 main.obj
 __Lclrtext 0 0 ABS 0 clrtext main.obj
-__CFG_FOSC$HSPLL_HS 0 0 ABS 0 - main.obj
 _ReadAnalog 6FC 0 CODE 0 text6 main.obj
 __CFG_PWRT$OFF 0 0 ABS 0 - main.obj
 __pcstackCOMRAM 41 0 COMRAM 1 cstackCOMRAM main.obj

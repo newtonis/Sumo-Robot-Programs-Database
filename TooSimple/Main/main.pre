@@ -6460,7 +6460,7 @@ enum {MOTOR_TEST, RED_ST , ST,INITIAL , CALIBRATION , WAIT ,AVANZAR , WRE2 , WRE
 #pragma config PBADEN = OFF
 #pragma config CPUDIV = OSC1_PLL2
 #pragma config USBDIV = 2
-#pragma config FOSC = HSPLL_HS
+#pragma config FOSC = INTOSCIO_EC
 #pragma config FCMEN = OFF
 #pragma config IESO = OFF
 #pragma config PWRT = OFF

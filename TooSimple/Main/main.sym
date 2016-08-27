@@ -32,6 +32,7 @@ __S0 30000E 0 ABS 0
 __S1 561 0 ABS 0
 __S2 0 0 ABS 0
 _DER 88 0 BANK0 1
+__CFG_FOSC$INTOSCIO_EC 0 0 ABS 0
 _RWM 33 0 COMRAM 1
 __Hintentry 0 0 ABS 0
 __CFG_PWRT$OFF 0 0 ABS 0
@@ -388,7 +389,6 @@ __Lend_init 18 0 CODE 0
 __end_of_enc 642 0 CODE 0
 __CFG_CP0$OFF 0 0 ABS 0
 __smallconst 0 0 SMALLCONST 0
-__CFG_FOSC$HSPLL_HS 0 0 ABS 0
 __CFG_CP1$OFF 0 0 ABS 0
 __Hreset_vec 4 0 CODE 0
 __Lreset_vec 0 0 CODE 0

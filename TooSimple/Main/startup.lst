@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-                                                                                                           Sat Aug 27 05:08:42 2016
+                                                                                                           Sat Aug 27 07:17:27 2016
 
 
      1                           
@@ -148,12 +148,12 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
    142                           ;	Internal/External Oscillator Switchover bit
    143                           ;	IESO = OFF, Oscillator Switchover mode disabled
    144                           ;	Oscillator Selection bits
-   145                           ;	FOSC = HSPLL_HS, HS oscillator, PLL enabled (HSPLL)
+   145                           ;	FOSC = INTOSCIO_EC, Internal oscillator, port function on RA6, EC used by USB (INTIO)
    146                           
    147                           	psect	config,class=CONFIG,delta=1,noexec
    148                           		org 0x1
-   149  300001                     		db 0xE
-   150  300001  0E                 
+   149  300001                     		db 0x8
+   150  300001  08                 
    151                           ; Config register CONFIG2L @ 0x300002
    152                           ;	Power-up Timer Enable bit
    153                           ;	PWRT = OFF, PWRT disabled
@@ -294,7 +294,7 @@ Microchip Technology PIC18 Macro Assembler V1.34 build -361300703
 
 
 Microchip Technology PIC18 Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Sat Aug 27 05:08:42 2016
+Symbol Table                                                                                               Sat Aug 27 07:17:27 2016
 
                 __S1 0561                 ___sp 0000                 _main 001C                 start 0018  
               __HRAM 0000                __LRAM 0001         __mediumconst 0000               stackhi 0007FF  

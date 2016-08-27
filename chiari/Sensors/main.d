@@ -1,0 +1,1 @@
+ main.d  main.p1:  /home/newtonis/Robots/chiari/Sensors/main.c

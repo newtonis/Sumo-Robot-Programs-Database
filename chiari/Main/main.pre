@@ -6505,6 +6505,7 @@ char RWM;
 int AMOUNT;
 int CURRENT;
 ll SIZES[255];
+int SS[10];
 
 
 long long millis();
@@ -6619,7 +6620,7 @@ int x;
 for (x = 0;x < AMOUNT;x++){
 GetValue(x, (int)&(SIZES[x]) );
 
-# 274
+# 275
 }
 }
 void Save(){
@@ -6632,14 +6633,8 @@ WriteMem(sum + x + 1,(uc)(SIZES[x]));
 }
 
 void configurations_init(){
-OSCCONbits.IRCF = 7;
 
-
-CMCON=0x07;
-
-
-UCONbits.USBEN = 0;
-UCFGbits.UTRDIS = 1;
+# 295
 }
 
 char ST_B_VERDE , ST_B_AMARILLO , ST_B_ROJO;
@@ -6676,7 +6671,7 @@ char nove;
 char actual;
 char gstatus;
 
-# 342
+# 343
 long long millis(){
 low = (unsigned char)TMR0L;
 high = (unsigned char)TMR0H;
@@ -6696,7 +6691,7 @@ configurations_init();
 InitAnalog();
 InitTIMERS();
 InitSP();
-
+MotorsPWM();
 
 
 }
@@ -6757,7 +6752,7 @@ T1CONbits.TMR1ON = 1;
 TMR1H = 0xF8;
 TMR1L = 0x2F;
 
-# 435
+# 437
 TRISDbits.TRISD1 = OUTPUT;
 TRISDbits.TRISD2 = OUTPUT;
 TRISDbits.TRISD3 = OUTPUT;
@@ -6769,15 +6764,13 @@ TRISCbits.TRISC1 = OUTPUT;
 TRISDbits.TRISD0 = OUTPUT;
 TRISCbits.TRISC0 = OUTPUT;
 
-# 455
-TRISEbits.TRISE2 = INPUT;
-TRISEbits.TRISE1 = INPUT;
-TRISEbits.TRISE0 = INPUT;
-TRISAbits.TRISA5 = INPUT;
-TRISAbits.TRISA4 = INPUT;
 
-# 490
-PORTEbits.RDPU = 1;
+TRISAbits.TRISA4 = INPUT;
+TRISAbits.TRISA3 = INPUT;
+TRISAbits.TRISA2 = INPUT;
+TRISBbits.TRISB5 = INPUT;
+TRISBbits.TRISB4 = INPUT;
+
 }
 
 
@@ -6797,12 +6790,12 @@ TMR0IF = 0;
 }
 }
 
-# 520
+# 484
 void Delay(int ms){
 while (ms --);
 }
 
-# 528
+# 492
 void InitAnalog(){
 ADCON1bits.VCFG1 = 0;
 ADCON1bits.VCFG0 = 0;
@@ -6881,7 +6874,7 @@ MAAtras();
 MBAdelante();
 }
 
-# 609
+# 573
 void EnhancedRead(){
 unsigned char i;
 unsigned int aux;
@@ -6936,7 +6929,7 @@ void MotorBSpeed(int S){
 S = (((S) < (1000)) ? (S) : (1000));
 S = (((S) > (-1000)) ? (S) : (-1000));
 
-PORTDbits.RC0 = S > 0 ? 0 : 1;
+PORTCbits.RC0 = S > 0 ? 0 : 1;
 S = S > 0 ? S : 1000 + S;
 
 CCP2CONbits.DC2B = S % 4;
@@ -6979,35 +6972,8 @@ int speedA = 0;
 int speedB = 0;
 
 void MotorsSpeed(int b,int a){
-speedA = a;
-speedB = b;
-}
-void MotorUpdate(){
-if (loop < ((speedA)>0?(speedA):(-(speedA)))){
-if (speedA > 0){
-ASP = 1;
-PORTDbits.RD0 = 0;
-}else{
-ASP = 0;
-PORTDbits.RD0 = 1;
-}
-}else{
-ASP = 0;
-PORTDbits.RD0 = 0;
-}
-if (loop < ((speedB)>0?(speedB):(-(speedB)))){
-if (speedB > 0){
-BSP = 1;
-PORTDbits.RD0 = 0;
-}else{
-BSP = 0;
-PORTDbits.RC0 = 1;
-}
-}else{
-BSP = 0;
-PORTDbits.RC0 = 0;
-}
-loop = loop == 9 ? 0 : (loop + 1);
+MotorASpeed(a);
+MotorBSpeed(b);
 }
 
 
@@ -7021,7 +6987,7 @@ int d1 , d2;
 int sd;
 int fca = 0;
 
-# 752
+# 689
 int main(int argc, char** argv) {
 initYBOT();
 
@@ -7042,66 +7008,38 @@ actual = 0;
 status = ST;
 TIME = 0;
 
-Wixel();
-
-
-
-
+# 714
 status = ST;
 
-# 783
+# 723
 fns = 1;
 while (1){
-MotorUpdate();
 
-# 804
+
+
+if (PORTAbits.RA4 == 0){
+SS[0] = PORTAbits.RA3;
+SS[1] = PORTAbits.RA2;
+SS[2] = PORTBbits.RB5;
+SS[3] = PORTBbits.RB4;
+}else{
+SS[4] = PORTAbits.RA3;
+SS[5] = PORTAbits.RA2;
+SS[6] = PORTBbits.RB5;
+SS[7] = PORTBbits.RB4;
+}
+
+# 758
 switch (status){
 case ST:
-L_RED = V1;
-L_YELLOW = V2;
-L_GREEN = V3;
-MotorsSpeed(0,0);
-if (B_RED == 0){
-sd = 1;
-status = WAIT;
-TIME = 0;
-}
-if (B_GREEN == 0){
-sd = 2;
-status = WAIT;
-TIME = 0;
-}
+PORTDbits.RD1 = TIME % 1000 > 500;
+
+# 775
 break;
-case WAIT:
-L_RED = TIME % 3000 > 2000;
-L_YELLOW = TIME % 3000 > 1000 && TIME % 3000 < 2000;
-L_GREEN = TIME % 3000 < 1000;
-if (TIME > 5000*6){
-status = AVANZAR;
-}
-break;
-case AVANZAR:
-if (V2){
-if (fca == 0){
-fca = 1;
-if (sd == 1){ sd = 2; }else{ sd = 1; }
-}
-MotorsSpeed(10,10);
-}else{
-TIME = 0;
-fc = 0;
-if (sd == 1){
-MotorsSpeed(10,1);
-}else{
-MotorsSpeed(1,10);
-}
+
 }
 
-# 867
-break;
-}
-
-# 912
+# 821
 }
 }
 

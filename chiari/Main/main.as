@@ -484,14 +484,12 @@ TOSL equ 0FFDh ;#
 TOSH equ 0FFEh ;# 
 # 9473 "/opt/microchip/xc8/v1.34/include/pic18f4550.h"
 TOSU equ 0FFFh ;# 
-	FNCALL	_main,_MotorUpdate
-	FNCALL	_main,_MotorsSpeed
-	FNCALL	_main,_Wixel
 	FNCALL	_main,___almod
 	FNCALL	_main,_initYBOT
 	FNCALL	_initYBOT,_InitAnalog
 	FNCALL	_initYBOT,_InitSP
 	FNCALL	_initYBOT,_InitTIMERS
+	FNCALL	_initYBOT,_MotorsPWM
 	FNCALL	_initYBOT,_ResetCounter
 	FNCALL	_initYBOT,_configurations_init
 	FNCALL	_InitSP,_ReadAnalog
@@ -503,7 +501,7 @@ psect	idataBANK0,class=CODE,space=0,delta=1,noexec
 global __pidataBANK0
 __pidataBANK0:
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	108
+	line	121
 
 ;initializer for _KD
 	db	low(float24(300.00000000000000))
@@ -518,7 +516,7 @@ __pidataBANK0:
 	db	low(float24(300.00000000000000))
 	db	high(float24(300.00000000000000))
 	db	low highword(float24(300.00000000000000))
-	line	107
+	line	120
 
 ;initializer for _KP
 	db	low(float24(28.000000000000000))
@@ -533,7 +531,7 @@ __pidataBANK0:
 	db	low(float24(28.000000000000000))
 	db	high(float24(28.000000000000000))
 	db	low highword(float24(28.000000000000000))
-	line	109
+	line	122
 
 ;initializer for _KR
 	db	low(float24(0.20000000000000001))
@@ -548,7 +546,7 @@ __pidataBANK0:
 	db	low(float24(0.10000000000000001))
 	db	high(float24(0.10000000000000001))
 	db	low highword(float24(0.10000000000000001))
-	line	110
+	line	123
 
 ;initializer for _SP
 	db	low(float24(900.00000000000000))
@@ -563,24 +561,21 @@ __pidataBANK0:
 	db	low(float24(350.00000000000000))
 	db	high(float24(350.00000000000000))
 	db	low highword(float24(350.00000000000000))
-	line	129
+	line	142
 
 ;initializer for _TIMEFRENO
 	dw	(0C8h) & 0xffff
 	dw	highword(0C8h)
-	global	_TIME
 	global	_CURRENT
 	global	_a
+	global	_d1
+	global	_d2
 	global	_fa
-	global	_fca
-	global	_loop
+	global	_fb
 	global	_ma
 	global	_mb
 	global	_mode
 	global	_sa
-	global	_sd
-	global	_speedA
-	global	_speedB
 	global	_MF
 	global	_PisoActual
 	global	_actual
@@ -588,15 +583,20 @@ __pidataBANK0:
 	global	_low
 	global	_AMOUNT
 	global	_SIZES
-	global	_V
+	global	_SS
 	global	_MS
+	global	_TIME
 	global	_WAITIME
-	global	_d1
-	global	_d2
-	global	_fb
-	global	_fc
 	global	_amax
 	global	_amin
+	global	_V
+	global	_status
+psect	nvCOMRAM,class=COMRAM,space=1,noexec
+global __pnvCOMRAM
+__pnvCOMRAM:
+	global	_status
+_status:
+       ds      1
 	global	_fns
 psect	nvBANK0,class=BANK0,space=1,noexec
 global __pnvBANK0
@@ -607,10 +607,6 @@ _fns:
 	global	_gstatus
 	global	_gstatus
 _gstatus:
-       ds      1
-	global	_status
-	global	_status
-_status:
        ds      1
 	global	_ADCON0bits
 _ADCON0bits	set	0xFC2
@@ -632,8 +628,6 @@ _CCP2CONbits	set	0xFBA
 _CCPR1L	set	0xFBE
 	global	_CCPR2L
 _CCPR2L	set	0xFBB
-	global	_CMCON
-_CMCON	set	0xFB4
 	global	_EEADR
 _EEADR	set	0xFA9
 	global	_EECON1bits
@@ -646,8 +640,6 @@ _EEDATA	set	0xFA8
 _INTCON2bits	set	0xFF1
 	global	_INTCONbits
 _INTCONbits	set	0xFF2
-	global	_OSCCONbits
-_OSCCONbits	set	0xFD3
 	global	_PORTAbits
 _PORTAbits	set	0xF80
 	global	_PORTBbits
@@ -656,8 +648,6 @@ _PORTBbits	set	0xF81
 _PORTCbits	set	0xF82
 	global	_PORTDbits
 _PORTDbits	set	0xF83
-	global	_PORTEbits
-_PORTEbits	set	0xF84
 	global	_PR2
 _PR2	set	0xFCB
 	global	_RCONbits
@@ -690,16 +680,10 @@ _TRISBbits	set	0xF93
 _TRISCbits	set	0xF94
 	global	_TRISDbits
 _TRISDbits	set	0xF95
-	global	_TRISEbits
-_TRISEbits	set	0xF96
 	global	_TXREG
 _TXREG	set	0xFAD
 	global	_TXSTAbits
 _TXSTAbits	set	0xFAC
-	global	_UCFGbits
-_UCFGbits	set	0xF6F
-	global	_UCONbits
-_UCONbits	set	0xF6D
 	global	_ADON
 _ADON	set	0x7E10
 	global	_CHS0
@@ -822,9 +806,6 @@ __initialization:
 psect	bssCOMRAM,class=COMRAM,space=1,noexec
 global __pbssCOMRAM
 __pbssCOMRAM:
-	global	_TIME
-_TIME:
-       ds      4
 	global	_CURRENT
 _CURRENT:
        ds      2
@@ -843,16 +824,27 @@ _b:
 	global	_cox
 _cox:
        ds      2
+	global	_d1
+_d1:
+       ds      2
+	global	_d2
+_d2:
+       ds      2
 	global	_fa
 _fa:
        ds      2
-	global	_fca
-_fca:
+	global	_fb
+_fb:
+       ds      2
+	global	_fc
+	global	_fc
+_fc:
        ds      2
 	global	_giro
 	global	_giro
 _giro:
        ds      2
+	global	_loop
 	global	_loop
 _loop:
        ds      2
@@ -884,12 +876,11 @@ _next:
 	global	_sa
 _sa:
        ds      2
-	global	_sd
-_sd:
-       ds      2
+	global	_speedA
 	global	_speedA
 _speedA:
        ds      2
+	global	_speedB
 	global	_speedB
 _speedB:
        ds      2
@@ -958,9 +949,9 @@ _AMOUNT:
 psect	bssBANK0,class=BANK0,space=1,noexec
 global __pbssBANK0
 __pbssBANK0:
-	global	_V
-_V:
-       ds      32
+	global	_SS
+_SS:
+       ds      20
 	global	_suma
 	global	_suma
 _suma:
@@ -983,6 +974,9 @@ _PIDf:
 	global	_POSICION
 	global	_POSICION
 _POSICION:
+       ds      4
+	global	_TIME
+_TIME:
        ds      4
 	global	_WAITFRENAR
 	global	_WAITFRENAR
@@ -1011,51 +1005,47 @@ _value:
 	global	_w
 _w:
        ds      4
-	global	_d1
-_d1:
+	global	_fca
+	global	_fca
+_fca:
        ds      2
-	global	_d2
-_d2:
-       ds      2
-	global	_fb
-_fb:
-       ds      2
-	global	_fc
-_fc:
+	global	_sd
+	global	_sd
+_sd:
        ds      2
 psect	dataBANK0,class=BANK0,space=1,noexec
 global __pdataBANK0
 __pdataBANK0:
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	108
+	line	121
 	global	_KD
 	global	_KD
 _KD:
        ds      12
 psect	dataBANK0
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	107
+	line	120
 	global	_KP
 	global	_KP
 _KP:
        ds      12
 psect	dataBANK0
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	109
+	line	122
 	global	_KR
 	global	_KR
 _KR:
        ds      12
 psect	dataBANK0
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	110
+	line	123
 	global	_SP
 	global	_SP
 _SP:
        ds      12
 psect	dataBANK0
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	129
+	line	142
 	global	_TIMEFRENO
 	global	_TIMEFRENO
 _TIMEFRENO:
@@ -1069,6 +1059,9 @@ _amax:
 	global	_amin
 _amin:
        ds      44
+	global	_V
+_V:
+       ds      32
 psect	bssBIGRAM,class=BIGRAM,space=1,noexec
 global __pbssBIGRAM
 __pbssBIGRAM:
@@ -1089,18 +1082,18 @@ movf	fsr1l,w
 bnz	clear_0
 movf	fsr1h,w
 bnz	clear_0
-; Clear objects allocated to BANK1 (88 bytes)
+; Clear objects allocated to BANK1 (120 bytes)
 	global __pbssBANK1
 lfsr	0,__pbssBANK1
-movlw	88
+movlw	120
 clear_1:
 clrf	postinc0,c
 decf	wreg
 bnz	clear_1
-; Clear objects allocated to BANK0 (96 bytes)
+; Clear objects allocated to BANK0 (84 bytes)
 	global __pbssBANK0
 lfsr	0,__pbssBANK0
-movlw	96
+movlw	84
 clear_2:
 clrf	postinc0,c
 decf	wreg
@@ -1142,38 +1135,24 @@ __end_of__initialization:	GLOBAL	__Lmediumconst
 	movwf	tblptru
 movlb 0
 goto _main	;jump to C main() function
-psect	cstackBANK1,class=BANK1,space=1,noexec
-global __pcstackBANK1
-__pcstackBANK1:
-?_main:	; 2 bytes @ 0x0
-main@argc:	; 2 bytes @ 0x0
-	ds   2
-main@argv:	; 3 bytes @ 0x2
-	ds   3
-	global	_main$1905
-_main$1905:	; 1 bytes @ 0x5
-	ds   1
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-?_MotorsSpeed:	; 0 bytes @ 0x0
 	global	?___almod
 ?___almod:	; 4 bytes @ 0x0
-	global	MotorsSpeed@b
-MotorsSpeed@b:	; 2 bytes @ 0x0
-	global	_MotorUpdate$1862
-_MotorUpdate$1862:	; 2 bytes @ 0x0
 	global	___almod@dividend
 ___almod@dividend:	; 4 bytes @ 0x0
-	ds   2
-	global	MotorsSpeed@a
-MotorsSpeed@a:	; 2 bytes @ 0x2
-	global	_MotorUpdate$1871
-_MotorUpdate$1871:	; 2 bytes @ 0x2
-	ds   2
+	ds   4
 	global	___almod@divisor
 ___almod@divisor:	; 4 bytes @ 0x4
 	ds   4
+?_main:	; 2 bytes @ 0x8
+main@argc:	; 2 bytes @ 0x8
+	ds   2
+main@argv:	; 3 bytes @ 0xA
+	ds   3
+??_main:	; 0 bytes @ 0xD
+	ds   1
 psect	cstackCOMRAM,class=COMRAM,space=1,noexec
 global __pcstackCOMRAM
 __pcstackCOMRAM:
@@ -1181,22 +1160,19 @@ __pcstackCOMRAM:
 ?_InitAnalog:	; 0 bytes @ 0x0
 ?_InitTIMERS:	; 0 bytes @ 0x0
 ?_InitSP:	; 0 bytes @ 0x0
+?_MotorsPWM:	; 0 bytes @ 0x0
 ?_ReadAnalog:	; 0 bytes @ 0x0
-?_Wixel:	; 0 bytes @ 0x0
 ?_configurations_init:	; 0 bytes @ 0x0
 ?_initYBOT:	; 0 bytes @ 0x0
 ?_enc:	; 0 bytes @ 0x0
 ??_enc:	; 0 bytes @ 0x0
-?_MotorUpdate:	; 0 bytes @ 0x0
 	ds   14
 ??_ResetCounter:	; 0 bytes @ 0xE
 ??_InitAnalog:	; 0 bytes @ 0xE
 ??_InitTIMERS:	; 0 bytes @ 0xE
+??_MotorsPWM:	; 0 bytes @ 0xE
 ??_ReadAnalog:	; 0 bytes @ 0xE
-??_Wixel:	; 0 bytes @ 0xE
 ??_configurations_init:	; 0 bytes @ 0xE
-??_MotorsSpeed:	; 0 bytes @ 0xE
-??_MotorUpdate:	; 0 bytes @ 0xE
 ??___almod:	; 0 bytes @ 0xE
 	global	___almod@counter
 ___almod@counter:	; 1 bytes @ 0xE
@@ -1208,22 +1184,20 @@ ___almod@sign:	; 1 bytes @ 0xF
 	ds   1
 ??_InitSP:	; 0 bytes @ 0x10
 ??_initYBOT:	; 0 bytes @ 0x10
-??_main:	; 0 bytes @ 0x10
-	ds   1
 ;!
 ;!Data Sizes:
 ;!    Strings     0
 ;!    Constant    0
 ;!    Data        52
-;!    BSS         1268
+;!    BSS         1288
 ;!    Persistent  4
 ;!    Stack       0
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
-;!    COMRAM           95     17      81
-;!    BANK0           160      8     160
-;!    BANK1           256      6      94
+;!    COMRAM           95     16      81
+;!    BANK0           160     14     153
+;!    BANK1           256      0     120
 ;!    BANK2           256      0       0
 ;!    BANK3           256      0       0
 ;!    BANK4           256      0       0
@@ -1240,7 +1214,6 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;!Critical Paths under _main in COMRAM
 ;!
-;!    _main->_MotorUpdate
 ;!    _main->___almod
 ;!    _InitSP->_ReadAnalog
 ;!
@@ -1322,19 +1295,16 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 7     2      5    1962
-;!                                             16 COMRAM     1     1      0
-;!                                              0 BANK1      6     1      5
-;!                        _MotorUpdate
-;!                        _MotorsSpeed
-;!                              _Wixel
+;! (0) _main                                                 6     1      5     675
+;!                                              8 BANK0      6     1      5
 ;!                            ___almod
 ;!                           _initYBOT
 ;! ---------------------------------------------------------------------------------
-;! (1) _initYBOT                                             0     0      0     124
+;! (1) _initYBOT                                             0     0      0      88
 ;!                         _InitAnalog
 ;!                             _InitSP
 ;!                         _InitTIMERS
+;!                          _MotorsPWM
 ;!                       _ResetCounter
 ;!                _configurations_init
 ;! ---------------------------------------------------------------------------------
@@ -1342,28 +1312,21 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! ---------------------------------------------------------------------------------
 ;! (2) _ResetCounter                                         0     0      0       0
 ;! ---------------------------------------------------------------------------------
+;! (2) _MotorsPWM                                            0     0      0       0
+;! ---------------------------------------------------------------------------------
 ;! (2) _InitTIMERS                                           0     0      0       0
 ;! ---------------------------------------------------------------------------------
-;! (2) _InitSP                                               0     0      0     124
+;! (2) _InitSP                                               0     0      0      88
 ;!                         _ReadAnalog
 ;! ---------------------------------------------------------------------------------
-;! (3) _ReadAnalog                                           2     2      0     124
+;! (3) _ReadAnalog                                           2     2      0      88
 ;!                                             14 COMRAM     2     2      0
 ;! ---------------------------------------------------------------------------------
 ;! (2) _InitAnalog                                           0     0      0       0
 ;! ---------------------------------------------------------------------------------
-;! (1) ___almod                                             10     2      8    1049
+;! (1) ___almod                                             10     2      8     587
 ;!                                             14 COMRAM     2     2      0
 ;!                                              0 BANK0      8     0      8
-;! ---------------------------------------------------------------------------------
-;! (1) _Wixel                                                0     0      0       0
-;! ---------------------------------------------------------------------------------
-;! (1) _MotorsSpeed                                          4     0      4     678
-;!                                              0 BANK0      4     0      4
-;! ---------------------------------------------------------------------------------
-;! (1) _MotorUpdate                                          6     6      0      74
-;!                                             14 COMRAM     2     2      0
-;!                                              0 BANK0      4     4      0
 ;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 3
 ;! ---------------------------------------------------------------------------------
@@ -1378,15 +1341,13 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! Call Graph Graphs:
 ;!
 ;! _main (ROOT)
-;!   _MotorUpdate
-;!   _MotorsSpeed
-;!   _Wixel
 ;!   ___almod
 ;!   _initYBOT
 ;!     _InitAnalog
 ;!     _InitSP
 ;!       _ReadAnalog
 ;!     _InitTIMERS
+;!     _MotorsPWM
 ;!     _ResetCounter
 ;!     _configurations_init
 ;!
@@ -1411,31 +1372,31 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!BITBANK2           100      0       0       8        0.0%
 ;!BANK2              100      0       0       9        0.0%
 ;!BITBANK1           100      0       0       6        0.0%
-;!BANK1              100      6      5E       7       36.7%
+;!BANK1              100      0      78       7       46.9%
 ;!BITBANK0            A0      0       0       4        0.0%
-;!BANK0               A0      8      A0       5      100.0%
+;!BANK0               A0      E      99       5       95.6%
 ;!BITCOMRAM           5F      0       0       0        0.0%
-;!COMRAM              5F     11      51       1       85.3%
+;!COMRAM              5F     10      51       1       85.3%
 ;!BITSFR               0      0       0      40        0.0%
 ;!SFR                  0      0       0      40        0.0%
 ;!STACK                0      0       0       2        0.0%
 ;!NULL                 0      0       0       0        0.0%
-;!ABS                  0      0     14F      20        0.0%
-;!DATA                 0      0     54B       3        0.0%
+;!ABS                  0      0     162      20        0.0%
+;!DATA                 0      0     55E       3        0.0%
 ;!CODE                 0      0       0       0        0.0%
 
 	global	_main
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 731 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 689 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
-;;  argc            2    0[BANK1 ] int 
-;;  argv            3    2[BANK1 ] PTR PTR unsigned char 
+;;  argc            2    8[BANK0 ] int 
+;;  argv            3   10[BANK0 ] PTR PTR unsigned char 
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  2    0[BANK1 ] int 
+;;                  2    8[BANK0 ] int 
 ;; Registers used:
 ;;		wreg, status,2, status,0, cstack
 ;; Tracked objects:
@@ -1443,16 +1404,13 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;;		On exit  : 0/0
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       0       5       0       0       0       0       0       0
-;;      Locals:         0       0       1       0       0       0       0       0       0
-;;      Temps:          1       0       0       0       0       0       0       0       0
-;;      Totals:         1       0       6       0       0       0       0       0       0
-;;Total ram usage:        7 bytes
+;;      Params:         0       5       0       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       0       0       0       0       0
+;;      Temps:          0       1       0       0       0       0       0       0       0
+;;      Totals:         0       6       0       0       0       0       0       0       0
+;;Total ram usage:        6 bytes
 ;; Hardware stack levels required when called:    4
 ;; This function calls:
-;;		_MotorUpdate
-;;		_MotorsSpeed
-;;		_Wixel
 ;;		___almod
 ;;		_initYBOT
 ;; This function is called by:
@@ -1461,104 +1419,93 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;;
 psect	text0,class=CODE,space=0,reloc=2
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	731
+	line	689
 global __ptext0
 __ptext0:
 psect	text0
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	731
+	line	689
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
 	
 _main:
 ;incstack = 0
 	opt	stack 27
-	line	732
+	line	690
 	
-l2257:
+l1882:
 	call	_initYBOT	;wreg free
-	line	734
+	line	692
 	
-l2259:
+l1884:
 	movlw	high(0)
 	movwf	((c:_fa+1)),c
 	movlw	low(0)
 	movwf	((c:_fa)),c
-	line	735
+	line	693
 	
-l2261:
+l1886:
 	movlw	high(0)
-	movlb	0	; () banked
-	movwf	((_fb+1))&0ffh
+	movwf	((c:_fb+1)),c
 	movlw	low(0)
-	movwf	((_fb))&0ffh
-	line	736
+	movwf	((c:_fb)),c
+	line	694
 	
-l2263:; BSR set to: 0
-
+l1888:
 	movlw	high(0)
 	movwf	((c:_ma+1)),c
 	movlw	low(0)
 	movwf	((c:_ma)),c
-	line	737
+	line	695
 	
-l2265:; BSR set to: 0
-
+l1890:
 	movlw	high(0)
 	movwf	((c:_mb+1)),c
 	movlw	low(0)
 	movwf	((c:_mb)),c
-	line	738
+	line	696
 	
-l2267:; BSR set to: 0
-
+l1892:
 	movlw	high(0)
-	movlb	0	; () banked
-	movwf	((_d1+1))&0ffh
+	movwf	((c:_d1+1)),c
 	movlw	low(0)
-	movwf	((_d1))&0ffh
-	line	739
+	movwf	((c:_d1)),c
+	line	697
 	
-l2269:; BSR set to: 0
-
+l1894:
 	movlw	high(0)
-	movlb	0	; () banked
-	movwf	((_d2+1))&0ffh
+	movwf	((c:_d2+1)),c
 	movlw	low(0)
-	movwf	((_d2))&0ffh
-	line	741
+	movwf	((c:_d2)),c
+	line	699
 	
-l2271:; BSR set to: 0
-
+l1896:
 	movlw	high(0)
 	movwf	((c:_sa+1)),c
 	movlw	low(0)
 	movwf	((c:_sa)),c
-	line	742
+	line	700
 	
-l2273:; BSR set to: 0
-
+l1898:
 	movlw	high(0)
 	movwf	((c:_mode+1)),c
 	movlw	low(0)
 	movwf	((c:_mode)),c
-	line	743
+	line	701
 	
-l2275:; BSR set to: 0
-
+l1900:
 	movlw	high(0)
 	movwf	((c:_a+1)),c
 	movlw	low(0)
 	movwf	((c:_a)),c
-	line	744
+	line	702
 	
-l2277:; BSR set to: 0
-
+l1902:
 	movlb	0	; () banked
 	setf	((_gstatus))&0ffh
-	line	745
+	line	703
 	
-l2279:; BSR set to: 0
+l1904:; BSR set to: 0
 
 	movlw	low(0)
 	movlb	0	; () banked
@@ -1569,650 +1516,337 @@ l2279:; BSR set to: 0
 	movwf	((_WAITIME+2))&0ffh
 	movlw	high highword(0)
 	movwf	((_WAITIME+3))&0ffh
-	line	746
+	line	704
 	
-l2281:; BSR set to: 0
+l1906:; BSR set to: 0
 
 	movlw	high(0)
 	movwf	((c:_CURRENT+1)),c
 	movlw	low(0)
 	movwf	((c:_CURRENT)),c
-	line	747
+	line	705
 	
-l2283:; BSR set to: 0
+l1908:; BSR set to: 0
 
 	movlw	low(0)
 	movwf	((c:_actual)),c
-	line	748
+	line	706
 	
-l2285:; BSR set to: 0
+l1910:; BSR set to: 0
 
 	movlw	low(02h)
-	movlb	0	; () banked
-	movwf	((_status))&0ffh
-	line	749
+	movwf	((c:_status)),c
+	line	707
 	
-l2287:; BSR set to: 0
+l1912:; BSR set to: 0
 
 	movlw	low(0)
-	movwf	((c:_TIME)),c
-	movlw	high(0)
-	movwf	((c:_TIME+1)),c
-	movlw	low highword(0)
-	movwf	((c:_TIME+2)),c
-	movlw	high highword(0)
-	movwf	((c:_TIME+3)),c
-	line	751
-	
-l2289:; BSR set to: 0
-
-	call	_Wixel	;wreg free
-	line	756
-	
-l2291:
-	movlw	low(02h)
 	movlb	0	; () banked
-	movwf	((_status))&0ffh
-	line	762
+	movwf	((_TIME))&0ffh
+	movlw	high(0)
+	movwf	((_TIME+1))&0ffh
+	movlw	low highword(0)
+	movwf	((_TIME+2))&0ffh
+	movlw	high highword(0)
+	movwf	((_TIME+3))&0ffh
+	line	714
 	
-l2293:; BSR set to: 0
+l1914:; BSR set to: 0
+
+	movlw	low(02h)
+	movwf	((c:_status)),c
+	line	723
+	
+l1916:; BSR set to: 0
 
 	movlw	high(01h)
 	movlb	0	; () banked
 	movwf	((_fns+1))&0ffh
 	movlw	low(01h)
 	movwf	((_fns))&0ffh
-	goto	l2295
-	line	763
+	goto	l1918
+	line	724
 	
-l487:; BSR set to: 0
+l456:; BSR set to: 0
 
-	line	764
+	line	728
 	
-l2295:
-	call	_MotorUpdate	;wreg free
-	line	783
-	goto	l2347
-	line	784
-	
-l489:; BSR set to: 0
+l1918:; BSR set to: 0
 
-	line	785
-	btfss	((c:3972)),c,1	;volatile
-	bra	u1565
-	bsf	((c:3971)),c,4	;volatile
-	bra	u1567
-	u1565:	
-	bcf	((c:3971)),c,4	;volatile
-	u1567:
-	line	786
-	btfss	((c:3972)),c,0	;volatile
-	bra	u1575
-	bsf	((c:3971)),c,5	;volatile
-	bra	u1577
-	u1575:	
-	bcf	((c:3971)),c,5	;volatile
-	u1577:
-	line	787
-	btfss	((c:3968)),c,5	;volatile
-	bra	u1585
-	bsf	((c:3971)),c,6	;volatile
-	bra	u1587
-	u1585:	
-	bcf	((c:3971)),c,6	;volatile
-	u1587:
-	line	788
+	btfsc	((c:3968)),c,4	;volatile
+	goto	u1141
+	goto	u1140
+u1141:
+	goto	l1922
+u1140:
+	line	729
 	
-l2297:
-	movlw	high(0)
+l1920:; BSR set to: 0
+
+	btfsc	((c:3968)),c,3	;volatile
+	goto	u1151
+	goto	u1150
+u1151:
 	movlb	0	; () banked
-	movwf	((MotorsSpeed@b+1))&0ffh
-	movlw	low(0)
-	movwf	((MotorsSpeed@b))&0ffh
-	movlw	high(0)
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1158
+u1150:
 	movlb	0	; () banked
-	movwf	((MotorsSpeed@a+1))&0ffh
-	movlw	low(0)
-	movwf	((MotorsSpeed@a))&0ffh
-	call	_MotorsSpeed	;wreg free
-	line	789
-	
-l2299:
-	btfsc	((c:3971)),c,0	;volatile
-	goto	u1591
-	goto	u1590
-u1591:
-	goto	l2303
-u1590:
-	line	790
-	
-l2301:
-	movlw	high(01h)
-	movwf	((c:_sd+1)),c
-	movlw	low(01h)
-	movwf	((c:_sd)),c
-	line	791
-	movlw	low(05h)
+	clrf	(??_main+0+0)&0ffh
+u1158:
 	movlb	0	; () banked
-	movwf	((_status))&0ffh
-	line	792
-	movlw	low(0)
-	movwf	((c:_TIME)),c
-	movlw	high(0)
-	movwf	((c:_TIME+1)),c
-	movlw	low highword(0)
-	movwf	((c:_TIME+2)),c
-	movlw	high highword(0)
-	movwf	((c:_TIME+3)),c
-	goto	l2303
-	line	793
-	
-l490:; BSR set to: 0
-
-	line	794
-	
-l2303:
-	btfsc	((c:3971)),c,2	;volatile
-	goto	u1601
-	goto	u1600
-u1601:
-	goto	l2295
-u1600:
-	line	795
-	
-l2305:
-	movlw	high(02h)
-	movwf	((c:_sd+1)),c
-	movlw	low(02h)
-	movwf	((c:_sd)),c
-	line	796
-	movlw	low(05h)
+	movf	(??_main+0+0)&0ffh,w
 	movlb	0	; () banked
-	movwf	((_status))&0ffh
-	line	797
-	movlw	low(0)
-	movwf	((c:_TIME)),c
-	movlw	high(0)
-	movwf	((c:_TIME+1)),c
-	movlw	low highword(0)
-	movwf	((c:_TIME+2)),c
-	movlw	high highword(0)
-	movwf	((c:_TIME+3)),c
-	goto	l2295
-	line	798
+	movwf	((_SS))&0ffh
+	clrf	((_SS+1))&0ffh
+	line	730
+	btfsc	((c:3968)),c,2	;volatile
+	goto	u1161
+	goto	u1160
+u1161:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1168
+u1160:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1168:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+02h))&0ffh
+	clrf	(1+(_SS+02h))&0ffh
+	line	731
+	btfsc	((c:3969)),c,5	;volatile
+	goto	u1171
+	goto	u1170
+u1171:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1178
+u1170:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1178:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+04h))&0ffh
+	clrf	(1+(_SS+04h))&0ffh
+	line	732
+	btfsc	((c:3969)),c,4	;volatile
+	goto	u1181
+	goto	u1180
+u1181:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1188
+u1180:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1188:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+06h))&0ffh
+	clrf	(1+(_SS+06h))&0ffh
+	line	733
+	goto	l1928
 	
-l491:; BSR set to: 0
+l457:; BSR set to: 0
 
-	line	799
-	goto	l2295
-	line	800
+	line	734
 	
-l493:; BSR set to: 0
+l1922:; BSR set to: 0
 
-	line	801
+	btfsc	((c:3968)),c,3	;volatile
+	goto	u1191
+	goto	u1190
+u1191:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1198
+u1190:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1198:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+08h))&0ffh
+	clrf	(1+(_SS+08h))&0ffh
+	line	735
+	btfsc	((c:3968)),c,2	;volatile
+	goto	u1201
+	goto	u1200
+u1201:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1208
+u1200:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1208:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+0Ah))&0ffh
+	clrf	(1+(_SS+0Ah))&0ffh
+	line	736
+	btfsc	((c:3969)),c,5	;volatile
+	goto	u1211
+	goto	u1210
+u1211:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1218
+u1210:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1218:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+0Ch))&0ffh
+	clrf	(1+(_SS+0Ch))&0ffh
+	line	737
+	btfsc	((c:3969)),c,4	;volatile
+	goto	u1221
+	goto	u1220
+u1221:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1228
+u1220:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1228:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+0Eh))&0ffh
+	clrf	(1+(_SS+0Eh))&0ffh
+	goto	l1928
+	line	738
 	
-l2307:; BSR set to: 0
+l458:; BSR set to: 0
 
-	movff	(c:_TIME),(___almod@dividend)
-	movff	(c:_TIME+1),(___almod@dividend+1)
-	movff	(c:_TIME+2),(___almod@dividend+2)
-	movff	(c:_TIME+3),(___almod@dividend+3)
-	movlw	low(0BB8h)
+	line	758
+	goto	l1928
+	line	759
+	
+l460:; BSR set to: 0
+
+	line	760
+	
+l1924:; BSR set to: 0
+
+	movff	(_TIME),(___almod@dividend)
+	movff	(_TIME+1),(___almod@dividend+1)
+	movff	(_TIME+2),(___almod@dividend+2)
+	movff	(_TIME+3),(___almod@dividend+3)
+	movlw	low(03E8h)
 	movlb	0	; () banked
 	movwf	((___almod@divisor))&0ffh
-	movlw	high(0BB8h)
+	movlw	high(03E8h)
 	movwf	((___almod@divisor+1))&0ffh
-	movlw	low highword(0BB8h)
+	movlw	low highword(03E8h)
 	movwf	((___almod@divisor+2))&0ffh
-	movlw	high highword(0BB8h)
+	movlw	high highword(03E8h)
 	movwf	((___almod@divisor+3))&0ffh
 	call	___almod	;wreg free
 	movlb	0	; () banked
 	movlb	0	; () banked
 	btfsc	(3+?___almod)&0ffh,7
-	goto	u1610
+	goto	u1230
 	movlb	0	; () banked
 	movlb	0	; () banked
 	movf	(3+?___almod)&0ffh,w
 	movlb	0	; () banked
 	movlb	0	; () banked
 	iorwf	(2+?___almod)&0ffh,w
-	bnz	u1611
-	movlw	209
+	bnz	u1231
+	movlw	245
 	movlb	0	; () banked
 	movlb	0	; () banked
 	subwf	 (0+?___almod)&0ffh,w
-	movlw	7
+	movlw	1
 	movlb	0	; () banked
 	movlb	0	; () banked
 	subwfb	(1+?___almod)&0ffh,w
 	btfsc	status,0
-	goto	u1611
-	goto	u1610
+	goto	u1231
+	goto	u1230
 
-u1611:
-	clrf	(??_main+0+0)&0ffh,c
-	incf	(??_main+0+0)&0ffh,c
-	goto	u1628
-u1610:
-	clrf	(??_main+0+0)&0ffh,c
-u1628:
-	swapf	(??_main+0+0),c
+u1231:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1248
+u1230:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1248:
+	movlb	0	; () banked
+	rlncf	(??_main+0+0)&0ffh
 	movf	((c:3971)),c,w	;volatile
-	xorwf	(??_main+0+0),c,w
-	andlw	not (((1<<1)-1)<<4)
-	xorwf	(??_main+0+0),c,w
+	movlb	0	; () banked
+	xorwf	(??_main+0+0)&0ffh,w
+	andlw	not (((1<<1)-1)<<1)
+	xorwf	(??_main+0+0)&0ffh,w
 	movwf	((c:3971)),c	;volatile
-	line	802
+	line	775
+	goto	l1918
+	line	777
 	
-l2309:
-	movlw	low(0)
-	movlb	1	; () banked
-	movwf	((_main$1905))&0ffh
+l1926:; BSR set to: 0
+
+	goto	l1918
+	line	758
 	
-l2311:; BSR set to: 1
-
-	movff	(c:_TIME),(___almod@dividend)
-	movff	(c:_TIME+1),(___almod@dividend+1)
-	movff	(c:_TIME+2),(___almod@dividend+2)
-	movff	(c:_TIME+3),(___almod@dividend+3)
-	movlw	low(0BB8h)
-	movlb	0	; () banked
-	movwf	((___almod@divisor))&0ffh
-	movlw	high(0BB8h)
-	movwf	((___almod@divisor+1))&0ffh
-	movlw	low highword(0BB8h)
-	movwf	((___almod@divisor+2))&0ffh
-	movlw	high highword(0BB8h)
-	movwf	((___almod@divisor+3))&0ffh
-	call	___almod	;wreg free
-	movlb	0	; () banked
-	movlb	0	; () banked
-	btfsc	(3+?___almod)&0ffh,7
-	goto	u1631
-	movlb	0	; () banked
-	movlb	0	; () banked
-	movf	(3+?___almod)&0ffh,w
-	movlb	0	; () banked
-	movlb	0	; () banked
-	iorwf	(2+?___almod)&0ffh,w
-	bnz	u1630
-	movlw	233
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwf	 (0+?___almod)&0ffh,w
-	movlw	3
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwfb	(1+?___almod)&0ffh,w
-	btfss	status,0
-	goto	u1631
-	goto	u1630
-
-u1631:
-	goto	l2317
-u1630:
-	
-l2313:; BSR set to: 0
-
-	movff	(c:_TIME),(___almod@dividend)
-	movff	(c:_TIME+1),(___almod@dividend+1)
-	movff	(c:_TIME+2),(___almod@dividend+2)
-	movff	(c:_TIME+3),(___almod@dividend+3)
-	movlw	low(0BB8h)
-	movlb	0	; () banked
-	movwf	((___almod@divisor))&0ffh
-	movlw	high(0BB8h)
-	movwf	((___almod@divisor+1))&0ffh
-	movlw	low highword(0BB8h)
-	movwf	((___almod@divisor+2))&0ffh
-	movlw	high highword(0BB8h)
-	movwf	((___almod@divisor+3))&0ffh
-	call	___almod	;wreg free
-	movlb	0	; () banked
-	movlb	0	; () banked
-	btfsc	(3+?___almod)&0ffh,7
-	goto	u1640
-	movlb	0	; () banked
-	movlb	0	; () banked
-	movf	(3+?___almod)&0ffh,w
-	movlb	0	; () banked
-	movlb	0	; () banked
-	iorwf	(2+?___almod)&0ffh,w
-	bnz	u1641
-	movlw	208
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwf	 (0+?___almod)&0ffh,w
-	movlw	7
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwfb	(1+?___almod)&0ffh,w
-	btfsc	status,0
-	goto	u1641
-	goto	u1640
-
-u1641:
-	goto	l2317
-u1640:
-	
-l2315:; BSR set to: 0
-
-	movlw	low(01h)
-	movlb	1	; () banked
-	movwf	((_main$1905))&0ffh
-	goto	l2317
-	
-l495:; BSR set to: 1
+l459:; BSR set to: 0
 
 	
-l2317:
-	movlb	1	; () banked
-	btfsc	(_main$1905)&0ffh,0
-	bra	u1655
-	bcf	((c:3971)),c,5	;volatile
-	bra	u1656
-	u1655:
-	bsf	((c:3971)),c,5	;volatile
-	u1656:
+l1928:; BSR set to: 0
 
-	line	803
-	
-l2319:
-	movff	(c:_TIME),(___almod@dividend)
-	movff	(c:_TIME+1),(___almod@dividend+1)
-	movff	(c:_TIME+2),(___almod@dividend+2)
-	movff	(c:_TIME+3),(___almod@dividend+3)
-	movlw	low(0BB8h)
-	movlb	0	; () banked
-	movwf	((___almod@divisor))&0ffh
-	movlw	high(0BB8h)
-	movwf	((___almod@divisor+1))&0ffh
-	movlw	low highword(0BB8h)
-	movwf	((___almod@divisor+2))&0ffh
-	movlw	high highword(0BB8h)
-	movwf	((___almod@divisor+3))&0ffh
-	call	___almod	;wreg free
-	movlb	0	; () banked
-	movlb	0	; () banked
-	btfsc	(3+?___almod)&0ffh,7
-	goto	u1661
-	movlb	0	; () banked
-	movlb	0	; () banked
-	movf	(3+?___almod)&0ffh,w
-	movlb	0	; () banked
-	movlb	0	; () banked
-	iorwf	(2+?___almod)&0ffh,w
-	bnz	u1660
-	movlw	232
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwf	 (0+?___almod)&0ffh,w
-	movlw	3
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwfb	(1+?___almod)&0ffh,w
-	btfss	status,0
-	goto	u1661
-	goto	u1660
-
-u1661:
-	clrf	(??_main+0+0)&0ffh,c
-	incf	(??_main+0+0)&0ffh,c
-	goto	u1678
-u1660:
-	clrf	(??_main+0+0)&0ffh,c
-u1678:
-	swapf	(??_main+0+0),c
-	rlncf	(??_main+0+0),c
-	rlncf	(??_main+0+0),c
-	movf	((c:3971)),c,w	;volatile
-	xorwf	(??_main+0+0),c,w
-	andlw	not (((1<<1)-1)<<6)
-	xorwf	(??_main+0+0),c,w
-	movwf	((c:3971)),c	;volatile
-	line	804
-	
-l2321:
-	btfsc	((c:_TIME+3)),c,7
-	goto	u1681
-	movf	((c:_TIME+3)),c,w
-	iorwf	((c:_TIME+2)),c,w
-	bnz	u1680
-	movlw	49
-	subwf	 ((c:_TIME)),c,w
-	movlw	117
-	subwfb	((c:_TIME+1)),c,w
-	btfss	status,0
-	goto	u1681
-	goto	u1680
-
-u1681:
-	goto	l2295
-u1680:
-	line	805
-	
-l2323:
-	movlw	low(06h)
-	movlb	0	; () banked
-	movwf	((_status))&0ffh
-	goto	l2295
-	line	806
-	
-l496:; BSR set to: 0
-
-	line	807
-	goto	l2295
-	line	808
-	
-l497:; BSR set to: 0
-
-	line	809
-	btfss	((c:3972)),c,0	;volatile
-	goto	u1691
-	goto	u1690
-u1691:
-	goto	l2337
-u1690:
-	line	810
-	
-l2325:; BSR set to: 0
-
-	movf	((c:_fca)),c,w
-iorwf	((c:_fca+1)),c,w
-	btfss	status,2
-	goto	u1701
-	goto	u1700
-
-u1701:
-	goto	l2335
-u1700:
-	line	811
-	
-l2327:; BSR set to: 0
-
-	movlw	high(01h)
-	movwf	((c:_fca+1)),c
-	movlw	low(01h)
-	movwf	((c:_fca)),c
-	line	812
-	
-l2329:; BSR set to: 0
-
-		decf	((c:_sd)),c,w
-iorwf	((c:_sd+1)),c,w
-	btfss	status,2
-	goto	u1711
-	goto	u1710
-
-u1711:
-	goto	l2333
-u1710:
-	
-l2331:; BSR set to: 0
-
-	movlw	high(02h)
-	movwf	((c:_sd+1)),c
-	movlw	low(02h)
-	movwf	((c:_sd)),c
-	goto	l2335
-	
-l500:; BSR set to: 0
-
-	
-l2333:; BSR set to: 0
-
-	movlw	high(01h)
-	movwf	((c:_sd+1)),c
-	movlw	low(01h)
-	movwf	((c:_sd)),c
-	goto	l2335
-	
-l501:; BSR set to: 0
-
-	goto	l2335
-	line	813
-	
-l499:; BSR set to: 0
-
-	line	814
-	
-l2335:; BSR set to: 0
-
-	movlw	high(0Ah)
-	movlb	0	; () banked
-	movwf	((MotorsSpeed@b+1))&0ffh
-	movlw	low(0Ah)
-	movwf	((MotorsSpeed@b))&0ffh
-	movlw	high(0Ah)
-	movlb	0	; () banked
-	movwf	((MotorsSpeed@a+1))&0ffh
-	movlw	low(0Ah)
-	movwf	((MotorsSpeed@a))&0ffh
-	call	_MotorsSpeed	;wreg free
-	line	815
-	goto	l2295
-	
-l498:
-	line	816
-	
-l2337:
-	movlw	low(0)
-	movwf	((c:_TIME)),c
-	movlw	high(0)
-	movwf	((c:_TIME+1)),c
-	movlw	low highword(0)
-	movwf	((c:_TIME+2)),c
-	movlw	high highword(0)
-	movwf	((c:_TIME+3)),c
-	line	817
-	movlw	high(0)
-	movlb	0	; () banked
-	movwf	((_fc+1))&0ffh
-	movlw	low(0)
-	movwf	((_fc))&0ffh
-	line	818
-	
-l2339:; BSR set to: 0
-
-		decf	((c:_sd)),c,w
-iorwf	((c:_sd+1)),c,w
-	btfss	status,2
-	goto	u1721
-	goto	u1720
-
-u1721:
-	goto	l2343
-u1720:
-	line	819
-	
-l2341:; BSR set to: 0
-
-	movlw	high(0Ah)
-	movlb	0	; () banked
-	movwf	((MotorsSpeed@b+1))&0ffh
-	movlw	low(0Ah)
-	movwf	((MotorsSpeed@b))&0ffh
-	movlw	high(01h)
-	movlb	0	; () banked
-	movwf	((MotorsSpeed@a+1))&0ffh
-	movlw	low(01h)
-	movwf	((MotorsSpeed@a))&0ffh
-	call	_MotorsSpeed	;wreg free
-	line	820
-	goto	l2295
-	
-l503:
-	line	821
-	
-l2343:
-	movlw	high(01h)
-	movlb	0	; () banked
-	movwf	((MotorsSpeed@b+1))&0ffh
-	movlw	low(01h)
-	movwf	((MotorsSpeed@b))&0ffh
-	movlw	high(0Ah)
-	movlb	0	; () banked
-	movwf	((MotorsSpeed@a+1))&0ffh
-	movlw	low(0Ah)
-	movwf	((MotorsSpeed@a))&0ffh
-	call	_MotorsSpeed	;wreg free
-	goto	l2295
-	line	822
-	
-l504:
-	goto	l2295
-	line	823
-	
-l502:
-	line	846
-	goto	l2295
-	line	847
-	
-l2345:
-	goto	l2295
-	line	783
-	
-l488:
-	
-l2347:
-	movlb	0	; () banked
-	movf	((_status))&0ffh,w
+	movf	((c:_status)),c,w
 	; Switch size 1, requested type "space"
-; Number of cases is 3, Range of values is 2 to 6
+; Number of cases is 1, Range of values is 2 to 2
 ; switch strategies available:
 ; Name         Instructions Cycles
-; simple_byte           10     6 (average)
+; simple_byte            4     3 (average)
 ;	Chosen strategy is simple_byte
 
 	xorlw	2^0	; case 2
 	skipnz
-	goto	l489
-	xorlw	5^2	; case 5
-	skipnz
-	goto	l2307
-	xorlw	6^5	; case 6
-	skipnz
-	goto	l497
-	goto	l2295
+	goto	l1924
+	goto	l1918
 
-	line	847
+	line	777
 	
-l492:; BSR set to: 0
+l461:; BSR set to: 0
 
-	goto	l2295
-	line	891
+	goto	l1918
+	line	821
 	
-l505:; BSR set to: 0
+l462:; BSR set to: 0
 
-	line	763
-	goto	l2295
+	line	724
+	goto	l1918
 	
-l506:; BSR set to: 0
+l463:; BSR set to: 0
 
-	line	892
+	line	822
 	
-l507:; BSR set to: 0
+l464:; BSR set to: 0
 
 	global	start
 	goto	start
@@ -2224,7 +1858,7 @@ GLOBAL	__end_of_main
 
 ;; *************** function _initYBOT *****************
 ;; Defined at:
-;;		line 337 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 351 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2249,6 +1883,7 @@ GLOBAL	__end_of_main
 ;;		_InitAnalog
 ;;		_InitSP
 ;;		_InitTIMERS
+;;		_MotorsPWM
 ;;		_ResetCounter
 ;;		_configurations_init
 ;; This function is called by:
@@ -2256,12 +1891,12 @@ GLOBAL	__end_of_main
 ;; This function uses a non-reentrant model
 ;;
 psect	text1,class=CODE,space=0,reloc=2
-	line	337
+	line	351
 global __ptext1
 __ptext1:
 psect	text1
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	337
+	line	351
 	global	__size_of_initYBOT
 	__size_of_initYBOT	equ	__end_of_initYBOT-_initYBOT
 	
@@ -2269,18 +1904,19 @@ _initYBOT:; BSR set to: 0
 
 ;incstack = 0
 	opt	stack 27
-	line	339
+	line	353
 	
-l2173:
+l1574:
 	movlw	low(0)
-	movwf	((c:_TIME)),c
+	movlb	0	; () banked
+	movwf	((_TIME))&0ffh
 	movlw	high(0)
-	movwf	((c:_TIME+1)),c
+	movwf	((_TIME+1))&0ffh
 	movlw	low highword(0)
-	movwf	((c:_TIME+2)),c
+	movwf	((_TIME+2))&0ffh
 	movlw	high highword(0)
-	movwf	((c:_TIME+3)),c
-	line	340
+	movwf	((_TIME+3))&0ffh
+	line	354
 	movlw	low(0)
 	movlb	0	; () banked
 	movwf	((_MS))&0ffh
@@ -2290,30 +1926,41 @@ l2173:
 	movwf	((_MS+2))&0ffh
 	movlw	high highword(0)
 	movwf	((_MS+3))&0ffh
-	line	341
+	line	355
 	
-l2175:; BSR set to: 0
+l1576:; BSR set to: 0
 
 	call	_ResetCounter	;wreg free
-	line	342
+	line	356
 	
-l2177:
+l1578:
 	movlw	low(0)
 	movlb	0	; () banked
 	movwf	((_gstatus))&0ffh
-	line	344
+	line	358
+	
+l1580:; BSR set to: 0
+
 	call	_configurations_init	;wreg free
-	line	345
+	line	359
+	
+l1582:
 	call	_InitAnalog	;wreg free
-	line	346
+	line	360
+	
+l1584:
 	call	_InitTIMERS	;wreg free
-	line	347
+	line	361
 	
-l2179:
+l1586:
 	call	_InitSP	;wreg free
-	line	351
+	line	362
 	
-l297:
+l1588:
+	call	_MotorsPWM	;wreg free
+	line	365
+	
+l289:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_initYBOT
@@ -2323,7 +1970,7 @@ GLOBAL	__end_of_initYBOT
 
 ;; *************** function _configurations_init *****************
 ;; Defined at:
-;;		line 272 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 286 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2331,7 +1978,7 @@ GLOBAL	__end_of_initYBOT
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
-;;		wreg, status,2
+;;		None
 ;; Tracked objects:
 ;;		On entry : 0/0
 ;;		On exit  : 0/0
@@ -2351,41 +1998,21 @@ GLOBAL	__end_of_initYBOT
 ;; This function uses a non-reentrant model
 ;;
 psect	text2,class=CODE,space=0,reloc=2
-	line	272
+	line	286
 global __ptext2
 __ptext2:
 psect	text2
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	272
+	line	286
 	global	__size_of_configurations_init
 	__size_of_configurations_init	equ	__end_of_configurations_init-_configurations_init
 	
 _configurations_init:
 ;incstack = 0
 	opt	stack 28
-	line	273
+	line	295
 	
-l2067:
-		bsf	((c:4051)),c, 4+0	;volatile
-	bsf	((c:4051)),c, 4+1	;volatile
-	bsf	((c:4051)),c, 4+2	;volatile
-
-	line	276
-	
-l2069:
-	movlw	low(07h)
-	movwf	((c:4020)),c	;volatile
-	line	279
-	
-l2071:
-	bcf	((c:3949)),c,3	;volatile
-	line	280
-	
-l2073:
-	bsf	((c:3951)),c,3	;volatile
-	line	281
-	
-l229:
+l221:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_configurations_init
@@ -2395,7 +2022,7 @@ GLOBAL	__end_of_configurations_init
 
 ;; *************** function _ResetCounter *****************
 ;; Defined at:
-;;		line 473 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 458 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2423,42 +2050,44 @@ GLOBAL	__end_of_configurations_init
 ;; This function uses a non-reentrant model
 ;;
 psect	text3,class=CODE,space=0,reloc=2
-	line	473
+	line	458
 global __ptext3
 __ptext3:
 psect	text3
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	473
+	line	458
 	global	__size_of_ResetCounter
 	__size_of_ResetCounter	equ	__end_of_ResetCounter-_ResetCounter
 	
 _ResetCounter:
 ;incstack = 0
 	opt	stack 28
-	line	474
+	line	459
 	
-l2075:
+l1500:
 	movlw	low(0)
-	movwf	((c:_TIME)),c
+	movlb	0	; () banked
+	movwf	((_TIME))&0ffh
 	movlw	high(0)
-	movwf	((c:_TIME+1)),c
+	movwf	((_TIME+1))&0ffh
 	movlw	low highword(0)
-	movwf	((c:_TIME+2)),c
+	movwf	((_TIME+2))&0ffh
 	movlw	high highword(0)
-	movwf	((c:_TIME+3)),c
-	line	475
+	movwf	((_TIME+3))&0ffh
+	line	460
 	
-l318:
+l310:; BSR set to: 0
+
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_ResetCounter
 	__end_of_ResetCounter:
 	signat	_ResetCounter,88
-	global	_InitTIMERS
+	global	_MotorsPWM
 
-;; *************** function _InitTIMERS *****************
+;; *************** function _MotorsPWM *****************
 ;; Defined at:
-;;		line 378 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 586 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2486,164 +2115,247 @@ GLOBAL	__end_of_ResetCounter
 ;; This function uses a non-reentrant model
 ;;
 psect	text4,class=CODE,space=0,reloc=2
-	line	378
+	line	586
 global __ptext4
 __ptext4:
 psect	text4
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	378
+	line	586
+	global	__size_of_MotorsPWM
+	__size_of_MotorsPWM	equ	__end_of_MotorsPWM-_MotorsPWM
+	
+_MotorsPWM:; BSR set to: 0
+
+;incstack = 0
+	opt	stack 28
+	line	588
+	
+l1566:
+	bcf	c:(32339/8),(32339)&7	;volatile
+	line	589
+	bcf	c:(32340/8),(32340)&7	;volatile
+	line	590
+	bcf	c:(32341/8),(32341)&7	;volatile
+	line	591
+	bcf	c:(32342/8),(32342)&7	;volatile
+	line	593
+	bsf	c:(32338/8),(32338)&7	;volatile
+	line	594
+	bcf	c:(32336/8),(32336)&7	;volatile
+	line	595
+	bcf	c:(32337/8),(32337)&7	;volatile
+	line	597
+	bsf	c:(32338/8),(32338)&7	;volatile
+	line	600
+	
+l1568:
+	movf	((c:4042)),c,w	;volatile
+	andlw	not (((1<<4)-1)<<3)
+	iorlw	(0Bh & ((1<<4)-1))<<3
+	movwf	((c:4042)),c	;volatile
+	line	601
+	movf	((c:4042)),c,w	;volatile
+	andlw	not (((1<<2)-1)<<0)
+	iorlw	(01h & ((1<<2)-1))<<0
+	movwf	((c:4042)),c	;volatile
+	line	602
+	
+l1570:
+	bcf	((c:4042)),c,2	;volatile
+	line	603
+	movlw	low(0F5h)
+	movwf	((c:4043)),c	;volatile
+	line	604
+	
+l1572:
+	bsf	((c:4042)),c,2	;volatile
+	line	607
+	movf	((c:4029)),c,w	;volatile
+	andlw	not (((1<<4)-1)<<0)
+	iorlw	(0Ch & ((1<<4)-1))<<0
+	movwf	((c:4029)),c	;volatile
+	line	608
+	movf	((c:4026)),c,w	;volatile
+	andlw	not (((1<<4)-1)<<0)
+	iorlw	(0Ch & ((1<<4)-1))<<0
+	movwf	((c:4026)),c	;volatile
+	line	609
+	movlw	low(0F5h)
+	movwf	((c:4043)),c	;volatile
+	line	611
+	
+l371:
+	return	;funcret
+	opt stack 0
+GLOBAL	__end_of_MotorsPWM
+	__end_of_MotorsPWM:
+	signat	_MotorsPWM,88
+	global	_InitTIMERS
+
+;; *************** function _InitTIMERS *****************
+;; Defined at:
+;;		line 392 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;; Parameters:    Size  Location     Type
+;;		None
+;; Auto vars:     Size  Location     Type
+;;		None
+;; Return value:  Size  Location     Type
+;;		None               void
+;; Registers used:
+;;		wreg, status,2
+;; Tracked objects:
+;;		On entry : 0/0
+;;		On exit  : 0/0
+;;		Unchanged: 0/0
+;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
+;;      Params:         0       0       0       0       0       0       0       0       0
+;;      Locals:         0       0       0       0       0       0       0       0       0
+;;      Temps:          0       0       0       0       0       0       0       0       0
+;;      Totals:         0       0       0       0       0       0       0       0       0
+;;Total ram usage:        0 bytes
+;; Hardware stack levels used:    1
+;; Hardware stack levels required when called:    1
+;; This function calls:
+;;		Nothing
+;; This function is called by:
+;;		_initYBOT
+;; This function uses a non-reentrant model
+;;
+psect	text5,class=CODE,space=0,reloc=2
+	line	392
+global __ptext5
+__ptext5:
+psect	text5
+	file	"/home/newtonis/Robots/chiari/Main/main.c"
+	line	392
 	global	__size_of_InitTIMERS
 	__size_of_InitTIMERS	equ	__end_of_InitTIMERS-_InitTIMERS
 	
 _InitTIMERS:
 ;incstack = 0
 	opt	stack 28
-	line	379
+	line	393
 	
-l2087:
+l1512:
 	bcf	((c:4053)),c,7	;volatile
-	line	380
-	bcf	((c:4053)),c,6	;volatile
-	line	381
-	bcf	((c:4053)),c,5	;volatile
-	line	383
-	bsf	((c:4053)),c,3	;volatile
-	line	384
-	
-l2089:
-	movlw	low(0F8h)
-	movwf	((c:4055)),c	;volatile
-	line	385
-	movlw	low(02Fh)
-	movwf	((c:4054)),c	;volatile
-	line	388
-	
-l2091:
-	bsf	((c:4081)),c,2	;volatile
-	line	389
-	
-l2093:
-	bcf	((c:4048)),c,7	;volatile
-	line	390
-	
-l2095:
-	bsf	((c:4082)),c,5	;volatile
 	line	394
-	
-l2097:
-	bsf	((c:4082)),c,7	;volatile
-	line	396
-	
-l2099:
-	bsf	((c:4053)),c,7	;volatile
+	bcf	((c:4053)),c,6	;volatile
+	line	395
+	bcf	((c:4053)),c,5	;volatile
+	line	397
+	bsf	((c:4053)),c,3	;volatile
 	line	398
 	
-l2101:
-	bcf	((c:4045)),c,0	;volatile
+l1514:
+	movlw	low(0F8h)
+	movwf	((c:4055)),c	;volatile
 	line	399
-	
-l2103:
-	bcf	((c:4045)),c,7	;volatile
-	line	400
-	
-l2105:
-	bcf	((c:4045)),c,6	;volatile
-	line	401
-	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
-	andwf	((c:4045)),c	;volatile
+	movlw	low(02Fh)
+	movwf	((c:4054)),c	;volatile
 	line	402
 	
-l2107:
-	bcf	((c:4045)),c,3	;volatile
+l1516:
+	bsf	((c:4081)),c,2	;volatile
 	line	403
 	
-l2109:
-	bcf	((c:4045)),c,1	;volatile
+l1518:
+	bcf	((c:4048)),c,7	;volatile
 	line	404
 	
-l2111:
-	bsf	((c:4045)),c,0	;volatile
-	line	406
-	movlw	low(0F8h)
-	movwf	((c:4047)),c	;volatile
-	line	407
-	movlw	low(02Fh)
-	movwf	((c:4046)),c	;volatile
-	line	415
+l1520:
+	bsf	((c:4082)),c,5	;volatile
+	line	408
 	
-l2113:
-	bcf	((c:3989)),c,4	;volatile
+l1522:
+	bsf	((c:4082)),c,7	;volatile
+	line	410
+	
+l1524:
+	bsf	((c:4053)),c,7	;volatile
+	line	412
+	
+l1526:
+	bcf	((c:4045)),c,0	;volatile
+	line	413
+	
+l1528:
+	bcf	((c:4045)),c,7	;volatile
+	line	414
+	
+l1530:
+	bcf	((c:4045)),c,6	;volatile
+	line	415
+	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
+	andwf	((c:4045)),c	;volatile
 	line	416
 	
-l2115:
-	bcf	((c:3989)),c,5	;volatile
+l1532:
+	bcf	((c:4045)),c,3	;volatile
 	line	417
 	
-l2117:
-	bcf	((c:3989)),c,6	;volatile
-	line	419
+l1534:
+	bcf	((c:4045)),c,1	;volatile
+	line	418
 	
-l2119:
-	bsf	((c:3989)),c,0	;volatile
+l1536:
+	bsf	((c:4045)),c,0	;volatile
 	line	420
-	
-l2121:
-	bsf	((c:3989)),c,1	;volatile
+	movlw	low(0F8h)
+	movwf	((c:4047)),c	;volatile
 	line	421
-	
-l2123:
-	bsf	((c:3989)),c,2	;volatile
-	line	424
-	
-l2125:
-	bcf	((c:3989)),c,3	;volatile
-	line	425
-	
-l2127:
-	bcf	((c:3988)),c,2	;volatile
-	line	427
-	
-l2129:
-	bcf	((c:3987)),c,0	;volatile
-	line	428
-	
-l2131:
-	bcf	((c:3987)),c,2	;volatile
-	line	430
-	
-l2133:
-	bsf	((c:3988)),c,0	;volatile
-	line	431
-	
-l2135:
-	bsf	((c:3988)),c,1	;volatile
-	line	434
-	
-l2137:
-	bsf	((c:3990)),c,2	;volatile
-	line	435
-	
-l2139:
-	bsf	((c:3990)),c,1	;volatile
-	line	436
-	
-l2141:
-	bsf	((c:3990)),c,0	;volatile
+	movlw	low(02Fh)
+	movwf	((c:4046)),c	;volatile
 	line	437
 	
-l2143:
-	bsf	((c:3986)),c,5	;volatile
+l1538:
+	bcf	((c:3989)),c,1	;volatile
 	line	438
 	
-l2145:
+l1540:
+	bcf	((c:3989)),c,2	;volatile
+	line	439
+	
+l1542:
+	bcf	((c:3989)),c,3	;volatile
+	line	442
+	
+l1544:
+	bcf	((c:3988)),c,2	;volatile
+	line	443
+	
+l1546:
+	bcf	((c:3988)),c,1	;volatile
+	line	445
+	
+l1548:
+	bcf	((c:3989)),c,0	;volatile
+	line	446
+	
+l1550:
+	bcf	((c:3988)),c,0	;volatile
+	line	449
+	
+l1552:
 	bsf	((c:3986)),c,4	;volatile
-	line	469
+	line	450
 	
-l2147:
-	bsf	((c:3972)),c,7	;volatile
-	line	470
+l1554:
+	bsf	((c:3986)),c,3	;volatile
+	line	451
 	
-l315:
+l1556:
+	bsf	((c:3986)),c,2	;volatile
+	line	452
+	
+l1558:
+	bsf	((c:3987)),c,5	;volatile
+	line	453
+	
+l1560:
+	bsf	((c:3987)),c,4	;volatile
+	line	455
+	
+l307:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_InitTIMERS
@@ -2653,7 +2365,7 @@ GLOBAL	__end_of_InitTIMERS
 
 ;; *************** function _InitSP *****************
 ;; Defined at:
-;;		line 525 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 510 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2680,33 +2392,33 @@ GLOBAL	__end_of_InitTIMERS
 ;;		_initYBOT
 ;; This function uses a non-reentrant model
 ;;
-psect	text5,class=CODE,space=0,reloc=2
-	line	525
-global __ptext5
-__ptext5:
-psect	text5
+psect	text6,class=CODE,space=0,reloc=2
+	line	510
+global __ptext6
+__ptext6:
+psect	text6
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	525
+	line	510
 	global	__size_of_InitSP
 	__size_of_InitSP	equ	__end_of_InitSP-_InitSP
 	
 _InitSP:
 ;incstack = 0
 	opt	stack 27
-	line	526
+	line	511
 	
-l2149:
+l1562:
 	movlw	low(0)
 	movwf	((c:_PisoActual)),c
-	line	527
+	line	512
 	
-l2151:
+l1564:
 	movf	((c:_PisoActual)),c,w
 	
 	call	_ReadAnalog
-	line	528
+	line	513
 	
-l334:
+l326:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_InitSP
@@ -2716,7 +2428,7 @@ GLOBAL	__end_of_InitSP
 
 ;; *************** function _ReadAnalog *****************
 ;; Defined at:
-;;		line 529 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 514 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;  channel         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
@@ -2744,13 +2456,13 @@ GLOBAL	__end_of_InitSP
 ;;		_UpdatePiso
 ;; This function uses a non-reentrant model
 ;;
-psect	text6,class=CODE,space=0,reloc=2
-	line	529
-global __ptext6
-__ptext6:
-psect	text6
+psect	text7,class=CODE,space=0,reloc=2
+	line	514
+global __ptext7
+__ptext7:
+psect	text7
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	529
+	line	514
 	global	__size_of_ReadAnalog
 	__size_of_ReadAnalog	equ	__end_of_ReadAnalog-_ReadAnalog
 	
@@ -2758,81 +2470,81 @@ _ReadAnalog:
 ;incstack = 0
 	opt	stack 27
 	movwf	((c:ReadAnalog@channel)),c
-	line	530
+	line	515
 	
-l2055:
+l1488:
 	
 	btfsc	((c:ReadAnalog@channel)),c,(0)&7
-	goto	u1331
-	goto	u1330
-u1331:
+	goto	u561
+	goto	u560
+u561:
 	bsf	c:(32274/8),(32274)&7	;volatile
-	goto	u1345
-u1330:
+	goto	u575
+u560:
 	bcf	c:(32274/8),(32274)&7	;volatile
-u1345:
-	line	531
+u575:
+	line	516
 	
-l2057:
+l1490:
 	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	03h
 	andwf	(??_ReadAnalog+0+0),c
 		movlw	02h-0
 	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u1351
-	goto	u1350
+	goto	u581
+	goto	u580
 
-u1351:
+u581:
 	bsf	c:(32275/8),(32275)&7	;volatile
-	goto	u1365
-u1350:
+	goto	u595
+u580:
 	bcf	c:(32275/8),(32275)&7	;volatile
-u1365:
-	line	532
+u595:
+	line	517
 	
-l2059:
+l1492:
 	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	07h
 	andwf	(??_ReadAnalog+0+0),c
 		movlw	04h-0
 	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u1371
-	goto	u1370
+	goto	u601
+	goto	u600
 
-u1371:
+u601:
 	bsf	c:(32276/8),(32276)&7	;volatile
-	goto	u1385
-u1370:
+	goto	u615
+u600:
 	bcf	c:(32276/8),(32276)&7	;volatile
-u1385:
-	line	533
+u615:
+	line	518
 	
-l2061:
+l1494:
 	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	0Fh
 	andwf	(??_ReadAnalog+0+0),c
 		movlw	08h-0
 	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u1391
-	goto	u1390
+	goto	u621
+	goto	u620
 
-u1391:
+u621:
 	bsf	c:(32277/8),(32277)&7	;volatile
-	goto	u1405
-u1390:
+	goto	u635
+u620:
 	bcf	c:(32277/8),(32277)&7	;volatile
-u1405:
-	line	535
+u635:
+	line	520
 	
-l2063:
+l1496:
 	bsf	c:(32272/8),(32272)&7	;volatile
-	line	536
+	line	521
 	
-l2065:
+l1498:
 	bsf	c:(32273/8),(32273)&7	;volatile
-	line	537
+	line	522
 	
-l337:
+l329:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_ReadAnalog
@@ -2842,7 +2554,7 @@ GLOBAL	__end_of_ReadAnalog
 
 ;; *************** function _InitAnalog *****************
 ;; Defined at:
-;;		line 507 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 492 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -2869,66 +2581,66 @@ GLOBAL	__end_of_ReadAnalog
 ;;		_initYBOT
 ;; This function uses a non-reentrant model
 ;;
-psect	text7,class=CODE,space=0,reloc=2
-	line	507
-global __ptext7
-__ptext7:
-psect	text7
+psect	text8,class=CODE,space=0,reloc=2
+	line	492
+global __ptext8
+__ptext8:
+psect	text8
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	507
+	line	492
 	global	__size_of_InitAnalog
 	__size_of_InitAnalog	equ	__end_of_InitAnalog-_InitAnalog
 	
 _InitAnalog:
 ;incstack = 0
 	opt	stack 28
-	line	508
+	line	493
 	
-l2077:
+l1502:
 	bcf	((c:4033)),c,5	;volatile
-	line	509
+	line	494
 	bcf	((c:4033)),c,4	;volatile
-	line	511
+	line	496
 	bsf	((c:4033)),c,3	;volatile
-	line	512
+	line	497
 	bsf	((c:4033)),c,2	;volatile
-	line	513
+	line	498
 	bcf	((c:4033)),c,1	;volatile
-	line	514
+	line	499
 	bcf	((c:4033)),c,0	;volatile
-	line	518
+	line	503
 	bcf	((c:4032)),c,7	;volatile
-	line	519
+	line	504
 		bsf	((c:4032)),c, 3+0	;volatile
 	bsf	((c:4032)),c, 3+1	;volatile
 	bsf	((c:4032)),c, 3+2	;volatile
 
-	line	520
+	line	505
 	
-l2079:
+l1504:
 	movf	((c:4032)),c,w	;volatile
 	andlw	not (((1<<3)-1)<<0)
 	iorlw	(06h & ((1<<3)-1))<<0
 	movwf	((c:4032)),c	;volatile
-	line	521
+	line	506
 	
-l2081:
+l1506:
 		bcf	((c:4034)),c, 2+0	;volatile
 	bcf	((c:4034)),c, 2+1	;volatile
 	bcf	((c:4034)),c, 2+2	;volatile
 	bcf	((c:4034)),c, 2+3	;volatile
 
-	line	522
+	line	507
 	
-l2083:
+l1508:
 	bcf	((c:4034)),c,1	;volatile
-	line	523
+	line	508
 	
-l2085:
+l1510:
 	bsf	((c:4034)),c,0	;volatile
-	line	524
+	line	509
 	
-l331:
+l323:
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of_InitAnalog
@@ -2967,12 +2679,12 @@ GLOBAL	__end_of_InitAnalog
 ;;		_main
 ;; This function uses a non-reentrant model
 ;;
-psect	text8,class=CODE,space=0,reloc=2
+psect	text9,class=CODE,space=0,reloc=2
 	file	"/opt/microchip/xc8/v1.34/sources/common/almod.c"
 	line	8
-global __ptext8
-__ptext8:
-psect	text8
+global __ptext9
+__ptext9:
+psect	text9
 	file	"/opt/microchip/xc8/v1.34/sources/common/almod.c"
 	line	8
 	global	__size_of___almod
@@ -2983,23 +2695,23 @@ ___almod:
 	opt	stack 29
 	line	13
 	
-l2209:
+l1846:
 	movlw	low(0)
 	movwf	((c:___almod@sign)),c
 	line	14
 	
-l2211:
+l1848:
 	movlb	0	; () banked
 	btfsc	((___almod@dividend+3))&0ffh,7
-	goto	u1480
-	goto	u1481
+	goto	u1080
+	goto	u1081
 
-u1481:
-	goto	l2217
-u1480:
+u1081:
+	goto	l1854
+u1080:
 	line	15
 	
-l2213:; BSR set to: 0
+l1850:; BSR set to: 0
 
 	movlb	0	; () banked
 	comf	((___almod@dividend+3))&0ffh
@@ -3012,30 +2724,30 @@ l2213:; BSR set to: 0
 	addwfc	((___almod@dividend+3))&0ffh
 	line	16
 	
-l2215:; BSR set to: 0
+l1852:; BSR set to: 0
 
 	movlw	low(01h)
 	movwf	((c:___almod@sign)),c
-	goto	l2217
+	goto	l1854
 	line	17
 	
-l582:; BSR set to: 0
+l539:; BSR set to: 0
 
 	line	18
 	
-l2217:; BSR set to: 0
+l1854:; BSR set to: 0
 
 	movlb	0	; () banked
 	btfsc	((___almod@divisor+3))&0ffh,7
-	goto	u1490
-	goto	u1491
+	goto	u1090
+	goto	u1091
 
-u1491:
-	goto	l2221
-u1490:
+u1091:
+	goto	l1858
+u1090:
 	line	19
 	
-l2219:; BSR set to: 0
+l1856:; BSR set to: 0
 
 	movlb	0	; () banked
 	comf	((___almod@divisor+3))&0ffh
@@ -3046,13 +2758,13 @@ l2219:; BSR set to: 0
 	addwfc	((___almod@divisor+1))&0ffh
 	addwfc	((___almod@divisor+2))&0ffh
 	addwfc	((___almod@divisor+3))&0ffh
-	goto	l2221
+	goto	l1858
 	
-l583:; BSR set to: 0
+l540:; BSR set to: 0
 
 	line	20
 	
-l2221:; BSR set to: 0
+l1858:; BSR set to: 0
 
 	movlb	0	; () banked
 	movf	((___almod@divisor))&0ffh,w
@@ -3063,26 +2775,26 @@ iorwf	((___almod@divisor+2))&0ffh,w
 	movlb	0	; () banked
 iorwf	((___almod@divisor+3))&0ffh,w
 	btfsc	status,2
-	goto	u1501
-	goto	u1500
+	goto	u1101
+	goto	u1100
 
-u1501:
-	goto	l2237
-u1500:
+u1101:
+	goto	l1874
+u1100:
 	line	21
 	
-l2223:; BSR set to: 0
+l1860:; BSR set to: 0
 
 	movlw	low(01h)
 	movwf	((c:___almod@counter)),c
 	line	22
-	goto	l2227
+	goto	l1864
 	
-l586:; BSR set to: 0
+l543:; BSR set to: 0
 
 	line	23
 	
-l2225:; BSR set to: 0
+l1862:; BSR set to: 0
 
 	movlb	0	; () banked
 	bcf	status,0
@@ -3092,36 +2804,36 @@ l2225:; BSR set to: 0
 	rlcf	((___almod@divisor+3))&0ffh
 	line	24
 	incf	((c:___almod@counter)),c
-	goto	l2227
+	goto	l1864
 	line	25
 	
-l585:; BSR set to: 0
+l542:; BSR set to: 0
 
 	line	22
 	
-l2227:; BSR set to: 0
+l1864:; BSR set to: 0
 
 	movlb	0	; () banked
 	
 	movlb	0	; () banked
 	btfss	((___almod@divisor+3))&0ffh,(31)&7
-	goto	u1511
-	goto	u1510
-u1511:
-	goto	l2225
-u1510:
-	goto	l2229
+	goto	u1111
+	goto	u1110
+u1111:
+	goto	l1862
+u1110:
+	goto	l1866
 	
-l587:; BSR set to: 0
+l544:; BSR set to: 0
 
-	goto	l2229
+	goto	l1866
 	line	26
 	
-l588:; BSR set to: 0
+l545:; BSR set to: 0
 
 	line	27
 	
-l2229:; BSR set to: 0
+l1866:; BSR set to: 0
 
 	movlb	0	; () banked
 		movf	((___almod@divisor))&0ffh,w
@@ -3140,15 +2852,15 @@ l2229:; BSR set to: 0
 	movlb	0	; () banked
 	subwfb	((___almod@dividend+3))&0ffh,w
 	btfss	status,0
-	goto	u1521
-	goto	u1520
+	goto	u1121
+	goto	u1120
 
-u1521:
-	goto	l2233
-u1520:
+u1121:
+	goto	l1870
+u1120:
 	line	28
 	
-l2231:; BSR set to: 0
+l1868:; BSR set to: 0
 
 	movlb	0	; () banked
 	movf	((___almod@divisor))&0ffh,w
@@ -3166,13 +2878,13 @@ l2231:; BSR set to: 0
 	movf	((___almod@divisor+3))&0ffh,w
 	movlb	0	; () banked
 	subwfb	((___almod@dividend+3))&0ffh
-	goto	l2233
+	goto	l1870
 	
-l589:; BSR set to: 0
+l546:; BSR set to: 0
 
 	line	29
 	
-l2233:; BSR set to: 0
+l1870:; BSR set to: 0
 
 	movlb	0	; () banked
 	bcf	status,0
@@ -3182,34 +2894,34 @@ l2233:; BSR set to: 0
 	rrcf	((___almod@divisor))&0ffh
 	line	30
 	
-l2235:; BSR set to: 0
+l1872:; BSR set to: 0
 
 	decfsz	((c:___almod@counter)),c
 	
-	goto	l2229
-	goto	l2237
+	goto	l1866
+	goto	l1874
 	
-l590:; BSR set to: 0
+l547:; BSR set to: 0
 
-	goto	l2237
+	goto	l1874
 	line	31
 	
-l584:; BSR set to: 0
+l541:; BSR set to: 0
 
 	line	32
 	
-l2237:; BSR set to: 0
+l1874:; BSR set to: 0
 
 	movf	((c:___almod@sign)),c,w
 	btfsc	status,2
-	goto	u1531
-	goto	u1530
-u1531:
-	goto	l2241
-u1530:
+	goto	u1131
+	goto	u1130
+u1131:
+	goto	l1878
+u1130:
 	line	33
 	
-l2239:; BSR set to: 0
+l1876:; BSR set to: 0
 
 	movlb	0	; () banked
 	comf	((___almod@dividend+3))&0ffh
@@ -3220,505 +2932,36 @@ l2239:; BSR set to: 0
 	addwfc	((___almod@dividend+1))&0ffh
 	addwfc	((___almod@dividend+2))&0ffh
 	addwfc	((___almod@dividend+3))&0ffh
-	goto	l2241
+	goto	l1878
 	
-l591:; BSR set to: 0
+l548:; BSR set to: 0
 
 	line	34
 	
-l2241:; BSR set to: 0
+l1878:; BSR set to: 0
 
 	movff	(___almod@dividend),(?___almod)
 	movff	(___almod@dividend+1),(?___almod+1)
 	movff	(___almod@dividend+2),(?___almod+2)
 	movff	(___almod@dividend+3),(?___almod+3)
-	goto	l592
+	goto	l549
 	
-l2243:; BSR set to: 0
+l1880:; BSR set to: 0
 
 	line	35
 	
-l592:; BSR set to: 0
+l549:; BSR set to: 0
 
 	return	;funcret
 	opt stack 0
 GLOBAL	__end_of___almod
 	__end_of___almod:
 	signat	___almod,8316
-	global	_Wixel
-
-;; *************** function _Wixel *****************
-;; Defined at:
-;;		line 194 in file "/home/newtonis/Robots/chiari/Main/main.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		wreg, status,2
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       0       0       0       0       0       0       0       0
-;;      Locals:         0       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0
-;;      Totals:         0       0       0       0       0       0       0       0       0
-;;Total ram usage:        0 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text9,class=CODE,space=0,reloc=2
-	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	194
-global __ptext9
-__ptext9:
-psect	text9
-	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	194
-	global	__size_of_Wixel
-	__size_of_Wixel	equ	__end_of_Wixel-_Wixel
-	
-_Wixel:; BSR set to: 0
-
-;incstack = 0
-	opt	stack 29
-	line	195
-	
-l2153:
-	bcf	((c:4024)),c,5	;volatile
-	line	196
-	bcf	((c:4024)),c,4	;volatile
-	line	197
-	bsf	((c:4024)),c,3	;volatile
-	line	199
-	bcf	((c:4024)),c,1	;volatile
-	line	200
-	bcf	((c:4024)),c,0	;volatile
-	line	201
-	
-l2155:
-	movlw	low(033h)
-	movwf	((c:4015)),c	;volatile
-	line	202
-	movlw	low(0)
-	movwf	((c:4016)),c	;volatile
-	line	203
-	
-l2157:
-	bcf	((c:4012)),c,7	;volatile
-	line	204
-	
-l2159:
-	bcf	((c:4012)),c,6	;volatile
-	line	205
-	
-l2161:
-	bsf	((c:4012)),c,5	;volatile
-	line	206
-	
-l2163:
-	bcf	((c:4012)),c,4	;volatile
-	line	208
-	
-l2165:
-	bcf	((c:4012)),c,2	;volatile
-	line	209
-	
-l2167:
-	bcf	((c:4011)),c,6	;volatile
-	line	210
-	
-l2169:
-	bsf	((c:4011)),c,4	;volatile
-	line	211
-	
-l2171:
-	bsf	((c:4011)),c,7	;volatile
-	line	213
-	
-l181:
-	return	;funcret
-	opt stack 0
-GLOBAL	__end_of_Wixel
-	__end_of_Wixel:
-	signat	_Wixel,88
-	global	_MotorsSpeed
-
-;; *************** function _MotorsSpeed *****************
-;; Defined at:
-;;		line 684 in file "/home/newtonis/Robots/chiari/Main/main.c"
-;; Parameters:    Size  Location     Type
-;;  b               2    0[BANK0 ] int 
-;;  a               2    2[BANK0 ] int 
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		None
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       4       0       0       0       0       0       0       0
-;;      Locals:         0       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0
-;;      Totals:         0       4       0       0       0       0       0       0       0
-;;Total ram usage:        4 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text10,class=CODE,space=0,reloc=2
-	line	684
-global __ptext10
-__ptext10:
-psect	text10
-	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	684
-	global	__size_of_MotorsSpeed
-	__size_of_MotorsSpeed	equ	__end_of_MotorsSpeed-_MotorsSpeed
-	
-_MotorsSpeed:
-;incstack = 0
-	opt	stack 29
-	line	685
-	
-l2181:
-	movff	(MotorsSpeed@a),(c:_speedA)
-	movff	(MotorsSpeed@a+1),(c:_speedA+1)
-	line	686
-	movff	(MotorsSpeed@b),(c:_speedB)
-	movff	(MotorsSpeed@b+1),(c:_speedB+1)
-	line	687
-	
-l439:
-	return	;funcret
-	opt stack 0
-GLOBAL	__end_of_MotorsSpeed
-	__end_of_MotorsSpeed:
-	signat	_MotorsSpeed,8312
-	global	_MotorUpdate
-
-;; *************** function _MotorUpdate *****************
-;; Defined at:
-;;		line 688 in file "/home/newtonis/Robots/chiari/Main/main.c"
-;; Parameters:    Size  Location     Type
-;;		None
-;; Auto vars:     Size  Location     Type
-;;		None
-;; Return value:  Size  Location     Type
-;;		None               void
-;; Registers used:
-;;		wreg, status,2, status,0
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       0       0       0       0       0       0       0       0
-;;      Locals:         0       4       0       0       0       0       0       0       0
-;;      Temps:          2       0       0       0       0       0       0       0       0
-;;      Totals:         2       4       0       0       0       0       0       0       0
-;;Total ram usage:        6 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text11,class=CODE,space=0,reloc=2
-	line	688
-global __ptext11
-__ptext11:
-psect	text11
-	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	688
-	global	__size_of_MotorUpdate
-	__size_of_MotorUpdate	equ	__end_of_MotorUpdate-_MotorUpdate
-	
-_MotorUpdate:
-;incstack = 0
-	opt	stack 29
-	line	689
-	
-l2183:
-	btfsc	((c:_speedA+1)),c,7
-	goto	u1410
-	movf	((c:_speedA+1)),c,w
-	bnz	u1411
-	decf	((c:_speedA)),c,w
-	btfsc	status,0
-	goto	u1411
-	goto	u1410
-
-u1411:
-	goto	l444
-u1410:
-	
-l2185:
-	movff	(c:_speedA),??_MotorUpdate+0+0
-	movff	(c:_speedA+1),??_MotorUpdate+0+0+1
-	comf	(??_MotorUpdate+0+0),c
-	comf	(??_MotorUpdate+0+1),c
-	infsnz	(??_MotorUpdate+0+0),c
-	incf	(??_MotorUpdate+0+1),c
-	movff	??_MotorUpdate+0+0,(_MotorUpdate$1862)
-	movff	??_MotorUpdate+0+1,(_MotorUpdate$1862+1)
-	goto	l2187
-	
-l444:
-	movff	(c:_speedA),(_MotorUpdate$1862)
-	movff	(c:_speedA+1),(_MotorUpdate$1862+1)
-	goto	l2187
-	
-l446:
-	
-l2187:
-	movlb	0	; () banked
-		movf	((_MotorUpdate$1862))&0ffh,w
-	subwf	((c:_loop)),c,w
-	movf	((c:_loop+1)),c,w
-	xorlw	80h
-	movwf	(??_MotorUpdate+0+0)&0ffh,c
-	movlb	0	; () banked
-	movf	((_MotorUpdate$1862+1))&0ffh,w
-	xorlw	80h
-	subwfb	(??_MotorUpdate+0+0)&0ffh,c,w
-	btfsc	status,0
-	goto	u1421
-	goto	u1420
-
-u1421:
-	goto	l442
-u1420:
-	line	690
-	
-l2189:; BSR set to: 0
-
-	btfsc	((c:_speedA+1)),c,7
-	goto	u1431
-	movf	((c:_speedA+1)),c,w
-	bnz	u1430
-	decf	((c:_speedA)),c,w
-	btfss	status,0
-	goto	u1431
-	goto	u1430
-
-u1431:
-	goto	l447
-u1430:
-	line	691
-	
-l2191:; BSR set to: 0
-
-	bsf	((c:3971)),c,3	;volatile
-	line	692
-	bcf	((c:3969)),c,2	;volatile
-	line	693
-	goto	l2193
-	
-l447:; BSR set to: 0
-
-	line	694
-	bcf	((c:3971)),c,3	;volatile
-	line	695
-	bsf	((c:3969)),c,2	;volatile
-	goto	l2193
-	line	696
-	
-l448:; BSR set to: 0
-
-	line	697
-	goto	l2193
-	
-l442:; BSR set to: 0
-
-	line	698
-	bcf	((c:3971)),c,3	;volatile
-	line	699
-	bcf	((c:3969)),c,2	;volatile
-	goto	l2193
-	line	700
-	
-l449:; BSR set to: 0
-
-	line	701
-	
-l2193:; BSR set to: 0
-
-	btfsc	((c:_speedB+1)),c,7
-	goto	u1440
-	movf	((c:_speedB+1)),c,w
-	bnz	u1441
-	decf	((c:_speedB)),c,w
-	btfsc	status,0
-	goto	u1441
-	goto	u1440
-
-u1441:
-	goto	l452
-u1440:
-	
-l2195:; BSR set to: 0
-
-	movff	(c:_speedB),??_MotorUpdate+0+0
-	movff	(c:_speedB+1),??_MotorUpdate+0+0+1
-	comf	(??_MotorUpdate+0+0),c
-	comf	(??_MotorUpdate+0+1),c
-	infsnz	(??_MotorUpdate+0+0),c
-	incf	(??_MotorUpdate+0+1),c
-	movff	??_MotorUpdate+0+0,(_MotorUpdate$1871)
-	movff	??_MotorUpdate+0+1,(_MotorUpdate$1871+1)
-	goto	l2197
-	
-l452:; BSR set to: 0
-
-	movff	(c:_speedB),(_MotorUpdate$1871)
-	movff	(c:_speedB+1),(_MotorUpdate$1871+1)
-	goto	l2197
-	
-l454:; BSR set to: 0
-
-	
-l2197:; BSR set to: 0
-
-	movlb	0	; () banked
-		movf	((_MotorUpdate$1871))&0ffh,w
-	subwf	((c:_loop)),c,w
-	movf	((c:_loop+1)),c,w
-	xorlw	80h
-	movwf	(??_MotorUpdate+0+0)&0ffh,c
-	movlb	0	; () banked
-	movf	((_MotorUpdate$1871+1))&0ffh,w
-	xorlw	80h
-	subwfb	(??_MotorUpdate+0+0)&0ffh,c,w
-	btfsc	status,0
-	goto	u1451
-	goto	u1450
-
-u1451:
-	goto	l450
-u1450:
-	line	702
-	
-l2199:; BSR set to: 0
-
-	btfsc	((c:_speedB+1)),c,7
-	goto	u1461
-	movf	((c:_speedB+1)),c,w
-	bnz	u1460
-	decf	((c:_speedB)),c,w
-	btfss	status,0
-	goto	u1461
-	goto	u1460
-
-u1461:
-	goto	l455
-u1460:
-	line	703
-	
-l2201:; BSR set to: 0
-
-	bsf	((c:3970)),c,2	;volatile
-	line	704
-	bcf	((c:3969)),c,2	;volatile
-	line	705
-	goto	l2203
-	
-l455:; BSR set to: 0
-
-	line	706
-	bcf	((c:3970)),c,2	;volatile
-	line	707
-	bsf	((c:3969)),c,0	;volatile
-	goto	l2203
-	line	708
-	
-l456:; BSR set to: 0
-
-	line	709
-	goto	l2203
-	
-l450:; BSR set to: 0
-
-	line	710
-	bcf	((c:3970)),c,2	;volatile
-	line	711
-	bcf	((c:3969)),c,0	;volatile
-	goto	l2203
-	line	712
-	
-l457:; BSR set to: 0
-
-	line	713
-	
-l2203:; BSR set to: 0
-
-		movlw	9
-	xorwf	((c:_loop)),c,w
-iorwf	((c:_loop+1)),c,w
-	btfsc	status,2
-	goto	u1471
-	goto	u1470
-
-u1471:
-	goto	l2207
-u1470:
-	
-l2205:; BSR set to: 0
-
-	movlw	low(01h)
-	addwf	((c:_loop)),c,w
-	movwf	((c:_loop)),c
-	movlw	high(01h)
-	addwfc	((c:_loop+1)),c,w
-	movwf	1+((c:_loop)),c
-	goto	l462
-	
-l459:; BSR set to: 0
-
-	
-l2207:; BSR set to: 0
-
-	movlw	high(0)
-	movwf	((c:_loop+1)),c
-	movlw	low(0)
-	movwf	((c:_loop)),c
-	goto	l462
-	
-l461:; BSR set to: 0
-
-	line	714
-	
-l462:; BSR set to: 0
-
-	return	;funcret
-	opt stack 0
-GLOBAL	__end_of_MotorUpdate
-	__end_of_MotorUpdate:
-	signat	_MotorUpdate,88
 	global	_enc
 
 ;; *************** function _enc *****************
 ;; Defined at:
-;;		line 478 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 463 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
 ;;		None
 ;; Auto vars:     Size  Location     Type
@@ -3749,7 +2992,7 @@ global __pintcode
 __pintcode:
 psect	intcode
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	478
+	line	463
 	global	__size_of_enc
 	__size_of_enc	equ	__end_of_enc-_enc
 	
@@ -3779,45 +3022,50 @@ int_func:
 	movff	tblptrh+0,??_enc+11
 	movff	tblptru+0,??_enc+12
 	movff	tablat+0,??_enc+13
-	line	479
+	line	464
 	
-i2l1409:
+i2l1698:
 	btfss	c:(32658/8),(32658)&7	;volatile
-	goto	i2u33_41
-	goto	i2u33_40
-i2u33_41:
-	goto	i2l322
-i2u33_40:
-	line	480
+	goto	i2u83_41
+	goto	i2u83_40
+i2u83_41:
+	goto	i2l314
+i2u83_40:
+	line	465
 	
-i2l1411:
+i2l1700:
 	movlw	low(01h)
-	addwf	((c:_TIME)),c
+	movlb	0	; () banked
+	addwf	((_TIME))&0ffh
 	movlw	0
-	addwfc	((c:_TIME+1)),c
-	addwfc	((c:_TIME+2)),c
-	addwfc	((c:_TIME+3)),c
-	line	481
+	addwfc	((_TIME+1))&0ffh
+	addwfc	((_TIME+2))&0ffh
+	addwfc	((_TIME+3))&0ffh
+	line	466
 	
-i2l1413:
+i2l1702:; BSR set to: 0
+
 	movlw	low(0F8h)
 	movwf	((c:4055)),c	;volatile
-	line	482
+	line	467
 	
-i2l1415:
+i2l1704:; BSR set to: 0
+
 	movlw	low(02Fh)
 	movwf	((c:4054)),c	;volatile
-	line	485
+	line	470
 	
-i2l1417:
+i2l1706:; BSR set to: 0
+
 	bcf	c:(32658/8),(32658)&7	;volatile
-	goto	i2l322
-	line	486
+	goto	i2l314
+	line	471
 	
-i2l321:
-	line	487
+i2l313:; BSR set to: 0
+
+	line	472
 	
-i2l322:
+i2l314:
 	movff	??_enc+13,tablat+0
 	movff	??_enc+12,tblptru+0
 	movff	??_enc+11,tblptrh+0
