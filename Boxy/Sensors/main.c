@@ -94,21 +94,23 @@ void set(){
     }
 }
 
+#define INTENSITY 15
+
 int main(int argc, char** argv) {
+    st = 1;
     times = 0;
     init();
     configurar_IO();
     configurar_pwm();
-
+    set();
     TMR2IE=1;
     PEIE=1;
     GIE=1;
-    set();
-    SetDuty(2);
+    
     //onfigurar_timer1();
     //configurar_timer0();
     while (1){
-        if (times > 540 && times < 55l0){
+        if (times > 540 && times < 560){
             store();
         }else{
             set();
@@ -156,6 +158,8 @@ void configurar_pwm(void){
     PR2=17;//26; // periodo 30Khz
     //CCPR1L=0x01; //apagado
     CCP1CON=12;
+
+    SetDuty( INTENSITY );
 }
 void configurar_timer1(void){
     TMR1H=0xFC;

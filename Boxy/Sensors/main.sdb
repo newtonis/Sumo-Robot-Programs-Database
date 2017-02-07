@@ -3,24 +3,6 @@
 [d edition pro ]
 [d chip 16F628A ]
 [d frameptr 6 ]
-"67 /home/newtonis/Robots/Boxy/Sensors/main.c
-[v _SetDuty SetDuty `(v  1 e 0 0 ]
-"75
-[v _store store `(v  1 e 0 0 ]
-"84
-[v _set set `(v  1 e 0 0 ]
-"97
-[v _main main `(i  1 e 2 0 ]
-"125
-[v _ISR ISR `II(v  1 e 0 0 ]
-"140
-[v _init init `(v  1 e 0 0 ]
-"151
-[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
-"184
-[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
-"242
-[v _read read `(v  1 e 0 0 ]
 "6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "62 /opt/microchip/xc8/v1.34/sources/common/float.c
@@ -31,22 +13,24 @@
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
 [v _memcpyee memcpyee `(v  1 e 0 0 ]
-"44 /home/newtonis/Robots/Boxy/Sensors/main.c
-[v _estado estado `uc  1 e 1 0 ]
-"45
-[v _contador contador `uc  1 e 1 0 ]
-"46
-[v _ciclos ciclos `uc  1 e 1 0 ]
-"49
-[v _V V `[5]uc  1 e 5 0 ]
-"51
-[v _times times `l  1 e 4 0 ]
-"53
-[v _actual actual `uc  1 e 1 0 ]
-"54
-[v _cnt cnt `i  1 e 2 0 ]
-"55
-[v _st st `uc  1 e 1 0 ]
+"67 /home/newtonis/Robots/Boxy/Sensors/main.c
+[v _SetDuty SetDuty `(v  1 e 0 0 ]
+"75
+[v _store store `(v  1 e 0 0 ]
+"84
+[v _set set `(v  1 e 0 0 ]
+"99
+[v _main main `(i  1 e 2 0 ]
+"127
+[v _ISR ISR `II(v  1 e 0 0 ]
+"142
+[v _init init `(v  1 e 0 0 ]
+"153
+[v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
+"188
+[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
+"246
+[v _read read `(v  1 e 0 0 ]
 [s S42 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
@@ -220,10 +204,26 @@
 [v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
 "1508
 [v _TRISB6 TRISB6 `VEb  1 e 0 @1078 ]
-"97 /home/newtonis/Robots/Boxy/Sensors/main.c
+"44 /home/newtonis/Robots/Boxy/Sensors/main.c
+[v _estado estado `uc  1 e 1 0 ]
+"45
+[v _contador contador `uc  1 e 1 0 ]
+"46
+[v _ciclos ciclos `uc  1 e 1 0 ]
+"49
+[v _V V `[5]uc  1 e 5 0 ]
+"51
+[v _times times `l  1 e 4 0 ]
+"53
+[v _actual actual `uc  1 e 1 0 ]
+"54
+[v _cnt cnt `i  1 e 2 0 ]
+"55
+[v _st st `uc  1 e 1 0 ]
+"99
 [v _main main `(i  1 e 2 0 ]
 {
-"123
+"125
 } 0
 "75
 [v _store store `(v  1 e 0 0 ]
@@ -237,20 +237,15 @@
 [v set@j j `i  1 a 2 4 ]
 "95
 } 0
-"140
+"142
 [v _init init `(v  1 e 0 0 ]
 {
-"150
+"152
 } 0
-"151
+"153
 [v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
 {
-"159
-} 0
-"184
-[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
-{
-"198
+"163
 } 0
 "67
 [v _SetDuty SetDuty `(v  1 e 0 0 ]
@@ -271,8 +266,13 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
-"125 /home/newtonis/Robots/Boxy/Sensors/main.c
+"188 /home/newtonis/Robots/Boxy/Sensors/main.c
+[v _configurar_IO configurar_IO `(v  1 e 0 0 ]
+{
+"202
+} 0
+"127
 [v _ISR ISR `II(v  1 e 0 0 ]
 {
-"138
+"140
 } 0

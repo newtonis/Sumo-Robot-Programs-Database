@@ -8,7 +8,7 @@
 OUTPUT 0
 INPUT 1
 ]
-"706
+"707
 [e E5442 . `uc
 MOTOR_TEST 0
 RED_ST 1
@@ -53,10 +53,8 @@ WINITIAL 9
 [v _MotorASpeed MotorASpeed `(v  1 e 0 0 ]
 "623
 [v _MotorBSpeed MotorBSpeed `(v  1 e 0 0 ]
-"689
+"690
 [v _main main `(i  1 e 2 0 ]
-"8 /opt/microchip/xc8/v1.34/sources/common/almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
 "8 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "63 /opt/microchip/xc8/v1.34/sources/common/double.c
@@ -730,10 +728,10 @@ WINITIAL 9
 [v _TMR2ON TMR2ON `VEb  1 e 0 @32338 ]
 "10955
 [v _TXIF TXIF `VEb  1 e 0 @31988 ]
-"689 /home/newtonis/Robots/chiari/Main/main.c
+"690 /home/newtonis/Robots/chiari/Main/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"822
+"833
 } 0
 "351
 [v _initYBOT initYBOT `(v  1 e 0 0 ]
@@ -770,7 +768,7 @@ WINITIAL 9
 {
 [v ReadAnalog@channel channel `uc  1 a 1 wreg ]
 [v ReadAnalog@channel channel `uc  1 a 1 wreg ]
-[v ReadAnalog@channel channel `uc  1 a 1 15 ]
+[v ReadAnalog@channel channel `uc  1 a 1 1 ]
 "522
 } 0
 "492
@@ -778,18 +776,7 @@ WINITIAL 9
 {
 "509
 } 0
-"8 /opt/microchip/xc8/v1.34/sources/common/almod.c
-[v ___almod __almod `(l  1 e 4 0 ]
-{
-"11
-[v ___almod@sign sign `uc  1 a 1 15 ]
-[v ___almod@counter counter `uc  1 a 1 14 ]
-"8
-[v ___almod@dividend dividend `l  1 p 4 0 ]
-[v ___almod@divisor divisor `l  1 p 4 4 ]
-"35
-} 0
-"463 /home/newtonis/Robots/chiari/Main/main.c
+"463
 [v _enc enc `II(v  1 e 0 0 ]
 {
 "472

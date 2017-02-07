@@ -12,29 +12,28 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $main.obj
-cinit CODE 0 376 376 62 1
-intcode_body CODE 0 2F0 2F0 86 1
-text0 CODE 0 1C 1C 1DE 1
-text1 CODE 0 478 478 44 1
-text2 CODE 0 578 578 2 1
-text3 CODE 0 558 558 14 1
-text4 CODE 0 4BC 4BC 3E 1
-text5 CODE 0 42C 42C 4C 1
-text6 CODE 0 56C 56C C 1
-text7 CODE 0 3D8 3D8 54 1
-text8 CODE 0 52E 52E 2A 1
-text9 CODE 0 1FA 1FA F6 1
-nvCOMRAM COMRAM 1 51 51 1 1
-nvBANK0 BANK0 1 F6 F6 3 1
-cstackCOMRAM COMRAM 1 41 41 10 1
-cstackBANK0 BANK0 1 E8 E8 E 1
-bssBANK0 BANK0 1 60 60 54 1
+cinit CODE 0 2A8 2A8 5E 1
+intcode_body CODE 0 1BE 1BE 86 1
+text0 CODE 0 1C 1C 1A2 1
+text1 CODE 0 352 352 44 1
+text2 CODE 0 452 452 2 1
+text3 CODE 0 432 432 14 1
+text4 CODE 0 396 396 3E 1
+text5 CODE 0 306 306 4C 1
+text6 CODE 0 446 446 C 1
+text7 CODE 0 244 244 64 1
+text8 CODE 0 408 408 2A 1
+nvCOMRAM COMRAM 1 57 57 1 1
+nvBANK0 BANK0 1 EC EC 1 1
+cstackCOMRAM COMRAM 1 49 49 E 1
+cstackBANK0 BANK0 1 E4 E4 8 1
+bssBANK0 BANK0 1 60 60 50 1
 bssBANK1 BANK1 1 100 100 78 1
 intcode CODE 0 8 8 10 1
-idataBANK0 CODE 0 4FA 4FA 34 1
-dataBANK0 BANK0 1 B4 B4 34 1
+idataBANK0 CODE 0 3D4 3D4 34 1
+dataBANK0 BANK0 1 B0 B0 34 1
 bssBIGRAM BIGRAM 1 178 178 3FC 1
-bssCOMRAM COMRAM 1 1 1 40 1
+bssCOMRAM COMRAM 1 1 1 48 1
 $startup.obj
 reset_vec CODE 0 0 0 4 1
 end_init CODE 0 18 18 4 1
@@ -45,24 +44,24 @@ config CONFIG 0 300000 300000 E 1
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM F9-FF 1
+RAM ED-FF 1
 RAM 574-7FF 1
 SFR F60-FFF 1
-BANK0 F9-FF 1
+BANK0 ED-FF 1
 BANK5 574-5FF 1
 BANK6 600-6FF 1
 BANK7 700-7FF 1
 CONST 4-7 1
-CONST 57A-7FFF 1
+CONST 454-7FFF 1
 IDLOC 200000-200007 1
 STACK 574-7FF 1
 SMALLCONST 800-7FFF 1
 CODE 4-7 1
-CODE 57A-7FFF 1
-BIGRAM 52-5F 1
-BIGRAM F9-FF 1
+CODE 454-7FFF 1
+BIGRAM 58-5F 1
+BIGRAM ED-FF 1
 BIGRAM 574-7FF 1
-COMRAM 52-5F 1
+COMRAM 58-5F 1
 EEDATA F00000-F000FF 1
 MEDIUMCONST 800-7FFF 1
 # %LINETAB Section
@@ -80,213 +79,189 @@ MEDIUMCONST 800-7FFF 1
 %LINETAB
 $main.obj
 8 intcode CODE >463:/home/newtonis/Robots/chiari/Main/main.c
-8 intcode CODE >35:/opt/microchip/xc8/v1.34/sources/common/almod.c
-1C text0 CODE >689:/home/newtonis/Robots/chiari/Main/main.c
+8 intcode CODE >509:/home/newtonis/Robots/chiari/Main/main.c
 1C text0 CODE >690:/home/newtonis/Robots/chiari/Main/main.c
-20 text0 CODE >692:/home/newtonis/Robots/chiari/Main/main.c
-28 text0 CODE >693:/home/newtonis/Robots/chiari/Main/main.c
-30 text0 CODE >694:/home/newtonis/Robots/chiari/Main/main.c
-38 text0 CODE >695:/home/newtonis/Robots/chiari/Main/main.c
-40 text0 CODE >696:/home/newtonis/Robots/chiari/Main/main.c
-48 text0 CODE >697:/home/newtonis/Robots/chiari/Main/main.c
-50 text0 CODE >699:/home/newtonis/Robots/chiari/Main/main.c
-58 text0 CODE >700:/home/newtonis/Robots/chiari/Main/main.c
-60 text0 CODE >701:/home/newtonis/Robots/chiari/Main/main.c
-68 text0 CODE >702:/home/newtonis/Robots/chiari/Main/main.c
-6C text0 CODE >703:/home/newtonis/Robots/chiari/Main/main.c
-7E text0 CODE >704:/home/newtonis/Robots/chiari/Main/main.c
-86 text0 CODE >705:/home/newtonis/Robots/chiari/Main/main.c
-8A text0 CODE >706:/home/newtonis/Robots/chiari/Main/main.c
-8E text0 CODE >707:/home/newtonis/Robots/chiari/Main/main.c
-A0 text0 CODE >714:/home/newtonis/Robots/chiari/Main/main.c
-A4 text0 CODE >723:/home/newtonis/Robots/chiari/Main/main.c
-B0 text0 CODE >728:/home/newtonis/Robots/chiari/Main/main.c
-B4 text0 CODE >729:/home/newtonis/Robots/chiari/Main/main.c
-CE text0 CODE >730:/home/newtonis/Robots/chiari/Main/main.c
-E8 text0 CODE >731:/home/newtonis/Robots/chiari/Main/main.c
-102 text0 CODE >732:/home/newtonis/Robots/chiari/Main/main.c
-11C text0 CODE >733:/home/newtonis/Robots/chiari/Main/main.c
-11E text0 CODE >734:/home/newtonis/Robots/chiari/Main/main.c
-138 text0 CODE >735:/home/newtonis/Robots/chiari/Main/main.c
-152 text0 CODE >736:/home/newtonis/Robots/chiari/Main/main.c
-16C text0 CODE >737:/home/newtonis/Robots/chiari/Main/main.c
-186 text0 CODE >758:/home/newtonis/Robots/chiari/Main/main.c
-188 text0 CODE >760:/home/newtonis/Robots/chiari/Main/main.c
-1EA text0 CODE >777:/home/newtonis/Robots/chiari/Main/main.c
-1EC text0 CODE >758:/home/newtonis/Robots/chiari/Main/main.c
-1F4 text0 CODE >724:/home/newtonis/Robots/chiari/Main/main.c
-1F6 text0 CODE >822:/home/newtonis/Robots/chiari/Main/main.c
-1FA text9 CODE >8:/opt/microchip/xc8/v1.34/sources/common/almod.c
-1FA text9 CODE >13:/opt/microchip/xc8/v1.34/sources/common/almod.c
-1FE text9 CODE >14:/opt/microchip/xc8/v1.34/sources/common/almod.c
-204 text9 CODE >15:/opt/microchip/xc8/v1.34/sources/common/almod.c
-216 text9 CODE >16:/opt/microchip/xc8/v1.34/sources/common/almod.c
-21C text9 CODE >18:/opt/microchip/xc8/v1.34/sources/common/almod.c
-222 text9 CODE >19:/opt/microchip/xc8/v1.34/sources/common/almod.c
-236 text9 CODE >20:/opt/microchip/xc8/v1.34/sources/common/almod.c
-24A text9 CODE >21:/opt/microchip/xc8/v1.34/sources/common/almod.c
-24E text9 CODE >22:/opt/microchip/xc8/v1.34/sources/common/almod.c
-250 text9 CODE >23:/opt/microchip/xc8/v1.34/sources/common/almod.c
-25C text9 CODE >24:/opt/microchip/xc8/v1.34/sources/common/almod.c
-260 text9 CODE >22:/opt/microchip/xc8/v1.34/sources/common/almod.c
-26A text9 CODE >27:/opt/microchip/xc8/v1.34/sources/common/almod.c
-28E text9 CODE >28:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2B0 text9 CODE >29:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2BC text9 CODE >30:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2C2 text9 CODE >32:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2C8 text9 CODE >33:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2DC text9 CODE >34:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2EE text9 CODE >35:/opt/microchip/xc8/v1.34/sources/common/almod.c
-2F0 intcode_body CODE >463:/home/newtonis/Robots/chiari/Main/main.c
-31E intcode_body CODE >464:/home/newtonis/Robots/chiari/Main/main.c
-322 intcode_body CODE >465:/home/newtonis/Robots/chiari/Main/main.c
-330 intcode_body CODE >466:/home/newtonis/Robots/chiari/Main/main.c
-334 intcode_body CODE >467:/home/newtonis/Robots/chiari/Main/main.c
-338 intcode_body CODE >470:/home/newtonis/Robots/chiari/Main/main.c
-33C intcode_body CODE >472:/home/newtonis/Robots/chiari/Main/main.c
-376 cinit CODE >800:/home/newtonis/Robots/chiari/Main/main.as
-376 cinit CODE >802:/home/newtonis/Robots/chiari/Main/main.as
-376 cinit CODE >805:/home/newtonis/Robots/chiari/Main/main.as
-376 cinit CODE >1076:/home/newtonis/Robots/chiari/Main/main.as
-37A cinit CODE >1077:/home/newtonis/Robots/chiari/Main/main.as
-37E cinit CODE >1078:/home/newtonis/Robots/chiari/Main/main.as
-37E cinit CODE >1079:/home/newtonis/Robots/chiari/Main/main.as
-380 cinit CODE >1080:/home/newtonis/Robots/chiari/Main/main.as
-382 cinit CODE >1081:/home/newtonis/Robots/chiari/Main/main.as
-384 cinit CODE >1082:/home/newtonis/Robots/chiari/Main/main.as
-386 cinit CODE >1083:/home/newtonis/Robots/chiari/Main/main.as
-388 cinit CODE >1084:/home/newtonis/Robots/chiari/Main/main.as
-38A cinit CODE >1087:/home/newtonis/Robots/chiari/Main/main.as
-38E cinit CODE >1088:/home/newtonis/Robots/chiari/Main/main.as
-390 cinit CODE >1089:/home/newtonis/Robots/chiari/Main/main.as
-390 cinit CODE >1090:/home/newtonis/Robots/chiari/Main/main.as
-392 cinit CODE >1091:/home/newtonis/Robots/chiari/Main/main.as
-394 cinit CODE >1092:/home/newtonis/Robots/chiari/Main/main.as
-396 cinit CODE >1095:/home/newtonis/Robots/chiari/Main/main.as
-39A cinit CODE >1096:/home/newtonis/Robots/chiari/Main/main.as
-39C cinit CODE >1097:/home/newtonis/Robots/chiari/Main/main.as
-39C cinit CODE >1098:/home/newtonis/Robots/chiari/Main/main.as
-39E cinit CODE >1099:/home/newtonis/Robots/chiari/Main/main.as
-3A0 cinit CODE >1100:/home/newtonis/Robots/chiari/Main/main.as
-3A2 cinit CODE >1103:/home/newtonis/Robots/chiari/Main/main.as
-3A6 cinit CODE >1104:/home/newtonis/Robots/chiari/Main/main.as
-3A8 cinit CODE >1105:/home/newtonis/Robots/chiari/Main/main.as
-3A8 cinit CODE >1106:/home/newtonis/Robots/chiari/Main/main.as
-3AA cinit CODE >1107:/home/newtonis/Robots/chiari/Main/main.as
-3AC cinit CODE >1108:/home/newtonis/Robots/chiari/Main/main.as
-3AE cinit CODE >1113:/home/newtonis/Robots/chiari/Main/main.as
-3B0 cinit CODE >1114:/home/newtonis/Robots/chiari/Main/main.as
-3B2 cinit CODE >1115:/home/newtonis/Robots/chiari/Main/main.as
-3B4 cinit CODE >1116:/home/newtonis/Robots/chiari/Main/main.as
-3B6 cinit CODE >1117:/home/newtonis/Robots/chiari/Main/main.as
-3B8 cinit CODE >1118:/home/newtonis/Robots/chiari/Main/main.as
-3BA cinit CODE >1119:/home/newtonis/Robots/chiari/Main/main.as
-3BE cinit CODE >1120:/home/newtonis/Robots/chiari/Main/main.as
-3C2 cinit CODE >1121:/home/newtonis/Robots/chiari/Main/main.as
-3C2 cinit CODE >1122:/home/newtonis/Robots/chiari/Main/main.as
-3C4 cinit CODE >1123:/home/newtonis/Robots/chiari/Main/main.as
-3C8 cinit CODE >1124:/home/newtonis/Robots/chiari/Main/main.as
-3CA cinit CODE >1125:/home/newtonis/Robots/chiari/Main/main.as
-3CC cinit CODE >1126:/home/newtonis/Robots/chiari/Main/main.as
-3CE cinit CODE >1132:/home/newtonis/Robots/chiari/Main/main.as
-3CE cinit CODE >1134:/home/newtonis/Robots/chiari/Main/main.as
-3D0 cinit CODE >1135:/home/newtonis/Robots/chiari/Main/main.as
-3D2 cinit CODE >1136:/home/newtonis/Robots/chiari/Main/main.as
-3D4 cinit CODE >1137:/home/newtonis/Robots/chiari/Main/main.as
-3D8 text7 CODE >514:/home/newtonis/Robots/chiari/Main/main.c
-3DA text7 CODE >515:/home/newtonis/Robots/chiari/Main/main.c
-3E4 text7 CODE >516:/home/newtonis/Robots/chiari/Main/main.c
-3FA text7 CODE >517:/home/newtonis/Robots/chiari/Main/main.c
-410 text7 CODE >518:/home/newtonis/Robots/chiari/Main/main.c
-426 text7 CODE >520:/home/newtonis/Robots/chiari/Main/main.c
-428 text7 CODE >521:/home/newtonis/Robots/chiari/Main/main.c
-42A text7 CODE >522:/home/newtonis/Robots/chiari/Main/main.c
-42C text5 CODE >392:/home/newtonis/Robots/chiari/Main/main.c
-42C text5 CODE >393:/home/newtonis/Robots/chiari/Main/main.c
-42E text5 CODE >394:/home/newtonis/Robots/chiari/Main/main.c
-430 text5 CODE >395:/home/newtonis/Robots/chiari/Main/main.c
-432 text5 CODE >397:/home/newtonis/Robots/chiari/Main/main.c
-434 text5 CODE >398:/home/newtonis/Robots/chiari/Main/main.c
-438 text5 CODE >399:/home/newtonis/Robots/chiari/Main/main.c
-43C text5 CODE >402:/home/newtonis/Robots/chiari/Main/main.c
-43E text5 CODE >403:/home/newtonis/Robots/chiari/Main/main.c
-440 text5 CODE >404:/home/newtonis/Robots/chiari/Main/main.c
-442 text5 CODE >408:/home/newtonis/Robots/chiari/Main/main.c
-444 text5 CODE >410:/home/newtonis/Robots/chiari/Main/main.c
-446 text5 CODE >412:/home/newtonis/Robots/chiari/Main/main.c
-448 text5 CODE >413:/home/newtonis/Robots/chiari/Main/main.c
-44A text5 CODE >414:/home/newtonis/Robots/chiari/Main/main.c
-44C text5 CODE >415:/home/newtonis/Robots/chiari/Main/main.c
-450 text5 CODE >416:/home/newtonis/Robots/chiari/Main/main.c
-452 text5 CODE >417:/home/newtonis/Robots/chiari/Main/main.c
-454 text5 CODE >418:/home/newtonis/Robots/chiari/Main/main.c
-456 text5 CODE >420:/home/newtonis/Robots/chiari/Main/main.c
-45A text5 CODE >421:/home/newtonis/Robots/chiari/Main/main.c
-45E text5 CODE >437:/home/newtonis/Robots/chiari/Main/main.c
-460 text5 CODE >438:/home/newtonis/Robots/chiari/Main/main.c
-462 text5 CODE >439:/home/newtonis/Robots/chiari/Main/main.c
-464 text5 CODE >442:/home/newtonis/Robots/chiari/Main/main.c
-466 text5 CODE >443:/home/newtonis/Robots/chiari/Main/main.c
-468 text5 CODE >445:/home/newtonis/Robots/chiari/Main/main.c
-46A text5 CODE >446:/home/newtonis/Robots/chiari/Main/main.c
-46C text5 CODE >449:/home/newtonis/Robots/chiari/Main/main.c
-46E text5 CODE >450:/home/newtonis/Robots/chiari/Main/main.c
-470 text5 CODE >451:/home/newtonis/Robots/chiari/Main/main.c
-472 text5 CODE >452:/home/newtonis/Robots/chiari/Main/main.c
-474 text5 CODE >453:/home/newtonis/Robots/chiari/Main/main.c
-476 text5 CODE >455:/home/newtonis/Robots/chiari/Main/main.c
-478 text1 CODE >351:/home/newtonis/Robots/chiari/Main/main.c
-478 text1 CODE >353:/home/newtonis/Robots/chiari/Main/main.c
-48A text1 CODE >354:/home/newtonis/Robots/chiari/Main/main.c
-49C text1 CODE >355:/home/newtonis/Robots/chiari/Main/main.c
-4A0 text1 CODE >356:/home/newtonis/Robots/chiari/Main/main.c
-4A6 text1 CODE >358:/home/newtonis/Robots/chiari/Main/main.c
-4AA text1 CODE >359:/home/newtonis/Robots/chiari/Main/main.c
-4AE text1 CODE >360:/home/newtonis/Robots/chiari/Main/main.c
-4B2 text1 CODE >361:/home/newtonis/Robots/chiari/Main/main.c
-4B6 text1 CODE >362:/home/newtonis/Robots/chiari/Main/main.c
-4BA text1 CODE >365:/home/newtonis/Robots/chiari/Main/main.c
-4BC text4 CODE >586:/home/newtonis/Robots/chiari/Main/main.c
-4BC text4 CODE >588:/home/newtonis/Robots/chiari/Main/main.c
-4BE text4 CODE >589:/home/newtonis/Robots/chiari/Main/main.c
-4C0 text4 CODE >590:/home/newtonis/Robots/chiari/Main/main.c
-4C2 text4 CODE >591:/home/newtonis/Robots/chiari/Main/main.c
-4C4 text4 CODE >593:/home/newtonis/Robots/chiari/Main/main.c
-4C6 text4 CODE >594:/home/newtonis/Robots/chiari/Main/main.c
-4C8 text4 CODE >595:/home/newtonis/Robots/chiari/Main/main.c
-4CA text4 CODE >597:/home/newtonis/Robots/chiari/Main/main.c
-4CC text4 CODE >600:/home/newtonis/Robots/chiari/Main/main.c
-4D4 text4 CODE >601:/home/newtonis/Robots/chiari/Main/main.c
-4DC text4 CODE >602:/home/newtonis/Robots/chiari/Main/main.c
-4DE text4 CODE >603:/home/newtonis/Robots/chiari/Main/main.c
-4E2 text4 CODE >604:/home/newtonis/Robots/chiari/Main/main.c
-4E4 text4 CODE >607:/home/newtonis/Robots/chiari/Main/main.c
-4EC text4 CODE >608:/home/newtonis/Robots/chiari/Main/main.c
-4F4 text4 CODE >609:/home/newtonis/Robots/chiari/Main/main.c
-4F8 text4 CODE >611:/home/newtonis/Robots/chiari/Main/main.c
-52E text8 CODE >492:/home/newtonis/Robots/chiari/Main/main.c
-52E text8 CODE >493:/home/newtonis/Robots/chiari/Main/main.c
-530 text8 CODE >494:/home/newtonis/Robots/chiari/Main/main.c
-532 text8 CODE >496:/home/newtonis/Robots/chiari/Main/main.c
-534 text8 CODE >497:/home/newtonis/Robots/chiari/Main/main.c
-536 text8 CODE >498:/home/newtonis/Robots/chiari/Main/main.c
-538 text8 CODE >499:/home/newtonis/Robots/chiari/Main/main.c
-53A text8 CODE >503:/home/newtonis/Robots/chiari/Main/main.c
-53C text8 CODE >504:/home/newtonis/Robots/chiari/Main/main.c
-542 text8 CODE >505:/home/newtonis/Robots/chiari/Main/main.c
-54A text8 CODE >506:/home/newtonis/Robots/chiari/Main/main.c
-552 text8 CODE >507:/home/newtonis/Robots/chiari/Main/main.c
-554 text8 CODE >508:/home/newtonis/Robots/chiari/Main/main.c
-556 text8 CODE >509:/home/newtonis/Robots/chiari/Main/main.c
-558 text3 CODE >458:/home/newtonis/Robots/chiari/Main/main.c
-558 text3 CODE >459:/home/newtonis/Robots/chiari/Main/main.c
-56A text3 CODE >460:/home/newtonis/Robots/chiari/Main/main.c
-56C text6 CODE >510:/home/newtonis/Robots/chiari/Main/main.c
-56C text6 CODE >511:/home/newtonis/Robots/chiari/Main/main.c
-570 text6 CODE >512:/home/newtonis/Robots/chiari/Main/main.c
-576 text6 CODE >513:/home/newtonis/Robots/chiari/Main/main.c
-578 text2 CODE >286:/home/newtonis/Robots/chiari/Main/main.c
-578 text2 CODE >295:/home/newtonis/Robots/chiari/Main/main.c
+1C text0 CODE >691:/home/newtonis/Robots/chiari/Main/main.c
+20 text0 CODE >693:/home/newtonis/Robots/chiari/Main/main.c
+28 text0 CODE >694:/home/newtonis/Robots/chiari/Main/main.c
+30 text0 CODE >695:/home/newtonis/Robots/chiari/Main/main.c
+38 text0 CODE >696:/home/newtonis/Robots/chiari/Main/main.c
+40 text0 CODE >697:/home/newtonis/Robots/chiari/Main/main.c
+48 text0 CODE >698:/home/newtonis/Robots/chiari/Main/main.c
+50 text0 CODE >700:/home/newtonis/Robots/chiari/Main/main.c
+58 text0 CODE >701:/home/newtonis/Robots/chiari/Main/main.c
+60 text0 CODE >702:/home/newtonis/Robots/chiari/Main/main.c
+68 text0 CODE >703:/home/newtonis/Robots/chiari/Main/main.c
+6C text0 CODE >704:/home/newtonis/Robots/chiari/Main/main.c
+7E text0 CODE >705:/home/newtonis/Robots/chiari/Main/main.c
+86 text0 CODE >706:/home/newtonis/Robots/chiari/Main/main.c
+8A text0 CODE >707:/home/newtonis/Robots/chiari/Main/main.c
+8E text0 CODE >708:/home/newtonis/Robots/chiari/Main/main.c
+A0 text0 CODE >711:/home/newtonis/Robots/chiari/Main/main.c
+A2 text0 CODE >717:/home/newtonis/Robots/chiari/Main/main.c
+A8 text0 CODE >711:/home/newtonis/Robots/chiari/Main/main.c
+CC text0 CODE >725:/home/newtonis/Robots/chiari/Main/main.c
+D6 text0 CODE >738:/home/newtonis/Robots/chiari/Main/main.c
+E2 text0 CODE >739:/home/newtonis/Robots/chiari/Main/main.c
+E6 text0 CODE >740:/home/newtonis/Robots/chiari/Main/main.c
+100 text0 CODE >741:/home/newtonis/Robots/chiari/Main/main.c
+11A text0 CODE >742:/home/newtonis/Robots/chiari/Main/main.c
+134 text0 CODE >743:/home/newtonis/Robots/chiari/Main/main.c
+14E text0 CODE >744:/home/newtonis/Robots/chiari/Main/main.c
+150 text0 CODE >745:/home/newtonis/Robots/chiari/Main/main.c
+16A text0 CODE >746:/home/newtonis/Robots/chiari/Main/main.c
+184 text0 CODE >747:/home/newtonis/Robots/chiari/Main/main.c
+19E text0 CODE >748:/home/newtonis/Robots/chiari/Main/main.c
+1B8 text0 CODE >726:/home/newtonis/Robots/chiari/Main/main.c
+1BA text0 CODE >833:/home/newtonis/Robots/chiari/Main/main.c
+1BE intcode_body CODE >463:/home/newtonis/Robots/chiari/Main/main.c
+1EC intcode_body CODE >464:/home/newtonis/Robots/chiari/Main/main.c
+1F0 intcode_body CODE >465:/home/newtonis/Robots/chiari/Main/main.c
+1FE intcode_body CODE >466:/home/newtonis/Robots/chiari/Main/main.c
+202 intcode_body CODE >467:/home/newtonis/Robots/chiari/Main/main.c
+206 intcode_body CODE >470:/home/newtonis/Robots/chiari/Main/main.c
+20A intcode_body CODE >472:/home/newtonis/Robots/chiari/Main/main.c
+244 text7 CODE >514:/home/newtonis/Robots/chiari/Main/main.c
+248 text7 CODE >515:/home/newtonis/Robots/chiari/Main/main.c
+254 text7 CODE >516:/home/newtonis/Robots/chiari/Main/main.c
+26E text7 CODE >517:/home/newtonis/Robots/chiari/Main/main.c
+288 text7 CODE >518:/home/newtonis/Robots/chiari/Main/main.c
+2A2 text7 CODE >520:/home/newtonis/Robots/chiari/Main/main.c
+2A4 text7 CODE >521:/home/newtonis/Robots/chiari/Main/main.c
+2A6 text7 CODE >522:/home/newtonis/Robots/chiari/Main/main.c
+2A8 cinit CODE >796:/home/newtonis/Robots/chiari/Main/main.as
+2A8 cinit CODE >798:/home/newtonis/Robots/chiari/Main/main.as
+2A8 cinit CODE >801:/home/newtonis/Robots/chiari/Main/main.as
+2A8 cinit CODE >1079:/home/newtonis/Robots/chiari/Main/main.as
+2AC cinit CODE >1080:/home/newtonis/Robots/chiari/Main/main.as
+2B0 cinit CODE >1081:/home/newtonis/Robots/chiari/Main/main.as
+2B0 cinit CODE >1082:/home/newtonis/Robots/chiari/Main/main.as
+2B2 cinit CODE >1083:/home/newtonis/Robots/chiari/Main/main.as
+2B4 cinit CODE >1084:/home/newtonis/Robots/chiari/Main/main.as
+2B6 cinit CODE >1085:/home/newtonis/Robots/chiari/Main/main.as
+2B8 cinit CODE >1086:/home/newtonis/Robots/chiari/Main/main.as
+2BA cinit CODE >1087:/home/newtonis/Robots/chiari/Main/main.as
+2BC cinit CODE >1090:/home/newtonis/Robots/chiari/Main/main.as
+2C0 cinit CODE >1091:/home/newtonis/Robots/chiari/Main/main.as
+2C2 cinit CODE >1092:/home/newtonis/Robots/chiari/Main/main.as
+2C2 cinit CODE >1093:/home/newtonis/Robots/chiari/Main/main.as
+2C4 cinit CODE >1094:/home/newtonis/Robots/chiari/Main/main.as
+2C6 cinit CODE >1095:/home/newtonis/Robots/chiari/Main/main.as
+2C8 cinit CODE >1098:/home/newtonis/Robots/chiari/Main/main.as
+2CC cinit CODE >1099:/home/newtonis/Robots/chiari/Main/main.as
+2CE cinit CODE >1100:/home/newtonis/Robots/chiari/Main/main.as
+2CE cinit CODE >1101:/home/newtonis/Robots/chiari/Main/main.as
+2D0 cinit CODE >1102:/home/newtonis/Robots/chiari/Main/main.as
+2D2 cinit CODE >1103:/home/newtonis/Robots/chiari/Main/main.as
+2D4 cinit CODE >1106:/home/newtonis/Robots/chiari/Main/main.as
+2D8 cinit CODE >1107:/home/newtonis/Robots/chiari/Main/main.as
+2DA cinit CODE >1108:/home/newtonis/Robots/chiari/Main/main.as
+2DA cinit CODE >1109:/home/newtonis/Robots/chiari/Main/main.as
+2DC cinit CODE >1110:/home/newtonis/Robots/chiari/Main/main.as
+2DE cinit CODE >1111:/home/newtonis/Robots/chiari/Main/main.as
+2E0 cinit CODE >1116:/home/newtonis/Robots/chiari/Main/main.as
+2E2 cinit CODE >1117:/home/newtonis/Robots/chiari/Main/main.as
+2E4 cinit CODE >1118:/home/newtonis/Robots/chiari/Main/main.as
+2E6 cinit CODE >1119:/home/newtonis/Robots/chiari/Main/main.as
+2E8 cinit CODE >1120:/home/newtonis/Robots/chiari/Main/main.as
+2EA cinit CODE >1121:/home/newtonis/Robots/chiari/Main/main.as
+2EC cinit CODE >1122:/home/newtonis/Robots/chiari/Main/main.as
+2F0 cinit CODE >1123:/home/newtonis/Robots/chiari/Main/main.as
+2F4 cinit CODE >1124:/home/newtonis/Robots/chiari/Main/main.as
+2F4 cinit CODE >1125:/home/newtonis/Robots/chiari/Main/main.as
+2F6 cinit CODE >1126:/home/newtonis/Robots/chiari/Main/main.as
+2FA cinit CODE >1127:/home/newtonis/Robots/chiari/Main/main.as
+2FC cinit CODE >1128:/home/newtonis/Robots/chiari/Main/main.as
+2FE cinit CODE >1129:/home/newtonis/Robots/chiari/Main/main.as
+300 cinit CODE >1135:/home/newtonis/Robots/chiari/Main/main.as
+300 cinit CODE >1136:/home/newtonis/Robots/chiari/Main/main.as
+302 cinit CODE >1137:/home/newtonis/Robots/chiari/Main/main.as
+306 text5 CODE >392:/home/newtonis/Robots/chiari/Main/main.c
+306 text5 CODE >393:/home/newtonis/Robots/chiari/Main/main.c
+308 text5 CODE >394:/home/newtonis/Robots/chiari/Main/main.c
+30A text5 CODE >395:/home/newtonis/Robots/chiari/Main/main.c
+30C text5 CODE >397:/home/newtonis/Robots/chiari/Main/main.c
+30E text5 CODE >398:/home/newtonis/Robots/chiari/Main/main.c
+312 text5 CODE >399:/home/newtonis/Robots/chiari/Main/main.c
+316 text5 CODE >402:/home/newtonis/Robots/chiari/Main/main.c
+318 text5 CODE >403:/home/newtonis/Robots/chiari/Main/main.c
+31A text5 CODE >404:/home/newtonis/Robots/chiari/Main/main.c
+31C text5 CODE >408:/home/newtonis/Robots/chiari/Main/main.c
+31E text5 CODE >410:/home/newtonis/Robots/chiari/Main/main.c
+320 text5 CODE >412:/home/newtonis/Robots/chiari/Main/main.c
+322 text5 CODE >413:/home/newtonis/Robots/chiari/Main/main.c
+324 text5 CODE >414:/home/newtonis/Robots/chiari/Main/main.c
+326 text5 CODE >415:/home/newtonis/Robots/chiari/Main/main.c
+32A text5 CODE >416:/home/newtonis/Robots/chiari/Main/main.c
+32C text5 CODE >417:/home/newtonis/Robots/chiari/Main/main.c
+32E text5 CODE >418:/home/newtonis/Robots/chiari/Main/main.c
+330 text5 CODE >420:/home/newtonis/Robots/chiari/Main/main.c
+334 text5 CODE >421:/home/newtonis/Robots/chiari/Main/main.c
+338 text5 CODE >437:/home/newtonis/Robots/chiari/Main/main.c
+33A text5 CODE >438:/home/newtonis/Robots/chiari/Main/main.c
+33C text5 CODE >439:/home/newtonis/Robots/chiari/Main/main.c
+33E text5 CODE >442:/home/newtonis/Robots/chiari/Main/main.c
+340 text5 CODE >443:/home/newtonis/Robots/chiari/Main/main.c
+342 text5 CODE >445:/home/newtonis/Robots/chiari/Main/main.c
+344 text5 CODE >446:/home/newtonis/Robots/chiari/Main/main.c
+346 text5 CODE >449:/home/newtonis/Robots/chiari/Main/main.c
+348 text5 CODE >450:/home/newtonis/Robots/chiari/Main/main.c
+34A text5 CODE >451:/home/newtonis/Robots/chiari/Main/main.c
+34C text5 CODE >452:/home/newtonis/Robots/chiari/Main/main.c
+34E text5 CODE >453:/home/newtonis/Robots/chiari/Main/main.c
+350 text5 CODE >455:/home/newtonis/Robots/chiari/Main/main.c
+352 text1 CODE >351:/home/newtonis/Robots/chiari/Main/main.c
+352 text1 CODE >353:/home/newtonis/Robots/chiari/Main/main.c
+364 text1 CODE >354:/home/newtonis/Robots/chiari/Main/main.c
+376 text1 CODE >355:/home/newtonis/Robots/chiari/Main/main.c
+37A text1 CODE >356:/home/newtonis/Robots/chiari/Main/main.c
+380 text1 CODE >358:/home/newtonis/Robots/chiari/Main/main.c
+384 text1 CODE >359:/home/newtonis/Robots/chiari/Main/main.c
+388 text1 CODE >360:/home/newtonis/Robots/chiari/Main/main.c
+38C text1 CODE >361:/home/newtonis/Robots/chiari/Main/main.c
+390 text1 CODE >362:/home/newtonis/Robots/chiari/Main/main.c
+394 text1 CODE >365:/home/newtonis/Robots/chiari/Main/main.c
+396 text4 CODE >586:/home/newtonis/Robots/chiari/Main/main.c
+396 text4 CODE >588:/home/newtonis/Robots/chiari/Main/main.c
+398 text4 CODE >589:/home/newtonis/Robots/chiari/Main/main.c
+39A text4 CODE >590:/home/newtonis/Robots/chiari/Main/main.c
+39C text4 CODE >591:/home/newtonis/Robots/chiari/Main/main.c
+39E text4 CODE >593:/home/newtonis/Robots/chiari/Main/main.c
+3A0 text4 CODE >594:/home/newtonis/Robots/chiari/Main/main.c
+3A2 text4 CODE >595:/home/newtonis/Robots/chiari/Main/main.c
+3A4 text4 CODE >597:/home/newtonis/Robots/chiari/Main/main.c
+3A6 text4 CODE >600:/home/newtonis/Robots/chiari/Main/main.c
+3AE text4 CODE >601:/home/newtonis/Robots/chiari/Main/main.c
+3B6 text4 CODE >602:/home/newtonis/Robots/chiari/Main/main.c
+3B8 text4 CODE >603:/home/newtonis/Robots/chiari/Main/main.c
+3BC text4 CODE >604:/home/newtonis/Robots/chiari/Main/main.c
+3BE text4 CODE >607:/home/newtonis/Robots/chiari/Main/main.c
+3C6 text4 CODE >608:/home/newtonis/Robots/chiari/Main/main.c
+3CE text4 CODE >609:/home/newtonis/Robots/chiari/Main/main.c
+3D2 text4 CODE >611:/home/newtonis/Robots/chiari/Main/main.c
+408 text8 CODE >492:/home/newtonis/Robots/chiari/Main/main.c
+408 text8 CODE >493:/home/newtonis/Robots/chiari/Main/main.c
+40A text8 CODE >494:/home/newtonis/Robots/chiari/Main/main.c
+40C text8 CODE >496:/home/newtonis/Robots/chiari/Main/main.c
+40E text8 CODE >497:/home/newtonis/Robots/chiari/Main/main.c
+410 text8 CODE >498:/home/newtonis/Robots/chiari/Main/main.c
+412 text8 CODE >499:/home/newtonis/Robots/chiari/Main/main.c
+414 text8 CODE >503:/home/newtonis/Robots/chiari/Main/main.c
+416 text8 CODE >504:/home/newtonis/Robots/chiari/Main/main.c
+41C text8 CODE >505:/home/newtonis/Robots/chiari/Main/main.c
+424 text8 CODE >506:/home/newtonis/Robots/chiari/Main/main.c
+42C text8 CODE >507:/home/newtonis/Robots/chiari/Main/main.c
+42E text8 CODE >508:/home/newtonis/Robots/chiari/Main/main.c
+430 text8 CODE >509:/home/newtonis/Robots/chiari/Main/main.c
+432 text3 CODE >458:/home/newtonis/Robots/chiari/Main/main.c
+432 text3 CODE >459:/home/newtonis/Robots/chiari/Main/main.c
+444 text3 CODE >460:/home/newtonis/Robots/chiari/Main/main.c
+446 text6 CODE >510:/home/newtonis/Robots/chiari/Main/main.c
+446 text6 CODE >511:/home/newtonis/Robots/chiari/Main/main.c
+44A text6 CODE >512:/home/newtonis/Robots/chiari/Main/main.c
+450 text6 CODE >513:/home/newtonis/Robots/chiari/Main/main.c
+452 text2 CODE >286:/home/newtonis/Robots/chiari/Main/main.c
+452 text2 CODE >295:/home/newtonis/Robots/chiari/Main/main.c
 $startup.obj
 0 text CODE >59:/home/newtonis/Robots/chiari/Main/startup.as
 0 text CODE >60:/home/newtonis/Robots/chiari/Main/startup.as
@@ -311,11 +286,12 @@ $startup.obj
 _V 158 0 BANK1 1 bssBANK1 main.obj
 _a 5 0 COMRAM 1 bssCOMRAM main.obj
 _b 7 0 COMRAM 1 bssCOMRAM main.obj
+_d B 0 COMRAM 1 bssCOMRAM main.obj
 _v A4 0 BANK0 1 bssBANK0 main.obj
 _w AC 0 BANK0 1 bssBANK0 main.obj
-_x 2F 0 COMRAM 1 bssCOMRAM main.obj
+_x 37 0 COMRAM 1 bssCOMRAM main.obj
 __LdataBANK0 0 0 ABS 0 dataBANK0 main.obj
-__end_of_ReadAnalog 42C 0 CODE 0 text7 main.obj
+__end_of_ReadAnalog 2A8 0 CODE 0 text7 main.obj
 __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst main.obj
 __Hspace_0 30000E 0 ABS 0 - main.obj
 __Hspace_1 574 0 ABS 0 - main.obj
@@ -323,34 +299,34 @@ __Hspace_2 0 0 ABS 0 - main.obj
 __CFG_IESO$OFF 0 0 ABS 0 - main.obj
 __HidataBANK0 0 0 ABS 0 idataBANK0 main.obj
 __size_of_initYBOT 0 0 ABS 0 - main.obj
-_InitAnalog 52E 0 CODE 0 text8 main.obj
-__end_of_InitSP 578 0 CODE 0 text6 main.obj
+_InitAnalog 408 0 CODE 0 text8 main.obj
+__end_of_InitSP 452 0 CODE 0 text6 main.obj
 __Hibigdata 0 0 CODE 0 ibigdata main.obj
 __mediumconst 0 0 MEDIUMCONST 0 mediumconst startup.obj
 __Heeprom_data 0 0 EEDATA 0 eeprom_data main.obj
 _T1CONbits FCD 0 ABS 0 - main.obj
 _GO 7E11 0 ABS 0 - main.obj
-_KD B4 0 BANK0 1 dataBANK0 main.obj
-_KP C0 0 BANK0 1 dataBANK0 main.obj
-_KR CC 0 BANK0 1 dataBANK0 main.obj
+_KD B0 0 BANK0 1 dataBANK0 main.obj
+_KP BC 0 BANK0 1 dataBANK0 main.obj
+_KR C8 0 BANK0 1 dataBANK0 main.obj
 _LP 80 0 BANK0 1 bssBANK0 main.obj
-_MF 31 0 COMRAM 1 bssCOMRAM main.obj
+_MF 39 0 COMRAM 1 bssCOMRAM main.obj
 _MS 84 0 BANK0 1 bssBANK0 main.obj
-_SP D8 0 BANK0 1 dataBANK0 main.obj
+_SP D4 0 BANK0 1 dataBANK0 main.obj
 _SS 60 0 BANK0 1 bssBANK0 main.obj
-_d1 B 0 COMRAM 1 bssCOMRAM main.obj
-_d2 D 0 COMRAM 1 bssCOMRAM main.obj
-_fa F 0 COMRAM 1 bssCOMRAM main.obj
-_fb 11 0 COMRAM 1 bssCOMRAM main.obj
-_fc 13 0 COMRAM 1 bssCOMRAM main.obj
-_ma 1B 0 COMRAM 1 bssCOMRAM main.obj
-_mb 1D 0 COMRAM 1 bssCOMRAM main.obj
-_mc 1F 0 COMRAM 1 bssCOMRAM main.obj
-_mm 3D 0 COMRAM 1 bssCOMRAM main.obj
-_ms 23 0 COMRAM 1 bssCOMRAM main.obj
-_sa 27 0 COMRAM 1 bssCOMRAM main.obj
-_sd B2 0 BANK0 1 bssBANK0 main.obj
-__end_of_MotorsPWM 4FA 0 CODE 0 text4 main.obj
+_d1 D 0 COMRAM 1 bssCOMRAM main.obj
+_d2 F 0 COMRAM 1 bssCOMRAM main.obj
+_fa 11 0 COMRAM 1 bssCOMRAM main.obj
+_fb 13 0 COMRAM 1 bssCOMRAM main.obj
+_fc 15 0 COMRAM 1 bssCOMRAM main.obj
+_ma 21 0 COMRAM 1 bssCOMRAM main.obj
+_mb 23 0 COMRAM 1 bssCOMRAM main.obj
+_mc 25 0 COMRAM 1 bssCOMRAM main.obj
+_mm 45 0 COMRAM 1 bssCOMRAM main.obj
+_ms 29 0 COMRAM 1 bssCOMRAM main.obj
+_sa 2D 0 COMRAM 1 bssCOMRAM main.obj
+_sd 2F 0 COMRAM 1 bssCOMRAM main.obj
+__end_of_MotorsPWM 3D4 0 CODE 0 text4 main.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst main.obj
 _ADON 7E10 0 ABS 0 - main.obj
 _CHS0 7E12 0 ABS 0 - main.obj
@@ -363,27 +339,25 @@ _TXIF 7CF4 0 ABS 0 - main.obj
 ___sp 0 0 STACK 2 stack startup.obj
 _amax 100 0 BANK1 1 bssBANK1 main.obj
 _amin 12C 0 BANK1 1 bssBANK1 main.obj
-_giro 15 0 COMRAM 1 bssCOMRAM main.obj
-_high 3A 0 COMRAM 1 bssCOMRAM main.obj
-_loop 17 0 COMRAM 1 bssCOMRAM main.obj
+_giro 1B 0 COMRAM 1 bssCOMRAM main.obj
+_high 42 0 COMRAM 1 bssCOMRAM main.obj
+_loop 1D 0 COMRAM 1 bssCOMRAM main.obj
 _main 1C 0 CODE 0 text0 main.obj
-_mode 21 0 COMRAM 1 bssCOMRAM main.obj
-_next 25 0 COMRAM 1 bssCOMRAM main.obj
-_nove 3E 0 COMRAM 1 bssCOMRAM main.obj
+_mode 27 0 COMRAM 1 bssCOMRAM main.obj
+_next 2B 0 COMRAM 1 bssCOMRAM main.obj
+_nove 46 0 COMRAM 1 bssCOMRAM main.obj
 _suma 74 0 BANK0 1 bssBANK0 main.obj
 __size_of_MotorsPWM 0 0 ABS 0 - main.obj
 __HbssBIGRAM 0 0 ABS 0 bssBIGRAM main.obj
 start 18 0 CODE 0 init startup.obj
-__size_of___almod 0 0 ABS 0 - main.obj
 __size_of_main 0 0 ABS 0 - main.obj
 __HbssCOMRAM 0 0 ABS 0 bssCOMRAM main.obj
 __CFG_DEBUG$OFF 0 0 ABS 0 - main.obj
 __LidataBANK0 0 0 ABS 0 idataBANK0 main.obj
 _CURRENT 1 0 COMRAM 1 bssCOMRAM main.obj
-_TIMEFRENO E4 0 BANK0 1 dataBANK0 main.obj
+_TIMEFRENO E0 0 BANK0 1 dataBANK0 main.obj
 __Hpowerup 18 0 CODE 0 powerup main.obj
-___almod@sign 50 0 COMRAM 1 cstackCOMRAM main.obj
-_MotorsPWM 4BC 0 CODE 0 text4 main.obj
+_MotorsPWM 396 0 CODE 0 text4 main.obj
 _T0CONbits FD5 0 ABS 0 - main.obj
 __LnvCOMRAM 0 0 ABS 0 nvCOMRAM main.obj
 __LbssBIGRAM 0 0 ABS 0 bssBIGRAM main.obj
@@ -395,28 +369,28 @@ intlevel3 0 0 CODE 0 text startup.obj
 __LbssCOMRAM 0 0 ABS 0 bssCOMRAM main.obj
 __CFG_USBDIV$2 0 0 ABS 0 - main.obj
 _division 9C 0 BANK0 1 bssBANK0 main.obj
-_initYBOT 478 0 CODE 0 text1 main.obj
+_initYBOT 352 0 CODE 0 text1 main.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM main.obj
 __CFG_EBTR0$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTR1$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTR2$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTR3$OFF 0 0 ABS 0 - main.obj
 __CFG_EBTRB$OFF 0 0 ABS 0 - main.obj
-__end_of_InitAnalog 558 0 CODE 0 text8 main.obj
+__end_of_InitAnalog 432 0 CODE 0 text8 main.obj
 __Hifardata 0 0 CODE 0 ifardata main.obj
 __Hclrtext 0 0 ABS 0 clrtext main.obj
-__end_of_initYBOT 4BC 0 CODE 0 text1 main.obj
-_VistActual 37 0 COMRAM 1 bssCOMRAM main.obj
-_InitTIMERS 42C 0 CODE 0 text5 main.obj
+__end_of_initYBOT 396 0 CODE 0 text1 main.obj
+_VistActual 3F 0 COMRAM 1 bssCOMRAM main.obj
+_InitTIMERS 306 0 CODE 0 text5 main.obj
 _ADRESH FC4 0 ABS 0 - main.obj
 _ADRESL FC3 0 ABS 0 - main.obj
-_ST_B_ROJO 35 0 COMRAM 1 bssCOMRAM main.obj
-_ResetCounter 558 0 CODE 0 text3 main.obj
-_AMOUNT 3F 0 COMRAM 1 bssCOMRAM main.obj
+_ST_B_ROJO 3D 0 COMRAM 1 bssCOMRAM main.obj
+_ResetCounter 432 0 CODE 0 text3 main.obj
+_AMOUNT 47 0 COMRAM 1 bssCOMRAM main.obj
 ___inthi_sp 0 0 STACK 2 stack startup.obj
 ___intlo_sp 0 0 STACK 2 stack startup.obj
 _EECON1bits FA6 0 ABS 0 - main.obj
-_gstatus F8 0 BANK0 1 nvBANK0 main.obj
+_gstatus EC 0 BANK0 1 nvBANK0 main.obj
 _CCPR1L FBE 0 ABS 0 - main.obj
 _CCPR2L FBB 0 ABS 0 - main.obj
 __Hintcode_body 0 0 ABS 0 intcode_body main.obj
@@ -427,16 +401,15 @@ _BAUDCONbits FB8 0 ABS 0 - main.obj
 __Hmediumconst 0 0 MEDIUMCONST 0 mediumconst main.obj
 __LnvBANK0 0 0 ABS 0 nvBANK0 main.obj
 __Hintcodelo 18 0 CODE 0 intcodelo main.obj
-__end_of___almod 2F0 0 CODE 0 text9 main.obj
-_InitSP 56C 0 CODE 0 text6 main.obj
+_InitSP 446 0 CODE 0 text6 main.obj
 __size_of_ResetCounter 0 0 ABS 0 - main.obj
 __HnvCOMRAM 0 0 ABS 0 nvCOMRAM main.obj
 _INTCON2bits FF1 0 ABS 0 - main.obj
 __Lintcodelo 18 0 CODE 0 intcodelo main.obj
 __CFG_FCMEN$OFF 0 0 ABS 0 - main.obj
 __CFG_MCLRE$OFF 0 0 ABS 0 - main.obj
-start_initialization 376 0 CODE 0 cinit main.obj
-__end_of_InitTIMERS 478 0 CODE 0 text5 main.obj
+start_initialization 2A8 0 CODE 0 cinit main.obj
+__end_of_InitTIMERS 352 0 CODE 0 text5 main.obj
 __size_of_ReadAnalog 0 0 ABS 0 - main.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM main.obj
 _TRISAbits F92 0 ABS 0 - main.obj
@@ -444,14 +417,13 @@ _TRISBbits F93 0 ABS 0 - main.obj
 _TRISCbits F94 0 ABS 0 - main.obj
 _TRISDbits F95 0 ABS 0 - main.obj
 ___rparam_used 1 0 ABS 0 - main.obj
-_ST_B_AMARILLO 34 0 COMRAM 1 bssCOMRAM main.obj
-_ST_B_VERDE 36 0 COMRAM 1 bssCOMRAM main.obj
-___almod@dividend E8 0 BANK0 1 cstackBANK0 main.obj
+_ST_B_AMARILLO 3C 0 COMRAM 1 bssCOMRAM main.obj
+_ST_B_VERDE 3E 0 COMRAM 1 bssCOMRAM main.obj
 __CFG_WDTPS$32768 0 0 ABS 0 - main.obj
-__end_of_ResetCounter 56C 0 CODE 0 text3 main.obj
+__end_of_ResetCounter 446 0 CODE 0 text3 main.obj
 _SPBRGH FB0 0 ABS 0 - main.obj
-__pcstackBANK0 E8 0 BANK0 1 cstackBANK0 main.obj
-ReadAnalog@channel 50 0 COMRAM 1 cstackCOMRAM main.obj
+__pcstackBANK0 E4 0 BANK0 1 cstackBANK0 main.obj
+ReadAnalog@channel E5 0 BANK0 1 cstackBANK0 main.obj
 _TMR0IF 7F92 0 ABS 0 - main.obj
 _TMR2ON 7E52 0 ABS 0 - main.obj
 __size_of_InitSP 0 0 ABS 0 - main.obj
@@ -480,7 +452,6 @@ __Htext5 0 0 ABS 0 text5 main.obj
 __Htext6 0 0 ABS 0 text6 main.obj
 __Htext7 0 0 ABS 0 text7 main.obj
 __Htext8 0 0 ABS 0 text8 main.obj
-__Htext9 0 0 ABS 0 text9 main.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss main.obj
 __Hbigram 0 0 ABS 0 bigram main.obj
 __smallconst 0 0 SMALLCONST 0 smallconst startup.obj
@@ -512,7 +483,6 @@ __Ltext5 0 0 ABS 0 text5 main.obj
 __Ltext6 0 0 ABS 0 text6 main.obj
 __Ltext7 0 0 ABS 0 text7 main.obj
 __Ltext8 0 0 ABS 0 text8 main.obj
-__Ltext9 0 0 ABS 0 text9 main.obj
 __Hfarbss 0 0 FARRAM 0 farbss main.obj
 __Lintcode_body 0 0 ABS 0 intcode_body main.obj
 _PORTAbits F80 0 ABS 0 - main.obj
@@ -536,7 +506,7 @@ __Lrbss 0 0 COMRAM 1 rbss main.obj
 __Ltemp 0 0 COMRAM 1 temp main.obj
 __Ltext 0 0 ABS 0 text main.obj
 __CFG_XINST$OFF 0 0 ABS 0 - main.obj
-__pnvBANK0 F6 0 BANK0 1 nvBANK0 main.obj
+__pnvBANK0 EC 0 BANK0 1 nvBANK0 main.obj
 _T2OUTPS0 7E53 0 ABS 0 - main.obj
 _T2OUTPS1 7E54 0 ABS 0 - main.obj
 _T2OUTPS2 7E55 0 ABS 0 - main.obj
@@ -547,45 +517,43 @@ __Hintret 0 0 ABS 0 intret main.obj
 __Hirdata 0 0 CODE 0 irdata main.obj
 _DER 7C 0 BANK0 1 bssBANK0 main.obj
 _PR2 FCB 0 ABS 0 - main.obj
-_RWM 33 0 COMRAM 1 bssCOMRAM main.obj
+_RWM 3B 0 COMRAM 1 bssCOMRAM main.obj
 __S0 30000E 0 ABS 0 - main.obj
 __S1 574 0 ABS 0 - main.obj
 __S2 0 0 ABS 0 - main.obj
 _cox 9 0 COMRAM 1 bssCOMRAM main.obj
 _enc 8 0 CODE 0 intcode main.obj
-_fca B0 0 BANK0 1 bssBANK0 main.obj
-_fns F6 0 BANK0 1 nvBANK0 main.obj
-_low 3C 0 COMRAM 1 bssCOMRAM main.obj
+_fca 17 0 COMRAM 1 bssCOMRAM main.obj
+_fns 19 0 COMRAM 1 bssCOMRAM main.obj
+_low 44 0 COMRAM 1 bssCOMRAM main.obj
 _sum A0 0 BANK0 1 bssBANK0 main.obj
 __CFG_VREGEN$OFF 0 0 ABS 0 - main.obj
-___almod@counter 4F 0 COMRAM 1 cstackCOMRAM main.obj
-_actual 38 0 COMRAM 1 bssCOMRAM main.obj
-__pnvCOMRAM 51 0 COMRAM 1 nvCOMRAM main.obj
+_actual 40 0 COMRAM 1 bssCOMRAM main.obj
+__pnvCOMRAM 57 0 COMRAM 1 nvCOMRAM main.obj
 __size_of_configurations_init 0 0 ABS 0 - main.obj
 __CFG_PLLDIV$5 0 0 ABS 0 - main.obj
-_iStatus 3B 0 COMRAM 1 bssCOMRAM main.obj
+_iStatus 43 0 COMRAM 1 bssCOMRAM main.obj
 __CFG_PBADEN$OFF 0 0 ABS 0 - main.obj
 __Lbigdata 0 0 BIGRAM 1 bigdata main.obj
 __Hnvrram 0 0 COMRAM 1 nvrram main.obj
 _POSICION 8C 0 BANK0 1 bssBANK0 main.obj
-__end_of_enc 376 0 CODE 0 intcode_body main.obj
-int_func 2F0 0 CODE 0 intcode_body main.obj
+__end_of_enc 244 0 CODE 0 intcode_body main.obj
+int_func 1BE 0 CODE 0 intcode_body main.obj
 __HnvBANK0 0 0 ABS 0 nvBANK0 main.obj
 __Lintentry 0 0 ABS 0 intentry main.obj
 __Hramtop 800 0 RAM 0 ramtop main.obj
 __Hrparam 0 0 COMRAM 1 rparam main.obj
-__pdataBANK0 B4 0 BANK0 1 dataBANK0 main.obj
-__activetblptr 2 0 ABS 0 - main.obj
+__pdataBANK0 B0 0 BANK0 1 dataBANK0 main.obj
+__activetblptr 0 0 ABS 0 - main.obj
 __Hstruct 0 0 COMRAM 1 struct main.obj
-_PisoActual 32 0 COMRAM 1 bssCOMRAM main.obj
+_PisoActual 3A 0 COMRAM 1 bssCOMRAM main.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 main.obj
 __LbssBANK1 0 0 ABS 0 bssBANK1 main.obj
-_mCiclo 19 0 COMRAM 1 bssCOMRAM main.obj
+_mCiclo 1F 0 COMRAM 1 bssCOMRAM main.obj
 _RCSTAbits FAB 0 ABS 0 - main.obj
-_configurations_init 578 0 CODE 0 text2 main.obj
-___almod 1FA 0 CODE 0 text9 main.obj
-_fStatus 39 0 COMRAM 1 bssCOMRAM main.obj
-__pintcode_body 2F0 0 CODE 0 intcode_body main.obj
+_configurations_init 452 0 CODE 0 text2 main.obj
+_fStatus 41 0 COMRAM 1 bssCOMRAM main.obj
+__pintcode_body 1BE 0 CODE 0 intcode_body main.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss main.obj
 __Lbigram 0 0 ABS 0 bigram main.obj
 __CFG_BOR$OFF 0 0 ABS 0 - main.obj
@@ -595,9 +563,9 @@ __Lcomram 0 0 ABS 0 comram main.obj
 __Lconfig 300000 0 CONFIG 0 config main.obj
 _WAITFRENAR 94 0 BANK0 1 bssBANK0 main.obj
 __Lfarbss 0 0 FARRAM 0 farbss main.obj
-_speedA 29 0 COMRAM 1 bssCOMRAM main.obj
-_speedB 2B 0 COMRAM 1 bssCOMRAM main.obj
-_status 51 0 COMRAM 1 nvCOMRAM main.obj
+_speedA 31 0 COMRAM 1 bssCOMRAM main.obj
+_speedB 33 0 COMRAM 1 bssCOMRAM main.obj
+_status 57 0 COMRAM 1 nvCOMRAM main.obj
 __Lfardata 0 0 FARRAM 0 fardata main.obj
 __CFG_CCP2MX$ON 0 0 ABS 0 - main.obj
 stackhi 7FF 0 ABS 0 - startup.obj
@@ -617,43 +585,40 @@ __Lspace_2 0 0 ABS 0 - main.obj
 __pbssCOMRAM 1 0 COMRAM 1 bssCOMRAM main.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 main.obj
 __Lend_init 18 0 CODE 0 end_init main.obj
-_speedMode 2D 0 COMRAM 1 bssCOMRAM main.obj
+_speedMode 35 0 COMRAM 1 bssCOMRAM main.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM main.obj
 __CFG_CPUDIV$OSC1_PLL2 0 0 ABS 0 - main.obj
-end_of_initialization 3CE 0 CODE 0 cinit main.obj
+end_of_initialization 300 0 CODE 0 cinit main.obj
 __Lnvrram 0 0 COMRAM 1 nvrram main.obj
 __Hintentry 0 0 ABS 0 intentry main.obj
 __CFG_STVREN$ON 0 0 ABS 0 - main.obj
 _RCONbits FD0 0 ABS 0 - main.obj
-___almod@divisor EC 0 BANK0 1 cstackBANK0 main.obj
-?___almod E8 0 BANK0 1 cstackBANK0 main.obj
 __Hreset_vec 4 0 CODE 0 reset_vec main.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 main.obj
 __HbssBANK1 0 0 ABS 0 bssBANK1 main.obj
 __Lramtop 800 0 RAM 0 ramtop main.obj
 __Lrparam 0 0 COMRAM 1 rparam main.obj
-__pcinit 376 0 CODE 0 cinit main.obj
+__pcinit 2A8 0 CODE 0 cinit main.obj
 __ptext0 1C 0 CODE 0 text0 main.obj
-__ptext1 478 0 CODE 0 text1 main.obj
-__ptext2 578 0 CODE 0 text2 main.obj
-__ptext3 558 0 CODE 0 text3 main.obj
-__ptext4 4BC 0 CODE 0 text4 main.obj
-__ptext5 42C 0 CODE 0 text5 main.obj
-__ptext6 56C 0 CODE 0 text6 main.obj
-__ptext7 3D8 0 CODE 0 text7 main.obj
-__ptext8 52E 0 CODE 0 text8 main.obj
-__ptext9 1FA 0 CODE 0 text9 main.obj
+__ptext1 352 0 CODE 0 text1 main.obj
+__ptext2 452 0 CODE 0 text2 main.obj
+__ptext3 432 0 CODE 0 text3 main.obj
+__ptext4 396 0 CODE 0 text4 main.obj
+__ptext5 306 0 CODE 0 text5 main.obj
+__ptext6 446 0 CODE 0 text6 main.obj
+__ptext7 244 0 CODE 0 text7 main.obj
+__ptext8 408 0 CODE 0 text8 main.obj
 __Lstruct 0 0 COMRAM 1 struct main.obj
 __ramtop 800 0 RAM 0 ramtop startup.obj
 _IRCounter 3 0 COMRAM 1 bssCOMRAM main.obj
 __Lpowerup 18 0 CODE 0 powerup main.obj
 __Leeprom_data 0 0 EEDATA 0 eeprom_data main.obj
-__end_of_configurations_init 57A 0 CODE 0 text2 main.obj
+__end_of_configurations_init 454 0 CODE 0 text2 main.obj
 __Lreset_vec 0 0 CODE 0 reset_vec main.obj
 ___param_bank 10 0 ABS 0 - main.obj
 __CFG_WDT$OFF 0 0 ABS 0 - main.obj
 __Hbigdata 0 0 BIGRAM 1 bigdata main.obj
-__end_of__initialization 3CE 0 CODE 0 cinit main.obj
+__end_of__initialization 300 0 CODE 0 cinit main.obj
 __CFG_WRT0$OFF 0 0 ABS 0 - main.obj
 __CFG_WRT1$OFF 0 0 ABS 0 - main.obj
 __CFG_WRT2$OFF 0 0 ABS 0 - main.obj
@@ -662,17 +627,17 @@ __CFG_WRTB$OFF 0 0 ABS 0 - main.obj
 __Libigdata 0 0 CODE 0 ibigdata main.obj
 __CFG_WRTC$OFF 0 0 ABS 0 - main.obj
 __CFG_WRTD$OFF 0 0 ABS 0 - main.obj
-__pidataBANK0 4FA 0 CODE 0 idataBANK0 main.obj
+__pidataBANK0 3D4 0 CODE 0 idataBANK0 main.obj
 __Lclrtext 0 0 ABS 0 clrtext main.obj
 __CFG_FOSC$HSPLL_HS 0 0 ABS 0 - main.obj
-_ReadAnalog 3D8 0 CODE 0 text7 main.obj
+_ReadAnalog 244 0 CODE 0 text7 main.obj
 __CFG_PWRT$OFF 0 0 ABS 0 - main.obj
-__pcstackCOMRAM 41 0 COMRAM 1 cstackCOMRAM main.obj
+__pcstackCOMRAM 49 0 COMRAM 1 cstackCOMRAM main.obj
 _TXSTAbits FAC 0 ABS 0 - main.obj
 _T2CKPS0 7E50 0 ABS 0 - main.obj
 _T2CKPS1 7E51 0 ABS 0 - main.obj
 __Hend_init 1C 0 CODE 0 end_init main.obj
-__end_of_main 1FA 0 CODE 0 text0 main.obj
+__end_of_main 1BE 0 CODE 0 text0 main.obj
 _CCP2CONbits FBA 0 ABS 0 - main.obj
 __pintcode 8 0 CODE 0 intcode main.obj
 _EEADR FA9 0 ABS 0 - main.obj
@@ -701,7 +666,7 @@ _value A8 0 BANK0 1 bssBANK0 main.obj
 _WAITIME 98 0 BANK0 1 bssBANK0 main.obj
 __size_of_enc 0 0 ABS 0 - main.obj
 __HdataBANK0 0 0 ABS 0 dataBANK0 main.obj
-__initialization 376 0 CODE 0 cinit main.obj
+__initialization 2A8 0 CODE 0 cinit main.obj
 __pbssBANK0 60 0 BANK0 1 bssBANK0 main.obj
 __pbssBANK1 100 0 BANK1 1 bssBANK1 main.obj
 _T2CONbits FCA 0 ABS 0 - main.obj
@@ -736,9 +701,9 @@ __Hintcode 18 0 CODE 0 intcode main.obj
 # All other numeric quantities are in decimal.
 %SEGMENTS
 reset_vec 0 0 0 4 1
-bssBANK0 1 60 60 99 1
+bssBANK0 1 60 60 8D 1
 bssBANK1 1 100 100 78 1
-intcode 0 8 8 572 1
+intcode 0 8 8 44C 1
 bssBIGRAM 1 178 178 3FC 1
-bssCOMRAM 1 1 1 51 1
+bssCOMRAM 1 1 1 57 1
 config 0 300000 300000 E 1

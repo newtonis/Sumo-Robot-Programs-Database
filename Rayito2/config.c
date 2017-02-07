@@ -62,7 +62,7 @@ void InitTIMERS(){
     INTCONbits.GIE = 1; //GLOBAL INTERRUPT ENABLE
     
     T0CONbits.TMR0ON = 1; //activo timer -0
-   
+    
     T1CONbits.TMR1ON = 0;
     T1CONbits.T1RD16 = 0;
     T1CONbits.T1RUN = 0;

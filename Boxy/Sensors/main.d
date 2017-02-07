@@ -1,1 +1,1 @@
- main.d  main.p1:  /home/newtonis/Robots/Boxy/Sensors/main.c
+ main.d  main.p1:  main.c

@@ -1,1 +1,1 @@
- main.d  main.p1:  /home/newtonis/Robots/Boxy/Main/main.c /home/newtonis/Robots/Boxy/Main/config.h
+ main.d  main.p1:  main.c config.h

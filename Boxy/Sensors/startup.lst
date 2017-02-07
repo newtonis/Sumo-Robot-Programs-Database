@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-                                                                                                           Sat Aug  6 06:10:05 2016
+                                                                                                           Fri Sep  9 03:26:37 2016
 
 
      1                           
@@ -13,7 +13,7 @@ Microchip Technology PIC Macro Assembler V1.34 build -361300703
      7                           	;
      8                           	; Compiler options:
      9                           	;
-    10                           	; --chip=16f628a /home/newtonis/Robots/Boxy/Sensors/main.c
+    10                           	; --chip=16f628a main.c
     11                           	;
     12                           
     13                           
@@ -103,9 +103,9 @@ Microchip Technology PIC Macro Assembler V1.34 build -361300703
 
 
 Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Sat Aug  6 06:10:05 2016
+Symbol Table                                                                                               Fri Sep  9 03:26:37 2016
 
-               ___sp 0000                 _main 00C7                 start 0010               stackhi 0000  
+               ___sp 0000                 _main 010D                 start 0010               stackhi 0000  
              stacklo 0000  start_initialization 0011             ___int_sp 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
            intlevel5 0000             reset_vec 0000  

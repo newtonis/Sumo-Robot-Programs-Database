@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-                                                                                                           Sat Aug 27 06:31:10 2016
+                                                                                                           Sun Sep 11 04:22:12 2016
 
 
      1                           
@@ -103,9 +103,9 @@ Microchip Technology PIC Macro Assembler V1.34 build -361300703
 
 
 Microchip Technology PIC Macro Assembler V1.34 build -361300703 
-Symbol Table                                                                                               Sat Aug 27 06:31:10 2016
+Symbol Table                                                                                               Sun Sep 11 04:22:12 2016
 
-               ___sp 0000                 _main 017A                 start 0010               stackhi 0000  
+               ___sp 0000                 _main 0180                 start 0010               stackhi 0000  
              stacklo 0000  start_initialization 0011             ___int_sp 0000             intlevel0 0000  
            intlevel1 0000             intlevel2 0000             intlevel3 0000             intlevel4 0000  
            intlevel5 0000             reset_vec 0000  

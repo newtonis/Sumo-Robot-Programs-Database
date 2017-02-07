@@ -6987,7 +6987,11 @@ int d1 , d2;
 int sd;
 int fca = 0;
 
-# 689
+
+
+int d = 0;
+
+
 int main(int argc, char** argv) {
 initYBOT();
 
@@ -7008,15 +7012,18 @@ actual = 0;
 status = ST;
 TIME = 0;
 
-# 714
+
+while (TIME < 5000)
+
+# 717
 status = ST;
 
-# 723
+# 725
 fns = 1;
 while (1){
 
-
-
+# 738
+PORTDbits.RD2 = SS[0];
 if (PORTAbits.RA4 == 0){
 SS[0] = PORTAbits.RA3;
 SS[1] = PORTAbits.RA2;
@@ -7029,17 +7036,7 @@ SS[6] = PORTBbits.RB5;
 SS[7] = PORTBbits.RB4;
 }
 
-# 758
-switch (status){
-case ST:
-PORTDbits.RD1 = TIME % 1000 > 500;
-
-# 775
-break;
-
-}
-
-# 821
+# 832
 }
 }
 

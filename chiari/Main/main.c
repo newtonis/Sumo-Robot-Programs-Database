@@ -684,6 +684,7 @@ int fca = 0;
 
 /** End **/
  //(izq)v1 - v2 - v3 (der)
+int d = 0;
 
 // der , izq
 int main(int argc, char** argv) {
@@ -707,6 +708,8 @@ int main(int argc, char** argv) {
     TIME = 0;
     //
     //Wixel(); //start wixel
+    while (TIME < 5000)
+    
     
 
     //MotorsSpeed(0,0);
@@ -719,12 +722,20 @@ int main(int argc, char** argv) {
     
   
 
-
     fns = 1;
     while (1){
+        /*if (TIME > 6000){
+            printf("{'COM':'line','value':'Chiari %i'}\n",d);
+            d ++;
+            TIME = 0;
+        }*/
+       /*LED_1 = TIME % 6000 > 3000;
+       // continue;*/
+        //LED_1 = 1;
+        //LED_1 = TIME % 6000 > 3000;
         //MotorUpdate();
         //PORTDbits.RD1 = 1;
-        
+        LED_1 = SS[0];
         if (PCLK == 0){
             SS[0] = P0;
             SS[1] = P1;
@@ -755,9 +766,9 @@ int main(int argc, char** argv) {
         MotorsSpeed(d1 ,d2 );
         continue;*/
        
-        switch (status){
+        /*switch (status){
             case ST:
-                LED_0 = TIME % 1000 > 500;
+                LED_0 = V[0];
                 /*L_RED = V1;
                 L_YELLOW = V2;
                 L_GREEN = V3;
@@ -772,9 +783,9 @@ int main(int argc, char** argv) {
                     status = WAIT;
                     TIME = 0;
                 }*/
-            break;
+           /// break;
             
-        }
+        //}
         //L_RED = V1;
        // L_YELLOW = V2;
         //L_GREEN = V3;

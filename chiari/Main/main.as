@@ -484,7 +484,6 @@ TOSL equ 0FFDh ;#
 TOSH equ 0FFEh ;# 
 # 9473 "/opt/microchip/xc8/v1.34/include/pic18f4550.h"
 TOSU equ 0FFFh ;# 
-	FNCALL	_main,___almod
 	FNCALL	_main,_initYBOT
 	FNCALL	_initYBOT,_InitAnalog
 	FNCALL	_initYBOT,_InitSP
@@ -572,6 +571,7 @@ __pidataBANK0:
 	global	_d2
 	global	_fa
 	global	_fb
+	global	_fns
 	global	_ma
 	global	_mb
 	global	_mode
@@ -597,14 +597,10 @@ __pnvCOMRAM:
 	global	_status
 _status:
        ds      1
-	global	_fns
+	global	_gstatus
 psect	nvBANK0,class=BANK0,space=1,noexec
 global __pnvBANK0
 __pnvBANK0:
-	global	_fns
-_fns:
-       ds      2
-	global	_gstatus
 	global	_gstatus
 _gstatus:
        ds      1
@@ -824,6 +820,10 @@ _b:
 	global	_cox
 _cox:
        ds      2
+	global	_d
+	global	_d
+_d:
+       ds      2
 	global	_d1
 _d1:
        ds      2
@@ -839,6 +839,13 @@ _fb:
 	global	_fc
 	global	_fc
 _fc:
+       ds      2
+	global	_fca
+	global	_fca
+_fca:
+       ds      2
+	global	_fns
+_fns:
        ds      2
 	global	_giro
 	global	_giro
@@ -875,6 +882,10 @@ _next:
        ds      2
 	global	_sa
 _sa:
+       ds      2
+	global	_sd
+	global	_sd
+_sd:
        ds      2
 	global	_speedA
 	global	_speedA
@@ -1005,14 +1016,6 @@ _value:
 	global	_w
 _w:
        ds      4
-	global	_fca
-	global	_fca
-_fca:
-       ds      2
-	global	_sd
-	global	_sd
-_sd:
-       ds      2
 psect	dataBANK0,class=BANK0,space=1,noexec
 global __pdataBANK0
 __pdataBANK0:
@@ -1090,18 +1093,18 @@ clear_1:
 clrf	postinc0,c
 decf	wreg
 bnz	clear_1
-; Clear objects allocated to BANK0 (84 bytes)
+; Clear objects allocated to BANK0 (80 bytes)
 	global __pbssBANK0
 lfsr	0,__pbssBANK0
-movlw	84
+movlw	80
 clear_2:
 clrf	postinc0,c
 decf	wreg
 bnz	clear_2
-; Clear objects allocated to COMRAM (64 bytes)
+; Clear objects allocated to COMRAM (72 bytes)
 	global __pbssCOMRAM
 lfsr	0,__pbssCOMRAM
-movlw	64
+movlw	72
 clear_3:
 clrf	postinc0,c
 decf	wreg
@@ -1130,28 +1133,29 @@ global end_of_initialization,__end_of__initialization
 ;End of C runtime variable initialization code
 
 end_of_initialization:
-__end_of__initialization:	GLOBAL	__Lmediumconst
-	movlw	low highword(__Lmediumconst)
-	movwf	tblptru
-movlb 0
+__end_of__initialization:movlb 0
 goto _main	;jump to C main() function
 psect	cstackBANK0,class=BANK0,space=1,noexec
 global __pcstackBANK0
 __pcstackBANK0:
-	global	?___almod
-?___almod:	; 4 bytes @ 0x0
-	global	___almod@dividend
-___almod@dividend:	; 4 bytes @ 0x0
-	ds   4
-	global	___almod@divisor
-___almod@divisor:	; 4 bytes @ 0x4
-	ds   4
-?_main:	; 2 bytes @ 0x8
-main@argc:	; 2 bytes @ 0x8
+??_ResetCounter:	; 0 bytes @ 0x0
+??_InitAnalog:	; 0 bytes @ 0x0
+??_InitTIMERS:	; 0 bytes @ 0x0
+??_MotorsPWM:	; 0 bytes @ 0x0
+??_ReadAnalog:	; 0 bytes @ 0x0
+??_configurations_init:	; 0 bytes @ 0x0
+	ds   1
+	global	ReadAnalog@channel
+ReadAnalog@channel:	; 1 bytes @ 0x1
+	ds   1
+??_InitSP:	; 0 bytes @ 0x2
+??_initYBOT:	; 0 bytes @ 0x2
+?_main:	; 2 bytes @ 0x2
+main@argc:	; 2 bytes @ 0x2
 	ds   2
-main@argv:	; 3 bytes @ 0xA
+main@argv:	; 3 bytes @ 0x4
 	ds   3
-??_main:	; 0 bytes @ 0xD
+??_main:	; 0 bytes @ 0x7
 	ds   1
 psect	cstackCOMRAM,class=COMRAM,space=1,noexec
 global __pcstackCOMRAM
@@ -1167,36 +1171,19 @@ __pcstackCOMRAM:
 ?_enc:	; 0 bytes @ 0x0
 ??_enc:	; 0 bytes @ 0x0
 	ds   14
-??_ResetCounter:	; 0 bytes @ 0xE
-??_InitAnalog:	; 0 bytes @ 0xE
-??_InitTIMERS:	; 0 bytes @ 0xE
-??_MotorsPWM:	; 0 bytes @ 0xE
-??_ReadAnalog:	; 0 bytes @ 0xE
-??_configurations_init:	; 0 bytes @ 0xE
-??___almod:	; 0 bytes @ 0xE
-	global	___almod@counter
-___almod@counter:	; 1 bytes @ 0xE
-	ds   1
-	global	ReadAnalog@channel
-ReadAnalog@channel:	; 1 bytes @ 0xF
-	global	___almod@sign
-___almod@sign:	; 1 bytes @ 0xF
-	ds   1
-??_InitSP:	; 0 bytes @ 0x10
-??_initYBOT:	; 0 bytes @ 0x10
 ;!
 ;!Data Sizes:
 ;!    Strings     0
 ;!    Constant    0
 ;!    Data        52
-;!    BSS         1288
-;!    Persistent  4
+;!    BSS         1292
+;!    Persistent  2
 ;!    Stack       0
 ;!
 ;!Auto Spaces:
 ;!    Space          Size  Autos    Used
-;!    COMRAM           95     16      81
-;!    BANK0           160     14     153
+;!    COMRAM           95     14      87
+;!    BANK0           160      8     141
 ;!    BANK1           256      0     120
 ;!    BANK2           256      0       0
 ;!    BANK3           256      0       0
@@ -1214,8 +1201,7 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;!Critical Paths under _main in COMRAM
 ;!
-;!    _main->___almod
-;!    _InitSP->_ReadAnalog
+;!    None.
 ;!
 ;!Critical Paths under _enc in COMRAM
 ;!
@@ -1223,7 +1209,7 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!
 ;!Critical Paths under _main in BANK0
 ;!
-;!    _main->___almod
+;!    _InitSP->_ReadAnalog
 ;!
 ;!Critical Paths under _enc in BANK0
 ;!
@@ -1295,12 +1281,11 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! ---------------------------------------------------------------------------------
 ;! (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;! ---------------------------------------------------------------------------------
-;! (0) _main                                                 6     1      5     675
-;!                                              8 BANK0      6     1      5
-;!                            ___almod
+;! (0) _main                                                 6     1      5     124
+;!                                              2 BANK0      6     1      5
 ;!                           _initYBOT
 ;! ---------------------------------------------------------------------------------
-;! (1) _initYBOT                                             0     0      0      88
+;! (1) _initYBOT                                             0     0      0     124
 ;!                         _InitAnalog
 ;!                             _InitSP
 ;!                         _InitTIMERS
@@ -1316,17 +1301,13 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! ---------------------------------------------------------------------------------
 ;! (2) _InitTIMERS                                           0     0      0       0
 ;! ---------------------------------------------------------------------------------
-;! (2) _InitSP                                               0     0      0      88
+;! (2) _InitSP                                               0     0      0     124
 ;!                         _ReadAnalog
 ;! ---------------------------------------------------------------------------------
-;! (3) _ReadAnalog                                           2     2      0      88
-;!                                             14 COMRAM     2     2      0
+;! (3) _ReadAnalog                                           2     2      0     124
+;!                                              0 BANK0      2     2      0
 ;! ---------------------------------------------------------------------------------
 ;! (2) _InitAnalog                                           0     0      0       0
-;! ---------------------------------------------------------------------------------
-;! (1) ___almod                                             10     2      8     587
-;!                                             14 COMRAM     2     2      0
-;!                                              0 BANK0      8     0      8
 ;! ---------------------------------------------------------------------------------
 ;! Estimated maximum stack depth 3
 ;! ---------------------------------------------------------------------------------
@@ -1341,7 +1322,6 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;! Call Graph Graphs:
 ;!
 ;! _main (ROOT)
-;!   ___almod
 ;!   _initYBOT
 ;!     _InitAnalog
 ;!     _InitSP
@@ -1374,29 +1354,29 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;!BITBANK1           100      0       0       6        0.0%
 ;!BANK1              100      0      78       7       46.9%
 ;!BITBANK0            A0      0       0       4        0.0%
-;!BANK0               A0      E      99       5       95.6%
+;!BANK0               A0      8      8D       5       88.1%
 ;!BITCOMRAM           5F      0       0       0        0.0%
-;!COMRAM              5F     10      51       1       85.3%
+;!COMRAM              5F      E      57       1       91.6%
 ;!BITSFR               0      0       0      40        0.0%
 ;!SFR                  0      0       0      40        0.0%
 ;!STACK                0      0       0       2        0.0%
 ;!NULL                 0      0       0       0        0.0%
-;!ABS                  0      0     162      20        0.0%
-;!DATA                 0      0     55E       3        0.0%
+;!ABS                  0      0     15C      20        0.0%
+;!DATA                 0      0     558       3        0.0%
 ;!CODE                 0      0       0       0        0.0%
 
 	global	_main
 
 ;; *************** function _main *****************
 ;; Defined at:
-;;		line 689 in file "/home/newtonis/Robots/chiari/Main/main.c"
+;;		line 690 in file "/home/newtonis/Robots/chiari/Main/main.c"
 ;; Parameters:    Size  Location     Type
-;;  argc            2    8[BANK0 ] int 
-;;  argv            3   10[BANK0 ] PTR PTR unsigned char 
+;;  argc            2    2[BANK0 ] int 
+;;  argv            3    4[BANK0 ] PTR PTR unsigned char 
 ;; Auto vars:     Size  Location     Type
 ;;		None
 ;; Return value:  Size  Location     Type
-;;                  2    8[BANK0 ] int 
+;;                  2    2[BANK0 ] int 
 ;; Registers used:
 ;;		wreg, status,2, status,0, cstack
 ;; Tracked objects:
@@ -1411,7 +1391,6 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;;Total ram usage:        6 bytes
 ;; Hardware stack levels required when called:    4
 ;; This function calls:
-;;		___almod
 ;;		_initYBOT
 ;; This function is called by:
 ;;		Startup code after reset
@@ -1419,93 +1398,93 @@ ___almod@sign:	; 1 bytes @ 0xF
 ;;
 psect	text0,class=CODE,space=0,reloc=2
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	689
+	line	690
 global __ptext0
 __ptext0:
 psect	text0
 	file	"/home/newtonis/Robots/chiari/Main/main.c"
-	line	689
+	line	690
 	global	__size_of_main
 	__size_of_main	equ	__end_of_main-_main
 	
 _main:
 ;incstack = 0
 	opt	stack 27
-	line	690
+	line	691
 	
-l1882:
+l1886:
 	call	_initYBOT	;wreg free
-	line	692
+	line	693
 	
-l1884:
+l1888:
 	movlw	high(0)
 	movwf	((c:_fa+1)),c
 	movlw	low(0)
 	movwf	((c:_fa)),c
-	line	693
+	line	694
 	
-l1886:
+l1890:
 	movlw	high(0)
 	movwf	((c:_fb+1)),c
 	movlw	low(0)
 	movwf	((c:_fb)),c
-	line	694
+	line	695
 	
-l1888:
+l1892:
 	movlw	high(0)
 	movwf	((c:_ma+1)),c
 	movlw	low(0)
 	movwf	((c:_ma)),c
-	line	695
+	line	696
 	
-l1890:
+l1894:
 	movlw	high(0)
 	movwf	((c:_mb+1)),c
 	movlw	low(0)
 	movwf	((c:_mb)),c
-	line	696
+	line	697
 	
-l1892:
+l1896:
 	movlw	high(0)
 	movwf	((c:_d1+1)),c
 	movlw	low(0)
 	movwf	((c:_d1)),c
-	line	697
+	line	698
 	
-l1894:
+l1898:
 	movlw	high(0)
 	movwf	((c:_d2+1)),c
 	movlw	low(0)
 	movwf	((c:_d2)),c
-	line	699
+	line	700
 	
-l1896:
+l1900:
 	movlw	high(0)
 	movwf	((c:_sa+1)),c
 	movlw	low(0)
 	movwf	((c:_sa)),c
-	line	700
+	line	701
 	
-l1898:
+l1902:
 	movlw	high(0)
 	movwf	((c:_mode+1)),c
 	movlw	low(0)
 	movwf	((c:_mode)),c
-	line	701
+	line	702
 	
-l1900:
+l1904:
 	movlw	high(0)
 	movwf	((c:_a+1)),c
 	movlw	low(0)
 	movwf	((c:_a)),c
-	line	702
-	
-l1902:
-	movlb	0	; () banked
-	setf	((_gstatus))&0ffh
 	line	703
 	
-l1904:; BSR set to: 0
+l1906:
+	movlb	0	; () banked
+	setf	((_gstatus))&0ffh
+	line	704
+	
+l1908:; BSR set to: 0
 
 	movlw	low(0)
 	movlb	0	; () banked
@@ -1516,29 +1495,29 @@ l1904:; BSR set to: 0
 	movwf	((_WAITIME+2))&0ffh
 	movlw	high highword(0)
 	movwf	((_WAITIME+3))&0ffh
-	line	704
+	line	705
 	
-l1906:; BSR set to: 0
+l1910:; BSR set to: 0
 
 	movlw	high(0)
 	movwf	((c:_CURRENT+1)),c
 	movlw	low(0)
 	movwf	((c:_CURRENT)),c
-	line	705
+	line	706
 	
-l1908:; BSR set to: 0
+l1912:; BSR set to: 0
 
 	movlw	low(0)
 	movwf	((c:_actual)),c
-	line	706
+	line	707
 	
-l1910:; BSR set to: 0
+l1914:; BSR set to: 0
 
 	movlw	low(02h)
 	movwf	((c:_status)),c
-	line	707
+	line	708
 	
-l1912:; BSR set to: 0
+l1916:; BSR set to: 0
 
 	movlw	low(0)
 	movlb	0	; () banked
@@ -1549,41 +1528,204 @@ l1912:; BSR set to: 0
 	movwf	((_TIME+2))&0ffh
 	movlw	high highword(0)
 	movwf	((_TIME+3))&0ffh
-	line	714
+	line	711
+	goto	l1920
 	
-l1914:; BSR set to: 0
+l459:; BSR set to: 0
 
-	movlw	low(02h)
-	movwf	((c:_status)),c
-	line	723
-	
-l1916:; BSR set to: 0
-
-	movlw	high(01h)
-	movlb	0	; () banked
-	movwf	((_fns+1))&0ffh
-	movlw	low(01h)
-	movwf	((_fns))&0ffh
-	goto	l1918
-	line	724
-	
-l456:; BSR set to: 0
-
-	line	728
+	line	717
 	
 l1918:; BSR set to: 0
 
-	btfsc	((c:3968)),c,4	;volatile
-	goto	u1141
-	goto	u1140
-u1141:
-	goto	l1922
-u1140:
-	line	729
+	movlw	low(02h)
+	movwf	((c:_status)),c
+	goto	l1920
+	
+l458:; BSR set to: 0
+
+	line	711
 	
 l1920:; BSR set to: 0
 
+	movlb	0	; () banked
+	btfsc	((_TIME+3))&0ffh,7
+	goto	u1061
+	movlb	0	; () banked
+	movf	((_TIME+3))&0ffh,w
+	movlb	0	; () banked
+	iorwf	((_TIME+2))&0ffh,w
+	bnz	u1060
+	movlw	136
+	movlb	0	; () banked
+	subwf	 ((_TIME))&0ffh,w
+	movlw	19
+	movlb	0	; () banked
+	subwfb	((_TIME+1))&0ffh,w
+	btfss	status,0
+	goto	u1061
+	goto	u1060
+
+u1061:
+	goto	l1918
+u1060:
+	goto	l1922
+	
+l460:; BSR set to: 0
+
+	line	725
+	
+l1922:; BSR set to: 0
+
+	movlw	high(01h)
+	movwf	((c:_fns+1)),c
+	movlw	low(01h)
+	movwf	((c:_fns)),c
+	goto	l1924
+	line	726
+	
+l461:; BSR set to: 0
+
+	line	738
+	
+l1924:; BSR set to: 0
+
+	movlb	0	; () banked
+	btfsc	(_SS)&0ffh,0
+	bra	u1075
+	bcf	((c:3971)),c,2	;volatile
+	bra	u1076
+	u1075:
+	bsf	((c:3971)),c,2	;volatile
+	u1076:
+
+	line	739
+	
+l1926:
+	btfsc	((c:3968)),c,4	;volatile
+	goto	u1081
+	goto	u1080
+u1081:
+	goto	l1930
+u1080:
+	line	740
+	
+l1928:
 	btfsc	((c:3968)),c,3	;volatile
+	goto	u1091
+	goto	u1090
+u1091:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1098
+u1090:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1098:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	((_SS))&0ffh
+	clrf	((_SS+1))&0ffh
+	line	741
+	btfsc	((c:3968)),c,2	;volatile
+	goto	u1101
+	goto	u1100
+u1101:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1108
+u1100:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1108:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+02h))&0ffh
+	clrf	(1+(_SS+02h))&0ffh
+	line	742
+	btfsc	((c:3969)),c,5	;volatile
+	goto	u1111
+	goto	u1110
+u1111:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1118
+u1110:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1118:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+04h))&0ffh
+	clrf	(1+(_SS+04h))&0ffh
+	line	743
+	btfsc	((c:3969)),c,4	;volatile
+	goto	u1121
+	goto	u1120
+u1121:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1128
+u1120:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1128:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+06h))&0ffh
+	clrf	(1+(_SS+06h))&0ffh
+	line	744
+	goto	l1924
+	
+l462:; BSR set to: 0
+
+	line	745
+	
+l1930:
+	btfsc	((c:3968)),c,3	;volatile
+	goto	u1131
+	goto	u1130
+u1131:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1138
+u1130:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1138:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+08h))&0ffh
+	clrf	(1+(_SS+08h))&0ffh
+	line	746
+	btfsc	((c:3968)),c,2	;volatile
+	goto	u1141
+	goto	u1140
+u1141:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+	incf	(??_main+0+0)&0ffh
+	goto	u1148
+u1140:
+	movlb	0	; () banked
+	clrf	(??_main+0+0)&0ffh
+u1148:
+	movlb	0	; () banked
+	movf	(??_main+0+0)&0ffh,w
+	movlb	0	; () banked
+	movwf	(0+(_SS+0Ah))&0ffh
+	clrf	(1+(_SS+0Ah))&0ffh
+	line	747
+	btfsc	((c:3969)),c,5	;volatile
 	goto	u1151
 	goto	u1150
 u1151:
@@ -1598,10 +1740,10 @@ u1158:
 	movlb	0	; () banked
 	movf	(??_main+0+0)&0ffh,w
 	movlb	0	; () banked
-	movwf	((_SS))&0ffh
-	clrf	((_SS+1))&0ffh
-	line	730
-	btfsc	((c:3968)),c,2	;volatile
+	movwf	(0+(_SS+0Ch))&0ffh
+	clrf	(1+(_SS+0Ch))&0ffh
+	line	748
+	btfsc	((c:3969)),c,4	;volatile
 	goto	u1161
 	goto	u1160
 u1161:
@@ -1616,237 +1758,26 @@ u1168:
 	movlb	0	; () banked
 	movf	(??_main+0+0)&0ffh,w
 	movlb	0	; () banked
-	movwf	(0+(_SS+02h))&0ffh
-	clrf	(1+(_SS+02h))&0ffh
-	line	731
-	btfsc	((c:3969)),c,5	;volatile
-	goto	u1171
-	goto	u1170
-u1171:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1178
-u1170:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1178:
-	movlb	0	; () banked
-	movf	(??_main+0+0)&0ffh,w
-	movlb	0	; () banked
-	movwf	(0+(_SS+04h))&0ffh
-	clrf	(1+(_SS+04h))&0ffh
-	line	732
-	btfsc	((c:3969)),c,4	;volatile
-	goto	u1181
-	goto	u1180
-u1181:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1188
-u1180:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1188:
-	movlb	0	; () banked
-	movf	(??_main+0+0)&0ffh,w
-	movlb	0	; () banked
-	movwf	(0+(_SS+06h))&0ffh
-	clrf	(1+(_SS+06h))&0ffh
-	line	733
-	goto	l1928
-	
-l457:; BSR set to: 0
-
-	line	734
-	
-l1922:; BSR set to: 0
-
-	btfsc	((c:3968)),c,3	;volatile
-	goto	u1191
-	goto	u1190
-u1191:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1198
-u1190:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1198:
-	movlb	0	; () banked
-	movf	(??_main+0+0)&0ffh,w
-	movlb	0	; () banked
-	movwf	(0+(_SS+08h))&0ffh
-	clrf	(1+(_SS+08h))&0ffh
-	line	735
-	btfsc	((c:3968)),c,2	;volatile
-	goto	u1201
-	goto	u1200
-u1201:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1208
-u1200:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1208:
-	movlb	0	; () banked
-	movf	(??_main+0+0)&0ffh,w
-	movlb	0	; () banked
-	movwf	(0+(_SS+0Ah))&0ffh
-	clrf	(1+(_SS+0Ah))&0ffh
-	line	736
-	btfsc	((c:3969)),c,5	;volatile
-	goto	u1211
-	goto	u1210
-u1211:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1218
-u1210:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1218:
-	movlb	0	; () banked
-	movf	(??_main+0+0)&0ffh,w
-	movlb	0	; () banked
-	movwf	(0+(_SS+0Ch))&0ffh
-	clrf	(1+(_SS+0Ch))&0ffh
-	line	737
-	btfsc	((c:3969)),c,4	;volatile
-	goto	u1221
-	goto	u1220
-u1221:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1228
-u1220:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1228:
-	movlb	0	; () banked
-	movf	(??_main+0+0)&0ffh,w
-	movlb	0	; () banked
 	movwf	(0+(_SS+0Eh))&0ffh
 	clrf	(1+(_SS+0Eh))&0ffh
-	goto	l1928
-	line	738
-	
-l458:; BSR set to: 0
-
-	line	758
-	goto	l1928
-	line	759
-	
-l460:; BSR set to: 0
-
-	line	760
-	
-l1924:; BSR set to: 0
-
-	movff	(_TIME),(___almod@dividend)
-	movff	(_TIME+1),(___almod@dividend+1)
-	movff	(_TIME+2),(___almod@dividend+2)
-	movff	(_TIME+3),(___almod@dividend+3)
-	movlw	low(03E8h)
-	movlb	0	; () banked
-	movwf	((___almod@divisor))&0ffh
-	movlw	high(03E8h)
-	movwf	((___almod@divisor+1))&0ffh
-	movlw	low highword(03E8h)
-	movwf	((___almod@divisor+2))&0ffh
-	movlw	high highword(03E8h)
-	movwf	((___almod@divisor+3))&0ffh
-	call	___almod	;wreg free
-	movlb	0	; () banked
-	movlb	0	; () banked
-	btfsc	(3+?___almod)&0ffh,7
-	goto	u1230
-	movlb	0	; () banked
-	movlb	0	; () banked
-	movf	(3+?___almod)&0ffh,w
-	movlb	0	; () banked
-	movlb	0	; () banked
-	iorwf	(2+?___almod)&0ffh,w
-	bnz	u1231
-	movlw	245
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwf	 (0+?___almod)&0ffh,w
-	movlw	1
-	movlb	0	; () banked
-	movlb	0	; () banked
-	subwfb	(1+?___almod)&0ffh,w
-	btfsc	status,0
-	goto	u1231
-	goto	u1230
-
-u1231:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-	incf	(??_main+0+0)&0ffh
-	goto	u1248
-u1230:
-	movlb	0	; () banked
-	clrf	(??_main+0+0)&0ffh
-u1248:
-	movlb	0	; () banked
-	rlncf	(??_main+0+0)&0ffh
-	movf	((c:3971)),c,w	;volatile
-	movlb	0	; () banked
-	xorwf	(??_main+0+0)&0ffh,w
-	andlw	not (((1<<1)-1)<<1)
-	xorwf	(??_main+0+0)&0ffh,w
-	movwf	((c:3971)),c	;volatile
-	line	775
-	goto	l1918
-	line	777
-	
-l1926:; BSR set to: 0
-
-	goto	l1918
-	line	758
-	
-l459:; BSR set to: 0
-
-	
-l1928:; BSR set to: 0
-
-	movf	((c:_status)),c,w
-	; Switch size 1, requested type "space"
-; Number of cases is 1, Range of values is 2 to 2
-; switch strategies available:
-; Name         Instructions Cycles
-; simple_byte            4     3 (average)
-;	Chosen strategy is simple_byte
-
-	xorlw	2^0	; case 2
-	skipnz
 	goto	l1924
-	goto	l1918
-
-	line	777
-	
-l461:; BSR set to: 0
-
-	goto	l1918
-	line	821
-	
-l462:; BSR set to: 0
-
-	line	724
-	goto	l1918
+	line	749
 	
 l463:; BSR set to: 0
 
-	line	822
+	goto	l1924
+	line	832
 	
 l464:; BSR set to: 0
+
+	line	726
+	goto	l1924
+	
+l465:; BSR set to: 0
+
+	line	833
+	
+l466:; BSR set to: 0
 
 	global	start
 	goto	start
@@ -1906,7 +1837,7 @@ _initYBOT:; BSR set to: 0
 	opt	stack 27
 	line	353
 	
-l1574:
+l1858:
 	movlw	low(0)
 	movlb	0	; () banked
 	movwf	((_TIME))&0ffh
@@ -1928,35 +1859,35 @@ l1574:
 	movwf	((_MS+3))&0ffh
 	line	355
 	
-l1576:; BSR set to: 0
+l1860:; BSR set to: 0
 
 	call	_ResetCounter	;wreg free
 	line	356
 	
-l1578:
+l1862:
 	movlw	low(0)
 	movlb	0	; () banked
 	movwf	((_gstatus))&0ffh
 	line	358
 	
-l1580:; BSR set to: 0
+l1864:; BSR set to: 0
 
 	call	_configurations_init	;wreg free
 	line	359
 	
-l1582:
+l1866:
 	call	_InitAnalog	;wreg free
 	line	360
 	
-l1584:
+l1868:
 	call	_InitTIMERS	;wreg free
 	line	361
 	
-l1586:
+l1870:
 	call	_InitSP	;wreg free
 	line	362
 	
-l1588:
+l1872:
 	call	_MotorsPWM	;wreg free
 	line	365
 	
@@ -2064,7 +1995,7 @@ _ResetCounter:
 	opt	stack 28
 	line	459
 	
-l1500:
+l1784:
 	movlw	low(0)
 	movlb	0	; () banked
 	movwf	((_TIME))&0ffh
@@ -2130,7 +2061,7 @@ _MotorsPWM:; BSR set to: 0
 	opt	stack 28
 	line	588
 	
-l1566:
+l1850:
 	bcf	c:(32339/8),(32339)&7	;volatile
 	line	589
 	bcf	c:(32340/8),(32340)&7	;volatile
@@ -2148,7 +2079,7 @@ l1566:
 	bsf	c:(32338/8),(32338)&7	;volatile
 	line	600
 	
-l1568:
+l1852:
 	movf	((c:4042)),c,w	;volatile
 	andlw	not (((1<<4)-1)<<3)
 	iorlw	(0Bh & ((1<<4)-1))<<3
@@ -2160,14 +2091,14 @@ l1568:
 	movwf	((c:4042)),c	;volatile
 	line	602
 	
-l1570:
+l1854:
 	bcf	((c:4042)),c,2	;volatile
 	line	603
 	movlw	low(0F5h)
 	movwf	((c:4043)),c	;volatile
 	line	604
 	
-l1572:
+l1856:
 	bsf	((c:4042)),c,2	;volatile
 	line	607
 	movf	((c:4029)),c,w	;volatile
@@ -2236,7 +2167,7 @@ _InitTIMERS:
 	opt	stack 28
 	line	393
 	
-l1512:
+l1796:
 	bcf	((c:4053)),c,7	;volatile
 	line	394
 	bcf	((c:4053)),c,6	;volatile
@@ -2246,7 +2177,7 @@ l1512:
 	bsf	((c:4053)),c,3	;volatile
 	line	398
 	
-l1514:
+l1798:
 	movlw	low(0F8h)
 	movwf	((c:4055)),c	;volatile
 	line	399
@@ -2254,50 +2185,50 @@ l1514:
 	movwf	((c:4054)),c	;volatile
 	line	402
 	
-l1516:
+l1800:
 	bsf	((c:4081)),c,2	;volatile
 	line	403
 	
-l1518:
+l1802:
 	bcf	((c:4048)),c,7	;volatile
 	line	404
 	
-l1520:
+l1804:
 	bsf	((c:4082)),c,5	;volatile
 	line	408
 	
-l1522:
+l1806:
 	bsf	((c:4082)),c,7	;volatile
 	line	410
 	
-l1524:
+l1808:
 	bsf	((c:4053)),c,7	;volatile
 	line	412
 	
-l1526:
+l1810:
 	bcf	((c:4045)),c,0	;volatile
 	line	413
 	
-l1528:
+l1812:
 	bcf	((c:4045)),c,7	;volatile
 	line	414
 	
-l1530:
+l1814:
 	bcf	((c:4045)),c,6	;volatile
 	line	415
 	movlw	((0 & ((1<<2)-1))<<4)|not (((1<<2)-1)<<4)
 	andwf	((c:4045)),c	;volatile
 	line	416
 	
-l1532:
+l1816:
 	bcf	((c:4045)),c,3	;volatile
 	line	417
 	
-l1534:
+l1818:
 	bcf	((c:4045)),c,1	;volatile
 	line	418
 	
-l1536:
+l1820:
 	bsf	((c:4045)),c,0	;volatile
 	line	420
 	movlw	low(0F8h)
@@ -2307,51 +2238,51 @@ l1536:
 	movwf	((c:4046)),c	;volatile
 	line	437
 	
-l1538:
+l1822:
 	bcf	((c:3989)),c,1	;volatile
 	line	438
 	
-l1540:
+l1824:
 	bcf	((c:3989)),c,2	;volatile
 	line	439
 	
-l1542:
+l1826:
 	bcf	((c:3989)),c,3	;volatile
 	line	442
 	
-l1544:
+l1828:
 	bcf	((c:3988)),c,2	;volatile
 	line	443
 	
-l1546:
+l1830:
 	bcf	((c:3988)),c,1	;volatile
 	line	445
 	
-l1548:
+l1832:
 	bcf	((c:3989)),c,0	;volatile
 	line	446
 	
-l1550:
+l1834:
 	bcf	((c:3988)),c,0	;volatile
 	line	449
 	
-l1552:
+l1836:
 	bsf	((c:3986)),c,4	;volatile
 	line	450
 	
-l1554:
+l1838:
 	bsf	((c:3986)),c,3	;volatile
 	line	451
 	
-l1556:
+l1840:
 	bsf	((c:3986)),c,2	;volatile
 	line	452
 	
-l1558:
+l1842:
 	bsf	((c:3987)),c,5	;volatile
 	line	453
 	
-l1560:
+l1844:
 	bsf	((c:3987)),c,4	;volatile
 	line	455
 	
@@ -2407,12 +2338,12 @@ _InitSP:
 	opt	stack 27
 	line	511
 	
-l1562:
+l1846:
 	movlw	low(0)
 	movwf	((c:_PisoActual)),c
 	line	512
 	
-l1564:
+l1848:
 	movf	((c:_PisoActual)),c,w
 	
 	call	_ReadAnalog
@@ -2432,7 +2363,7 @@ GLOBAL	__end_of_InitSP
 ;; Parameters:    Size  Location     Type
 ;;  channel         1    wreg     unsigned char 
 ;; Auto vars:     Size  Location     Type
-;;  channel         1   15[COMRAM] unsigned char 
+;;  channel         1    1[BANK0 ] unsigned char 
 ;; Return value:  Size  Location     Type
 ;;		None               void
 ;; Registers used:
@@ -2443,9 +2374,9 @@ GLOBAL	__end_of_InitSP
 ;;		Unchanged: 0/0
 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
 ;;      Params:         0       0       0       0       0       0       0       0       0
-;;      Locals:         1       0       0       0       0       0       0       0       0
-;;      Temps:          1       0       0       0       0       0       0       0       0
-;;      Totals:         2       0       0       0       0       0       0       0       0
+;;      Locals:         0       1       0       0       0       0       0       0       0
+;;      Temps:          0       1       0       0       0       0       0       0       0
+;;      Totals:         0       2       0       0       0       0       0       0       0
 ;;Total ram usage:        2 bytes
 ;; Hardware stack levels used:    1
 ;; Hardware stack levels required when called:    1
@@ -2469,78 +2400,88 @@ psect	text7
 _ReadAnalog:
 ;incstack = 0
 	opt	stack 27
-	movwf	((c:ReadAnalog@channel)),c
+	movlb	0	; () banked
+	movwf	((ReadAnalog@channel))&0ffh
 	line	515
 	
-l1488:
+l1772:; BSR set to: 0
+
+	movlb	0	; () banked
 	
-	btfsc	((c:ReadAnalog@channel)),c,(0)&7
-	goto	u561
-	goto	u560
-u561:
+	movlb	0	; () banked
+	btfsc	((ReadAnalog@channel))&0ffh,(0)&7
+	goto	u961
+	goto	u960
+u961:
 	bsf	c:(32274/8),(32274)&7	;volatile
-	goto	u575
-u560:
+	goto	u975
+u960:
 	bcf	c:(32274/8),(32274)&7	;volatile
-u575:
+u975:
 	line	516
 	
-l1490:
-	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
+l1774:
+	movff	(ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	03h
-	andwf	(??_ReadAnalog+0+0),c
+	movlb	0	; () banked
+	andwf	(??_ReadAnalog+0+0)&0ffh
 		movlw	02h-0
-	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u581
-	goto	u580
+	movlb	0	; () banked
+	cpfslt	(??_ReadAnalog+0+0)&0ffh
+	goto	u981
+	goto	u980
 
-u581:
+u981:
 	bsf	c:(32275/8),(32275)&7	;volatile
-	goto	u595
-u580:
+	goto	u995
+u980:
 	bcf	c:(32275/8),(32275)&7	;volatile
-u595:
+u995:
 	line	517
 	
-l1492:
-	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
+l1776:
+	movff	(ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	07h
-	andwf	(??_ReadAnalog+0+0),c
+	movlb	0	; () banked
+	andwf	(??_ReadAnalog+0+0)&0ffh
 		movlw	04h-0
-	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u601
-	goto	u600
+	movlb	0	; () banked
+	cpfslt	(??_ReadAnalog+0+0)&0ffh
+	goto	u1001
+	goto	u1000
 
-u601:
+u1001:
 	bsf	c:(32276/8),(32276)&7	;volatile
-	goto	u615
-u600:
+	goto	u1015
+u1000:
 	bcf	c:(32276/8),(32276)&7	;volatile
-u615:
+u1015:
 	line	518
 	
-l1494:
-	movff	(c:ReadAnalog@channel),??_ReadAnalog+0+0
+l1778:
+	movff	(ReadAnalog@channel),??_ReadAnalog+0+0
 	movlw	0Fh
-	andwf	(??_ReadAnalog+0+0),c
+	movlb	0	; () banked
+	andwf	(??_ReadAnalog+0+0)&0ffh
 		movlw	08h-0
-	cpfslt	(??_ReadAnalog+0+0),c
-	goto	u621
-	goto	u620
+	movlb	0	; () banked
+	cpfslt	(??_ReadAnalog+0+0)&0ffh
+	goto	u1021
+	goto	u1020
 
-u621:
+u1021:
 	bsf	c:(32277/8),(32277)&7	;volatile
-	goto	u635
-u620:
+	goto	u1035
+u1020:
 	bcf	c:(32277/8),(32277)&7	;volatile
-u635:
+u1035:
 	line	520
 	
-l1496:
+l1780:
 	bsf	c:(32272/8),(32272)&7	;volatile
 	line	521
 	
-l1498:
+l1782:
 	bsf	c:(32273/8),(32273)&7	;volatile
 	line	522
 	
@@ -2596,7 +2537,7 @@ _InitAnalog:
 	opt	stack 28
 	line	493
 	
-l1502:
+l1786:
 	bcf	((c:4033)),c,5	;volatile
 	line	494
 	bcf	((c:4033)),c,4	;volatile
@@ -2617,14 +2558,14 @@ l1502:
 
 	line	505
 	
-l1504:
+l1788:
 	movf	((c:4032)),c,w	;volatile
 	andlw	not (((1<<3)-1)<<0)
 	iorlw	(06h & ((1<<3)-1))<<0
 	movwf	((c:4032)),c	;volatile
 	line	506
 	
-l1506:
+l1790:
 		bcf	((c:4034)),c, 2+0	;volatile
 	bcf	((c:4034)),c, 2+1	;volatile
 	bcf	((c:4034)),c, 2+2	;volatile
@@ -2632,11 +2573,11 @@ l1506:
 
 	line	507
 	
-l1508:
+l1792:
 	bcf	((c:4034)),c,1	;volatile
 	line	508
 	
-l1510:
+l1794:
 	bsf	((c:4034)),c,0	;volatile
 	line	509
 	
@@ -2646,317 +2587,6 @@ l323:
 GLOBAL	__end_of_InitAnalog
 	__end_of_InitAnalog:
 	signat	_InitAnalog,88
-	global	___almod
-
-;; *************** function ___almod *****************
-;; Defined at:
-;;		line 8 in file "/opt/microchip/xc8/v1.34/sources/common/almod.c"
-;; Parameters:    Size  Location     Type
-;;  dividend        4    0[BANK0 ] long 
-;;  divisor         4    4[BANK0 ] long 
-;; Auto vars:     Size  Location     Type
-;;  sign            1   15[COMRAM] unsigned char 
-;;  counter         1   14[COMRAM] unsigned char 
-;; Return value:  Size  Location     Type
-;;                  4    0[BANK0 ] long 
-;; Registers used:
-;;		wreg, status,2, status,0
-;; Tracked objects:
-;;		On entry : 0/0
-;;		On exit  : 0/0
-;;		Unchanged: 0/0
-;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5   BANK6   BANK7
-;;      Params:         0       8       0       0       0       0       0       0       0
-;;      Locals:         2       0       0       0       0       0       0       0       0
-;;      Temps:          0       0       0       0       0       0       0       0       0
-;;      Totals:         2       8       0       0       0       0       0       0       0
-;;Total ram usage:       10 bytes
-;; Hardware stack levels used:    1
-;; Hardware stack levels required when called:    1
-;; This function calls:
-;;		Nothing
-;; This function is called by:
-;;		_main
-;; This function uses a non-reentrant model
-;;
-psect	text9,class=CODE,space=0,reloc=2
-	file	"/opt/microchip/xc8/v1.34/sources/common/almod.c"
-	line	8
-global __ptext9
-__ptext9:
-psect	text9
-	file	"/opt/microchip/xc8/v1.34/sources/common/almod.c"
-	line	8
-	global	__size_of___almod
-	__size_of___almod	equ	__end_of___almod-___almod
-	
-___almod:
-;incstack = 0
-	opt	stack 29
-	line	13
-	
-l1846:
-	movlw	low(0)
-	movwf	((c:___almod@sign)),c
-	line	14
-	
-l1848:
-	movlb	0	; () banked
-	btfsc	((___almod@dividend+3))&0ffh,7
-	goto	u1080
-	goto	u1081
-
-u1081:
-	goto	l1854
-u1080:
-	line	15
-	
-l1850:; BSR set to: 0
-
-	movlb	0	; () banked
-	comf	((___almod@dividend+3))&0ffh
-	comf	((___almod@dividend+2))&0ffh
-	comf	((___almod@dividend+1))&0ffh
-	negf	((___almod@dividend))&0ffh
-	movlw	0
-	addwfc	((___almod@dividend+1))&0ffh
-	addwfc	((___almod@dividend+2))&0ffh
-	addwfc	((___almod@dividend+3))&0ffh
-	line	16
-	
-l1852:; BSR set to: 0
-
-	movlw	low(01h)
-	movwf	((c:___almod@sign)),c
-	goto	l1854
-	line	17
-	
-l539:; BSR set to: 0
-
-	line	18
-	
-l1854:; BSR set to: 0
-
-	movlb	0	; () banked
-	btfsc	((___almod@divisor+3))&0ffh,7
-	goto	u1090
-	goto	u1091
-
-u1091:
-	goto	l1858
-u1090:
-	line	19
-	
-l1856:; BSR set to: 0
-
-	movlb	0	; () banked
-	comf	((___almod@divisor+3))&0ffh
-	comf	((___almod@divisor+2))&0ffh
-	comf	((___almod@divisor+1))&0ffh
-	negf	((___almod@divisor))&0ffh
-	movlw	0
-	addwfc	((___almod@divisor+1))&0ffh
-	addwfc	((___almod@divisor+2))&0ffh
-	addwfc	((___almod@divisor+3))&0ffh
-	goto	l1858
-	
-l540:; BSR set to: 0
-
-	line	20
-	
-l1858:; BSR set to: 0
-
-	movlb	0	; () banked
-	movf	((___almod@divisor))&0ffh,w
-	movlb	0	; () banked
-iorwf	((___almod@divisor+1))&0ffh,w
-	movlb	0	; () banked
-iorwf	((___almod@divisor+2))&0ffh,w
-	movlb	0	; () banked
-iorwf	((___almod@divisor+3))&0ffh,w
-	btfsc	status,2
-	goto	u1101
-	goto	u1100
-
-u1101:
-	goto	l1874
-u1100:
-	line	21
-	
-l1860:; BSR set to: 0
-
-	movlw	low(01h)
-	movwf	((c:___almod@counter)),c
-	line	22
-	goto	l1864
-	
-l543:; BSR set to: 0
-
-	line	23
-	
-l1862:; BSR set to: 0
-
-	movlb	0	; () banked
-	bcf	status,0
-	rlcf	((___almod@divisor))&0ffh
-	rlcf	((___almod@divisor+1))&0ffh
-	rlcf	((___almod@divisor+2))&0ffh
-	rlcf	((___almod@divisor+3))&0ffh
-	line	24
-	incf	((c:___almod@counter)),c
-	goto	l1864
-	line	25
-	
-l542:; BSR set to: 0
-
-	line	22
-	
-l1864:; BSR set to: 0
-
-	movlb	0	; () banked
-	
-	movlb	0	; () banked
-	btfss	((___almod@divisor+3))&0ffh,(31)&7
-	goto	u1111
-	goto	u1110
-u1111:
-	goto	l1862
-u1110:
-	goto	l1866
-	
-l544:; BSR set to: 0
-
-	goto	l1866
-	line	26
-	
-l545:; BSR set to: 0
-
-	line	27
-	
-l1866:; BSR set to: 0
-
-	movlb	0	; () banked
-		movf	((___almod@divisor))&0ffh,w
-	movlb	0	; () banked
-	subwf	((___almod@dividend))&0ffh,w
-	movlb	0	; () banked
-	movf	((___almod@divisor+1))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+1))&0ffh,w
-	movlb	0	; () banked
-	movf	((___almod@divisor+2))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+2))&0ffh,w
-	movlb	0	; () banked
-	movf	((___almod@divisor+3))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+3))&0ffh,w
-	btfss	status,0
-	goto	u1121
-	goto	u1120
-
-u1121:
-	goto	l1870
-u1120:
-	line	28
-	
-l1868:; BSR set to: 0
-
-	movlb	0	; () banked
-	movf	((___almod@divisor))&0ffh,w
-	movlb	0	; () banked
-	subwf	((___almod@dividend))&0ffh
-	movlb	0	; () banked
-	movf	((___almod@divisor+1))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+1))&0ffh
-	movlb	0	; () banked
-	movf	((___almod@divisor+2))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+2))&0ffh
-	movlb	0	; () banked
-	movf	((___almod@divisor+3))&0ffh,w
-	movlb	0	; () banked
-	subwfb	((___almod@dividend+3))&0ffh
-	goto	l1870
-	
-l546:; BSR set to: 0
-
-	line	29
-	
-l1870:; BSR set to: 0
-
-	movlb	0	; () banked
-	bcf	status,0
-	rrcf	((___almod@divisor+3))&0ffh
-	rrcf	((___almod@divisor+2))&0ffh
-	rrcf	((___almod@divisor+1))&0ffh
-	rrcf	((___almod@divisor))&0ffh
-	line	30
-	
-l1872:; BSR set to: 0
-
-	decfsz	((c:___almod@counter)),c
-	
-	goto	l1866
-	goto	l1874
-	
-l547:; BSR set to: 0
-
-	goto	l1874
-	line	31
-	
-l541:; BSR set to: 0
-
-	line	32
-	
-l1874:; BSR set to: 0
-
-	movf	((c:___almod@sign)),c,w
-	btfsc	status,2
-	goto	u1131
-	goto	u1130
-u1131:
-	goto	l1878
-u1130:
-	line	33
-	
-l1876:; BSR set to: 0
-
-	movlb	0	; () banked
-	comf	((___almod@dividend+3))&0ffh
-	comf	((___almod@dividend+2))&0ffh
-	comf	((___almod@dividend+1))&0ffh
-	negf	((___almod@dividend))&0ffh
-	movlw	0
-	addwfc	((___almod@dividend+1))&0ffh
-	addwfc	((___almod@dividend+2))&0ffh
-	addwfc	((___almod@dividend+3))&0ffh
-	goto	l1878
-	
-l548:; BSR set to: 0
-
-	line	34
-	
-l1878:; BSR set to: 0
-
-	movff	(___almod@dividend),(?___almod)
-	movff	(___almod@dividend+1),(?___almod+1)
-	movff	(___almod@dividend+2),(?___almod+2)
-	movff	(___almod@dividend+3),(?___almod+3)
-	goto	l549
-	
-l1880:; BSR set to: 0
-
-	line	35
-	
-l549:; BSR set to: 0
-
-	return	;funcret
-	opt stack 0
-GLOBAL	__end_of___almod
-	__end_of___almod:
-	signat	___almod,8316
 	global	_enc
 
 ;; *************** function _enc *****************
@@ -2996,8 +2626,7 @@ psect	intcode
 	global	__size_of_enc
 	__size_of_enc	equ	__end_of_enc-_enc
 	
-_enc:; BSR set to: 0
-
+_enc:
 ;incstack = 0
 	opt	stack 27
 	movff	pclat+0,??_enc+0
@@ -3024,16 +2653,16 @@ int_func:
 	movff	tablat+0,??_enc+13
 	line	464
 	
-i2l1698:
+i2l1626:
 	btfss	c:(32658/8),(32658)&7	;volatile
-	goto	i2u83_41
-	goto	i2u83_40
-i2u83_41:
+	goto	i2u71_41
+	goto	i2u71_40
+i2u71_41:
 	goto	i2l314
-i2u83_40:
+i2u71_40:
 	line	465
 	
-i2l1700:
+i2l1628:
 	movlw	low(01h)
 	movlb	0	; () banked
 	addwf	((_TIME))&0ffh
@@ -3043,19 +2672,19 @@ i2l1700:
 	addwfc	((_TIME+3))&0ffh
 	line	466
 	
-i2l1702:; BSR set to: 0
+i2l1630:; BSR set to: 0
 
 	movlw	low(0F8h)
 	movwf	((c:4055)),c	;volatile
 	line	467
 	
-i2l1704:; BSR set to: 0
+i2l1632:; BSR set to: 0
 
 	movlw	low(02Fh)
 	movwf	((c:4054)),c	;volatile
 	line	470
 	
-i2l1706:; BSR set to: 0
+i2l1634:; BSR set to: 0
 
 	bcf	c:(32658/8),(32658)&7	;volatile
 	goto	i2l314
@@ -3086,7 +2715,7 @@ GLOBAL	__end_of_enc
 	__end_of_enc:
 	signat	_enc,88
 	GLOBAL	__activetblptr
-__activetblptr	EQU	2
+__activetblptr	EQU	0
 	psect	intsave_regs,class=BIGRAM,space=1,noexec
 	PSECT	rparam,class=COMRAM,space=1,noexec
 	GLOBAL	__Lrparam

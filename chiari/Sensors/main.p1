@@ -133,16 +133,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _TRISA4 `Vb ~T0 @X0 0 e@1068 ]
 "1486
 [v _TRISA3 `Vb ~T0 @X0 0 e@1067 ]
+"1484
+[v _TRISA2 `Vb ~T0 @X0 0 e@1066 ]
 "1482
 [v _TRISA1 `Vb ~T0 @X0 0 e@1065 ]
-"1480
-[v _TRISA0 `Vb ~T0 @X0 0 e@1064 ]
-"1494
-[v _TRISA7 `Vb ~T0 @X0 0 e@1071 ]
-"1492
-[v _TRISA6 `Vb ~T0 @X0 0 e@1070 ]
+"1504
+[v _TRISB4 `Vb ~T0 @X0 0 e@1076 ]
 "1506
 [v _TRISB5 `Vb ~T0 @X0 0 e@1077 ]
+"1492
+[v _TRISA6 `Vb ~T0 @X0 0 e@1070 ]
+"1494
+[v _TRISA7 `Vb ~T0 @X0 0 e@1071 ]
+"1480
+[v _TRISA0 `Vb ~T0 @X0 0 e@1064 ]
 "68 /home/newtonis/Robots/chiari/Sensors/main.c
 [v _read `(v ~T0 @X0 0 ef ]
 "51 /opt/microchip/xc8/v1.34/include/pic16f628a.h
@@ -307,31 +311,31 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = . . _PORTAbits 0 7 *U + &U _V * -> -> -> 2 `i `ui `ux -> -> # *U &U _V `ui `ux ]
 "89
 [e = . . _PORTAbits 0 0 *U + &U _V * -> -> -> 3 `i `ui `ux -> -> # *U &U _V `ui `ux ]
-"95
+"90
 [e = _t -> 1 `i ]
-"96
+"91
 }
 [e $U 56  ]
 [e :U 55 ]
 {
-"97
+"92
 [e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"93
+[e = . . _PORTBbits 0 5 *U + &U _V * -> -> -> 0 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"94
+[e = . . _PORTAbits 0 6 *U + &U _V * -> -> -> 1 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"95
+[e = . . _PORTAbits 0 7 *U + &U _V * -> -> -> 2 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"96
+[e = . . _PORTAbits 0 0 *U + &U _V * -> -> -> 3 `i `ui `ux -> -> # *U &U _V `ui `ux ]
+"97
+[e = _t -> 0 `i ]
 "98
-[e = . . _PORTBbits 0 5 *U + &U _V * -> -> -> 4 `i `ui `ux -> -> # *U &U _V `ui `ux ]
-"99
-[e = . . _PORTAbits 0 6 *U + &U _V * -> -> -> 5 `i `ui `ux -> -> # *U &U _V `ui `ux ]
-"100
-[e = . . _PORTAbits 0 7 *U + &U _V * -> -> -> 6 `i `ui `ux -> -> # *U &U _V `ui `ux ]
-"101
-[e = . . _PORTAbits 0 0 *U + &U _V * -> -> -> 7 `i `ui `ux -> -> # *U &U _V `ui `ux ]
-"102
-[e = _t -> 1 `i ]
-"104
 }
 [e :U 56 ]
-"105
+"99
 [v _j `i ~T0 @X0 1 a ]
-"106
+"100
 {
 [e = _j -> 0 `i ]
 [e $ < _j -> 8 `i 57  ]
@@ -342,332 +346,336 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < _j -> 8 `i 57  ]
 [e :U 58 ]
 }
-"107
+"101
 [e = _st -> -> 1 `i `uc ]
-"108
+"102
 }
 [e :U 54 ]
-"109
+"103
 [e :UE 53 ]
 }
-"110
+"104
 [v _main `(i ~T0 @X0 1 ef2`i`**uc ]
 {
 [e :U _main ]
 [v _argc `i ~T0 @X0 1 r1 ]
 [v _argv `**uc ~T0 @X0 1 r2 ]
 [f ]
-"111
+"105
 [e = _st -> -> 1 `i `uc ]
-"112
+"106
 [e = _times -> -> 0 `i `l ]
-"113
+"107
 [e ( _init ..  ]
-"114
+"108
 [e ( _configurar_IO ..  ]
-"115
+"109
 [e ( _configurar_pwm ..  ]
-"116
+"110
 [e ( _set ..  ]
-"119
+"113
 [e = _TMR2IE -> -> 1 `i `b ]
-"120
+"114
 [e = _PEIE -> -> 1 `i `b ]
-"121
+"115
 [e = _GIE -> -> 1 `i `b ]
-"122
+"116
 [e :U 62 ]
 {
-"137
+"117
 [e $ ! && > _times -> -> 540 `i `l < _times -> -> 560 `i `l 64  ]
 {
-"138
+"118
 [e ( _store ..  ]
-"139
+"119
 }
 [e $U 65  ]
 [e :U 64 ]
 {
-"140
+"120
 [e ( _set ..  ]
-"141
+"121
 }
 [e :U 65 ]
-"143
+"122
 }
 [e :U 61 ]
-"122
+"116
 [e $U 62  ]
 [e :U 63 ]
-"144
+"123
 [e :UE 60 ]
 }
 [v F638 `(v ~T0 @X0 1 tf ]
-"146
+"125
 [v _ISR `IF638 ~T0 @X0 1 e ]
 {
 [e :U _ISR ]
 [f ]
-"147
+"126
 [e $ ! && _TMR2IE _TMR2IF 67  ]
 {
-"149
+"128
 [e ++ _times -> -> 1 `i `l ]
-"150
+"129
 [e $ ! == _times -> -> 504 `i `l 68  ]
 {
-"151
+"130
 [e = _TRISB3 -> -> 0 `i `b ]
-"152
+"131
 }
 [e :U 68 ]
-"153
+"132
 [e $ ! == _times -> -> 560 `i `l 69  ]
 {
-"154
+"133
 [e = _TRISB3 -> -> 1 `i `b ]
-"155
+"134
 [e = _times -> -> 0 `i `l ]
-"156
+"135
 }
 [e :U 69 ]
-"157
+"136
 [e = _TMR2IF -> -> 0 `i `b ]
-"158
+"137
 }
 [e :U 67 ]
-"159
+"138
 [e :UE 66 ]
 }
-"160
+"139
 [v _init `(v ~T0 @X0 1 ef ]
 {
 [e :U _init ]
 [f ]
-"161
+"140
 [e = _CMCON -> -> 7 `i `uc ]
-"162
+"141
 [e = _contador -> -> 0 `i `uc ]
-"163
+"142
 [e = _estado -> -> 0 `i `uc ]
-"164
+"143
 [e = _ciclos -> -> 0 `i `uc ]
-"165
+"144
 [e = _actual -> -> 0 `i `uc ]
-"168
+"147
 [e :UE 70 ]
 }
-"169
+"148
 [v _SetDuty `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _SetDuty ]
 [v _S `i ~T0 @X0 1 r1 ]
 [f ]
-"172
+"151
 [e = . . _CCP1CONbits 0 2 -> -> > % _S -> 4 `i -> 1 `i `i `uc ]
-"173
+"152
 [e = . . _CCP1CONbits 0 1 -> % % _S -> 4 `i -> 2 `i `uc ]
-"174
+"153
 [e = _CCPR1L -> / _S -> 4 `i `uc ]
-"175
+"154
 [e :UE 71 ]
 }
-"176
+"155
 [v _configurar_pwm `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_pwm ]
 [f ]
-"177
+"156
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"178
+"157
 [e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
-"179
+"158
 [e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
-"181
+"160
 [e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-"182
-[e = _PR2 -> -> 17 `i `uc ]
-"188
+"161
+[e = _PR2 -> -> 26 `i `uc ]
+"167
 [e = _CCP1CON -> -> 12 `i `uc ]
-"192
+"171
 [e ( _SetDuty (1 -> 15 `i ]
-"193
+"172
 [e :UE 72 ]
 }
-"194
+"173
 [v _configurar_timer1 `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_timer1 ]
 [f ]
-"195
+"174
 [e = _TMR1H -> -> 252 `i `uc ]
-"196
+"175
 [e = _TMR1L -> -> 24 `i `uc ]
-"198
+"177
 [e = . . _PIE1bits 0 0 -> -> 0 `i `uc ]
-"199
+"178
 [e = . . _PIR1bits 0 0 -> -> 0 `i `uc ]
-"201
+"180
 [e = . . _T1CONbits 0 4 -> -> 0 `i `uc ]
-"203
+"182
 [e = . . _T1CONbits 0 2 -> -> 1 `i `uc ]
-"204
+"183
 [e = . . _T1CONbits 0 3 -> -> 0 `i `uc ]
-"205
+"184
 [e = . . _T1CONbits 0 1 -> -> 0 `i `uc ]
-"206
+"185
 [e = . . _T1CONbits 0 0 -> -> 0 `i `uc ]
-"207
+"186
 [e = . . _T1CONbits 0 0 -> -> 1 `i `uc ]
-"208
+"187
 [e :UE 73 ]
 }
-"209
+"188
 [v _configurar_timer0 `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_timer0 ]
 [f ]
-"210
+"189
 [e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
-"211
+"190
 [e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-"212
+"191
 [e = . . _OPTION_REGbits 0 0 -> -> 1 `i `uc ]
-"214
+"193
 [e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
-"215
+"194
 [e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
-"216
+"195
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-"217
+"196
 [e :UE 74 ]
 }
-"218
+"197
 [v _configurar_IO `(v ~T0 @X0 1 ef ]
 {
 [e :U _configurar_IO ]
 [f ]
-"219
+"198
 [e = _TRISB3 -> -> 0 `i `b ]
-"221
+"200
 [e = _TRISB2 -> -> 1 `i `b ]
-"222
+"201
 [e = _TRISB1 -> -> 1 `i `b ]
-"223
+"202
 [e = _TRISB0 -> -> 1 `i `b ]
-"224
+"203
 [e = _TRISA4 -> -> 1 `i `b ]
-"225
+"204
 [e = _TRISA3 -> -> 1 `i `b ]
-"227
-[e = _TRISA1 -> -> 0 `i `b ]
-"228
-[e = _TRISA0 -> -> 0 `i `b ]
-"229
-[e = _TRISA7 -> -> 0 `i `b ]
-"230
-[e = _TRISA6 -> -> 0 `i `b ]
-"231
+"205
+[e = _TRISA2 -> -> 1 `i `b ]
+"206
+[e = _TRISA1 -> -> 1 `i `b ]
+"208
+[e = _TRISB4 -> -> 0 `i `b ]
+"209
 [e = _TRISB5 -> -> 0 `i `b ]
-"232
+"210
+[e = _TRISA6 -> -> 0 `i `b ]
+"211
+[e = _TRISA7 -> -> 0 `i `b ]
+"212
+[e = _TRISA0 -> -> 0 `i `b ]
+"213
 [e :UE 75 ]
 }
-"243
+"224
 [v _OnTIMER2 `(v ~T0 @X0 1 ef ]
 {
 [e :U _OnTIMER2 ]
 [f ]
-"244
+"225
 [e = . . _T2CONbits 0 1 -> -> 1 `i `uc ]
-"245
+"226
 [e = . . _T2CONbits 0 2 -> -> 0 `i `uc ]
-"246
+"227
 [e = . . _T2CONbits 0 0 -> -> 0 `i `uc ]
-"247
+"228
 [e = . . _TRISBbits 0 3 -> -> 0 `i `uc ]
-"248
+"229
 [e :UE 76 ]
 }
-"249
+"230
 [v _sensores `(v ~T0 @X0 1 ef ]
 {
 [e :U _sensores ]
 [f ]
-"250
+"231
 [e $U 79  ]
 {
-"251
+"232
 [e :U 80 ]
-"255
+"236
 [e = _TRISB3 -> -> 0 `i `b ]
-"256
+"237
 [e = _estado -> -> 1 `i `uc ]
-"257
+"238
 [e = _times -> -> 0 `i `l ]
-"258
+"239
 [e $U 78  ]
-"259
+"240
 [e :U 81 ]
-"260
+"241
 [e $ ! > _times -> -> 100 `i `l 82  ]
 {
-"265
+"246
 [e ( _read ..  ]
-"266
+"247
 [e = _TRISB3 -> -> 1 `i `b ]
-"268
+"249
 [e = _estado -> -> 3 `i `uc ]
-"269
+"250
 [e = _times -> -> 0 `i `l ]
-"270
+"251
 }
 [e :U 82 ]
-"271
+"252
 [e $U 78  ]
-"272
+"253
 [e :U 83 ]
-"273
+"254
 [e $ ! > _times -> -> 100 `i `l 84  ]
 {
-"274
+"255
 [e = _estado -> -> 0 `i `uc ]
-"275
+"256
 }
 [e :U 84 ]
-"276
+"257
 [e $U 78  ]
-"277
+"258
 }
 [e $U 78  ]
-"250
+"231
 [e :U 79 ]
 [e [\ _estado , $ -> -> 0 `i `uc 80
  , $ -> -> 1 `i `uc 81
  , $ -> -> 3 `i `uc 83
  78 ]
-"277
+"258
 [e :U 78 ]
-"278
+"259
 [e :UE 77 ]
 }
-"279
+"260
 [v _read `(v ~T0 @X0 1 ef ]
 {
 [e :U _read ]
 [f ]
-"285
+"266
 [e :UE 85 ]
 }
-"286
+"267
 [v _DUTYSet `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _DUTYSet ]
 [v _value `i ~T0 @X0 1 r1 ]
 [f ]
-"287
+"268
 [e = _CCPR1L -> / _value -> 4 `i `uc ]
-"288
+"269
 [e = _CCP1CON -> % _value -> 4 `i `uc ]
-"289
+"270
 [e :UE 86 ]
 }

@@ -87,18 +87,13 @@ void set(){
             OUT_IR1 = V[1];
             OUT_IR2 = V[2];
             OUT_IR3 = V[3]; 
-            /*OUT_IR0 = V[0];
-            OUT_IR1 = V[1];
-            OUT_IR2 = V[2];
-            OUT_IR3 = V[3];
-            OUT_IR4 = V[4];*/
             t = 1;
         }else{
             OUT_PCLK = 1;
-            OUT_IR0 = V[4];
-            OUT_IR1 = V[5];
-            OUT_IR2 = V[6];
-            OUT_IR3 = V[7];
+            OUT_IR0 = V[0];
+            OUT_IR1 = V[1];
+            OUT_IR2 = V[2];
+            OUT_IR3 = V[3];
             t = 0;
         }
         int j;
@@ -119,26 +114,11 @@ int main(int argc, char** argv) {
     PEIE=1;
     GIE=1;
     while (1){
-        //sensores();
-
-       /* if (times >= 20){
-            TRISB3 = 1;
-        }
-        if (times >= 50){
-            read();
-        }
-        if (times >= 100){
-            TRISB3 = 0;
-            times = 0;
-        }*/
-
-        //read();
         if (times > 540 && times < 560){
             store();
         }else{
             set();
         }
-
     }
 }
 
@@ -178,7 +158,7 @@ void configurar_pwm(void){
     T2CONbits.T2CKPS=0; // 00=1:1 01=1:4 1x=1:16
 
     TRISBbits.TRISB3=0; // pwm salida
-    PR2=17;//26; // periodo 30Khz
+    PR2=26;//17;//26; // periodo 30Khz
 
     // MENOR VALOR A MAYOR VALOR
     // 78 -> 100 %

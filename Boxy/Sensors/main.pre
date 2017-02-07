@@ -1,5 +1,5 @@
 
-# 1 "/home/newtonis/Robots/Boxy/Sensors/main.c"
+# 1 "main.c"
 
 # 26 "/opt/microchip/xc8/v1.34/include/htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -816,7 +816,7 @@ extern __bit __powerdown;
 extern __bit __timeout;
 
 
-# 10 "/home/newtonis/Robots/Boxy/Sensors/main.c"
+# 10 "main.c"
 #pragma config BOREN = OFF, CPD = OFF, FOSC = INTOSCIO, MCLRE = OFF, WDTE = OFF, CP = OFF, LVP = OFF, PWRTE = OFF
 
 # 44
@@ -873,27 +873,29 @@ st = 1;
 }
 }
 
+
+
 int main(int argc, char** argv) {
+st = 1;
 times = 0;
 init();
 configurar_IO();
 configurar_pwm();
-
+set();
 TMR2IE=1;
 PEIE=1;
 GIE=1;
-set();
-SetDuty(2);
+
 
 
 while (1){
-if (times > 540 && times < 550){
+if (times > 540 && times < 560){
 store();
 }else{
 set();
 }
 
-# 122
+# 124
 }
 }
 
@@ -931,6 +933,8 @@ TRISBbits.TRISB3=0;
 PR2=17;
 
 CCP1CON=12;
+
+SetDuty( 15 );
 }
 void configurar_timer1(void){
 TMR1H=0xFC;
@@ -972,7 +976,7 @@ TRISB6 = 0;
 TRISA7 = 0;
 }
 
-# 203
+# 207
 void sensores(){
 switch (estado){
 case 0:

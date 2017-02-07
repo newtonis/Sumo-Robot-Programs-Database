@@ -7,7 +7,7 @@
 	;
 	; Compiler options:
 	;
-	; --chip=16f628a /home/newtonis/Robots/Boxy/Sensors/main.c
+	; --chip=16f628a main.c
 	;
 
 

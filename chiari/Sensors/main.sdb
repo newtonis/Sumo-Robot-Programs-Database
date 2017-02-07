@@ -7,19 +7,19 @@
 [v _store store `(v  1 e 0 0 ]
 "82
 [v _set set `(v  1 e 0 0 ]
-"110
+"104
 [v _main main `(i  1 e 2 0 ]
-"146
+"125
 [v _ISR ISR `II(v  1 e 0 0 ]
-"160
+"139
 [v _init init `(v  1 e 0 0 ]
-"169
+"148
 [v _SetDuty SetDuty `(v  1 e 0 0 ]
-"176
+"155
 [v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
-"218
+"197
 [v _configurar_IO configurar_IO `(v  1 e 0 0 ]
-"279
+"260
 [v _read read `(v  1 e 0 0 ]
 "6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -202,6 +202,8 @@
 [v _TRISA0 TRISA0 `VEb  1 e 0 @1064 ]
 "1482
 [v _TRISA1 TRISA1 `VEb  1 e 0 @1065 ]
+"1484
+[v _TRISA2 TRISA2 `VEb  1 e 0 @1066 ]
 "1486
 [v _TRISA3 TRISA3 `VEb  1 e 0 @1067 ]
 "1488
@@ -218,12 +220,14 @@
 [v _TRISB2 TRISB2 `VEb  1 e 0 @1074 ]
 "1502
 [v _TRISB3 TRISB3 `VEb  1 e 0 @1075 ]
+"1504
+[v _TRISB4 TRISB4 `VEb  1 e 0 @1076 ]
 "1506
 [v _TRISB5 TRISB5 `VEb  1 e 0 @1077 ]
-"110 /home/newtonis/Robots/chiari/Sensors/main.c
+"104 /home/newtonis/Robots/chiari/Sensors/main.c
 [v _main main `(i  1 e 2 0 ]
 {
-"144
+"123
 } 0
 "71
 [v _store store `(v  1 e 0 0 ]
@@ -233,25 +237,25 @@
 "82
 [v _set set `(v  1 e 0 0 ]
 {
-"105
+"99
 [v set@j j `i  1 a 2 0 ]
-"109
+"103
 } 0
-"160
+"139
 [v _init init `(v  1 e 0 0 ]
 {
-"168
+"147
 } 0
-"176
+"155
 [v _configurar_pwm configurar_pwm `(v  1 e 0 0 ]
 {
-"193
+"172
 } 0
-"169
+"148
 [v _SetDuty SetDuty `(v  1 e 0 0 ]
 {
 [v SetDuty@S S `i  1 p 2 8 ]
-"175
+"154
 } 0
 "6 /opt/microchip/xc8/v1.34/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -266,13 +270,13 @@
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
-"218 /home/newtonis/Robots/chiari/Sensors/main.c
+"197 /home/newtonis/Robots/chiari/Sensors/main.c
 [v _configurar_IO configurar_IO `(v  1 e 0 0 ]
 {
-"232
+"213
 } 0
-"146
+"125
 [v _ISR ISR `II(v  1 e 0 0 ]
 {
-"159
+"138
 } 0
