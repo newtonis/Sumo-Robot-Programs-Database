@@ -12,6 +12,12 @@
 extern "C" {
 #endif
 
+#define maxv(a,b) a>b?a:b
+#define minv(a,b) a<b?a:b    
+    
+#define and &&
+#define or ||
+    
 /*** data types **/
 typedef unsigned int ui;  
 typedef unsigned char uc;

@@ -1,5 +1,4 @@
-#include <pic18f4550.h>
-
+#include <xc.h>
 #include "io.h"
 
 enum {OUTPUT ,INPUT};
@@ -35,4 +34,7 @@ void init_io(){
     /*** pwm pins ***/
     TRISCbits.RC2 = OUTPUT;
     TRISBbits.RB3 = OUTPUT;
+    
+    /** weak pull up **/
+    PORTEbits.RDPU = 1;
 }

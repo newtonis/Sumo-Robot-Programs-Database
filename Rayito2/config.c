@@ -198,7 +198,7 @@ void MotorsSpeed(int A,int B){
 void EnhancedRead(){
     unsigned char i;
     unsigned int aux;
-    for (i=0;i<11;i++){
+    for (i=0;i<9;i++){
         ADCON0bits.CHS=i;
         ADCON0bits.GODONE=1;
         while (ADCON0bits.GODONE==1) {}
