@@ -11,8 +11,10 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-
-extern int time[10];
+    
+#include "config.h"
+    
+extern ll time[10];
 
 #ifdef	__cplusplus
 }

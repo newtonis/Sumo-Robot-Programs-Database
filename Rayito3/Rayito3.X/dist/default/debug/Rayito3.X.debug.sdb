@@ -3,23 +3,16 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"29 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
-[e E3875 . `uc
-TEST 0
-INIT 1
-CAL 2
-READY 3
-BASIC_PID 4
+"25 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
+[e E3869 . `uc
+INIT 0
+CAL 1
+READY 2
 ]
 "8 /home/adrian/Robots/Rayito3/Rayito3.X/io.c
 [e E3787 . `uc
 OUTPUT 0
 INPUT 1
-]
-"14 /home/adrian/Robots/Rayito3/Rayito3.X/twiddle.c
-[e E24 . `uc
-CHANGE_KD 0
-CHANGE_KP 1
 ]
 "8 /opt/microchip/xc8/v1.41/sources/common/aldiv.c
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
@@ -27,8 +20,6 @@ CHANGE_KP 1
 [v ___almod __almod `(l  1 e 4 0 ]
 "8 /opt/microchip/xc8/v1.41/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"32 /opt/microchip/xc8/v1.41/sources/common/awtoft.c
-[v ___awtoft __awtoft `(f  1 e 3 0 ]
 "464 /opt/microchip/xc8/v1.41/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 "62 /opt/microchip/xc8/v1.41/sources/common/float.c
@@ -37,16 +28,10 @@ CHANGE_KP 1
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
 "54 /opt/microchip/xc8/v1.41/sources/common/ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 3 0 ]
-"4 /opt/microchip/xc8/v1.41/sources/common/ftge.c
-[v ___ftge __ftge `(b  1 e 0 0 ]
 "62 /opt/microchip/xc8/v1.41/sources/common/ftmul.c
 [v ___ftmul __ftmul `(f  1 e 3 0 ]
-"15 /opt/microchip/xc8/v1.41/sources/common/ftneg.c
-[v ___ftneg __ftneg `(f  1 e 3 0 ]
 "20 /opt/microchip/xc8/v1.41/sources/common/ftsub.c
 [v ___ftsub __ftsub `(f  1 e 3 0 ]
-"44 /opt/microchip/xc8/v1.41/sources/common/fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
 "8 /opt/microchip/xc8/v1.41/sources/common/isdigit.c
 [v _isdigit isdigit `(b  1 e 0 0 ]
 "8 /opt/microchip/xc8/v1.41/sources/common/lwdiv.c
@@ -65,36 +50,30 @@ CHANGE_KP 1
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 /opt/microchip/xc8/v1.41/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"16 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+"15 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
 [v _an_init an_init `(v  1 e 1 0 ]
-"29
+"28
 [v _EnhancedRead EnhancedRead `(v  1 e 1 0 ]
-"41
+"40
 [v _init_cal init_cal `(i  1 e 2 0 ]
-"47
+"46
 [v _read_cal read_cal `(i  1 e 2 0 ]
-"57
+"56
 [v _line_cal line_cal `(i  1 e 2 0 ]
 "7 /home/adrian/Robots/Rayito3/Rayito3.X/config.c
 [v _init_tms init_tms `(v  1 e 1 0 ]
-"55
+"56
 [v _MotorsPWM MotorsPWM `(v  1 e 1 0 ]
-"84
+"85
 [v _MotorASpeed MotorASpeed `(v  1 e 1 0 ]
-"95
+"96
 [v _MotorBSpeed MotorBSpeed `(v  1 e 1 0 ]
-"107
-[v _mspeed mspeed `(v  1 e 1 0 ]
 "6 /home/adrian/Robots/Rayito3/Rayito3.X/io.c
 [v _init_io init_io `(v  1 e 1 0 ]
-"24 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
+"22 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
 [v _main main `(v  1 e 1 0 ]
 "7 /home/adrian/Robots/Rayito3/Rayito3.X/timer.c
 [v _enc enc `II(v  1 e 1 0 ]
-"18 /home/adrian/Robots/Rayito3/Rayito3.X/twiddle.c
-[v _twidde_start twidde_start `(v  1 e 1 0 ]
-"24
-[v _twiddle_update twiddle_update `(v  1 e 1 0 ]
 "5 /home/adrian/Robots/Rayito3/Rayito3.X/utils.c
 [v _setA setA `(v  1 e 1 0 ]
 "12
@@ -104,10 +83,10 @@ CHANGE_KP 1
 "24
 [v _setD setD `(v  1 e 1 0 ]
 "4 /home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
-[v _init_wixel init_wixel `(i  1 e 2 0 ]
+[v _init_wixel init_wixel `(v  1 e 1 0 ]
 "24
 [v _putch putch `(v  1 e 1 0 ]
-[s S578 . 1 `uc 1 . 1 0 :1:0 
+[s S541 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
 `uc 1 RESUME 1 0 :1:2 
 `uc 1 USBEN 1 0 :1:3 
@@ -116,9 +95,9 @@ CHANGE_KP 1
 `uc 1 PPBRST 1 0 :1:6 
 ]
 "649 /opt/microchip/xc8/v1.41/include/pic18f4550.h
-[u S586 . 1 `S578 1 . 1 0 ]
-[v _UCONbits UCONbits `VES586  1 e 1 @3949 ]
-[s S597 . 1 `uc 1 PPB 1 0 :2:0 
+[u S549 . 1 `S541 1 . 1 0 ]
+[v _UCONbits UCONbits `VES549  1 e 1 @3949 ]
+[s S560 . 1 `uc 1 PPB 1 0 :2:0 
 `uc 1 FSEN 1 0 :1:2 
 `uc 1 UTRDIS 1 0 :1:3 
 `uc 1 UPUEN 1 0 :1:4 
@@ -127,15 +106,15 @@ CHANGE_KP 1
 `uc 1 UTEYE 1 0 :1:7 
 ]
 "770
-[s S605 . 1 `uc 1 PPB0 1 0 :1:0 
+[s S568 . 1 `uc 1 PPB0 1 0 :1:0 
 `uc 1 PPB1 1 0 :1:1 
 ]
-[s S608 . 1 `uc 1 UPP0 1 0 :1:0 
+[s S571 . 1 `uc 1 UPP0 1 0 :1:0 
 `uc 1 UPP1 1 0 :1:1 
 ]
-[u S611 . 1 `S597 1 . 1 0 `S605 1 . 1 0 `S608 1 . 1 0 ]
-[v _UCFGbits UCFGbits `VES611  1 e 1 @3951 ]
-[s S205 . 1 `uc 1 RA0 1 0 :1:0 
+[u S574 . 1 `S560 1 . 1 0 `S568 1 . 1 0 `S571 1 . 1 0 ]
+[v _UCFGbits UCFGbits `VES574  1 e 1 @3951 ]
+[s S218 . 1 `uc 1 RA0 1 0 :1:0 
 `uc 1 RA1 1 0 :1:1 
 `uc 1 RA2 1 0 :1:2 
 `uc 1 RA3 1 0 :1:3 
@@ -144,7 +123,7 @@ CHANGE_KP 1
 `uc 1 RA6 1 0 :1:6 
 ]
 "2319
-[s S213 . 1 `uc 1 AN0 1 0 :1:0 
+[s S226 . 1 `uc 1 AN0 1 0 :1:0 
 `uc 1 AN1 1 0 :1:1 
 `uc 1 AN2 1 0 :1:2 
 `uc 1 AN3 1 0 :1:3 
@@ -152,20 +131,20 @@ CHANGE_KP 1
 `uc 1 AN4 1 0 :1:5 
 `uc 1 OSC2 1 0 :1:6 
 ]
-[s S221 . 1 `uc 1 . 1 0 :2:0 
+[s S234 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 VREFM 1 0 :1:2 
 `uc 1 VREFP 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 LVDIN 1 0 :1:5 
 ]
-[s S227 . 1 `uc 1 . 1 0 :5:0 
+[s S240 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 HLVDIN 1 0 :1:5 
 ]
-[s S230 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+[s S243 . 1 `uc 1 ULPWUIN 1 0 :1:0 
 ]
-[u S232 . 1 `S205 1 . 1 0 `S213 1 . 1 0 `S221 1 . 1 0 `S227 1 . 1 0 `S230 1 . 1 0 ]
-[v _PORTAbits PORTAbits `VES232  1 e 1 @3968 ]
-[s S93 . 1 `uc 1 RB0 1 0 :1:0 
+[u S245 . 1 `S218 1 . 1 0 `S226 1 . 1 0 `S234 1 . 1 0 `S240 1 . 1 0 `S243 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES245  1 e 1 @3968 ]
+[s S106 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -175,7 +154,7 @@ CHANGE_KP 1
 `uc 1 RB7 1 0 :1:7 
 ]
 "2448
-[s S102 . 1 `uc 1 INT0 1 0 :1:0 
+[s S115 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
@@ -183,12 +162,12 @@ CHANGE_KP 1
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S110 . 1 `uc 1 . 1 0 :3:0 
+[s S123 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S113 . 1 `S93 1 . 1 0 `S102 1 . 1 0 `S110 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES113  1 e 1 @3969 ]
-[s S138 . 1 `uc 1 RC0 1 0 :1:0 
+[u S126 . 1 `S106 1 . 1 0 `S115 1 . 1 0 `S123 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES126  1 e 1 @3969 ]
+[s S151 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -198,30 +177,30 @@ CHANGE_KP 1
 `uc 1 RC7 1 0 :1:7 
 ]
 "2569
-[s S147 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S160 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S154 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S167 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S161 . 1 `uc 1 . 1 0 :1:0 
+[s S174 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 PA1 1 0 :1:2 
 ]
-[s S165 . 1 `uc 1 . 1 0 :1:0 
+[s S178 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 ]
-[u S168 . 1 `S138 1 . 1 0 `S147 1 . 1 0 `S154 1 . 1 0 `S161 1 . 1 0 `S165 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES168  1 e 1 @3970 ]
-[s S46 . 1 `uc 1 RD0 1 0 :1:0 
+[u S181 . 1 `S151 1 . 1 0 `S160 1 . 1 0 `S167 1 . 1 0 `S174 1 . 1 0 `S178 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES181  1 e 1 @3970 ]
+[s S55 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
 `uc 1 RD3 1 0 :1:3 
@@ -231,7 +210,7 @@ CHANGE_KP 1
 `uc 1 RD7 1 0 :1:7 
 ]
 "2699
-[s S55 . 1 `uc 1 SPP0 1 0 :1:0 
+[s S64 . 1 `uc 1 SPP0 1 0 :1:0 
 `uc 1 SPP1 1 0 :1:1 
 `uc 1 SPP2 1 0 :1:2 
 `uc 1 SPP3 1 0 :1:3 
@@ -240,12 +219,12 @@ CHANGE_KP 1
 `uc 1 SPP6 1 0 :1:6 
 `uc 1 SPP7 1 0 :1:7 
 ]
-[s S64 . 1 `uc 1 . 1 0 :7:0 
+[s S73 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
-[u S67 . 1 `S46 1 . 1 0 `S55 1 . 1 0 `S64 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES67  1 e 1 @3971 ]
-[s S1282 . 1 `uc 1 RE0 1 0 :1:0 
+[u S76 . 1 `S55 1 . 1 0 `S64 1 . 1 0 `S73 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES76  1 e 1 @3971 ]
+[s S1249 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
@@ -253,32 +232,32 @@ CHANGE_KP 1
 `uc 1 RDPU 1 0 :1:7 
 ]
 "2830
-[s S1289 . 1 `uc 1 CK1SPP 1 0 :1:0 
+[s S1256 . 1 `uc 1 CK1SPP 1 0 :1:0 
 `uc 1 CK2SPP 1 0 :1:1 
 `uc 1 OESPP 1 0 :1:2 
 ]
-[s S1293 . 1 `uc 1 PD2 1 0 :1:0 
+[s S1260 . 1 `uc 1 PD2 1 0 :1:0 
 `uc 1 PC2 1 0 :1:1 
 `uc 1 CCP10 1 0 :1:2 
 `uc 1 CCP9E 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 CCP2E 1 0 :1:7 
 ]
-[s S1300 . 1 `uc 1 RDE 1 0 :1:0 
+[s S1267 . 1 `uc 1 RDE 1 0 :1:0 
 `uc 1 WRE 1 0 :1:1 
 `uc 1 CS 1 0 :1:2 
 `uc 1 PC3E 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 PA2E 1 0 :1:7 
 ]
-[s S1307 . 1 `uc 1 . 1 0 :2:0 
+[s S1274 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 PB2 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RE7 1 0 :1:7 
 ]
-[u S1312 . 1 `S1282 1 . 1 0 `S1289 1 . 1 0 `S1293 1 . 1 0 `S1300 1 . 1 0 `S1307 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES1312  1 e 1 @3972 ]
-[s S1226 . 1 `uc 1 TRISA0 1 0 :1:0 
+[u S1279 . 1 `S1249 1 . 1 0 `S1256 1 . 1 0 `S1260 1 . 1 0 `S1267 1 . 1 0 `S1274 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES1279  1 e 1 @3972 ]
+[s S1193 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
 `uc 1 TRISA3 1 0 :1:3 
@@ -287,9 +266,9 @@ CHANGE_KP 1
 `uc 1 TRISA6 1 0 :1:6 
 ]
 "3413
-[u S1242 . 1 `S1226 1 . 1 0 `S205 1 . 1 0 ]
-[v _TRISAbits TRISAbits `VES1242  1 e 1 @3986 ]
-[s S1111 . 1 `uc 1 TRISB0 1 0 :1:0 
+[u S1209 . 1 `S1193 1 . 1 0 `S218 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES1209  1 e 1 @3986 ]
+[s S1078 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -299,9 +278,9 @@ CHANGE_KP 1
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "3612
-[u S1129 . 1 `S1111 1 . 1 0 `S93 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES1129  1 e 1 @3987 ]
-[s S1154 . 1 `uc 1 TRISC0 1 0 :1:0 
+[u S1096 . 1 `S1078 1 . 1 0 `S106 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES1096  1 e 1 @3987 ]
+[s S1121 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -309,16 +288,16 @@ CHANGE_KP 1
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "3829
-[s S1161 . 1 `uc 1 RC0 1 0 :1:0 
+[s S1128 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[u S1168 . 1 `S1154 1 . 1 0 `S1161 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES1168  1 e 1 @3988 ]
-[s S1186 . 1 `uc 1 TRISD0 1 0 :1:0 
+[u S1135 . 1 `S1121 1 . 1 0 `S1128 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1135  1 e 1 @3988 ]
+[s S1153 . 1 `uc 1 TRISD0 1 0 :1:0 
 `uc 1 TRISD1 1 0 :1:1 
 `uc 1 TRISD2 1 0 :1:2 
 `uc 1 TRISD3 1 0 :1:3 
@@ -328,20 +307,20 @@ CHANGE_KP 1
 `uc 1 TRISD7 1 0 :1:7 
 ]
 "3986
-[u S1204 . 1 `S1186 1 . 1 0 `S46 1 . 1 0 ]
-[v _TRISDbits TRISDbits `VES1204  1 e 1 @3989 ]
-[s S1262 . 1 `uc 1 TRISE0 1 0 :1:0 
+[u S1171 . 1 `S1153 1 . 1 0 `S55 1 . 1 0 ]
+[v _TRISDbits TRISDbits `VES1171  1 e 1 @3989 ]
+[s S1229 . 1 `uc 1 TRISE0 1 0 :1:0 
 `uc 1 TRISE1 1 0 :1:1 
 `uc 1 TRISE2 1 0 :1:2 
 ]
 "4197
-[s S1266 . 1 `uc 1 RE0 1 0 :1:0 
+[s S1233 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 ]
-[u S1270 . 1 `S1262 1 . 1 0 `S1266 1 . 1 0 ]
-[v _TRISEbits TRISEbits `VES1270  1 e 1 @3990 ]
-[s S1621 . 1 `uc 1 RX9D 1 0 :1:0 
+[u S1237 . 1 `S1229 1 . 1 0 `S1233 1 . 1 0 ]
+[v _TRISEbits TRISEbits `VES1237  1 e 1 @3990 ]
+[s S1588 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -351,23 +330,23 @@ CHANGE_KP 1
 `uc 1 SPEN 1 0 :1:7 
 ]
 "4917
-[s S1630 . 1 `uc 1 . 1 0 :3:0 
+[s S1597 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S1633 . 1 `uc 1 . 1 0 :5:0 
+[s S1600 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S1636 . 1 `uc 1 . 1 0 :6:0 
+[s S1603 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S1639 . 1 `uc 1 . 1 0 :6:0 
+[s S1606 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S1642 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S1609 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S1644 . 1 `S1621 1 . 1 0 `S1630 1 . 1 0 `S1633 1 . 1 0 `S1636 1 . 1 0 `S1639 1 . 1 0 `S1642 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES1644  1 e 1 @4011 ]
-[s S1569 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S1611 . 1 `S1588 1 . 1 0 `S1597 1 . 1 0 `S1600 1 . 1 0 `S1603 1 . 1 0 `S1606 1 . 1 0 `S1609 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES1611  1 e 1 @4011 ]
+[s S1536 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -377,7 +356,7 @@ CHANGE_KP 1
 `uc 1 CSRC 1 0 :1:7 
 ]
 "5124
-[s S1578 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S1545 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -386,13 +365,13 @@ CHANGE_KP 1
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S1587 . 1 `uc 1 . 1 0 :6:0 
+[s S1554 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S1590 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S1557 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S1592 . 1 `S1569 1 . 1 0 `S1578 1 . 1 0 `S1587 1 . 1 0 `S1590 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES1592  1 e 1 @4012 ]
+[u S1559 . 1 `S1536 1 . 1 0 `S1545 1 . 1 0 `S1554 1 . 1 0 `S1557 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES1559  1 e 1 @4012 ]
 "5340
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "5362
@@ -401,7 +380,7 @@ CHANGE_KP 1
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @4016 ]
 "5517
 [v _CMCON CMCON `VEuc  1 e 1 @4020 ]
-[s S1521 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S1488 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -411,40 +390,40 @@ CHANGE_KP 1
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "6024
-[s S1530 . 1 `uc 1 . 1 0 :4:0 
+[s S1497 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SCKP 1 0 :1:4 
 `uc 1 . 1 0 :1:5 
 `uc 1 RCMT 1 0 :1:6 
 ]
-[s S1535 . 1 `uc 1 . 1 0 :5:0 
+[s S1502 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 RXCKP 1 0 :1:5 
 ]
-[s S1538 . 1 `uc 1 . 1 0 :1:0 
+[s S1505 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 W4E 1 0 :1:1 
 ]
-[u S1541 . 1 `S1521 1 . 1 0 `S1530 1 . 1 0 `S1535 1 . 1 0 `S1538 1 . 1 0 ]
-[v _BAUDCONbits BAUDCONbits `VES1541  1 e 1 @4024 ]
-[s S964 . 1 `uc 1 CCP2M 1 0 :4:0 
+[u S1508 . 1 `S1488 1 . 1 0 `S1497 1 . 1 0 `S1502 1 . 1 0 `S1505 1 . 1 0 ]
+[v _BAUDCONbits BAUDCONbits `VES1508  1 e 1 @4024 ]
+[s S931 . 1 `uc 1 CCP2M 1 0 :4:0 
 `uc 1 DC2B 1 0 :2:4 
 ]
 "6186
-[s S967 . 1 `uc 1 CCP2M0 1 0 :1:0 
+[s S934 . 1 `uc 1 CCP2M0 1 0 :1:0 
 `uc 1 CCP2M1 1 0 :1:1 
 `uc 1 CCP2M2 1 0 :1:2 
 `uc 1 CCP2M3 1 0 :1:3 
 `uc 1 DC2B0 1 0 :1:4 
 `uc 1 DC2B1 1 0 :1:5 
 ]
-[u S974 . 1 `S964 1 . 1 0 `S967 1 . 1 0 ]
-[v _CCP2CONbits CCP2CONbits `VES974  1 e 1 @4026 ]
+[u S941 . 1 `S931 1 . 1 0 `S934 1 . 1 0 ]
+[v _CCP2CONbits CCP2CONbits `VES941  1 e 1 @4026 ]
 "6236
 [v _CCPR2L CCPR2L `VEuc  1 e 1 @4027 ]
-[s S934 . 1 `uc 1 CCP1M 1 0 :4:0 
+[s S901 . 1 `uc 1 CCP1M 1 0 :4:0 
 `uc 1 DC1B 1 0 :2:4 
 `uc 1 P1M 1 0 :2:6 
 ]
 "6275
-[s S938 . 1 `uc 1 CCP1M0 1 0 :1:0 
+[s S905 . 1 `uc 1 CCP1M0 1 0 :1:0 
 `uc 1 CCP1M1 1 0 :1:1 
 `uc 1 CCP1M2 1 0 :1:2 
 `uc 1 CCP1M3 1 0 :1:3 
@@ -453,85 +432,85 @@ CHANGE_KP 1
 `uc 1 P1M0 1 0 :1:6 
 `uc 1 P1M1 1 0 :1:7 
 ]
-[u S947 . 1 `S934 1 . 1 0 `S938 1 . 1 0 ]
-[v _CCP1CONbits CCP1CONbits `VES947  1 e 1 @4029 ]
+[u S914 . 1 `S901 1 . 1 0 `S905 1 . 1 0 ]
+[v _CCP1CONbits CCP1CONbits `VES914  1 e 1 @4029 ]
 "6415
 [v _CCPR1L CCPR1L `VEuc  1 e 1 @4030 ]
-[s S404 . 1 `uc 1 ADCS 1 0 :3:0 
+[s S366 . 1 `uc 1 ADCS 1 0 :3:0 
 `uc 1 ACQT 1 0 :3:3 
 `uc 1 . 1 0 :1:6 
 `uc 1 ADFM 1 0 :1:7 
 ]
 "6448
-[s S409 . 1 `uc 1 ADCS0 1 0 :1:0 
+[s S371 . 1 `uc 1 ADCS0 1 0 :1:0 
 `uc 1 ADCS1 1 0 :1:1 
 `uc 1 ADCS2 1 0 :1:2 
 `uc 1 ACQT0 1 0 :1:3 
 `uc 1 ACQT1 1 0 :1:4 
 `uc 1 ACQT2 1 0 :1:5 
 ]
-[u S416 . 1 `S404 1 . 1 0 `S409 1 . 1 0 ]
-[v _ADCON2bits ADCON2bits `VES416  1 e 1 @4032 ]
-[s S369 . 1 `uc 1 PCFG 1 0 :4:0 
+[u S378 . 1 `S366 1 . 1 0 `S371 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES378  1 e 1 @4032 ]
+[s S331 . 1 `uc 1 PCFG 1 0 :4:0 
 `uc 1 VCFG 1 0 :2:4 
 ]
 "6522
-[s S372 . 1 `uc 1 PCFG0 1 0 :1:0 
+[s S334 . 1 `uc 1 PCFG0 1 0 :1:0 
 `uc 1 PCFG1 1 0 :1:1 
 `uc 1 PCFG2 1 0 :1:2 
 `uc 1 PCFG3 1 0 :1:3 
 `uc 1 VCFG0 1 0 :1:4 
 `uc 1 VCFG1 1 0 :1:5 
 ]
-[s S379 . 1 `uc 1 . 1 0 :3:0 
+[s S341 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CHSN3 1 0 :1:3 
 `uc 1 VCFG01 1 0 :1:4 
 `uc 1 VCFG11 1 0 :1:5 
 ]
-[u S384 . 1 `S369 1 . 1 0 `S372 1 . 1 0 `S379 1 . 1 0 ]
-[v _ADCON1bits ADCON1bits `VES384  1 e 1 @4033 ]
-[s S432 . 1 `uc 1 . 1 0 :1:0 
+[u S346 . 1 `S331 1 . 1 0 `S334 1 . 1 0 `S341 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES346  1 e 1 @4033 ]
+[s S394 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_NOT_DONE 1 0 :1:1 
 ]
 "6625
-[s S435 . 1 `uc 1 ADON 1 0 :1:0 
+[s S397 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 ]
-[s S439 . 1 `uc 1 . 1 0 :1:0 
+[s S401 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
 `uc 1 CHS2 1 0 :1:4 
 `uc 1 CHS3 1 0 :1:5 
 ]
-[s S446 . 1 `uc 1 . 1 0 :1:0 
+[s S408 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 DONE 1 0 :1:1 
 ]
-[s S449 . 1 `uc 1 . 1 0 :1:0 
+[s S411 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[s S452 . 1 `uc 1 . 1 0 :1:0 
+[s S414 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_DONE 1 0 :1:1 
 ]
-[s S455 . 1 `uc 1 . 1 0 :1:0 
+[s S417 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S458 . 1 `uc 1 . 1 0 :1:0 
+[s S420 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GODONE 1 0 :1:1 
 ]
-[u S461 . 1 `S432 1 . 1 0 `S435 1 . 1 0 `S439 1 . 1 0 `S446 1 . 1 0 `S449 1 . 1 0 `S452 1 . 1 0 `S455 1 . 1 0 `S458 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES461  1 e 1 @4034 ]
+[u S423 . 1 `S394 1 . 1 0 `S397 1 . 1 0 `S401 1 . 1 0 `S408 1 . 1 0 `S411 1 . 1 0 `S414 1 . 1 0 `S417 1 . 1 0 `S420 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES423  1 e 1 @4034 ]
 "6705
 [v _ADRESL ADRESL `VEuc  1 e 1 @4035 ]
 "6711
 [v _ADRESH ADRESH `VEuc  1 e 1 @4036 ]
-[s S892 . 1 `uc 1 T2CKPS 1 0 :2:0 
+[s S859 . 1 `uc 1 T2CKPS 1 0 :2:0 
 `uc 1 TMR2ON 1 0 :1:2 
 `uc 1 TOUTPS 1 0 :4:3 
 ]
 "7134
-[s S896 . 1 `uc 1 T2CKPS0 1 0 :1:0 
+[s S863 . 1 `uc 1 T2CKPS0 1 0 :1:0 
 `uc 1 T2CKPS1 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 T2OUTPS0 1 0 :1:3 
@@ -539,21 +518,21 @@ CHANGE_KP 1
 `uc 1 T2OUTPS2 1 0 :1:5 
 `uc 1 T2OUTPS3 1 0 :1:6 
 ]
-[s S904 . 1 `uc 1 . 1 0 :3:0 
+[s S871 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 TOUTPS0 1 0 :1:3 
 `uc 1 TOUTPS1 1 0 :1:4 
 `uc 1 TOUTPS2 1 0 :1:5 
 `uc 1 TOUTPS3 1 0 :1:6 
 ]
-[u S910 . 1 `S892 1 . 1 0 `S896 1 . 1 0 `S904 1 . 1 0 ]
-[v _T2CONbits T2CONbits `VES910  1 e 1 @4042 ]
+[u S877 . 1 `S859 1 . 1 0 `S863 1 . 1 0 `S871 1 . 1 0 ]
+[v _T2CONbits T2CONbits `VES877  1 e 1 @4042 ]
 "7203
 [v _PR2 PR2 `VEuc  1 e 1 @4043 ]
-[s S824 . 1 `uc 1 . 1 0 :2:0 
+[s S787 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_T1SYNC 1 0 :1:2 
 ]
 "7351
-[s S827 . 1 `uc 1 TMR1ON 1 0 :1:0 
+[s S790 . 1 `uc 1 TMR1ON 1 0 :1:0 
 `uc 1 TMR1CS 1 0 :1:1 
 `uc 1 nT1SYNC 1 0 :1:2 
 `uc 1 T1OSCEN 1 0 :1:3 
@@ -561,39 +540,39 @@ CHANGE_KP 1
 `uc 1 T1RUN 1 0 :1:6 
 `uc 1 RD16 1 0 :1:7 
 ]
-[s S835 . 1 `uc 1 . 1 0 :2:0 
+[s S798 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T1SYNC 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T1CKPS0 1 0 :1:4 
 `uc 1 T1CKPS1 1 0 :1:5 
 ]
-[s S841 . 1 `uc 1 . 1 0 :3:0 
+[s S804 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SOSCEN 1 0 :1:3 
 `uc 1 . 1 0 :3:4 
 `uc 1 T1RD16 1 0 :1:7 
 ]
-[u S846 . 1 `S824 1 . 1 0 `S827 1 . 1 0 `S835 1 . 1 0 `S841 1 . 1 0 ]
-[v _T1CONbits T1CONbits `VES846  1 e 1 @4045 ]
+[u S809 . 1 `S787 1 . 1 0 `S790 1 . 1 0 `S798 1 . 1 0 `S804 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES809  1 e 1 @4045 ]
 "7426
 [v _TMR1L TMR1L `VEuc  1 e 1 @4046 ]
 "7432
 [v _TMR1H TMR1H `VEuc  1 e 1 @4047 ]
-[s S697 . 1 `uc 1 NOT_BOR 1 0 :1:0 
+[s S660 . 1 `uc 1 NOT_BOR 1 0 :1:0 
 ]
 "7487
-[s S699 . 1 `uc 1 . 1 0 :1:0 
+[s S662 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 NOT_POR 1 0 :1:1 
 ]
-[s S702 . 1 `uc 1 . 1 0 :2:0 
+[s S665 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 NOT_PD 1 0 :1:2 
 ]
-[s S705 . 1 `uc 1 . 1 0 :3:0 
+[s S668 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 NOT_TO 1 0 :1:3 
 ]
-[s S708 . 1 `uc 1 . 1 0 :4:0 
+[s S671 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 NOT_RI 1 0 :1:4 
 ]
-[s S711 . 1 `uc 1 nBOR 1 0 :1:0 
+[s S674 . 1 `uc 1 nBOR 1 0 :1:0 
 `uc 1 nPOR 1 0 :1:1 
 `uc 1 nPD 1 0 :1:2 
 `uc 1 nTO 1 0 :1:3 
@@ -602,10 +581,10 @@ CHANGE_KP 1
 `uc 1 SBOREN 1 0 :1:6 
 `uc 1 IPEN 1 0 :1:7 
 ]
-[s S720 . 1 `uc 1 . 1 0 :7:0 
+[s S683 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_IPEN 1 0 :1:7 
 ]
-[s S723 . 1 `uc 1 BOR 1 0 :1:0 
+[s S686 . 1 `uc 1 BOR 1 0 :1:0 
 `uc 1 POR 1 0 :1:1 
 `uc 1 PD 1 0 :1:2 
 `uc 1 TO 1 0 :1:3 
@@ -613,16 +592,16 @@ CHANGE_KP 1
 `uc 1 . 1 0 :2:5 
 `uc 1 nIPEN 1 0 :1:7 
 ]
-[u S731 . 1 `S697 1 . 1 0 `S699 1 . 1 0 `S702 1 . 1 0 `S705 1 . 1 0 `S708 1 . 1 0 `S711 1 . 1 0 `S720 1 . 1 0 `S723 1 . 1 0 ]
-[v _RCONbits RCONbits `VES731  1 e 1 @4048 ]
-[s S545 . 1 `uc 1 SCS 1 0 :2:0 
+[u S694 . 1 `S660 1 . 1 0 `S662 1 . 1 0 `S665 1 . 1 0 `S668 1 . 1 0 `S671 1 . 1 0 `S674 1 . 1 0 `S683 1 . 1 0 `S686 1 . 1 0 ]
+[v _RCONbits RCONbits `VES694  1 e 1 @4048 ]
+[s S508 . 1 `uc 1 SCS 1 0 :2:0 
 `uc 1 IOFS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 `uc 1 IDLEN 1 0 :1:7 
 ]
 "7905
-[s S551 . 1 `uc 1 SCS0 1 0 :1:0 
+[s S514 . 1 `uc 1 SCS0 1 0 :1:0 
 `uc 1 SCS1 1 0 :1:1 
 `uc 1 FLTS 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -630,9 +609,9 @@ CHANGE_KP 1
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S559 . 1 `S545 1 . 1 0 `S551 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES559  1 e 1 @4051 ]
-[s S630 . 1 `uc 1 T0PS 1 0 :3:0 
+[u S522 . 1 `S508 1 . 1 0 `S514 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES522  1 e 1 @4051 ]
+[s S593 . 1 `uc 1 T0PS 1 0 :3:0 
 `uc 1 PSA 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
@@ -640,21 +619,21 @@ CHANGE_KP 1
 `uc 1 TMR0ON 1 0 :1:7 
 ]
 "7984
-[s S637 . 1 `uc 1 T0PS0 1 0 :1:0 
+[s S600 . 1 `uc 1 T0PS0 1 0 :1:0 
 `uc 1 T0PS1 1 0 :1:1 
 `uc 1 T0PS2 1 0 :1:2 
 ]
-[u S641 . 1 `S630 1 . 1 0 `S637 1 . 1 0 ]
-[v _T0CONbits T0CONbits `VES641  1 e 1 @4053 ]
+[u S604 . 1 `S593 1 . 1 0 `S600 1 . 1 0 ]
+[v _T0CONbits T0CONbits `VES604  1 e 1 @4053 ]
 "8039
 [v _TMR0L TMR0L `VEuc  1 e 1 @4054 ]
 "8045
 [v _TMR0H TMR0H `VEuc  1 e 1 @4055 ]
-[s S658 . 1 `uc 1 . 1 0 :7:0 
+[s S621 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 NOT_RBPU 1 0 :1:7 
 ]
 "8395
-[s S661 . 1 `uc 1 RBIP 1 0 :1:0 
+[s S624 . 1 `uc 1 RBIP 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 TMR0IP 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -663,14 +642,14 @@ CHANGE_KP 1
 `uc 1 INTEDG0 1 0 :1:6 
 `uc 1 nRBPU 1 0 :1:7 
 ]
-[s S670 . 1 `uc 1 . 1 0 :2:0 
+[s S633 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IP 1 0 :1:2 
 `uc 1 . 1 0 :4:3 
 `uc 1 RBPU 1 0 :1:7 
 ]
-[u S675 . 1 `S658 1 . 1 0 `S661 1 . 1 0 `S670 1 . 1 0 ]
-[v _INTCON2bits INTCON2bits `VES675  1 e 1 @4081 ]
-[s S775 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S638 . 1 `S621 1 . 1 0 `S624 1 . 1 0 `S633 1 . 1 0 ]
+[v _INTCON2bits INTCON2bits `VES638  1 e 1 @4081 ]
+[s S738 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -680,7 +659,7 @@ CHANGE_KP 1
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
 "8476
-[s S784 . 1 `uc 1 . 1 0 :1:0 
+[s S747 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -689,12 +668,12 @@ CHANGE_KP 1
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S793 . 1 `uc 1 . 1 0 :6:0 
+[s S756 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S797 . 1 `S775 1 . 1 0 `S784 1 . 1 0 `S793 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES797  1 e 1 @4082 ]
+[u S760 . 1 `S738 1 . 1 0 `S747 1 . 1 0 `S756 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES760  1 e 1 @4082 ]
 "9994
 [v _T2CKPS0 T2CKPS0 `VEb  1 e 0 @32336 ]
 "9996
@@ -721,93 +700,23 @@ CHANGE_KP 1
 [v _ls ls `[5]i  1 e 10 0 ]
 "9
 [v _es es `[2]i  1 e 4 0 ]
-"10
-[v _calval calval `[9]i  1 e 18 0 ]
-"12
-[v _mins mins `[9]i  1 e 18 0 ]
-[v _maxs maxs `[9]i  1 e 18 0 ]
-"14
+"11
+[v _mins mins `[7]i  1 e 14 0 ]
+[v _maxs maxs `[7]i  1 e 14 0 ]
+"13
 [v _lp lp `i  1 e 2 0 ]
-"22 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
-[v _old_lp old_lp `i  1 e 2 0 ]
+"20 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
+[v _status status `i  1 e 2 0 ]
 "4 /home/adrian/Robots/Rayito3/Rayito3.X/timer.c
 [v _i i `i  1 e 2 0 ]
 "5
 [v _time time `[10]l  1 e 40 0 ]
-"7 /home/adrian/Robots/Rayito3/Rayito3.X/twiddle.c
-[v _kd kd `d  1 e 3 0 ]
-"8
-[v _ckd ckd `d  1 e 3 0 ]
-"10
-[v _best_err best_err `i  1 e 2 0 ]
-"14
-[v _status status `i  1 e 2 0 ]
-"16
-[v _intern intern `i  1 e 2 0 ]
-"24 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
+"22 /home/adrian/Robots/Rayito3/Rayito3.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"127
-[v main@i_362 i `i  1 a 2 17 ]
-"107
-[v main@i i `i  1 a 2 19 ]
-"146
-[v main@dif dif `d  1 a 3 12 ]
-"143
-[v main@speed speed `i  1 a 2 15 ]
-"145
-[v main@der der `i  1 a 2 0 ]
-"33
-[v main@faux faux `i  1 a 2 10 ]
-"30
-[v main@fs fs `i  1 a 2 8 ]
-"34
-[v main@b b `i  1 a 2 4 ]
-[v main@a a `i  1 a 2 2 ]
-"178
-} 0
-"24 /home/adrian/Robots/Rayito3/Rayito3.X/twiddle.c
-[v _twiddle_update twiddle_update `(v  1 e 1 0 ]
-{
-"52
-} 0
-"20 /opt/microchip/xc8/v1.41/sources/common/ftsub.c
-[v ___ftsub __ftsub `(f  1 e 3 0 ]
-{
-[v ___ftsub@f1 f1 `f  1 p 3 55 ]
-[v ___ftsub@f2 f2 `f  1 p 3 58 ]
-"27
-} 0
-"86 /opt/microchip/xc8/v1.41/sources/common/ftadd.c
-[v ___ftadd __ftadd `(f  1 e 3 0 ]
-{
-"88
-[v ___ftadd@exp1 exp1 `uc  1 a 1 54 ]
-[v ___ftadd@exp2 exp2 `uc  1 a 1 53 ]
-[v ___ftadd@sign sign `uc  1 a 1 52 ]
-"86
-[v ___ftadd@f1 f1 `f  1 p 3 43 ]
-[v ___ftadd@f2 f2 `f  1 p 3 46 ]
-"148
-} 0
-"62 /opt/microchip/xc8/v1.41/sources/common/ftmul.c
-[v ___ftmul __ftmul `(f  1 e 3 0 ]
-{
-"65
-[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 38 ]
-"64
-[v ___ftmul@sign sign `uc  1 a 1 42 ]
-[v ___ftmul@cntr cntr `uc  1 a 1 41 ]
-[v ___ftmul@exp exp `uc  1 a 1 37 ]
-"62
-[v ___ftmul@f1 f1 `f  1 p 3 28 ]
-[v ___ftmul@f2 f2 `f  1 p 3 31 ]
-"157
-} 0
-"18 /home/adrian/Robots/Rayito3/Rayito3.X/twiddle.c
-[v _twidde_start twidde_start `(v  1 e 1 0 ]
-{
-"22
+"57
+[v main@i i `i  1 a 2 24 ]
+"81
 } 0
 "24 /home/adrian/Robots/Rayito3/Rayito3.X/utils.c
 [v _setD setD `(v  1 e 1 0 ]
@@ -829,30 +738,30 @@ CHANGE_KP 1
 {
 "10
 } 0
-"47 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+"46 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
 [v _read_cal read_cal `(i  1 e 2 0 ]
 {
-"48
+"47
 [v read_cal@i i `i  1 a 2 33 ]
-"55
+"54
 } 0
 "464 /opt/microchip/xc8/v1.41/sources/common/doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "501
-[v printf@width width `i  1 a 2 33 ]
+[v printf@width width `i  1 a 2 46 ]
 "528
-[v printf@val val `ui  1 a 2 30 ]
+[v printf@val val `ui  1 a 2 43 ]
 "466
-[v printf@ap ap `[1]*.39v  1 a 2 27 ]
+[v printf@ap ap `[1]*.39v  1 a 2 40 ]
 "499
-[v printf@c c `c  1 a 1 35 ]
+[v printf@c c `c  1 a 1 48 ]
 "508
-[v printf@flag flag `uc  1 a 1 32 ]
+[v printf@flag flag `uc  1 a 1 45 ]
 "506
-[v printf@prec prec `c  1 a 1 29 ]
+[v printf@prec prec `c  1 a 1 42 ]
 "464
-[v printf@f f `*.25Cuc  1 p 2 15 ]
+[v printf@f f `*.25Cuc  1 p 2 28 ]
 "1541
 } 0
 "24 /home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
@@ -871,16 +780,6 @@ CHANGE_KP 1
 "14
 [v isdigit@c c `uc  1 a 1 18 ]
 "15
-} 0
-"15 /opt/microchip/xc8/v1.41/sources/common/Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 59 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 11 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 13 ]
-"53
 } 0
 "8 /opt/microchip/xc8/v1.41/sources/common/lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
@@ -904,41 +803,29 @@ CHANGE_KP 1
 [v ___lwdiv@divisor divisor `ui  1 p 2 18 ]
 "31
 } 0
-"107 /home/adrian/Robots/Rayito3/Rayito3.X/config.c
-[v _mspeed mspeed `(v  1 e 1 0 ]
-{
-[v mspeed@a a `i  1 p 2 11 ]
-[v mspeed@b b `i  1 p 2 13 ]
-"110
-} 0
-"95
-[v _MotorBSpeed MotorBSpeed `(v  1 e 1 0 ]
-{
-[v MotorBSpeed@S S `i  1 p 2 24 ]
-"105
-} 0
-"84
-[v _MotorASpeed MotorASpeed `(v  1 e 1 0 ]
-{
-[v MotorASpeed@S S `i  1 p 2 24 ]
-"94
-} 0
-"57 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+"56 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
 [v _line_cal line_cal `(i  1 e 2 0 ]
 {
-"62
-[v line_cal@value value `l  1 a 4 14 ]
-"59
-[v line_cal@b b `l  1 a 4 8 ]
-"58
-[v line_cal@a a `l  1 a 4 4 ]
 "61
+[v line_cal@value value `l  1 a 4 16 ]
+"58
+[v line_cal@b b `l  1 a 4 8 ]
+"57
+[v line_cal@a a `l  1 a 4 4 ]
+"60
 [v line_cal@j j `i  1 a 2 22 ]
 [v line_cal@i i `i  1 a 2 20 ]
-[v line_cal@aux aux `i  1 a 2 18 ]
-"63
-[v line_cal@ok ok `i  1 a 2 12 ]
-"90
+"77
+} 0
+"15 /opt/microchip/xc8/v1.41/sources/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 20 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 16 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 18 ]
+"53
 } 0
 "15 /opt/microchip/xc8/v1.41/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
@@ -954,88 +841,46 @@ CHANGE_KP 1
 [v ___aldiv __aldiv `(l  1 e 4 0 ]
 {
 "11
-[v ___aldiv@quotient quotient `l  1 a 4 38 ]
+[v ___aldiv@quotient quotient `l  1 a 4 26 ]
 "12
-[v ___aldiv@sign sign `uc  1 a 1 37 ]
-[v ___aldiv@counter counter `uc  1 a 1 36 ]
+[v ___aldiv@sign sign `uc  1 a 1 25 ]
+[v ___aldiv@counter counter `uc  1 a 1 24 ]
 "8
-[v ___aldiv@dividend dividend `l  1 p 4 28 ]
-[v ___aldiv@divisor divisor `l  1 p 4 32 ]
+[v ___aldiv@dividend dividend `l  1 p 4 16 ]
+[v ___aldiv@divisor divisor `l  1 p 4 20 ]
 "42
-} 0
-"4 /home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
-[v _init_wixel init_wixel `(i  1 e 2 0 ]
-{
-"23
 } 0
 "7 /home/adrian/Robots/Rayito3/Rayito3.X/config.c
 [v _init_tms init_tms `(v  1 e 1 0 ]
 {
-"51
+"52
+} 0
+"4 /home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+[v _init_wixel init_wixel `(v  1 e 1 0 ]
+{
+"23
 } 0
 "6 /home/adrian/Robots/Rayito3/Rayito3.X/io.c
 [v _init_io init_io `(v  1 e 1 0 ]
 {
 "44
 } 0
-"16 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+"15 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
 [v _an_init an_init `(v  1 e 1 0 ]
 {
-"27
+"26
 } 0
-"55 /home/adrian/Robots/Rayito3/Rayito3.X/config.c
+"56 /home/adrian/Robots/Rayito3/Rayito3.X/config.c
 [v _MotorsPWM MotorsPWM `(v  1 e 1 0 ]
 {
-"82
+"83
 } 0
-"41 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+"40 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
 [v _init_cal init_cal `(i  1 e 2 0 ]
 {
-"42
+"41
 [v init_cal@i i `i  1 a 2 16 ]
-"46
-} 0
-"44 /opt/microchip/xc8/v1.41/sources/common/fttol.c
-[v ___fttol __fttol `(l  1 e 4 0 ]
-{
-"47
-[v ___fttol@lval lval `ul  1 a 4 6 ]
-"46
-[v ___fttol@exp1 exp1 `uc  1 a 1 10 ]
-[v ___fttol@sign1 sign1 `uc  1 a 1 5 ]
-"44
-[v ___fttol@f1 f1 `f  1 p 3 55 ]
-"73
-} 0
-"15 /opt/microchip/xc8/v1.41/sources/common/ftneg.c
-[v ___ftneg __ftneg `(f  1 e 3 0 ]
-{
-[v ___ftneg@f1 f1 `f  1 p 3 16 ]
-"20
-} 0
-"4 /opt/microchip/xc8/v1.41/sources/common/ftge.c
-[v ___ftge __ftge `(b  1 e 0 0 ]
-{
-[v ___ftge@ff1 ff1 `f  1 p 3 16 ]
-[v ___ftge@ff2 ff2 `f  1 p 3 19 ]
-"13
-} 0
-"32 /opt/microchip/xc8/v1.41/sources/common/awtoft.c
-[v ___awtoft __awtoft `(f  1 e 3 0 ]
-{
-"34
-[v ___awtoft@sign sign `uc  1 a 1 27 ]
-"32
-[v ___awtoft@c c `i  1 p 2 24 ]
-"42
-} 0
-"62 /opt/microchip/xc8/v1.41/sources/common/float.c
-[v ___ftpack __ftpack `(f  1 e 3 0 ]
-{
-[v ___ftpack@arg arg `um  1 p 3 16 ]
-[v ___ftpack@exp exp `uc  1 p 1 19 ]
-[v ___ftpack@sign sign `uc  1 p 1 20 ]
-"86
+"45
 } 0
 "8 /opt/microchip/xc8/v1.41/sources/common/almod.c
 [v ___almod __almod `(l  1 e 4 0 ]
@@ -1048,26 +893,26 @@ CHANGE_KP 1
 [v ___almod@divisor divisor `l  1 p 4 20 ]
 "35
 } 0
-"29 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+"28 /home/adrian/Robots/Rayito3/Rayito3.X/analog.c
 [v _EnhancedRead EnhancedRead `(v  1 e 1 0 ]
 {
-"31
-[v EnhancedRead@aux aux `ui  1 a 2 25 ]
 "30
-[v EnhancedRead@i i `uc  1 a 1 27 ]
-"40
+[v EnhancedRead@aux aux `ui  1 a 2 31 ]
+"29
+[v EnhancedRead@i i `uc  1 a 1 33 ]
+"39
 } 0
 "8 /opt/microchip/xc8/v1.41/sources/common/awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "11
-[v ___awdiv@quotient quotient `i  1 a 2 22 ]
+[v ___awdiv@quotient quotient `i  1 a 2 28 ]
 "12
-[v ___awdiv@sign sign `uc  1 a 1 21 ]
-[v ___awdiv@counter counter `uc  1 a 1 20 ]
+[v ___awdiv@sign sign `uc  1 a 1 27 ]
+[v ___awdiv@counter counter `uc  1 a 1 26 ]
 "8
-[v ___awdiv@dividend dividend `i  1 p 2 16 ]
-[v ___awdiv@divisor divisor `i  1 p 2 18 ]
+[v ___awdiv@dividend dividend `i  1 p 2 22 ]
+[v ___awdiv@divisor divisor `i  1 p 2 24 ]
 "42
 } 0
 "7 /home/adrian/Robots/Rayito3/Rayito3.X/timer.c

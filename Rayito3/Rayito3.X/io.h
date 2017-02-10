@@ -18,9 +18,9 @@ extern "C" {
 #define LED_C PORTDbits.RD2
 #define LED_D PORTAbits.RA4    
    
-/** Motor direction pins **/
-#define DIR_A PORTBbits.RB0
+/** Motor direction pins **/    
 #define DIR_B PORTBbits.RB1
+#define DIR_A PORTBbits.RB0
 
 /** Button pins **/
 #define BUTTON_A PORTDbits.RD0

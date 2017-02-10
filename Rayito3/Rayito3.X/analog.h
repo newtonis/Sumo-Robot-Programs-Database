@@ -12,8 +12,15 @@
 extern "C" {
 #endif
 
-extern int an[10];
-    
+extern int an[9];
+
+extern int ls[5];
+
+extern int maxs[9] , mins[9];
+extern int lp;
+extern int calval[9];
+
+void an_init();
 void EnhancedRead();
 
 #ifdef	__cplusplus

@@ -37,4 +37,8 @@ void init_io(){
     
     /** weak pull up **/
     PORTEbits.RDPU = 1;
+    
+    /** Wixel **/
+    TRISCbits.RC6 = OUTPUT;
+    TRISCbits.RC7 = OUTPUT;
 }

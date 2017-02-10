@@ -2,7 +2,7 @@
 #include "timer.h"
 
 int i;
-int time[10];
+ll time[10];
 
 void interrupt enc(void){
     if (TMR0IF){

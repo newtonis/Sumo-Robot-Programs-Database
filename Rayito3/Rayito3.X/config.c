@@ -1,6 +1,8 @@
 #include <xc.h>
 #include "config.h"
 #include "io.h"
+#include "analog.h"
+#include "wixel.h"
 
 void init_tms(){
     OSCCONbits.IRCF = 7;    /* OSCILLATOR CONTROL REGISTER -> 8MHz */
@@ -44,6 +46,8 @@ void init_tms(){
     TMR1L = 0x2F;
     
     init_io();
+    an_init();
+    MotorsPWM();
 }
 
 
@@ -71,6 +75,8 @@ void MotorsPWM(){
 
     CCP1CONbits.CCP1M = 1100;
     CCP2CONbits.CCP2M = 1100;
+    
+    
     PR2 = 249; //51;//51; //38 khz
     
 }
@@ -87,7 +93,7 @@ void MotorASpeed(int S){
     CCPR1L = S / 4;
 }
 void MotorBSpeed(int S){
-    S = -S; //reverse
+    //S = -S; //reverse
     S = minv(S,1000);
     S = maxv(S,-1000);
     

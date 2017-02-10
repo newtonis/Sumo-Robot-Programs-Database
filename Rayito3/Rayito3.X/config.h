@@ -29,7 +29,7 @@ typedef long long ll;
 #pragma config PLLDIV = 5               // Internal Oscillator engaged
 #pragma config MCLRE  = OFF
 #pragma config WDTPS  = 32768
-#pragma config CCP2MX = ON
+#pragma config CCP2MX = OFF
 #pragma config PBADEN = OFF
 #pragma config CPUDIV = OSC1_PLL2
 #pragma config USBDIV = 2
@@ -57,6 +57,8 @@ typedef long long ll;
     
 void init_tms();
 void init_io();
+void MotorsPWM();
+void mspeed(int a,int b);
     
 #ifdef	__cplusplus
 }
