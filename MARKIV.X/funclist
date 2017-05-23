@@ -1,0 +1,22 @@
+_MotorsPWM: CODE, 2262 0 62
+___awdiv: CODE, 1680 0 164
+_MotorsSpeed: CODE, 2408 0 26
+_InitButtons: CODE, 2472 0 14
+_GetAnalog: CODE, 2194 0 68
+_ResetCounter: CODE, 2366 0 42
+_InitTIMERS: CODE, 2026 0 88
+_MotorBSpeed: CODE, 1516 0 164
+_UpdateButtons: CODE, 2114 0 80
+_main: CODE, 28 0 932
+___almod: CODE, 960 0 220
+_initYBOT: CODE, 2324 0 42
+_InitAnalog: CODE, 2498 0 10
+__initialization: CODE, 2434 0 12
+_InitSP: CODE, 2486 0 12
+_configurations_init: CODE, 2456 0 16
+_ReadAnalog: CODE, 1936 0 90
+_enc: CODE, 8 0 1342
+_UpdatePiso: CODE, 1844 0 92
+_MotorASpeed: CODE, 1350 0 166
+_UpdateYBOT: CODE, 2508 0 10
+Total: 3652
