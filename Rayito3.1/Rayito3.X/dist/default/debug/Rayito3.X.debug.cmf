@@ -1,0 +1,1026 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$dist/default/debug/Rayito3.X.debug.obj
+cinit CODE 0 11F4 11F4 46 1
+intcode_body CODE 0 E22 E22 CC 1
+text0 CODE 0 804 804 30C 1
+text1 CODE 0 1398 1398 A 1
+text2 CODE 0 13A2 13A2 A 1
+text3 CODE 0 13AC 13AC A 1
+text4 CODE 0 13B6 13B6 A 1
+text5 CODE 0 12 12 4A2 1
+text6 CODE 0 B10 B10 246 1
+text7 CODE 0 138C 138C C 1
+text8 CODE 0 135C 135C 1E 1
+text9 CODE 0 123A 123A 42 1
+text10 CODE 0 1150 1150 52 1
+text11 CODE 0 4B4 4B4 350 1
+text12 CODE 0 1312 1312 26 1
+text13 CODE 0 10FA 10FA 56 1
+text14 CODE 0 D56 D56 CC 1
+text15 CODE 0 11A2 11A2 52 1
+text16 CODE 0 1338 1338 24 1
+text17 CODE 0 12BA 12BA 2E 1
+text18 CODE 0 12E8 12E8 2A 1
+text19 CODE 0 127C 127C 3E 1
+text20 CODE 0 101E 101E 72 1
+text21 CODE 0 EEE EEE AC 1
+text22 CODE 0 1090 1090 6A 1
+text23 CODE 0 F9A F9A 84 1
+idataCOMRAM CODE 0 137A 137A 12 1
+cstackCOMRAM COMRAM 1 1 1 35 1
+cstackBANK0 BANK0 1 B6 B6 1A 1
+temp COMRAM 1 4E 4E 1 1
+bssBANK0 BANK0 1 60 60 56 1
+intcode CODE 0 8 8 6 1
+dataCOMRAM COMRAM 1 36 36 12 1
+bssCOMRAM COMRAM 1 48 48 6 1
+mediumconst MEDIUMCONST 0 7BF4 7BF4 10C 1
+$/tmp/xcXNl1szg.obj
+idloc IDLOC 0 200000 200000 8 1
+init CODE 0 E E 4 1
+reset_vec CODE 0 0 0 6 1
+config CONFIG 0 300000 300000 E 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM D0-3EE 1
+RAM 400-7FF 1
+SFR F60-F9B 1
+SFR F9D-FD3 1
+SFR FD5-FDA 1
+SFR FE0-FE2 1
+SFR FE8-FEA 1
+SFR FF0-FFB 1
+BANK0 D0-FF 1
+BANK1 100-1FF 1
+BANK2 200-2FF 1
+BANK3 300-3EE 1
+BANK4 400-4FF 1
+BANK5 500-5FF 1
+BANK6 600-6FF 1
+BANK7 700-7FF 1
+CONST 6-7 1
+CONST 13C0-7BF3 1
+STACK 400-7FF 1
+SMALLCONST 13C0-7BF3 1
+CODE 6-7 1
+CODE 13C0-7BF3 1
+BIGRAM 4F-5F 1
+BIGRAM D0-3EE 1
+BIGRAM 400-7FF 1
+COMRAM 4F-5F 1
+EEDATA F00000-F000FF 1
+MEDIUMCONST 13C0-7BF3 1
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/debug/Rayito3.X.debug.obj
+8 intcode CODE >42:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+8 intcode CODE >7:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+E22 intcode_body CODE >7:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+E5C intcode_body CODE >8:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+E60 intcode_body CODE >9:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+EA8 intcode_body CODE >10:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+EAC intcode_body CODE >11:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+EB0 intcode_body CODE >12:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+EB2 intcode_body CODE >14:/home/adrian/Robots/Rayito3/Rayito3.X/timer.c
+F9A text23 CODE >8:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+F9A text23 CODE >14:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+F9E text23 CODE >15:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FA2 text23 CODE >16:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FAA text23 CODE >17:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FAE text23 CODE >19:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FB2 text23 CODE >20:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FBA text23 CODE >21:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FBE text23 CODE >23:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FC6 text23 CODE >24:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FCE text23 CODE >25:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FD2 text23 CODE >26:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FD4 text23 CODE >27:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FDA text23 CODE >28:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FDC text23 CODE >26:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FE0 text23 CODE >31:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FE6 text23 CODE >32:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FF2 text23 CODE >33:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FFA text23 CODE >34:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+FFC text23 CODE >36:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+1002 text23 CODE >37:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+1006 text23 CODE >39:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+100C text23 CODE >40:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+1014 text23 CODE >41:/opt/microchip/xc8/v1.41/sources/common/awdiv.c
+1090 text22 CODE >28:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+1090 text22 CODE >31:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+109C text22 CODE >32:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+10AE text22 CODE >33:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+10B0 text22 CODE >34:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+10B4 text22 CODE >35:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+10C0 text22 CODE >36:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+10DE text22 CODE >37:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+10F6 text22 CODE >31:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+EEE text21 CODE >8:/opt/microchip/xc8/v1.41/sources/common/almod.c
+EEE text21 CODE >13:/opt/microchip/xc8/v1.41/sources/common/almod.c
+EF2 text21 CODE >14:/opt/microchip/xc8/v1.41/sources/common/almod.c
+EF6 text21 CODE >15:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F06 text21 CODE >16:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F0A text21 CODE >18:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F0E text21 CODE >19:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F1E text21 CODE >20:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F2A text21 CODE >21:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F2E text21 CODE >22:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F30 text21 CODE >23:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F3A text21 CODE >24:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F3C text21 CODE >22:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F40 text21 CODE >27:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F54 text21 CODE >28:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F64 text21 CODE >29:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F6E text21 CODE >30:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F72 text21 CODE >32:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F78 text21 CODE >33:/opt/microchip/xc8/v1.41/sources/common/almod.c
+F88 text21 CODE >34:/opt/microchip/xc8/v1.41/sources/common/almod.c
+101E text20 CODE >40:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+101E text20 CODE >43:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+1056 text20 CODE >44:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+108E text20 CODE >45:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+127C text19 CODE >56:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+127C text19 CODE >58:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+127E text19 CODE >59:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+1280 text19 CODE >60:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+1282 text19 CODE >61:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+1284 text19 CODE >63:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+1286 text19 CODE >64:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+1288 text19 CODE >65:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+128A text19 CODE >67:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+128C text19 CODE >70:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+1294 text19 CODE >71:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+129C text19 CODE >72:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+129E text19 CODE >73:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+12A2 text19 CODE >74:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+12A4 text19 CODE >77:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+12AC text19 CODE >78:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+12B4 text19 CODE >81:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+12B8 text19 CODE >83:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+12E8 text18 CODE >15:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12E8 text18 CODE >16:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12EC text18 CODE >17:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12F4 text18 CODE >19:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12F6 text18 CODE >20:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12FC text18 CODE >21:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+1304 text18 CODE >22:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+130C text18 CODE >23:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+130E text18 CODE >24:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+1310 text18 CODE >26:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12BA text17 CODE >6:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12BA text17 CODE >8:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12BC text17 CODE >9:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12BE text17 CODE >10:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12C0 text17 CODE >11:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12C2 text17 CODE >14:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12C4 text17 CODE >15:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12C6 text17 CODE >18:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12C8 text17 CODE >19:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12CA text17 CODE >22:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12CC text17 CODE >23:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12CE text17 CODE >26:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12D0 text17 CODE >27:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12D2 text17 CODE >28:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12D4 text17 CODE >29:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12D6 text17 CODE >30:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12D8 text17 CODE >31:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12DA text17 CODE >32:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12DC text17 CODE >35:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12DE text17 CODE >36:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12E0 text17 CODE >39:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12E2 text17 CODE >42:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12E4 text17 CODE >43:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+12E6 text17 CODE >44:/home/adrian/Robots/Rayito3/Rayito3.X/io.c
+1338 text16 CODE >4:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1338 text16 CODE >5:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+133A text16 CODE >6:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+133C text16 CODE >7:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+133E text16 CODE >9:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1340 text16 CODE >10:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1342 text16 CODE >11:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1346 text16 CODE >12:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+134A text16 CODE >13:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+134C text16 CODE >14:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+134E text16 CODE >15:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1350 text16 CODE >16:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1352 text16 CODE >18:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1354 text16 CODE >19:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1356 text16 CODE >20:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1358 text16 CODE >21:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+135A text16 CODE >23:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+11A2 text15 CODE >7:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11A2 text15 CODE >8:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11A8 text15 CODE >11:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11AC text15 CODE >14:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11AE text15 CODE >15:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11B0 text15 CODE >18:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11B2 text15 CODE >19:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11B4 text15 CODE >20:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11B6 text15 CODE >22:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11B8 text15 CODE >23:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11BC text15 CODE >24:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11C0 text15 CODE >27:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11C2 text15 CODE >28:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11C4 text15 CODE >29:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11C6 text15 CODE >33:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11C8 text15 CODE >35:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11CA text15 CODE >37:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11CC text15 CODE >38:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11CE text15 CODE >39:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11D0 text15 CODE >40:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11D4 text15 CODE >41:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11D6 text15 CODE >42:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11D8 text15 CODE >43:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11DA text15 CODE >45:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11DE text15 CODE >46:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11E2 text15 CODE >48:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11E6 text15 CODE >49:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11EA text15 CODE >50:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11EE text15 CODE >51:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+11F2 text15 CODE >52:/home/adrian/Robots/Rayito3/Rayito3.X/config.c
+D56 text14 CODE >8:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D56 text14 CODE >14:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D5A text14 CODE >15:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D5E text14 CODE >16:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D6E text14 CODE >17:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D72 text14 CODE >19:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D76 text14 CODE >20:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D86 text14 CODE >21:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D8A text14 CODE >23:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+D9A text14 CODE >24:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DA6 text14 CODE >25:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DAA text14 CODE >26:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DAC text14 CODE >27:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DB6 text14 CODE >28:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DB8 text14 CODE >26:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DBC text14 CODE >31:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DC6 text14 CODE >32:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DDA text14 CODE >33:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DEA text14 CODE >34:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DEC text14 CODE >36:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DF6 text14 CODE >37:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+DFA text14 CODE >39:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+E00 text14 CODE >40:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+E10 text14 CODE >41:/opt/microchip/xc8/v1.41/sources/common/aldiv.c
+10FA text13 CODE >15:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+10FA text13 CODE >119:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+110A text13 CODE >121:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+110E text13 CODE >122:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+111E text13 CODE >123:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+1128 text13 CODE >124:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+1132 text13 CODE >125:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+113E text13 CODE >128:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+114E text13 CODE >129:/opt/microchip/xc8/v1.41/sources/common/Umul32.c
+1312 text12 CODE >15:/opt/microchip/xc8/v1.41/sources/common/Umul16.c
+1312 text12 CODE >37:/opt/microchip/xc8/v1.41/sources/common/Umul16.c
+131E text12 CODE >38:/opt/microchip/xc8/v1.41/sources/common/Umul16.c
+1326 text12 CODE >39:/opt/microchip/xc8/v1.41/sources/common/Umul16.c
+132E text12 CODE >52:/opt/microchip/xc8/v1.41/sources/common/Umul16.c
+4B4 text11 CODE >56:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+4B4 text11 CODE >57:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+4C6 text11 CODE >58:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+4D8 text11 CODE >63:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+4FC text11 CODE >65:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+51A text11 CODE >66:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+5B8 text11 CODE >67:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+656 text11 CODE >69:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+692 text11 CODE >72:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+72C text11 CODE >73:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+74C text11 CODE >74:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+7BE text11 CODE >63:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+7D2 text11 CODE >76:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+802 text11 CODE >77:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+1150 text10 CODE >8:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1150 text10 CODE >14:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1158 text10 CODE >15:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1160 text10 CODE >16:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1164 text10 CODE >17:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1166 text10 CODE >18:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+116C text10 CODE >19:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+116E text10 CODE >17:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1172 text10 CODE >22:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1178 text10 CODE >23:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1184 text10 CODE >24:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+118C text10 CODE >25:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+118E text10 CODE >27:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1194 text10 CODE >28:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1198 text10 CODE >29:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+1198 text10 CODE >30:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+11A0 text10 CODE >31:/opt/microchip/xc8/v1.41/sources/common/lwdiv.c
+123A text9 CODE >8:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+123A text9 CODE >13:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1242 text9 CODE >14:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1246 text9 CODE >15:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1248 text9 CODE >16:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+124E text9 CODE >17:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1250 text9 CODE >15:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1254 text9 CODE >20:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1260 text9 CODE >21:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1268 text9 CODE >22:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+126E text9 CODE >23:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1272 text9 CODE >24:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+1272 text9 CODE >25:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+127A text9 CODE >26:/opt/microchip/xc8/v1.41/sources/common/lwmod.c
+135C text8 CODE >8:/opt/microchip/xc8/v1.41/sources/common/isdigit.c
+135E text8 CODE >14:/opt/microchip/xc8/v1.41/sources/common/isdigit.c
+138C text7 CODE >24:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+138E text7 CODE >25:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+138E text7 CODE >26:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1392 text7 CODE >27:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+1396 text7 CODE >28:/home/adrian/Robots/Rayito3/Rayito3.X/wixel.c
+B10 text6 CODE >464:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B10 text6 CODE >533:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B18 text6 CODE >536:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B1A text6 CODE >538:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B22 text6 CODE >541:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B28 text6 CODE >542:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B2A text6 CODE >546:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B32 text6 CODE >548:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B36 text6 CODE >551:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B38 text6 CODE >580:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B3A text6 CODE >581:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B3E text6 CODE >551:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B50 text6 CODE >597:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B64 text6 CODE >598:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B6C text6 CODE >600:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+B88 text6 CODE >601:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+BB4 text6 CODE >602:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+BC8 text6 CODE >635:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+BEE text6 CODE >1259:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C06 text6 CODE >1261:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C0A text6 CODE >1262:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C0E text6 CODE >1263:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C16 text6 CODE >1305:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C22 text6 CODE >1306:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C42 text6 CODE >1305:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C46 text6 CODE >1345:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C5A text6 CODE >1346:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C60 text6 CODE >1381:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C76 text6 CODE >1382:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C84 text6 CODE >1384:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C8C text6 CODE >1387:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C90 text6 CODE >1392:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+C9C text6 CODE >1393:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CA2 text6 CODE >1415:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CAA text6 CODE >1417:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CB0 text6 CODE >1418:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CB8 text6 CODE >1428:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CC0 text6 CODE >1430:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CC6 text6 CODE >1431:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CD4 text6 CODE >1438:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CE0 text6 CODE >1439:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CE6 text6 CODE >1472:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CEA text6 CODE >1474:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+CEC text6 CODE >1489:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+D2E text6 CODE >1524:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+D34 text6 CODE >1474:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+D3C text6 CODE >536:/opt/microchip/xc8/v1.41/sources/common/doprnt.c
+12 text5 CODE >46:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+12 text5 CODE >49:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+13A text5 CODE >50:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+262 text5 CODE >52:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+38A text5 CODE >53:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+4B2 text5 CODE >54:/home/adrian/Robots/Rayito3/Rayito3.X/analog.c
+13B6 text4 CODE >5:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13B6 text4 CODE >6:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13B8 text4 CODE >7:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13BA text4 CODE >8:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13BC text4 CODE >9:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13BE text4 CODE >10:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13AC text3 CODE >12:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13AC text3 CODE >13:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13AE text3 CODE >14:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13B0 text3 CODE >15:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13B2 text3 CODE >16:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13B4 text3 CODE >17:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13A2 text2 CODE >18:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13A2 text2 CODE >19:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13A4 text2 CODE >20:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13A6 text2 CODE >21:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13A8 text2 CODE >22:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13AA text2 CODE >23:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+1398 text1 CODE >24:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+1398 text1 CODE >25:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+139A text1 CODE >26:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+139C text1 CODE >27:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+139E text1 CODE >28:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+13A0 text1 CODE >29:/home/adrian/Robots/Rayito3/Rayito3.X/utils.c
+804 text0 CODE >22:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+804 text0 CODE >23:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+808 text0 CODE >25:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+810 text0 CODE >27:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+81C text0 CODE >29:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+820 text0 CODE >31:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+822 text0 CODE >34:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+844 text0 CODE >35:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+886 text0 CODE >36:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+8C8 text0 CODE >37:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+90A text0 CODE >38:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+93C text0 CODE >40:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+940 text0 CODE >41:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+94C text0 CODE >42:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+954 text0 CODE >43:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+966 text0 CODE >44:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+96A text0 CODE >46:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+96C text0 CODE >48:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9BA text0 CODE >49:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9BC text0 CODE >50:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9BE text0 CODE >51:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9C0 text0 CODE >52:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9C4 text0 CODE >54:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9C8 text0 CODE >55:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9D4 text0 CODE >56:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+9E0 text0 CODE >58:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A00 text0 CODE >59:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A84 text0 CODE >58:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A8C text0 CODE >61:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A96 text0 CODE >65:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A96 text0 CODE >67:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A98 text0 CODE >68:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A9A text0 CODE >69:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A9C text0 CODE >70:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+A9E text0 CODE >71:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+AA2 text0 CODE >72:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+AC2 text0 CODE >73:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+AD6 text0 CODE >74:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+AE8 text0 CODE >77:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+AEA text0 CODE >31:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+B0E text0 CODE >28:/home/adrian/Robots/Rayito3/Rayito3.X/main.c
+11F4 cinit CODE >2950:/tmp/xcXSxtuw7
+11F4 cinit CODE >2952:/tmp/xcXSxtuw7
+11F4 cinit CODE >2955:/tmp/xcXSxtuw7
+11F4 cinit CODE >3010:/tmp/xcXSxtuw7
+11F6 cinit CODE >3011:/tmp/xcXSxtuw7
+11F8 cinit CODE >3012:/tmp/xcXSxtuw7
+11FA cinit CODE >3013:/tmp/xcXSxtuw7
+11FC cinit CODE >3014:/tmp/xcXSxtuw7
+11FE cinit CODE >3015:/tmp/xcXSxtuw7
+1200 cinit CODE >3016:/tmp/xcXSxtuw7
+1204 cinit CODE >3017:/tmp/xcXSxtuw7
+1208 cinit CODE >3018:/tmp/xcXSxtuw7
+1208 cinit CODE >3019:/tmp/xcXSxtuw7
+120A cinit CODE >3020:/tmp/xcXSxtuw7
+120E cinit CODE >3021:/tmp/xcXSxtuw7
+1210 cinit CODE >3022:/tmp/xcXSxtuw7
+1212 cinit CODE >3023:/tmp/xcXSxtuw7
+1214 cinit CODE >3027:/tmp/xcXSxtuw7
+1218 cinit CODE >3028:/tmp/xcXSxtuw7
+121A cinit CODE >3029:/tmp/xcXSxtuw7
+121A cinit CODE >3030:/tmp/xcXSxtuw7
+121C cinit CODE >3031:/tmp/xcXSxtuw7
+121E cinit CODE >3032:/tmp/xcXSxtuw7
+1220 cinit CODE >3035:/tmp/xcXSxtuw7
+1222 cinit CODE >3036:/tmp/xcXSxtuw7
+1224 cinit CODE >3037:/tmp/xcXSxtuw7
+1226 cinit CODE >3038:/tmp/xcXSxtuw7
+1228 cinit CODE >3039:/tmp/xcXSxtuw7
+122A cinit CODE >3040:/tmp/xcXSxtuw7
+122C cinit CODE >3046:/tmp/xcXSxtuw7
+122C cinit CODE >3048:/tmp/xcXSxtuw7
+122E cinit CODE >3049:/tmp/xcXSxtuw7
+1230 cinit CODE >3051:/tmp/xcXSxtuw7
+1232 cinit CODE >3052:/tmp/xcXSxtuw7
+1234 cinit CODE >3053:/tmp/xcXSxtuw7
+1236 cinit CODE >3054:/tmp/xcXSxtuw7
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+_i 48 0 COMRAM 1 bssCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___awdiv@counter 1B 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+putch@data 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___lwmod@counter 1C 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lmediumconst 7BF4 0 MEDIUMCONST 0 mediumconst dist/default/debug/Rayito3.X.debug.obj
+__Hspace_0 30000E 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hspace_1 D0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hspace_2 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_IESO$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_init_cal 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_init_tms 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hibigdata 0 0 CODE 0 ibigdata dist/default/debug/Rayito3.X.debug.obj
+__mediumconst 7BF4 0 MEDIUMCONST 0 mediumconst /tmp/xcXNl1szg.obj
+__Heeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug/Rayito3.X.debug.obj
+_T1CONbits FCD 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_an 88 0 BANK0 1 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+_cs 44 0 COMRAM 1 dataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_es 40 0 COMRAM 1 dataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_lp 4C 0 COMRAM 1 bssCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_ls 36 0 COMRAM 1 dataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+main@i CE 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+__end_of_MotorsPWM 12BA 0 CODE 0 text19 dist/default/debug/Rayito3.X.debug.obj
+__Lsmallconst 0 0 SMALLCONST 0 smallconst dist/default/debug/Rayito3.X.debug.obj
+_TXIF 7CF4 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___sp 0 0 STACK 2 stack /tmp/xcXNl1szg.obj
+_main 804 0 CODE 0 text0 dist/default/debug/Rayito3.X.debug.obj
+_maxs 9A 0 BANK0 1 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+_mins A8 0 BANK0 1 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+_setA 13B6 0 CODE 0 text4 dist/default/debug/Rayito3.X.debug.obj
+_setB 13AC 0 CODE 0 text3 dist/default/debug/Rayito3.X.debug.obj
+_setC 13A2 0 CODE 0 text2 dist/default/debug/Rayito3.X.debug.obj
+_setD 1398 0 CODE 0 text1 dist/default/debug/Rayito3.X.debug.obj
+_time 60 0 BANK0 1 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+btemp 4E 0 COMRAM 1 temp dist/default/debug/Rayito3.X.debug.obj
+__size_of_MotorsPWM 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+start E 0 CODE 0 init /tmp/xcXNl1szg.obj
+__size_of___aldiv 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of___almod 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of___awdiv 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_main 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_setA 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_setB 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_setC 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_setD 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of___lwdiv 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of___lwmod 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_DEBUG$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+?___lmul 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+?___wmul 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hpowerup E 0 CODE 0 powerup dist/default/debug/Rayito3.X.debug.obj
+___almod@sign 1A 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_MotorsPWM 127C 0 CODE 0 text19 dist/default/debug/Rayito3.X.debug.obj
+printf@c 31 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+printf@f 1D 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_T0CONbits FD5 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__HdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__accesstop 60 0 ABS 0 - /tmp/xcXNl1szg.obj
+intlevel0 0 0 CODE 0 text /tmp/xcXNl1szg.obj
+intlevel1 0 0 CODE 0 text /tmp/xcXNl1szg.obj
+intlevel2 0 0 CODE 0 text /tmp/xcXNl1szg.obj
+intlevel3 0 0 CODE 0 text /tmp/xcXNl1szg.obj
+__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_USBDIV$2 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_init_cal 101E 0 CODE 0 text20 dist/default/debug/Rayito3.X.debug.obj
+_init_tms 11A2 0 CODE 0 text15 dist/default/debug/Rayito3.X.debug.obj
+___aldiv@divisor 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_OSCCONbits FD3 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_EBTR0$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_EBTR1$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_EBTR2$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_EBTR3$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_EBTRB$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hifardata 0 0 CODE 0 ifardata dist/default/debug/Rayito3.X.debug.obj
+___aldiv@sign 1A 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___awdiv@sign 1C 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hclrtext 0 0 ABS 0 clrtext dist/default/debug/Rayito3.X.debug.obj
+__end_of_init_cal 1090 0 CODE 0 text20 dist/default/debug/Rayito3.X.debug.obj
+__end_of_init_tms 11F4 0 CODE 0 text15 dist/default/debug/Rayito3.X.debug.obj
+__pidataCOMRAM 137A 0 CODE 0 idataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___wmul@multiplicand 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+printf@flag 2E 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+printf@prec 2B 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_ADRESH FC4 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_ADRESL FC3 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___awdiv@dividend 17 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___inthi_sp 0 0 STACK 2 stack /tmp/xcXNl1szg.obj
+printf@width 2F 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___intlo_sp 0 0 STACK 2 stack /tmp/xcXNl1szg.obj
+__LdataCOMRAM 0 0 ABS 0 dataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_CCPR1L FBE 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_CCPR2L FBB 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_init_io 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hintcode_body 0 0 ABS 0 intcode_body dist/default/debug/Rayito3.X.debug.obj
+__end_of___lmul 1150 0 CODE 0 text13 dist/default/debug/Rayito3.X.debug.obj
+__end_of___wmul 1338 0 CODE 0 text12 dist/default/debug/Rayito3.X.debug.obj
+__Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug/Rayito3.X.debug.obj
+_BAUDCONbits FB8 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hmediumconst 7D00 0 MEDIUMCONST 0 mediumconst dist/default/debug/Rayito3.X.debug.obj
+?_printf 1D 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hintcodelo E 0 CODE 0 intcodelo dist/default/debug/Rayito3.X.debug.obj
+__size_of_init_wixel 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___awdiv@divisor 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_line_cal$2242 B6 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+___lwmod@divisor 1A 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__end_of___aldiv E22 0 CODE 0 text14 dist/default/debug/Rayito3.X.debug.obj
+__end_of___almod F9A 0 CODE 0 text21 dist/default/debug/Rayito3.X.debug.obj
+__end_of___awdiv 101E 0 CODE 0 text23 dist/default/debug/Rayito3.X.debug.obj
+__end_of___lwdiv 11A2 0 CODE 0 text10 dist/default/debug/Rayito3.X.debug.obj
+__end_of___lwmod 127C 0 CODE 0 text9 dist/default/debug/Rayito3.X.debug.obj
+__size_of_isdigit 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_CCP2MX$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_dpowers 7BF5 0 MEDIUMCONST 0 mediumconst dist/default/debug/Rayito3.X.debug.obj
+_line_cal$505 C2 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+_line_cal$507 C4 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+___lwdiv@quotient 16 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__LidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__size_of_putch 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_INTCON2bits FF1 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___lwmod@dividend 18 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lintcodelo E 0 CODE 0 intcodelo dist/default/debug/Rayito3.X.debug.obj
+__CFG_FCMEN$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_MCLRE$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+start_initialization 11F4 0 CODE 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__size_of_line_cal 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/default/debug/Rayito3.X.debug.obj
+_TRISAbits F92 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TRISBbits F93 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TRISCbits F94 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TRISDbits F95 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TRISEbits F96 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___aldiv@quotient 1B 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___rparam_used 1 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___almod@dividend 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_WDTPS$32768 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_an_init 12E8 0 CODE 0 text18 dist/default/debug/Rayito3.X.debug.obj
+_SPBRGH FB0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__pcstackBANK0 B6 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+_TMR0IF 7F92 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TMR2ON 7E52 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__end_of_printf D56 0 CODE 0 text6 dist/default/debug/Rayito3.X.debug.obj
+EnhancedRead@i 22 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_EnhancedRead 1090 0 CODE 0 text22 dist/default/debug/Rayito3.X.debug.obj
+__end_of_init_io 12E8 0 CODE 0 text17 dist/default/debug/Rayito3.X.debug.obj
+line_cal@value C6 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+__Hbank0 0 0 ABS 0 bank0 dist/default/debug/Rayito3.X.debug.obj
+__Hbank1 0 0 ABS 0 bank1 dist/default/debug/Rayito3.X.debug.obj
+__Hbank2 0 0 ABS 0 bank2 dist/default/debug/Rayito3.X.debug.obj
+__Hbank3 0 0 ABS 0 bank3 dist/default/debug/Rayito3.X.debug.obj
+__Hbank4 0 0 ABS 0 bank4 dist/default/debug/Rayito3.X.debug.obj
+__Hbank5 0 0 ABS 0 bank5 dist/default/debug/Rayito3.X.debug.obj
+__Hbank6 0 0 ABS 0 bank6 dist/default/debug/Rayito3.X.debug.obj
+__Hbank7 0 0 ABS 0 bank7 dist/default/debug/Rayito3.X.debug.obj
+__Hcinit 0 0 ABS 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__Hconst 0 0 CONST 0 const dist/default/debug/Rayito3.X.debug.obj
+__Hidata 0 0 CODE 0 idata dist/default/debug/Rayito3.X.debug.obj
+__Hidloc 200008 0 IDLOC 0 idloc dist/default/debug/Rayito3.X.debug.obj
+__Hnvbit 0 0 COMRAM 1 nvbit dist/default/debug/Rayito3.X.debug.obj
+__Hparam 0 0 COMRAM 1 rparam dist/default/debug/Rayito3.X.debug.obj
+__Hrdata 0 0 COMRAM 1 rdata dist/default/debug/Rayito3.X.debug.obj
+__Hstack 0 0 STACK 2 stack dist/default/debug/Rayito3.X.debug.obj
+__Htext0 0 0 ABS 0 text0 dist/default/debug/Rayito3.X.debug.obj
+__Htext1 0 0 ABS 0 text1 dist/default/debug/Rayito3.X.debug.obj
+__Htext2 0 0 ABS 0 text2 dist/default/debug/Rayito3.X.debug.obj
+__Htext3 0 0 ABS 0 text3 dist/default/debug/Rayito3.X.debug.obj
+__Htext4 0 0 ABS 0 text4 dist/default/debug/Rayito3.X.debug.obj
+__Htext5 0 0 ABS 0 text5 dist/default/debug/Rayito3.X.debug.obj
+__Htext6 0 0 ABS 0 text6 dist/default/debug/Rayito3.X.debug.obj
+__Htext7 0 0 ABS 0 text7 dist/default/debug/Rayito3.X.debug.obj
+__Htext8 0 0 ABS 0 text8 dist/default/debug/Rayito3.X.debug.obj
+__Htext9 0 0 ABS 0 text9 dist/default/debug/Rayito3.X.debug.obj
+___lwdiv@counter 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hbigbss 0 0 BIGRAM 1 bigbss dist/default/debug/Rayito3.X.debug.obj
+__Hbigram 0 0 ABS 0 bigram dist/default/debug/Rayito3.X.debug.obj
+__smallconst 0 0 SMALLCONST 0 smallconst /tmp/xcXNl1szg.obj
+_UCFGbits F6F 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hcomram 0 0 ABS 0 comram dist/default/debug/Rayito3.X.debug.obj
+__Hconfig 30000E 0 CONFIG 0 config dist/default/debug/Rayito3.X.debug.obj
+__CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lbank0 0 0 ABS 0 bank0 dist/default/debug/Rayito3.X.debug.obj
+__Lbank1 0 0 ABS 0 bank1 dist/default/debug/Rayito3.X.debug.obj
+__Lbank2 0 0 ABS 0 bank2 dist/default/debug/Rayito3.X.debug.obj
+__Lbank3 0 0 ABS 0 bank3 dist/default/debug/Rayito3.X.debug.obj
+__Lbank4 0 0 ABS 0 bank4 dist/default/debug/Rayito3.X.debug.obj
+__Lbank5 0 0 ABS 0 bank5 dist/default/debug/Rayito3.X.debug.obj
+__Lbank6 0 0 ABS 0 bank6 dist/default/debug/Rayito3.X.debug.obj
+__Lbank7 0 0 ABS 0 bank7 dist/default/debug/Rayito3.X.debug.obj
+__end_of_isdigit 137A 0 CODE 0 text8 dist/default/debug/Rayito3.X.debug.obj
+__Lcinit 0 0 ABS 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__Lconst 0 0 CONST 0 const dist/default/debug/Rayito3.X.debug.obj
+__Lidata 0 0 CODE 0 idata dist/default/debug/Rayito3.X.debug.obj
+__Lidloc 200000 0 IDLOC 0 idloc dist/default/debug/Rayito3.X.debug.obj
+__Lnvbit 0 0 COMRAM 1 nvbit dist/default/debug/Rayito3.X.debug.obj
+__Lparam 0 0 COMRAM 1 rparam dist/default/debug/Rayito3.X.debug.obj
+__Lrdata 0 0 COMRAM 1 rdata dist/default/debug/Rayito3.X.debug.obj
+_line_cal 4B4 0 CODE 0 text11 dist/default/debug/Rayito3.X.debug.obj
+__Lstack 0 0 STACK 2 stack dist/default/debug/Rayito3.X.debug.obj
+__Ltext0 0 0 ABS 0 text0 dist/default/debug/Rayito3.X.debug.obj
+__Ltext1 0 0 ABS 0 text1 dist/default/debug/Rayito3.X.debug.obj
+__Ltext2 0 0 ABS 0 text2 dist/default/debug/Rayito3.X.debug.obj
+__Ltext3 0 0 ABS 0 text3 dist/default/debug/Rayito3.X.debug.obj
+__Ltext4 0 0 ABS 0 text4 dist/default/debug/Rayito3.X.debug.obj
+__Ltext5 0 0 ABS 0 text5 dist/default/debug/Rayito3.X.debug.obj
+__Ltext6 0 0 ABS 0 text6 dist/default/debug/Rayito3.X.debug.obj
+__Ltext7 0 0 ABS 0 text7 dist/default/debug/Rayito3.X.debug.obj
+__Ltext8 0 0 ABS 0 text8 dist/default/debug/Rayito3.X.debug.obj
+__Ltext9 0 0 ABS 0 text9 dist/default/debug/Rayito3.X.debug.obj
+read_cal@i 22 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hfarbss 0 0 FARRAM 0 farbss dist/default/debug/Rayito3.X.debug.obj
+__Lintcode_body 0 0 ABS 0 intcode_body dist/default/debug/Rayito3.X.debug.obj
+_PORTAbits F80 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_PORTBbits F81 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_PORTCbits F82 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_PORTDbits F83 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_PORTEbits F84 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_INTCONbits FF2 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Habs1 0 0 ABS 0 abs1 dist/default/debug/Rayito3.X.debug.obj
+__Hdata 0 0 ABS 0 data dist/default/debug/Rayito3.X.debug.obj
+__Hinit 12 0 CODE 0 init dist/default/debug/Rayito3.X.debug.obj
+__Hrbit 0 0 COMRAM 1 rbit dist/default/debug/Rayito3.X.debug.obj
+__Hrbss 0 0 COMRAM 1 rbss dist/default/debug/Rayito3.X.debug.obj
+__Htemp 4F 0 COMRAM 1 temp dist/default/debug/Rayito3.X.debug.obj
+__Htext 0 0 ABS 0 text dist/default/debug/Rayito3.X.debug.obj
+__Labs1 0 0 ABS 0 abs1 dist/default/debug/Rayito3.X.debug.obj
+__Ldata 0 0 ABS 0 data dist/default/debug/Rayito3.X.debug.obj
+__Linit E 0 CODE 0 init dist/default/debug/Rayito3.X.debug.obj
+__Lrbit 0 0 COMRAM 1 rbit dist/default/debug/Rayito3.X.debug.obj
+__Lrbss 0 0 COMRAM 1 rbss dist/default/debug/Rayito3.X.debug.obj
+__Ltemp 4E 0 COMRAM 1 temp dist/default/debug/Rayito3.X.debug.obj
+__Ltext 0 0 ABS 0 text dist/default/debug/Rayito3.X.debug.obj
+__CFG_XINST$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+line_cal@a BA 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+line_cal@b BE 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+line_cal@i CA 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+line_cal@j CC 0 BANK0 1 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+___lmul 10FA 0 CODE 0 text13 dist/default/debug/Rayito3.X.debug.obj
+___wmul 1312 0 CODE 0 text12 dist/default/debug/Rayito3.X.debug.obj
+_T2OUTPS0 7E53 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_T2OUTPS1 7E54 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_T2OUTPS2 7E55 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_T2OUTPS3 7E56 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+__end_of_line_cal 804 0 CODE 0 text11 dist/default/debug/Rayito3.X.debug.obj
+int$flags 4E 0 COMRAM 1 temp dist/default/debug/Rayito3.X.debug.obj
+__HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hintret 0 0 ABS 0 intret dist/default/debug/Rayito3.X.debug.obj
+__Hirdata 0 0 CODE 0 irdata dist/default/debug/Rayito3.X.debug.obj
+_PR2 FCB 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__S0 30000E 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__S1 D0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__S2 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_enc 8 0 CODE 0 intcode dist/default/debug/Rayito3.X.debug.obj
+__CFG_VREGEN$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of_EnhancedRead 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___almod@counter 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_UCONbits F6D 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_PLLDIV$5 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_PBADEN$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__HidataCOMRAM 0 0 ABS 0 idataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lbigdata 0 0 BIGRAM 1 bigdata dist/default/debug/Rayito3.X.debug.obj
+__Hnvrram 0 0 COMRAM 1 nvrram dist/default/debug/Rayito3.X.debug.obj
+__size_of_read_cal 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__end_of_enc EEE 0 CODE 0 intcode_body dist/default/debug/Rayito3.X.debug.obj
+int_func E22 0 CODE 0 intcode_body dist/default/debug/Rayito3.X.debug.obj
+__end_of_EnhancedRead 10FA 0 CODE 0 text22 dist/default/debug/Rayito3.X.debug.obj
+__Lintentry 0 0 ABS 0 intentry dist/default/debug/Rayito3.X.debug.obj
+__Hramtop 800 0 RAM 0 ramtop dist/default/debug/Rayito3.X.debug.obj
+__Hrparam 0 0 COMRAM 1 rparam dist/default/debug/Rayito3.X.debug.obj
+__activetblptr 2 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hstruct 0 0 COMRAM 1 struct dist/default/debug/Rayito3.X.debug.obj
+__size_of___lmul 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__size_of___wmul 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+__Htext10 0 0 ABS 0 text10 dist/default/debug/Rayito3.X.debug.obj
+__Htext11 0 0 ABS 0 text11 dist/default/debug/Rayito3.X.debug.obj
+__Htext12 0 0 ABS 0 text12 dist/default/debug/Rayito3.X.debug.obj
+__Htext13 0 0 ABS 0 text13 dist/default/debug/Rayito3.X.debug.obj
+__Htext14 0 0 ABS 0 text14 dist/default/debug/Rayito3.X.debug.obj
+__Htext15 0 0 ABS 0 text15 dist/default/debug/Rayito3.X.debug.obj
+__Htext16 0 0 ABS 0 text16 dist/default/debug/Rayito3.X.debug.obj
+__Htext17 0 0 ABS 0 text17 dist/default/debug/Rayito3.X.debug.obj
+__Htext18 0 0 ABS 0 text18 dist/default/debug/Rayito3.X.debug.obj
+__Htext19 0 0 ABS 0 text19 dist/default/debug/Rayito3.X.debug.obj
+__Htext20 0 0 ABS 0 text20 dist/default/debug/Rayito3.X.debug.obj
+__Htext21 0 0 ABS 0 text21 dist/default/debug/Rayito3.X.debug.obj
+__Htext22 0 0 ABS 0 text22 dist/default/debug/Rayito3.X.debug.obj
+__Htext23 0 0 ABS 0 text23 dist/default/debug/Rayito3.X.debug.obj
+_RCSTAbits FAB 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+init_cal@i 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__ptext10 1150 0 CODE 0 text10 dist/default/debug/Rayito3.X.debug.obj
+__ptext11 4B4 0 CODE 0 text11 dist/default/debug/Rayito3.X.debug.obj
+__ptext12 1312 0 CODE 0 text12 dist/default/debug/Rayito3.X.debug.obj
+__ptext13 10FA 0 CODE 0 text13 dist/default/debug/Rayito3.X.debug.obj
+__ptext14 D56 0 CODE 0 text14 dist/default/debug/Rayito3.X.debug.obj
+__ptext15 11A2 0 CODE 0 text15 dist/default/debug/Rayito3.X.debug.obj
+__ptext16 1338 0 CODE 0 text16 dist/default/debug/Rayito3.X.debug.obj
+__ptext17 12BA 0 CODE 0 text17 dist/default/debug/Rayito3.X.debug.obj
+__ptext18 12E8 0 CODE 0 text18 dist/default/debug/Rayito3.X.debug.obj
+__ptext19 127C 0 CODE 0 text19 dist/default/debug/Rayito3.X.debug.obj
+__ptext20 101E 0 CODE 0 text20 dist/default/debug/Rayito3.X.debug.obj
+__ptext21 EEE 0 CODE 0 text21 dist/default/debug/Rayito3.X.debug.obj
+__ptext22 1090 0 CODE 0 text22 dist/default/debug/Rayito3.X.debug.obj
+__ptext23 F9A 0 CODE 0 text23 dist/default/debug/Rayito3.X.debug.obj
+___aldiv D56 0 CODE 0 text14 dist/default/debug/Rayito3.X.debug.obj
+___almod EEE 0 CODE 0 text21 dist/default/debug/Rayito3.X.debug.obj
+___awdiv F9A 0 CODE 0 text23 dist/default/debug/Rayito3.X.debug.obj
+__pintcode_body E22 0 CODE 0 intcode_body dist/default/debug/Rayito3.X.debug.obj
+___lwdiv 1150 0 CODE 0 text10 dist/default/debug/Rayito3.X.debug.obj
+___lwmod 123A 0 CODE 0 text9 dist/default/debug/Rayito3.X.debug.obj
+__Lbigbss 0 0 BIGRAM 1 bigbss dist/default/debug/Rayito3.X.debug.obj
+__Lbigram 0 0 ABS 0 bigram dist/default/debug/Rayito3.X.debug.obj
+__CFG_BOR$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___lmul@multiplier 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_BORV$3 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lcomram 0 0 ABS 0 comram dist/default/debug/Rayito3.X.debug.obj
+__Lconfig 300000 0 CONFIG 0 config dist/default/debug/Rayito3.X.debug.obj
+_printf B10 0 CODE 0 text6 dist/default/debug/Rayito3.X.debug.obj
+___wmul@multiplier 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lfarbss 0 0 FARRAM 0 farbss dist/default/debug/Rayito3.X.debug.obj
+___lwdiv@divisor 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_status 4A 0 COMRAM 1 bssCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lfardata 0 0 FARRAM 0 fardata dist/default/debug/Rayito3.X.debug.obj
+_read_cal 12 0 CODE 0 text5 dist/default/debug/Rayito3.X.debug.obj
+stackhi 7FF 0 ABS 0 - /tmp/xcXNl1szg.obj
+stacklo 400 0 ABS 0 - /tmp/xcXNl1szg.obj
+__Lintcode 8 0 CODE 0 intcode dist/default/debug/Rayito3.X.debug.obj
+_read_cal$491 1A 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_read_cal$493 1C 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_read_cal$495 1E 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_read_cal$497 20 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lintret 0 0 ABS 0 intret dist/default/debug/Rayito3.X.debug.obj
+__Lirdata 0 0 CODE 0 irdata dist/default/debug/Rayito3.X.debug.obj
+_ADCON0bits FC2 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_ADCON1bits FC1 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_ADCON2bits FC0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__end_of_read_cal 4B4 0 CODE 0 text5 dist/default/debug/Rayito3.X.debug.obj
+__CFG_LVP$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_ICPRT$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lspace_0 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lspace_1 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lspace_2 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__pbssCOMRAM 48 0 COMRAM 1 bssCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/default/debug/Rayito3.X.debug.obj
+__LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+printf@ap 29 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_CPUDIV$OSC1_PLL2 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+end_of_initialization 122C 0 CODE 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__Lnvrram 0 0 COMRAM 1 nvrram dist/default/debug/Rayito3.X.debug.obj
+__Hintentry 0 0 ABS 0 intentry dist/default/debug/Rayito3.X.debug.obj
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_RCONbits FD0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___almod@divisor 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__size_of_printf 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___awdiv@quotient 1D 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+?___aldiv 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+?___almod 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+?___awdiv 17 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+___lwdiv@dividend 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+?___lwdiv 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+?___lwmod 18 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hreset_vec 6 0 CODE 0 reset_vec dist/default/debug/Rayito3.X.debug.obj
+__HbssBANK0 0 0 ABS 0 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+_init_io 12BA 0 CODE 0 text17 dist/default/debug/Rayito3.X.debug.obj
+__Lramtop 800 0 RAM 0 ramtop dist/default/debug/Rayito3.X.debug.obj
+__Lrparam 0 0 COMRAM 1 rparam dist/default/debug/Rayito3.X.debug.obj
+__pcinit 11F4 0 CODE 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__ptext0 804 0 CODE 0 text0 dist/default/debug/Rayito3.X.debug.obj
+__ptext1 1398 0 CODE 0 text1 dist/default/debug/Rayito3.X.debug.obj
+__ptext2 13A2 0 CODE 0 text2 dist/default/debug/Rayito3.X.debug.obj
+__ptext3 13AC 0 CODE 0 text3 dist/default/debug/Rayito3.X.debug.obj
+__ptext4 13B6 0 CODE 0 text4 dist/default/debug/Rayito3.X.debug.obj
+__ptext5 12 0 CODE 0 text5 dist/default/debug/Rayito3.X.debug.obj
+__ptext6 B10 0 CODE 0 text6 dist/default/debug/Rayito3.X.debug.obj
+__ptext7 138C 0 CODE 0 text7 dist/default/debug/Rayito3.X.debug.obj
+__ptext8 135C 0 CODE 0 text8 dist/default/debug/Rayito3.X.debug.obj
+__ptext9 123A 0 CODE 0 text9 dist/default/debug/Rayito3.X.debug.obj
+__Lstruct 0 0 COMRAM 1 struct dist/default/debug/Rayito3.X.debug.obj
+__Ltext10 0 0 ABS 0 text10 dist/default/debug/Rayito3.X.debug.obj
+__Ltext11 0 0 ABS 0 text11 dist/default/debug/Rayito3.X.debug.obj
+__Ltext12 0 0 ABS 0 text12 dist/default/debug/Rayito3.X.debug.obj
+__Ltext13 0 0 ABS 0 text13 dist/default/debug/Rayito3.X.debug.obj
+__Ltext14 0 0 ABS 0 text14 dist/default/debug/Rayito3.X.debug.obj
+__Ltext15 0 0 ABS 0 text15 dist/default/debug/Rayito3.X.debug.obj
+__Ltext16 0 0 ABS 0 text16 dist/default/debug/Rayito3.X.debug.obj
+__Ltext17 0 0 ABS 0 text17 dist/default/debug/Rayito3.X.debug.obj
+__Ltext18 0 0 ABS 0 text18 dist/default/debug/Rayito3.X.debug.obj
+__Ltext19 0 0 ABS 0 text19 dist/default/debug/Rayito3.X.debug.obj
+__Ltext20 0 0 ABS 0 text20 dist/default/debug/Rayito3.X.debug.obj
+__Ltext21 0 0 ABS 0 text21 dist/default/debug/Rayito3.X.debug.obj
+__Ltext22 0 0 ABS 0 text22 dist/default/debug/Rayito3.X.debug.obj
+__Ltext23 0 0 ABS 0 text23 dist/default/debug/Rayito3.X.debug.obj
+__ramtop 800 0 RAM 0 ramtop /tmp/xcXNl1szg.obj
+___aldiv@dividend 11 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Lpowerup E 0 CODE 0 powerup dist/default/debug/Rayito3.X.debug.obj
+__Leeprom_data 0 0 EEDATA 0 eeprom_data dist/default/debug/Rayito3.X.debug.obj
+_init_wixel 1338 0 CODE 0 text16 dist/default/debug/Rayito3.X.debug.obj
+__size_of_an_init 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_isdigit 135C 0 CODE 0 text8 dist/default/debug/Rayito3.X.debug.obj
+__Lreset_vec 0 0 CODE 0 reset_vec dist/default/debug/Rayito3.X.debug.obj
+___param_bank 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_WDT$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hbigdata 0 0 BIGRAM 1 bigdata dist/default/debug/Rayito3.X.debug.obj
+__end_of__initialization 122C 0 CODE 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRT0$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRT1$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRT2$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRT3$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRTB$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Libigdata 0 0 CODE 0 ibigdata dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRTC$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_WRTD$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lclrtext 0 0 ABS 0 clrtext dist/default/debug/Rayito3.X.debug.obj
+___lmul@product 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_FOSC$HSPLL_HS 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+___lmul@multiplicand 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__CFG_PWRT$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_TXSTAbits FAC 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_T2CKPS0 7E50 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_T2CKPS1 7E51 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__pmediumconst 7BF4 0 MEDIUMCONST 0 mediumconst dist/default/debug/Rayito3.X.debug.obj
+___aldiv@counter 19 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__end_of_main B10 0 CODE 0 text0 dist/default/debug/Rayito3.X.debug.obj
+__end_of_setA 13C0 0 CODE 0 text4 dist/default/debug/Rayito3.X.debug.obj
+__end_of_setB 13B6 0 CODE 0 text3 dist/default/debug/Rayito3.X.debug.obj
+__end_of_setC 13AC 0 CODE 0 text2 dist/default/debug/Rayito3.X.debug.obj
+__end_of_setD 13A2 0 CODE 0 text1 dist/default/debug/Rayito3.X.debug.obj
+_CCP2CONbits FBA 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__pintcode 8 0 CODE 0 intcode dist/default/debug/Rayito3.X.debug.obj
+isdigit@c 13 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+printf@val 2C 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__end_of_dpowers 7BFF 0 MEDIUMCONST 0 mediumconst dist/default/debug/Rayito3.X.debug.obj
+_CMCON FB4 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_isdigit$1917 12 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_SPBRG FAF 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TMR0H FD7 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TMR0L FD6 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TMR1H FCF 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TMR1L FCE 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_TXREG FAD 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__end_of_putch 1398 0 CODE 0 text7 dist/default/debug/Rayito3.X.debug.obj
+__CFG_CP0$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_CP1$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__HRAM 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hbss 0 0 RAM 1 bss dist/default/debug/Rayito3.X.debug.obj
+__Hram 0 0 ABS 0 ram dist/default/debug/Rayito3.X.debug.obj
+__Hsfr 0 0 ABS 0 sfr dist/default/debug/Rayito3.X.debug.obj
+__LRAM 1 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Lbss 0 0 RAM 1 bss dist/default/debug/Rayito3.X.debug.obj
+__Lram 0 0 ABS 0 ram dist/default/debug/Rayito3.X.debug.obj
+__Lsfr 0 0 ABS 0 sfr dist/default/debug/Rayito3.X.debug.obj
+__CFG_CP2$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_CP3$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__CFG_CPB$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+_putch 138C 0 CODE 0 text7 dist/default/debug/Rayito3.X.debug.obj
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__end_of_init_wixel 135C 0 CODE 0 text16 dist/default/debug/Rayito3.X.debug.obj
+__size_of_enc 0 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__initialization 11F4 0 CODE 0 cinit dist/default/debug/Rayito3.X.debug.obj
+__pbssBANK0 60 0 BANK0 1 bssBANK0 dist/default/debug/Rayito3.X.debug.obj
+__pdataCOMRAM 36 0 COMRAM 1 dataCOMRAM dist/default/debug/Rayito3.X.debug.obj
+_T2CONbits FCA 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hfardata 0 0 FARRAM 0 fardata dist/default/debug/Rayito3.X.debug.obj
+___wmul@product 15 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+__Hsmallconst 0 0 SMALLCONST 0 smallconst dist/default/debug/Rayito3.X.debug.obj
+__Lifardata 0 0 CODE 0 ifardata dist/default/debug/Rayito3.X.debug.obj
+_CCP1CONbits FBD 0 ABS 0 - dist/default/debug/Rayito3.X.debug.obj
+__Hintsave_regs 0 0 BIGRAM 1 intsave_regs dist/default/debug/Rayito3.X.debug.obj
+__end_of_an_init 1312 0 CODE 0 text18 dist/default/debug/Rayito3.X.debug.obj
+__Hintcode E 0 CODE 0 intcode dist/default/debug/Rayito3.X.debug.obj
+EnhancedRead@aux 20 0 COMRAM 1 cstackCOMRAM dist/default/debug/Rayito3.X.debug.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+idloc 0 200000 200000 8 1
+cstackCOMRAM 1 1 1 4E 1
+reset_vec 0 0 0 6 1
+bssBANK0 1 60 60 70 1
+intcode 0 8 8 13B8 1
+mediumconst 0 7BF4 7BF4 10C 1
+config 0 300000 300000 E 1
