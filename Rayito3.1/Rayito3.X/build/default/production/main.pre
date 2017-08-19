@@ -4945,10 +4945,16 @@ void twidde_start();
 void twiddle_update();
 
 # 19 "main.c"
-enum { TEST , INIT , CAL , READY , BASIC_PID };
+enum { TEST , INIT , CAL , READY , BASIC_PID , WAIT_RELEASE,WAIT_RELEASE_FOR_READY };
 
+enum {SLOW , FAST};
+
+const int speed_vals[2] = {500 , 600};
+const int kp_val[2] = {3.9 , 3.9};
+const int kd_val[2] = {70 , 100};
 int status;
 int old_lp;
+int mode;
 
 void main(void) {
 init_tms();
@@ -4961,6 +4967,7 @@ time[1] = 0;
 mspeed(0,0);
 int faux = 0;
 int a, b;
+
 while (1){
 EnhancedRead();
 
@@ -5040,8 +5047,13 @@ for (i = 0;i < 5;i++){
 while (time[2] < 100);
 time[2] = 0;
 }
-status = READY;
+status = WAIT_RELEASE_FOR_READY;
 time[0] = 0;
+}
+break;
+case WAIT_RELEASE_FOR_READY:
+if (PORTDbits.RD1 == 1){
+status = READY;
 }
 break;
 case READY:
@@ -5060,7 +5072,23 @@ for (i = 0;i < 5;i++){
 time[0] = 0;
 }
 if (PORTDbits.RD0 == 0){
-twidde_start();
+
+status = WAIT_RELEASE;
+time[3] = 0;
+mode = FAST;
+}else if(PORTDbits.RD1 == 0){
+status = WAIT_RELEASE;
+time[3] = 0;
+mode = SLOW;
+}
+
+break;
+case WAIT_RELEASE:
+PORTBbits.RB4 = 1;
+PORTCbits.RC1 = 1;
+PORTDbits.RD2 = 1;
+PORTAbits.RA4 = 1;
+if (PORTDbits.RD0 == 1 && PORTDbits.RD1 == 1){
 status = BASIC_PID;
 time[3] = 0;
 }
@@ -5069,10 +5097,10 @@ case BASIC_PID:
 
 
 line_cal();
-int speed = 700;
+int speed = speed_vals[mode];
 
 int der = lp - old_lp;
-double dif = (double)lp * 3.9 + (double)der * 130;
+double dif = (double)lp * kp_val[mode] + (double)der * kd_val[mode];
 if (lp > -60 && lp < 60){
 PORTBbits.RB4 = 0;
 PORTCbits.RC1 = 0;

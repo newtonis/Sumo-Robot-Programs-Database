@@ -16,10 +16,16 @@
 #include "analog.h"
 #include "twiddle.h"
 
-enum { TEST , INIT , CAL , READY , BASIC_PID };
+enum { TEST , INIT , CAL , READY , BASIC_PID , WAIT_RELEASE,WAIT_RELEASE_FOR_READY };
 
+enum {SLOW , FAST};
+
+const int speed_vals[2] = {500 , 600}; //3.9 130
+const int kp_val[2] = {3.9 , 3.9};
+const int kd_val[2] = {70  ,   100};
 int status;
 int old_lp;
+int mode;
 
 void main(void) {
     init_tms();
@@ -32,6 +38,7 @@ void main(void) {
     mspeed(0,0);
     int faux = 0;
     int a, b;
+    
     while (1){
         EnhancedRead();
         
@@ -111,8 +118,13 @@ void main(void) {
                         while (time[2] < 100);
                         time[2] = 0;
                     }
-                    status = READY;
+                    status = WAIT_RELEASE_FOR_READY;
                     time[0] = 0;
+                }
+            break;
+            case WAIT_RELEASE_FOR_READY:
+                if (BUTTON_B == 1){
+                    status = READY;
                 }
             break;
             case READY:
@@ -131,7 +143,23 @@ void main(void) {
                     time[0] = 0;
                 }
                 if (BUTTON_A == 0){
-                    twidde_start();
+                    //twidde_start();
+                    status = WAIT_RELEASE;
+                    time[3] = 0;
+                    mode = FAST;
+                }else if(BUTTON_B == 0){
+                    status = WAIT_RELEASE;
+                    time[3] = 0;
+                    mode = SLOW;
+                }
+                
+            break;
+            case WAIT_RELEASE:
+                LED_A = 1;
+                LED_B = 1;
+                LED_C = 1;
+                LED_D = 1;
+                if (BUTTON_A == 1 && BUTTON_B == 1){
                     status = BASIC_PID;
                     time[3] = 0;
                 }
@@ -140,10 +168,10 @@ void main(void) {
                // twiddle_update();
                
                line_cal();
-               int speed = 700;
+               int speed = speed_vals[mode];
                
                int der = lp - old_lp;
-               double dif = (double)lp * 3.9 + (double)der * 130; //4 130 for track
+               double dif = (double)lp * kp_val[mode] + (double)der * kd_val[mode];// 130; //4 130 for track
                if (lp > -60 and lp < 60){
                    LED_A = 0;
                    LED_B = 0;
