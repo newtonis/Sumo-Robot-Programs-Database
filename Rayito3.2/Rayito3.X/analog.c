@@ -1,6 +1,7 @@
 #include <xc.h>
 #include "config.h"
 #include "analog.h"
+#include "eeprom_functions.h"
 
 int an[9];
 
@@ -52,6 +53,32 @@ void read_cal(){
     
     for (i = 0;i < 2;i++) maxs[es[i]] = maxv(maxs[es[i]],an[es[i]]);
     for (i = 0;i < 2;i++) mins[es[i]] = minv(mins[es[i]],an[es[i]]);
+}
+
+void save_cal_eeprom(){
+    /*** Save calibration values on eeprom **/
+    for (int i = 0;i < 5;i++){
+        int memory_position = i * 4;
+        WriteMem((uc)memory_position, maxs[ls[i]] & 0xFF);
+        WriteMem((uc)memory_position + 1, (maxs[ls[i]] >> 8) & 0xFF);
+        WriteMem((uc)memory_position + 2, mins[ls[i]] & 0xFF);
+        WriteMem((uc)memory_position + 3, (mins[ls[i]] >> 8) & 0xFF);
+    }
+}
+
+void load_cal_eeprom(){
+    for (int i = 0;i < 5;i++){
+        int memory_position = i * 4;
+        uc lower_bits_maxs, higher_bits_maxs;
+        ReadMem((uc)memory_position, &lower_bits_maxs);
+        ReadMem((uc)memory_position + 1, &higher_bits_maxs);
+        maxs[ls[i]] = lower_bits_maxs + higher_bits_maxs << 8;
+
+        uc lower_bits_mins, higher_bits_mins;
+        ReadMem((uc)memory_position + 2, &lower_bits_mins);
+        ReadMem((uc)memory_position + 3, &higher_bits_mins);
+        mins[ls[i]] = lower_bits_mins + higher_bits_mins << 8;
+    }
 }
 
 void line_cal(){

@@ -1,82 +1,35 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"3637 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
-[s S143 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S143 . TRISB0 TRISB1 TRISB2 TRISB3 TRISB4 TRISB5 TRISB6 TRISB7 ]
-"3647
-[s S144 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S144 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
-"3636
-[u S142 `S143 1 `S144 1 ]
-[n S142 . . . ]
-"3658
-[v _TRISBbits `VS142 ~T0 @X0 0 e@3987 ]
-"8 io.c
-[c E3050 0 1 .. ]
-[n E3050 . OUTPUT INPUT  ]
-"3859 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
-[s S149 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S149 . TRISC0 TRISC1 TRISC2 . TRISC6 TRISC7 ]
-"3867
-[s S150 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S150 . RC0 RC1 RC2 . RC6 RC7 ]
-"3858
-[u S148 `S149 1 `S150 1 ]
-[n S148 . . . ]
-"3876
-[v _TRISCbits `VS148 ~T0 @X0 0 e@3988 ]
-"4013
-[s S155 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S155 . TRISD0 TRISD1 TRISD2 TRISD3 TRISD4 TRISD5 TRISD6 TRISD7 ]
-"4023
-[s S156 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S156 . RD0 RD1 RD2 RD3 RD4 RD5 RD6 RD7 ]
-"4012
-[u S154 `S155 1 `S156 1 ]
-[n S154 . . . ]
-"4034
-[v _TRISDbits `VS154 ~T0 @X0 0 e@3989 ]
-"3439
-[s S137 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S137 . TRISA0 TRISA1 TRISA2 TRISA3 TRISA4 TRISA5 TRISA6 ]
-"3448
-[s S138 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S138 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
-"3438
-[u S136 `S137 1 `S138 1 ]
-[n S136 . . . ]
-"3458
-[v _TRISAbits `VS136 ~T0 @X0 0 e@3986 ]
-"4235
-[s S161 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S161 . TRISE0 TRISE1 TRISE2 ]
-"4240
-[s S162 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S162 . RE0 RE1 RE2 ]
-"4234
-[u S160 `S161 1 `S162 1 ]
-[n S160 . . . ]
-"4246
-[v _TRISEbits `VS160 ~T0 @X0 0 e@3990 ]
-"2833
-[s S116 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S116 . RE0 RE1 RE2 RE3 . RDPU ]
-"2841
-[s S117 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S117 . CK1SPP CK2SPP OESPP ]
-"2846
-[s S118 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S118 . PD2 PC2 CCP10 CCP9E . CCP2E ]
-"2854
-[s S119 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :3 `uc 1 :1 `uc 1 ]
-[n S119 . RDE WRE CS PC3E . PA2E ]
-"2862
-[s S120 :2 `uc 1 :1 `uc 1 :4 `uc 1 :1 `uc 1 ]
-[n S120 . . PB2 . RE7 ]
-"2832
-[u S115 `S116 1 `S117 1 `S118 1 `S119 1 `S120 1 ]
-[n S115 . . . . . . ]
-"2869
-[v _PORTEbits `VS115 ~T0 @X0 0 e@3972 ]
+"4930 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
+[v _EEADR `Vuc ~T0 @X0 0 e@4009 ]
+"4923
+[v _EEDATA `Vuc ~T0 @X0 0 e@4008 ]
+"4856
+[s S188 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S188 . RD WR WREN WRERR FREE . CFGS EEPGD ]
+"4866
+[s S189 :6 `uc 1 :1 `uc 1 ]
+[n S189 . . EEFS ]
+"4855
+[u S187 `S188 1 `S189 1 ]
+[n S187 . . . ]
+"4871
+[v _EECON1bits `VS187 ~T0 @X0 0 e@4006 ]
+"8589
+[s S355 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S355 . RBIF INT0IF TMR0IF RBIE INT0IE TMR0IE PEIE_GIEL GIE_GIEH ]
+"8599
+[s S356 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S356 . . INT0F T0IF . INT0E T0IE PEIE GIE ]
+"8609
+[s S357 :6 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S357 . . GIEL GIEH ]
+"8588
+[u S354 `S355 1 `S356 1 `S357 1 ]
+[n S354 . . . . ]
+"8615
+[v _INTCONbits `VS354 ~T0 @X0 0 e@4082 ]
+"4916
+[v _EECON2 `Vuc ~T0 @X0 0 e@4007 ]
 [; ;xc8\pic\include\xc.h: 18: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8\pic\include\xc.h: 20: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -3615,81 +3568,96 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;xc8\pic\include\pic18.h: 158: __attribute__((__unsupported__("The " "Write_b_eep" " routine is no longer supported. Please use the MPLAB X MCC."))) void Write_b_eep(unsigned int badd, unsigned char bdat);
 [; ;xc8\pic\include\pic18.h: 192: unsigned char __t1rd16on(void);
 [; ;xc8\pic\include\pic18.h: 193: unsigned char __t3rd16on(void);
-[; ;io.h: 29: void init_io();
-[; ;io.c: 4: enum {OUTPUT ,INPUT};
-"6 io.c
-[v _init_io `(v ~T0 @X0 1 ef ]
+[; ;eeprom_functions.h: 15: typedef unsigned char uc;
+[; ;eeprom_functions.h: 18: void WriteMem(uc addr,uc data);
+[; ;eeprom_functions.h: 19: void ReadMem(uc addr,uc *data);
+"4 eeprom_functions.c
+[v _WriteMem `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;io.c: 6: void init_io(){
-[e :U _init_io ]
+[; ;eeprom_functions.c: 4: void WriteMem(uc addr,uc data){
+[e :U _WriteMem ]
+[v _addr `uc ~T0 @X0 1 r1 ]
+[v _data `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;io.c: 8: TRISBbits.RB4 = OUTPUT;
+[; ;eeprom_functions.c: 5: EEADR = addr;
+"5
+[e = _EEADR _addr ]
+[; ;eeprom_functions.c: 6: EEDATA = data;
+"6
+[e = _EEDATA _data ]
+[; ;eeprom_functions.c: 7: EECON1bits.EEPGD = 0;
+"7
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;eeprom_functions.c: 8: EECON1bits.CFGS = 0;
 "8
-[e = . . _TRISBbits 1 4 -> . `E3050 0 `uc ]
-[; ;io.c: 9: TRISCbits.RC1 = OUTPUT;
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;eeprom_functions.c: 9: EECON1bits.WREN = 1;
 "9
-[e = . . _TRISCbits 1 1 -> . `E3050 0 `uc ]
-[; ;io.c: 10: TRISDbits.RD2 = OUTPUT;
+[e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
+[; ;eeprom_functions.c: 10: INTCONbits.GIE = 0;
 "10
-[e = . . _TRISDbits 1 2 -> . `E3050 0 `uc ]
-[; ;io.c: 11: TRISAbits.RA4 = OUTPUT;
+[e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
+[; ;eeprom_functions.c: 11: EECON2 = 0x55;
 "11
-[e = . . _TRISAbits 1 4 -> . `E3050 0 `uc ]
-[; ;io.c: 14: TRISBbits.RB0 = OUTPUT;
+[e = _EECON2 -> -> 85 `i `uc ]
+[; ;eeprom_functions.c: 12: EECON2 = 0xAA;
+"12
+[e = _EECON2 -> -> 170 `i `uc ]
+[; ;eeprom_functions.c: 13: EECON1bits.WR = 1;
+"13
+[e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
+[; ;eeprom_functions.c: 14: INTCONbits.GIE = 1;
 "14
-[e = . . _TRISBbits 1 0 -> . `E3050 0 `uc ]
-[; ;io.c: 15: TRISBbits.RB1 = OUTPUT;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;eeprom_functions.c: 15: while (EECON1bits.WR == 1){}
 "15
-[e = . . _TRISBbits 1 1 -> . `E3050 0 `uc ]
-[; ;io.c: 18: TRISDbits.RD0 = INPUT;
-"18
-[e = . . _TRISDbits 1 0 -> . `E3050 1 `uc ]
-[; ;io.c: 19: TRISDbits.RD1 = INPUT;
-"19
-[e = . . _TRISDbits 1 1 -> . `E3050 1 `uc ]
-[; ;io.c: 22: TRISAbits.RA0 = INPUT;
-"22
-[e = . . _TRISAbits 1 0 -> . `E3050 1 `uc ]
-[; ;io.c: 23: TRISAbits.RA1 = INPUT;
-"23
-[e = . . _TRISAbits 1 1 -> . `E3050 1 `uc ]
-[; ;io.c: 26: TRISAbits.RA2 = INPUT;
-"26
-[e = . . _TRISAbits 1 2 -> . `E3050 1 `uc ]
-[; ;io.c: 27: TRISAbits.RA3 = INPUT;
-"27
-[e = . . _TRISAbits 1 3 -> . `E3050 1 `uc ]
-[; ;io.c: 28: TRISAbits.RA5 = INPUT;
-"28
-[e = . . _TRISAbits 1 5 -> . `E3050 1 `uc ]
-[; ;io.c: 29: TRISEbits.RE0 = INPUT;
-"29
-[e = . . _TRISEbits 1 0 -> . `E3050 1 `uc ]
-[; ;io.c: 30: TRISEbits.RE1 = INPUT;
-"30
-[e = . . _TRISEbits 1 1 -> . `E3050 1 `uc ]
-[; ;io.c: 31: TRISEbits.RE2 = INPUT;
-"31
-[e = . . _TRISEbits 1 2 -> . `E3050 1 `uc ]
-[; ;io.c: 32: TRISBbits.RB2 = INPUT;
-"32
-[e = . . _TRISBbits 1 2 -> . `E3050 1 `uc ]
-[; ;io.c: 35: TRISCbits.RC2 = OUTPUT;
-"35
-[e = . . _TRISCbits 1 2 -> . `E3050 0 `uc ]
-[; ;io.c: 36: TRISBbits.RB3 = OUTPUT;
-"36
-[e = . . _TRISBbits 1 3 -> . `E3050 0 `uc ]
-[; ;io.c: 39: PORTEbits.RDPU = 1;
-"39
-[e = . . _PORTEbits 0 5 -> -> 1 `i `uc ]
-[; ;io.c: 42: TRISCbits.RC6 = OUTPUT;
-"42
-[e = . . _TRISCbits 1 4 -> . `E3050 0 `uc ]
-[; ;io.c: 43: TRISCbits.RC7 = OUTPUT;
-"43
-[e = . . _TRISCbits 1 5 -> . `E3050 0 `uc ]
-[; ;io.c: 44: }
-"44
+[e $U 363  ]
+[e :U 364 ]
+{
+}
+[e :U 363 ]
+[e $ == -> . . _EECON1bits 0 1 `i -> 1 `i 364  ]
+[e :U 365 ]
+[; ;eeprom_functions.c: 16: EECON1bits.WREN = 0;
+"16
+[e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
+[; ;eeprom_functions.c: 17: }
+"17
 [e :UE 362 ]
+}
+"18
+[v _ReadMem `(v ~T0 @X0 1 ef2`uc`*uc ]
+{
+[; ;eeprom_functions.c: 18: void ReadMem(uc addr,uc *data){
+[e :U _ReadMem ]
+[v _addr `uc ~T0 @X0 1 r1 ]
+[v _data `*uc ~T0 @X0 1 r2 ]
+[f ]
+[; ;eeprom_functions.c: 19: EEADR = addr;
+"19
+[e = _EEADR _addr ]
+[; ;eeprom_functions.c: 20: EECON1bits.EEPGD = 0;
+"20
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;eeprom_functions.c: 21: EECON1bits.CFGS = 0;
+"21
+[e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
+[; ;eeprom_functions.c: 22: EECON1bits.RD = 1;
+"22
+[e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
+[; ;eeprom_functions.c: 23: while (EECON1bits.RD == 1){}
+"23
+[e $U 367  ]
+[e :U 368 ]
+{
+}
+[e :U 367 ]
+[e $ == -> . . _EECON1bits 0 0 `i -> 1 `i 368  ]
+[e :U 369 ]
+[; ;eeprom_functions.c: 24: *data = EEDATA;
+"24
+[e = *U _data _EEDATA ]
+[; ;eeprom_functions.c: 25: }
+"25
+[e :UE 366 ]
 }
