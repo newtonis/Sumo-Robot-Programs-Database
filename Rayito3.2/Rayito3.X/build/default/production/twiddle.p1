@@ -1,0 +1,261 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"14 twiddle.c
+[c E27 0 1 .. ]
+[n E27 . CHANGE_KD CHANGE_KP  ]
+"17 timer.h
+[v _time `l ~T0 @X0 -> 0 `x e ]
+"20 analog.h
+[v _lp `i ~T0 @X0 0 e ]
+[; ;analog.h: 15: extern int an[9];
+[; ;analog.h: 17: extern int ls[5];
+[; ;analog.h: 19: extern int maxs[9] , mins[9];
+[; ;analog.h: 20: extern int lp;
+[; ;analog.h: 21: extern int calval[9];
+[; ;analog.h: 23: void an_init();
+[; ;analog.h: 24: void init_cal();
+[; ;analog.h: 25: void read_cal();
+[; ;analog.h: 26: void EnhancedRead();
+[; ;analog.h: 27: void line_cal();
+[; ;config.h: 22: typedef unsigned int ui;
+[; ;config.h: 23: typedef unsigned char uc;
+[; ;config.h: 24: typedef long long ll;
+"27 config.h
+[p x VREGEN=OFF ]
+"28
+[p x WDT=OFF ]
+"29
+[p x PLLDIV=5 ]
+"30
+[p x MCLRE=OFF ]
+"31
+[p x WDTPS=32768 ]
+"32
+[p x CCP2MX=OFF ]
+"33
+[p x PBADEN=OFF ]
+"34
+[p x CPUDIV=OSC1_PLL2 ]
+"35
+[p x USBDIV=2 ]
+"36
+[p x FOSC=HSPLL_HS ]
+"37
+[p x FCMEN=OFF ]
+"38
+[p x IESO=OFF ]
+"39
+[p x PWRT=OFF ]
+"40
+[p x BOR=OFF ]
+"41
+[p x BORV=3 ]
+"42
+[p x LPT1OSC=OFF ]
+"43
+[p x STVREN=ON ]
+"44
+[p x LVP=OFF ]
+"45
+[p x ICPRT=OFF ]
+"46
+[p x XINST=OFF ]
+"47
+[p x DEBUG=OFF ]
+"48
+[p x CP0=OFF ]
+[p x CP1=OFF ]
+[p x CP2=OFF ]
+[p x CP3=OFF ]
+"49
+[p x CPB=OFF ]
+"50
+[p x CPD=OFF ]
+"51
+[p x WRT0=OFF ]
+[p x WRT1=OFF ]
+[p x WRT2=OFF ]
+[p x WRT3=OFF ]
+"52
+[p x WRTC=OFF ]
+"53
+[p x WRTB=OFF ]
+"54
+[p x WRTD=OFF ]
+"55
+[p x EBTR0=OFF ]
+[p x EBTR1=OFF ]
+[p x EBTR2=OFF ]
+[p x EBTR3=OFF ]
+"56
+[p x EBTRB=OFF ]
+[; ;config.h: 58: void init_tms();
+[; ;config.h: 59: void init_io();
+[; ;config.h: 60: void MotorsPWM();
+[; ;config.h: 61: void mspeed(int a,int b);
+[; ;timer.h: 17: extern ll time[10];
+"7 twiddle.c
+[v _kp `d ~T0 @X0 1 e ]
+[i _kp
+-> -> 4 `i `d
+]
+[v _kd `d ~T0 @X0 1 e ]
+[i _kd
+-> -> 100 `i `d
+]
+[; ;twiddle.c: 7: double kp = 4, kd = 100;
+"8
+[v _ckp `d ~T0 @X0 1 e ]
+[i _ckp
+.0.1
+]
+[v _ckd `d ~T0 @X0 1 e ]
+[i _ckd
+.0.1
+]
+[; ;twiddle.c: 8: double ckp = 0.1 , ckd = 0.1;
+"10
+[v _best_err `i ~T0 @X0 1 e ]
+[; ;twiddle.c: 10: int best_err;
+[; ;twiddle.c: 12: enum { CHANGE_KD, CHANGE_KP };
+"14
+[v _status `i ~T0 @X0 1 e ]
+[i _status
+-> . `E27 1 `i
+]
+[; ;twiddle.c: 14: int status = CHANGE_KP;
+"16
+[v _intern `i ~T0 @X0 1 e ]
+[i _intern
+-> 0 `i
+]
+[; ;twiddle.c: 16: int intern = 0;
+"18
+[v _twidde_start `(v ~T0 @X0 1 ef ]
+{
+[; ;twiddle.c: 18: void twidde_start(){
+[e :U _twidde_start ]
+[f ]
+[; ;twiddle.c: 19: time[2] = 0;
+"19
+[e = *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux -> -> 0 `i `l ]
+[; ;twiddle.c: 20: intern = 0;
+"20
+[e = _intern -> 0 `i ]
+[; ;twiddle.c: 21: best_err = lp;
+"21
+[e = _best_err _lp ]
+[; ;twiddle.c: 22: }
+"22
+[e :UE 1 ]
+}
+"24
+[v _twiddle_update `(v ~T0 @X0 1 ef ]
+{
+[; ;twiddle.c: 24: void twiddle_update(){
+[e :U _twiddle_update ]
+[f ]
+[; ;twiddle.c: 25: if (intern == 0){
+"25
+[e $ ! == _intern -> 0 `i 3  ]
+{
+[; ;twiddle.c: 26: intern = 1;
+"26
+[e = _intern -> 1 `i ]
+[; ;twiddle.c: 27: kd += ckd;
+"27
+[e =+ _kd _ckd ]
+"28
+}
+[; ;twiddle.c: 28: }else if(intern == 1){
+[e $U 4  ]
+[e :U 3 ]
+[e $ ! == _intern -> 1 `i 5  ]
+{
+[; ;twiddle.c: 29: if (time[2] > 500){
+"29
+[e $ ! > *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux -> -> 500 `i `l 6  ]
+{
+[; ;twiddle.c: 30: if (lp > 0 ? (lp) : (-lp) > best_err){
+"30
+[e $ ! != ? > _lp -> 0 `i : _lp -> > -U _lp _best_err `i -> 0 `i 7  ]
+{
+[; ;twiddle.c: 31: best_err = lp > 0 ? (lp) : (-lp);
+"31
+[e = _best_err ? > _lp -> 0 `i : _lp -U _lp ]
+[; ;twiddle.c: 32: ckd *= 1.1;
+"32
+[e =* _ckd .1.1 ]
+[; ;twiddle.c: 33: intern = 0;
+"33
+[e = _intern -> 0 `i ]
+"34
+}
+[; ;twiddle.c: 34: }else{
+[e $U 8  ]
+[e :U 7 ]
+{
+[; ;twiddle.c: 35: kd -= 2 * ckd;
+"35
+[e =- _kd * -> -> 2 `i `d _ckd ]
+[; ;twiddle.c: 36: intern = 2;
+"36
+[e = _intern -> 2 `i ]
+"37
+}
+[e :U 8 ]
+"38
+}
+[e :U 6 ]
+"39
+}
+[; ;twiddle.c: 37: }
+[; ;twiddle.c: 38: }
+[; ;twiddle.c: 39: }else if(intern == 2){
+[e $U 9  ]
+[e :U 5 ]
+[e $ ! == _intern -> 2 `i 10  ]
+{
+[; ;twiddle.c: 40: if (time[2] > 1000){
+"40
+[e $ ! > *U + &U _time * -> -> -> 2 `i `ui `ux -> -> # *U &U _time `ui `ux -> -> 1000 `i `l 11  ]
+{
+[; ;twiddle.c: 41: if (lp > 0 ? (lp) : (-lp) > best_err){
+"41
+[e $ ! != ? > _lp -> 0 `i : _lp -> > -U _lp _best_err `i -> 0 `i 12  ]
+{
+[; ;twiddle.c: 42: best_err = lp > 0 ? (lp) : (-lp);
+"42
+[e = _best_err ? > _lp -> 0 `i : _lp -U _lp ]
+[; ;twiddle.c: 43: ckd *= 1.05;
+"43
+[e =* _ckd .1.05 ]
+"44
+}
+[; ;twiddle.c: 44: }else{
+[e $U 13  ]
+[e :U 12 ]
+{
+[; ;twiddle.c: 45: kd += ckd;
+"45
+[e =+ _kd _ckd ]
+[; ;twiddle.c: 46: ckd *= 0.95;
+"46
+[e =* _ckd .0.95 ]
+"47
+}
+[e :U 13 ]
+"48
+}
+[e :U 11 ]
+"49
+}
+[e :U 10 ]
+"52
+[e :U 9 ]
+[e :U 4 ]
+[; ;twiddle.c: 47: }
+[; ;twiddle.c: 48: }
+[; ;twiddle.c: 49: }
+[; ;twiddle.c: 52: }
+[e :UE 2 ]
+}
