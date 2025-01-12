@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.6.0">
+<eagle version="9.6.2">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -16831,6 +16831,11 @@ Source: coiltronics_dr_series.pdf</description>
 <pinref part="C5" gate="G$1" pin="+"/>
 <pinref part="C1" gate="G$1" pin="+"/>
 </segment>
+<segment>
+<pinref part="U$2" gate="G$1" pin="VBAT_12"/>
+<wire x1="373.38" y1="127" x2="388.62" y2="127" width="0.1524" layer="91"/>
+<label x="381" y="127" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="5V" class="0">
 <segment>
@@ -17222,13 +17227,6 @@ Source: coiltronics_dr_series.pdf</description>
 <segment>
 <pinref part="U$2" gate="G$1" pin="GNDB_18"/>
 <wire x1="373.38" y1="60.96" x2="383.54" y2="60.96" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="POWER" class="0">
-<segment>
-<pinref part="U$2" gate="G$1" pin="VBAT_12"/>
-<wire x1="373.38" y1="127" x2="388.62" y2="127" width="0.1524" layer="91"/>
-<label x="383.54" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="N$5" class="0">
