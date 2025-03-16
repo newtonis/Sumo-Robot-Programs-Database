@@ -16541,6 +16541,8 @@ Source: coiltronics_dr_series.pdf</description>
 <part name="C5" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="CPOL-US" device="153CLV-1014" package3d_urn="urn:adsk.eagle:package:6240463/1"/>
 <part name="C1" library="adafruit" library_urn="urn:adsk.eagle:library:420" deviceset="CPOL-US" device="153CLV-1014" package3d_urn="urn:adsk.eagle:package:6240463/1"/>
 <part name="L1" library="inductors" library_urn="urn:adsk.eagle:library:243" deviceset="DR125" device="" package3d_urn="urn:adsk.eagle:package:15121/1"/>
+<part name="R1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
+<part name="R16" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-US_" device="M1206" package3d_urn="urn:adsk.eagle:package:23566/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -16683,6 +16685,14 @@ Source: coiltronics_dr_series.pdf</description>
 <attribute name="NAME" x="-49.53" y="141.986" size="1.778" layer="95"/>
 <attribute name="VALUE" x="-49.657" y="136.652" size="1.778" layer="96"/>
 </instance>
+<instance part="R1" gate="G$1" x="132.08" y="91.44" smashed="yes" rot="R180">
+<attribute name="NAME" x="135.89" y="89.9414" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="135.89" y="94.742" size="1.778" layer="96" rot="R180"/>
+</instance>
+<instance part="R16" gate="G$1" x="279.4" y="88.9" smashed="yes" rot="R180">
+<attribute name="NAME" x="283.21" y="87.4014" size="1.778" layer="95" rot="R180"/>
+<attribute name="VALUE" x="283.21" y="92.202" size="1.778" layer="96" rot="R180"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -16786,6 +16796,16 @@ Source: coiltronics_dr_series.pdf</description>
 <label x="-33.02" y="81.28" size="1.778" layer="95"/>
 <pinref part="C5" gate="G$1" pin="-"/>
 <pinref part="C1" gate="G$1" pin="-"/>
+</segment>
+<segment>
+<pinref part="R1" gate="G$1" pin="2"/>
+<wire x1="127" y1="91.44" x2="119.38" y2="91.44" width="0.1524" layer="91"/>
+<label x="119.38" y="91.44" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="R16" gate="G$1" pin="2"/>
+<wire x1="274.32" y1="88.9" x2="266.7" y2="88.9" width="0.1524" layer="91"/>
+<label x="266.7" y="91.44" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="VPOWER" class="0">
@@ -17232,10 +17252,9 @@ Source: coiltronics_dr_series.pdf</description>
 <net name="N$5" class="0">
 <segment>
 <pinref part="U$1" gate="G$1" pin="ENB/DIAGB_9"/>
-<wire x1="160.02" y1="109.22" x2="157.48" y2="109.22" width="0.1524" layer="91"/>
-<wire x1="157.48" y1="109.22" x2="157.48" y2="114.3" width="0.1524" layer="91"/>
+<wire x1="160.02" y1="109.22" x2="154.94" y2="109.22" width="0.1524" layer="91"/>
+<wire x1="154.94" y1="109.22" x2="154.94" y2="114.3" width="0.1524" layer="91"/>
 <pinref part="R8" gate="G$1" pin="1"/>
-<wire x1="157.48" y1="114.3" x2="154.94" y2="114.3" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -17243,6 +17262,26 @@ Source: coiltronics_dr_series.pdf</description>
 <pinref part="R10" gate="G$1" pin="1"/>
 <pinref part="U$2" gate="G$1" pin="ENB/DIAGB_9"/>
 <wire x1="307.34" y1="104.14" x2="312.42" y2="104.14" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$19" class="0">
+<segment>
+<pinref part="R1" gate="G$1" pin="1"/>
+<wire x1="137.16" y1="91.44" x2="144.78" y2="91.44" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="91.44" x2="144.78" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="144.78" y1="99.06" x2="157.48" y2="99.06" width="0.1524" layer="91"/>
+<wire x1="157.48" y1="99.06" x2="157.48" y2="114.3" width="0.1524" layer="91"/>
+<pinref part="U$1" gate="G$1" pin="CS_8"/>
+<wire x1="157.48" y1="114.3" x2="160.02" y2="114.3" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$20" class="0">
+<segment>
+<pinref part="R16" gate="G$1" pin="1"/>
+<wire x1="284.48" y1="88.9" x2="309.88" y2="88.9" width="0.1524" layer="91"/>
+<wire x1="309.88" y1="88.9" x2="309.88" y2="109.22" width="0.1524" layer="91"/>
+<pinref part="U$2" gate="G$1" pin="CS_8"/>
+<wire x1="309.88" y1="109.22" x2="312.42" y2="109.22" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

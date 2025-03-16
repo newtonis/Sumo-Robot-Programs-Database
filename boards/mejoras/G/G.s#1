@@ -16834,7 +16834,7 @@ Source: coiltronics_dr_series.pdf</description>
 <segment>
 <pinref part="U$2" gate="G$1" pin="VBAT_12"/>
 <wire x1="373.38" y1="127" x2="388.62" y2="127" width="0.1524" layer="91"/>
-<label x="381" y="129.54" size="1.778" layer="95"/>
+<label x="381" y="127" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="5V" class="0">
