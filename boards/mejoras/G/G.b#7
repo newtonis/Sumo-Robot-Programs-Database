@@ -4793,7 +4793,12 @@ design rules under a new name.</description>
 <signal name="N$20">
 <contactref element="R16" pad="1"/>
 <contactref element="U$2" pad="8"/>
-<wire x1="64.19" y1="33.13" x2="85" y2="38.9" width="0" layer="19" extent="1-16"/>
+<wire x1="64.19" y1="33.13" x2="66.07" y2="33.13" width="0.5" layer="16"/>
+<wire x1="66.07" y1="33.13" x2="66.6" y2="32.6" width="0.5" layer="16"/>
+<wire x1="66.6" y1="32.6" x2="66.6" y2="27.4" width="0.5" layer="16"/>
+<wire x1="66.6" y1="27.4" x2="66.8" y2="27.2" width="0.5" layer="16"/>
+<wire x1="66.8" y1="27.2" x2="66.9" y2="27.2" width="0.5" layer="16"/>
+<wire x1="66.9" y1="27.2" x2="85" y2="38.9" width="0" layer="19" extent="1-16"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
