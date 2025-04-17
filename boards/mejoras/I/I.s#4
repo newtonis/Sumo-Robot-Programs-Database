@@ -9899,12 +9899,22 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <wire x1="-66.04" y1="40.64" x2="-48.26" y2="40.64" width="0.1524" layer="91"/>
 <label x="-50.8" y="40.64" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="PROG-OUTSIDE" gate="A" pin="5"/>
+<wire x1="76.2" y1="76.2" x2="58.42" y2="76.2" width="0.1524" layer="91"/>
+<label x="58.42" y="76.2" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PGD" class="0">
 <segment>
 <pinref part="PROG" gate="A" pin="5"/>
 <wire x1="-66.04" y1="38.1" x2="-48.26" y2="38.1" width="0.1524" layer="91"/>
 <label x="-50.8" y="38.1" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="PROG-OUTSIDE" gate="A" pin="4"/>
+<wire x1="76.2" y1="78.74" x2="58.42" y2="78.74" width="0.1524" layer="91"/>
+<label x="58.42" y="78.74" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="MCRL" class="0">
@@ -9916,7 +9926,7 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <segment>
 <pinref part="PROG-OUTSIDE" gate="A" pin="1"/>
 <wire x1="76.2" y1="86.36" x2="58.42" y2="86.36" width="0.1524" layer="91"/>
-<label x="58.42" y="88.9" size="1.778" layer="95"/>
+<label x="58.42" y="86.36" size="1.778" layer="95"/>
 </segment>
 </net>
 </nets>
