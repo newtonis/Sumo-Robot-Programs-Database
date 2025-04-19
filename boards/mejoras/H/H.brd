@@ -4853,11 +4853,11 @@ design rules under a new name.</description>
 <wire x1="6.31" y1="18.77" x2="9.13" y2="18.77" width="0.5" layer="16"/>
 <wire x1="9.13" y1="18.77" x2="11.3" y2="16.6" width="0.5" layer="16"/>
 <wire x1="11.3" y1="16.6" x2="11.3" y2="13.7" width="0.5" layer="16"/>
-<wire x1="11.3" y1="13.7" x2="9.5" y2="11.9" width="0.5" layer="16"/>
-<via x="9.5" y="11.9" extent="1-16" drill="0.6" diameter="2"/>
+<wire x1="11.3" y1="13.7" x2="9.8048" y2="12.2048" width="0.5" layer="16"/>
+<via x="9.8048" y="12.2048" extent="1-16" drill="0.6" diameter="2"/>
 <wire x1="36" y1="13.7" x2="11.2" y2="13.7" width="0.5" layer="1"/>
-<wire x1="11.2" y1="13.7" x2="9.5" y2="12" width="0.5" layer="1"/>
-<wire x1="9.5" y1="11.9" x2="9.5" y2="12" width="0.5" layer="1"/>
+<wire x1="11.2" y1="13.7" x2="9.8048" y2="12.3048" width="0.5" layer="1"/>
+<wire x1="9.8048" y1="12.2048" x2="9.8048" y2="12.3048" width="0.5" layer="1"/>
 <wire x1="36.9" y1="14.6" x2="43.7" y2="14.6" width="0.5" layer="1"/>
 <wire x1="36" y1="13.7" x2="36.9" y2="14.6" width="0.5" layer="1"/>
 </signal>

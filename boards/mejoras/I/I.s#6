@@ -9899,6 +9899,11 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <wire x1="-66.04" y1="40.64" x2="-48.26" y2="40.64" width="0.1524" layer="91"/>
 <label x="-50.8" y="40.64" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="PROG-OUTSIDE" gate="A" pin="5"/>
+<wire x1="76.2" y1="76.2" x2="58.42" y2="76.2" width="0.1524" layer="91"/>
+<label x="58.42" y="76.2" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="PGD" class="0">
 <segment>

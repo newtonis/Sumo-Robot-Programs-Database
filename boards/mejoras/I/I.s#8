@@ -9733,6 +9733,11 @@ Source: http://www.murata.com .. GRM43DR72E224KW01.pdf</description>
 <wire x1="-66.04" y1="27.94" x2="-48.26" y2="27.94" width="0.1524" layer="91"/>
 <label x="-50.8" y="27.94" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="PROG-OUTSIDE" gate="A" pin="3"/>
+<wire x1="76.2" y1="81.28" x2="58.42" y2="81.28" width="0.1524" layer="91"/>
+<label x="58.42" y="81.28" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="B1" class="0">
 <segment>
