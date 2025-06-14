@@ -10912,6 +10912,11 @@ Source: 008-0260-0_E.pdf</description>
 <wire x1="198.12" y1="81.28" x2="198.12" y2="88.9" width="0.1524" layer="91"/>
 <label x="195.58" y="83.82" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="RD6/SPP6/P1C"/>
+<wire x1="43.18" y1="38.1" x2="25.4" y2="38.1" width="0.1524" layer="91"/>
+<label x="27.94" y="38.1" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="S3" class="0">
 <segment>
@@ -10923,6 +10928,11 @@ Source: 008-0260-0_E.pdf</description>
 <pinref part="R10" gate="G$1" pin="2"/>
 <wire x1="205.74" y1="81.28" x2="205.74" y2="88.9" width="0.1524" layer="91"/>
 <label x="200.66" y="83.82" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="IC1" gate="G$1" pin="RD5/SPP5/P1B"/>
+<wire x1="43.18" y1="40.64" x2="25.4" y2="40.64" width="0.1524" layer="91"/>
+<label x="27.94" y="40.64" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="S4" class="0">
