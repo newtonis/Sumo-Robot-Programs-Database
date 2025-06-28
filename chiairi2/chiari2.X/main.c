@@ -16,9 +16,9 @@
 #pragma config PLLDIV = 5               // Internal Oscillator engaged 
 #pragma config MCLRE  = OFF
 #pragma config WDTPS  = 32768
-#pragma config CCP2MX = ON
+#pragma config CCP2MX = OFF // Set PWM2 on Pin RB3
 #pragma config PBADEN = OFF
-#pragma config CPUDIV = OSC1_PLL2 /// Divide 96 MHz PLL frequency by 2 = 48Mhz
+#pragma config CPUDIV = OSC1_PLL2 /// Divide 96 MHz PLL frequency by 2 => Fosc=48Mhz
 #pragma config USBDIV = 2
 #pragma config FOSC   = HSPLL_HS // HS oscillator, PLL enabled, HS used by USB. PLL Frequency: 96 MHz
 #pragma config FCMEN  = OFF
@@ -53,10 +53,20 @@
 #define BUTTON_1 PORTDbits.RD2
 #define BUTTON_2 PORTDbits.RD3
 
+// Motors
+#define M1_A PORTDbits.RD1
+#define M1_B PORTDbits.RD0
+#define M2_A PORTCbits.RC1
+#define M2_B PORTCbits.RC0
+
 // 5 available general propouse counters
 long long int counter[5]; 
 // 7 analog inputs
 int an_input[10]; 
+// max 128 ints (16 bits) for persisted data
+unsigned int persisted_data[128];
+// motor power to apply (-1000 to 1000)
+int pwm[2];
 
 void config_micro(){
     // Interal oscillator default 8 MHZ
@@ -103,25 +113,26 @@ void config_micro(){
     TMR1H = 0xF8;
     TMR1L = 0x2F; // timer1 interrumpir cada 2000 ciclos
     
-    // PWM config (With Timer 2)
-    T2OUTPS0 = 0;
-    T2OUTPS1 = 0;
-    T2OUTPS2 = 0;
-    T2OUTPS3 = 0;
-    
-    TMR2ON = 1;
-    T2CKPS0 = 0;
-    T2CKPS1 = 0;
-    
-    T2CONbits.TOUTPS=11; //postscale de 1:1 (0) a 1:16 (15) NO SE USA PARA PWM
-    T2CONbits.T2CKPS=1; //prescaler 0:1 ; 1:4 ; 2o3: 16
-    T2CONbits.TMR2ON=0;
-    
-    PR2=249; // 38 KHZ
-    T2CONbits.TMR2ON=1;
-    
+    // PWM config (With Timer 2) 
+       
+    // Configuracion Timer 2
+    T2CONbits.TMR2ON=0; // Desactivar timer 2
+    T2CONbits.TOUTPS=0b01; // Timer 2 postcale default value 1:1 (not used for PWM)
+    T2CONbits.T2CKPS=0b01; // Timer 2 prescaler 1:4
+            
+    // PWM mode configuration
     CCP1CONbits.CCP1M = 0b1100;
     CCP2CONbits.CCP2M = 0b1100;
+    PR2=149; // PWM Freq = 1 / ((149 + 1) * 4 * (1 / 48Mhz) * 4) = 20Khz
+    // Max duty cycle = (PR2 + 1) * 4 = 600
+    
+    // Start with duty = 0
+    CCP1CONbits.DC1B = 0;
+    CCP2CONbits.DC2B = 0;
+    CCPR1L = 0;
+    CCPR2L = 0;
+    
+    T2CONbits.TMR2ON=1; // Enable timer 2
     
     // Analog inputs
     ADCON0bits.CHS=0; // Analog channel 0
@@ -180,6 +191,15 @@ void config_micro(){
     TRISAbits.RA3 = 1;
     TRISAbits.RA4 = 1;
     TRISEbits.RE0 = 1;
+    
+    // Motors
+    TRISDbits.RD1 = 0;
+    TRISDbits.RD0 = 0;
+    TRISCbits.RC1 = 0;
+    TRISCbits.RC0 = 0;
+    TRISBbits.RB3 = 0;
+    TRISCbits.RC2 = 0;
+    
 }
 
 // Analog read
@@ -193,6 +213,66 @@ void read_analog(){
         aux=ADRESH*4;
         aux=aux+ADRESL/64;
         an_input[i]=aux;
+    }
+}
+
+// Eeprom
+void read_eeprom(){
+    unsigned char addr;
+    unsigned int aux;
+    
+    for (addr=0;addr<=100;addr++){
+        // set read address
+        EEADR = addr;
+        // Clear CFGS control bit - to access flash program or eeprom memory - not config registers
+        EECON1bits.CFGS = 0;
+        // Clear EEPGD control bit - to use eeprom data memory (not flash program)
+        EECON1bits.EEPGD = 0;
+        // Set RD control bit - initiate eeprom read
+        EECON1bits.RD = 1;
+        
+        if (addr & 0x01){ // address is odd
+            // store lower bits
+            persisted_data[addr >> 1] = EEDATA | aux << 8;
+        }else{ 
+            // store higher bits
+            aux = EEDATA;
+        }
+    }    
+    
+}
+void write_eeprom(){
+    unsigned char addr; 
+    // 100 physical address, 50 real address for persisted data
+    for (addr=0;addr<=100;addr++){
+        EEADR = addr;
+        if (addr & 0x01){ // address is odd
+            // write lower bits
+            EEDATA = persisted_data[addr >> 1] & 0xFF;
+        }else{
+            // write higher bits
+            EEDATA = (persisted_data[addr >> 1] >> 8) & 0xFF;
+        }
+        // Clear CFGS control bit - to access flash program or eeprom memory - not config registers
+        EECON1bits.CFGS = 0;
+        // Clear EEPGD control bit - to use eeprom data memory (not flash program)
+        EECON1bits.EEPGD = 0; 
+        // Enable writes
+        EECON1bits.WREN = 1;
+        // Clear interrupts
+        INTCONbits.GIE = 0;
+        // Write EECON2 codes
+        EECON2 = 0x55; 
+        EECON2 = 0x0AA;
+        // Set WR Bits to begin write
+        EECON1bits.WR = 1;
+        // Enable interrupts
+        INTCONbits.GIE = 1;
+        // Disable writes
+        EECON1bits.WREN = 0;
+        
+        while (! EEIF) continue;
+        EEIF = 0;
     }
 }
 
@@ -222,81 +302,92 @@ void init_vars(){
     for (i=0;i<5;i++){   
         counter[i] = 0; // init all counters
     }
+    pwm[0] = 0; // init pwm vars
+    pwm[1] = 0;
 }
-/*
-void MotorASpeed(int S){
-    if (S > 1000){
-        S = 1000;
-    }else if (S < -1000){
-        S = -1000;
+
+void update_pwm(){
+    int pwm0, pwm1;
+    
+    if (pwm[0] > 600){
+        pwm0 = 600;
+    }else if (pwm[0] < -600){
+        pwm0 = -600;
+    }else{
+        pwm0 = pwm[0];
     }
     
-    MA_1 = S > 0 ? 0 : 1;
-    MA_2 = S < 0 ? 0 : 1;
-    S = S > 0 ? S : (-S);
+    M1_A = pwm0 > 0 ? 0 : 1;
+    M1_B = pwm0 < 0 ? 0 : 1;
+    pwm0 = pwm0 > 0 ? pwm0 : (-pwm0);
     
-    CCP1CONbits.DC1B1 = S % 4;
-    CCPR1L = S / 4;
-}
-void MotorBSpeed(int S){
-    //S = -S; //reverse
-    if (S > 1000){
-        S = 1000;
-    }else if (S < 1000){
-        S = 0;
+    CCP1CONbits.DC1B = pwm0 % 4;
+    CCPR1L = pwm0 / 4;
+
+    if (pwm[1] > 600){
+        pwm1 = 600;
+    }else if (pwm[1] < -600){
+        pwm1 = -600;
+    }else{
+        pwm1 = pwm[1];
     }
     
-    MB_1 = S > 0 ? 0 : 1;
-    MB_2 = S < 0 ? 0 : 1;
-    S = S > 0 ? S : (-S);
+    M2_A = pwm1 > 0 ? 0 : 1;
+    M2_B = pwm1 < 0 ? 0 : 1;
+    pwm1 = pwm1 > 0 ? pwm1 : (-pwm1);
     
-    CCP2CONbits.DC2B = S % 4;
-    CCPR2L = S / 4;
-}*/
-/** Start test analog input program */
+    CCP2CONbits.DC2B = pwm1 % 4;
+    CCPR2L = pwm1 / 4;
+}
 
 
-/** Test timer0 increment and led outputs **/
+/***** Start custom program *****/
 
-int value;
-int selected;
+/** Start tesr pwm program */
+
 char flag_b1;
 char flag_b2;
+int value;
 
 void init(){
-    value = 0;
-    selected = 0;
+    pwm[0] = 250;
+    pwm[1] = 600;
     flag_b1 = 0;
     flag_b2 = 0;
+    value = 0;
 }
 
 void loop(){
-    if (counter[0] >= 50){ // every 500 miliseconds (50 time unities, time unity=10ms)
+    if (counter[0] >= 1000){ // every 10 seconds (1000 time unities, time unity=10ms)
         counter[0] = 0;
         value ++;
         if (value >= 32){ // reset value every 32 increments to avoid overflow
             value = 0;
         }
-        printf("Analog value %d: %d \n", selected, an_input[selected]);
+        
     }
 
-    LED_1 = an_input[selected] >= 512 ? 1 : 0;
-    LED_2 = an_input[selected] >= 512 ? 1 : 0;
-    LED_3 = an_input[selected] >= 512 ? 1 : 0;
-    LED_4 = an_input[selected] >= 512 ? 1 : 0;
-    LED_5 = an_input[selected] >= 512 ? 1 : 0;
+    LED_1 = !BUTTON_1;
+    LED_2 = !BUTTON_1;
+    LED_3 = !BUTTON_1; 
+    LED_4 = !BUTTON_1;
+    LED_5 = !BUTTON_1;
 
     if (!BUTTON_1 && flag_b1 == 0){
-        printf("Button 1 click detected\n");
 
-        selected ++;
-        if (selected >= 6){
-            selected = 0;
-        }
-        printf("Selected analog: %d\n", selected);
-        flag_b1 = 1;
     }else if(BUTTON_1){
-        flag_b1 = 0;
+
+    }
+
+    if (!BUTTON_2  && flag_b2 == 0){
+        
+    }else if (BUTTON_2){
+
+    }
+    if (!BUTTON_2 && !BUTTON_1){
+    
+    }else if (BUTTON_2 || BUTTON_1){
+       
     }
 
 }
@@ -304,14 +395,16 @@ void loop(){
 /* End program */
 
 
-
+/***** End custom program *****/
 
 void main(void) {
-    init_vars();
     config_micro();
+    init_vars(); 
     
     init();
+    
     while (1){
+        update_pwm();
         read_analog();
 
         loop();

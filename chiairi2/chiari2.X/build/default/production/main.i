@@ -5881,7 +5881,7 @@ char *tempnam(const char *, const char *);
 #pragma config PLLDIV = 5
 #pragma config MCLRE = OFF
 #pragma config WDTPS = 32768
-#pragma config CCP2MX = ON
+#pragma config CCP2MX = OFF
 #pragma config PBADEN = OFF
 #pragma config CPUDIV = OSC1_PLL2
 #pragma config USBDIV = 2
@@ -5906,10 +5906,14 @@ char *tempnam(const char *, const char *);
 #pragma config WRTD = OFF
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
-# 57 "main.c"
+# 63 "main.c"
 long long int counter[5];
 
 int an_input[10];
+
+unsigned int persisted_data[128];
+
+int pwm[2];
 
 void config_micro(){
 
@@ -5957,24 +5961,25 @@ void config_micro(){
     TMR1L = 0x2F;
 
 
-    T2OUTPS0 = 0;
-    T2OUTPS1 = 0;
-    T2OUTPS2 = 0;
-    T2OUTPS3 = 0;
 
-    TMR2ON = 1;
-    T2CKPS0 = 0;
-    T2CKPS1 = 0;
 
-    T2CONbits.TOUTPS=11;
-    T2CONbits.T2CKPS=1;
     T2CONbits.TMR2ON=0;
+    T2CONbits.TOUTPS=0b01;
+    T2CONbits.T2CKPS=0b01;
 
-    PR2=249;
-    T2CONbits.TMR2ON=1;
 
     CCP1CONbits.CCP1M = 0b1100;
     CCP2CONbits.CCP2M = 0b1100;
+    PR2=149;
+
+
+
+    CCP1CONbits.DC1B = 0;
+    CCP2CONbits.DC2B = 0;
+    CCPR1L = 0;
+    CCPR2L = 0;
+
+    T2CONbits.TMR2ON=1;
 
 
     ADCON0bits.CHS=0;
@@ -6033,6 +6038,15 @@ void config_micro(){
     TRISAbits.RA3 = 1;
     TRISAbits.RA4 = 1;
     TRISEbits.RE0 = 1;
+
+
+    TRISDbits.RD1 = 0;
+    TRISDbits.RD0 = 0;
+    TRISCbits.RC1 = 0;
+    TRISCbits.RC0 = 0;
+    TRISBbits.RB3 = 0;
+    TRISCbits.RC2 = 0;
+
 }
 
 
@@ -6046,6 +6060,66 @@ void read_analog(){
         aux=ADRESH*4;
         aux=aux+ADRESL/64;
         an_input[i]=aux;
+    }
+}
+
+
+void read_eeprom(){
+    unsigned char addr;
+    unsigned int aux;
+
+    for (addr=0;addr<=100;addr++){
+
+        EEADR = addr;
+
+        EECON1bits.CFGS = 0;
+
+        EECON1bits.EEPGD = 0;
+
+        EECON1bits.RD = 1;
+
+        if (addr & 0x01){
+
+            persisted_data[addr >> 1] = EEDATA | aux << 8;
+        }else{
+
+            aux = EEDATA;
+        }
+    }
+
+}
+void write_eeprom(){
+    unsigned char addr;
+
+    for (addr=0;addr<=100;addr++){
+        EEADR = addr;
+        if (addr & 0x01){
+
+            EEDATA = persisted_data[addr >> 1] & 0xFF;
+        }else{
+
+            EEDATA = (persisted_data[addr >> 1] >> 8) & 0xFF;
+        }
+
+        EECON1bits.CFGS = 0;
+
+        EECON1bits.EEPGD = 0;
+
+        EECON1bits.WREN = 1;
+
+        INTCONbits.GIE = 0;
+
+        EECON2 = 0x55;
+        EECON2 = 0x0AA;
+
+        EECON1bits.WR = 1;
+
+        INTCONbits.GIE = 1;
+
+        EECON1bits.WREN = 0;
+
+        while (! EEIF) continue;
+        EEIF = 0;
     }
 }
 
@@ -6075,47 +6149,92 @@ void init_vars(){
     for (i=0;i<5;i++){
         counter[i] = 0;
     }
+    pwm[0] = 0;
+    pwm[1] = 0;
 }
-# 261 "main.c"
-int value;
-int selected;
+
+void update_pwm(){
+    int pwm0, pwm1;
+
+    if (pwm[0] > 600){
+        pwm0 = 600;
+    }else if (pwm[0] < -600){
+        pwm0 = -600;
+    }else{
+        pwm0 = pwm[0];
+    }
+
+    PORTDbits.RD1 = pwm0 > 0 ? 0 : 1;
+    PORTDbits.RD0 = pwm0 < 0 ? 0 : 1;
+    pwm0 = pwm0 > 0 ? pwm0 : (-pwm0);
+
+    CCP1CONbits.DC1B = pwm0 % 4;
+    CCPR1L = pwm0 / 4;
+
+    if (pwm[1] > 600){
+        pwm1 = 600;
+    }else if (pwm[1] < -600){
+        pwm1 = -600;
+    }else{
+        pwm1 = pwm[1];
+    }
+
+    PORTCbits.RC1 = pwm1 > 0 ? 0 : 1;
+    PORTCbits.RC0 = pwm1 < 0 ? 0 : 1;
+    pwm1 = pwm1 > 0 ? pwm1 : (-pwm1);
+
+    CCP2CONbits.DC2B = pwm1 % 4;
+    CCPR2L = pwm1 / 4;
+}
+
+
+
+
+
+
 char flag_b1;
 char flag_b2;
+int value;
 
 void init(){
-    value = 0;
-    selected = 0;
+    pwm[0] = 250;
+    pwm[1] = 600;
     flag_b1 = 0;
     flag_b2 = 0;
+    value = 0;
 }
 
 void loop(){
-    if (counter[0] >= 50){
+    if (counter[0] >= 1000){
         counter[0] = 0;
         value ++;
         if (value >= 32){
             value = 0;
         }
-        printf("Analog value %d: %d \n", selected, an_input[selected]);
+
     }
 
-    PORTBbits.RB0 = an_input[selected] >= 512 ? 1 : 0;
-    PORTBbits.RB1 = an_input[selected] >= 512 ? 1 : 0;
-    PORTBbits.RB2 = an_input[selected] >= 512 ? 1 : 0;
-    PORTBbits.RB4 = an_input[selected] >= 512 ? 1 : 0;
-    PORTBbits.RB5 = an_input[selected] >= 512 ? 1 : 0;
+    PORTBbits.RB0 = !PORTDbits.RD2;
+    PORTBbits.RB1 = !PORTDbits.RD2;
+    PORTBbits.RB2 = !PORTDbits.RD2;
+    PORTBbits.RB4 = !PORTDbits.RD2;
+    PORTBbits.RB5 = !PORTDbits.RD2;
 
     if (!PORTDbits.RD2 && flag_b1 == 0){
-        printf("Button 1 click detected\n");
 
-        selected ++;
-        if (selected >= 6){
-            selected = 0;
-        }
-        printf("Selected analog: %d\n", selected);
-        flag_b1 = 1;
     }else if(PORTDbits.RD2){
-        flag_b1 = 0;
+
+    }
+
+    if (!PORTDbits.RD3 && flag_b2 == 0){
+
+    }else if (PORTDbits.RD3){
+
+    }
+    if (!PORTDbits.RD3 && !PORTDbits.RD2){
+
+    }else if (PORTDbits.RD3 || PORTDbits.RD2){
+
     }
 
 }
@@ -6126,11 +6245,13 @@ void loop(){
 
 
 void main(void) {
-    init_vars();
     config_micro();
+    init_vars();
 
     init();
+
     while (1){
+        update_pwm();
         read_analog();
 
         loop();
