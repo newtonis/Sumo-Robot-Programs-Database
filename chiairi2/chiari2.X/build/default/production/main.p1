@@ -572,6 +572,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2484
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 2484: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
 [v _PORTBbits `VS106 ~T0 @X0 0 e@3969 ]
+"105 C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h
+[; ;C:\Program Files\Microchip\xc8\v2.40\pic\include\c99\stdio.h: 105: int printf(const char *restrict, ...);
+[v _printf `(i ~T0 @X0 0 ev`*Cuc ]
 [p mainexit ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h: 55: __asm("SPPDATA equ 0F62h");
@@ -1830,174 +1833,564 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 341: }
 [e :UE 405 ]
 }
-"348
-[; ;main.c: 348: char flag_b1;
-[v _flag_b1 `uc ~T0 @X0 1 e ]
-"349
-[; ;main.c: 349: char flag_b2;
-[v _flag_b2 `uc ~T0 @X0 1 e ]
 "350
-[; ;main.c: 350: int value;
-[v _value `i ~T0 @X0 1 e ]
-"352
-[; ;main.c: 352: void init(){
+[; ;main.c: 350: long long value;
+[v _value `o ~T0 @X0 1 e ]
+"351
+[; ;main.c: 351: char last_b[5];
+[v _last_b `uc ~T0 @X0 -> 5 `i e ]
+"353
+[; ;main.c: 353: long long iterations;
+[v _iterations `o ~T0 @X0 1 e ]
+"354
+[; ;main.c: 354: long long sum_iterations;
+[v _sum_iterations `o ~T0 @X0 1 e ]
+"355
+[; ;main.c: 355: long long amount_cycles;
+[v _amount_cycles `o ~T0 @X0 1 e ]
+"357
+[; ;main.c: 357: long long b_counter[5];
+[v _b_counter `o ~T0 @X0 -> 5 `i e ]
+"358
+[; ;main.c: 358: char b_state[5];
+[v _b_state `uc ~T0 @X0 -> 5 `i e ]
+"359
+[; ;main.c: 359: char press_evt[5];
+[v _press_evt `uc ~T0 @X0 -> 5 `i e ]
+"360
+[; ;main.c: 360: char release_evt[5];
+[v _release_evt `uc ~T0 @X0 -> 5 `i e ]
+"361
+[; ;main.c: 361: char b[5];
+[v _b `uc ~T0 @X0 -> 5 `i e ]
+"362
+[; ;main.c: 362: long long state_counter[5];
+[v _state_counter `o ~T0 @X0 -> 5 `i e ]
+"363
+[; ;main.c: 363: char combination_state[5];
+[v _combination_state `uc ~T0 @X0 -> 5 `i e ]
+"365
+[; ;main.c: 365: char single_click_evt[5];
+[v _single_click_evt `uc ~T0 @X0 -> 5 `i e ]
+"366
+[; ;main.c: 366: char double_click_evt[5];
+[v _double_click_evt `uc ~T0 @X0 -> 5 `i e ]
+"367
+[; ;main.c: 367: char triple_click_evt[5];
+[v _triple_click_evt `uc ~T0 @X0 -> 5 `i e ]
+"369
+[; ;main.c: 369: void init(){
 [v _init `(v ~T0 @X0 1 ef ]
 {
 [e :U _init ]
 [f ]
-"353
-[; ;main.c: 353:     pwm[0] = 250;
-[e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 250 `i ]
-"354
-[; ;main.c: 354:     pwm[1] = 600;
-[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 600 `i ]
-"355
-[; ;main.c: 355:     flag_b1 = 0;
-[e = _flag_b1 -> -> 0 `i `uc ]
-"356
-[; ;main.c: 356:     flag_b2 = 0;
-[e = _flag_b2 -> -> 0 `i `uc ]
-"357
-[; ;main.c: 357:     value = 0;
-[e = _value -> 0 `i ]
-"358
-[; ;main.c: 358: }
+"370
+[; ;main.c: 370:     value = 0;
+[e = _value -> -> 0 `i `o ]
+"371
+[; ;main.c: 371:     b_state[0] = 0;
+[e = *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux -> -> 0 `i `uc ]
+"372
+[; ;main.c: 372:     last_b[0] = 0;
+[e = *U + &U _last_b * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_b `ui `ux -> -> 0 `i `uc ]
+"374
+[; ;main.c: 374:     b_counter[0] = 0;
+[e = *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 0 `i `o ]
+"375
+[; ;main.c: 375:     state_counter[0] = 0;
+[e = *U + &U _state_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _state_counter `ui `ux -> -> 0 `i `o ]
+"376
+[; ;main.c: 376:     combination_state[0] = 0;
+[e = *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux -> -> 0 `i `uc ]
+"377
+[; ;main.c: 377:     single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"378
+[; ;main.c: 378:     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"379
+[; ;main.c: 379:     triple_click_evt[0] = 0;
+[e = *U + &U _triple_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _triple_click_evt `ui `ux -> -> 0 `i `uc ]
+"381
+[; ;main.c: 381:     iterations = 0;
+[e = _iterations -> -> 0 `i `o ]
+"382
+[; ;main.c: 382:     sum_iterations = 0;
+[e = _sum_iterations -> -> 0 `i `o ]
+"383
+[; ;main.c: 383:     amount_cycles = 0;
+[e = _amount_cycles -> -> 0 `i `o ]
+"384
+[; ;main.c: 384: }
 [e :UE 414 ]
 }
-"360
-[; ;main.c: 360: void loop(){
+"386
+[; ;main.c: 386: void loop(){
 [v _loop `(v ~T0 @X0 1 ef ]
 {
 [e :U _loop ]
 [f ]
-"361
-[; ;main.c: 361:     if (counter[0] >= 1000){
-[e $ ! >= *U + &U _counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 1000 `i `o 416  ]
+"387
+[; ;main.c: 387:     iterations ++;
+[e ++ _iterations -> -> 1 `i `o ]
+"389
+[; ;main.c: 389:     if (b_state[0] == 0){
+[e $ ! == -> *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux `i -> 0 `i 416  ]
 {
-"362
-[; ;main.c: 362:         counter[0] = 0;
-[e = *U + &U _counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
-"363
-[; ;main.c: 363:         value ++;
-[e ++ _value -> 1 `i ]
-"364
-[; ;main.c: 364:         if (value >= 32){
-[e $ ! >= _value -> 32 `i 417  ]
+"390
+[; ;main.c: 390:         if (PORTDbits.RD2){
+[e $ ! != -> . . _PORTDbits 0 2 `i -> 0 `i 417  ]
 {
-"365
-[; ;main.c: 365:             value = 0;
-[e = _value -> 0 `i ]
-"366
-[; ;main.c: 366:         }
+"391
+[; ;main.c: 391:             b[0] = 0;
+[e = *U + &U _b * -> -> -> 0 `i `ui `ux -> -> # *U &U _b `ui `ux -> -> 0 `i `uc ]
+"392
+[; ;main.c: 392:         }
 }
 [e :U 417 ]
-"368
-[; ;main.c: 368:     }
+"393
+[; ;main.c: 393:     }else if(b_state[0] == 1){
 }
+[e $U 418  ]
 [e :U 416 ]
-"370
-[; ;main.c: 370:     PORTBbits.RB0 = !PORTDbits.RD2;
-[e = . . _PORTBbits 0 0 -> -> ! != -> . . _PORTDbits 0 2 `i -> 0 `i `i `uc ]
-"371
-[; ;main.c: 371:     PORTBbits.RB1 = !PORTDbits.RD2;
-[e = . . _PORTBbits 0 1 -> -> ! != -> . . _PORTDbits 0 2 `i -> 0 `i `i `uc ]
-"372
-[; ;main.c: 372:     PORTBbits.RB2 = !PORTDbits.RD2;
-[e = . . _PORTBbits 0 2 -> -> ! != -> . . _PORTDbits 0 2 `i -> 0 `i `i `uc ]
-"373
-[; ;main.c: 373:     PORTBbits.RB4 = !PORTDbits.RD2;
-[e = . . _PORTBbits 0 4 -> -> ! != -> . . _PORTDbits 0 2 `i -> 0 `i `i `uc ]
-"374
-[; ;main.c: 374:     PORTBbits.RB5 = !PORTDbits.RD2;
-[e = . . _PORTBbits 0 5 -> -> ! != -> . . _PORTDbits 0 2 `i -> 0 `i `i `uc ]
-"376
-[; ;main.c: 376:     if (!PORTDbits.RD2 && flag_b1 == 0){
-[e $ ! && ! != -> . . _PORTDbits 0 2 `i -> 0 `i == -> _flag_b1 `i -> 0 `i 418  ]
+[e $ ! == -> *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux `i -> 1 `i 419  ]
 {
-"378
-[; ;main.c: 378:     }else if(PORTDbits.RD2){
-}
-[e $U 419  ]
-[e :U 418 ]
-[e $ ! != -> . . _PORTDbits 0 2 `i -> 0 `i 420  ]
+"394
+[; ;main.c: 394:         if (!PORTDbits.RD2){
+[e $ ! ! != -> . . _PORTDbits 0 2 `i -> 0 `i 420  ]
 {
-"380
-[; ;main.c: 380:     }
+"395
+[; ;main.c: 395:             b[0] = 1;
+[e = *U + &U _b * -> -> -> 0 `i `ui `ux -> -> # *U &U _b `ui `ux -> -> 1 `i `uc ]
+"396
+[; ;main.c: 396:         }
 }
 [e :U 420 ]
+"397
+[; ;main.c: 397:     }
+}
 [e :U 419 ]
-"382
-[; ;main.c: 382:     if (!PORTDbits.RD3 && flag_b2 == 0){
-[e $ ! && ! != -> . . _PORTDbits 0 3 `i -> 0 `i == -> _flag_b2 `i -> 0 `i 421  ]
+[e :U 418 ]
+"399
+[; ;main.c: 399:     if (press_evt[0]){
+[e $ ! != -> *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 421  ]
 {
-"384
-[; ;main.c: 384:     }else if (PORTDbits.RD3){
+"400
+[; ;main.c: 400:         PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"401
+[; ;main.c: 401:         press_evt[0] = 0;
+[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"402
+[; ;main.c: 402:     }else{
 }
 [e $U 422  ]
 [e :U 421 ]
-[e $ ! != -> . . _PORTDbits 0 3 `i -> 0 `i 423  ]
 {
-"386
-[; ;main.c: 386:     }
+"403
+[; ;main.c: 403:         PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+"404
+[; ;main.c: 404:     }
 }
-[e :U 423 ]
 [e :U 422 ]
-"387
-[; ;main.c: 387:     if (!PORTDbits.RD3 && !PORTDbits.RD2){
-[e $ ! && ! != -> . . _PORTDbits 0 3 `i -> 0 `i ! != -> . . _PORTDbits 0 2 `i -> 0 `i 424  ]
+"406
+[; ;main.c: 406:     if (release_evt[0]){
+[e $ ! != -> *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 423  ]
 {
-"389
-[; ;main.c: 389:     }else if (PORTDbits.RD3 || PORTDbits.RD2){
+"407
+[; ;main.c: 407:         PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"408
+[; ;main.c: 408:         release_evt[0] = 0;
+[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"409
+[; ;main.c: 409:     }else{
 }
-[e $U 425  ]
-[e :U 424 ]
-[e $ ! || != -> . . _PORTDbits 0 3 `i -> 0 `i != -> . . _PORTDbits 0 2 `i -> 0 `i 426  ]
+[e $U 424  ]
+[e :U 423 ]
 {
-"391
-[; ;main.c: 391:     }
+"410
+[; ;main.c: 410:         PORTBbits.RB1 = 0;
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"411
+[; ;main.c: 411:     }
+}
+[e :U 424 ]
+"413
+[; ;main.c: 413:     if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 425  ]
+{
+"414
+[; ;main.c: 414:         PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"415
+[; ;main.c: 415:         single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"416
+[; ;main.c: 416:     }else{
+}
+[e $U 426  ]
+[e :U 425 ]
+{
+"417
+[; ;main.c: 417:         PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"418
+[; ;main.c: 418:     }
 }
 [e :U 426 ]
-[e :U 425 ]
-"393
-[; ;main.c: 393: }
+"420
+[; ;main.c: 420:     if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 427  ]
+{
+"421
+[; ;main.c: 421:         PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"422
+[; ;main.c: 422:         double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"423
+[; ;main.c: 423:     }else{
+}
+[e $U 428  ]
+[e :U 427 ]
+{
+"424
+[; ;main.c: 424:         PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"425
+[; ;main.c: 425:     }
+}
+[e :U 428 ]
+"427
+[; ;main.c: 427:     if (triple_click_evt[0]){
+[e $ ! != -> *U + &U _triple_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _triple_click_evt `ui `ux `i -> 0 `i 429  ]
+{
+"428
+[; ;main.c: 428:         PORTBbits.RB5 = 1;
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"429
+[; ;main.c: 429:         triple_click_evt[0] = 0;
+[e = *U + &U _triple_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _triple_click_evt `ui `ux -> -> 0 `i `uc ]
+"430
+[; ;main.c: 430:     }else{
+}
+[e $U 430  ]
+[e :U 429 ]
+{
+"431
+[; ;main.c: 431:         PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"432
+[; ;main.c: 432:     }
+}
+[e :U 430 ]
+"434
+[; ;main.c: 434:     if (counter[0] >= 1){
+[e $ ! >= *U + &U _counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 1 `i `o 431  ]
+{
+"435
+[; ;main.c: 435:         counter[0] = 0;
+[e = *U + &U _counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"437
+[; ;main.c: 437:         sum_iterations += iterations;
+[e =+ _sum_iterations _iterations ]
+"438
+[; ;main.c: 438:         amount_cycles ++;
+[e ++ _amount_cycles -> -> 1 `i `o ]
+"439
+[; ;main.c: 439:         iterations = 0;
+[e = _iterations -> -> 0 `i `o ]
+"441
+[; ;main.c: 441:         value ++;
+[e ++ _value -> -> 1 `i `o ]
+"444
+[; ;main.c: 444:         if (b_state[0] == 0){
+[e $ ! == -> *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux `i -> 0 `i 432  ]
+{
+"445
+[; ;main.c: 445:             if (b[0]){
+[e $ ! != -> *U + &U _b * -> -> -> 0 `i `ui `ux -> -> # *U &U _b `ui `ux `i -> 0 `i 433  ]
+{
+"446
+[; ;main.c: 446:                 b_counter[0] ++;
+[e ++ *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 1 `i `o ]
+"447
+[; ;main.c: 447:                 if (b_counter[0] >= 3){
+[e $ ! >= *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 3 `i `o 434  ]
+{
+"448
+[; ;main.c: 448:                     b_state[0] = 1;
+[e = *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux -> -> 1 `i `uc ]
+"449
+[; ;main.c: 449:                     b_counter[0] = 0;
+[e = *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 0 `i `o ]
+"450
+[; ;main.c: 450:                 }
+}
+[e :U 434 ]
+"451
+[; ;main.c: 451:             }else{
+}
+[e $U 435  ]
+[e :U 433 ]
+{
+"452
+[; ;main.c: 452:                 b[0] = 1;
+[e = *U + &U _b * -> -> -> 0 `i `ui `ux -> -> # *U &U _b `ui `ux -> -> 1 `i `uc ]
+"453
+[; ;main.c: 453:                 b_counter[0] = 0;
+[e = *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 0 `i `o ]
+"454
+[; ;main.c: 454:             }
+}
+[e :U 435 ]
+"455
+[; ;main.c: 455:         }else if (b_state[0] == 1){
+}
+[e $U 436  ]
+[e :U 432 ]
+[e $ ! == -> *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux `i -> 1 `i 437  ]
+{
+"456
+[; ;main.c: 456:             if (!b[0]){
+[e $ ! ! != -> *U + &U _b * -> -> -> 0 `i `ui `ux -> -> # *U &U _b `ui `ux `i -> 0 `i 438  ]
+{
+"457
+[; ;main.c: 457:                 b_counter[0] ++;
+[e ++ *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 1 `i `o ]
+"458
+[; ;main.c: 458:                 if (b_counter[0] >= 3){
+[e $ ! >= *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 3 `i `o 439  ]
+{
+"459
+[; ;main.c: 459:                     b_state[0] = 0;
+[e = *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux -> -> 0 `i `uc ]
+"460
+[; ;main.c: 460:                     b_counter[0] = 0;
+[e = *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 0 `i `o ]
+"461
+[; ;main.c: 461:                 }
+}
+[e :U 439 ]
+"462
+[; ;main.c: 462:             }else{
+}
+[e $U 440  ]
+[e :U 438 ]
+{
+"463
+[; ;main.c: 463:                 b[0] = 0;
+[e = *U + &U _b * -> -> -> 0 `i `ui `ux -> -> # *U &U _b `ui `ux -> -> 0 `i `uc ]
+"464
+[; ;main.c: 464:                 b_counter[0] = 0;
+[e = *U + &U _b_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_counter `ui `ux -> -> 0 `i `o ]
+"465
+[; ;main.c: 465:             }
+}
+[e :U 440 ]
+"466
+[; ;main.c: 466:         }
+}
+[e :U 437 ]
+[e :U 436 ]
+"469
+[; ;main.c: 469:         char click_evt = 0;
+[v _click_evt `uc ~T0 @X0 1 a ]
+[e = _click_evt -> -> 0 `i `uc ]
+"471
+[; ;main.c: 471:         if (last_b[0] == 0 && b_state[0] == 1){
+[e $ ! && == -> *U + &U _last_b * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_b `ui `ux `i -> 0 `i == -> *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux `i -> 1 `i 441  ]
+{
+"473
+[; ;main.c: 473:             press_evt[0] ++;
+[e ++ *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 1 `i `uc ]
+"474
+[; ;main.c: 474:             click_evt = 1;
+[e = _click_evt -> -> 1 `i `uc ]
+"476
+[; ;main.c: 476:             last_b[0] = 1;
+[e = *U + &U _last_b * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_b `ui `ux -> -> 1 `i `uc ]
+"477
+[; ;main.c: 477:         }else if (last_b[0] == 1 && b_state[0] == 0){
+}
+[e $U 442  ]
+[e :U 441 ]
+[e $ ! && == -> *U + &U _last_b * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_b `ui `ux `i -> 1 `i == -> *U + &U _b_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _b_state `ui `ux `i -> 0 `i 443  ]
+{
+"479
+[; ;main.c: 479:             release_evt[0] ++;
+[e ++ *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 1 `i `uc ]
+"481
+[; ;main.c: 481:             last_b[0] = 0;
+[e = *U + &U _last_b * -> -> -> 0 `i `ui `ux -> -> # *U &U _last_b `ui `ux -> -> 0 `i `uc ]
+"482
+[; ;main.c: 482:         }
+}
+[e :U 443 ]
+[e :U 442 ]
+"486
+[; ;main.c: 486:         if (combination_state[0] == 0){
+[e $ ! == -> *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux `i -> 0 `i 444  ]
+{
+"488
+[; ;main.c: 488:             if (click_evt){
+[e $ ! != -> _click_evt `i -> 0 `i 445  ]
+{
+"489
+[; ;main.c: 489:                 state_counter[0] = 0;
+[e = *U + &U _state_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _state_counter `ui `ux -> -> 0 `i `o ]
+"490
+[; ;main.c: 490:                 combination_state[0] = 1;
+[e = *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux -> -> 1 `i `uc ]
+"491
+[; ;main.c: 491:             }
+}
+[e :U 445 ]
+"493
+[; ;main.c: 493:         }else if (combination_state[0] > 0){
+}
+[e $U 446  ]
+[e :U 444 ]
+[e $ ! > -> *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux `i -> 0 `i 447  ]
+{
+"494
+[; ;main.c: 494:             if (click_evt){
+[e $ ! != -> _click_evt `i -> 0 `i 448  ]
+{
+"495
+[; ;main.c: 495:                 combination_state[0] ++;
+[e ++ *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux -> -> 1 `i `uc ]
+"496
+[; ;main.c: 496:             }
+}
+[e :U 448 ]
+"497
+[; ;main.c: 497:             if (state_counter[0] >= 50){
+[e $ ! >= *U + &U _state_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _state_counter `ui `ux -> -> 50 `i `o 449  ]
+{
+"500
+[; ;main.c: 500:                 if (combination_state[0] == 1){
+[e $ ! == -> *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux `i -> 1 `i 450  ]
+{
+"501
+[; ;main.c: 501:                     single_click_evt[0] ++;
+[e ++ *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 1 `i `uc ]
+"502
+[; ;main.c: 502:                 }else if (combination_state[0] == 2){
+}
+[e $U 451  ]
+[e :U 450 ]
+[e $ ! == -> *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux `i -> 2 `i 452  ]
+{
+"503
+[; ;main.c: 503:                     double_click_evt[0] ++;
+[e ++ *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 1 `i `uc ]
+"504
+[; ;main.c: 504:                 }else if(combination_state[0] == 3){
+}
+[e $U 453  ]
+[e :U 452 ]
+[e $ ! == -> *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux `i -> 3 `i 454  ]
+{
+"505
+[; ;main.c: 505:                     triple_click_evt[0] ++;
+[e ++ *U + &U _triple_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _triple_click_evt `ui `ux -> -> 1 `i `uc ]
+"506
+[; ;main.c: 506:                 }
+}
+[e :U 454 ]
+[e :U 453 ]
+[e :U 451 ]
+"507
+[; ;main.c: 507:                 combination_state[0] = 0;
+[e = *U + &U _combination_state * -> -> -> 0 `i `ui `ux -> -> # *U &U _combination_state `ui `ux -> -> 0 `i `uc ]
+"508
+[; ;main.c: 508:             }
+}
+[e :U 449 ]
+"509
+[; ;main.c: 509:             state_counter[0] ++;
+[e ++ *U + &U _state_counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _state_counter `ui `ux -> -> 1 `i `o ]
+"510
+[; ;main.c: 510:         }
+}
+[e :U 447 ]
+[e :U 446 ]
+"511
+[; ;main.c: 511:     }
+}
+[e :U 431 ]
+"513
+[; ;main.c: 513:     if (counter[1] >= 1000){
+[e $ ! >= *U + &U _counter * -> -> -> 1 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 1000 `i `o 455  ]
+{
+"515
+[; ;main.c: 515:         printf("Sum iterations, Amount cycles: %lld, %lld\n", sum_iterations, amount_cycles);
+[e ( _printf , , (. :s 1C _sum_iterations _amount_cycles ]
+"516
+[; ;main.c: 516:         printf("Average amount of iterations per button status check: %.4f\n", ( (float)sum_iterations / (float)amount_cycles));
+[e ( _printf , (. :s 2C -> / -> _sum_iterations `f -> _amount_cycles `f `d ]
+"518
+[; ;main.c: 518:         amount_cycles = 0;
+[e = _amount_cycles -> -> 0 `i `o ]
+"519
+[; ;main.c: 519:         sum_iterations = 0;
+[e = _sum_iterations -> -> 0 `i `o ]
+"522
+[; ;main.c: 522:         counter[1] = 0;
+[e = *U + &U _counter * -> -> -> 1 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"523
+[; ;main.c: 523:         counter[0] = 0;
+[e = *U + &U _counter * -> -> -> 0 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"524
+[; ;main.c: 524:     }
+}
+[e :U 455 ]
+"525
+[; ;main.c: 525: }
 [e :UE 415 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"400
-[; ;main.c: 400: void main(void) {
+"532
+[; ;main.c: 532: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"401
-[; ;main.c: 401:     config_micro();
+"533
+[; ;main.c: 533:     config_micro();
 [e ( _config_micro ..  ]
-"402
-[; ;main.c: 402:     init_vars();
+"534
+[; ;main.c: 534:     init_vars();
 [e ( _init_vars ..  ]
-"404
-[; ;main.c: 404:     init();
+"536
+[; ;main.c: 536:     init();
 [e ( _init ..  ]
-"406
-[; ;main.c: 406:     while (1){
-[e :U 429 ]
+"538
+[; ;main.c: 538:     while (1){
+[e :U 458 ]
 {
-"407
-[; ;main.c: 407:         update_pwm();
+"539
+[; ;main.c: 539:         update_pwm();
 [e ( _update_pwm ..  ]
-"408
-[; ;main.c: 408:         read_analog();
+"540
+[; ;main.c: 540:         read_analog();
 [e ( _read_analog ..  ]
-"410
-[; ;main.c: 410:         loop();
+"542
+[; ;main.c: 542:         loop();
 [e ( _loop ..  ]
-"411
-[; ;main.c: 411:     }
+"543
+[; ;main.c: 543:     }
 }
-[e :U 428 ]
-[e $U 429  ]
-[e :U 430 ]
-"413
-[; ;main.c: 413: }
-[e :UE 427 ]
+[e :U 457 ]
+[e $U 458  ]
+[e :U 459 ]
+"545
+[; ;main.c: 545: }
+[e :UE 456 ]
 }
+[p f _printf 142680192 ]
+[a 2C 65 118 101 114 97 103 101 32 97 109 111 117 110 116 32 111 102 32 105 116 101 114 97 116 105 111 110 115 32 112 101 114 32 98 117 116 116 111 110 32 115 116 97 116 117 115 32 99 104 101 99 107 58 32 37 46 52 102 10 0 ]
+[a 1C 83 117 109 32 105 116 101 114 97 116 105 111 110 115 44 32 65 109 111 117 110 116 32 99 121 99 108 101 115 58 32 37 108 108 100 44 32 37 108 108 100 10 0 ]

@@ -1,5 +1,5 @@
 
-/** Start tesr pwm program */
+/** Start test pwm program */
 
 char flag_b1;
 char flag_b2;

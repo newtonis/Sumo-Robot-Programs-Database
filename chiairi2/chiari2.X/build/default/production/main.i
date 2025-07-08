@@ -6186,57 +6186,182 @@ void update_pwm(){
     CCP2CONbits.DC2B = pwm1 % 4;
     CCPR2L = pwm1 / 4;
 }
+# 350 "main.c"
+long long value;
+char last_b[5];
 
+long long iterations;
+long long sum_iterations;
+long long amount_cycles;
 
+long long b_counter[5];
+char b_state[5];
+char press_evt[5];
+char release_evt[5];
+char b[5];
+long long state_counter[5];
+char combination_state[5];
 
-
-
-
-char flag_b1;
-char flag_b2;
-int value;
+char single_click_evt[5];
+char double_click_evt[5];
+char triple_click_evt[5];
 
 void init(){
-    pwm[0] = 250;
-    pwm[1] = 600;
-    flag_b1 = 0;
-    flag_b2 = 0;
     value = 0;
+    b_state[0] = 0;
+    last_b[0] = 0;
+
+    b_counter[0] = 0;
+    state_counter[0] = 0;
+    combination_state[0] = 0;
+    single_click_evt[0] = 0;
+    double_click_evt[0] = 0;
+    triple_click_evt[0] = 0;
+
+    iterations = 0;
+    sum_iterations = 0;
+    amount_cycles = 0;
 }
 
 void loop(){
-    if (counter[0] >= 1000){
+    iterations ++;
+
+    if (b_state[0] == 0){
+        if (PORTDbits.RD2){
+            b[0] = 0;
+        }
+    }else if(b_state[0] == 1){
+        if (!PORTDbits.RD2){
+            b[0] = 1;
+        }
+    }
+
+    if (press_evt[0]){
+        PORTBbits.RB0 = 1;
+        press_evt[0] = 0;
+    }else{
+        PORTBbits.RB0 = 0;
+    }
+
+    if (release_evt[0]){
+        PORTBbits.RB1 = 1;
+        release_evt[0] = 0;
+    }else{
+        PORTBbits.RB1 = 0;
+    }
+
+    if (single_click_evt[0]){
+        PORTBbits.RB2 = 1;
+        single_click_evt[0] = 0;
+    }else{
+        PORTBbits.RB2 = 0;
+    }
+
+    if (double_click_evt[0]){
+        PORTBbits.RB4 = 1;
+        double_click_evt[0] = 0;
+    }else{
+        PORTBbits.RB4 = 0;
+    }
+
+    if (triple_click_evt[0]){
+        PORTBbits.RB5 = 1;
+        triple_click_evt[0] = 0;
+    }else{
+        PORTBbits.RB5 = 0;
+    }
+
+    if (counter[0] >= 1){
         counter[0] = 0;
+
+        sum_iterations += iterations;
+        amount_cycles ++;
+        iterations = 0;
+
         value ++;
-        if (value >= 32){
-            value = 0;
+
+
+        if (b_state[0] == 0){
+            if (b[0]){
+                b_counter[0] ++;
+                if (b_counter[0] >= 3){
+                    b_state[0] = 1;
+                    b_counter[0] = 0;
+                }
+            }else{
+                b[0] = 1;
+                b_counter[0] = 0;
+            }
+        }else if (b_state[0] == 1){
+            if (!b[0]){
+                b_counter[0] ++;
+                if (b_counter[0] >= 3){
+                    b_state[0] = 0;
+                    b_counter[0] = 0;
+                }
+            }else{
+                b[0] = 0;
+                b_counter[0] = 0;
+            }
         }
 
+
+        char click_evt = 0;
+
+        if (last_b[0] == 0 && b_state[0] == 1){
+
+            press_evt[0] ++;
+            click_evt = 1;
+
+            last_b[0] = 1;
+        }else if (last_b[0] == 1 && b_state[0] == 0){
+
+            release_evt[0] ++;
+
+            last_b[0] = 0;
+        }
+
+
+
+        if (combination_state[0] == 0){
+
+            if (click_evt){
+                state_counter[0] = 0;
+                combination_state[0] = 1;
+            }
+
+        }else if (combination_state[0] > 0){
+            if (click_evt){
+                combination_state[0] ++;
+            }
+            if (state_counter[0] >= 50){
+
+
+                if (combination_state[0] == 1){
+                    single_click_evt[0] ++;
+                }else if (combination_state[0] == 2){
+                    double_click_evt[0] ++;
+                }else if(combination_state[0] == 3){
+                    triple_click_evt[0] ++;
+                }
+                combination_state[0] = 0;
+            }
+            state_counter[0] ++;
+        }
     }
 
-    PORTBbits.RB0 = !PORTDbits.RD2;
-    PORTBbits.RB1 = !PORTDbits.RD2;
-    PORTBbits.RB2 = !PORTDbits.RD2;
-    PORTBbits.RB4 = !PORTDbits.RD2;
-    PORTBbits.RB5 = !PORTDbits.RD2;
+    if (counter[1] >= 1000){
 
-    if (!PORTDbits.RD2 && flag_b1 == 0){
+        printf("Sum iterations, Amount cycles: %lld, %lld\n", sum_iterations, amount_cycles);
+        printf("Average amount of iterations per button status check: %.4f\n", ( (float)sum_iterations / (float)amount_cycles));
 
-    }else if(PORTDbits.RD2){
+        amount_cycles = 0;
+        sum_iterations = 0;
 
+
+        counter[1] = 0;
+        counter[0] = 0;
     }
-
-    if (!PORTDbits.RD3 && flag_b2 == 0){
-
-    }else if (PORTDbits.RD3){
-
-    }
-    if (!PORTDbits.RD3 && !PORTDbits.RD2){
-
-    }else if (PORTDbits.RD3 || PORTDbits.RD2){
-
-    }
-
 }
 
 
