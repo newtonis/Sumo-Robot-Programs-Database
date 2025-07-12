@@ -3,12 +3,8 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-[v ___aodiv __aodiv `(o  1 e 8 0 ]
 "7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\float.c
@@ -45,17 +41,13 @@
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
 "364
 [v _buttons_init buttons_init `(v  1 e 1 0 ]
-"386
+"384
 [v _buttons_loop buttons_loop `(v  1 e 1 0 ]
-"534
-[v _status_init status_init `(v  1 e 1 0 ]
-"547
-[v _status_loop status_loop `(v  1 e 1 0 ]
-"604
+"507
 [v _init init `(v  1 e 1 0 ]
-"608
+"512
 [v _loop loop `(v  1 e 1 0 ]
-"618
+"557
 [v _main main `(v  1 e 1 0 ]
 [s S57 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
@@ -640,7 +632,7 @@
 "351
 [v _state_counter state_counter `[5]o  1 e 40 0 ]
 "352
-[v _combination_state combination_state `[5]i  1 e 10 0 ]
+[v _combination_state combination_state `[5]uc  1 e 5 0 ]
 "354
 [v _single_click_evt single_click_evt `[5]uc  1 e 5 0 ]
 "355
@@ -649,150 +641,80 @@
 [v _triple_click_evt triple_click_evt `[5]uc  1 e 5 0 ]
 "359
 [v _iterations iterations `o  1 e 8 0 ]
-"360
-[v _sum_iterations sum_iterations `o  1 e 8 0 ]
-"361
-[v _amount_cycles amount_cycles `o  1 e 8 0 ]
 "362
 [v _initial_state initial_state `uc  1 e 1 0 ]
-"526
-[v _status_value status_value `i  1 e 2 0 ]
-"527
-[v _persisted_status persisted_status `i  1 e 2 0 ]
-"529
-[v _int_status int_status `uc  1 e 1 0 ]
-"530
-[v _status_enabled status_enabled `uc  1 e 1 0 ]
-"531
-[v _leds leds `[5]uc  1 e 5 0 ]
-"618
+"504
+[v _amount_cycles amount_cycles `o  1 e 8 0 ]
+"505
+[v _sum_iterations sum_iterations `o  1 e 8 0 ]
+"557
 [v _main main `(v  1 e 1 0 ]
 {
-"633
+"570
 } 0
 "309
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
 {
 "310
-[v update_pwm@pwm1 pwm1 `i  1 a 2 23 ]
-[v update_pwm@pwm0 pwm0 `i  1 a 2 21 ]
+[v update_pwm@pwm1 pwm1 `i  1 a 2 2 ]
+[v update_pwm@pwm0 pwm0 `i  1 a 2 0 ]
 "341
-} 0
-"547
-[v _status_loop status_loop `(v  1 e 1 0 ]
-{
-"575
-[v status_loop@i i `i  1 a 2 33 ]
-"572
-[v status_loop@half_led half_led `i  1 a 2 31 ]
-"562
-[v status_loop@half_status half_status `i  1 a 2 29 ]
-"593
-} 0
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 11 ]
-[v ___awmod@counter counter `uc  1 a 1 10 ]
-"7
-[v ___awmod@dividend dividend `i  1 p 2 6 ]
-[v ___awmod@divisor divisor `i  1 p 2 8 ]
-"34
-} 0
-"534 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
-[v _status_init status_init `(v  1 e 1 0 ]
-{
-"541
-[v status_init@i i `i  1 a 2 6 ]
-"545
 } 0
 "206
 [v _read_analog read_analog `(v  1 e 1 0 ]
 {
 "207
-[v read_analog@aux aux `ui  1 a 2 21 ]
+[v read_analog@aux aux `ui  1 a 2 0 ]
 "208
-[v read_analog@i i `uc  1 a 1 23 ]
+[v read_analog@i i `uc  1 a 1 2 ]
 "217
 } 0
 "7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 {
 "10
-[v ___awdiv@quotient quotient `i  1 a 2 18 ]
+[v ___awdiv@quotient quotient `i  1 a 2 12 ]
 "11
-[v ___awdiv@sign sign `uc  1 a 1 17 ]
-[v ___awdiv@counter counter `uc  1 a 1 16 ]
+[v ___awdiv@sign sign `uc  1 a 1 11 ]
+[v ___awdiv@counter counter `uc  1 a 1 10 ]
 "7
-[v ___awdiv@dividend dividend `i  1 p 2 12 ]
-[v ___awdiv@divisor divisor `i  1 p 2 14 ]
+[v ___awdiv@dividend dividend `i  1 p 2 6 ]
+[v ___awdiv@divisor divisor `i  1 p 2 8 ]
 "41
 } 0
-"608 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"512 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _loop loop `(v  1 e 1 0 ]
 {
-"609
-[v loop@analog_read analog_read `i  1 a 2 56 ]
-"613
+"550
 } 0
-"91 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul64.c
-[v ___omul __omul `(uo  1 e 8 0 ]
-{
-"93
-[v ___omul@product product `uo  1 a 8 22 ]
-"91
-[v ___omul@multiplier multiplier `uo  1 p 8 6 ]
-[v ___omul@multiplicand multiplicand `uo  1 p 8 14 ]
-"354
-} 0
-"9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
-[v ___aodiv __aodiv `(o  1 e 8 0 ]
-{
-"12
-[v ___aodiv@quotient quotient `o  1 a 8 48 ]
-"13
-[v ___aodiv@sign sign `uc  1 a 1 47 ]
-[v ___aodiv@counter counter `uc  1 a 1 46 ]
-"9
-[v ___aodiv@dividend dividend `o  1 p 8 30 ]
-[v ___aodiv@divisor divisor `o  1 p 8 38 ]
-"43
-} 0
-"300 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"300
 [v _init_vars init_vars `(v  1 e 1 0 ]
 {
 "301
 [v init_vars@i i `i  1 a 2 8 ]
 "307
 } 0
-"604
+"507
 [v _init init `(v  1 e 1 0 ]
 {
-"606
+"510
 } 0
 "71
 [v _config_micro config_micro `(v  1 e 1 0 ]
 {
 "203
 } 0
-"386
+"384
 [v _buttons_loop buttons_loop `(v  1 e 1 0 ]
 {
-"462
-[v buttons_loop@click_evt click_evt `[5]uc  1 a 5 16 ]
-"482
-[v buttons_loop@i_1315 i `i  1 a 2 21 ]
-"405
-[v buttons_loop@i i `i  1 a 2 23 ]
-"522
+"440
+[v buttons_loop@click_evt click_evt `uc  1 a 1 6 ]
+"495
 } 0
 "364
 [v _buttons_init buttons_init `(v  1 e 1 0 ]
 {
-"365
-[v buttons_init@i i `i  1 a 2 8 ]
-"384
+"382
 } 0
 "286
 [v _enc enc `IIH(v  1 e 1 0 ]

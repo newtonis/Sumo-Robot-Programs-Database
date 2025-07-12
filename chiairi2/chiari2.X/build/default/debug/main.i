@@ -6196,7 +6196,7 @@ char press_evt[5];
 char release_evt[5];
 char b[5];
 long long state_counter[5];
-int combination_state[5];
+char combination_state[5];
 
 char single_click_evt[5];
 char double_click_evt[5];
@@ -6209,25 +6209,23 @@ long long amount_cycles;
 char initial_state;
 
 void buttons_init(){
-    int i;
-    for (i = 0;i < 2;i++){
-        b_state[i] = 0;
-        b[i] = 0;
-        last_b[i] = 0;
+    b_state[0] = 0;
+    b[0] = 0;
+    last_b[0] = 0;
 
-        b_counter[i] = 0;
-        state_counter[i] = 0;
-        combination_state[i] = 0;
-        single_click_evt[i] = 0;
-        double_click_evt[i] = 0;
-        triple_click_evt[i] = 0;
-    }
+    b_counter[0] = 0;
+    state_counter[0] = 0;
+    combination_state[0] = 0;
+    single_click_evt[0] = 0;
+    double_click_evt[0] = 0;
+    triple_click_evt[0] = 0;
     initial_state = 1;
 
 
     iterations = 0;
     sum_iterations = 0;
     amount_cycles = 0;
+    PORTBbits.RB1 = 1;
 }
 
 void buttons_loop(){
@@ -6235,43 +6233,24 @@ void buttons_loop(){
         if (PORTDbits.RD2){
             b[0] = 0;
         }
-    }else if(b_state[0] == 1 || initial_state){
+    }else if(b_state[0] == 1){
         if (!PORTDbits.RD2){
             b[0] = 1;
         }
     }
-    if (b_state[1] == 0){
-        if (PORTDbits.RD3){
-            b[1] = 0;
-        }
-    }else if(b_state[1] == 1){
-        if (!PORTDbits.RD3){
-            b[1] = 1;
-        }
-    }
-    int i;
     if (initial_state){
         if (counter[0] >= 20){
             counter[0] = 0;
             if (!b[0]){
                 initial_state = 0;
                 counter[0] = 0;
-                for (i = 0;i < 2;i++){
-                    b_state[i] = 0;
-                    b[i] = 0;
-                    last_b[i] = 0;
-
-                    b_counter[i] = 0;
-                    state_counter[i] = 0;
-                    combination_state[i] = 0;
-                    single_click_evt[i] = 0;
-                    double_click_evt[i] = 0;
-                    triple_click_evt[i] = 0;
-                }
+                combination_state[0] = 0;
+                state_counter[0] = 0;
             }
             b[0] = 0;
         }
     }else if (counter[0] >= 1){
+        PORTBbits.RB1 = 0;
         counter[0] = 0;
 
         sum_iterations += iterations;
@@ -6279,176 +6258,138 @@ void buttons_loop(){
         iterations = 0;
 
 
-        for (i = 0;i < 2;i++){
-            if (b_state[i] == 0){
-                if (b[i]){
-                    b_counter[i] ++;
-                    if (b_counter[i] >= 2){
-                        b_state[i] = 1;
-                        b_counter[i] = 0;
-                    }
-                }else{
-                    b[i] = 1;
-                    b_counter[i] = 0;
+
+        if (b_state[0] == 0){
+            if (b[0]){
+                b_counter[0] ++;
+                if (b_counter[0] >= 2){
+                    b_state[0] = 1;
+                    b_counter[0] = 0;
                 }
-            }else if (b_state[i] == 1){
-                if (!b[i]){
-                    b_counter[i] ++;
-                    if (b_counter[i] >= 2){
-                        b_state[i] = 0;
-                        b_counter[i] = 0;
-                    }
-                }else{
-                    b[i] = 0;
-                    b_counter[i] = 0;
-                }
-            }
-        }
-
-
-        char click_evt[5];
-
-        for (i = 0;i < 2;i++){
-            click_evt[i] = 0;
-
-            if (last_b[i] == 0 && b_state[i] == 1){
-
-                press_evt[i] ++;
-                click_evt[i] = 1;
-
-                last_b[i] = 1;
-            }else if (last_b[i] == 1 && b_state[i] == 0){
-
-                release_evt[i] ++;
-
-                last_b[i] = 0;
-            }
-        }
-
-
-        int i;
-
-        for (i = 0;i < 2;i++){
-            if (combination_state[i] == 0){
-
-                if (click_evt[i]){
-                    state_counter[i] = 0;
-                    combination_state[i] = 1;
-                }
-
-            }else if (combination_state[i] != -1 && combination_state[i] != 0){
-                if (click_evt[i]){
-                    combination_state[i] ++;
-                }
-                if (state_counter[i] >= 30){
-
-                    if (combination_state[i] == 1){
-                        single_click_evt[i] ++;
-                    }else if (combination_state[i] == 2){
-                        double_click_evt[i] ++;
-                    }else if(combination_state[i] == 3){
-                        triple_click_evt[i] ++;
-                    }
-                    state_counter[i] = 0;
-                    combination_state[i] = -1;
-                }else{
-                    state_counter[i] ++;
-                }
-            }else if (combination_state[i] == -1){
-                if (state_counter[i] >= 10){
-
-                    combination_state[i] = 0;
-                    state_counter[i] = 0;
-                }else{
-                    state_counter[i] ++;
-                }
-            }
-        }
-    }
-
-}
-
-
-
-int status_value;
-int persisted_status;
-
-char int_status;
-char status_enabled;
-char leds[5];
-
-
-void status_init(){
-    status_value = 0;
-    status_enabled = 0;
-    int_status = 0;
-
-    counter[2] = 0;
-
-    int i;
-    for (i = 0;i < 5;i++){
-        leds[i] = 0;
-    }
-}
-
-void status_loop(){
-    if (status_enabled == 1){
-
-        if (counter[2] >= 100){
-            counter[2] = 0;
-
-            if (status_value > 1000){
-                status_value = 1000;
-            }
-            if (status_value < 0){
-                status_value = 0;
-            }
-            persisted_status = status_value;
-        }
-
-        int half_status;
-        half_status = (int) (persisted_status % 200) / 2 ;
-
-        if (counter[2] < half_status){
-            int_status = 1;
-        }else{
-            int_status = 0;
-        }
-
-
-        int half_led;
-        half_led = (int) (persisted_status / 200);
-
-        int i;
-        for (i = 0;i < 5;i++){
-            if (i < half_led){
-                leds[i] = 1;
-            }else if (i == half_led){
-                leds[i] = int_status;
             }else{
-                leds[i] = 0;
+                b[0] = 1;
+                b_counter[0] = 0;
+            }
+        }else if (b_state[0] == 1){
+            if (!b[0]){
+                b_counter[0] ++;
+                if (b_counter[0] >= 2){
+                    b_state[0] = 0;
+                    b_counter[0] = 0;
+                }
+            }else{
+                b[0] = 0;
+                b_counter[0] = 0;
             }
         }
 
 
-        PORTBbits.RB0 = leds[0];
-        PORTBbits.RB1 = leds[1];
-        PORTBbits.RB2 = leds[2];
-        PORTBbits.RB4 = leds[3];
-        PORTBbits.RB5 = leds[4];
+        char click_evt = 0;
+
+        if (last_b[0] == 0 && b_state[0] == 1){
+
+            press_evt[0] ++;
+            click_evt = 1;
+
+            last_b[0] = 1;
+        }else if (last_b[0] == 1 && b_state[0] == 0){
+
+            release_evt[0] ++;
+
+            last_b[0] = 0;
+
+        }
+
+
+
+        if (combination_state[0] == 0){
+
+            if (click_evt){
+                state_counter[0] = 0;
+                combination_state[0] = 1;
+            }
+
+        }else if (combination_state[0] > 0){
+            if (click_evt){
+                combination_state[0] ++;
+            }
+            if (state_counter[0] >= 30){
+
+
+                if (combination_state[0] == 1){
+                    single_click_evt[0] ++;
+                }else if (combination_state[0] == 2){
+                    double_click_evt[0] ++;
+                }else if(combination_state[0] == 3){
+                    triple_click_evt[0] ++;
+                }
+                state_counter[0] = 0;
+                combination_state[0] = -1;
+            }else{
+                state_counter[0] ++;
+            }
+        }else if (combination_state[0] == -1){
+            if (state_counter[0] >= 10){
+
+                combination_state[0] = 0;
+                state_counter[0] = 0;
+            }else{
+                state_counter[0] ++;
+            }
+        }
     }
+
 }
-# 604 "main.c"
+# 504 "main.c"
+long long amount_cycles;
+long long sum_iterations;
+
 void init(){
-    status_enabled = 1;
+    amount_cycles = 0;
+    sum_iterations = 0;
 }
 
 void loop(){
-    int analog_read;
-    analog_read = an_input[0];
+    if (press_evt[0]){
+        PORTBbits.RB0 = !PORTBbits.RB0;
+        press_evt[0] = 0;
+    }
 
-    status_value = (int) ( (long long) analog_read * 1000 / (long long) 1024 );
+
+
+
+
+
+    if (single_click_evt[0]){
+        PORTBbits.RB2 = !PORTBbits.RB2;
+        single_click_evt[0] = 0;
+    }
+
+    if (double_click_evt[0]){
+        PORTBbits.RB4 = !PORTBbits.RB4;
+        double_click_evt[0] = 0;
+    }
+
+    if (triple_click_evt[0]){
+        PORTBbits.RB5 = !PORTBbits.RB5;
+        triple_click_evt[0] = 0;
+    }
+
+    if (counter[1] >= 1000){
+
+
+
+
+        amount_cycles = 0;
+        sum_iterations = 0;
+
+
+        counter[1] = 0;
+        counter[0] = 0;
+    }
 }
+
+
 
 
 
@@ -6457,14 +6398,12 @@ void main(void) {
     config_micro();
     init_vars();
     buttons_init();
-    status_init();
     init();
 
     while (1){
         update_pwm();
         read_analog();
         buttons_loop();
-        status_loop();
         loop();
     }
 

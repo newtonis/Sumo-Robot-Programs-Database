@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production\chiari2.X.production.hex">
+  <executable name="dist/default/debug\chiari2.X.debug.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>5794</used>
-      <free>26974</free>
+      <used>2718</used>
+      <free>30050</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>2048</length>
-      <used>553</used>
-      <free>1495</free>
+      <used>490</used>
+      <free>1558</free>
     </memory>
   </executable>
 </project>

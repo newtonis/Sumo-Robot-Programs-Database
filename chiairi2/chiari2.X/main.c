@@ -340,191 +340,277 @@ void update_pwm(){
     CCPR2L = pwm1 / 4;
 }
 
+/*** Button software ***/
 
-/***** Start custom program *****/
-
-/** Start test button signal review program */
-
-/** Test button 1 simple, double and triple click ***/ 
-
-long long value;
 char last_b[5];
-
-long long iterations;
-long long sum_iterations;
-long long amount_cycles;
-
 long long b_counter[5]; 
 char b_state[5];
 char press_evt[5];
 char release_evt[5];
 char b[5];
 long long state_counter[5];
-char combination_state[5];
+int combination_state[5];
 
 char single_click_evt[5];
 char double_click_evt[5];
 char triple_click_evt[5];
 
-void init(){
-    value = 0;
-    b_state[0] = 0;
-    last_b[0] = 0;
+/* to delete this debug variables: */
+long long iterations;
+long long sum_iterations;
+long long amount_cycles;
+char initial_state;
 
-    b_counter[0] = 0;
-    state_counter[0] = 0;
-    combination_state[0] = 0;
-    single_click_evt[0] = 0;
-    double_click_evt[0] = 0;
-    triple_click_evt[0] = 0;
+void buttons_init(){
+    int i;
+    for (i = 0;i < 2;i++){
+        b_state[i] = 0;
+        b[i] = 0;
+        last_b[i] = 0;
 
+        b_counter[i] = 0;
+        state_counter[i] = 0;
+        combination_state[i] = 0;
+        single_click_evt[i] = 0;
+        double_click_evt[i] = 0;
+        triple_click_evt[i] = 0;
+    }
+    initial_state = 1;
+    
+    /** To delete this variables **/
     iterations = 0;
     sum_iterations = 0;
-    amount_cycles = 0;
+    amount_cycles = 0;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 }
 
-void loop(){
-    iterations ++;
-
+void buttons_loop(){
     if (b_state[0] == 0){
         if (BUTTON_1){ 
             b[0] = 0; // there is at least one iteration with the button released
         }
-    }else if(b_state[0] == 1){
+    }else if(b_state[0] == 1 || initial_state){
         if (!BUTTON_1){
             b[0] = 1; // there is at least one iteration with the button pressed
         }
     }
-
-    if (press_evt[0]){
-        LED_1 = 1;
-        press_evt[0] = 0;
-    }else{
-        LED_1 = 0;
+    if (b_state[1] == 0){
+        if (BUTTON_2){ 
+            b[1] = 0; // there is at least one iteration with the button released
+        }
+    }else if(b_state[1] == 1){
+        if (!BUTTON_2){
+            b[1] = 1; // there is at least one iteration with the button pressed
+        }
     }
+    int i;
+    if (initial_state){
+        if (counter[0] >= 20){ // check if there is at least 200 miliseconds of stable button signals
+            counter[0] = 0;
+            if (!b[0]){ // last 200 miliseconds signal all 0s
+                initial_state = 0;
+                counter[0] = 0;
+                for (i = 0;i < 2;i++){
+                    b_state[i] = 0;
+                    b[i] = 0;
+                    last_b[i] = 0;
 
-    if (release_evt[0]){
-        LED_2 = 1;
-        release_evt[0] = 0;
-    }else{
-        LED_2 = 0;
-    }
-
-    if (single_click_evt[0]){
-        LED_3 = 1;
-        single_click_evt[0] = 0;
-    }else{
-        LED_3 = 0;
-    }
-
-    if (double_click_evt[0]){
-        LED_4 = 1;
-        double_click_evt[0] = 0;
-    }else{
-        LED_4 = 0;
-    }
-
-    if (triple_click_evt[0]){
-        LED_5 = 1;
-        triple_click_evt[0] = 0;
-    }else{
-        LED_5 = 0;
-    }
-    
-    if (counter[0] >= 1){ // review button status every 10 miliseconds
+                    b_counter[i] = 0;
+                    state_counter[i] = 0;
+                    combination_state[i] = 0;
+                    single_click_evt[i] = 0;
+                    double_click_evt[i] = 0;
+                    triple_click_evt[i] = 0;
+                }
+            }
+            b[0] = 0; // set button as released
+        }
+    }else if (counter[0] >= 1){ // review button status every 10 miliseconds
         counter[0] = 0;
 
         sum_iterations += iterations;
         amount_cycles ++;
         iterations = 0;
         
-        value ++;
-
         /// Layer 1 -> glitch filter
-        if (b_state[0] == 0){
-            if (b[0]){ // all iterations had the button state as pressed
-                b_counter[0] ++;
-                if (b_counter[0] >= 3){ // at least 30 ms of press time (recomended minimum press duration: 60 ms)
-                    b_state[0] = 1; // button is now in state pressed
-                    b_counter[0] = 0;
+        for (i = 0;i < 2;i++){
+            if (b_state[i] == 0){
+                if (b[i]){ // all iterations had the button state as pressed
+                    b_counter[i] ++;
+                    if (b_counter[i] >= 2){ // at least 20 ms of press time (recomended minimum press duration: 60 ms)
+                        b_state[i] = 1; // button is now in state pressed
+                        b_counter[i] = 0;
+                    }
+                }else{
+                    b[i] = 1; // set button as pressed, waiting for at least one release iteration
+                    b_counter[i] = 0;
                 }
-            }else{
-                b[0] = 1; // set button as pressed, waiting for at least one release iteration
-                b_counter[0] = 0;
-            }
-        }else if (b_state[0] == 1){
-            if (!b[0]){ // all iterations had the button state as released
-                b_counter[0] ++;
-                if (b_counter[0] >= 3){ // at least 30 ms of no press time (recomended minimum release duration: 60 ms)
-                    b_state[0] = 0;
-                    b_counter[0] = 0;
+            }else if (b_state[i] == 1){
+                if (!b[i]){ // all iterations had the button state as released
+                    b_counter[i] ++;
+                    if (b_counter[i] >= 2){ // at least 20 ms of no press time (recomended minimum release duration: 60 ms)
+                        b_state[i] = 0;
+                        b_counter[i] = 0;
+                    }
+                }else{
+                    b[i] = 0; // set button as released, waiting for at least one press iteration
+                    b_counter[i] = 0;
                 }
-            }else{
-                b[0] = 0; // set button as released, waiting for at least one press iteration
-                b_counter[0] = 0;
             }
         }
 
         /// Layer 2 -> press and release event detection
-        char click_evt = 0;
+        char click_evt[5];
+        
+        for (i = 0;i < 2;i++){
+            click_evt[i] = 0;
+            
+            if (last_b[i] == 0 && b_state[i] == 1){
+                /// button 1 is now pressed
+                press_evt[i] ++; 
+                click_evt[i] = 1;
 
-        if (last_b[0] == 0 && b_state[0] == 1){
-            /// button 1 is now pressed
-            press_evt[0] ++; 
-            click_evt = 1;
+                last_b[i] = 1;
+            }else if (last_b[i] == 1 && b_state[i] == 0){
+                /// button 1 is now released
+                release_evt[i] ++;
 
-            last_b[0] = 1;
-        }else if (last_b[0] == 1 && b_state[0] == 0){
-            /// button 1 is now released
-            release_evt[0] ++;
-
-            last_b[0] = 0;
+                last_b[i] = 0;
+            }
         }
 
         /// Layer 3 -> simple, double and triple click detection
-
-        if (combination_state[0] == 0){
-            /// no recorded previous clicks
-            if (click_evt){ /// click evt
-                state_counter[0] = 0; /// reset click counter
-                combination_state[0] = 1;
-            }
-
-        }else if (combination_state[0] > 0){ 
-            if (click_evt){ // click evt
-                combination_state[0] ++;
-            }
-            if (state_counter[0] >= 50){ /// 500 miliseconds time since first click
-
-                /// generate single, double or triple click event
-                if (combination_state[0] == 1){
-                    single_click_evt[0] ++;
-                }else if (combination_state[0] == 2){
-                    double_click_evt[0] ++;
-                }else if(combination_state[0] == 3){
-                    triple_click_evt[0] ++;
+        int i;
+        
+        for (i = 0;i < 2;i++){
+            if (combination_state[i] == 0){
+                /// no recorded previous clicks
+                if (click_evt[i]){ /// click evt
+                    state_counter[i] = 0; /// reset click counter
+                    combination_state[i] = 1;
                 }
-                combination_state[0] = 0;
+
+            }else if (combination_state[i] != -1 && combination_state[i] != 0){ 
+                if (click_evt[i]){ // click evt
+                    combination_state[i] ++;
+                }
+                if (state_counter[i] >= 30){ /// 300 miliseconds time since first click
+                    /// generate single, double or triple click event
+                    if (combination_state[i] == 1){
+                        single_click_evt[i] ++;
+                    }else if (combination_state[i] == 2){
+                        double_click_evt[i] ++;
+                    }else if(combination_state[i] == 3){
+                        triple_click_evt[i] ++;
+                    }
+                    state_counter[i] = 0;
+                    combination_state[i] = -1; /// wait status
+                }else{
+                    state_counter[i] ++;
+                }
+            }else if (combination_state[i] == -1){
+                if (state_counter[i] >= 10){
+                    // wait at least 100 miliseconds since last generated event
+                    combination_state[i] = 0;
+                    state_counter[i] = 0;
+                }else{
+                    state_counter[i] ++;
+                }
             }
-            state_counter[0] ++;
         }
     }
 
-    if (counter[1] >= 1000){ // review every 10000 miliseconds
-        /// The printf desincronizes timers a little
-        printf("Sum iterations, Amount cycles: %lld, %lld\n", sum_iterations, amount_cycles);
-        printf("Average amount of iterations per button status check: %.4f\n", ( (float)sum_iterations / (float)amount_cycles));
+}
 
-        amount_cycles = 0;
-        sum_iterations = 0;
+/*** End button software ***/
 
-        /// reset both counters to start timer count again
-        counter[1] = 0;
-        counter[0] = 0;
+int status_value; /* Status bar value: between 0 and 1000 */
+int persisted_status; /* Persist status per iteration */
+
+char int_status;
+char status_enabled; /* Enable status bar */
+char leds[5]; /* led status variable */
+
+/***** Start status bar program ***/
+void status_init(){
+    status_value = 0;
+    status_enabled = 0;
+    int_status = 0;
+    
+    counter[2] = 0;
+    
+    int i;
+    for (i = 0;i < 5;i++){
+        leds[i] = 0;
     }
 }
 
-/* End test buttons program */
+void status_loop(){
+    if (status_enabled == 1){
+        
+        if (counter[2] >= 100){ // reset cycle every second
+            counter[2] = 0;
+            
+            if (status_value > 1000){
+                status_value = 1000;
+            }
+            if (status_value < 0){
+                status_value = 0;
+            }
+            persisted_status = status_value;
+        }
+        
+        int half_status;
+        half_status = (int) (persisted_status % 200) / 2 ;
+        
+        if (counter[2] < half_status){
+            int_status = 1;
+        }else{
+            int_status = 0;
+        }
+        
+        
+        int half_led;
+        half_led = (int) (persisted_status / 200); 
+        
+        int i;
+        for (i = 0;i < 5;i++){
+            if (i < half_led){
+                leds[i] = 1;
+            }else if (i == half_led){
+                leds[i] = int_status;
+            }else{
+                leds[i] = 0;
+            }
+        }
+        
+        /** Set leds status **/
+        LED_1 = leds[0];
+        LED_2 = leds[1];
+        LED_3 = leds[2];
+        LED_4 = leds[3];
+        LED_5 = leds[4];
+    }
+}
+
+/***** End status bar program ****/
+
+
+/***** Start custom program *****/
+
+
+/** Start test status bar program **/
+
+
+void init(){
+    status_enabled = 1; /** Enabled show bar on led control */
+}
+
+void loop(){
+    int analog_read;
+    analog_read = an_input[0];
+
+    status_value = (int) ( (long long) analog_read * 1000 / (long long) 1024 );
+}
 
 
 /***** End custom program *****/
@@ -532,13 +618,15 @@ void loop(){
 void main(void) {
     config_micro();
     init_vars(); 
-    
+    buttons_init();
+    status_init();
     init();
     
     while (1){
         update_pwm();
         read_analog();
-
+        buttons_loop();
+        status_loop();
         loop();
     }
     

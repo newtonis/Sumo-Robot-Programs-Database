@@ -79,6 +79,7 @@ void loop(){
 
     if (counter[1] >= 1000){ // review every 10000 miliseconds
         /// The printf desincronizes timers a little
+        /// 16 iterations per button check
         printf("Sum iterations, Amount cycles: %lld, %lld\n", sum_iterations, amount_cycles);
         printf("Average amount of iterations per button status check: %.4f\n", ( (float)sum_iterations / (float)amount_cycles));
 
