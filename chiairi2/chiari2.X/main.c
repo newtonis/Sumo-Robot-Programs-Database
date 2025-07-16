@@ -62,7 +62,11 @@
 // 5 available general propouse counters
 long long int counter[5]; 
 // 7 analog inputs
+long long sum_read[10];
+long long count_reads;
 int an_input[10]; 
+int avg_input[10];
+
 // max 128 ints (16 bits) for persisted data
 unsigned int persisted_data[128];
 // motor power to apply (-1000 to 1000)
@@ -213,6 +217,15 @@ void read_analog(){
         aux=ADRESH*4;
         aux=aux+ADRESL/64;
         an_input[i]=aux;
+        sum_read[i]+=aux;
+    }
+    count_reads ++;
+    if (count_reads >= 25){ /* take 25 reads and average */
+        for (i=0;i<=5;i++){
+            avg_input[i] = sum_read[i] / count_reads;
+            sum_read[i] = 0;
+        }
+        count_reads = 0;
     }
 }
 
@@ -301,9 +314,14 @@ void init_vars(){
     int i;
     for (i=0;i<5;i++){   
         counter[i] = 0; // init all counters
+        
     }
     pwm[0] = 0; // init pwm vars
     pwm[1] = 0;
+    for (i=0;i<5;i++){ 
+        sum_read[i] = 0; // analog read sum
+    }
+    count_reads = 0; // analog input reads 
 }
 
 void update_pwm(){
@@ -523,18 +541,29 @@ void buttons_loop(){
 
 /*** End button software ***/
 
+/***** Start leds sequences utilites ***/
+
+/**** To work uses: counter[2] ****/
+
 int status_value; /* Status bar value: between 0 and 1000 */
-int persisted_status; /* Persist status per iteration */
+int status_persisted; /* Persist status per iteration */
 
 char int_status;
-char status_enabled; /* Enable status bar */
+char status_mode; /* Enable status bar, 0=disabled, 1=enabled, 2=intermitency mode */
 char leds[5]; /* led status variable */
+int status_intermitency_counter;
+int status_next_mode; /* next mode to set when selected sequence is completed */
+int status_final_mode;
 
-/***** Start status bar program ***/
+int mode_counter;
+int status_code; /* code to show 1-31 */
+
 void status_init(){
     status_value = 0;
-    status_enabled = 0;
+    status_mode = 0;
     int_status = 0;
+    status_intermitency_counter = 0;
+    mode_counter = 0;
     
     counter[2] = 0;
     
@@ -544,11 +573,25 @@ void status_init(){
     }
 }
 
+void status_set_mode(char mode, char next_mode, char final_mode){
+    status_mode = mode;
+    status_next_mode = next_mode;
+    status_final_mode = final_mode;
+    status_intermitency_counter = 0;
+    mode_counter = 0;
+    counter[2] = 0;
+}
+
 void status_loop(){
-    if (status_enabled == 1){
+    if (status_mode == 1 || status_mode == 2){
         
-        if (counter[2] >= 100){ // reset cycle every second
+        if (counter[2] >= 10){ // reset cycle every 100 miliseconds
             counter[2] = 0;
+            status_intermitency_counter ++;
+            if (status_intermitency_counter >= 10){ // every 1 second reset intermitency counter
+                status_intermitency_counter = 0;
+            }
+            
             
             if (status_value > 1000){
                 status_value = 1000;
@@ -556,11 +599,13 @@ void status_loop(){
             if (status_value < 0){
                 status_value = 0;
             }
-            persisted_status = status_value;
+            status_persisted = status_value;
+            
+            
         }
         
         int half_status;
-        half_status = (int) (persisted_status % 200) / 2 ;
+        half_status = (int) (status_persisted % 200) * 10 / 200 ;
         
         if (counter[2] < half_status){
             int_status = 1;
@@ -570,7 +615,7 @@ void status_loop(){
         
         
         int half_led;
-        half_led = (int) (persisted_status / 200); 
+        half_led = (int) (status_persisted / 200); 
         
         int i;
         for (i = 0;i < 5;i++){
@@ -584,34 +629,267 @@ void status_loop(){
         }
         
         /** Set leds status **/
-        LED_1 = leds[0];
-        LED_2 = leds[1];
-        LED_3 = leds[2];
-        LED_4 = leds[3];
-        LED_5 = leds[4];
+        if (status_mode == 1){ /* No intermitency */
+            LED_1 = leds[0];
+            LED_2 = leds[1];
+            LED_3 = leds[2];
+            LED_4 = leds[3];
+            LED_5 = leds[4];
+        }else if(status_mode == 2){ /* With intermitency */
+            if (status_intermitency_counter >= 2){ /* Duty=80% */
+                LED_1 = leds[0];
+                LED_2 = leds[1];
+                LED_3 = leds[2];
+                LED_4 = leds[3];
+                LED_5 = leds[4];
+            }else{
+                LED_1 = 0;
+                LED_2 = 0;
+                LED_3 = 0;
+                LED_4 = 0;
+                LED_5 = 0;
+            }
+        }
+    }else if(status_mode == 3){ /* led pair even intermitency */
+        if (counter[2] >= 20){ // reset cycle every 200 miliseconds
+            counter[2] = 0;
+        }
+        /* Show a fixed led intermitency */
+        LED_1 = counter[2] >= 10;
+        LED_2 = counter[2] < 10;
+        LED_3 = counter[2] >= 10;
+        LED_4 = counter[2] < 10;
+        LED_5 = counter[2] >= 10;
+    }else if(status_mode == 4){ /* show led sequence in order */
+        if (counter[2] >= 20){ // reset cycle every 200 miliseconds
+            counter[2] = 0;
+            mode_counter ++; /* increase mode counter */
+            if (mode_counter >= 5){ /** end the sequence */
+                status_set_mode(status_next_mode , 0, -1); /* After sequence set target state with no next state */
+            }
+        }
+        LED_1 = (mode_counter == 0); 
+        LED_2 = (mode_counter == 1);
+        LED_3 = (mode_counter == 2);
+        LED_4 = (mode_counter == 3);
+        LED_5 = (mode_counter == 4);
+        
+    }else if(status_mode == 5){ /* show led sequence in disorder */
+        if (counter[2] >= 20){ // reset cycle every 200 miliseconds
+            counter[2] = 0;
+            mode_counter ++; /* increase mode counter */
+            if (mode_counter >= 5){ /** end the sequence */
+                status_set_mode(status_next_mode , 0, -1); /* After sequence set target state with no next state */
+            }
+        }
+        LED_1 = (mode_counter == 4); 
+        LED_2 = (mode_counter == 3);
+        LED_3 = (mode_counter == 2);
+        LED_4 = (mode_counter == 1);
+        LED_5 = (mode_counter == 0);
+        
+    }else if(status_mode == 6){ /* show code and then a led sequence */
+        if (counter[2] >= 10){ /* every 100 miliseconds */
+            counter[2] = 0;
+            status_intermitency_counter ++;
+            if (status_intermitency_counter >= 10){
+                status_intermitency_counter = 0;
+            }
+            mode_counter ++;
+            if (mode_counter >= 20){ /** after 2 seconds **/
+                status_set_mode(status_next_mode, status_final_mode, -1);
+            }
+        }
+        int show_led;
+        show_led = status_intermitency_counter >= 2; /** Duty 80 % **/
+        if (status_code >= 32){
+            status_code = 32;
+        }else if (status_code <= 0){
+            status_code = 1;
+        }
+        if (show_led){
+            LED_1 = (status_code % 32 >= 16); 
+            LED_2 = (status_code % 16 >= 8);
+            LED_3 = (status_code % 8 >= 4);
+            LED_4 = (status_code % 4 >= 2);
+            LED_5 = (status_code % 2 >= 1);
+        }else{
+            LED_1 = 0;
+            LED_2 = 0;
+            LED_3 = 0;
+            LED_4 = 0;
+            LED_5 = 0;
+        }
     }
 }
 
-/***** End status bar program ****/
+/***** End leds sequences utilites program ****/
 
 
 /***** Start custom program *****/
 
+/* Motor integrated tests */
 
-/** Start test status bar program **/
+/* This programs test: pwm, buttons, eeprom, analog input */
 
+int flag_init;
+
+int motor_a_speed_read_value;
+int motor_b_speed_read_value;
+
+int mode;
 
 void init(){
-    status_enabled = 1; /** Enabled show bar on led control */
+    flag_init = 0;
+    motor_a_speed_read_value = 0;
+    motor_b_speed_read_value = 0;
+    mode = 0;
+
+}
+
+void read_values(){
+    int a_sign, b_sign;
+    a_sign = (persisted_data[13] == 0 ? 1 : -1);
+    b_sign = (persisted_data[14] == 0 ? 1 : -1);
+
+    motor_a_speed_read_value = (a_sign) * persisted_data[15];
+    motor_b_speed_read_value = (b_sign) * persisted_data[16];
 }
 
 void loop(){
-    int analog_read;
-    analog_read = an_input[0];
+    if (flag_init == 0 && !initial_state){
+        flag_init = 1;
+        /** Read the eeprom values for motors **/
+        read_eeprom();
+        
+        read_values();
 
-    status_value = (int) ( (long long) analog_read * 1000 / (long long) 1024 );
+        status_set_mode( 4 , 0 , -1); /* led animation of status 4, then go to status 0 */
+
+        printf("motor a speed: %d\n", motor_a_speed_read_value);
+        printf("motor b speed: %d\n", motor_b_speed_read_value);
+    }
+    if (flag_init == 1){
+        if (mode == 0 && status_mode == 0){ // when initial led animation ends
+            mode = 1; /* Show motor A */
+            status_code = 1;
+            if (motor_a_speed_read_value >= 0){
+                status_set_mode( 6, 4, 1);
+            }else if (motor_a_speed_read_value <= 0){
+                status_set_mode( 6, 5, 1);
+            }
+        }else if(mode == 1){
+            if (motor_a_speed_read_value >= 0){
+                status_value = motor_a_speed_read_value;
+            }else{
+                status_value = -motor_a_speed_read_value;
+            }
+            if (single_click_evt[0]){
+                mode = 2;
+                status_code = 2;
+                if (motor_b_speed_read_value >= 0){
+                    status_set_mode( 6, 4, 1);
+                }else if (motor_b_speed_read_value <= 0){
+                    status_set_mode( 6, 5, 1);
+                }
+                single_click_evt[0] = 0;
+            }
+            if (double_click_evt[0]){ /* change the value */
+                double_click_evt[0] = 0;
+                mode = 3;
+                status_set_mode( 2, -1, -1); /* show status bar with intermitency */
+            }
+        }else if(mode == 3){
+            int analog_read;
+            analog_read = avg_input[0];
+
+            status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+
+            if (single_click_evt[0]){
+                /* set speed forward */
+                single_click_evt[0] = 0;
+
+                persisted_data[13] = 0; /* positive */
+                persisted_data[15] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor a speed: %d\n", status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+            if (double_click_evt[0]){
+                /* set speed backwards */
+                double_click_evt[0] = 0;
+
+                persisted_data[13] = 1; /* negative */
+                persisted_data[15] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor a speed: %d\n", -status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+
+        }else if(mode == 2){
+            if (motor_b_speed_read_value >= 0){
+                status_value = motor_b_speed_read_value;
+            }else{
+                status_value = -motor_b_speed_read_value;
+            }
+            if (single_click_evt[0]){
+                mode = 1;
+                status_code = 1;
+                if (motor_a_speed_read_value >= 0){
+                    status_set_mode( 6, 4, 1);
+                }else if (motor_a_speed_read_value <= 0){
+                    status_set_mode( 6, 5, 1);
+                }
+                single_click_evt[0] = 0;
+            }
+            if (double_click_evt[0]){ /* change the value */
+                double_click_evt[0] = 0;
+                mode = 4;
+                status_set_mode( 2, -1, -1); /* show status bar with intermitency */
+            }
+        }else if(mode == 4){
+            int analog_read;
+            analog_read = avg_input[0];
+
+            status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+
+            if (single_click_evt[0]){
+                /* set speed forward */
+                single_click_evt[0] = 0;
+
+                persisted_data[14] = 0; /* positive */
+                persisted_data[16] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor b speed: %d\n", status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+            if (double_click_evt[0]){
+                /* set speed backwards */
+                double_click_evt[0] = 0;
+
+                persisted_data[14] = 1; /* negative */
+                persisted_data[16] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor b speed: %d\n", -status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+        }
+    }
 }
 
+/* End motor integrated tests */
 
 /***** End custom program *****/
 

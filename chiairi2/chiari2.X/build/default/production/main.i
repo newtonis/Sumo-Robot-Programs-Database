@@ -5909,7 +5909,11 @@ char *tempnam(const char *, const char *);
 # 63 "main.c"
 long long int counter[5];
 
+long long sum_read[10];
+long long count_reads;
 int an_input[10];
+int avg_input[10];
+
 
 unsigned int persisted_data[128];
 
@@ -6060,6 +6064,15 @@ void read_analog(){
         aux=ADRESH*4;
         aux=aux+ADRESL/64;
         an_input[i]=aux;
+        sum_read[i]+=aux;
+    }
+    count_reads ++;
+    if (count_reads >= 25){
+        for (i=0;i<=5;i++){
+            avg_input[i] = sum_read[i] / count_reads;
+            sum_read[i] = 0;
+        }
+        count_reads = 0;
     }
 }
 
@@ -6148,9 +6161,14 @@ void init_vars(){
     int i;
     for (i=0;i<5;i++){
         counter[i] = 0;
+
     }
     pwm[0] = 0;
     pwm[1] = 0;
+    for (i=0;i<5;i++){
+        sum_read[i] = 0;
+    }
+    count_reads = 0;
 }
 
 void update_pwm(){
@@ -6370,18 +6388,29 @@ void buttons_loop(){
 
 
 
+
+
+
+
 int status_value;
-int persisted_status;
+int status_persisted;
 
 char int_status;
-char status_enabled;
+char status_mode;
 char leds[5];
+int status_intermitency_counter;
+int status_next_mode;
+int status_final_mode;
 
+int mode_counter;
+int status_code;
 
 void status_init(){
     status_value = 0;
-    status_enabled = 0;
+    status_mode = 0;
     int_status = 0;
+    status_intermitency_counter = 0;
+    mode_counter = 0;
 
     counter[2] = 0;
 
@@ -6391,11 +6420,25 @@ void status_init(){
     }
 }
 
-void status_loop(){
-    if (status_enabled == 1){
+void status_set_mode(char mode, char next_mode, char final_mode){
+    status_mode = mode;
+    status_next_mode = next_mode;
+    status_final_mode = final_mode;
+    status_intermitency_counter = 0;
+    mode_counter = 0;
+    counter[2] = 0;
+}
 
-        if (counter[2] >= 100){
+void status_loop(){
+    if (status_mode == 1 || status_mode == 2){
+
+        if (counter[2] >= 10){
             counter[2] = 0;
+            status_intermitency_counter ++;
+            if (status_intermitency_counter >= 10){
+                status_intermitency_counter = 0;
+            }
+
 
             if (status_value > 1000){
                 status_value = 1000;
@@ -6403,11 +6446,13 @@ void status_loop(){
             if (status_value < 0){
                 status_value = 0;
             }
-            persisted_status = status_value;
+            status_persisted = status_value;
+
+
         }
 
         int half_status;
-        half_status = (int) (persisted_status % 200) / 2 ;
+        half_status = (int) (status_persisted % 200) * 10 / 200 ;
 
         if (counter[2] < half_status){
             int_status = 1;
@@ -6417,7 +6462,7 @@ void status_loop(){
 
 
         int half_led;
-        half_led = (int) (persisted_status / 200);
+        half_led = (int) (status_persisted / 200);
 
         int i;
         for (i = 0;i < 5;i++){
@@ -6431,24 +6476,257 @@ void status_loop(){
         }
 
 
-        PORTBbits.RB0 = leds[0];
-        PORTBbits.RB1 = leds[1];
-        PORTBbits.RB2 = leds[2];
-        PORTBbits.RB4 = leds[3];
-        PORTBbits.RB5 = leds[4];
+        if (status_mode == 1){
+            PORTBbits.RB0 = leds[0];
+            PORTBbits.RB1 = leds[1];
+            PORTBbits.RB2 = leds[2];
+            PORTBbits.RB4 = leds[3];
+            PORTBbits.RB5 = leds[4];
+        }else if(status_mode == 2){
+            if (status_intermitency_counter >= 2){
+                PORTBbits.RB0 = leds[0];
+                PORTBbits.RB1 = leds[1];
+                PORTBbits.RB2 = leds[2];
+                PORTBbits.RB4 = leds[3];
+                PORTBbits.RB5 = leds[4];
+            }else{
+                PORTBbits.RB0 = 0;
+                PORTBbits.RB1 = 0;
+                PORTBbits.RB2 = 0;
+                PORTBbits.RB4 = 0;
+                PORTBbits.RB5 = 0;
+            }
+        }
+    }else if(status_mode == 3){
+        if (counter[2] >= 20){
+            counter[2] = 0;
+        }
+
+        PORTBbits.RB0 = counter[2] >= 10;
+        PORTBbits.RB1 = counter[2] < 10;
+        PORTBbits.RB2 = counter[2] >= 10;
+        PORTBbits.RB4 = counter[2] < 10;
+        PORTBbits.RB5 = counter[2] >= 10;
+    }else if(status_mode == 4){
+        if (counter[2] >= 20){
+            counter[2] = 0;
+            mode_counter ++;
+            if (mode_counter >= 5){
+                status_set_mode(status_next_mode , 0, -1);
+            }
+        }
+        PORTBbits.RB0 = (mode_counter == 0);
+        PORTBbits.RB1 = (mode_counter == 1);
+        PORTBbits.RB2 = (mode_counter == 2);
+        PORTBbits.RB4 = (mode_counter == 3);
+        PORTBbits.RB5 = (mode_counter == 4);
+
+    }else if(status_mode == 5){
+        if (counter[2] >= 20){
+            counter[2] = 0;
+            mode_counter ++;
+            if (mode_counter >= 5){
+                status_set_mode(status_next_mode , 0, -1);
+            }
+        }
+        PORTBbits.RB0 = (mode_counter == 4);
+        PORTBbits.RB1 = (mode_counter == 3);
+        PORTBbits.RB2 = (mode_counter == 2);
+        PORTBbits.RB4 = (mode_counter == 1);
+        PORTBbits.RB5 = (mode_counter == 0);
+
+    }else if(status_mode == 6){
+        if (counter[2] >= 10){
+            counter[2] = 0;
+            status_intermitency_counter ++;
+            if (status_intermitency_counter >= 10){
+                status_intermitency_counter = 0;
+            }
+            mode_counter ++;
+            if (mode_counter >= 20){
+                status_set_mode(status_next_mode, status_final_mode, -1);
+            }
+        }
+        int show_led;
+        show_led = status_intermitency_counter >= 2;
+        if (status_code >= 32){
+            status_code = 32;
+        }else if (status_code <= 0){
+            status_code = 1;
+        }
+        if (show_led){
+            PORTBbits.RB0 = (status_code % 32 >= 16);
+            PORTBbits.RB1 = (status_code % 16 >= 8);
+            PORTBbits.RB2 = (status_code % 8 >= 4);
+            PORTBbits.RB4 = (status_code % 4 >= 2);
+            PORTBbits.RB5 = (status_code % 2 >= 1);
+        }else{
+            PORTBbits.RB0 = 0;
+            PORTBbits.RB1 = 0;
+            PORTBbits.RB2 = 0;
+            PORTBbits.RB4 = 0;
+            PORTBbits.RB5 = 0;
+        }
     }
 }
-# 604 "main.c"
+# 735 "main.c"
+int flag_init;
+
+int motor_a_speed_read_value;
+int motor_b_speed_read_value;
+
+int mode;
+
 void init(){
-    status_enabled = 1;
+    flag_init = 0;
+    motor_a_speed_read_value = 0;
+    motor_b_speed_read_value = 0;
+    mode = 0;
+
+}
+
+void read_values(){
+    int a_sign, b_sign;
+    a_sign = (persisted_data[13] == 0 ? 1 : -1);
+    b_sign = (persisted_data[14] == 0 ? 1 : -1);
+
+    motor_a_speed_read_value = (a_sign) * persisted_data[15];
+    motor_b_speed_read_value = (b_sign) * persisted_data[16];
 }
 
 void loop(){
-    int analog_read;
-    analog_read = an_input[0];
+    if (flag_init == 0 && !initial_state){
+        flag_init = 1;
 
-    status_value = (int) ( (long long) analog_read * 1000 / (long long) 1024 );
+        read_eeprom();
+
+        read_values();
+
+        status_set_mode( 4 , 0 , -1);
+
+        printf("motor a speed: %d\n", motor_a_speed_read_value);
+        printf("motor b speed: %d\n", motor_b_speed_read_value);
+    }
+    if (flag_init == 1){
+        if (mode == 0 && status_mode == 0){
+            mode = 1;
+            status_code = 1;
+            if (motor_a_speed_read_value >= 0){
+                status_set_mode( 6, 4, 1);
+            }else if (motor_a_speed_read_value <= 0){
+                status_set_mode( 6, 5, 1);
+            }
+        }else if(mode == 1){
+            if (motor_a_speed_read_value >= 0){
+                status_value = motor_a_speed_read_value;
+            }else{
+                status_value = -motor_a_speed_read_value;
+            }
+            if (single_click_evt[0]){
+                mode = 2;
+                status_code = 2;
+                if (motor_b_speed_read_value >= 0){
+                    status_set_mode( 6, 4, 1);
+                }else if (motor_b_speed_read_value <= 0){
+                    status_set_mode( 6, 5, 1);
+                }
+                single_click_evt[0] = 0;
+            }
+            if (double_click_evt[0]){
+                double_click_evt[0] = 0;
+                mode = 3;
+                status_set_mode( 2, -1, -1);
+            }
+        }else if(mode == 3){
+            int analog_read;
+            analog_read = avg_input[0];
+
+            status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+
+            if (single_click_evt[0]){
+
+                single_click_evt[0] = 0;
+
+                persisted_data[13] = 0;
+                persisted_data[15] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor a speed: %d\n", status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+            if (double_click_evt[0]){
+
+                double_click_evt[0] = 0;
+
+                persisted_data[13] = 1;
+                persisted_data[15] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor a speed: %d\n", -status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+
+        }else if(mode == 2){
+            if (motor_b_speed_read_value >= 0){
+                status_value = motor_b_speed_read_value;
+            }else{
+                status_value = -motor_b_speed_read_value;
+            }
+            if (single_click_evt[0]){
+                mode = 1;
+                status_code = 1;
+                if (motor_a_speed_read_value >= 0){
+                    status_set_mode( 6, 4, 1);
+                }else if (motor_a_speed_read_value <= 0){
+                    status_set_mode( 6, 5, 1);
+                }
+                single_click_evt[0] = 0;
+            }
+            if (double_click_evt[0]){
+                double_click_evt[0] = 0;
+                mode = 4;
+                status_set_mode( 2, -1, -1);
+            }
+        }else if(mode == 4){
+            int analog_read;
+            analog_read = avg_input[0];
+
+            status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+
+            if (single_click_evt[0]){
+
+                single_click_evt[0] = 0;
+
+                persisted_data[14] = 0;
+                persisted_data[16] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor b speed: %d\n", status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+            if (double_click_evt[0]){
+
+                double_click_evt[0] = 0;
+
+                persisted_data[14] = 1;
+                persisted_data[16] = status_value;
+                write_eeprom();
+                read_values();
+
+                printf("Write eeprom motor b speed: %d\n", -status_value);
+                mode = 0;
+                status_mode = 0;
+            }
+        }
+    }
 }
+
 
 
 
