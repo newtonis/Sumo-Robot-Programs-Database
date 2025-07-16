@@ -79,13 +79,13 @@
 [v _status_set_mode status_set_mode `(v  1 e 1 0 ]
 "585
 [v _status_loop status_loop `(v  1 e 1 0 ]
-"742
+"743
 [v _init init `(v  1 e 1 0 ]
-"750
+"751
 [v _read_values read_values `(v  1 e 1 0 ]
-"759
+"760
 [v _loop loop `(v  1 e 1 0 ]
-"896
+"920
 [v _main main `(v  1 e 1 0 ]
 [s S57 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
@@ -726,10 +726,12 @@
 [v _motor_b_speed_read_value motor_b_speed_read_value `i  1 e 2 0 ]
 "740
 [v _mode mode `i  1 e 2 0 ]
-"896
+"741
+[v _mode_config mode_config `i  1 e 2 0 ]
+"920
 [v _main main `(v  1 e 1 0 ]
 {
-"911
+"935
 } 0
 "327
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
@@ -792,14 +794,14 @@
 [v ___awdiv@divisor divisor `i  1 p 2 20 ]
 "41
 } 0
-"759 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"760 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _loop loop `(v  1 e 1 0 ]
 {
-"857
-[v loop@analog_read_1371 analog_read `i  1 a 2 2 ]
-"803
-[v loop@analog_read analog_read `i  1 a 2 0 ]
-"890
+"859
+[v loop@analog_read_1372 analog_read `i  1 a 2 43 ]
+"805
+[v loop@analog_read analog_read `i  1 a 2 41 ]
+"914
 } 0
 "257
 [v _write_eeprom write_eeprom `(v  1 e 1 0 ]
@@ -818,13 +820,13 @@
 [v status_set_mode@mode mode `uc  1 a 1 8 ]
 "583
 } 0
-"750
+"751
 [v _read_values read_values `(v  1 e 1 0 ]
 {
-"751
+"752
 [v read_values@b_sign b_sign `i  1 a 2 20 ]
 [v read_values@a_sign a_sign `i  1 a 2 18 ]
-"757
+"758
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -859,9 +861,9 @@
 {
 "1523
 [v vfprintf@cfmt cfmt `*.32uc  1 a 2 33 ]
-[s S1852 _IO_FILE 0 ]
+[s S1853 _IO_FILE 0 ]
 "1520
-[v vfprintf@fp fp `*.2S1852  1 p 2 27 ]
+[v vfprintf@fp fp `*.2S1853  1 p 2 27 ]
 [v vfprintf@fmt fmt `*.32Cuc  1 p 2 29 ]
 [v vfprintf@ap ap `*.39*.39v  1 p 2 31 ]
 "1543
@@ -869,14 +871,14 @@
 "1007
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
-[u S1870 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
+[u S1871 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
 "1016
-[v vfpfcnvrt@convarg convarg `S1870  1 a 8 17 ]
+[v vfpfcnvrt@convarg convarg `S1871  1 a 8 17 ]
 "1009
 [v vfpfcnvrt@cp cp `*.32uc  1 a 2 25 ]
-[s S1852 _IO_FILE 0 ]
+[s S1853 _IO_FILE 0 ]
 "1007
-[v vfpfcnvrt@fp fp `*.2S1852  1 p 2 74 ]
+[v vfpfcnvrt@fp fp `*.2S1853  1 p 2 74 ]
 [v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 76 ]
 [v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 78 ]
 "1517
@@ -887,14 +889,14 @@
 "447
 [v dtoa@n n `o  1 a 8 6 ]
 "446
-[v dtoa@i i `i  1 a 2 15 ]
+[v dtoa@i i `i  1 a 2 14 ]
 [v dtoa@w w `i  1 a 2 4 ]
 [v dtoa@p p `i  1 a 2 2 ]
 "445
-[v dtoa@s s `uc  1 a 1 14 ]
-[s S1852 _IO_FILE 0 ]
+[v dtoa@s s `uc  1 a 1 16 ]
+[s S1853 _IO_FILE 0 ]
 "443
-[v dtoa@fp fp `*.2S1852  1 p 2 56 ]
+[v dtoa@fp fp `*.2S1853  1 p 2 56 ]
 [v dtoa@d d `o  1 p 8 58 ]
 "502
 } 0
@@ -904,9 +906,9 @@
 "135
 [v pad@w w `i  1 a 2 32 ]
 [v pad@i i `i  1 a 2 30 ]
-[s S1852 _IO_FILE 0 ]
+[s S1853 _IO_FILE 0 ]
 "133
-[v pad@fp fp `*.2S1852  1 p 2 23 ]
+[v pad@fp fp `*.2S1853  1 p 2 23 ]
 [v pad@buf buf `*.39uc  1 p 2 25 ]
 [v pad@p p `i  1 p 2 27 ]
 "164
@@ -920,18 +922,18 @@
 [v fputs@c c `uc  1 a 1 20 ]
 "8
 [v fputs@s s `*.39Cuc  1 p 2 16 ]
-[u S1830 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1833 _IO_FILE 11 `S1830 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputs@fp fp `*.2S1833  1 p 2 18 ]
+[u S1831 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S1834 _IO_FILE 11 `S1831 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.2S1834  1 p 2 18 ]
 "19
 } 0
 "8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 7 ]
-[u S1830 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1833 _IO_FILE 11 `S1830 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.2S1833  1 p 2 9 ]
+[u S1831 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
+[s S1834 _IO_FILE 11 `S1831 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.2S1834  1 p 2 9 ]
 "24
 } 0
 "293 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
@@ -989,10 +991,10 @@
 [v init_vars@i i `i  1 a 2 8 ]
 "325
 } 0
-"742
+"743
 [v _init init `(v  1 e 1 0 ]
 {
-"748
+"749
 } 0
 "75
 [v _config_micro config_micro `(v  1 e 1 0 ]

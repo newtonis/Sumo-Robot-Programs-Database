@@ -6576,13 +6576,14 @@ int motor_a_speed_read_value;
 int motor_b_speed_read_value;
 
 int mode;
+int mode_config;
 
 void init(){
     flag_init = 0;
     motor_a_speed_read_value = 0;
     motor_b_speed_read_value = 0;
     mode = 0;
-
+    mode_config = 1;
 }
 
 void read_values(){
@@ -6608,75 +6609,8 @@ void loop(){
         printf("motor b speed: %d\n", motor_b_speed_read_value);
     }
     if (flag_init == 1){
-        if (mode == 0 && status_mode == 0){
-            mode = 1;
-            status_code = 1;
-            if (motor_a_speed_read_value >= 0){
-                status_set_mode( 6, 4, 1);
-            }else if (motor_a_speed_read_value <= 0){
-                status_set_mode( 6, 5, 1);
-            }
-        }else if(mode == 1){
-            if (motor_a_speed_read_value >= 0){
-                status_value = motor_a_speed_read_value;
-            }else{
-                status_value = -motor_a_speed_read_value;
-            }
-            if (single_click_evt[0]){
-                mode = 2;
-                status_code = 2;
-                if (motor_b_speed_read_value >= 0){
-                    status_set_mode( 6, 4, 1);
-                }else if (motor_b_speed_read_value <= 0){
-                    status_set_mode( 6, 5, 1);
-                }
-                single_click_evt[0] = 0;
-            }
-            if (double_click_evt[0]){
-                double_click_evt[0] = 0;
-                mode = 3;
-                status_set_mode( 2, -1, -1);
-            }
-        }else if(mode == 3){
-            int analog_read;
-            analog_read = avg_input[0];
-
-            status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
-
-            if (single_click_evt[0]){
-
-                single_click_evt[0] = 0;
-
-                persisted_data[13] = 0;
-                persisted_data[15] = status_value;
-                write_eeprom();
-                read_values();
-
-                printf("Write eeprom motor a speed: %d\n", status_value);
-                mode = 0;
-                status_mode = 0;
-            }
-            if (double_click_evt[0]){
-
-                double_click_evt[0] = 0;
-
-                persisted_data[13] = 1;
-                persisted_data[15] = status_value;
-                write_eeprom();
-                read_values();
-
-                printf("Write eeprom motor a speed: %d\n", -status_value);
-                mode = 0;
-                status_mode = 0;
-            }
-
-        }else if(mode == 2){
-            if (motor_b_speed_read_value >= 0){
-                status_value = motor_b_speed_read_value;
-            }else{
-                status_value = -motor_b_speed_read_value;
-            }
-            if (single_click_evt[0]){
+        if (mode_config == 1){
+            if (mode == 0 && status_mode == 0){
                 mode = 1;
                 status_code = 1;
                 if (motor_a_speed_read_value >= 0){
@@ -6684,42 +6618,132 @@ void loop(){
                 }else if (motor_a_speed_read_value <= 0){
                     status_set_mode( 6, 5, 1);
                 }
-                single_click_evt[0] = 0;
+            }else if(mode == 1){
+                if (motor_a_speed_read_value >= 0){
+                    status_value = motor_a_speed_read_value;
+                }else{
+                    status_value = -motor_a_speed_read_value;
+                }
+                if (single_click_evt[0]){
+                    mode = 2;
+                    status_code = 2;
+                    if (motor_b_speed_read_value >= 0){
+                        status_set_mode( 6, 4, 1);
+                    }else if (motor_b_speed_read_value <= 0){
+                        status_set_mode( 6, 5, 1);
+                    }
+                    single_click_evt[0] = 0;
+                }
+                if (double_click_evt[0]){
+                    double_click_evt[0] = 0;
+                    mode = 3;
+                    status_set_mode( 2, -1, -1);
+                }
+            }else if(mode == 3){
+                int analog_read;
+                analog_read = avg_input[0];
+
+                status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+
+                if (single_click_evt[0]){
+
+                    single_click_evt[0] = 0;
+
+                    persisted_data[13] = 0;
+                    persisted_data[15] = status_value;
+                    write_eeprom();
+                    read_values();
+
+                    printf("Write eeprom motor a speed: %d\n", status_value);
+                    mode = 0;
+                    status_mode = 0;
+                }
+                if (double_click_evt[0]){
+
+                    double_click_evt[0] = 0;
+
+                    persisted_data[13] = 1;
+                    persisted_data[15] = status_value;
+                    write_eeprom();
+                    read_values();
+
+                    printf("Write eeprom motor a speed: %d\n", -status_value);
+                    mode = 0;
+                    status_mode = 0;
+                }
+
+            }else if(mode == 2){
+                if (motor_b_speed_read_value >= 0){
+                    status_value = motor_b_speed_read_value;
+                }else{
+                    status_value = -motor_b_speed_read_value;
+                }
+                if (single_click_evt[0]){
+                    mode = 1;
+                    status_code = 1;
+                    if (motor_a_speed_read_value >= 0){
+                        status_set_mode( 6, 4, 1);
+                    }else if (motor_a_speed_read_value <= 0){
+                        status_set_mode( 6, 5, 1);
+                    }
+                    single_click_evt[0] = 0;
+                }
+                if (double_click_evt[0]){
+                    double_click_evt[0] = 0;
+                    mode = 4;
+                    status_set_mode( 2, -1, -1);
+                }
+            }else if(mode == 4){
+                int analog_read;
+                analog_read = avg_input[0];
+
+                status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+
+                if (single_click_evt[0]){
+
+                    single_click_evt[0] = 0;
+
+                    persisted_data[14] = 0;
+                    persisted_data[16] = status_value;
+                    write_eeprom();
+                    read_values();
+
+                    printf("Write eeprom motor b speed: %d\n", status_value);
+                    mode = 0;
+                    status_mode = 0;
+                }
+                if (double_click_evt[0]){
+
+                    double_click_evt[0] = 0;
+
+                    persisted_data[14] = 1;
+                    persisted_data[16] = status_value;
+                    write_eeprom();
+                    read_values();
+
+                    printf("Write eeprom motor b speed: %d\n", -status_value);
+                    mode = 0;
+                    status_mode = 0;
+                }
             }
-            if (double_click_evt[0]){
-                double_click_evt[0] = 0;
-                mode = 4;
-                status_set_mode( 2, -1, -1);
+
+            pwm[0] = 0;
+            pwm[1] = 0;
+
+            if (double_click_evt[1]){
+                double_click_evt[1] = 0;
+
+                status_set_mode(3, -1, -1);
+                mode_config = 2;
             }
-        }else if(mode == 4){
-            int analog_read;
-            analog_read = avg_input[0];
+        }else if (mode_config == 2){
+            pwm[0] = (long long) motor_a_speed_read_value * (600) / (1000);
+            pwm[1] = (long long) motor_b_speed_read_value * (600) / (1000);
 
-            status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+            if (double_click_evt[1]){
+                double_click_evt[1] = 0;
 
-            if (single_click_evt[0]){
-
-                single_click_evt[0] = 0;
-
-                persisted_data[14] = 0;
-                persisted_data[16] = status_value;
-                write_eeprom();
-                read_values();
-
-                printf("Write eeprom motor b speed: %d\n", status_value);
-                mode = 0;
-                status_mode = 0;
-            }
-            if (double_click_evt[0]){
-
-                double_click_evt[0] = 0;
-
-                persisted_data[14] = 1;
-                persisted_data[16] = status_value;
-                write_eeprom();
-                read_values();
-
-                printf("Write eeprom motor b speed: %d\n", -status_value);
+                mode_config = 1;
                 mode = 0;
                 status_mode = 0;
             }

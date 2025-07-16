@@ -3098,514 +3098,585 @@ Version 4.0 HI-TECH Software Intermediate Code
 "740
 [; ;main.c: 740: int mode;
 [v _mode `i ~T0 @X0 1 e ]
-"742
-[; ;main.c: 742: void init(){
+"741
+[; ;main.c: 741: int mode_config;
+[v _mode_config `i ~T0 @X0 1 e ]
+"743
+[; ;main.c: 743: void init(){
 [v _init `(v ~T0 @X0 1 ef ]
 {
 [e :U _init ]
 [f ]
-"743
-[; ;main.c: 743:     flag_init = 0;
-[e = _flag_init -> 0 `i ]
 "744
-[; ;main.c: 744:     motor_a_speed_read_value = 0;
-[e = _motor_a_speed_read_value -> 0 `i ]
+[; ;main.c: 744:     flag_init = 0;
+[e = _flag_init -> 0 `i ]
 "745
-[; ;main.c: 745:     motor_b_speed_read_value = 0;
-[e = _motor_b_speed_read_value -> 0 `i ]
+[; ;main.c: 745:     motor_a_speed_read_value = 0;
+[e = _motor_a_speed_read_value -> 0 `i ]
 "746
-[; ;main.c: 746:     mode = 0;
+[; ;main.c: 746:     motor_b_speed_read_value = 0;
+[e = _motor_b_speed_read_value -> 0 `i ]
+"747
+[; ;main.c: 747:     mode = 0;
 [e = _mode -> 0 `i ]
 "748
-[; ;main.c: 748: }
+[; ;main.c: 748:     mode_config = 1;
+[e = _mode_config -> 1 `i ]
+"749
+[; ;main.c: 749: }
 [e :UE 527 ]
 }
-"750
-[; ;main.c: 750: void read_values(){
+"751
+[; ;main.c: 751: void read_values(){
 [v _read_values `(v ~T0 @X0 1 ef ]
 {
 [e :U _read_values ]
 [f ]
-"751
-[; ;main.c: 751:     int a_sign, b_sign;
+"752
+[; ;main.c: 752:     int a_sign, b_sign;
 [v _a_sign `i ~T0 @X0 1 a ]
 [v _b_sign `i ~T0 @X0 1 a ]
-"752
-[; ;main.c: 752:     a_sign = (persisted_data[13] == 0 ? 1 : -1);
-[e = _a_sign ? == *U + &U _persisted_data * -> -> -> 13 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui : -> 1 `i -U -> 1 `i ]
 "753
-[; ;main.c: 753:     b_sign = (persisted_data[14] == 0 ? 1 : -1);
+[; ;main.c: 753:     a_sign = (persisted_data[13] == 0 ? 1 : -1);
+[e = _a_sign ? == *U + &U _persisted_data * -> -> -> 13 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui : -> 1 `i -U -> 1 `i ]
+"754
+[; ;main.c: 754:     b_sign = (persisted_data[14] == 0 ? 1 : -1);
 [e = _b_sign ? == *U + &U _persisted_data * -> -> -> 14 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui : -> 1 `i -U -> 1 `i ]
-"755
-[; ;main.c: 755:     motor_a_speed_read_value = (a_sign) * persisted_data[15];
-[e = _motor_a_speed_read_value -> * -> _a_sign `ui *U + &U _persisted_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux `i ]
 "756
-[; ;main.c: 756:     motor_b_speed_read_value = (b_sign) * persisted_data[16];
-[e = _motor_b_speed_read_value -> * -> _b_sign `ui *U + &U _persisted_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux `i ]
+[; ;main.c: 756:     motor_a_speed_read_value = (a_sign) * persisted_data[15];
+[e = _motor_a_speed_read_value -> * -> _a_sign `ui *U + &U _persisted_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux `i ]
 "757
-[; ;main.c: 757: }
+[; ;main.c: 757:     motor_b_speed_read_value = (b_sign) * persisted_data[16];
+[e = _motor_b_speed_read_value -> * -> _b_sign `ui *U + &U _persisted_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux `i ]
+"758
+[; ;main.c: 758: }
 [e :UE 528 ]
 }
-"759
-[; ;main.c: 759: void loop(){
+"760
+[; ;main.c: 760: void loop(){
 [v _loop `(v ~T0 @X0 1 ef ]
 {
 [e :U _loop ]
 [f ]
-"760
-[; ;main.c: 760:     if (flag_init == 0 && !initial_state){
+"761
+[; ;main.c: 761:     if (flag_init == 0 && !initial_state){
 [e $ ! && == _flag_init -> 0 `i ! != -> _initial_state `i -> 0 `i 530  ]
 {
-"761
-[; ;main.c: 761:         flag_init = 1;
+"762
+[; ;main.c: 762:         flag_init = 1;
 [e = _flag_init -> 1 `i ]
-"763
-[; ;main.c: 763:         read_eeprom();
+"764
+[; ;main.c: 764:         read_eeprom();
 [e ( _read_eeprom ..  ]
-"765
-[; ;main.c: 765:         read_values();
+"766
+[; ;main.c: 766:         read_values();
 [e ( _read_values ..  ]
-"767
-[; ;main.c: 767:         status_set_mode( 4 , 0 , -1);
+"768
+[; ;main.c: 768:         status_set_mode( 4 , 0 , -1);
 [e ( _status_set_mode (3 , , -> -> 4 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"769
-[; ;main.c: 769:         printf("motor a speed: %d\n", motor_a_speed_read_value);
-[e ( _printf , (. :s 1C _motor_a_speed_read_value ]
 "770
-[; ;main.c: 770:         printf("motor b speed: %d\n", motor_b_speed_read_value);
-[e ( _printf , (. :s 2C _motor_b_speed_read_value ]
+[; ;main.c: 770:         printf("motor a speed: %d\n", motor_a_speed_read_value);
+[e ( _printf , (. :s 1C _motor_a_speed_read_value ]
 "771
-[; ;main.c: 771:     }
+[; ;main.c: 771:         printf("motor b speed: %d\n", motor_b_speed_read_value);
+[e ( _printf , (. :s 2C _motor_b_speed_read_value ]
+"772
+[; ;main.c: 772:     }
 }
 [e :U 530 ]
-"772
-[; ;main.c: 772:     if (flag_init == 1){
+"773
+[; ;main.c: 773:     if (flag_init == 1){
 [e $ ! == _flag_init -> 1 `i 531  ]
 {
-"773
-[; ;main.c: 773:         if (mode == 0 && status_mode == 0){
-[e $ ! && == _mode -> 0 `i == -> _status_mode `i -> 0 `i 532  ]
-{
 "774
-[; ;main.c: 774:             mode = 1;
-[e = _mode -> 1 `i ]
-"775
-[; ;main.c: 775:             status_code = 1;
-[e = _status_code -> 1 `i ]
-"776
-[; ;main.c: 776:             if (motor_a_speed_read_value >= 0){
-[e $ ! >= _motor_a_speed_read_value -> 0 `i 533  ]
+[; ;main.c: 774:         if (mode_config == 1){
+[e $ ! == _mode_config -> 1 `i 532  ]
 {
+"775
+[; ;main.c: 775:             if (mode == 0 && status_mode == 0){
+[e $ ! && == _mode -> 0 `i == -> _status_mode `i -> 0 `i 533  ]
+{
+"776
+[; ;main.c: 776:                 mode = 1;
+[e = _mode -> 1 `i ]
 "777
-[; ;main.c: 777:                 status_set_mode( 6, 4, 1);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 777:                 status_code = 1;
+[e = _status_code -> 1 `i ]
 "778
-[; ;main.c: 778:             }else if (motor_a_speed_read_value <= 0){
-}
-[e $U 534  ]
-[e :U 533 ]
-[e $ ! <= _motor_a_speed_read_value -> 0 `i 535  ]
+[; ;main.c: 778:                 if (motor_a_speed_read_value >= 0){
+[e $ ! >= _motor_a_speed_read_value -> 0 `i 534  ]
 {
 "779
-[; ;main.c: 779:                 status_set_mode( 6, 5, 1);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 779:                     status_set_mode( 6, 4, 1);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
 "780
-[; ;main.c: 780:             }
+[; ;main.c: 780:                 }else if (motor_a_speed_read_value <= 0){
 }
-[e :U 535 ]
+[e $U 535  ]
 [e :U 534 ]
+[e $ ! <= _motor_a_speed_read_value -> 0 `i 536  ]
+{
 "781
-[; ;main.c: 781:         }else if(mode == 1){
-}
-[e $U 536  ]
-[e :U 532 ]
-[e $ ! == _mode -> 1 `i 537  ]
-{
+[; ;main.c: 781:                     status_set_mode( 6, 5, 1);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
 "782
-[; ;main.c: 782:             if (motor_a_speed_read_value >= 0){
-[e $ ! >= _motor_a_speed_read_value -> 0 `i 538  ]
-{
-"783
-[; ;main.c: 783:                 status_value = motor_a_speed_read_value;
-[e = _status_value _motor_a_speed_read_value ]
-"784
-[; ;main.c: 784:             }else{
+[; ;main.c: 782:                 }
 }
-[e $U 539  ]
-[e :U 538 ]
+[e :U 536 ]
+[e :U 535 ]
+"783
+[; ;main.c: 783:             }else if(mode == 1){
+}
+[e $U 537  ]
+[e :U 533 ]
+[e $ ! == _mode -> 1 `i 538  ]
+{
+"784
+[; ;main.c: 784:                 if (motor_a_speed_read_value >= 0){
+[e $ ! >= _motor_a_speed_read_value -> 0 `i 539  ]
 {
 "785
-[; ;main.c: 785:                 status_value = -motor_a_speed_read_value;
-[e = _status_value -U _motor_a_speed_read_value ]
+[; ;main.c: 785:                     status_value = motor_a_speed_read_value;
+[e = _status_value _motor_a_speed_read_value ]
 "786
-[; ;main.c: 786:             }
+[; ;main.c: 786:                 }else{
 }
+[e $U 540  ]
 [e :U 539 ]
+{
 "787
-[; ;main.c: 787:             if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 540  ]
-{
+[; ;main.c: 787:                     status_value = -motor_a_speed_read_value;
+[e = _status_value -U _motor_a_speed_read_value ]
 "788
-[; ;main.c: 788:                 mode = 2;
-[e = _mode -> 2 `i ]
-"789
-[; ;main.c: 789:                 status_code = 2;
-[e = _status_code -> 2 `i ]
-"790
-[; ;main.c: 790:                 if (motor_b_speed_read_value >= 0){
-[e $ ! >= _motor_b_speed_read_value -> 0 `i 541  ]
-{
-"791
-[; ;main.c: 791:                     status_set_mode( 6, 4, 1);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
-"792
-[; ;main.c: 792:                 }else if (motor_b_speed_read_value <= 0){
-}
-[e $U 542  ]
-[e :U 541 ]
-[e $ ! <= _motor_b_speed_read_value -> 0 `i 543  ]
-{
-"793
-[; ;main.c: 793:                     status_set_mode( 6, 5, 1);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
-"794
-[; ;main.c: 794:                 }
-}
-[e :U 543 ]
-[e :U 542 ]
-"795
-[; ;main.c: 795:                 single_click_evt[0] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"796
-[; ;main.c: 796:             }
+[; ;main.c: 788:                 }
 }
 [e :U 540 ]
-"797
-[; ;main.c: 797:             if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 544  ]
+"789
+[; ;main.c: 789:                 if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 541  ]
 {
-"798
-[; ;main.c: 798:                 double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"799
-[; ;main.c: 799:                 mode = 3;
-[e = _mode -> 3 `i ]
-"800
-[; ;main.c: 800:                 status_set_mode( 2, -1, -1);
-[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -U -> 1 `i `uc -> -U -> 1 `i `uc ]
-"801
-[; ;main.c: 801:             }
+"790
+[; ;main.c: 790:                     mode = 2;
+[e = _mode -> 2 `i ]
+"791
+[; ;main.c: 791:                     status_code = 2;
+[e = _status_code -> 2 `i ]
+"792
+[; ;main.c: 792:                     if (motor_b_speed_read_value >= 0){
+[e $ ! >= _motor_b_speed_read_value -> 0 `i 542  ]
+{
+"793
+[; ;main.c: 793:                         status_set_mode( 6, 4, 1);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
+"794
+[; ;main.c: 794:                     }else if (motor_b_speed_read_value <= 0){
+}
+[e $U 543  ]
+[e :U 542 ]
+[e $ ! <= _motor_b_speed_read_value -> 0 `i 544  ]
+{
+"795
+[; ;main.c: 795:                         status_set_mode( 6, 5, 1);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
+"796
+[; ;main.c: 796:                     }
 }
 [e :U 544 ]
-"802
-[; ;main.c: 802:         }else if(mode == 3){
-}
-[e $U 545  ]
-[e :U 537 ]
-[e $ ! == _mode -> 3 `i 546  ]
-{
-"803
-[; ;main.c: 803:             int analog_read;
-[v _analog_read `i ~T0 @X0 1 a ]
-"804
-[; ;main.c: 804:             analog_read = avg_input[0];
-[e = _analog_read *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux ]
-"806
-[; ;main.c: 806:             status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
-[e = _status_value -> / * -> _analog_read `o -> -> 1000 `i `o -> -> 1023 `i `o `i ]
-"808
-[; ;main.c: 808:             if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 547  ]
-{
-"810
-[; ;main.c: 810:                 single_click_evt[0] = 0;
+[e :U 543 ]
+"797
+[; ;main.c: 797:                     single_click_evt[0] = 0;
 [e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"812
-[; ;main.c: 812:                 persisted_data[13] = 0;
-[e = *U + &U _persisted_data * -> -> -> 13 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui ]
-"813
-[; ;main.c: 813:                 persisted_data[15] = status_value;
-[e = *U + &U _persisted_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> _status_value `ui ]
-"814
-[; ;main.c: 814:                 write_eeprom();
-[e ( _write_eeprom ..  ]
-"815
-[; ;main.c: 815:                 read_values();
-[e ( _read_values ..  ]
-"817
-[; ;main.c: 817:                 printf("Write eeprom motor a speed: %d\n", status_value);
-[e ( _printf , (. :s 3C _status_value ]
-"818
-[; ;main.c: 818:                 mode = 0;
-[e = _mode -> 0 `i ]
-"819
-[; ;main.c: 819:                 status_mode = 0;
-[e = _status_mode -> -> 0 `i `uc ]
-"820
-[; ;main.c: 820:             }
+"798
+[; ;main.c: 798:                 }
 }
-[e :U 547 ]
-"821
-[; ;main.c: 821:             if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 548  ]
+[e :U 541 ]
+"799
+[; ;main.c: 799:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 545  ]
 {
-"823
-[; ;main.c: 823:                 double_click_evt[0] = 0;
+"800
+[; ;main.c: 800:                     double_click_evt[0] = 0;
 [e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"825
-[; ;main.c: 825:                 persisted_data[13] = 1;
-[e = *U + &U _persisted_data * -> -> -> 13 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 1 `i `ui ]
-"826
-[; ;main.c: 826:                 persisted_data[15] = status_value;
+"801
+[; ;main.c: 801:                     mode = 3;
+[e = _mode -> 3 `i ]
+"802
+[; ;main.c: 802:                     status_set_mode( 2, -1, -1);
+[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -U -> 1 `i `uc -> -U -> 1 `i `uc ]
+"803
+[; ;main.c: 803:                 }
+}
+[e :U 545 ]
+"804
+[; ;main.c: 804:             }else if(mode == 3){
+}
+[e $U 546  ]
+[e :U 538 ]
+[e $ ! == _mode -> 3 `i 547  ]
+{
+"805
+[; ;main.c: 805:                 int analog_read;
+[v _analog_read `i ~T0 @X0 1 a ]
+"806
+[; ;main.c: 806:                 analog_read = avg_input[0];
+[e = _analog_read *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux ]
+"808
+[; ;main.c: 808:                 status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+[e = _status_value -> / * -> _analog_read `o -> -> 1000 `i `o -> -> 1023 `i `o `i ]
+"810
+[; ;main.c: 810:                 if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 548  ]
+{
+"812
+[; ;main.c: 812:                     single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"814
+[; ;main.c: 814:                     persisted_data[13] = 0;
+[e = *U + &U _persisted_data * -> -> -> 13 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui ]
+"815
+[; ;main.c: 815:                     persisted_data[15] = status_value;
 [e = *U + &U _persisted_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> _status_value `ui ]
-"827
-[; ;main.c: 827:                 write_eeprom();
+"816
+[; ;main.c: 816:                     write_eeprom();
 [e ( _write_eeprom ..  ]
-"828
-[; ;main.c: 828:                 read_values();
+"817
+[; ;main.c: 817:                     read_values();
 [e ( _read_values ..  ]
-"830
-[; ;main.c: 830:                 printf("Write eeprom motor a speed: %d\n", -status_value);
-[e ( _printf , (. :s 4C -U _status_value ]
-"831
-[; ;main.c: 831:                 mode = 0;
+"819
+[; ;main.c: 819:                     printf("Write eeprom motor a speed: %d\n", status_value);
+[e ( _printf , (. :s 3C _status_value ]
+"820
+[; ;main.c: 820:                     mode = 0;
 [e = _mode -> 0 `i ]
-"832
-[; ;main.c: 832:                 status_mode = 0;
+"821
+[; ;main.c: 821:                     status_mode = 0;
 [e = _status_mode -> -> 0 `i `uc ]
-"833
-[; ;main.c: 833:             }
+"822
+[; ;main.c: 822:                 }
 }
 [e :U 548 ]
+"823
+[; ;main.c: 823:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 549  ]
+{
+"825
+[; ;main.c: 825:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"827
+[; ;main.c: 827:                     persisted_data[13] = 1;
+[e = *U + &U _persisted_data * -> -> -> 13 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 1 `i `ui ]
+"828
+[; ;main.c: 828:                     persisted_data[15] = status_value;
+[e = *U + &U _persisted_data * -> -> -> 15 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> _status_value `ui ]
+"829
+[; ;main.c: 829:                     write_eeprom();
+[e ( _write_eeprom ..  ]
+"830
+[; ;main.c: 830:                     read_values();
+[e ( _read_values ..  ]
+"832
+[; ;main.c: 832:                     printf("Write eeprom motor a speed: %d\n", -status_value);
+[e ( _printf , (. :s 4C -U _status_value ]
+"833
+[; ;main.c: 833:                     mode = 0;
+[e = _mode -> 0 `i ]
+"834
+[; ;main.c: 834:                     status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
 "835
-[; ;main.c: 835:         }else if(mode == 2){
+[; ;main.c: 835:                 }
 }
-[e $U 549  ]
-[e :U 546 ]
-[e $ ! == _mode -> 2 `i 550  ]
-{
-"836
-[; ;main.c: 836:             if (motor_b_speed_read_value >= 0){
-[e $ ! >= _motor_b_speed_read_value -> 0 `i 551  ]
-{
+[e :U 549 ]
 "837
-[; ;main.c: 837:                 status_value = motor_b_speed_read_value;
-[e = _status_value _motor_b_speed_read_value ]
-"838
-[; ;main.c: 838:             }else{
+[; ;main.c: 837:             }else if(mode == 2){
 }
-[e $U 552  ]
-[e :U 551 ]
+[e $U 550  ]
+[e :U 547 ]
+[e $ ! == _mode -> 2 `i 551  ]
+{
+"838
+[; ;main.c: 838:                 if (motor_b_speed_read_value >= 0){
+[e $ ! >= _motor_b_speed_read_value -> 0 `i 552  ]
 {
 "839
-[; ;main.c: 839:                 status_value = -motor_b_speed_read_value;
-[e = _status_value -U _motor_b_speed_read_value ]
+[; ;main.c: 839:                     status_value = motor_b_speed_read_value;
+[e = _status_value _motor_b_speed_read_value ]
 "840
-[; ;main.c: 840:             }
+[; ;main.c: 840:                 }else{
 }
+[e $U 553  ]
 [e :U 552 ]
+{
 "841
-[; ;main.c: 841:             if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 553  ]
-{
+[; ;main.c: 841:                     status_value = -motor_b_speed_read_value;
+[e = _status_value -U _motor_b_speed_read_value ]
 "842
-[; ;main.c: 842:                 mode = 1;
-[e = _mode -> 1 `i ]
-"843
-[; ;main.c: 843:                 status_code = 1;
-[e = _status_code -> 1 `i ]
-"844
-[; ;main.c: 844:                 if (motor_a_speed_read_value >= 0){
-[e $ ! >= _motor_a_speed_read_value -> 0 `i 554  ]
-{
-"845
-[; ;main.c: 845:                     status_set_mode( 6, 4, 1);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
-"846
-[; ;main.c: 846:                 }else if (motor_a_speed_read_value <= 0){
-}
-[e $U 555  ]
-[e :U 554 ]
-[e $ ! <= _motor_a_speed_read_value -> 0 `i 556  ]
-{
-"847
-[; ;main.c: 847:                     status_set_mode( 6, 5, 1);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
-"848
-[; ;main.c: 848:                 }
-}
-[e :U 556 ]
-[e :U 555 ]
-"849
-[; ;main.c: 849:                 single_click_evt[0] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"850
-[; ;main.c: 850:             }
+[; ;main.c: 842:                 }
 }
 [e :U 553 ]
-"851
-[; ;main.c: 851:             if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 557  ]
+"843
+[; ;main.c: 843:                 if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 554  ]
 {
-"852
-[; ;main.c: 852:                 double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"853
-[; ;main.c: 853:                 mode = 4;
-[e = _mode -> 4 `i ]
-"854
-[; ;main.c: 854:                 status_set_mode( 2, -1, -1);
-[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -U -> 1 `i `uc -> -U -> 1 `i `uc ]
-"855
-[; ;main.c: 855:             }
+"844
+[; ;main.c: 844:                     mode = 1;
+[e = _mode -> 1 `i ]
+"845
+[; ;main.c: 845:                     status_code = 1;
+[e = _status_code -> 1 `i ]
+"846
+[; ;main.c: 846:                     if (motor_a_speed_read_value >= 0){
+[e $ ! >= _motor_a_speed_read_value -> 0 `i 555  ]
+{
+"847
+[; ;main.c: 847:                         status_set_mode( 6, 4, 1);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 1 `i `uc ]
+"848
+[; ;main.c: 848:                     }else if (motor_a_speed_read_value <= 0){
+}
+[e $U 556  ]
+[e :U 555 ]
+[e $ ! <= _motor_a_speed_read_value -> 0 `i 557  ]
+{
+"849
+[; ;main.c: 849:                         status_set_mode( 6, 5, 1);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 1 `i `uc ]
+"850
+[; ;main.c: 850:                     }
 }
 [e :U 557 ]
-"856
-[; ;main.c: 856:         }else if(mode == 4){
-}
-[e $U 558  ]
-[e :U 550 ]
-[e $ ! == _mode -> 4 `i 559  ]
-{
-"857
-[; ;main.c: 857:             int analog_read;
-[v _analog_read `i ~T0 @X0 1 a ]
-"858
-[; ;main.c: 858:             analog_read = avg_input[0];
-[e = _analog_read *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux ]
-"860
-[; ;main.c: 860:             status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
-[e = _status_value -> / * -> _analog_read `o -> -> 1000 `i `o -> -> 1023 `i `o `i ]
-"862
-[; ;main.c: 862:             if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 560  ]
-{
-"864
-[; ;main.c: 864:                 single_click_evt[0] = 0;
+[e :U 556 ]
+"851
+[; ;main.c: 851:                     single_click_evt[0] = 0;
 [e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"866
-[; ;main.c: 866:                 persisted_data[14] = 0;
-[e = *U + &U _persisted_data * -> -> -> 14 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui ]
-"867
-[; ;main.c: 867:                 persisted_data[16] = status_value;
-[e = *U + &U _persisted_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> _status_value `ui ]
-"868
-[; ;main.c: 868:                 write_eeprom();
-[e ( _write_eeprom ..  ]
-"869
-[; ;main.c: 869:                 read_values();
-[e ( _read_values ..  ]
-"871
-[; ;main.c: 871:                 printf("Write eeprom motor b speed: %d\n", status_value);
-[e ( _printf , (. :s 5C _status_value ]
-"872
-[; ;main.c: 872:                 mode = 0;
-[e = _mode -> 0 `i ]
-"873
-[; ;main.c: 873:                 status_mode = 0;
-[e = _status_mode -> -> 0 `i `uc ]
-"874
-[; ;main.c: 874:             }
+"852
+[; ;main.c: 852:                 }
 }
-[e :U 560 ]
-"875
-[; ;main.c: 875:             if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 561  ]
+[e :U 554 ]
+"853
+[; ;main.c: 853:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 558  ]
 {
-"877
-[; ;main.c: 877:                 double_click_evt[0] = 0;
+"854
+[; ;main.c: 854:                     double_click_evt[0] = 0;
 [e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"879
-[; ;main.c: 879:                 persisted_data[14] = 1;
-[e = *U + &U _persisted_data * -> -> -> 14 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 1 `i `ui ]
-"880
-[; ;main.c: 880:                 persisted_data[16] = status_value;
+"855
+[; ;main.c: 855:                     mode = 4;
+[e = _mode -> 4 `i ]
+"856
+[; ;main.c: 856:                     status_set_mode( 2, -1, -1);
+[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -U -> 1 `i `uc -> -U -> 1 `i `uc ]
+"857
+[; ;main.c: 857:                 }
+}
+[e :U 558 ]
+"858
+[; ;main.c: 858:             }else if(mode == 4){
+}
+[e $U 559  ]
+[e :U 551 ]
+[e $ ! == _mode -> 4 `i 560  ]
+{
+"859
+[; ;main.c: 859:                 int analog_read;
+[v _analog_read `i ~T0 @X0 1 a ]
+"860
+[; ;main.c: 860:                 analog_read = avg_input[0];
+[e = _analog_read *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux ]
+"862
+[; ;main.c: 862:                 status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+[e = _status_value -> / * -> _analog_read `o -> -> 1000 `i `o -> -> 1023 `i `o `i ]
+"864
+[; ;main.c: 864:                 if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 561  ]
+{
+"866
+[; ;main.c: 866:                     single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"868
+[; ;main.c: 868:                     persisted_data[14] = 0;
+[e = *U + &U _persisted_data * -> -> -> 14 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 0 `i `ui ]
+"869
+[; ;main.c: 869:                     persisted_data[16] = status_value;
 [e = *U + &U _persisted_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> _status_value `ui ]
-"881
-[; ;main.c: 881:                 write_eeprom();
+"870
+[; ;main.c: 870:                     write_eeprom();
 [e ( _write_eeprom ..  ]
-"882
-[; ;main.c: 882:                 read_values();
+"871
+[; ;main.c: 871:                     read_values();
 [e ( _read_values ..  ]
-"884
-[; ;main.c: 884:                 printf("Write eeprom motor b speed: %d\n", -status_value);
-[e ( _printf , (. :s 6C -U _status_value ]
-"885
-[; ;main.c: 885:                 mode = 0;
+"873
+[; ;main.c: 873:                     printf("Write eeprom motor b speed: %d\n", status_value);
+[e ( _printf , (. :s 5C _status_value ]
+"874
+[; ;main.c: 874:                     mode = 0;
 [e = _mode -> 0 `i ]
-"886
-[; ;main.c: 886:                 status_mode = 0;
+"875
+[; ;main.c: 875:                     status_mode = 0;
 [e = _status_mode -> -> 0 `i `uc ]
-"887
-[; ;main.c: 887:             }
+"876
+[; ;main.c: 876:                 }
 }
 [e :U 561 ]
+"877
+[; ;main.c: 877:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 562  ]
+{
+"879
+[; ;main.c: 879:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"881
+[; ;main.c: 881:                     persisted_data[14] = 1;
+[e = *U + &U _persisted_data * -> -> -> 14 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> -> 1 `i `ui ]
+"882
+[; ;main.c: 882:                     persisted_data[16] = status_value;
+[e = *U + &U _persisted_data * -> -> -> 16 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux -> _status_value `ui ]
+"883
+[; ;main.c: 883:                     write_eeprom();
+[e ( _write_eeprom ..  ]
+"884
+[; ;main.c: 884:                     read_values();
+[e ( _read_values ..  ]
+"886
+[; ;main.c: 886:                     printf("Write eeprom motor b speed: %d\n", -status_value);
+[e ( _printf , (. :s 6C -U _status_value ]
+"887
+[; ;main.c: 887:                     mode = 0;
+[e = _mode -> 0 `i ]
 "888
-[; ;main.c: 888:         }
-}
-[e :U 559 ]
-[e :U 558 ]
-[e :U 549 ]
-[e :U 545 ]
-[e :U 536 ]
+[; ;main.c: 888:                     status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
 "889
-[; ;main.c: 889:     }
+[; ;main.c: 889:                 }
+}
+[e :U 562 ]
+"890
+[; ;main.c: 890:             }
+}
+[e :U 560 ]
+[e :U 559 ]
+[e :U 550 ]
+[e :U 546 ]
+[e :U 537 ]
+"892
+[; ;main.c: 892:             pwm[0] = 0;
+[e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
+"893
+[; ;main.c: 893:             pwm[1] = 0;
+[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
+"895
+[; ;main.c: 895:             if (double_click_evt[1]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 563  ]
+{
+"896
+[; ;main.c: 896:                 double_click_evt[1] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"898
+[; ;main.c: 898:                 status_set_mode(3, -1, -1);
+[e ( _status_set_mode (3 , , -> -> 3 `i `uc -> -U -> 1 `i `uc -> -U -> 1 `i `uc ]
+"899
+[; ;main.c: 899:                 mode_config = 2;
+[e = _mode_config -> 2 `i ]
+"900
+[; ;main.c: 900:             }
+}
+[e :U 563 ]
+"901
+[; ;main.c: 901:         }else if (mode_config == 2){
+}
+[e $U 564  ]
+[e :U 532 ]
+[e $ ! == _mode_config -> 2 `i 565  ]
+{
+"902
+[; ;main.c: 902:             pwm[0] = (long long) motor_a_speed_read_value * (600) / (1000);
+[e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> / * -> _motor_a_speed_read_value `o -> -> 600 `i `o -> -> 1000 `i `o `i ]
+"903
+[; ;main.c: 903:             pwm[1] = (long long) motor_b_speed_read_value * (600) / (1000);
+[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> / * -> _motor_b_speed_read_value `o -> -> 600 `i `o -> -> 1000 `i `o `i ]
+"905
+[; ;main.c: 905:             if (double_click_evt[1]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 566  ]
+{
+"906
+[; ;main.c: 906:                 double_click_evt[1] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"908
+[; ;main.c: 908:                 mode_config = 1;
+[e = _mode_config -> 1 `i ]
+"909
+[; ;main.c: 909:                 mode = 0;
+[e = _mode -> 0 `i ]
+"910
+[; ;main.c: 910:                 status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"911
+[; ;main.c: 911:             }
+}
+[e :U 566 ]
+"912
+[; ;main.c: 912:         }
+}
+[e :U 565 ]
+[e :U 564 ]
+"913
+[; ;main.c: 913:     }
 }
 [e :U 531 ]
-"890
-[; ;main.c: 890: }
+"914
+[; ;main.c: 914: }
 [e :UE 529 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"896
-[; ;main.c: 896: void main(void) {
+"920
+[; ;main.c: 920: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"897
-[; ;main.c: 897:     config_micro();
+"921
+[; ;main.c: 921:     config_micro();
 [e ( _config_micro ..  ]
-"898
-[; ;main.c: 898:     init_vars();
+"922
+[; ;main.c: 922:     init_vars();
 [e ( _init_vars ..  ]
-"899
-[; ;main.c: 899:     buttons_init();
+"923
+[; ;main.c: 923:     buttons_init();
 [e ( _buttons_init ..  ]
-"900
-[; ;main.c: 900:     status_init();
+"924
+[; ;main.c: 924:     status_init();
 [e ( _status_init ..  ]
-"901
-[; ;main.c: 901:     init();
+"925
+[; ;main.c: 925:     init();
 [e ( _init ..  ]
-"903
-[; ;main.c: 903:     while (1){
-[e :U 564 ]
+"927
+[; ;main.c: 927:     while (1){
+[e :U 569 ]
 {
-"904
-[; ;main.c: 904:         update_pwm();
+"928
+[; ;main.c: 928:         update_pwm();
 [e ( _update_pwm ..  ]
-"905
-[; ;main.c: 905:         read_analog();
+"929
+[; ;main.c: 929:         read_analog();
 [e ( _read_analog ..  ]
-"906
-[; ;main.c: 906:         buttons_loop();
+"930
+[; ;main.c: 930:         buttons_loop();
 [e ( _buttons_loop ..  ]
-"907
-[; ;main.c: 907:         status_loop();
+"931
+[; ;main.c: 931:         status_loop();
 [e ( _status_loop ..  ]
-"908
-[; ;main.c: 908:         loop();
+"932
+[; ;main.c: 932:         loop();
 [e ( _loop ..  ]
-"909
-[; ;main.c: 909:     }
+"933
+[; ;main.c: 933:     }
 }
-[e :U 563 ]
-[e $U 564  ]
-[e :U 565 ]
-"911
-[; ;main.c: 911: }
-[e :UE 562 ]
+[e :U 568 ]
+[e $U 569  ]
+[e :U 570 ]
+"935
+[; ;main.c: 935: }
+[e :UE 567 ]
 }
 [p f _printf 8388736 ]
 [a 5C 87 114 105 116 101 32 101 101 112 114 111 109 32 109 111 116 111 114 32 98 32 115 112 101 101 100 58 32 37 100 10 0 ]
