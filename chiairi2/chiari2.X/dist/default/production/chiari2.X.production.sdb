@@ -3,57 +3,49 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"1 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
+"1 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
-"9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+"9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\aodiv.c
 [v ___aodiv __aodiv `(o  1 e 8 0 ]
-"9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-[v ___aomod __aomod `(o  1 e 8 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awdiv.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awmod.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"133 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
-[v _pad pad `(v  1 s 1 pad ]
-"443
-[v _dtoa dtoa `(v  1 s 1 dtoa ]
-"1007
+"1177 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
-"1520
+"1817
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
-"4 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\fleq.c
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
-"62 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\float.c
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
 [v ___ftpack __ftpack `(f  1 e 4 0 ]
-"86 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftadd.c
+"86 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 4 0 ]
-"54 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftdiv.c
+"54 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftdiv.c
 [v ___ftdiv __ftdiv `(f  1 e 4 0 ]
-"62 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftmul.c
+"62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftmul.c
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
-"19 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\ftsub.c
+"19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputs.c
 [v _fputs fputs `(i  1 e 2 0 ]
-"5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\printf.c
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
-"10 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcadd.c
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
 [v ___flsub __flsub `(d  1 e 4 0 ]
-"11 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcdiv.c
+"11 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcdiv.c
 [v ___fldiv __fldiv `(d  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\sprcmul.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcmul.c
 [v ___flmul __flmul `(d  1 e 4 0 ]
-"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul32.c
+"15 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"91 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul64.c
+"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"75 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"75 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _config_micro config_micro `(v  1 e 1 0 ]
 "210
 [v _read_analog read_analog `(v  1 e 1 0 ]
@@ -95,7 +87,7 @@
 `uc 1 SE0 1 0 :1:5 
 `uc 1 PPBRST 1 0 :1:6 
 ]
-"665 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4550.h
+"665 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc/pic18f4550.h
 [u S65 . 1 `S57 1 . 1 0 ]
 [v _UCONbits UCONbits `VES65  1 e 1 @3949 ]
 [s S76 . 1 `uc 1 PPB 1 0 :2:0 
@@ -138,7 +130,7 @@
 ]
 [u S1077 . 1 `S779 1 . 1 0 `S1066 1 . 1 0 `S1074 1 . 1 0 ]
 [v _PORTBbits PORTBbits `VES1077  1 e 1 @3969 ]
-[s S990 . 1 `uc 1 RC0 1 0 :1:0 
+[s S943 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -148,29 +140,29 @@
 `uc 1 RC7 1 0 :1:7 
 ]
 "2606
-[s S999 . 1 `uc 1 T1OSO 1 0 :1:0 
+[s S952 . 1 `uc 1 T1OSO 1 0 :1:0 
 `uc 1 T1OSI 1 0 :1:1 
 `uc 1 CCP1 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 TX 1 0 :1:6 
 `uc 1 RX 1 0 :1:7 
 ]
-[s S1006 . 1 `uc 1 T13CKI 1 0 :1:0 
+[s S959 . 1 `uc 1 T13CKI 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 P1A 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 CK 1 0 :1:6 
 `uc 1 DT 1 0 :1:7 
 ]
-[s S1013 . 1 `uc 1 . 1 0 :1:0 
+[s S966 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 CCP2 1 0 :1:1 
 `uc 1 PA1 1 0 :1:2 
 ]
-[s S1017 . 1 `uc 1 . 1 0 :1:0 
+[s S970 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 PA2 1 0 :1:1 
 ]
-[u S1020 . 1 `S990 1 . 1 0 `S999 1 . 1 0 `S1006 1 . 1 0 `S1013 1 . 1 0 `S1017 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES1020  1 e 1 @3970 ]
+[u S973 . 1 `S943 1 . 1 0 `S952 1 . 1 0 `S959 1 . 1 0 `S966 1 . 1 0 `S970 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES973  1 e 1 @3970 ]
 [s S819 . 1 `uc 1 RD0 1 0 :1:0 
 `uc 1 RD1 1 0 :1:1 
 `uc 1 RD2 1 0 :1:2 
@@ -181,7 +173,7 @@
 `uc 1 RD7 1 0 :1:7 
 ]
 "2737
-[s S952 . 1 `uc 1 SPP0 1 0 :1:0 
+[s S1019 . 1 `uc 1 SPP0 1 0 :1:0 
 `uc 1 SPP1 1 0 :1:1 
 `uc 1 SPP2 1 0 :1:2 
 `uc 1 SPP3 1 0 :1:3 
@@ -190,11 +182,11 @@
 `uc 1 SPP6 1 0 :1:6 
 `uc 1 SPP7 1 0 :1:7 
 ]
-[s S961 . 1 `uc 1 . 1 0 :7:0 
+[s S1028 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 SS2 1 0 :1:7 
 ]
-[u S964 . 1 `S819 1 . 1 0 `S952 1 . 1 0 `S961 1 . 1 0 ]
-[v _PORTDbits PORTDbits `VES964  1 e 1 @3971 ]
+[u S1031 . 1 `S819 1 . 1 0 `S1019 1 . 1 0 `S1028 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES1031  1 e 1 @3971 ]
 [s S850 . 1 `uc 1 TRISA0 1 0 :1:0 
 `uc 1 TRISA1 1 0 :1:1 
 `uc 1 TRISA2 1 0 :1:2 
@@ -647,14 +639,14 @@
 [v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
 "11048
 [v _TXIF TXIF `VEb  1 e 0 @31988 ]
-"99 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+"153 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
 [v _prec prec `i  1 s 2 prec ]
 [v _width width `i  1 s 2 width ]
-"100
+"154
 [v _flags flags `uc  1 s 1 flags ]
-"125
+"185
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
-"63 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"63 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _counter counter `[5]o  1 e 40 0 ]
 "65
 [v _sum_read sum_read `[10]o  1 e 80 0 ]
@@ -737,35 +729,24 @@
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
 {
 "328
-[v update_pwm@pwm1 pwm1 `i  1 a 2 29 ]
-[v update_pwm@pwm0 pwm0 `i  1 a 2 27 ]
+[v update_pwm@pwm1 pwm1 `i  1 a 2 23 ]
+[v update_pwm@pwm0 pwm0 `i  1 a 2 21 ]
 "359
 } 0
 "585
 [v _status_loop status_loop `(v  1 e 1 0 ]
 {
 "703
-[v status_loop@show_led show_led `i  1 a 2 37 ]
+[v status_loop@show_led show_led `i  1 a 2 31 ]
 "620
-[v status_loop@i i `i  1 a 2 41 ]
+[v status_loop@i i `i  1 a 2 35 ]
 "617
-[v status_loop@half_led half_led `i  1 a 2 39 ]
+[v status_loop@half_led half_led `i  1 a 2 33 ]
 "607
-[v status_loop@half_status half_status `i  1 a 2 35 ]
+[v status_loop@half_status half_status `i  1 a 2 29 ]
 "724
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 11 ]
-[v ___awmod@counter counter `uc  1 a 1 10 ]
-"7
-[v ___awmod@dividend dividend `i  1 p 2 6 ]
-[v ___awmod@divisor divisor `i  1 p 2 8 ]
-"34
-} 0
-"561 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"561
 [v _status_init status_init `(v  1 e 1 0 ]
 {
 "570
@@ -776,31 +757,18 @@
 [v _read_analog read_analog `(v  1 e 1 0 ]
 {
 "211
-[v read_analog@aux aux `ui  1 a 2 72 ]
+[v read_analog@aux aux `ui  1 a 2 56 ]
 "212
-[v read_analog@i i `uc  1 a 1 74 ]
+[v read_analog@i i `uc  1 a 1 58 ]
 "230
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 24 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 23 ]
-[v ___awdiv@counter counter `uc  1 a 1 22 ]
-"7
-[v ___awdiv@dividend dividend `i  1 p 2 18 ]
-[v ___awdiv@divisor divisor `i  1 p 2 20 ]
-"41
-} 0
-"760 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"760
 [v _loop loop `(v  1 e 1 0 ]
 {
 "859
-[v loop@analog_read_1372 analog_read `i  1 a 2 43 ]
+[v loop@analog_read_1372 analog_read `i  1 a 2 66 ]
 "805
-[v loop@analog_read analog_read `i  1 a 2 41 ]
+[v loop@analog_read analog_read `i  1 a 2 64 ]
 "914
 } 0
 "257
@@ -813,32 +781,22 @@
 "576
 [v _status_set_mode status_set_mode `(v  1 e 1 0 ]
 {
-[v status_set_mode@mode mode `uc  1 a 1 wreg ]
-[v status_set_mode@mode mode `uc  1 a 1 wreg ]
+[v status_set_mode@mode mode `uc  1 p 1 wreg ]
+[v status_set_mode@mode mode `uc  1 p 1 wreg ]
 [v status_set_mode@next_mode next_mode `uc  1 p 1 6 ]
 [v status_set_mode@final_mode final_mode `uc  1 p 1 7 ]
-[v status_set_mode@mode mode `uc  1 a 1 8 ]
+[v status_set_mode@mode mode `uc  1 p 1 8 ]
 "583
 } 0
 "751
 [v _read_values read_values `(v  1 e 1 0 ]
 {
 "752
-[v read_values@b_sign b_sign `i  1 a 2 20 ]
-[v read_values@a_sign a_sign `i  1 a 2 18 ]
+[v read_values@b_sign b_sign `i  1 a 2 10 ]
+[v read_values@a_sign a_sign `i  1 a 2 8 ]
 "758
 } 0
-"15 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 16 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 12 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 14 ]
-"53
-} 0
-"233 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"233
 [v _read_eeprom read_eeprom `(v  1 e 1 0 ]
 {
 "235
@@ -847,121 +805,103 @@
 [v read_eeprom@addr addr `uc  1 a 1 12 ]
 "256
 } 0
-"5 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\printf.c
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\printf.c
 [v _printf printf `(i  1 e 2 0 ]
 {
 "8
-[v printf@ap ap `[1]*.39v  1 a 2 39 ]
+[v printf@ap ap `[1]*.30v  1 a 1 40 ]
 "5
-[v printf@fmt fmt `*.32Cuc  1 p 2 35 ]
+[v printf@fmt fmt `*.31Cuc  1 p 1 37 ]
 "13
 } 0
-"1520 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\doprnt.c
+"1817 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
 [v _vfprintf vfprintf `(i  1 e 2 0 ]
 {
-"1523
-[v vfprintf@cfmt cfmt `*.32uc  1 a 2 33 ]
+"1820
+[v vfprintf@cfmt cfmt `*.31uc  1 a 1 36 ]
 [s S1853 _IO_FILE 0 ]
-"1520
-[v vfprintf@fp fp `*.2S1853  1 p 2 27 ]
-[v vfprintf@fmt fmt `*.32Cuc  1 p 2 29 ]
-[v vfprintf@ap ap `*.39*.39v  1 p 2 31 ]
-"1543
+"1817
+[v vfprintf@fp fp `*.39S1853  1 p 2 32 ]
+[v vfprintf@fmt fmt `*.31Cuc  1 p 1 34 ]
+[v vfprintf@ap ap `*.30*.30v  1 p 1 35 ]
+"1840
 } 0
-"1007
+"1177
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
-[u S1871 . 8 `o 1 ll 8 0 `uo 1 llu 8 0 `*.2v 1 vp 3 0 `d 1 f 4 0 ]
-"1016
-[v vfpfcnvrt@convarg convarg `S1871  1 a 8 17 ]
-"1009
-[v vfpfcnvrt@cp cp `*.32uc  1 a 2 25 ]
+[u S1866 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+"1188
+[v vfpfcnvrt@convarg convarg `S1866  1 a 4 27 ]
+"1179
+[v vfpfcnvrt@c c `uc  1 a 1 31 ]
+[v vfpfcnvrt@cp cp `*.31uc  1 a 1 26 ]
+"1180
+[v vfpfcnvrt@done done `a  1 a 1 25 ]
 [s S1853 _IO_FILE 0 ]
-"1007
-[v vfpfcnvrt@fp fp `*.2S1853  1 p 2 74 ]
-[v vfpfcnvrt@fmt fmt `*.39*.32uc  1 p 2 76 ]
-[v vfpfcnvrt@ap ap `*.39*.39v  1 p 2 78 ]
-"1517
+"1177
+[v vfpfcnvrt@fp fp `*.39S1853  1 p 2 20 ]
+[v vfpfcnvrt@fmt fmt `*.30*.31uc  1 p 1 22 ]
+[v vfpfcnvrt@ap ap `*.30*.30v  1 p 1 23 ]
+"1814
 } 0
-"443
-[v _dtoa dtoa `(v  1 s 1 dtoa ]
-{
-"447
-[v dtoa@n n `o  1 a 8 6 ]
-"446
-[v dtoa@i i `i  1 a 2 14 ]
-[v dtoa@w w `i  1 a 2 4 ]
-[v dtoa@p p `i  1 a 2 2 ]
-"445
-[v dtoa@s s `uc  1 a 1 16 ]
-[s S1853 _IO_FILE 0 ]
-"443
-[v dtoa@fp fp `*.2S1853  1 p 2 56 ]
-[v dtoa@d d `o  1 p 8 58 ]
-"502
-} 0
-"133
-[v _pad pad `(v  1 s 1 pad ]
-{
-"135
-[v pad@w w `i  1 a 2 32 ]
-[v pad@i i `i  1 a 2 30 ]
-[s S1853 _IO_FILE 0 ]
-"133
-[v pad@fp fp `*.2S1853  1 p 2 23 ]
-[v pad@buf buf `*.39uc  1 p 2 25 ]
-[v pad@p p `i  1 p 2 27 ]
-"164
-} 0
-"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputs.c
-[v _fputs fputs `(i  1 e 2 0 ]
-{
-"11
-[v fputs@i i `i  1 a 2 21 ]
-"10
-[v fputs@c c `uc  1 a 1 20 ]
-"8
-[v fputs@s s `*.39Cuc  1 p 2 16 ]
-[u S1831 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1834 _IO_FILE 11 `S1831 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputs@fp fp `*.2S1834  1 p 2 18 ]
-"19
-} 0
-"8 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\nf_fputc.c
+"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 7 ]
-[u S1831 . 3 `*.2uc 1 buffer 3 0 `*.2Cuc 1 source 3 0 ]
-[s S1834 _IO_FILE 11 `S1831 1 . 3 0 `i 1 count 2 3 `[2]uc 1 ungetbuf 2 5 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.2S1834  1 p 2 9 ]
+[u S1831 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
+[s S1834 _IO_FILE 11 `S1831 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.39S1834  1 p 2 9 ]
 "24
 } 0
-"293 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"293 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _putch putch `(v  1 e 1 0 ]
 {
-[v putch@data data `uc  1 a 1 wreg ]
-[v putch@data data `uc  1 a 1 wreg ]
-[v putch@data data `uc  1 a 1 6 ]
+[v putch@data data `uc  1 p 1 wreg ]
+[v putch@data data `uc  1 p 1 wreg ]
+[v putch@data data `uc  1 p 1 6 ]
 "297
 } 0
-"1 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\abs.c
+"1 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
 {
-[v abs@a a `i  1 p 2 24 ]
+[v abs@a a `i  1 p 2 12 ]
 "4
 } 0
-"9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aomod.c
-[v ___aomod __aomod `(o  1 e 8 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
 {
-"12
-[v ___aomod@sign sign `uc  1 a 1 23 ]
-[v ___aomod@counter counter `uc  1 a 1 22 ]
-"9
-[v ___aomod@dividend dividend `o  1 p 8 6 ]
-[v ___aomod@divisor divisor `o  1 p 8 14 ]
-"36
+"10
+[v ___awmod@sign sign `uc  1 a 1 11 ]
+[v ___awmod@counter counter `uc  1 a 1 10 ]
+"7
+[v ___awmod@dividend dividend `i  1 p 2 6 ]
+[v ___awmod@divisor divisor `i  1 p 2 8 ]
+"34
 } 0
-"9 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\aodiv.c
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 18 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 17 ]
+[v ___awdiv@counter counter `uc  1 a 1 16 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 12 ]
+[v ___awdiv@divisor divisor `i  1 p 2 14 ]
+"41
+} 0
+"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+{
+"93
+[v ___omul@product product `uo  1 a 8 22 ]
+"91
+[v ___omul@multiplier multiplier `uo  1 p 8 6 ]
+[v ___omul@multiplicand multiplicand `uo  1 p 8 14 ]
+"354
+} 0
+"9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\aodiv.c
 [v ___aodiv __aodiv `(o  1 e 8 0 ]
 {
 "12
@@ -974,17 +914,7 @@
 [v ___aodiv@divisor divisor `o  1 p 8 38 ]
 "43
 } 0
-"91 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul64.c
-[v ___omul __omul `(uo  1 e 8 0 ]
-{
-"93
-[v ___omul@product product `uo  1 a 8 22 ]
-"91
-[v ___omul@multiplier multiplier `uo  1 p 8 6 ]
-[v ___omul@multiplicand multiplicand `uo  1 p 8 14 ]
-"354
-} 0
-"313 C:\Users\Ariel\GitHub\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"313 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _init_vars init_vars `(v  1 e 1 0 ]
 {
 "314

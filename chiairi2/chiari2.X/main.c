@@ -54,10 +54,10 @@
 #define BUTTON_2 PORTDbits.RD3
 
 // Motors
-#define M1_A PORTDbits.RD1
-#define M1_B PORTDbits.RD0
-#define M2_A PORTCbits.RC1
-#define M2_B PORTCbits.RC0
+#define M2_A PORTDbits.RD1 // Invert motor pins (as pwm pins are inverted)
+#define M2_B PORTDbits.RD0
+#define M1_A PORTCbits.RC1
+#define M1_B PORTCbits.RC0
 
 // 5 available general propouse counters
 long long int counter[5]; 
