@@ -59,6 +59,13 @@
 #define M1_A PORTCbits.RC1
 #define M1_B PORTCbits.RC0
 
+// Sensors
+#define S1 PORTDbits.RD7
+#define S2 PORTDbits.RD6
+#define S3 PORTDbits.RD5
+#define S4 PORTDbits.RD4
+#define S5 PORTCbits.RC5
+
 // 5 available general propouse counters
 long long int counter[5]; 
 // 7 analog inputs
@@ -204,6 +211,12 @@ void config_micro(){
     TRISBbits.RB3 = 0;
     TRISCbits.RC2 = 0;
     
+    // Sensors
+    TRISDbits.RD7 = 1;
+    TRISDbits.RD6 = 1;
+    TRISDbits.RD5 = 1;
+    TRISDbits.RD4 = 1;
+    //TRISCbits.RC5 = 1; // Auto input
 }
 
 // Analog read
@@ -650,6 +663,55 @@ void status_loop(){
                 LED_5 = 0;
             }
         }
+        
+    }else if(status_mode == 7 || status_mode == 8){ /** Set the code of status code in the sequence **/
+        
+        if (counter[2] >= 10){ // reset cycle every 100 miliseconds
+            counter[2] = 0;
+            status_intermitency_counter ++;
+            if (status_intermitency_counter >= 10){ // every 1 second reset intermitency counter
+                status_intermitency_counter = 0;
+            }
+            
+            
+            if (status_value >= 32){
+                status_value = 31;
+            }
+            if (status_value < 0){
+                status_value = 0;
+            }
+            status_persisted = status_value;
+
+        }
+        
+        leds[0] = (status_persisted % 32 >= 16); 
+        leds[1] = (status_persisted % 16 >= 8);
+        leds[2] = (status_persisted % 8 >= 4);
+        leds[3] = (status_persisted % 4 >= 2);
+        leds[4] = (status_persisted % 2 >= 1);
+                
+        /** Set leds status **/
+        if (status_mode == 7){ /* No intermitency */
+            LED_1 = leds[0];
+            LED_2 = leds[1];
+            LED_3 = leds[2];
+            LED_4 = leds[3];
+            LED_5 = leds[4];
+        }else if(status_mode == 8){ /* With intermitency */
+            if (status_intermitency_counter >= 2){ /* Duty=80% */
+                LED_1 = leds[0];
+                LED_2 = leds[1];
+                LED_3 = leds[2];
+                LED_4 = leds[3];
+                LED_5 = leds[4];
+            }else{
+                LED_1 = 0;
+                LED_2 = 0;
+                LED_3 = 0;
+                LED_4 = 0;
+                LED_5 = 0;
+            }
+        }
     }else if(status_mode == 3){ /* led pair even intermitency */
         if (counter[2] >= 20){ // reset cycle every 200 miliseconds
             counter[2] = 0;
@@ -728,192 +790,168 @@ void status_loop(){
 
 /***** Start custom program *****/
 
-/* Motor integrated tests */
+/** Start full program */
 
-/* This programs test: pwm, buttons, eeprom, analog input */
+/** 
+    Eeprom values: 
+        -   Motor speed: persisted_data[0] 
+        -   Configured program: persisted_data[1]   
+    Menus:
+        -   Configure robot speed
+        -   Configure robot program (1-32)
+        -   Show sensor status
+        -   Show CNY1
+        -   Show CNY2
+**/
 
 int flag_init;
-
-int motor_a_speed_read_value;
-int motor_b_speed_read_value;
-
-int mode;
-int mode_config;
+int current_menu;
+int flag_menu_init;
+int flag_menu_init_2;
+int configure_mode;
 
 void init(){
     flag_init = 0;
-    motor_a_speed_read_value = 0;
-    motor_b_speed_read_value = 0;
-    mode = 0;
-    mode_config = 1;
+    current_menu = 0;
+    flag_menu_init = 0;
+    flag_menu_init_2 = 0;
+    configure_mode = 0;
 }
 
-void read_values(){
-    int a_sign, b_sign;
-    a_sign = (persisted_data[13] == 0 ? 1 : -1);
-    b_sign = (persisted_data[14] == 0 ? 1 : -1);
+unsigned int get_motor_speed(){
+    unsigned int speed;
+    speed = persisted_data[0];
+    if (speed >= 1000){
+        speed = 1000;
+    }
+    return speed;
+}
 
-    motor_a_speed_read_value = (a_sign) * persisted_data[15];
-    motor_b_speed_read_value = (b_sign) * persisted_data[16];
+void set_motor_speed(unsigned int speed){
+    if (speed >= 1000){
+        speed = 1000;
+    }
+    persisted_data[0] = speed;
 }
 
 void loop(){
-    if (flag_init == 0 && !initial_state){
+    if (!flag_init && !initial_state){ 
         flag_init = 1;
-        /** Read the eeprom values for motors **/
+
+        /** wait until inital state ends */
+    
+        /** Read the eeprom values **/
         read_eeprom();
+        /* led animation of status 4, then go to status 0 */
+        status_set_mode( 4 , 0 , -1); 
+
+    }else if (flag_init == 1 && current_menu == 0){ 
+        if (status_mode == 0){
+            /** we are in initial state and led initial sequence is completed **/
+
+            /** Enter Menu 1 (Configure motor speed) 
+                -   Show the current motor speed
+                -   Show menu code 1
+            **/
+
+            current_menu = 1; /** We enter menu 1 **/
+            flag_menu_init = 1;
+        }
+    }else if (flag_init == 1 && current_menu != 0){ 
+        /** We are in the Robot Menu **/
+
+        if (flag_menu_init){
+            /** Set menu code animation **/
+            flag_menu_init = 0;
+            flag_menu_init_2 = 1; // set flag for inital menu animation
+            status_code = current_menu;
+            status_set_mode( 6, 4, 0);
+        }
         
-        read_values();
+        if (current_menu == 1){
 
-        status_set_mode( 4 , 0 , -1); /* led animation of status 4, then go to status 0 */
-
-        printf("motor a speed: %d\n", motor_a_speed_read_value);
-        printf("motor b speed: %d\n", motor_b_speed_read_value);
-    }
-    if (flag_init == 1){
-        if (mode_config == 1){
-            if (mode == 0 && status_mode == 0){ // when initial led animation ends
-                mode = 1; /* Show motor A */
-                status_code = 1;
-                if (motor_a_speed_read_value >= 0){
-                    status_set_mode( 6, 4, 1);
-                }else if (motor_a_speed_read_value <= 0){
-                    status_set_mode( 6, 5, 1);
-                }
-            }else if(mode == 1){
-                if (motor_a_speed_read_value >= 0){
-                    status_value = motor_a_speed_read_value;
-                }else{
-                    status_value = -motor_a_speed_read_value;
-                }
-                if (single_click_evt[0]){
-                    mode = 2;
-                    status_code = 2;
-                    if (motor_b_speed_read_value >= 0){
-                        status_set_mode( 6, 4, 1);
-                    }else if (motor_b_speed_read_value <= 0){
-                        status_set_mode( 6, 5, 1);
+            if (configure_mode == 0){
+                if (flag_menu_init_2){
+                    if (status_mode == 0){
+                        flag_menu_init_2 = 0;
+                        /** When animation ends how the motor speed value **/
+                        status_value = get_motor_speed();
+                        status_set_mode( 1, 0, -1);
                     }
-                    single_click_evt[0] = 0;
                 }
-                if (double_click_evt[0]){ /* change the value */
-                    double_click_evt[0] = 0;
-                    mode = 3;
-                    status_set_mode( 2, -1, -1); /* show status bar with intermitency */
-                }
-            }else if(mode == 3){
-                int analog_read;
-                analog_read = avg_input[0];
 
-                status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
-
-                if (single_click_evt[0]){
-                    /* set speed forward */
-                    single_click_evt[0] = 0;
-
-                    persisted_data[13] = 0; /* positive */
-                    persisted_data[15] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor a speed: %d\n", status_value);
-                    mode = 0;
-                    status_mode = 0;
-                }
                 if (double_click_evt[0]){
-                    /* set speed backwards */
+                    /** Go to configure mode **/
                     double_click_evt[0] = 0;
-
-                    persisted_data[13] = 1; /* negative */
-                    persisted_data[15] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor a speed: %d\n", -status_value);
-                    mode = 0;
-                    status_mode = 0;
+                    configure_mode = 1;
+                    flag_menu_init_2 = 1;
                 }
-
-            }else if(mode == 2){
-                if (motor_b_speed_read_value >= 0){
-                    status_value = motor_b_speed_read_value;
-                }else{
-                    status_value = -motor_b_speed_read_value;
-                }
-                if (single_click_evt[0]){
-                    mode = 1;
-                    status_code = 1;
-                    if (motor_a_speed_read_value >= 0){
-                        status_set_mode( 6, 4, 1);
-                    }else if (motor_a_speed_read_value <= 0){
-                        status_set_mode( 6, 5, 1);
-                    }
-                    single_click_evt[0] = 0;
-                }
-                if (double_click_evt[0]){ /* change the value */
-                    double_click_evt[0] = 0;
-                    mode = 4;
-                    status_set_mode( 2, -1, -1); /* show status bar with intermitency */
-                }
-            }else if(mode == 4){
-                int analog_read;
-                analog_read = avg_input[0];
-
-                status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
-
-                if (single_click_evt[0]){
-                    /* set speed forward */
-                    single_click_evt[0] = 0;
-
-                    persisted_data[14] = 0; /* positive */
-                    persisted_data[16] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor b speed: %d\n", status_value);
-                    mode = 0;
-                    status_mode = 0;
-                }
-                if (double_click_evt[0]){
-                    /* set speed backwards */
-                    double_click_evt[0] = 0;
-
-                    persisted_data[14] = 1; /* negative */
-                    persisted_data[16] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor b speed: %d\n", -status_value);
-                    mode = 0;
-                    status_mode = 0;
-                }
-            }
-            /* No pwm at this mode */
-            pwm[0] = 0;
-            pwm[1] = 0;
             
-            if (double_click_evt[1]){
-                double_click_evt[1] = 0;
-                /*** Set motors to run at configured speeds*/
-                status_set_mode(3, -1, -1);
-                mode_config = 2;
-            }
-        }else if (mode_config == 2){
-            pwm[0] = (long long) motor_a_speed_read_value * (600) / (1000);
-            pwm[1] = (long long) motor_b_speed_read_value * (600) / (1000);
+            }else if (configure_mode == 1){
+                if (flag_menu_init_2){
+                    flag_menu_init_2 = 0;
+                    
+                    /** As we enter configurue show leds in reverse order with menu code */
+                    status_code = 1;
+                    status_set_mode( 6, 5, 2);
+                }
 
-            if (double_click_evt[1]){
-                double_click_evt[1] = 0;
-                /*** Start to configure motors speed again */
-                mode_config = 1;
-                mode = 0;
-                status_mode = 0;
+                status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
+
+                if (double_click_evt[0]){
+                    /** Set the motor speed configuration on eeprom **/
+                    set_motor_speed(status_value);
+                    write_eeprom();
+
+                    /** Go to common mode **/
+                    double_click_evt[0] = 0;
+                    configure_mode = 0;
+                    flag_menu_init = 1; /** Show mode 1 animation */
+                }
+            }
+            
+            
+        }else{
+            if (flag_menu_init_2){
+                if (status_mode == 0){ 
+                    flag_menu_init_2 = 0;
+                    /** When animation ends show all leds in 1 state **/
+                    LED_1 = 1;
+                    LED_2 = 1;
+                    LED_3 = 1;
+                    LED_4 = 1;
+                    LED_5 = 1;
+                }
+            }
+        }
+
+        /** Sequence to change menu (only if there is not configure mode) */
+        if (configure_mode == 0){
+            if (single_click_evt[0]){ 
+                single_click_evt[0] = 0;
+                /** Go to next menu **/
+                current_menu ++;
+                if (current_menu >= 6){
+                    current_menu = 1;
+                }
+                flag_menu_init = 1;
+            }
+            if (single_click_evt[1]){
+                single_click_evt[1] = 0;
+                /** Go to previous menu **/
+                current_menu --;
+                if (current_menu <= 0){
+                    current_menu = 5;
+                }
+                flag_menu_init = 1;
             }
         }
     }
 }
 
-/* End motor integrated tests */
+/** End full program */
+
+
 
 /***** End custom program *****/
 

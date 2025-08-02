@@ -3,18 +3,12 @@
 [d edition pro ]
 [d chip 18F4550 ]
 [d frameptr 4065 ]
-"1 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\abs.c
-[v _abs abs `(i  1 e 2 0 ]
 "9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\aodiv.c
 [v ___aodiv __aodiv `(o  1 e 8 0 ]
 "7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
 "7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
-"1177 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
-[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
-"1817
-[v _vfprintf vfprintf `(i  1 e 2 0 ]
 "4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\float.c
@@ -27,12 +21,6 @@
 [v ___ftmul __ftmul `(f  1 e 4 0 ]
 "19 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\ftsub.c
 [v ___ftsub __ftsub `(f  1 e 4 0 ]
-"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
-[v _fputc fputc `(i  1 e 2 0 ]
-"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputs.c
-[v _fputs fputs `(i  1 e 2 0 ]
-"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\printf.c
-[v _printf printf `(i  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
 "245
@@ -45,39 +33,39 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"75 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"82 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _config_micro config_micro `(v  1 e 1 0 ]
-"210
+"223
 [v _read_analog read_analog `(v  1 e 1 0 ]
-"233
+"246
 [v _read_eeprom read_eeprom `(v  1 e 1 0 ]
-"257
+"270
 [v _write_eeprom write_eeprom `(v  1 e 1 0 ]
-"293
-[v _putch putch `(v  1 e 1 0 ]
-"299
+"312
 [v _enc enc `IIH(v  1 e 1 0 ]
-"313
+"326
 [v _init_vars init_vars `(v  1 e 1 0 ]
-"327
+"340
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
-"382
+"395
 [v _buttons_init buttons_init `(v  1 e 1 0 ]
-"404
+"417
 [v _buttons_loop buttons_loop `(v  1 e 1 0 ]
-"561
+"574
 [v _status_init status_init `(v  1 e 1 0 ]
-"576
+"589
 [v _status_set_mode status_set_mode `(v  1 e 1 0 ]
-"585
+"598
 [v _status_loop status_loop `(v  1 e 1 0 ]
-"743
+"764
 [v _init init `(v  1 e 1 0 ]
-"751
-[v _read_values read_values `(v  1 e 1 0 ]
-"760
+"772
+[v _get_motor_speed get_motor_speed `(ui  1 e 2 0 ]
+"781
+[v _set_motor_speed set_motor_speed `(v  1 e 1 0 ]
+"788
 [v _loop loop `(v  1 e 1 0 ]
-"920
+"909
 [v _main main `(v  1 e 1 0 ]
 [s S57 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
@@ -639,233 +627,105 @@
 [v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
 "11048
 [v _TXIF TXIF `VEb  1 e 0 @31988 ]
-"153 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
-[v _prec prec `i  1 s 2 prec ]
-[v _width width `i  1 s 2 width ]
-"154
-[v _flags flags `uc  1 s 1 flags ]
-"185
-[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
-"63 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"70 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _counter counter `[5]o  1 e 40 0 ]
-"65
+"72
 [v _sum_read sum_read `[10]o  1 e 80 0 ]
-"66
-[v _count_reads count_reads `o  1 e 8 0 ]
-"67
-[v _an_input an_input `[10]i  1 e 20 0 ]
-"68
-[v _avg_input avg_input `[10]i  1 e 20 0 ]
-"71
-[v _persisted_data persisted_data `[128]ui  1 e 256 0 ]
 "73
+[v _count_reads count_reads `o  1 e 8 0 ]
+"74
+[v _an_input an_input `[10]i  1 e 20 0 ]
+"75
+[v _avg_input avg_input `[10]i  1 e 20 0 ]
+"78
+[v _persisted_data persisted_data `[128]ui  1 e 256 0 ]
+"80
 [v _pwm pwm `[2]i  1 e 4 0 ]
-"363
+"376
 [v _last_b last_b `[5]uc  1 e 5 0 ]
-"364
-[v _b_counter b_counter `[5]o  1 e 40 0 ]
-"365
-[v _b_state b_state `[5]uc  1 e 5 0 ]
-"366
-[v _press_evt press_evt `[5]uc  1 e 5 0 ]
-"367
-[v _release_evt release_evt `[5]uc  1 e 5 0 ]
-"368
-[v _b b `[5]uc  1 e 5 0 ]
-"369
-[v _state_counter state_counter `[5]o  1 e 40 0 ]
-"370
-[v _combination_state combination_state `[5]i  1 e 10 0 ]
-"372
-[v _single_click_evt single_click_evt `[5]uc  1 e 5 0 ]
-"373
-[v _double_click_evt double_click_evt `[5]uc  1 e 5 0 ]
-"374
-[v _triple_click_evt triple_click_evt `[5]uc  1 e 5 0 ]
 "377
-[v _iterations iterations `o  1 e 8 0 ]
+[v _b_counter b_counter `[5]o  1 e 40 0 ]
 "378
-[v _sum_iterations sum_iterations `o  1 e 8 0 ]
+[v _b_state b_state `[5]uc  1 e 5 0 ]
 "379
-[v _amount_cycles amount_cycles `o  1 e 8 0 ]
+[v _press_evt press_evt `[5]uc  1 e 5 0 ]
 "380
+[v _release_evt release_evt `[5]uc  1 e 5 0 ]
+"381
+[v _b b `[5]uc  1 e 5 0 ]
+"382
+[v _state_counter state_counter `[5]o  1 e 40 0 ]
+"383
+[v _combination_state combination_state `[5]i  1 e 10 0 ]
+"385
+[v _single_click_evt single_click_evt `[5]uc  1 e 5 0 ]
+"386
+[v _double_click_evt double_click_evt `[5]uc  1 e 5 0 ]
+"387
+[v _triple_click_evt triple_click_evt `[5]uc  1 e 5 0 ]
+"390
+[v _iterations iterations `o  1 e 8 0 ]
+"391
+[v _sum_iterations sum_iterations `o  1 e 8 0 ]
+"392
+[v _amount_cycles amount_cycles `o  1 e 8 0 ]
+"393
 [v _initial_state initial_state `uc  1 e 1 0 ]
-"548
+"561
 [v _status_value status_value `i  1 e 2 0 ]
-"549
+"562
 [v _status_persisted status_persisted `i  1 e 2 0 ]
-"551
+"564
 [v _int_status int_status `uc  1 e 1 0 ]
-"552
+"565
 [v _status_mode status_mode `uc  1 e 1 0 ]
-"553
+"566
 [v _leds leds `[5]uc  1 e 5 0 ]
-"554
+"567
 [v _status_intermitency_counter status_intermitency_counter `i  1 e 2 0 ]
-"555
+"568
 [v _status_next_mode status_next_mode `i  1 e 2 0 ]
-"556
+"569
 [v _status_final_mode status_final_mode `i  1 e 2 0 ]
-"558
+"571
 [v _mode_counter mode_counter `i  1 e 2 0 ]
-"559
+"572
 [v _status_code status_code `i  1 e 2 0 ]
-"735
+"758
 [v _flag_init flag_init `i  1 e 2 0 ]
-"737
-[v _motor_a_speed_read_value motor_a_speed_read_value `i  1 e 2 0 ]
-"738
-[v _motor_b_speed_read_value motor_b_speed_read_value `i  1 e 2 0 ]
-"740
-[v _mode mode `i  1 e 2 0 ]
-"741
-[v _mode_config mode_config `i  1 e 2 0 ]
-"920
+"759
+[v _current_menu current_menu `i  1 e 2 0 ]
+"760
+[v _flag_menu_init flag_menu_init `i  1 e 2 0 ]
+"761
+[v _flag_menu_init_2 flag_menu_init_2 `i  1 e 2 0 ]
+"762
+[v _configure_mode configure_mode `i  1 e 2 0 ]
+"909
 [v _main main `(v  1 e 1 0 ]
 {
-"935
+"924
 } 0
-"327
+"340
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
 {
-"328
+"341
 [v update_pwm@pwm1 pwm1 `i  1 a 2 23 ]
 [v update_pwm@pwm0 pwm0 `i  1 a 2 21 ]
-"359
+"372
 } 0
-"585
+"598
 [v _status_loop status_loop `(v  1 e 1 0 ]
 {
-"703
+"716
 [v status_loop@show_led show_led `i  1 a 2 31 ]
-"620
+"633
 [v status_loop@i i `i  1 a 2 35 ]
-"617
+"630
 [v status_loop@half_led half_led `i  1 a 2 33 ]
-"607
+"620
 [v status_loop@half_status half_status `i  1 a 2 29 ]
-"724
-} 0
-"561
-[v _status_init status_init `(v  1 e 1 0 ]
-{
-"570
-[v status_init@i i `i  1 a 2 6 ]
-"574
-} 0
-"210
-[v _read_analog read_analog `(v  1 e 1 0 ]
-{
-"211
-[v read_analog@aux aux `ui  1 a 2 56 ]
-"212
-[v read_analog@i i `uc  1 a 1 58 ]
-"230
-} 0
-"760
-[v _loop loop `(v  1 e 1 0 ]
-{
-"859
-[v loop@analog_read_1372 analog_read `i  1 a 2 66 ]
-"805
-[v loop@analog_read analog_read `i  1 a 2 64 ]
-"914
-} 0
-"257
-[v _write_eeprom write_eeprom `(v  1 e 1 0 ]
-{
-"258
-[v write_eeprom@addr addr `uc  1 a 1 10 ]
-"290
-} 0
-"576
-[v _status_set_mode status_set_mode `(v  1 e 1 0 ]
-{
-[v status_set_mode@mode mode `uc  1 p 1 wreg ]
-[v status_set_mode@mode mode `uc  1 p 1 wreg ]
-[v status_set_mode@next_mode next_mode `uc  1 p 1 6 ]
-[v status_set_mode@final_mode final_mode `uc  1 p 1 7 ]
-[v status_set_mode@mode mode `uc  1 p 1 8 ]
-"583
-} 0
-"751
-[v _read_values read_values `(v  1 e 1 0 ]
-{
-"752
-[v read_values@b_sign b_sign `i  1 a 2 10 ]
-[v read_values@a_sign a_sign `i  1 a 2 8 ]
-"758
-} 0
-"233
-[v _read_eeprom read_eeprom `(v  1 e 1 0 ]
-{
-"235
-[v read_eeprom@aux aux `ui  1 a 2 10 ]
-"234
-[v read_eeprom@addr addr `uc  1 a 1 12 ]
-"256
-} 0
-"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\printf.c
-[v _printf printf `(i  1 e 2 0 ]
-{
-"8
-[v printf@ap ap `[1]*.30v  1 a 1 40 ]
-"5
-[v printf@fmt fmt `*.31Cuc  1 p 1 37 ]
-"13
-} 0
-"1817 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\doprnt.c
-[v _vfprintf vfprintf `(i  1 e 2 0 ]
-{
-"1820
-[v vfprintf@cfmt cfmt `*.31uc  1 a 1 36 ]
-[s S1853 _IO_FILE 0 ]
-"1817
-[v vfprintf@fp fp `*.39S1853  1 p 2 32 ]
-[v vfprintf@fmt fmt `*.31Cuc  1 p 1 34 ]
-[v vfprintf@ap ap `*.30*.30v  1 p 1 35 ]
-"1840
-} 0
-"1177
-[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
-{
-[u S1866 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
-"1188
-[v vfpfcnvrt@convarg convarg `S1866  1 a 4 27 ]
-"1179
-[v vfpfcnvrt@c c `uc  1 a 1 31 ]
-[v vfpfcnvrt@cp cp `*.31uc  1 a 1 26 ]
-"1180
-[v vfpfcnvrt@done done `a  1 a 1 25 ]
-[s S1853 _IO_FILE 0 ]
-"1177
-[v vfpfcnvrt@fp fp `*.39S1853  1 p 2 20 ]
-[v vfpfcnvrt@fmt fmt `*.30*.31uc  1 p 1 22 ]
-[v vfpfcnvrt@ap ap `*.30*.30v  1 p 1 23 ]
-"1814
-} 0
-"8 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\nf_fputc.c
-[v _fputc fputc `(i  1 e 2 0 ]
-{
-[v fputc@c c `i  1 p 2 7 ]
-[u S1831 . 2 `*.39uc 1 buffer 2 0 `*.39Cuc 1 source 2 0 ]
-[s S1834 _IO_FILE 11 `S1831 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.39S1834  1 p 2 9 ]
-"24
-} 0
-"293 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
-[v _putch putch `(v  1 e 1 0 ]
-{
-[v putch@data data `uc  1 p 1 wreg ]
-[v putch@data data `uc  1 p 1 wreg ]
-[v putch@data data `uc  1 p 1 6 ]
-"297
-} 0
-"1 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\abs.c
-[v _abs abs `(i  1 e 2 0 ]
-{
-[v abs@a a `i  1 p 2 12 ]
-"4
+"737
 } 0
 "7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awmod.c
 [v ___awmod __awmod `(i  1 e 2 0 ]
@@ -877,6 +737,22 @@
 [v ___awmod@dividend dividend `i  1 p 2 6 ]
 [v ___awmod@divisor divisor `i  1 p 2 8 ]
 "34
+} 0
+"574 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+[v _status_init status_init `(v  1 e 1 0 ]
+{
+"583
+[v status_init@i i `i  1 a 2 6 ]
+"587
+} 0
+"223
+[v _read_analog read_analog `(v  1 e 1 0 ]
+{
+"224
+[v read_analog@aux aux `ui  1 a 2 32 ]
+"225
+[v read_analog@i i `uc  1 a 1 34 ]
+"243
 } 0
 "7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -891,68 +767,102 @@
 [v ___awdiv@divisor divisor `i  1 p 2 14 ]
 "41
 } 0
-"91 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul64.c
-[v ___omul __omul `(uo  1 e 8 0 ]
+"788 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+[v _loop loop `(v  1 e 1 0 ]
 {
-"93
-[v ___omul@product product `uo  1 a 8 22 ]
-"91
-[v ___omul@multiplier multiplier `uo  1 p 8 6 ]
-[v ___omul@multiplicand multiplicand `uo  1 p 8 14 ]
-"354
+"901
+} 0
+"270
+[v _write_eeprom write_eeprom `(v  1 e 1 0 ]
+{
+"271
+[v write_eeprom@addr addr `uc  1 a 1 10 ]
+"303
+} 0
+"589
+[v _status_set_mode status_set_mode `(v  1 e 1 0 ]
+{
+[v status_set_mode@mode mode `uc  1 p 1 wreg ]
+[v status_set_mode@mode mode `uc  1 p 1 wreg ]
+[v status_set_mode@next_mode next_mode `uc  1 p 1 6 ]
+[v status_set_mode@final_mode final_mode `uc  1 p 1 7 ]
+[v status_set_mode@mode mode `uc  1 p 1 8 ]
+"596
+} 0
+"781
+[v _set_motor_speed set_motor_speed `(v  1 e 1 0 ]
+{
+[v set_motor_speed@speed speed `ui  1 p 2 6 ]
+"786
+} 0
+"246
+[v _read_eeprom read_eeprom `(v  1 e 1 0 ]
+{
+"248
+[v read_eeprom@aux aux `ui  1 a 2 10 ]
+"247
+[v read_eeprom@addr addr `uc  1 a 1 12 ]
+"269
+} 0
+"772
+[v _get_motor_speed get_motor_speed `(ui  1 e 2 0 ]
+{
+"773
+[v get_motor_speed@speed speed `ui  1 a 2 8 ]
+"779
 } 0
 "9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\aodiv.c
 [v ___aodiv __aodiv `(o  1 e 8 0 ]
 {
 "12
-[v ___aodiv@quotient quotient `o  1 a 8 48 ]
+[v ___aodiv@quotient quotient `o  1 a 8 24 ]
 "13
-[v ___aodiv@sign sign `uc  1 a 1 47 ]
-[v ___aodiv@counter counter `uc  1 a 1 46 ]
+[v ___aodiv@sign sign `uc  1 a 1 23 ]
+[v ___aodiv@counter counter `uc  1 a 1 22 ]
 "9
-[v ___aodiv@dividend dividend `o  1 p 8 30 ]
-[v ___aodiv@divisor divisor `o  1 p 8 38 ]
+[v ___aodiv@dividend dividend `o  1 p 8 6 ]
+[v ___aodiv@divisor divisor `o  1 p 8 14 ]
 "43
 } 0
-"313 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"326 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _init_vars init_vars `(v  1 e 1 0 ]
 {
-"314
+"327
 [v init_vars@i i `i  1 a 2 8 ]
-"325
+"338
 } 0
-"743
+"764
 [v _init init `(v  1 e 1 0 ]
 {
-"749
+"770
 } 0
-"75
+"82
 [v _config_micro config_micro `(v  1 e 1 0 ]
 {
-"207
+"220
 } 0
-"404
+"417
 [v _buttons_loop buttons_loop `(v  1 e 1 0 ]
 {
-"480
-[v buttons_loop@click_evt click_evt `[5]uc  1 a 5 16 ]
-"500
-[v buttons_loop@i_1323 i `i  1 a 2 21 ]
-"423
-[v buttons_loop@i i `i  1 a 2 23 ]
-"540
+"493
+[v buttons_loop@click_evt click_evt `[5]uc  1 a 5 14 ]
+"513
+[v buttons_loop@i_1318 i `i  1 a 2 19 ]
+"436
+[v buttons_loop@i i `i  1 a 2 21 ]
+"553
 } 0
-"382
+"395
 [v _buttons_init buttons_init `(v  1 e 1 0 ]
 {
-"383
-[v buttons_init@i i `i  1 a 2 8 ]
-"402
+"396
+[v buttons_init@i i `i  1 a 2 6 ]
+"415
 } 0
-"299
+"312
 [v _enc enc `IIH(v  1 e 1 0 ]
 {
-"306
+"319
 [v enc@i i `i  1 a 2 4 ]
-"311
+"324
 } 0

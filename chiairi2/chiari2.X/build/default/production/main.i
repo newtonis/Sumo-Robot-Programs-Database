@@ -5921,7 +5921,7 @@ char *tempnam(const char *, const char *);
 #pragma config WRTD = OFF
 #pragma config EBTR0 = OFF, EBTR1 = OFF, EBTR2 = OFF, EBTR3 = OFF
 #pragma config EBTRB = OFF
-# 63 "main.c"
+# 70 "main.c"
 long long int counter[5];
 
 long long sum_read[10];
@@ -6065,6 +6065,12 @@ void config_micro(){
     TRISCbits.RC0 = 0;
     TRISBbits.RB3 = 0;
     TRISCbits.RC2 = 0;
+
+
+    TRISDbits.RD7 = 1;
+    TRISDbits.RD6 = 1;
+    TRISDbits.RD5 = 1;
+    TRISDbits.RD4 = 1;
 
 }
 
@@ -6584,187 +6590,153 @@ void status_loop(){
         }
     }
 }
-# 735 "main.c"
+# 758 "main.c"
 int flag_init;
-
-int motor_a_speed_read_value;
-int motor_b_speed_read_value;
-
-int mode;
-int mode_config;
+int current_menu;
+int flag_menu_init;
+int flag_menu_init_2;
+int configure_mode;
 
 void init(){
     flag_init = 0;
-    motor_a_speed_read_value = 0;
-    motor_b_speed_read_value = 0;
-    mode = 0;
-    mode_config = 1;
+    current_menu = 0;
+    flag_menu_init = 0;
+    flag_menu_init_2 = 0;
+    configure_mode = 0;
 }
 
-void read_values(){
-    int a_sign, b_sign;
-    a_sign = (persisted_data[13] == 0 ? 1 : -1);
-    b_sign = (persisted_data[14] == 0 ? 1 : -1);
+unsigned int get_motor_speed(){
+    unsigned int speed;
+    speed = persisted_data[0];
+    if (speed >= 1000){
+        speed = 1000;
+    }
+    return speed;
+}
 
-    motor_a_speed_read_value = (a_sign) * persisted_data[15];
-    motor_b_speed_read_value = (b_sign) * persisted_data[16];
+void set_motor_speed(unsigned int speed){
+    if (speed >= 1000){
+        speed = 1000;
+    }
+    persisted_data[0] = speed;
 }
 
 void loop(){
-    if (flag_init == 0 && !initial_state){
+    if (!flag_init && !initial_state){
         flag_init = 1;
+
+
+
 
         read_eeprom();
 
-        read_values();
-
         status_set_mode( 4 , 0 , -1);
 
-        printf("motor a speed: %d\n", motor_a_speed_read_value);
-        printf("motor b speed: %d\n", motor_b_speed_read_value);
-    }
-    if (flag_init == 1){
-        if (mode_config == 1){
-            if (mode == 0 && status_mode == 0){
-                mode = 1;
-                status_code = 1;
-                if (motor_a_speed_read_value >= 0){
-                    status_set_mode( 6, 4, 1);
-                }else if (motor_a_speed_read_value <= 0){
-                    status_set_mode( 6, 5, 1);
-                }
-            }else if(mode == 1){
-                if (motor_a_speed_read_value >= 0){
-                    status_value = motor_a_speed_read_value;
-                }else{
-                    status_value = -motor_a_speed_read_value;
-                }
-                if (single_click_evt[0]){
-                    mode = 2;
-                    status_code = 2;
-                    if (motor_b_speed_read_value >= 0){
-                        status_set_mode( 6, 4, 1);
-                    }else if (motor_b_speed_read_value <= 0){
-                        status_set_mode( 6, 5, 1);
+    }else if (flag_init == 1 && current_menu == 0){
+        if (status_mode == 0){
+
+
+
+
+
+
+
+            current_menu = 1;
+            flag_menu_init = 1;
+        }
+    }else if (flag_init == 1 && current_menu != 0){
+
+
+        if (flag_menu_init){
+
+            flag_menu_init = 0;
+            flag_menu_init_2 = 1;
+            status_code = current_menu;
+            status_set_mode( 6, 4, 0);
+        }
+
+        if (current_menu == 1){
+
+            if (configure_mode == 0){
+                if (flag_menu_init_2){
+                    if (status_mode == 0){
+                        flag_menu_init_2 = 0;
+
+                        status_value = get_motor_speed();
+                        status_set_mode( 1, 0, -1);
                     }
-                    single_click_evt[0] = 0;
                 }
-                if (double_click_evt[0]){
-                    double_click_evt[0] = 0;
-                    mode = 3;
-                    status_set_mode( 2, -1, -1);
-                }
-            }else if(mode == 3){
-                int analog_read;
-                analog_read = avg_input[0];
 
-                status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
-
-                if (single_click_evt[0]){
-
-                    single_click_evt[0] = 0;
-
-                    persisted_data[13] = 0;
-                    persisted_data[15] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor a speed: %d\n", status_value);
-                    mode = 0;
-                    status_mode = 0;
-                }
                 if (double_click_evt[0]){
 
                     double_click_evt[0] = 0;
-
-                    persisted_data[13] = 1;
-                    persisted_data[15] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor a speed: %d\n", -status_value);
-                    mode = 0;
-                    status_mode = 0;
+                    configure_mode = 1;
+                    flag_menu_init_2 = 1;
                 }
 
-            }else if(mode == 2){
-                if (motor_b_speed_read_value >= 0){
-                    status_value = motor_b_speed_read_value;
-                }else{
-                    status_value = -motor_b_speed_read_value;
-                }
-                if (single_click_evt[0]){
-                    mode = 1;
+            }else if (configure_mode == 1){
+                if (flag_menu_init_2){
+                    flag_menu_init_2 = 0;
+
+
                     status_code = 1;
-                    if (motor_a_speed_read_value >= 0){
-                        status_set_mode( 6, 4, 1);
-                    }else if (motor_a_speed_read_value <= 0){
-                        status_set_mode( 6, 5, 1);
-                    }
-                    single_click_evt[0] = 0;
+                    status_set_mode( 6, 5, 2);
                 }
-                if (double_click_evt[0]){
-                    double_click_evt[0] = 0;
-                    mode = 4;
-                    status_set_mode( 2, -1, -1);
-                }
-            }else if(mode == 4){
-                int analog_read;
-                analog_read = avg_input[0];
 
-                status_value = (int) ( (long long) analog_read * 1000 / (long long) 1023 );
+                status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
 
-                if (single_click_evt[0]){
-
-                    single_click_evt[0] = 0;
-
-                    persisted_data[14] = 0;
-                    persisted_data[16] = status_value;
-                    write_eeprom();
-                    read_values();
-
-                    printf("Write eeprom motor b speed: %d\n", status_value);
-                    mode = 0;
-                    status_mode = 0;
-                }
                 if (double_click_evt[0]){
 
-                    double_click_evt[0] = 0;
-
-                    persisted_data[14] = 1;
-                    persisted_data[16] = status_value;
+                    set_motor_speed(status_value);
                     write_eeprom();
-                    read_values();
 
-                    printf("Write eeprom motor b speed: %d\n", -status_value);
-                    mode = 0;
-                    status_mode = 0;
+
+                    double_click_evt[0] = 0;
+                    configure_mode = 0;
+                    flag_menu_init = 1;
                 }
             }
 
-            pwm[0] = 0;
-            pwm[1] = 0;
 
-            if (double_click_evt[1]){
-                double_click_evt[1] = 0;
+        }else{
+            if (flag_menu_init_2){
+                if (status_mode == 0){
+                    flag_menu_init_2 = 0;
 
-                status_set_mode(3, -1, -1);
-                mode_config = 2;
+                    PORTBbits.RB0 = 1;
+                    PORTBbits.RB1 = 1;
+                    PORTBbits.RB2 = 1;
+                    PORTBbits.RB4 = 1;
+                    PORTBbits.RB5 = 1;
+                }
             }
-        }else if (mode_config == 2){
-            pwm[0] = (long long) motor_a_speed_read_value * (600) / (1000);
-            pwm[1] = (long long) motor_b_speed_read_value * (600) / (1000);
+        }
 
-            if (double_click_evt[1]){
-                double_click_evt[1] = 0;
 
-                mode_config = 1;
-                mode = 0;
-                status_mode = 0;
+        if (configure_mode == 0){
+            if (single_click_evt[0]){
+                single_click_evt[0] = 0;
+
+                current_menu ++;
+                if (current_menu >= 6){
+                    current_menu = 1;
+                }
+                flag_menu_init = 1;
+            }
+            if (single_click_evt[1]){
+                single_click_evt[1] = 0;
+
+                current_menu --;
+                if (current_menu <= 0){
+                    current_menu = 5;
+                }
+                flag_menu_init = 1;
             }
         }
     }
 }
+
+
 
 
 
