@@ -17,6 +17,7 @@ int current_menu;
 int flag_menu_init;
 int flag_menu_init_2;
 int configure_mode;
+int robot_state;
 
 void init(){
     flag_init = 0;
@@ -24,6 +25,7 @@ void init(){
     flag_menu_init = 0;
     flag_menu_init_2 = 0;
     configure_mode = 0;
+    robot_state = 0;
 }
 
 unsigned int get_motor_speed(){
@@ -69,7 +71,7 @@ void loop(){
         /* led animation of status 4, then go to status 0 */
         status_set_mode( 4 , 0 , -1); 
 
-    }else if (flag_init == 1 && current_menu == 0){ 
+    }else if (flag_init == 1 && robot_state == 0){ 
         if (status_mode == 0){
             /** we are in initial state and led initial sequence is completed **/
 
@@ -77,11 +79,11 @@ void loop(){
                 -   Show the current motor speed
                 -   Show menu code 1
             **/
-
+            robot_state = 1; /** We are in menu mode **/
             current_menu = 1; /** We enter menu 1 **/
             flag_menu_init = 1;
         }
-    }else if (flag_init == 1 && current_menu != 0){ 
+    }else if (robot_state == 1){ 
         /** We are in the Robot Menu **/
 
         if (flag_menu_init){
@@ -137,12 +139,12 @@ void loop(){
             
             
         }else if (current_menu == 2){
-            /** Configure the robot program **/
+            /** Configure the robot default program **/
             if (configure_mode == 0){
                 if (flag_menu_init_2){
                     if (status_mode == 0){
                         flag_menu_init_2 = 0;
-                        /** When animation ends how the motor speed value **/
+                        /** When animation ends show the robot program **/
                         status_value = get_robot_program();
                         status_set_mode( 7, 0, -1);
                     }
@@ -163,14 +165,22 @@ void loop(){
                     status_code = 2;
                     status_set_mode( 6, 5, 8);
                 }
-                /** Configured program between 0 and 31 **/ 
-                status_value = (long long) avg_input[0] * (long long) 32 / (long long) 1024;
-                if (status_value >= 4){ /** Cap the max program count  **/ 
-                    status_value = 4;
+                /** Configured program between 0 and 3 **/ 
+                if (single_click_evt[1]){
+                    status_value ++;
+                    if (status_value >= 4){ /** Cap maximum configured program */
+                        status_value = 0;
+                    }
                 }
-
+                if (single_click_evt[0]){
+                    if (status_value <= 0){
+                        status_value = 3;
+                    }else{
+                        status_value --;
+                    }
+                }
                 if (double_click_evt[0]){
-                    /** Set the motor speed configuration on eeprom **/
+                    /** Set the program configuration on eeprom **/
                     set_robot_program(status_value);
                     write_eeprom();
 
@@ -180,6 +190,11 @@ void loop(){
                     flag_menu_init = 1; /** Show mode 1 animation */
                 }
             }
+        }else if(current_menu == 3){
+
+        }else if (current_menu == 4){
+
+        }else if (current_menu == 5){
 
         }else{
             if (flag_menu_init_2){
@@ -215,6 +230,16 @@ void loop(){
                 }
                 flag_menu_init = 1;
             }
+            if (double_click_evt[1]){
+                /** Run the robot **/
+                robot_state = 2;
+                flag_menu_init = 1;
+            }
+        }
+    }else if (robot_state == 2){
+        if (flag_menu_init){
+            
+            flag_menu_init = 0;
         }
     }
 }
