@@ -572,6 +572,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2484
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc/pic18f4550.h: 2484: extern volatile PORTBbits_t PORTBbits __attribute__((address(0xF81)));
 [v _PORTBbits `VS106 ~T0 @X0 0 e@3969 ]
+[v F3616 `(v ~T0 @X0 0 tf1`i ]
+[v F3627 `(v ~T0 @X0 0 tf1`i ]
 [p mainexit ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc/pic18f4550.h: 55: __asm("SPPDATA equ 0F62h");
@@ -2838,697 +2840,1758 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 503 ]
 [e :U 502 ]
-"666
-[; ;main.c: 666:     }else if(status_mode == 3){
+"667
+[; ;main.c: 667:     }else if(status_mode == 7 || status_mode == 8){
 }
 [e $U 506  ]
 [e :U 487 ]
-[e $ ! == -> _status_mode `i -> 3 `i 507  ]
+[e $ ! || == -> _status_mode `i -> 7 `i == -> _status_mode `i -> 8 `i 507  ]
 {
-"667
-[; ;main.c: 667:         if (counter[2] >= 20){
-[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o 508  ]
-{
-"668
-[; ;main.c: 668:             counter[2] = 0;
-[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
 "669
-[; ;main.c: 669:         }
-}
-[e :U 508 ]
-"671
-[; ;main.c: 671:         PORTBbits.RB0 = counter[2] >= 10;
-[e = . . _PORTBbits 0 0 -> -> >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
-"672
-[; ;main.c: 672:         PORTBbits.RB1 = counter[2] < 10;
-[e = . . _PORTBbits 0 1 -> -> < *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
-"673
-[; ;main.c: 673:         PORTBbits.RB2 = counter[2] >= 10;
-[e = . . _PORTBbits 0 2 -> -> >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
-"674
-[; ;main.c: 674:         PORTBbits.RB4 = counter[2] < 10;
-[e = . . _PORTBbits 0 4 -> -> < *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
-"675
-[; ;main.c: 675:         PORTBbits.RB5 = counter[2] >= 10;
-[e = . . _PORTBbits 0 5 -> -> >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
-"676
-[; ;main.c: 676:     }else if(status_mode == 4){
-}
-[e $U 509  ]
-[e :U 507 ]
-[e $ ! == -> _status_mode `i -> 4 `i 510  ]
+[; ;main.c: 669:         if (counter[2] >= 10){
+[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o 508  ]
 {
+"670
+[; ;main.c: 670:             counter[2] = 0;
+[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"671
+[; ;main.c: 671:             status_intermitency_counter ++;
+[e ++ _status_intermitency_counter -> 1 `i ]
+"672
+[; ;main.c: 672:             if (status_intermitency_counter >= 10){
+[e $ ! >= _status_intermitency_counter -> 10 `i 509  ]
+{
+"673
+[; ;main.c: 673:                 status_intermitency_counter = 0;
+[e = _status_intermitency_counter -> 0 `i ]
+"674
+[; ;main.c: 674:             }
+}
+[e :U 509 ]
 "677
-[; ;main.c: 677:         if (counter[2] >= 20){
-[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o 511  ]
+[; ;main.c: 677:             if (status_value >= 32){
+[e $ ! >= _status_value -> 32 `i 510  ]
 {
 "678
-[; ;main.c: 678:             counter[2] = 0;
-[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+[; ;main.c: 678:                 status_value = 31;
+[e = _status_value -> 31 `i ]
 "679
-[; ;main.c: 679:             mode_counter ++;
-[e ++ _mode_counter -> 1 `i ]
+[; ;main.c: 679:             }
+}
+[e :U 510 ]
 "680
-[; ;main.c: 680:             if (mode_counter >= 5){
-[e $ ! >= _mode_counter -> 5 `i 512  ]
+[; ;main.c: 680:             if (status_value < 0){
+[e $ ! < _status_value -> 0 `i 511  ]
 {
 "681
-[; ;main.c: 681:                 status_set_mode(status_next_mode , 0, -1);
-[e ( _status_set_mode (3 , , -> _status_next_mode `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+[; ;main.c: 681:                 status_value = 0;
+[e = _status_value -> 0 `i ]
 "682
 [; ;main.c: 682:             }
 }
-[e :U 512 ]
-"683
-[; ;main.c: 683:         }
-}
 [e :U 511 ]
-"684
-[; ;main.c: 684:         PORTBbits.RB0 = (mode_counter == 0);
-[e = . . _PORTBbits 0 0 -> -> == _mode_counter -> 0 `i `i `uc ]
+"683
+[; ;main.c: 683:             status_persisted = status_value;
+[e = _status_persisted _status_value ]
 "685
-[; ;main.c: 685:         PORTBbits.RB1 = (mode_counter == 1);
-[e = . . _PORTBbits 0 1 -> -> == _mode_counter -> 1 `i `i `uc ]
-"686
-[; ;main.c: 686:         PORTBbits.RB2 = (mode_counter == 2);
-[e = . . _PORTBbits 0 2 -> -> == _mode_counter -> 2 `i `i `uc ]
-"687
-[; ;main.c: 687:         PORTBbits.RB4 = (mode_counter == 3);
-[e = . . _PORTBbits 0 4 -> -> == _mode_counter -> 3 `i `i `uc ]
-"688
-[; ;main.c: 688:         PORTBbits.RB5 = (mode_counter == 4);
-[e = . . _PORTBbits 0 5 -> -> == _mode_counter -> 4 `i `i `uc ]
-"690
-[; ;main.c: 690:     }else if(status_mode == 5){
+[; ;main.c: 685:         }
 }
-[e $U 513  ]
-[e :U 510 ]
-[e $ ! == -> _status_mode `i -> 5 `i 514  ]
-{
+[e :U 508 ]
+"687
+[; ;main.c: 687:         leds[0] = (status_persisted % 32 >= 16);
+[e = *U + &U _leds * -> -> -> 0 `i `ui `ux -> -> # *U &U _leds `ui `ux -> -> >= % _status_persisted -> 32 `i -> 16 `i `i `uc ]
+"688
+[; ;main.c: 688:         leds[1] = (status_persisted % 16 >= 8);
+[e = *U + &U _leds * -> -> -> 1 `i `ui `ux -> -> # *U &U _leds `ui `ux -> -> >= % _status_persisted -> 16 `i -> 8 `i `i `uc ]
+"689
+[; ;main.c: 689:         leds[2] = (status_persisted % 8 >= 4);
+[e = *U + &U _leds * -> -> -> 2 `i `ui `ux -> -> # *U &U _leds `ui `ux -> -> >= % _status_persisted -> 8 `i -> 4 `i `i `uc ]
+"690
+[; ;main.c: 690:         leds[3] = (status_persisted % 4 >= 2);
+[e = *U + &U _leds * -> -> -> 3 `i `ui `ux -> -> # *U &U _leds `ui `ux -> -> >= % _status_persisted -> 4 `i -> 2 `i `i `uc ]
 "691
-[; ;main.c: 691:         if (counter[2] >= 20){
-[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o 515  ]
-{
-"692
-[; ;main.c: 692:             counter[2] = 0;
-[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
-"693
-[; ;main.c: 693:             mode_counter ++;
-[e ++ _mode_counter -> 1 `i ]
+[; ;main.c: 691:         leds[4] = (status_persisted % 2 >= 1);
+[e = *U + &U _leds * -> -> -> 4 `i `ui `ux -> -> # *U &U _leds `ui `ux -> -> >= % _status_persisted -> 2 `i -> 1 `i `i `uc ]
 "694
-[; ;main.c: 694:             if (mode_counter >= 5){
-[e $ ! >= _mode_counter -> 5 `i 516  ]
+[; ;main.c: 694:         if (status_mode == 7){
+[e $ ! == -> _status_mode `i -> 7 `i 512  ]
 {
 "695
-[; ;main.c: 695:                 status_set_mode(status_next_mode , 0, -1);
-[e ( _status_set_mode (3 , , -> _status_next_mode `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+[; ;main.c: 695:             PORTBbits.RB0 = leds[0];
+[e = . . _PORTBbits 0 0 -> *U + &U _leds * -> -> -> 0 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
 "696
-[; ;main.c: 696:             }
+[; ;main.c: 696:             PORTBbits.RB1 = leds[1];
+[e = . . _PORTBbits 0 1 -> *U + &U _leds * -> -> -> 1 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"697
+[; ;main.c: 697:             PORTBbits.RB2 = leds[2];
+[e = . . _PORTBbits 0 2 -> *U + &U _leds * -> -> -> 2 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"698
+[; ;main.c: 698:             PORTBbits.RB4 = leds[3];
+[e = . . _PORTBbits 0 4 -> *U + &U _leds * -> -> -> 3 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"699
+[; ;main.c: 699:             PORTBbits.RB5 = leds[4];
+[e = . . _PORTBbits 0 5 -> *U + &U _leds * -> -> -> 4 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"700
+[; ;main.c: 700:         }else if(status_mode == 8){
+}
+[e $U 513  ]
+[e :U 512 ]
+[e $ ! == -> _status_mode `i -> 8 `i 514  ]
+{
+"701
+[; ;main.c: 701:             if (status_intermitency_counter >= 2){
+[e $ ! >= _status_intermitency_counter -> 2 `i 515  ]
+{
+"702
+[; ;main.c: 702:                 PORTBbits.RB0 = leds[0];
+[e = . . _PORTBbits 0 0 -> *U + &U _leds * -> -> -> 0 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"703
+[; ;main.c: 703:                 PORTBbits.RB1 = leds[1];
+[e = . . _PORTBbits 0 1 -> *U + &U _leds * -> -> -> 1 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"704
+[; ;main.c: 704:                 PORTBbits.RB2 = leds[2];
+[e = . . _PORTBbits 0 2 -> *U + &U _leds * -> -> -> 2 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"705
+[; ;main.c: 705:                 PORTBbits.RB4 = leds[3];
+[e = . . _PORTBbits 0 4 -> *U + &U _leds * -> -> -> 3 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"706
+[; ;main.c: 706:                 PORTBbits.RB5 = leds[4];
+[e = . . _PORTBbits 0 5 -> *U + &U _leds * -> -> -> 4 `i `ui `ux -> -> # *U &U _leds `ui `ux `uc ]
+"707
+[; ;main.c: 707:             }else{
+}
+[e $U 516  ]
+[e :U 515 ]
+{
+"708
+[; ;main.c: 708:                 PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+"709
+[; ;main.c: 709:                 PORTBbits.RB1 = 0;
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"710
+[; ;main.c: 710:                 PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"711
+[; ;main.c: 711:                 PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"712
+[; ;main.c: 712:                 PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"713
+[; ;main.c: 713:             }
 }
 [e :U 516 ]
-"697
-[; ;main.c: 697:         }
+"714
+[; ;main.c: 714:         }
 }
-[e :U 515 ]
-"698
-[; ;main.c: 698:         PORTBbits.RB0 = (mode_counter == 4);
-[e = . . _PORTBbits 0 0 -> -> == _mode_counter -> 4 `i `i `uc ]
-"699
-[; ;main.c: 699:         PORTBbits.RB1 = (mode_counter == 3);
-[e = . . _PORTBbits 0 1 -> -> == _mode_counter -> 3 `i `i `uc ]
-"700
-[; ;main.c: 700:         PORTBbits.RB2 = (mode_counter == 2);
-[e = . . _PORTBbits 0 2 -> -> == _mode_counter -> 2 `i `i `uc ]
-"701
-[; ;main.c: 701:         PORTBbits.RB4 = (mode_counter == 1);
-[e = . . _PORTBbits 0 4 -> -> == _mode_counter -> 1 `i `i `uc ]
-"702
-[; ;main.c: 702:         PORTBbits.RB5 = (mode_counter == 0);
-[e = . . _PORTBbits 0 5 -> -> == _mode_counter -> 0 `i `i `uc ]
-"704
-[; ;main.c: 704:     }else if(status_mode == 6){
+[e :U 514 ]
+[e :U 513 ]
+"715
+[; ;main.c: 715:     }else if(status_mode == 3){
 }
 [e $U 517  ]
-[e :U 514 ]
-[e $ ! == -> _status_mode `i -> 6 `i 518  ]
+[e :U 507 ]
+[e $ ! == -> _status_mode `i -> 3 `i 518  ]
 {
-"705
-[; ;main.c: 705:         if (counter[2] >= 10){
-[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o 519  ]
+"716
+[; ;main.c: 716:         if (counter[2] >= 20){
+[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o 519  ]
 {
-"706
-[; ;main.c: 706:             counter[2] = 0;
+"717
+[; ;main.c: 717:             counter[2] = 0;
 [e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
-"707
-[; ;main.c: 707:             status_intermitency_counter ++;
-[e ++ _status_intermitency_counter -> 1 `i ]
-"708
-[; ;main.c: 708:             if (status_intermitency_counter >= 10){
-[e $ ! >= _status_intermitency_counter -> 10 `i 520  ]
-{
-"709
-[; ;main.c: 709:                 status_intermitency_counter = 0;
-[e = _status_intermitency_counter -> 0 `i ]
-"710
-[; ;main.c: 710:             }
-}
-[e :U 520 ]
-"711
-[; ;main.c: 711:             mode_counter ++;
-[e ++ _mode_counter -> 1 `i ]
-"712
-[; ;main.c: 712:             if (mode_counter >= 20){
-[e $ ! >= _mode_counter -> 20 `i 521  ]
-{
-"713
-[; ;main.c: 713:                 status_set_mode(status_next_mode, status_final_mode, -1);
-[e ( _status_set_mode (3 , , -> _status_next_mode `uc -> _status_final_mode `uc -> -U -> 1 `i `uc ]
-"714
-[; ;main.c: 714:             }
-}
-[e :U 521 ]
-"715
-[; ;main.c: 715:         }
+"718
+[; ;main.c: 718:         }
 }
 [e :U 519 ]
-"716
-[; ;main.c: 716:         int show_led;
-[v _show_led `i ~T0 @X0 1 a ]
-"717
-[; ;main.c: 717:         show_led = status_intermitency_counter >= 2;
-[e = _show_led -> >= _status_intermitency_counter -> 2 `i `i ]
-"718
-[; ;main.c: 718:         if (status_code >= 32){
-[e $ ! >= _status_code -> 32 `i 522  ]
-{
-"719
-[; ;main.c: 719:             status_code = 32;
-[e = _status_code -> 32 `i ]
 "720
-[; ;main.c: 720:         }else if (status_code <= 0){
-}
-[e $U 523  ]
-[e :U 522 ]
-[e $ ! <= _status_code -> 0 `i 524  ]
-{
+[; ;main.c: 720:         PORTBbits.RB0 = counter[2] >= 10;
+[e = . . _PORTBbits 0 0 -> -> >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
 "721
-[; ;main.c: 721:             status_code = 1;
-[e = _status_code -> 1 `i ]
+[; ;main.c: 721:         PORTBbits.RB1 = counter[2] < 10;
+[e = . . _PORTBbits 0 1 -> -> < *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
 "722
-[; ;main.c: 722:         }
-}
-[e :U 524 ]
-[e :U 523 ]
+[; ;main.c: 722:         PORTBbits.RB2 = counter[2] >= 10;
+[e = . . _PORTBbits 0 2 -> -> >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
 "723
-[; ;main.c: 723:         if (show_led){
-[e $ ! != _show_led -> 0 `i 525  ]
-{
+[; ;main.c: 723:         PORTBbits.RB4 = counter[2] < 10;
+[e = . . _PORTBbits 0 4 -> -> < *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
 "724
-[; ;main.c: 724:             PORTBbits.RB0 = (status_code % 32 >= 16);
-[e = . . _PORTBbits 0 0 -> -> >= % _status_code -> 32 `i -> 16 `i `i `uc ]
+[; ;main.c: 724:         PORTBbits.RB5 = counter[2] >= 10;
+[e = . . _PORTBbits 0 5 -> -> >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o `i `uc ]
 "725
-[; ;main.c: 725:             PORTBbits.RB1 = (status_code % 16 >= 8);
-[e = . . _PORTBbits 0 1 -> -> >= % _status_code -> 16 `i -> 8 `i `i `uc ]
-"726
-[; ;main.c: 726:             PORTBbits.RB2 = (status_code % 8 >= 4);
-[e = . . _PORTBbits 0 2 -> -> >= % _status_code -> 8 `i -> 4 `i `i `uc ]
-"727
-[; ;main.c: 727:             PORTBbits.RB4 = (status_code % 4 >= 2);
-[e = . . _PORTBbits 0 4 -> -> >= % _status_code -> 4 `i -> 2 `i `i `uc ]
-"728
-[; ;main.c: 728:             PORTBbits.RB5 = (status_code % 2 >= 1);
-[e = . . _PORTBbits 0 5 -> -> >= % _status_code -> 2 `i -> 1 `i `i `uc ]
-"729
-[; ;main.c: 729:         }else{
+[; ;main.c: 725:     }else if(status_mode == 4){
 }
-[e $U 526  ]
-[e :U 525 ]
+[e $U 520  ]
+[e :U 518 ]
+[e $ ! == -> _status_mode `i -> 4 `i 521  ]
+{
+"726
+[; ;main.c: 726:         if (counter[2] >= 20){
+[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o 522  ]
+{
+"727
+[; ;main.c: 727:             counter[2] = 0;
+[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"728
+[; ;main.c: 728:             mode_counter ++;
+[e ++ _mode_counter -> 1 `i ]
+"729
+[; ;main.c: 729:             if (mode_counter >= 5){
+[e $ ! >= _mode_counter -> 5 `i 523  ]
 {
 "730
-[; ;main.c: 730:             PORTBbits.RB0 = 0;
-[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 730:                 status_set_mode(status_next_mode , 0, -1);
+[e ( _status_set_mode (3 , , -> _status_next_mode `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
 "731
-[; ;main.c: 731:             PORTBbits.RB1 = 0;
-[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 731:             }
+}
+[e :U 523 ]
 "732
-[; ;main.c: 732:             PORTBbits.RB2 = 0;
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 732:         }
+}
+[e :U 522 ]
 "733
-[; ;main.c: 733:             PORTBbits.RB4 = 0;
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 733:         PORTBbits.RB0 = (mode_counter == 0);
+[e = . . _PORTBbits 0 0 -> -> == _mode_counter -> 0 `i `i `uc ]
 "734
-[; ;main.c: 734:             PORTBbits.RB5 = 0;
-[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 734:         PORTBbits.RB1 = (mode_counter == 1);
+[e = . . _PORTBbits 0 1 -> -> == _mode_counter -> 1 `i `i `uc ]
 "735
-[; ;main.c: 735:         }
+[; ;main.c: 735:         PORTBbits.RB2 = (mode_counter == 2);
+[e = . . _PORTBbits 0 2 -> -> == _mode_counter -> 2 `i `i `uc ]
+"736
+[; ;main.c: 736:         PORTBbits.RB4 = (mode_counter == 3);
+[e = . . _PORTBbits 0 4 -> -> == _mode_counter -> 3 `i `i `uc ]
+"737
+[; ;main.c: 737:         PORTBbits.RB5 = (mode_counter == 4);
+[e = . . _PORTBbits 0 5 -> -> == _mode_counter -> 4 `i `i `uc ]
+"739
+[; ;main.c: 739:     }else if(status_mode == 5){
+}
+[e $U 524  ]
+[e :U 521 ]
+[e $ ! == -> _status_mode `i -> 5 `i 525  ]
+{
+"740
+[; ;main.c: 740:         if (counter[2] >= 20){
+[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o 526  ]
+{
+"741
+[; ;main.c: 741:             counter[2] = 0;
+[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"742
+[; ;main.c: 742:             mode_counter ++;
+[e ++ _mode_counter -> 1 `i ]
+"743
+[; ;main.c: 743:             if (mode_counter >= 5){
+[e $ ! >= _mode_counter -> 5 `i 527  ]
+{
+"744
+[; ;main.c: 744:                 status_set_mode(status_next_mode , 0, -1);
+[e ( _status_set_mode (3 , , -> _status_next_mode `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"745
+[; ;main.c: 745:             }
+}
+[e :U 527 ]
+"746
+[; ;main.c: 746:         }
 }
 [e :U 526 ]
-"736
-[; ;main.c: 736:     }
+"747
+[; ;main.c: 747:         PORTBbits.RB0 = (mode_counter == 4);
+[e = . . _PORTBbits 0 0 -> -> == _mode_counter -> 4 `i `i `uc ]
+"748
+[; ;main.c: 748:         PORTBbits.RB1 = (mode_counter == 3);
+[e = . . _PORTBbits 0 1 -> -> == _mode_counter -> 3 `i `i `uc ]
+"749
+[; ;main.c: 749:         PORTBbits.RB2 = (mode_counter == 2);
+[e = . . _PORTBbits 0 2 -> -> == _mode_counter -> 2 `i `i `uc ]
+"750
+[; ;main.c: 750:         PORTBbits.RB4 = (mode_counter == 1);
+[e = . . _PORTBbits 0 4 -> -> == _mode_counter -> 1 `i `i `uc ]
+"751
+[; ;main.c: 751:         PORTBbits.RB5 = (mode_counter == 0);
+[e = . . _PORTBbits 0 5 -> -> == _mode_counter -> 0 `i `i `uc ]
+"753
+[; ;main.c: 753:     }else if(status_mode == 6){
 }
-[e :U 518 ]
+[e $U 528  ]
+[e :U 525 ]
+[e $ ! == -> _status_mode `i -> 6 `i 529  ]
+{
+"754
+[; ;main.c: 754:         if (counter[2] >= 10){
+[e $ ! >= *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o 530  ]
+{
+"755
+[; ;main.c: 755:             counter[2] = 0;
+[e = *U + &U _counter * -> -> -> 2 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"756
+[; ;main.c: 756:             status_intermitency_counter ++;
+[e ++ _status_intermitency_counter -> 1 `i ]
+"757
+[; ;main.c: 757:             if (status_intermitency_counter >= 10){
+[e $ ! >= _status_intermitency_counter -> 10 `i 531  ]
+{
+"758
+[; ;main.c: 758:                 status_intermitency_counter = 0;
+[e = _status_intermitency_counter -> 0 `i ]
+"759
+[; ;main.c: 759:             }
+}
+[e :U 531 ]
+"760
+[; ;main.c: 760:             mode_counter ++;
+[e ++ _mode_counter -> 1 `i ]
+"761
+[; ;main.c: 761:             if (mode_counter >= 20){
+[e $ ! >= _mode_counter -> 20 `i 532  ]
+{
+"762
+[; ;main.c: 762:                 status_set_mode(status_next_mode, status_final_mode, -1);
+[e ( _status_set_mode (3 , , -> _status_next_mode `uc -> _status_final_mode `uc -> -U -> 1 `i `uc ]
+"763
+[; ;main.c: 763:             }
+}
+[e :U 532 ]
+"764
+[; ;main.c: 764:         }
+}
+[e :U 530 ]
+"765
+[; ;main.c: 765:         int show_led;
+[v _show_led `i ~T0 @X0 1 a ]
+"766
+[; ;main.c: 766:         show_led = status_intermitency_counter >= 2;
+[e = _show_led -> >= _status_intermitency_counter -> 2 `i `i ]
+"767
+[; ;main.c: 767:         if (status_code >= 32){
+[e $ ! >= _status_code -> 32 `i 533  ]
+{
+"768
+[; ;main.c: 768:             status_code = 32;
+[e = _status_code -> 32 `i ]
+"769
+[; ;main.c: 769:         }else if (status_code <= 0){
+}
+[e $U 534  ]
+[e :U 533 ]
+[e $ ! <= _status_code -> 0 `i 535  ]
+{
+"770
+[; ;main.c: 770:             status_code = 1;
+[e = _status_code -> 1 `i ]
+"771
+[; ;main.c: 771:         }
+}
+[e :U 535 ]
+[e :U 534 ]
+"772
+[; ;main.c: 772:         if (show_led){
+[e $ ! != _show_led -> 0 `i 536  ]
+{
+"773
+[; ;main.c: 773:             PORTBbits.RB0 = (status_code % 32 >= 16);
+[e = . . _PORTBbits 0 0 -> -> >= % _status_code -> 32 `i -> 16 `i `i `uc ]
+"774
+[; ;main.c: 774:             PORTBbits.RB1 = (status_code % 16 >= 8);
+[e = . . _PORTBbits 0 1 -> -> >= % _status_code -> 16 `i -> 8 `i `i `uc ]
+"775
+[; ;main.c: 775:             PORTBbits.RB2 = (status_code % 8 >= 4);
+[e = . . _PORTBbits 0 2 -> -> >= % _status_code -> 8 `i -> 4 `i `i `uc ]
+"776
+[; ;main.c: 776:             PORTBbits.RB4 = (status_code % 4 >= 2);
+[e = . . _PORTBbits 0 4 -> -> >= % _status_code -> 4 `i -> 2 `i `i `uc ]
+"777
+[; ;main.c: 777:             PORTBbits.RB5 = (status_code % 2 >= 1);
+[e = . . _PORTBbits 0 5 -> -> >= % _status_code -> 2 `i -> 1 `i `i `uc ]
+"778
+[; ;main.c: 778:         }else{
+}
+[e $U 537  ]
+[e :U 536 ]
+{
+"779
+[; ;main.c: 779:             PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+"780
+[; ;main.c: 780:             PORTBbits.RB1 = 0;
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"781
+[; ;main.c: 781:             PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"782
+[; ;main.c: 782:             PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"783
+[; ;main.c: 783:             PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"784
+[; ;main.c: 784:         }
+}
+[e :U 537 ]
+"785
+[; ;main.c: 785:     }
+}
+[e :U 529 ]
+[e :U 528 ]
+[e :U 524 ]
+[e :U 520 ]
 [e :U 517 ]
-[e :U 513 ]
-[e :U 509 ]
 [e :U 506 ]
-"737
-[; ;main.c: 737: }
+"786
+[; ;main.c: 786: }
 [e :UE 486 ]
 }
-"758
-[; ;main.c: 758: int flag_init;
+"797
+[; ;main.c: 797: void init1(int speed){
+[v _init1 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _init1 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"799
+[; ;main.c: 799: }
+[e :UE 538 ]
+}
+"801
+[; ;main.c: 801: void loop1(int speed){
+[v _loop1 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _loop1 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"802
+[; ;main.c: 802:     PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"803
+[; ;main.c: 803:     PORTBbits.RB1 = 0;
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"804
+[; ;main.c: 804:     PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"805
+[; ;main.c: 805:     PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"806
+[; ;main.c: 806:     PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"807
+[; ;main.c: 807: }
+[e :UE 539 ]
+}
+"811
+[; ;main.c: 811: void init2(int speed){
+[v _init2 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _init2 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"813
+[; ;main.c: 813: }
+[e :UE 540 ]
+}
+"815
+[; ;main.c: 815: void loop2(int speed){
+[v _loop2 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _loop2 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"816
+[; ;main.c: 816:     PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+"817
+[; ;main.c: 817:     PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"818
+[; ;main.c: 818:     PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"819
+[; ;main.c: 819:     PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"820
+[; ;main.c: 820:     PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"821
+[; ;main.c: 821: }
+[e :UE 541 ]
+}
+"825
+[; ;main.c: 825: void init3(int speed){
+[v _init3 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _init3 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"827
+[; ;main.c: 827: }
+[e :UE 542 ]
+}
+"829
+[; ;main.c: 829: void loop3(int speed){
+[v _loop3 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _loop3 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"830
+[; ;main.c: 830:     PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"831
+[; ;main.c: 831:     PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"832
+[; ;main.c: 832:     PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"833
+[; ;main.c: 833:     PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"834
+[; ;main.c: 834:     PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"835
+[; ;main.c: 835: }
+[e :UE 543 ]
+}
+"839
+[; ;main.c: 839: void init4(int speed){
+[v _init4 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _init4 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"841
+[; ;main.c: 841: }
+[e :UE 544 ]
+}
+"843
+[; ;main.c: 843: void loop4(int speed){
+[v _loop4 `(v ~T0 @X0 1 ef1`i ]
+{
+[e :U _loop4 ]
+[v _speed `i ~T0 @X0 1 r1 ]
+[f ]
+"844
+[; ;main.c: 844:     PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+"845
+[; ;main.c: 845:     PORTBbits.RB1 = 0;
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"846
+[; ;main.c: 846:     PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"847
+[; ;main.c: 847:     PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"848
+[; ;main.c: 848:     PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"849
+[; ;main.c: 849: }
+[e :UE 545 ]
+}
+"851
+[; ;main.c: 851: void (*init_routines[4]) (int) = {init1, init2, init3, init4};
+[v _init_routines `*F3616 ~T0 @X0 -> 4 `i e ]
+[i _init_routines
+:U ..
+&U _init1
+&U _init2
+&U _init3
+&U _init4
+..
+]
+"852
+[; ;main.c: 852: void (*loop_routines[4]) (int) = {loop1, loop2, loop3, loop4};
+[v _loop_routines `*F3627 ~T0 @X0 -> 4 `i e ]
+[i _loop_routines
+:U ..
+&U _loop1
+&U _loop2
+&U _loop3
+&U _loop4
+..
+]
+"871
+[; ;main.c: 871: int flag_init;
 [v _flag_init `i ~T0 @X0 1 e ]
-"759
-[; ;main.c: 759: int current_menu;
+"872
+[; ;main.c: 872: int current_menu;
 [v _current_menu `i ~T0 @X0 1 e ]
-"760
-[; ;main.c: 760: int flag_menu_init;
+"873
+[; ;main.c: 873: int flag_menu_init;
 [v _flag_menu_init `i ~T0 @X0 1 e ]
-"761
-[; ;main.c: 761: int flag_menu_init_2;
+"874
+[; ;main.c: 874: int flag_menu_init_2;
 [v _flag_menu_init_2 `i ~T0 @X0 1 e ]
-"762
-[; ;main.c: 762: int configure_mode;
+"875
+[; ;main.c: 875: int configure_mode;
 [v _configure_mode `i ~T0 @X0 1 e ]
-"764
-[; ;main.c: 764: void init(){
+"876
+[; ;main.c: 876: int robot_state;
+[v _robot_state `i ~T0 @X0 1 e ]
+"877
+[; ;main.c: 877: int program_count;
+[v _program_count `i ~T0 @X0 1 e ]
+"878
+[; ;main.c: 878: int flag_press;
+[v _flag_press `i ~T0 @X0 1 e ]
+"879
+[; ;main.c: 879: int speed_aux, program_aux;
+[v _speed_aux `i ~T0 @X0 1 e ]
+[v _program_aux `i ~T0 @X0 1 e ]
+"881
+[; ;main.c: 881: void init(){
 [v _init `(v ~T0 @X0 1 ef ]
 {
 [e :U _init ]
 [f ]
-"765
-[; ;main.c: 765:     flag_init = 0;
+"882
+[; ;main.c: 882:     flag_init = 0;
 [e = _flag_init -> 0 `i ]
-"766
-[; ;main.c: 766:     current_menu = 0;
+"883
+[; ;main.c: 883:     current_menu = 0;
 [e = _current_menu -> 0 `i ]
-"767
-[; ;main.c: 767:     flag_menu_init = 0;
+"884
+[; ;main.c: 884:     flag_menu_init = 0;
 [e = _flag_menu_init -> 0 `i ]
-"768
-[; ;main.c: 768:     flag_menu_init_2 = 0;
+"885
+[; ;main.c: 885:     flag_menu_init_2 = 0;
 [e = _flag_menu_init_2 -> 0 `i ]
-"769
-[; ;main.c: 769:     configure_mode = 0;
+"886
+[; ;main.c: 886:     configure_mode = 0;
 [e = _configure_mode -> 0 `i ]
-"770
-[; ;main.c: 770: }
-[e :UE 527 ]
+"887
+[; ;main.c: 887:     robot_state = 0;
+[e = _robot_state -> 0 `i ]
+"888
+[; ;main.c: 888:     program_count = 4;
+[e = _program_count -> 4 `i ]
+"889
+[; ;main.c: 889:     flag_press = 0;
+[e = _flag_press -> 0 `i ]
+"890
+[; ;main.c: 890:     speed_aux = 0;
+[e = _speed_aux -> 0 `i ]
+"891
+[; ;main.c: 891:     program_aux = 0;
+[e = _program_aux -> 0 `i ]
+"892
+[; ;main.c: 892: }
+[e :UE 546 ]
 }
-"772
-[; ;main.c: 772: unsigned int get_motor_speed(){
+"894
+[; ;main.c: 894: unsigned int get_motor_speed(){
 [v _get_motor_speed `(ui ~T0 @X0 1 ef ]
 {
 [e :U _get_motor_speed ]
 [f ]
-"773
-[; ;main.c: 773:     unsigned int speed;
+"895
+[; ;main.c: 895:     unsigned int speed;
 [v _speed `ui ~T0 @X0 1 a ]
-"774
-[; ;main.c: 774:     speed = persisted_data[0];
+"896
+[; ;main.c: 896:     speed = persisted_data[0];
 [e = _speed *U + &U _persisted_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux ]
-"775
-[; ;main.c: 775:     if (speed >= 1000){
-[e $ ! >= _speed -> -> 1000 `i `ui 529  ]
+"897
+[; ;main.c: 897:     if (speed >= 1000){
+[e $ ! >= _speed -> -> 1000 `i `ui 548  ]
 {
-"776
-[; ;main.c: 776:         speed = 1000;
+"898
+[; ;main.c: 898:         speed = 1000;
 [e = _speed -> -> 1000 `i `ui ]
-"777
-[; ;main.c: 777:     }
+"899
+[; ;main.c: 899:     }
 }
-[e :U 529 ]
-"778
-[; ;main.c: 778:     return speed;
+[e :U 548 ]
+"900
+[; ;main.c: 900:     return speed;
 [e ) _speed ]
-[e $UE 528  ]
-"779
-[; ;main.c: 779: }
-[e :UE 528 ]
+[e $UE 547  ]
+"901
+[; ;main.c: 901: }
+[e :UE 547 ]
 }
-"781
-[; ;main.c: 781: void set_motor_speed(unsigned int speed){
+"903
+[; ;main.c: 903: void set_motor_speed(unsigned int speed){
 [v _set_motor_speed `(v ~T0 @X0 1 ef1`ui ]
 {
 [e :U _set_motor_speed ]
 [v _speed `ui ~T0 @X0 1 r1 ]
 [f ]
-"782
-[; ;main.c: 782:     if (speed >= 1000){
-[e $ ! >= _speed -> -> 1000 `i `ui 531  ]
+"904
+[; ;main.c: 904:     if (speed >= 1000){
+[e $ ! >= _speed -> -> 1000 `i `ui 550  ]
 {
-"783
-[; ;main.c: 783:         speed = 1000;
+"905
+[; ;main.c: 905:         speed = 1000;
 [e = _speed -> -> 1000 `i `ui ]
-"784
-[; ;main.c: 784:     }
+"906
+[; ;main.c: 906:     }
 }
-[e :U 531 ]
-"785
-[; ;main.c: 785:     persisted_data[0] = speed;
+[e :U 550 ]
+"907
+[; ;main.c: 907:     persisted_data[0] = speed;
 [e = *U + &U _persisted_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux _speed ]
-"786
-[; ;main.c: 786: }
-[e :UE 530 ]
+"908
+[; ;main.c: 908: }
+[e :UE 549 ]
 }
-"788
-[; ;main.c: 788: void loop(){
+"910
+[; ;main.c: 910: unsigned int get_robot_program(){
+[v _get_robot_program `(ui ~T0 @X0 1 ef ]
+{
+[e :U _get_robot_program ]
+[f ]
+"911
+[; ;main.c: 911:     unsigned int program;
+[v _program `ui ~T0 @X0 1 a ]
+"912
+[; ;main.c: 912:     program = persisted_data[1];
+[e = _program *U + &U _persisted_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux ]
+"913
+[; ;main.c: 913:     if (program >= program_count+1 || program == 0){
+[e $ ! || >= _program -> + _program_count -> 1 `i `ui == _program -> -> 0 `i `ui 552  ]
+{
+"914
+[; ;main.c: 914:         program = 1;
+[e = _program -> -> 1 `i `ui ]
+"915
+[; ;main.c: 915:     }
+}
+[e :U 552 ]
+"916
+[; ;main.c: 916:     return program;
+[e ) _program ]
+[e $UE 551  ]
+"917
+[; ;main.c: 917: }
+[e :UE 551 ]
+}
+"919
+[; ;main.c: 919: void set_robot_program(unsigned int program){
+[v _set_robot_program `(v ~T0 @X0 1 ef1`ui ]
+{
+[e :U _set_robot_program ]
+[v _program `ui ~T0 @X0 1 r1 ]
+[f ]
+"920
+[; ;main.c: 920:     if (program >= program_count+1 || program == 0){
+[e $ ! || >= _program -> + _program_count -> 1 `i `ui == _program -> -> 0 `i `ui 554  ]
+{
+"921
+[; ;main.c: 921:         program = 1;
+[e = _program -> -> 1 `i `ui ]
+"922
+[; ;main.c: 922:     }
+}
+[e :U 554 ]
+"923
+[; ;main.c: 923:     persisted_data[1] = program;
+[e = *U + &U _persisted_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux _program ]
+"924
+[; ;main.c: 924: }
+[e :UE 553 ]
+}
+"926
+[; ;main.c: 926: void loop(){
 [v _loop `(v ~T0 @X0 1 ef ]
 {
 [e :U _loop ]
 [f ]
-"789
-[; ;main.c: 789:     if (!flag_init && !initial_state){
-[e $ ! && ! != _flag_init -> 0 `i ! != -> _initial_state `i -> 0 `i 533  ]
+"927
+[; ;main.c: 927:     if (!flag_init && !initial_state){
+[e $ ! && ! != _flag_init -> 0 `i ! != -> _initial_state `i -> 0 `i 556  ]
 {
-"790
-[; ;main.c: 790:         flag_init = 1;
+"928
+[; ;main.c: 928:         pwm[0] = 0;
+[e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
+"929
+[; ;main.c: 929:         pwm[1] = 0;
+[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
+"931
+[; ;main.c: 931:         flag_init = 1;
 [e = _flag_init -> 1 `i ]
-"795
-[; ;main.c: 795:         read_eeprom();
+"936
+[; ;main.c: 936:         read_eeprom();
 [e ( _read_eeprom ..  ]
-"797
-[; ;main.c: 797:         status_set_mode( 4 , 0 , -1);
+"938
+[; ;main.c: 938:         status_set_mode( 4 , 0 , -1);
 [e ( _status_set_mode (3 , , -> -> 4 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"799
-[; ;main.c: 799:     }else if (flag_init == 1 && current_menu == 0){
+"940
+[; ;main.c: 940:     }else if (flag_init == 1 && robot_state == 0){
 }
-[e $U 534  ]
-[e :U 533 ]
-[e $ ! && == _flag_init -> 1 `i == _current_menu -> 0 `i 535  ]
-{
-"800
-[; ;main.c: 800:         if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 536  ]
-{
-"808
-[; ;main.c: 808:             current_menu = 1;
-[e = _current_menu -> 1 `i ]
-"809
-[; ;main.c: 809:             flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"810
-[; ;main.c: 810:         }
-}
-[e :U 536 ]
-"811
-[; ;main.c: 811:     }else if (flag_init == 1 && current_menu != 0){
-}
-[e $U 537  ]
-[e :U 535 ]
-[e $ ! && == _flag_init -> 1 `i != _current_menu -> 0 `i 538  ]
-{
-"814
-[; ;main.c: 814:         if (flag_menu_init){
-[e $ ! != _flag_menu_init -> 0 `i 539  ]
-{
-"816
-[; ;main.c: 816:             flag_menu_init = 0;
-[e = _flag_menu_init -> 0 `i ]
-"817
-[; ;main.c: 817:             flag_menu_init_2 = 1;
-[e = _flag_menu_init_2 -> 1 `i ]
-"818
-[; ;main.c: 818:             status_code = current_menu;
-[e = _status_code _current_menu ]
-"819
-[; ;main.c: 819:             status_set_mode( 6, 4, 0);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
-"820
-[; ;main.c: 820:         }
-}
-[e :U 539 ]
-"822
-[; ;main.c: 822:         if (current_menu == 1){
-[e $ ! == _current_menu -> 1 `i 540  ]
-{
-"824
-[; ;main.c: 824:             if (configure_mode == 0){
-[e $ ! == _configure_mode -> 0 `i 541  ]
-{
-"825
-[; ;main.c: 825:                 if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 542  ]
-{
-"826
-[; ;main.c: 826:                     if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 543  ]
-{
-"827
-[; ;main.c: 827:                         flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
-"829
-[; ;main.c: 829:                         status_value = get_motor_speed();
-[e = _status_value -> ( _get_motor_speed ..  `i ]
-"830
-[; ;main.c: 830:                         status_set_mode( 1, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"831
-[; ;main.c: 831:                     }
-}
-[e :U 543 ]
-"832
-[; ;main.c: 832:                 }
-}
-[e :U 542 ]
-"834
-[; ;main.c: 834:                 if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 544  ]
-{
-"836
-[; ;main.c: 836:                     double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"837
-[; ;main.c: 837:                     configure_mode = 1;
-[e = _configure_mode -> 1 `i ]
-"838
-[; ;main.c: 838:                     flag_menu_init_2 = 1;
-[e = _flag_menu_init_2 -> 1 `i ]
-"839
-[; ;main.c: 839:                 }
-}
-[e :U 544 ]
-"841
-[; ;main.c: 841:             }else if (configure_mode == 1){
-}
-[e $U 545  ]
-[e :U 541 ]
-[e $ ! == _configure_mode -> 1 `i 546  ]
-{
-"842
-[; ;main.c: 842:                 if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 547  ]
-{
-"843
-[; ;main.c: 843:                     flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
-"846
-[; ;main.c: 846:                     status_code = 1;
-[e = _status_code -> 1 `i ]
-"847
-[; ;main.c: 847:                     status_set_mode( 6, 5, 2);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 5 `i `uc -> -> 2 `i `uc ]
-"848
-[; ;main.c: 848:                 }
-}
-[e :U 547 ]
-"850
-[; ;main.c: 850:                 status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
-[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
-"852
-[; ;main.c: 852:                 if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 548  ]
-{
-"854
-[; ;main.c: 854:                     set_motor_speed(status_value);
-[e ( _set_motor_speed (1 -> _status_value `ui ]
-"855
-[; ;main.c: 855:                     write_eeprom();
-[e ( _write_eeprom ..  ]
-"858
-[; ;main.c: 858:                     double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"859
-[; ;main.c: 859:                     configure_mode = 0;
-[e = _configure_mode -> 0 `i ]
-"860
-[; ;main.c: 860:                     flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"861
-[; ;main.c: 861:                 }
-}
-[e :U 548 ]
-"862
-[; ;main.c: 862:             }
-}
-[e :U 546 ]
-[e :U 545 ]
-"865
-[; ;main.c: 865:         }else{
-}
-[e $U 549  ]
-[e :U 540 ]
-{
-"866
-[; ;main.c: 866:             if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 550  ]
-{
-"867
-[; ;main.c: 867:                 if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 551  ]
-{
-"868
-[; ;main.c: 868:                     flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
-"870
-[; ;main.c: 870:                     PORTBbits.RB0 = 1;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"871
-[; ;main.c: 871:                     PORTBbits.RB1 = 1;
-[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
-"872
-[; ;main.c: 872:                     PORTBbits.RB2 = 1;
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"873
-[; ;main.c: 873:                     PORTBbits.RB4 = 1;
-[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-"874
-[; ;main.c: 874:                     PORTBbits.RB5 = 1;
-[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
-"875
-[; ;main.c: 875:                 }
-}
-[e :U 551 ]
-"876
-[; ;main.c: 876:             }
-}
-[e :U 550 ]
-"877
-[; ;main.c: 877:         }
-}
-[e :U 549 ]
-"880
-[; ;main.c: 880:         if (configure_mode == 0){
-[e $ ! == _configure_mode -> 0 `i 552  ]
-{
-"881
-[; ;main.c: 881:             if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 553  ]
-{
-"882
-[; ;main.c: 882:                 single_click_evt[0] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"884
-[; ;main.c: 884:                 current_menu ++;
-[e ++ _current_menu -> 1 `i ]
-"885
-[; ;main.c: 885:                 if (current_menu >= 6){
-[e $ ! >= _current_menu -> 6 `i 554  ]
-{
-"886
-[; ;main.c: 886:                     current_menu = 1;
-[e = _current_menu -> 1 `i ]
-"887
-[; ;main.c: 887:                 }
-}
-[e :U 554 ]
-"888
-[; ;main.c: 888:                 flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"889
-[; ;main.c: 889:             }
-}
-[e :U 553 ]
-"890
-[; ;main.c: 890:             if (single_click_evt[1]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 555  ]
-{
-"891
-[; ;main.c: 891:                 single_click_evt[1] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"893
-[; ;main.c: 893:                 current_menu --;
-[e -- _current_menu -> 1 `i ]
-"894
-[; ;main.c: 894:                 if (current_menu <= 0){
-[e $ ! <= _current_menu -> 0 `i 556  ]
-{
-"895
-[; ;main.c: 895:                     current_menu = 5;
-[e = _current_menu -> 5 `i ]
-"896
-[; ;main.c: 896:                 }
-}
+[e $U 557  ]
 [e :U 556 ]
-"897
-[; ;main.c: 897:                 flag_menu_init = 1;
+[e $ ! && == _flag_init -> 1 `i == _robot_state -> 0 `i 558  ]
+{
+"941
+[; ;main.c: 941:         if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 559  ]
+{
+"948
+[; ;main.c: 948:             robot_state = 1;
+[e = _robot_state -> 1 `i ]
+"949
+[; ;main.c: 949:             current_menu = 1;
+[e = _current_menu -> 1 `i ]
+"950
+[; ;main.c: 950:             flag_menu_init = 1;
 [e = _flag_menu_init -> 1 `i ]
-"898
-[; ;main.c: 898:             }
+"951
+[; ;main.c: 951:         }
 }
-[e :U 555 ]
-"899
-[; ;main.c: 899:         }
+[e :U 559 ]
+"952
+[; ;main.c: 952:     }else if (robot_state == 1){
 }
-[e :U 552 ]
-"900
-[; ;main.c: 900:     }
+[e $U 560  ]
+[e :U 558 ]
+[e $ ! == _robot_state -> 1 `i 561  ]
+{
+"955
+[; ;main.c: 955:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 562  ]
+{
+"957
+[; ;main.c: 957:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"958
+[; ;main.c: 958:             flag_menu_init_2 = 1;
+[e = _flag_menu_init_2 -> 1 `i ]
+"959
+[; ;main.c: 959:             status_code = current_menu;
+[e = _status_code _current_menu ]
+"960
+[; ;main.c: 960:             status_set_mode( 6, 4, 0);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
+"961
+[; ;main.c: 961:         }
 }
-[e :U 538 ]
-[e :U 537 ]
-[e :U 534 ]
-"901
-[; ;main.c: 901: }
-[e :UE 532 ]
+[e :U 562 ]
+"964
+[; ;main.c: 964:         if (current_menu == 1){
+[e $ ! == _current_menu -> 1 `i 563  ]
+{
+"966
+[; ;main.c: 966:             if (configure_mode == 0){
+[e $ ! == _configure_mode -> 0 `i 564  ]
+{
+"967
+[; ;main.c: 967:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 565  ]
+{
+"968
+[; ;main.c: 968:                     if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 566  ]
+{
+"969
+[; ;main.c: 969:                         flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"971
+[; ;main.c: 971:                         status_value = get_motor_speed();
+[e = _status_value -> ( _get_motor_speed ..  `i ]
+"972
+[; ;main.c: 972:                         status_set_mode( 1, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"973
+[; ;main.c: 973:                     }
+}
+[e :U 566 ]
+"974
+[; ;main.c: 974:                 }
+}
+[e :U 565 ]
+"976
+[; ;main.c: 976:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 567  ]
+{
+"978
+[; ;main.c: 978:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"979
+[; ;main.c: 979:                     configure_mode = 1;
+[e = _configure_mode -> 1 `i ]
+"980
+[; ;main.c: 980:                     flag_menu_init_2 = 1;
+[e = _flag_menu_init_2 -> 1 `i ]
+"981
+[; ;main.c: 981:                 }
+}
+[e :U 567 ]
+"983
+[; ;main.c: 983:             }else if (configure_mode == 1){
+}
+[e $U 568  ]
+[e :U 564 ]
+[e $ ! == _configure_mode -> 1 `i 569  ]
+{
+"984
+[; ;main.c: 984:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 570  ]
+{
+"985
+[; ;main.c: 985:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"988
+[; ;main.c: 988:                     status_code = 1;
+[e = _status_code -> 1 `i ]
+"989
+[; ;main.c: 989:                     status_set_mode( 2, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"990
+[; ;main.c: 990:                 }
+}
+[e :U 570 ]
+"992
+[; ;main.c: 992:                 status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"994
+[; ;main.c: 994:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 571  ]
+{
+"996
+[; ;main.c: 996:                     set_motor_speed(status_value);
+[e ( _set_motor_speed (1 -> _status_value `ui ]
+"997
+[; ;main.c: 997:                     write_eeprom();
+[e ( _write_eeprom ..  ]
+"1000
+[; ;main.c: 1000:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"1001
+[; ;main.c: 1001:                     configure_mode = 0;
+[e = _configure_mode -> 0 `i ]
+"1002
+[; ;main.c: 1002:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1003
+[; ;main.c: 1003:                 }
+}
+[e :U 571 ]
+"1004
+[; ;main.c: 1004:             }
+}
+[e :U 569 ]
+[e :U 568 ]
+"1007
+[; ;main.c: 1007:         }else if (current_menu == 2){
+}
+[e $U 572  ]
+[e :U 563 ]
+[e $ ! == _current_menu -> 2 `i 573  ]
+{
+"1009
+[; ;main.c: 1009:             if (configure_mode == 0){
+[e $ ! == _configure_mode -> 0 `i 574  ]
+{
+"1010
+[; ;main.c: 1010:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 575  ]
+{
+"1011
+[; ;main.c: 1011:                     if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 576  ]
+{
+"1012
+[; ;main.c: 1012:                         flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1014
+[; ;main.c: 1014:                         status_value = get_robot_program();
+[e = _status_value -> ( _get_robot_program ..  `i ]
+"1015
+[; ;main.c: 1015:                         status_set_mode( 7, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 7 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1016
+[; ;main.c: 1016:                     }
+}
+[e :U 576 ]
+"1017
+[; ;main.c: 1017:                 }
+}
+[e :U 575 ]
+"1019
+[; ;main.c: 1019:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 577  ]
+{
+"1021
+[; ;main.c: 1021:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"1022
+[; ;main.c: 1022:                     configure_mode = 1;
+[e = _configure_mode -> 1 `i ]
+"1023
+[; ;main.c: 1023:                     flag_menu_init_2 = 1;
+[e = _flag_menu_init_2 -> 1 `i ]
+"1024
+[; ;main.c: 1024:                 }
+}
+[e :U 577 ]
+"1026
+[; ;main.c: 1026:             }else if (configure_mode == 1){
+}
+[e $U 578  ]
+[e :U 574 ]
+[e $ ! == _configure_mode -> 1 `i 579  ]
+{
+"1027
+[; ;main.c: 1027:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 580  ]
+{
+"1028
+[; ;main.c: 1028:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1030
+[; ;main.c: 1030:                     status_code = 2;
+[e = _status_code -> 2 `i ]
+"1031
+[; ;main.c: 1031:                     status_set_mode( 8, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 8 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1032
+[; ;main.c: 1032:                 }
+}
+[e :U 580 ]
+"1034
+[; ;main.c: 1034:                 if (single_click_evt[1]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 581  ]
+{
+"1035
+[; ;main.c: 1035:                     single_click_evt[1] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"1036
+[; ;main.c: 1036:                     status_value ++;
+[e ++ _status_value -> 1 `i ]
+"1037
+[; ;main.c: 1037:                     if (status_value >= program_count+1){
+[e $ ! >= _status_value + _program_count -> 1 `i 582  ]
+{
+"1038
+[; ;main.c: 1038:                         status_value = 1;
+[e = _status_value -> 1 `i ]
+"1039
+[; ;main.c: 1039:                     }
+}
+[e :U 582 ]
+"1040
+[; ;main.c: 1040:                 }
+}
+[e :U 581 ]
+"1041
+[; ;main.c: 1041:                 if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 583  ]
+{
+"1042
+[; ;main.c: 1042:                     single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"1043
+[; ;main.c: 1043:                     if (status_value <= 1){
+[e $ ! <= _status_value -> 1 `i 584  ]
+{
+"1044
+[; ;main.c: 1044:                         status_value = program_count;
+[e = _status_value _program_count ]
+"1045
+[; ;main.c: 1045:                     }else{
+}
+[e $U 585  ]
+[e :U 584 ]
+{
+"1046
+[; ;main.c: 1046:                         status_value --;
+[e -- _status_value -> 1 `i ]
+"1047
+[; ;main.c: 1047:                     }
+}
+[e :U 585 ]
+"1048
+[; ;main.c: 1048:                 }
+}
+[e :U 583 ]
+"1049
+[; ;main.c: 1049:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 586  ]
+{
+"1051
+[; ;main.c: 1051:                     set_robot_program(status_value);
+[e ( _set_robot_program (1 -> _status_value `ui ]
+"1052
+[; ;main.c: 1052:                     write_eeprom();
+[e ( _write_eeprom ..  ]
+"1055
+[; ;main.c: 1055:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"1057
+[; ;main.c: 1057:                     configure_mode = 0;
+[e = _configure_mode -> 0 `i ]
+"1058
+[; ;main.c: 1058:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1059
+[; ;main.c: 1059:                 }
+}
+[e :U 586 ]
+"1060
+[; ;main.c: 1060:             }
+}
+[e :U 579 ]
+[e :U 578 ]
+"1061
+[; ;main.c: 1061:         }else if(current_menu == 3){
+}
+[e $U 587  ]
+[e :U 573 ]
+[e $ ! == _current_menu -> 3 `i 588  ]
+{
+"1062
+[; ;main.c: 1062:             if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 589  ]
+{
+"1063
+[; ;main.c: 1063:                 PORTBbits.RB0 = PORTDbits.RD7;
+[e = . . _PORTBbits 0 0 . . _PORTDbits 0 7 ]
+"1064
+[; ;main.c: 1064:                 PORTBbits.RB1 = PORTDbits.RD6;
+[e = . . _PORTBbits 0 1 . . _PORTDbits 0 6 ]
+"1065
+[; ;main.c: 1065:                 PORTBbits.RB2 = PORTDbits.RD5;
+[e = . . _PORTBbits 0 2 . . _PORTDbits 0 5 ]
+"1066
+[; ;main.c: 1066:                 PORTBbits.RB4 = PORTDbits.RD4;
+[e = . . _PORTBbits 0 4 . . _PORTDbits 0 4 ]
+"1067
+[; ;main.c: 1067:                 PORTBbits.RB5 = PORTCbits.RC5;
+[e = . . _PORTBbits 0 5 . . _PORTCbits 0 5 ]
+"1068
+[; ;main.c: 1068:             }
+}
+[e :U 589 ]
+"1069
+[; ;main.c: 1069:         }else if (current_menu == 4){
+}
+[e $U 590  ]
+[e :U 588 ]
+[e $ ! == _current_menu -> 4 `i 591  ]
+{
+"1070
+[; ;main.c: 1070:             if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 592  ]
+{
+"1071
+[; ;main.c: 1071:                 if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 593  ]
+{
+"1072
+[; ;main.c: 1072:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1074
+[; ;main.c: 1074:                     status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 2 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1075
+[; ;main.c: 1075:                     status_set_mode( 1, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1076
+[; ;main.c: 1076:                 }
+}
+[e :U 593 ]
+"1077
+[; ;main.c: 1077:             }else{
+}
+[e $U 594  ]
+[e :U 592 ]
+{
+"1078
+[; ;main.c: 1078:                 status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 2 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1079
+[; ;main.c: 1079:             }
+}
+[e :U 594 ]
+"1080
+[; ;main.c: 1080:         }else if (current_menu == 5){
+}
+[e $U 595  ]
+[e :U 591 ]
+[e $ ! == _current_menu -> 5 `i 596  ]
+{
+"1081
+[; ;main.c: 1081:            if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 597  ]
+{
+"1082
+[; ;main.c: 1082:                 if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 598  ]
+{
+"1083
+[; ;main.c: 1083:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1085
+[; ;main.c: 1085:                     status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 3 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1086
+[; ;main.c: 1086:                     status_set_mode( 1, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1087
+[; ;main.c: 1087:                 }
+}
+[e :U 598 ]
+"1088
+[; ;main.c: 1088:             }else{
+}
+[e $U 599  ]
+[e :U 597 ]
+{
+"1089
+[; ;main.c: 1089:                 status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 3 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1090
+[; ;main.c: 1090:             }
+}
+[e :U 599 ]
+"1091
+[; ;main.c: 1091:         }else{
+}
+[e $U 600  ]
+[e :U 596 ]
+{
+"1092
+[; ;main.c: 1092:             if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 601  ]
+{
+"1093
+[; ;main.c: 1093:                 if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 602  ]
+{
+"1094
+[; ;main.c: 1094:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1096
+[; ;main.c: 1096:                     PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"1097
+[; ;main.c: 1097:                     PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"1098
+[; ;main.c: 1098:                     PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"1099
+[; ;main.c: 1099:                     PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"1100
+[; ;main.c: 1100:                     PORTBbits.RB5 = 1;
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"1101
+[; ;main.c: 1101:                 }
+}
+[e :U 602 ]
+"1102
+[; ;main.c: 1102:             }
+}
+[e :U 601 ]
+"1103
+[; ;main.c: 1103:         }
+}
+[e :U 600 ]
+[e :U 595 ]
+[e :U 590 ]
+[e :U 587 ]
+[e :U 572 ]
+"1106
+[; ;main.c: 1106:         if (configure_mode == 0){
+[e $ ! == _configure_mode -> 0 `i 603  ]
+{
+"1107
+[; ;main.c: 1107:             if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 604  ]
+{
+"1108
+[; ;main.c: 1108:                 single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"1110
+[; ;main.c: 1110:                 current_menu ++;
+[e ++ _current_menu -> 1 `i ]
+"1111
+[; ;main.c: 1111:                 if (current_menu >= 6){
+[e $ ! >= _current_menu -> 6 `i 605  ]
+{
+"1112
+[; ;main.c: 1112:                     current_menu = 1;
+[e = _current_menu -> 1 `i ]
+"1113
+[; ;main.c: 1113:                 }
+}
+[e :U 605 ]
+"1114
+[; ;main.c: 1114:                 flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1115
+[; ;main.c: 1115:             }
+}
+[e :U 604 ]
+"1116
+[; ;main.c: 1116:             if (single_click_evt[1]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 606  ]
+{
+"1117
+[; ;main.c: 1117:                 single_click_evt[1] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"1119
+[; ;main.c: 1119:                 current_menu --;
+[e -- _current_menu -> 1 `i ]
+"1120
+[; ;main.c: 1120:                 if (current_menu <= 0){
+[e $ ! <= _current_menu -> 0 `i 607  ]
+{
+"1121
+[; ;main.c: 1121:                     current_menu = 5;
+[e = _current_menu -> 5 `i ]
+"1122
+[; ;main.c: 1122:                 }
+}
+[e :U 607 ]
+"1123
+[; ;main.c: 1123:                 flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1124
+[; ;main.c: 1124:             }
+}
+[e :U 606 ]
+"1125
+[; ;main.c: 1125:             if (double_click_evt[1]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 608  ]
+{
+"1127
+[; ;main.c: 1127:                 robot_state = 2;
+[e = _robot_state -> 2 `i ]
+"1128
+[; ;main.c: 1128:                 flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1129
+[; ;main.c: 1129:             }
+}
+[e :U 608 ]
+"1130
+[; ;main.c: 1130:         }
+}
+[e :U 603 ]
+"1131
+[; ;main.c: 1131:     }else if (robot_state == 2){
+}
+[e $U 609  ]
+[e :U 561 ]
+[e $ ! == _robot_state -> 2 `i 610  ]
+{
+"1132
+[; ;main.c: 1132:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 611  ]
+{
+"1133
+[; ;main.c: 1133:             counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1134
+[; ;main.c: 1134:             counter[4] = 0;
+[e = *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1135
+[; ;main.c: 1135:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"1136
+[; ;main.c: 1136:             flag_press = 0;
+[e = _flag_press -> 0 `i ]
+"1137
+[; ;main.c: 1137:         }else{
+}
+[e $U 612  ]
+[e :U 611 ]
+{
+"1138
+[; ;main.c: 1138:             if (flag_press == 0){
+[e $ ! == _flag_press -> 0 `i 613  ]
+{
+"1139
+[; ;main.c: 1139:                 status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1140
+[; ;main.c: 1140:                 PORTBbits.RB0 = counter[4] % 20 >= 10;
+[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+"1141
+[; ;main.c: 1141:                 PORTBbits.RB1 = counter[4] % 20 < 10;
+[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+"1142
+[; ;main.c: 1142:                 PORTBbits.RB2 = counter[4] % 20 >= 10;
+[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+"1143
+[; ;main.c: 1143:                 PORTBbits.RB4 = counter[4] % 20 < 10;
+[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+"1144
+[; ;main.c: 1144:                 PORTBbits.RB5 = counter[4] % 20 >= 10;
+[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+"1146
+[; ;main.c: 1146:                 if (counter[4] >= 200){
+[e $ ! >= *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o 614  ]
+{
+"1147
+[; ;main.c: 1147:                     flag_press = 1;
+[e = _flag_press -> 1 `i ]
+"1148
+[; ;main.c: 1148:                     counter[4] = 0;
+[e = *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1149
+[; ;main.c: 1149:                     counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1150
+[; ;main.c: 1150:                     press_evt[0] = 0;
+[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"1151
+[; ;main.c: 1151:                     release_evt[0] = 0;
+[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1152
+[; ;main.c: 1152:                     press_evt[1] = 0;
+[e = *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"1153
+[; ;main.c: 1153:                     release_evt[1] = 0;
+[e = *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1157
+[; ;main.c: 1157:                 }
+}
+[e :U 614 ]
+"1158
+[; ;main.c: 1158:             }else if (flag_press == 1){
+}
+[e $U 615  ]
+[e :U 613 ]
+[e $ ! == _flag_press -> 1 `i 616  ]
+{
+"1159
+[; ;main.c: 1159:                 if (counter[3] <= 100){
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 100 `i `o 617  ]
+{
+"1160
+[; ;main.c: 1160:                     status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1161
+[; ;main.c: 1161:                     PORTBbits.RB0 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1162
+[; ;main.c: 1162:                     PORTBbits.RB1 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1163
+[; ;main.c: 1163:                     PORTBbits.RB2 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1164
+[; ;main.c: 1164:                     PORTBbits.RB4 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1165
+[; ;main.c: 1165:                     PORTBbits.RB5 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1166
+[; ;main.c: 1166:                 }else if(counter[3] <= 200){
+}
+[e $U 618  ]
+[e :U 617 ]
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o 619  ]
+{
+"1168
+[; ;main.c: 1168:                     status_mode = 1;
+[e = _status_mode -> -> 1 `i `uc ]
+"1169
+[; ;main.c: 1169:                     status_value = get_motor_speed();
+[e = _status_value -> ( _get_motor_speed ..  `i ]
+"1170
+[; ;main.c: 1170:                 }else if(counter[3] <= 300){
+}
+[e $U 620  ]
+[e :U 619 ]
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 300 `i `o 621  ]
+{
+"1171
+[; ;main.c: 1171:                     status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1172
+[; ;main.c: 1172:                     PORTBbits.RB0 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1173
+[; ;main.c: 1173:                     PORTBbits.RB1 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1174
+[; ;main.c: 1174:                     PORTBbits.RB2 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1175
+[; ;main.c: 1175:                     PORTBbits.RB4 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1176
+[; ;main.c: 1176:                     PORTBbits.RB5 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1177
+[; ;main.c: 1177:                 }else if (counter[3] <= 400){
+}
+[e $U 622  ]
+[e :U 621 ]
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 400 `i `o 623  ]
+{
+"1179
+[; ;main.c: 1179:                     status_mode = 7;
+[e = _status_mode -> -> 7 `i `uc ]
+"1180
+[; ;main.c: 1180:                     status_value = get_robot_program();
+[e = _status_value -> ( _get_robot_program ..  `i ]
+"1181
+[; ;main.c: 1181:                 }else{
+}
+[e $U 624  ]
+[e :U 623 ]
+{
+"1182
+[; ;main.c: 1182:                     counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1183
+[; ;main.c: 1183:                 }
+}
+[e :U 624 ]
+[e :U 622 ]
+[e :U 620 ]
+[e :U 618 ]
+"1184
+[; ;main.c: 1184:                 if (press_evt[0]){
+[e $ ! != -> *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 625  ]
+{
+"1185
+[; ;main.c: 1185:                     flag_press = 2;
+[e = _flag_press -> 2 `i ]
+"1186
+[; ;main.c: 1186:                     press_evt[0] = 0;
+[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"1187
+[; ;main.c: 1187:                 }
+}
+[e :U 625 ]
+"1188
+[; ;main.c: 1188:                 if (press_evt[1]){
+[e $ ! != -> *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 626  ]
+{
+"1189
+[; ;main.c: 1189:                     flag_press = 2;
+[e = _flag_press -> 2 `i ]
+"1190
+[; ;main.c: 1190:                     press_evt[1] = 0;
+[e = *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"1191
+[; ;main.c: 1191:                 }
+}
+[e :U 626 ]
+"1192
+[; ;main.c: 1192:             }else if (flag_press == 2){
+}
+[e $U 627  ]
+[e :U 616 ]
+[e $ ! == _flag_press -> 2 `i 628  ]
+{
+"1193
+[; ;main.c: 1193:                 status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1194
+[; ;main.c: 1194:                 PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"1195
+[; ;main.c: 1195:                 PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"1196
+[; ;main.c: 1196:                 PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"1197
+[; ;main.c: 1197:                 PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"1198
+[; ;main.c: 1198:                 PORTBbits.RB5 = 1;
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"1199
+[; ;main.c: 1199:                 if (release_evt[0]){
+[e $ ! != -> *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 629  ]
+{
+"1200
+[; ;main.c: 1200:                     release_evt[0] = 0;
+[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1201
+[; ;main.c: 1201:                     robot_state = 3;
+[e = _robot_state -> 3 `i ]
+"1202
+[; ;main.c: 1202:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1203
+[; ;main.c: 1203:                 }
+}
+[e :U 629 ]
+"1204
+[; ;main.c: 1204:                 if (release_evt[1]){
+[e $ ! != -> *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 630  ]
+{
+"1205
+[; ;main.c: 1205:                     release_evt[1] = 0;
+[e = *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1206
+[; ;main.c: 1206:                     robot_state = 3;
+[e = _robot_state -> 3 `i ]
+"1207
+[; ;main.c: 1207:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1208
+[; ;main.c: 1208:                 }
+}
+[e :U 630 ]
+"1209
+[; ;main.c: 1209:             }
+}
+[e :U 628 ]
+[e :U 627 ]
+[e :U 615 ]
+"1210
+[; ;main.c: 1210:         }
+}
+[e :U 612 ]
+"1212
+[; ;main.c: 1212:     }else if (robot_state == 3){
+}
+[e $U 631  ]
+[e :U 610 ]
+[e $ ! == _robot_state -> 3 `i 632  ]
+{
+"1213
+[; ;main.c: 1213:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 633  ]
+{
+"1214
+[; ;main.c: 1214:             counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1215
+[; ;main.c: 1215:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"1216
+[; ;main.c: 1216:         }
+}
+[e :U 633 ]
+"1217
+[; ;main.c: 1217:         status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1218
+[; ;main.c: 1218:         PORTBbits.RB0 = counter[3] >= 100;
+[e = . . _PORTBbits 0 0 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 100 `i `o `i `uc ]
+"1219
+[; ;main.c: 1219:         PORTBbits.RB1 = counter[3] >= 200;
+[e = . . _PORTBbits 0 1 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o `i `uc ]
+"1220
+[; ;main.c: 1220:         PORTBbits.RB2 = counter[3] >= 300;
+[e = . . _PORTBbits 0 2 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 300 `i `o `i `uc ]
+"1221
+[; ;main.c: 1221:         PORTBbits.RB4 = counter[3] >= 400;
+[e = . . _PORTBbits 0 4 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 400 `i `o `i `uc ]
+"1222
+[; ;main.c: 1222:         PORTBbits.RB5 = counter[3] >= 500;
+[e = . . _PORTBbits 0 5 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 500 `i `o `i `uc ]
+"1224
+[; ;main.c: 1224:         if (counter[3] >= 500){
+[e $ ! >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 500 `i `o 634  ]
+{
+"1225
+[; ;main.c: 1225:             robot_state = 4;
+[e = _robot_state -> 4 `i ]
+"1226
+[; ;main.c: 1226:             flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1227
+[; ;main.c: 1227:         }
+}
+[e :U 634 ]
+"1228
+[; ;main.c: 1228:     }else if (robot_state == 4){
+}
+[e $U 635  ]
+[e :U 632 ]
+[e $ ! == _robot_state -> 4 `i 636  ]
+{
+"1229
+[; ;main.c: 1229:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 637  ]
+{
+"1230
+[; ;main.c: 1230:             speed_aux = get_motor_speed();
+[e = _speed_aux -> ( _get_motor_speed ..  `i ]
+"1231
+[; ;main.c: 1231:             program_aux = get_robot_program();
+[e = _program_aux -> ( _get_robot_program ..  `i ]
+"1233
+[; ;main.c: 1233:             init_routines[program_aux-1](speed_aux);
+[e ( *U *U + &U _init_routines * -> -> - _program_aux -> 1 `i `ui `ux -> -> # *U &U _init_routines `ui `ux (1 _speed_aux ]
+"1234
+[; ;main.c: 1234:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"1235
+[; ;main.c: 1235:         }
+}
+[e :U 637 ]
+"1236
+[; ;main.c: 1236:         loop_routines[program_aux-1](speed_aux);
+[e ( *U *U + &U _loop_routines * -> -> - _program_aux -> 1 `i `ui `ux -> -> # *U &U _loop_routines `ui `ux (1 _speed_aux ]
+"1237
+[; ;main.c: 1237:     }
+}
+[e :U 636 ]
+[e :U 635 ]
+[e :U 631 ]
+[e :U 609 ]
+[e :U 560 ]
+[e :U 557 ]
+"1238
+[; ;main.c: 1238: }
+[e :UE 555 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"909
-[; ;main.c: 909: void main(void) {
+"1246
+[; ;main.c: 1246: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"910
-[; ;main.c: 910:     config_micro();
+"1247
+[; ;main.c: 1247:     config_micro();
 [e ( _config_micro ..  ]
-"911
-[; ;main.c: 911:     init_vars();
+"1248
+[; ;main.c: 1248:     init_vars();
 [e ( _init_vars ..  ]
-"912
-[; ;main.c: 912:     buttons_init();
+"1249
+[; ;main.c: 1249:     buttons_init();
 [e ( _buttons_init ..  ]
-"913
-[; ;main.c: 913:     status_init();
+"1250
+[; ;main.c: 1250:     status_init();
 [e ( _status_init ..  ]
-"914
-[; ;main.c: 914:     init();
+"1251
+[; ;main.c: 1251:     init();
 [e ( _init ..  ]
-"916
-[; ;main.c: 916:     while (1){
-[e :U 559 ]
+"1253
+[; ;main.c: 1253:     while (1){
+[e :U 640 ]
 {
-"917
-[; ;main.c: 917:         update_pwm();
+"1254
+[; ;main.c: 1254:         update_pwm();
 [e ( _update_pwm ..  ]
-"918
-[; ;main.c: 918:         read_analog();
+"1255
+[; ;main.c: 1255:         read_analog();
 [e ( _read_analog ..  ]
-"919
-[; ;main.c: 919:         buttons_loop();
+"1256
+[; ;main.c: 1256:         buttons_loop();
 [e ( _buttons_loop ..  ]
-"920
-[; ;main.c: 920:         status_loop();
+"1257
+[; ;main.c: 1257:         status_loop();
 [e ( _status_loop ..  ]
-"921
-[; ;main.c: 921:         loop();
+"1258
+[; ;main.c: 1258:         loop();
 [e ( _loop ..  ]
-"922
-[; ;main.c: 922:     }
+"1259
+[; ;main.c: 1259:     }
 }
-[e :U 558 ]
-[e $U 559  ]
-[e :U 560 ]
-"924
-[; ;main.c: 924: }
-[e :UE 557 ]
+[e :U 639 ]
+[e $U 640  ]
+[e :U 641 ]
+"1261
+[; ;main.c: 1261: }
+[e :UE 638 ]
 }

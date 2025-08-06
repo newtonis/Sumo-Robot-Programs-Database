@@ -6518,6 +6518,55 @@ void status_loop(){
                 PORTBbits.RB5 = 0;
             }
         }
+
+    }else if(status_mode == 7 || status_mode == 8){
+
+        if (counter[2] >= 10){
+            counter[2] = 0;
+            status_intermitency_counter ++;
+            if (status_intermitency_counter >= 10){
+                status_intermitency_counter = 0;
+            }
+
+
+            if (status_value >= 32){
+                status_value = 31;
+            }
+            if (status_value < 0){
+                status_value = 0;
+            }
+            status_persisted = status_value;
+
+        }
+
+        leds[0] = (status_persisted % 32 >= 16);
+        leds[1] = (status_persisted % 16 >= 8);
+        leds[2] = (status_persisted % 8 >= 4);
+        leds[3] = (status_persisted % 4 >= 2);
+        leds[4] = (status_persisted % 2 >= 1);
+
+
+        if (status_mode == 7){
+            PORTBbits.RB0 = leds[0];
+            PORTBbits.RB1 = leds[1];
+            PORTBbits.RB2 = leds[2];
+            PORTBbits.RB4 = leds[3];
+            PORTBbits.RB5 = leds[4];
+        }else if(status_mode == 8){
+            if (status_intermitency_counter >= 2){
+                PORTBbits.RB0 = leds[0];
+                PORTBbits.RB1 = leds[1];
+                PORTBbits.RB2 = leds[2];
+                PORTBbits.RB4 = leds[3];
+                PORTBbits.RB5 = leds[4];
+            }else{
+                PORTBbits.RB0 = 0;
+                PORTBbits.RB1 = 0;
+                PORTBbits.RB2 = 0;
+                PORTBbits.RB4 = 0;
+                PORTBbits.RB5 = 0;
+            }
+        }
     }else if(status_mode == 3){
         if (counter[2] >= 20){
             counter[2] = 0;
@@ -6590,12 +6639,73 @@ void status_loop(){
         }
     }
 }
-# 758 "main.c"
+# 797 "main.c"
+void init1(int speed){
+
+}
+
+void loop1(int speed){
+    PORTBbits.RB0 = 1;
+    PORTBbits.RB1 = 0;
+    PORTBbits.RB2 = 0;
+    PORTBbits.RB4 = 0;
+    PORTBbits.RB5 = 0;
+}
+
+
+
+void init2(int speed){
+
+}
+
+void loop2(int speed){
+    PORTBbits.RB0 = 0;
+    PORTBbits.RB1 = 1;
+    PORTBbits.RB2 = 0;
+    PORTBbits.RB4 = 0;
+    PORTBbits.RB5 = 0;
+}
+
+
+
+void init3(int speed){
+
+}
+
+void loop3(int speed){
+    PORTBbits.RB0 = 1;
+    PORTBbits.RB1 = 1;
+    PORTBbits.RB2 = 0;
+    PORTBbits.RB4 = 0;
+    PORTBbits.RB5 = 0;
+}
+
+
+
+void init4(int speed){
+
+}
+
+void loop4(int speed){
+    PORTBbits.RB0 = 0;
+    PORTBbits.RB1 = 0;
+    PORTBbits.RB2 = 1;
+    PORTBbits.RB4 = 0;
+    PORTBbits.RB5 = 0;
+}
+
+void (*init_routines[4]) (int) = {init1, init2, init3, init4};
+void (*loop_routines[4]) (int) = {loop1, loop2, loop3, loop4};
+# 871 "main.c"
 int flag_init;
 int current_menu;
 int flag_menu_init;
 int flag_menu_init_2;
 int configure_mode;
+int robot_state;
+int program_count;
+int flag_press;
+int speed_aux, program_aux;
 
 void init(){
     flag_init = 0;
@@ -6603,6 +6713,11 @@ void init(){
     flag_menu_init = 0;
     flag_menu_init_2 = 0;
     configure_mode = 0;
+    robot_state = 0;
+    program_count = 4;
+    flag_press = 0;
+    speed_aux = 0;
+    program_aux = 0;
 }
 
 unsigned int get_motor_speed(){
@@ -6621,8 +6736,27 @@ void set_motor_speed(unsigned int speed){
     persisted_data[0] = speed;
 }
 
+unsigned int get_robot_program(){
+    unsigned int program;
+    program = persisted_data[1];
+    if (program >= program_count+1 || program == 0){
+        program = 1;
+    }
+    return program;
+}
+
+void set_robot_program(unsigned int program){
+    if (program >= program_count+1 || program == 0){
+        program = 1;
+    }
+    persisted_data[1] = program;
+}
+
 void loop(){
     if (!flag_init && !initial_state){
+        pwm[0] = 0;
+        pwm[1] = 0;
+
         flag_init = 1;
 
 
@@ -6632,7 +6766,7 @@ void loop(){
 
         status_set_mode( 4 , 0 , -1);
 
-    }else if (flag_init == 1 && current_menu == 0){
+    }else if (flag_init == 1 && robot_state == 0){
         if (status_mode == 0){
 
 
@@ -6640,11 +6774,11 @@ void loop(){
 
 
 
-
+            robot_state = 1;
             current_menu = 1;
             flag_menu_init = 1;
         }
-    }else if (flag_init == 1 && current_menu != 0){
+    }else if (robot_state == 1){
 
 
         if (flag_menu_init){
@@ -6654,6 +6788,7 @@ void loop(){
             status_code = current_menu;
             status_set_mode( 6, 4, 0);
         }
+
 
         if (current_menu == 1){
 
@@ -6680,7 +6815,7 @@ void loop(){
 
 
                     status_code = 1;
-                    status_set_mode( 6, 5, 2);
+                    status_set_mode( 2, 0, -1);
                 }
 
                 status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
@@ -6698,6 +6833,90 @@ void loop(){
             }
 
 
+        }else if (current_menu == 2){
+
+            if (configure_mode == 0){
+                if (flag_menu_init_2){
+                    if (status_mode == 0){
+                        flag_menu_init_2 = 0;
+
+                        status_value = get_robot_program();
+                        status_set_mode( 7, 0, -1);
+                    }
+                }
+
+                if (double_click_evt[0]){
+
+                    double_click_evt[0] = 0;
+                    configure_mode = 1;
+                    flag_menu_init_2 = 1;
+                }
+
+            }else if (configure_mode == 1){
+                if (flag_menu_init_2){
+                    flag_menu_init_2 = 0;
+
+                    status_code = 2;
+                    status_set_mode( 8, 0, -1);
+                }
+
+                if (single_click_evt[1]){
+                    single_click_evt[1] = 0;
+                    status_value ++;
+                    if (status_value >= program_count+1){
+                        status_value = 1;
+                    }
+                }
+                if (single_click_evt[0]){
+                    single_click_evt[0] = 0;
+                    if (status_value <= 1){
+                        status_value = program_count;
+                    }else{
+                        status_value --;
+                    }
+                }
+                if (double_click_evt[0]){
+
+                    set_robot_program(status_value);
+                    write_eeprom();
+
+
+                    double_click_evt[0] = 0;
+
+                    configure_mode = 0;
+                    flag_menu_init = 1;
+                }
+            }
+        }else if(current_menu == 3){
+            if (status_mode == 0){
+                PORTBbits.RB0 = PORTDbits.RD7;
+                PORTBbits.RB1 = PORTDbits.RD6;
+                PORTBbits.RB2 = PORTDbits.RD5;
+                PORTBbits.RB4 = PORTDbits.RD4;
+                PORTBbits.RB5 = PORTCbits.RC5;
+            }
+        }else if (current_menu == 4){
+            if (flag_menu_init_2){
+                if (status_mode == 0){
+                    flag_menu_init_2 = 0;
+
+                    status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
+                    status_set_mode( 1, 0, -1);
+                }
+            }else{
+                status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
+            }
+        }else if (current_menu == 5){
+           if (flag_menu_init_2){
+                if (status_mode == 0){
+                    flag_menu_init_2 = 0;
+
+                    status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
+                    status_set_mode( 1, 0, -1);
+                }
+            }else{
+                status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
+            }
         }else{
             if (flag_menu_init_2){
                 if (status_mode == 0){
@@ -6732,7 +6951,118 @@ void loop(){
                 }
                 flag_menu_init = 1;
             }
+            if (double_click_evt[1]){
+
+                robot_state = 2;
+                flag_menu_init = 1;
+            }
         }
+    }else if (robot_state == 2){
+        if (flag_menu_init){
+            counter[3] = 0;
+            counter[4] = 0;
+            flag_menu_init = 0;
+            flag_press = 0;
+        }else{
+            if (flag_press == 0){
+                status_mode = 0;
+                PORTBbits.RB0 = counter[4] % 20 >= 10;
+                PORTBbits.RB1 = counter[4] % 20 < 10;
+                PORTBbits.RB2 = counter[4] % 20 >= 10;
+                PORTBbits.RB4 = counter[4] % 20 < 10;
+                PORTBbits.RB5 = counter[4] % 20 >= 10;
+
+                if (counter[4] >= 200){
+                    flag_press = 1;
+                    counter[4] = 0;
+                    counter[3] = 0;
+                    press_evt[0] = 0;
+                    release_evt[0] = 0;
+                    press_evt[1] = 0;
+                    release_evt[1] = 0;
+
+
+
+                }
+            }else if (flag_press == 1){
+                if (counter[3] <= 100){
+                    status_mode = 0;
+                    PORTBbits.RB0 = counter[3] % 10 >= 5;
+                    PORTBbits.RB1 = counter[3] % 10 < 5;
+                    PORTBbits.RB2 = counter[3] % 10 >= 5;
+                    PORTBbits.RB4 = counter[3] % 10 < 5;
+                    PORTBbits.RB5 = counter[3] % 10 >= 5;
+                }else if(counter[3] <= 200){
+
+                    status_mode = 1;
+                    status_value = get_motor_speed();
+                }else if(counter[3] <= 300){
+                    status_mode = 0;
+                    PORTBbits.RB0 = counter[3] % 10 >= 5;
+                    PORTBbits.RB1 = counter[3] % 10 < 5;
+                    PORTBbits.RB2 = counter[3] % 10 >= 5;
+                    PORTBbits.RB4 = counter[3] % 10 < 5;
+                    PORTBbits.RB5 = counter[3] % 10 >= 5;
+                }else if (counter[3] <= 400){
+
+                    status_mode = 7;
+                    status_value = get_robot_program();
+                }else{
+                    counter[3] = 0;
+                }
+                if (press_evt[0]){
+                    flag_press = 2;
+                    press_evt[0] = 0;
+                }
+                if (press_evt[1]){
+                    flag_press = 2;
+                    press_evt[1] = 0;
+                }
+            }else if (flag_press == 2){
+                status_mode = 0;
+                PORTBbits.RB0 = 1;
+                PORTBbits.RB1 = 1;
+                PORTBbits.RB2 = 1;
+                PORTBbits.RB4 = 1;
+                PORTBbits.RB5 = 1;
+                if (release_evt[0]){
+                    release_evt[0] = 0;
+                    robot_state = 3;
+                    flag_menu_init = 1;
+                }
+                if (release_evt[1]){
+                    release_evt[1] = 0;
+                    robot_state = 3;
+                    flag_menu_init = 1;
+                }
+            }
+        }
+
+    }else if (robot_state == 3){
+        if (flag_menu_init){
+            counter[3] = 0;
+            flag_menu_init = 0;
+        }
+        status_mode = 0;
+        PORTBbits.RB0 = counter[3] >= 100;
+        PORTBbits.RB1 = counter[3] >= 200;
+        PORTBbits.RB2 = counter[3] >= 300;
+        PORTBbits.RB4 = counter[3] >= 400;
+        PORTBbits.RB5 = counter[3] >= 500;
+
+        if (counter[3] >= 500){
+            robot_state = 4;
+            flag_menu_init = 1;
+        }
+    }else if (robot_state == 4){
+        if (flag_menu_init){
+            speed_aux = get_motor_speed();
+            program_aux = get_robot_program();
+
+            init_routines[program_aux-1](speed_aux);
+            flag_menu_init = 0;
+        }
+        loop_routines[program_aux-1](speed_aux);
     }
 }
 
