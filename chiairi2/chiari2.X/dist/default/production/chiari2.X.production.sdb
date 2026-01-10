@@ -63,31 +63,31 @@
 [v _init1 init1 `(v  1 e 1 0 ]
 "801
 [v _loop1 loop1 `(v  1 e 1 0 ]
-"811
+"827
 [v _init2 init2 `(v  1 e 1 0 ]
-"815
+"831
 [v _loop2 loop2 `(v  1 e 1 0 ]
-"825
+"841
 [v _init3 init3 `(v  1 e 1 0 ]
-"829
+"845
 [v _loop3 loop3 `(v  1 e 1 0 ]
-"839
+"855
 [v _init4 init4 `(v  1 e 1 0 ]
-"843
+"859
 [v _loop4 loop4 `(v  1 e 1 0 ]
-"881
+"900
 [v _init init `(v  1 e 1 0 ]
-"894
+"913
 [v _get_motor_speed get_motor_speed `(ui  1 e 2 0 ]
-"903
+"922
 [v _set_motor_speed set_motor_speed `(v  1 e 1 0 ]
-"910
+"929
 [v _get_robot_program get_robot_program `(ui  1 e 2 0 ]
-"919
+"938
 [v _set_robot_program set_robot_program `(v  1 e 1 0 ]
-"926
+"945
 [v _loop loop `(v  1 e 1 0 ]
-"1246
+"1274
 [v _main main `(v  1 e 1 0 ]
 [s S57 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 SUSPND 1 0 :1:1 
@@ -713,33 +713,37 @@
 [v _mode_counter mode_counter `i  1 e 2 0 ]
 "572
 [v _status_code status_code `i  1 e 2 0 ]
-"851
+"867
 [v _init_routines init_routines `[4]*.37(v  1 e 8 0 ]
-"852
+"868
 [v _loop_routines loop_routines `[4]*.37(v  1 e 8 0 ]
+"870
+[v _init_routine_aux init_routine_aux `*.37(v  1 e 2 0 ]
 "871
+[v _loop_routine_aux loop_routine_aux `*.37(v  1 e 2 0 ]
+"890
 [v _flag_init flag_init `i  1 e 2 0 ]
-"872
+"891
 [v _current_menu current_menu `i  1 e 2 0 ]
-"873
+"892
 [v _flag_menu_init flag_menu_init `i  1 e 2 0 ]
-"874
+"893
 [v _flag_menu_init_2 flag_menu_init_2 `i  1 e 2 0 ]
-"875
+"894
 [v _configure_mode configure_mode `i  1 e 2 0 ]
-"876
+"895
 [v _robot_state robot_state `i  1 e 2 0 ]
-"877
+"896
 [v _program_count program_count `i  1 e 2 0 ]
-"878
+"897
 [v _flag_press flag_press `i  1 e 2 0 ]
-"879
+"898
 [v _speed_aux speed_aux `i  1 e 2 0 ]
 [v _program_aux program_aux `i  1 e 2 0 ]
-"1246
+"1274
 [v _main main `(v  1 e 1 0 ]
 {
-"1261
+"1289
 } 0
 "340
 [v _update_pwm update_pwm `(v  1 e 1 0 ]
@@ -789,23 +793,10 @@
 [v read_analog@i i `uc  1 a 1 34 ]
 "243
 } 0
-"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
-[v ___awdiv __awdiv `(i  1 e 2 0 ]
-{
-"10
-[v ___awdiv@quotient quotient `i  1 a 2 18 ]
-"11
-[v ___awdiv@sign sign `uc  1 a 1 17 ]
-[v ___awdiv@counter counter `uc  1 a 1 16 ]
-"7
-[v ___awdiv@dividend dividend `i  1 p 2 12 ]
-[v ___awdiv@divisor divisor `i  1 p 2 14 ]
-"41
-} 0
-"926 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
+"945
 [v _loop loop `(v  1 e 1 0 ]
 {
-"1238
+"1265
 } 0
 "270
 [v _write_eeprom write_eeprom `(v  1 e 1 0 ]
@@ -824,17 +815,17 @@
 [v status_set_mode@mode mode `uc  1 p 1 8 ]
 "596
 } 0
-"919
+"938
 [v _set_robot_program set_robot_program `(v  1 e 1 0 ]
 {
 [v set_robot_program@program program `ui  1 p 2 6 ]
-"924
+"943
 } 0
-"903
+"922
 [v _set_motor_speed set_motor_speed `(v  1 e 1 0 ]
 {
 [v set_motor_speed@speed speed `ui  1 p 2 6 ]
-"908
+"927
 } 0
 "246
 [v _read_eeprom read_eeprom `(v  1 e 1 0 ]
@@ -845,61 +836,75 @@
 [v read_eeprom@addr addr `uc  1 a 1 12 ]
 "269
 } 0
-"829
+"845
 [v _loop3 loop3 `(v  1 e 1 0 ]
 {
-"835
+"851
 } 0
-"815
+"831
 [v _loop2 loop2 `(v  1 e 1 0 ]
 {
-"821
+"837
 } 0
 "801
 [v _loop1 loop1 `(v  1 e 1 0 ]
 {
-"807
+[v loop1@speed speed `i  1 p 2 20 ]
+"823
 } 0
-"843
+"859
 [v _loop4 loop4 `(v  1 e 1 0 ]
 {
-[v loop4@speed speed `i  1 p 2 6 ]
-"849
+[v loop4@speed speed `i  1 p 2 20 ]
+"865
 } 0
-"825
+"7 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 18 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 17 ]
+[v ___awdiv@counter counter `uc  1 a 1 16 ]
+"7
+[v ___awdiv@dividend dividend `i  1 p 2 12 ]
+[v ___awdiv@divisor divisor `i  1 p 2 14 ]
+"41
+} 0
+"841 C:\git-repos\Sumo-Robot-Programs-Database\chiairi2\chiari2.X\main.c
 [v _init3 init3 `(v  1 e 1 0 ]
 {
-"827
+"843
 } 0
-"811
+"827
 [v _init2 init2 `(v  1 e 1 0 ]
 {
-"813
+"829
 } 0
 "797
 [v _init1 init1 `(v  1 e 1 0 ]
 {
 "799
 } 0
-"839
+"855
 [v _init4 init4 `(v  1 e 1 0 ]
 {
 [v init4@speed speed `i  1 p 2 6 ]
-"841
+"857
 } 0
-"910
+"929
 [v _get_robot_program get_robot_program `(ui  1 e 2 0 ]
 {
-"911
+"930
 [v get_robot_program@program program `ui  1 a 2 10 ]
-"917
+"936
 } 0
-"894
+"913
 [v _get_motor_speed get_motor_speed `(ui  1 e 2 0 ]
 {
-"895
+"914
 [v get_motor_speed@speed speed `ui  1 a 2 8 ]
-"901
+"920
 } 0
 "9 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\aomod.c
 [v ___aomod __aomod `(o  1 e 8 0 ]
@@ -932,10 +937,10 @@
 [v init_vars@i i `i  1 a 2 8 ]
 "338
 } 0
-"881
+"900
 [v _init init `(v  1 e 1 0 ]
 {
-"892
+"911
 } 0
 "82
 [v _config_micro config_micro `(v  1 e 1 0 ]
@@ -948,7 +953,7 @@
 "493
 [v buttons_loop@click_evt click_evt `[5]uc  1 a 5 16 ]
 "513
-[v buttons_loop@i_1320 i `i  1 a 2 21 ]
+[v buttons_loop@i_1322 i `i  1 a 2 21 ]
 "436
 [v buttons_loop@i i `i  1 a 2 23 ]
 "553

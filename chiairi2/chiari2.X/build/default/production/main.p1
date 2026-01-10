@@ -574,6 +574,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _PORTBbits `VS106 ~T0 @X0 0 e@3969 ]
 [v F3616 `(v ~T0 @X0 0 tf1`i ]
 [v F3627 `(v ~T0 @X0 0 tf1`i ]
+[v F3638 `(v ~T0 @X0 0 tf1`i ]
+[v F3641 `(v ~T0 @X0 0 tf1`i ]
 [p mainexit ]
 "55 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc/pic18f4550.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc/pic18f4550.h: 55: __asm("SPPDATA equ 0F62h");
@@ -1848,11 +1850,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 416 ]
 [e :U 414 ]
 "351
-[; ;main.c: 351:     PORTCbits.RC1 = pwm0 > 0 ? 0 : 1;
-[e = . . _PORTCbits 0 1 -> ? > _pwm0 -> 0 `i : -> 0 `i -> 1 `i `uc ]
+[; ;main.c: 351:     PORTCbits.RC0 = pwm0 > 0 ? 0 : 1;
+[e = . . _PORTCbits 0 0 -> ? > _pwm0 -> 0 `i : -> 0 `i -> 1 `i `uc ]
 "352
-[; ;main.c: 352:     PORTCbits.RC0 = pwm0 < 0 ? 0 : 1;
-[e = . . _PORTCbits 0 0 -> ? < _pwm0 -> 0 `i : -> 0 `i -> 1 `i `uc ]
+[; ;main.c: 352:     PORTCbits.RC1 = pwm0 < 0 ? 0 : 1;
+[e = . . _PORTCbits 0 1 -> ? < _pwm0 -> 0 `i : -> 0 `i -> 1 `i `uc ]
 "353
 [; ;main.c: 353:     pwm0 = pwm0 > 0 ? pwm0 : (-pwm0);
 [e = _pwm0 ? > _pwm0 -> 0 `i : _pwm0 -U _pwm0 ]
@@ -1894,11 +1896,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U 420 ]
 [e :U 418 ]
 "366
-[; ;main.c: 366:     PORTDbits.RD1 = pwm1 > 0 ? 0 : 1;
-[e = . . _PORTDbits 0 1 -> ? > _pwm1 -> 0 `i : -> 0 `i -> 1 `i `uc ]
+[; ;main.c: 366:     PORTDbits.RD0 = pwm1 > 0 ? 0 : 1;
+[e = . . _PORTDbits 0 0 -> ? > _pwm1 -> 0 `i : -> 0 `i -> 1 `i `uc ]
 "367
-[; ;main.c: 367:     PORTDbits.RD0 = pwm1 < 0 ? 0 : 1;
-[e = . . _PORTDbits 0 0 -> ? < _pwm1 -> 0 `i : -> 0 `i -> 1 `i `uc ]
+[; ;main.c: 367:     PORTDbits.RD1 = pwm1 < 0 ? 0 : 1;
+[e = . . _PORTDbits 0 1 -> ? < _pwm1 -> 0 `i : -> 0 `i -> 1 `i `uc ]
 "368
 [; ;main.c: 368:     pwm1 = pwm1 > 0 ? pwm1 : (-pwm1);
 [e = _pwm1 ? > _pwm1 -> 0 `i : _pwm1 -U _pwm1 ]
@@ -3263,138 +3265,179 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _loop1 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"802
-[; ;main.c: 802:     PORTBbits.RB0 = 1;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"803
-[; ;main.c: 803:     PORTBbits.RB1 = 0;
-[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
-"804
-[; ;main.c: 804:     PORTBbits.RB2 = 0;
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
 "805
-[; ;main.c: 805:     PORTBbits.RB4 = 0;
-[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 805:     if (PORTDbits.RD6 || PORTDbits.RD5 || PORTDbits.RD4){
+[e $ ! || || != -> . . _PORTDbits 0 6 `i -> 0 `i != -> . . _PORTDbits 0 5 `i -> 0 `i != -> . . _PORTDbits 0 4 `i -> 0 `i 540  ]
+{
 "806
-[; ;main.c: 806:     PORTBbits.RB5 = 0;
-[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+[; ;main.c: 806:          pwm[0] = speed;
+[e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux _speed ]
 "807
-[; ;main.c: 807: }
+[; ;main.c: 807:          pwm[1] = speed;
+[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux _speed ]
+"808
+[; ;main.c: 808:          PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"809
+[; ;main.c: 809:          PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"810
+[; ;main.c: 810:          PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"811
+[; ;main.c: 811:          PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"812
+[; ;main.c: 812:          PORTBbits.RB5 = 1;
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"813
+[; ;main.c: 813:      }else{
+}
+[e $U 541  ]
+[e :U 540 ]
+{
+"814
+[; ;main.c: 814:          pwm[0] = speed;
+[e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux _speed ]
+"815
+[; ;main.c: 815:          pwm[1] = speed / 6;
+[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux / _speed -> 6 `i ]
+"816
+[; ;main.c: 816:          PORTBbits.RB0 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+"817
+[; ;main.c: 817:          PORTBbits.RB1 = 0;
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+"818
+[; ;main.c: 818:          PORTBbits.RB2 = 0;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
+"819
+[; ;main.c: 819:          PORTBbits.RB4 = 0;
+[e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
+"820
+[; ;main.c: 820:          PORTBbits.RB5 = 0;
+[e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
+"821
+[; ;main.c: 821:      }
+}
+[e :U 541 ]
+"823
+[; ;main.c: 823: }
 [e :UE 539 ]
 }
-"811
-[; ;main.c: 811: void init2(int speed){
+"827
+[; ;main.c: 827: void init2(int speed){
 [v _init2 `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _init2 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"813
-[; ;main.c: 813: }
-[e :UE 540 ]
+"829
+[; ;main.c: 829: }
+[e :UE 542 ]
 }
-"815
-[; ;main.c: 815: void loop2(int speed){
+"831
+[; ;main.c: 831: void loop2(int speed){
 [v _loop2 `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _loop2 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"816
-[; ;main.c: 816:     PORTBbits.RB0 = 0;
+"832
+[; ;main.c: 832:     PORTBbits.RB0 = 0;
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"817
-[; ;main.c: 817:     PORTBbits.RB1 = 1;
+"833
+[; ;main.c: 833:     PORTBbits.RB1 = 1;
 [e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
-"818
-[; ;main.c: 818:     PORTBbits.RB2 = 0;
+"834
+[; ;main.c: 834:     PORTBbits.RB2 = 0;
 [e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"819
-[; ;main.c: 819:     PORTBbits.RB4 = 0;
+"835
+[; ;main.c: 835:     PORTBbits.RB4 = 0;
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-"820
-[; ;main.c: 820:     PORTBbits.RB5 = 0;
+"836
+[; ;main.c: 836:     PORTBbits.RB5 = 0;
 [e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
-"821
-[; ;main.c: 821: }
-[e :UE 541 ]
+"837
+[; ;main.c: 837: }
+[e :UE 543 ]
 }
-"825
-[; ;main.c: 825: void init3(int speed){
+"841
+[; ;main.c: 841: void init3(int speed){
 [v _init3 `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _init3 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"827
-[; ;main.c: 827: }
-[e :UE 542 ]
+"843
+[; ;main.c: 843: }
+[e :UE 544 ]
 }
-"829
-[; ;main.c: 829: void loop3(int speed){
+"845
+[; ;main.c: 845: void loop3(int speed){
 [v _loop3 `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _loop3 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"830
-[; ;main.c: 830:     PORTBbits.RB0 = 1;
+"846
+[; ;main.c: 846:     PORTBbits.RB0 = 1;
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"831
-[; ;main.c: 831:     PORTBbits.RB1 = 1;
+"847
+[; ;main.c: 847:     PORTBbits.RB1 = 1;
 [e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
-"832
-[; ;main.c: 832:     PORTBbits.RB2 = 0;
+"848
+[; ;main.c: 848:     PORTBbits.RB2 = 0;
 [e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"833
-[; ;main.c: 833:     PORTBbits.RB4 = 0;
+"849
+[; ;main.c: 849:     PORTBbits.RB4 = 0;
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-"834
-[; ;main.c: 834:     PORTBbits.RB5 = 0;
+"850
+[; ;main.c: 850:     PORTBbits.RB5 = 0;
 [e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
-"835
-[; ;main.c: 835: }
-[e :UE 543 ]
+"851
+[; ;main.c: 851: }
+[e :UE 545 ]
 }
-"839
-[; ;main.c: 839: void init4(int speed){
+"855
+[; ;main.c: 855: void init4(int speed){
 [v _init4 `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _init4 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"841
-[; ;main.c: 841: }
-[e :UE 544 ]
+"857
+[; ;main.c: 857: }
+[e :UE 546 ]
 }
-"843
-[; ;main.c: 843: void loop4(int speed){
+"859
+[; ;main.c: 859: void loop4(int speed){
 [v _loop4 `(v ~T0 @X0 1 ef1`i ]
 {
 [e :U _loop4 ]
 [v _speed `i ~T0 @X0 1 r1 ]
 [f ]
-"844
-[; ;main.c: 844:     PORTBbits.RB0 = 0;
+"860
+[; ;main.c: 860:     PORTBbits.RB0 = 0;
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"845
-[; ;main.c: 845:     PORTBbits.RB1 = 0;
+"861
+[; ;main.c: 861:     PORTBbits.RB1 = 0;
 [e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
-"846
-[; ;main.c: 846:     PORTBbits.RB2 = 1;
+"862
+[; ;main.c: 862:     PORTBbits.RB2 = 1;
 [e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"847
-[; ;main.c: 847:     PORTBbits.RB4 = 0;
+"863
+[; ;main.c: 863:     PORTBbits.RB4 = 0;
 [e = . . _PORTBbits 0 4 -> -> 0 `i `uc ]
-"848
-[; ;main.c: 848:     PORTBbits.RB5 = 0;
+"864
+[; ;main.c: 864:     PORTBbits.RB5 = 0;
 [e = . . _PORTBbits 0 5 -> -> 0 `i `uc ]
-"849
-[; ;main.c: 849: }
-[e :UE 545 ]
+"865
+[; ;main.c: 865: }
+[e :UE 547 ]
 }
-"851
-[; ;main.c: 851: void (*init_routines[4]) (int) = {init1, init2, init3, init4};
+"867
+[; ;main.c: 867: void (*init_routines[4]) (int) = {&init1, &init2, &init3, &init4};
 [v _init_routines `*F3616 ~T0 @X0 -> 4 `i e ]
 [i _init_routines
 :U ..
@@ -3404,8 +3447,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 &U _init4
 ..
 ]
-"852
-[; ;main.c: 852: void (*loop_routines[4]) (int) = {loop1, loop2, loop3, loop4};
+"868
+[; ;main.c: 868: void (*loop_routines[4]) (int) = {&loop1, &loop2, &loop3, &loop4};
 [v _loop_routines `*F3627 ~T0 @X0 -> 4 `i e ]
 [i _loop_routines
 :U ..
@@ -3415,1183 +3458,1195 @@ Version 4.0 HI-TECH Software Intermediate Code
 &U _loop4
 ..
 ]
+"870
+[; ;main.c: 870: void (*init_routine_aux)(int);
+[v _init_routine_aux `*F3638 ~T0 @X0 1 e ]
 "871
-[; ;main.c: 871: int flag_init;
+[; ;main.c: 871: void (*loop_routine_aux)(int);
+[v _loop_routine_aux `*F3641 ~T0 @X0 1 e ]
+"890
+[; ;main.c: 890: int flag_init;
 [v _flag_init `i ~T0 @X0 1 e ]
-"872
-[; ;main.c: 872: int current_menu;
+"891
+[; ;main.c: 891: int current_menu;
 [v _current_menu `i ~T0 @X0 1 e ]
-"873
-[; ;main.c: 873: int flag_menu_init;
+"892
+[; ;main.c: 892: int flag_menu_init;
 [v _flag_menu_init `i ~T0 @X0 1 e ]
-"874
-[; ;main.c: 874: int flag_menu_init_2;
+"893
+[; ;main.c: 893: int flag_menu_init_2;
 [v _flag_menu_init_2 `i ~T0 @X0 1 e ]
-"875
-[; ;main.c: 875: int configure_mode;
+"894
+[; ;main.c: 894: int configure_mode;
 [v _configure_mode `i ~T0 @X0 1 e ]
-"876
-[; ;main.c: 876: int robot_state;
+"895
+[; ;main.c: 895: int robot_state;
 [v _robot_state `i ~T0 @X0 1 e ]
-"877
-[; ;main.c: 877: int program_count;
+"896
+[; ;main.c: 896: int program_count;
 [v _program_count `i ~T0 @X0 1 e ]
-"878
-[; ;main.c: 878: int flag_press;
+"897
+[; ;main.c: 897: int flag_press;
 [v _flag_press `i ~T0 @X0 1 e ]
-"879
-[; ;main.c: 879: int speed_aux, program_aux;
+"898
+[; ;main.c: 898: int speed_aux, program_aux;
 [v _speed_aux `i ~T0 @X0 1 e ]
 [v _program_aux `i ~T0 @X0 1 e ]
-"881
-[; ;main.c: 881: void init(){
+"900
+[; ;main.c: 900: void init(){
 [v _init `(v ~T0 @X0 1 ef ]
 {
 [e :U _init ]
 [f ]
-"882
-[; ;main.c: 882:     flag_init = 0;
+"901
+[; ;main.c: 901:     flag_init = 0;
 [e = _flag_init -> 0 `i ]
-"883
-[; ;main.c: 883:     current_menu = 0;
+"902
+[; ;main.c: 902:     current_menu = 0;
 [e = _current_menu -> 0 `i ]
-"884
-[; ;main.c: 884:     flag_menu_init = 0;
+"903
+[; ;main.c: 903:     flag_menu_init = 0;
 [e = _flag_menu_init -> 0 `i ]
-"885
-[; ;main.c: 885:     flag_menu_init_2 = 0;
+"904
+[; ;main.c: 904:     flag_menu_init_2 = 0;
 [e = _flag_menu_init_2 -> 0 `i ]
-"886
-[; ;main.c: 886:     configure_mode = 0;
+"905
+[; ;main.c: 905:     configure_mode = 0;
 [e = _configure_mode -> 0 `i ]
-"887
-[; ;main.c: 887:     robot_state = 0;
+"906
+[; ;main.c: 906:     robot_state = 0;
 [e = _robot_state -> 0 `i ]
-"888
-[; ;main.c: 888:     program_count = 4;
+"907
+[; ;main.c: 907:     program_count = 4;
 [e = _program_count -> 4 `i ]
-"889
-[; ;main.c: 889:     flag_press = 0;
+"908
+[; ;main.c: 908:     flag_press = 0;
 [e = _flag_press -> 0 `i ]
-"890
-[; ;main.c: 890:     speed_aux = 0;
+"909
+[; ;main.c: 909:     speed_aux = 0;
 [e = _speed_aux -> 0 `i ]
-"891
-[; ;main.c: 891:     program_aux = 0;
+"910
+[; ;main.c: 910:     program_aux = 0;
 [e = _program_aux -> 0 `i ]
-"892
-[; ;main.c: 892: }
-[e :UE 546 ]
+"911
+[; ;main.c: 911: }
+[e :UE 548 ]
 }
-"894
-[; ;main.c: 894: unsigned int get_motor_speed(){
+"913
+[; ;main.c: 913: unsigned int get_motor_speed(){
 [v _get_motor_speed `(ui ~T0 @X0 1 ef ]
 {
 [e :U _get_motor_speed ]
 [f ]
-"895
-[; ;main.c: 895:     unsigned int speed;
+"914
+[; ;main.c: 914:     unsigned int speed;
 [v _speed `ui ~T0 @X0 1 a ]
-"896
-[; ;main.c: 896:     speed = persisted_data[0];
+"915
+[; ;main.c: 915:     speed = persisted_data[0];
 [e = _speed *U + &U _persisted_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux ]
-"897
-[; ;main.c: 897:     if (speed >= 1000){
-[e $ ! >= _speed -> -> 1000 `i `ui 548  ]
+"916
+[; ;main.c: 916:     if (speed >= 1000){
+[e $ ! >= _speed -> -> 1000 `i `ui 550  ]
 {
-"898
-[; ;main.c: 898:         speed = 1000;
+"917
+[; ;main.c: 917:         speed = 1000;
 [e = _speed -> -> 1000 `i `ui ]
-"899
-[; ;main.c: 899:     }
+"918
+[; ;main.c: 918:     }
 }
-[e :U 548 ]
-"900
-[; ;main.c: 900:     return speed;
+[e :U 550 ]
+"919
+[; ;main.c: 919:     return speed;
 [e ) _speed ]
-[e $UE 547  ]
-"901
-[; ;main.c: 901: }
-[e :UE 547 ]
+[e $UE 549  ]
+"920
+[; ;main.c: 920: }
+[e :UE 549 ]
 }
-"903
-[; ;main.c: 903: void set_motor_speed(unsigned int speed){
+"922
+[; ;main.c: 922: void set_motor_speed(unsigned int speed){
 [v _set_motor_speed `(v ~T0 @X0 1 ef1`ui ]
 {
 [e :U _set_motor_speed ]
 [v _speed `ui ~T0 @X0 1 r1 ]
 [f ]
-"904
-[; ;main.c: 904:     if (speed >= 1000){
-[e $ ! >= _speed -> -> 1000 `i `ui 550  ]
+"923
+[; ;main.c: 923:     if (speed >= 1000){
+[e $ ! >= _speed -> -> 1000 `i `ui 552  ]
 {
-"905
-[; ;main.c: 905:         speed = 1000;
+"924
+[; ;main.c: 924:         speed = 1000;
 [e = _speed -> -> 1000 `i `ui ]
-"906
-[; ;main.c: 906:     }
+"925
+[; ;main.c: 925:     }
 }
-[e :U 550 ]
-"907
-[; ;main.c: 907:     persisted_data[0] = speed;
+[e :U 552 ]
+"926
+[; ;main.c: 926:     persisted_data[0] = speed;
 [e = *U + &U _persisted_data * -> -> -> 0 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux _speed ]
-"908
-[; ;main.c: 908: }
-[e :UE 549 ]
+"927
+[; ;main.c: 927: }
+[e :UE 551 ]
 }
-"910
-[; ;main.c: 910: unsigned int get_robot_program(){
+"929
+[; ;main.c: 929: unsigned int get_robot_program(){
 [v _get_robot_program `(ui ~T0 @X0 1 ef ]
 {
 [e :U _get_robot_program ]
 [f ]
-"911
-[; ;main.c: 911:     unsigned int program;
+"930
+[; ;main.c: 930:     unsigned int program;
 [v _program `ui ~T0 @X0 1 a ]
-"912
-[; ;main.c: 912:     program = persisted_data[1];
+"931
+[; ;main.c: 931:     program = persisted_data[1];
 [e = _program *U + &U _persisted_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux ]
-"913
-[; ;main.c: 913:     if (program >= program_count+1 || program == 0){
-[e $ ! || >= _program -> + _program_count -> 1 `i `ui == _program -> -> 0 `i `ui 552  ]
+"932
+[; ;main.c: 932:     if (program >= program_count+1 || program == 0){
+[e $ ! || >= _program -> + _program_count -> 1 `i `ui == _program -> -> 0 `i `ui 554  ]
 {
-"914
-[; ;main.c: 914:         program = 1;
+"933
+[; ;main.c: 933:         program = 1;
 [e = _program -> -> 1 `i `ui ]
-"915
-[; ;main.c: 915:     }
+"934
+[; ;main.c: 934:     }
 }
-[e :U 552 ]
-"916
-[; ;main.c: 916:     return program;
+[e :U 554 ]
+"935
+[; ;main.c: 935:     return program;
 [e ) _program ]
-[e $UE 551  ]
-"917
-[; ;main.c: 917: }
-[e :UE 551 ]
+[e $UE 553  ]
+"936
+[; ;main.c: 936: }
+[e :UE 553 ]
 }
-"919
-[; ;main.c: 919: void set_robot_program(unsigned int program){
+"938
+[; ;main.c: 938: void set_robot_program(unsigned int program){
 [v _set_robot_program `(v ~T0 @X0 1 ef1`ui ]
 {
 [e :U _set_robot_program ]
 [v _program `ui ~T0 @X0 1 r1 ]
 [f ]
-"920
-[; ;main.c: 920:     if (program >= program_count+1 || program == 0){
-[e $ ! || >= _program -> + _program_count -> 1 `i `ui == _program -> -> 0 `i `ui 554  ]
+"939
+[; ;main.c: 939:     if (program >= program_count+1 || program == 0){
+[e $ ! || >= _program -> + _program_count -> 1 `i `ui == _program -> -> 0 `i `ui 556  ]
 {
-"921
-[; ;main.c: 921:         program = 1;
+"940
+[; ;main.c: 940:         program = 1;
 [e = _program -> -> 1 `i `ui ]
-"922
-[; ;main.c: 922:     }
+"941
+[; ;main.c: 941:     }
 }
-[e :U 554 ]
-"923
-[; ;main.c: 923:     persisted_data[1] = program;
+[e :U 556 ]
+"942
+[; ;main.c: 942:     persisted_data[1] = program;
 [e = *U + &U _persisted_data * -> -> -> 1 `i `ui `ux -> -> # *U &U _persisted_data `ui `ux _program ]
-"924
-[; ;main.c: 924: }
-[e :UE 553 ]
+"943
+[; ;main.c: 943: }
+[e :UE 555 ]
 }
-"926
-[; ;main.c: 926: void loop(){
+"945
+[; ;main.c: 945: void loop(){
 [v _loop `(v ~T0 @X0 1 ef ]
 {
 [e :U _loop ]
 [f ]
-"927
-[; ;main.c: 927:     if (!flag_init && !initial_state){
-[e $ ! && ! != _flag_init -> 0 `i ! != -> _initial_state `i -> 0 `i 556  ]
+"946
+[; ;main.c: 946:     if (!flag_init && !initial_state){
+[e $ ! && ! != _flag_init -> 0 `i ! != -> _initial_state `i -> 0 `i 558  ]
 {
-"928
-[; ;main.c: 928:         pwm[0] = 0;
+"947
+[; ;main.c: 947:         pwm[0] = 0;
 [e = *U + &U _pwm * -> -> -> 0 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
-"929
-[; ;main.c: 929:         pwm[1] = 0;
-[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
-"931
-[; ;main.c: 931:         flag_init = 1;
-[e = _flag_init -> 1 `i ]
-"936
-[; ;main.c: 936:         read_eeprom();
-[e ( _read_eeprom ..  ]
-"938
-[; ;main.c: 938:         status_set_mode( 4 , 0 , -1);
-[e ( _status_set_mode (3 , , -> -> 4 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"940
-[; ;main.c: 940:     }else if (flag_init == 1 && robot_state == 0){
-}
-[e $U 557  ]
-[e :U 556 ]
-[e $ ! && == _flag_init -> 1 `i == _robot_state -> 0 `i 558  ]
-{
-"941
-[; ;main.c: 941:         if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 559  ]
-{
 "948
-[; ;main.c: 948:             robot_state = 1;
-[e = _robot_state -> 1 `i ]
-"949
-[; ;main.c: 949:             current_menu = 1;
-[e = _current_menu -> 1 `i ]
+[; ;main.c: 948:         pwm[1] = 0;
+[e = *U + &U _pwm * -> -> -> 1 `i `ui `ux -> -> # *U &U _pwm `ui `ux -> 0 `i ]
 "950
-[; ;main.c: 950:             flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"951
-[; ;main.c: 951:         }
-}
-[e :U 559 ]
-"952
-[; ;main.c: 952:     }else if (robot_state == 1){
-}
-[e $U 560  ]
-[e :U 558 ]
-[e $ ! == _robot_state -> 1 `i 561  ]
-{
+[; ;main.c: 950:         flag_init = 1;
+[e = _flag_init -> 1 `i ]
 "955
-[; ;main.c: 955:         if (flag_menu_init){
-[e $ ! != _flag_menu_init -> 0 `i 562  ]
-{
+[; ;main.c: 955:         read_eeprom();
+[e ( _read_eeprom ..  ]
 "957
-[; ;main.c: 957:             flag_menu_init = 0;
-[e = _flag_menu_init -> 0 `i ]
-"958
-[; ;main.c: 958:             flag_menu_init_2 = 1;
-[e = _flag_menu_init_2 -> 1 `i ]
+[; ;main.c: 957:         status_set_mode( 4 , 0 , -1);
+[e ( _status_set_mode (3 , , -> -> 4 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
 "959
-[; ;main.c: 959:             status_code = current_menu;
-[e = _status_code _current_menu ]
-"960
-[; ;main.c: 960:             status_set_mode( 6, 4, 0);
-[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
-"961
-[; ;main.c: 961:         }
+[; ;main.c: 959:     }else if (flag_init == 1 && robot_state == 0){
 }
-[e :U 562 ]
-"964
-[; ;main.c: 964:         if (current_menu == 1){
-[e $ ! == _current_menu -> 1 `i 563  ]
+[e $U 559  ]
+[e :U 558 ]
+[e $ ! && == _flag_init -> 1 `i == _robot_state -> 0 `i 560  ]
 {
-"966
-[; ;main.c: 966:             if (configure_mode == 0){
-[e $ ! == _configure_mode -> 0 `i 564  ]
+"960
+[; ;main.c: 960:         if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 561  ]
 {
 "967
-[; ;main.c: 967:                 if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 565  ]
-{
+[; ;main.c: 967:             robot_state = 1;
+[e = _robot_state -> 1 `i ]
 "968
-[; ;main.c: 968:                     if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 566  ]
-{
+[; ;main.c: 968:             current_menu = 1;
+[e = _current_menu -> 1 `i ]
 "969
-[; ;main.c: 969:                         flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
+[; ;main.c: 969:             flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"970
+[; ;main.c: 970:         }
+}
+[e :U 561 ]
 "971
-[; ;main.c: 971:                         status_value = get_motor_speed();
-[e = _status_value -> ( _get_motor_speed ..  `i ]
-"972
-[; ;main.c: 972:                         status_set_mode( 1, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"973
-[; ;main.c: 973:                     }
+[; ;main.c: 971:     }else if (robot_state == 1){
 }
-[e :U 566 ]
+[e $U 562  ]
+[e :U 560 ]
+[e $ ! == _robot_state -> 1 `i 563  ]
+{
 "974
-[; ;main.c: 974:                 }
-}
-[e :U 565 ]
+[; ;main.c: 974:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 564  ]
+{
 "976
-[; ;main.c: 976:                 if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 567  ]
-{
-"978
-[; ;main.c: 978:                     double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"979
-[; ;main.c: 979:                     configure_mode = 1;
-[e = _configure_mode -> 1 `i ]
-"980
-[; ;main.c: 980:                     flag_menu_init_2 = 1;
+[; ;main.c: 976:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"977
+[; ;main.c: 977:             flag_menu_init_2 = 1;
 [e = _flag_menu_init_2 -> 1 `i ]
-"981
-[; ;main.c: 981:                 }
+"978
+[; ;main.c: 978:             status_code = current_menu;
+[e = _status_code _current_menu ]
+"979
+[; ;main.c: 979:             status_set_mode( 6, 4, 0);
+[e ( _status_set_mode (3 , , -> -> 6 `i `uc -> -> 4 `i `uc -> -> 0 `i `uc ]
+"980
+[; ;main.c: 980:         }
 }
-[e :U 567 ]
-"983
-[; ;main.c: 983:             }else if (configure_mode == 1){
-}
-[e $U 568  ]
 [e :U 564 ]
-[e $ ! == _configure_mode -> 1 `i 569  ]
-{
-"984
-[; ;main.c: 984:                 if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 570  ]
+"983
+[; ;main.c: 983:         if (current_menu == 1){
+[e $ ! == _current_menu -> 1 `i 565  ]
 {
 "985
-[; ;main.c: 985:                     flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
-"988
-[; ;main.c: 988:                     status_code = 1;
-[e = _status_code -> 1 `i ]
-"989
-[; ;main.c: 989:                     status_set_mode( 2, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"990
-[; ;main.c: 990:                 }
-}
-[e :U 570 ]
-"992
-[; ;main.c: 992:                 status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
-[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
-"994
-[; ;main.c: 994:                 if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 571  ]
+[; ;main.c: 985:             if (configure_mode == 0){
+[e $ ! == _configure_mode -> 0 `i 566  ]
 {
-"996
-[; ;main.c: 996:                     set_motor_speed(status_value);
-[e ( _set_motor_speed (1 -> _status_value `ui ]
-"997
-[; ;main.c: 997:                     write_eeprom();
-[e ( _write_eeprom ..  ]
-"1000
-[; ;main.c: 1000:                     double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
-"1001
-[; ;main.c: 1001:                     configure_mode = 0;
-[e = _configure_mode -> 0 `i ]
-"1002
-[; ;main.c: 1002:                     flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"1003
-[; ;main.c: 1003:                 }
+"986
+[; ;main.c: 986:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 567  ]
+{
+"987
+[; ;main.c: 987:                     if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 568  ]
+{
+"988
+[; ;main.c: 988:                         flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"990
+[; ;main.c: 990:                         status_value = get_motor_speed();
+[e = _status_value -> ( _get_motor_speed ..  `i ]
+"991
+[; ;main.c: 991:                         status_set_mode( 1, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"992
+[; ;main.c: 992:                     }
 }
-[e :U 571 ]
-"1004
-[; ;main.c: 1004:             }
+[e :U 568 ]
+"993
+[; ;main.c: 993:                 }
+}
+[e :U 567 ]
+"995
+[; ;main.c: 995:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 569  ]
+{
+"997
+[; ;main.c: 997:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"998
+[; ;main.c: 998:                     configure_mode = 1;
+[e = _configure_mode -> 1 `i ]
+"999
+[; ;main.c: 999:                     flag_menu_init_2 = 1;
+[e = _flag_menu_init_2 -> 1 `i ]
+"1000
+[; ;main.c: 1000:                 }
 }
 [e :U 569 ]
-[e :U 568 ]
-"1007
-[; ;main.c: 1007:         }else if (current_menu == 2){
+"1002
+[; ;main.c: 1002:             }else if (configure_mode == 1){
 }
-[e $U 572  ]
-[e :U 563 ]
-[e $ ! == _current_menu -> 2 `i 573  ]
+[e $U 570  ]
+[e :U 566 ]
+[e $ ! == _configure_mode -> 1 `i 571  ]
 {
-"1009
-[; ;main.c: 1009:             if (configure_mode == 0){
-[e $ ! == _configure_mode -> 0 `i 574  ]
+"1003
+[; ;main.c: 1003:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 572  ]
 {
-"1010
-[; ;main.c: 1010:                 if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 575  ]
-{
-"1011
-[; ;main.c: 1011:                     if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 576  ]
-{
-"1012
-[; ;main.c: 1012:                         flag_menu_init_2 = 0;
+"1004
+[; ;main.c: 1004:                     flag_menu_init_2 = 0;
 [e = _flag_menu_init_2 -> 0 `i ]
-"1014
-[; ;main.c: 1014:                         status_value = get_robot_program();
-[e = _status_value -> ( _get_robot_program ..  `i ]
+"1007
+[; ;main.c: 1007:                     status_code = 1;
+[e = _status_code -> 1 `i ]
+"1008
+[; ;main.c: 1008:                     status_set_mode( 2, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 2 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1009
+[; ;main.c: 1009:                 }
+}
+[e :U 572 ]
+"1011
+[; ;main.c: 1011:                 status_value = (long long) avg_input[0] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 0 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1013
+[; ;main.c: 1013:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 573  ]
+{
 "1015
-[; ;main.c: 1015:                         status_set_mode( 7, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 7 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+[; ;main.c: 1015:                     set_motor_speed(status_value);
+[e ( _set_motor_speed (1 -> _status_value `ui ]
 "1016
-[; ;main.c: 1016:                     }
-}
-[e :U 576 ]
-"1017
-[; ;main.c: 1017:                 }
-}
-[e :U 575 ]
+[; ;main.c: 1016:                     write_eeprom();
+[e ( _write_eeprom ..  ]
 "1019
-[; ;main.c: 1019:                 if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 577  ]
-{
-"1021
-[; ;main.c: 1021:                     double_click_evt[0] = 0;
+[; ;main.c: 1019:                     double_click_evt[0] = 0;
 [e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+"1020
+[; ;main.c: 1020:                     configure_mode = 0;
+[e = _configure_mode -> 0 `i ]
+"1021
+[; ;main.c: 1021:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
 "1022
-[; ;main.c: 1022:                     configure_mode = 1;
-[e = _configure_mode -> 1 `i ]
+[; ;main.c: 1022:                 }
+}
+[e :U 573 ]
 "1023
-[; ;main.c: 1023:                     flag_menu_init_2 = 1;
-[e = _flag_menu_init_2 -> 1 `i ]
-"1024
-[; ;main.c: 1024:                 }
+[; ;main.c: 1023:             }
 }
-[e :U 577 ]
+[e :U 571 ]
+[e :U 570 ]
 "1026
-[; ;main.c: 1026:             }else if (configure_mode == 1){
+[; ;main.c: 1026:         }else if (current_menu == 2){
 }
-[e $U 578  ]
-[e :U 574 ]
-[e $ ! == _configure_mode -> 1 `i 579  ]
-{
-"1027
-[; ;main.c: 1027:                 if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 580  ]
+[e $U 574  ]
+[e :U 565 ]
+[e $ ! == _current_menu -> 2 `i 575  ]
 {
 "1028
-[; ;main.c: 1028:                     flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
+[; ;main.c: 1028:             if (configure_mode == 0){
+[e $ ! == _configure_mode -> 0 `i 576  ]
+{
+"1029
+[; ;main.c: 1029:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 577  ]
+{
 "1030
-[; ;main.c: 1030:                     status_code = 2;
-[e = _status_code -> 2 `i ]
+[; ;main.c: 1030:                     if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 578  ]
+{
 "1031
-[; ;main.c: 1031:                     status_set_mode( 8, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 8 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
-"1032
-[; ;main.c: 1032:                 }
-}
-[e :U 580 ]
+[; ;main.c: 1031:                         flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1033
+[; ;main.c: 1033:                         status_value = get_robot_program();
+[e = _status_value -> ( _get_robot_program ..  `i ]
 "1034
-[; ;main.c: 1034:                 if (single_click_evt[1]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 581  ]
-{
+[; ;main.c: 1034:                         status_set_mode( 7, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 7 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
 "1035
-[; ;main.c: 1035:                     single_click_evt[1] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1035:                     }
+}
+[e :U 578 ]
 "1036
-[; ;main.c: 1036:                     status_value ++;
-[e ++ _status_value -> 1 `i ]
-"1037
-[; ;main.c: 1037:                     if (status_value >= program_count+1){
-[e $ ! >= _status_value + _program_count -> 1 `i 582  ]
-{
+[; ;main.c: 1036:                 }
+}
+[e :U 577 ]
 "1038
-[; ;main.c: 1038:                         status_value = 1;
-[e = _status_value -> 1 `i ]
-"1039
-[; ;main.c: 1039:                     }
-}
-[e :U 582 ]
+[; ;main.c: 1038:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 579  ]
+{
 "1040
-[; ;main.c: 1040:                 }
-}
-[e :U 581 ]
+[; ;main.c: 1040:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
 "1041
-[; ;main.c: 1041:                 if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 583  ]
-{
+[; ;main.c: 1041:                     configure_mode = 1;
+[e = _configure_mode -> 1 `i ]
 "1042
-[; ;main.c: 1042:                     single_click_evt[0] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1042:                     flag_menu_init_2 = 1;
+[e = _flag_menu_init_2 -> 1 `i ]
 "1043
-[; ;main.c: 1043:                     if (status_value <= 1){
-[e $ ! <= _status_value -> 1 `i 584  ]
-{
-"1044
-[; ;main.c: 1044:                         status_value = program_count;
-[e = _status_value _program_count ]
-"1045
-[; ;main.c: 1045:                     }else{
+[; ;main.c: 1043:                 }
 }
-[e $U 585  ]
-[e :U 584 ]
+[e :U 579 ]
+"1045
+[; ;main.c: 1045:             }else if (configure_mode == 1){
+}
+[e $U 580  ]
+[e :U 576 ]
+[e $ ! == _configure_mode -> 1 `i 581  ]
 {
 "1046
-[; ;main.c: 1046:                         status_value --;
-[e -- _status_value -> 1 `i ]
-"1047
-[; ;main.c: 1047:                     }
-}
-[e :U 585 ]
-"1048
-[; ;main.c: 1048:                 }
-}
-[e :U 583 ]
-"1049
-[; ;main.c: 1049:                 if (double_click_evt[0]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 586  ]
+[; ;main.c: 1046:                 if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 582  ]
 {
+"1047
+[; ;main.c: 1047:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1049
+[; ;main.c: 1049:                     status_code = 2;
+[e = _status_code -> 2 `i ]
+"1050
+[; ;main.c: 1050:                     status_set_mode( 8, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 8 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
 "1051
-[; ;main.c: 1051:                     set_robot_program(status_value);
-[e ( _set_robot_program (1 -> _status_value `ui ]
-"1052
-[; ;main.c: 1052:                     write_eeprom();
-[e ( _write_eeprom ..  ]
+[; ;main.c: 1051:                 }
+}
+[e :U 582 ]
+"1053
+[; ;main.c: 1053:                 if (single_click_evt[1]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 583  ]
+{
+"1054
+[; ;main.c: 1054:                     single_click_evt[1] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
 "1055
-[; ;main.c: 1055:                     double_click_evt[0] = 0;
-[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1055:                     status_value ++;
+[e ++ _status_value -> 1 `i ]
+"1056
+[; ;main.c: 1056:                     if (status_value >= program_count+1){
+[e $ ! >= _status_value + _program_count -> 1 `i 584  ]
+{
 "1057
-[; ;main.c: 1057:                     configure_mode = 0;
-[e = _configure_mode -> 0 `i ]
+[; ;main.c: 1057:                         status_value = 1;
+[e = _status_value -> 1 `i ]
 "1058
-[; ;main.c: 1058:                     flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
+[; ;main.c: 1058:                     }
+}
+[e :U 584 ]
 "1059
 [; ;main.c: 1059:                 }
 }
-[e :U 586 ]
+[e :U 583 ]
 "1060
-[; ;main.c: 1060:             }
-}
-[e :U 579 ]
-[e :U 578 ]
-"1061
-[; ;main.c: 1061:         }else if(current_menu == 3){
-}
-[e $U 587  ]
-[e :U 573 ]
-[e $ ! == _current_menu -> 3 `i 588  ]
+[; ;main.c: 1060:                 if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 585  ]
 {
+"1061
+[; ;main.c: 1061:                     single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
 "1062
-[; ;main.c: 1062:             if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 589  ]
+[; ;main.c: 1062:                     if (status_value <= 1){
+[e $ ! <= _status_value -> 1 `i 586  ]
 {
 "1063
-[; ;main.c: 1063:                 PORTBbits.RB0 = PORTDbits.RD7;
-[e = . . _PORTBbits 0 0 . . _PORTDbits 0 7 ]
+[; ;main.c: 1063:                         status_value = program_count;
+[e = _status_value _program_count ]
 "1064
-[; ;main.c: 1064:                 PORTBbits.RB1 = PORTDbits.RD6;
-[e = . . _PORTBbits 0 1 . . _PORTDbits 0 6 ]
+[; ;main.c: 1064:                     }else{
+}
+[e $U 587  ]
+[e :U 586 ]
+{
 "1065
-[; ;main.c: 1065:                 PORTBbits.RB2 = PORTDbits.RD5;
-[e = . . _PORTBbits 0 2 . . _PORTDbits 0 5 ]
+[; ;main.c: 1065:                         status_value --;
+[e -- _status_value -> 1 `i ]
 "1066
-[; ;main.c: 1066:                 PORTBbits.RB4 = PORTDbits.RD4;
-[e = . . _PORTBbits 0 4 . . _PORTDbits 0 4 ]
+[; ;main.c: 1066:                     }
+}
+[e :U 587 ]
 "1067
-[; ;main.c: 1067:                 PORTBbits.RB5 = PORTCbits.RC5;
-[e = . . _PORTBbits 0 5 . . _PORTCbits 0 5 ]
+[; ;main.c: 1067:                 }
+}
+[e :U 585 ]
 "1068
-[; ;main.c: 1068:             }
-}
-[e :U 589 ]
-"1069
-[; ;main.c: 1069:         }else if (current_menu == 4){
-}
-[e $U 590  ]
-[e :U 588 ]
-[e $ ! == _current_menu -> 4 `i 591  ]
+[; ;main.c: 1068:                 if (double_click_evt[0]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 588  ]
 {
 "1070
-[; ;main.c: 1070:             if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 592  ]
-{
+[; ;main.c: 1070:                     set_robot_program(status_value);
+[e ( _set_robot_program (1 -> _status_value `ui ]
 "1071
-[; ;main.c: 1071:                 if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 593  ]
-{
-"1072
-[; ;main.c: 1072:                     flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
+[; ;main.c: 1071:                     write_eeprom();
+[e ( _write_eeprom ..  ]
 "1074
-[; ;main.c: 1074:                     status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
-[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 2 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
-"1075
-[; ;main.c: 1075:                     status_set_mode( 1, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+[; ;main.c: 1074:                     double_click_evt[0] = 0;
+[e = *U + &U _double_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux -> -> 0 `i `uc ]
 "1076
-[; ;main.c: 1076:                 }
-}
-[e :U 593 ]
+[; ;main.c: 1076:                     configure_mode = 0;
+[e = _configure_mode -> 0 `i ]
 "1077
-[; ;main.c: 1077:             }else{
-}
-[e $U 594  ]
-[e :U 592 ]
-{
+[; ;main.c: 1077:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
 "1078
-[; ;main.c: 1078:                 status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
-[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 2 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+[; ;main.c: 1078:                 }
+}
+[e :U 588 ]
 "1079
 [; ;main.c: 1079:             }
 }
-[e :U 594 ]
+[e :U 581 ]
+[e :U 580 ]
 "1080
-[; ;main.c: 1080:         }else if (current_menu == 5){
+[; ;main.c: 1080:         }else if(current_menu == 3){
 }
-[e $U 595  ]
-[e :U 591 ]
-[e $ ! == _current_menu -> 5 `i 596  ]
+[e $U 589  ]
+[e :U 575 ]
+[e $ ! == _current_menu -> 3 `i 590  ]
 {
 "1081
-[; ;main.c: 1081:            if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 597  ]
+[; ;main.c: 1081:             if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 591  ]
 {
 "1082
-[; ;main.c: 1082:                 if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 598  ]
-{
+[; ;main.c: 1082:                 PORTBbits.RB0 = PORTDbits.RD7;
+[e = . . _PORTBbits 0 0 . . _PORTDbits 0 7 ]
 "1083
-[; ;main.c: 1083:                     flag_menu_init_2 = 0;
-[e = _flag_menu_init_2 -> 0 `i ]
+[; ;main.c: 1083:                 PORTBbits.RB1 = PORTDbits.RD6;
+[e = . . _PORTBbits 0 1 . . _PORTDbits 0 6 ]
+"1084
+[; ;main.c: 1084:                 PORTBbits.RB2 = PORTDbits.RD5;
+[e = . . _PORTBbits 0 2 . . _PORTDbits 0 5 ]
 "1085
-[; ;main.c: 1085:                     status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
-[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 3 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+[; ;main.c: 1085:                 PORTBbits.RB4 = PORTDbits.RD4;
+[e = . . _PORTBbits 0 4 . . _PORTDbits 0 4 ]
 "1086
-[; ;main.c: 1086:                     status_set_mode( 1, 0, -1);
-[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+[; ;main.c: 1086:                 PORTBbits.RB5 = PORTCbits.RC5;
+[e = . . _PORTBbits 0 5 . . _PORTCbits 0 5 ]
 "1087
-[; ;main.c: 1087:                 }
+[; ;main.c: 1087:             }
 }
-[e :U 598 ]
+[e :U 591 ]
 "1088
-[; ;main.c: 1088:             }else{
+[; ;main.c: 1088:         }else if (current_menu == 4){
 }
-[e $U 599  ]
-[e :U 597 ]
+[e $U 592  ]
+[e :U 590 ]
+[e $ ! == _current_menu -> 4 `i 593  ]
 {
 "1089
-[; ;main.c: 1089:                 status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
-[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 3 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+[; ;main.c: 1089:             if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 594  ]
+{
 "1090
-[; ;main.c: 1090:             }
-}
-[e :U 599 ]
+[; ;main.c: 1090:                 if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 595  ]
+{
 "1091
-[; ;main.c: 1091:         }else{
-}
-[e $U 600  ]
-[e :U 596 ]
-{
-"1092
-[; ;main.c: 1092:             if (flag_menu_init_2){
-[e $ ! != _flag_menu_init_2 -> 0 `i 601  ]
-{
-"1093
-[; ;main.c: 1093:                 if (status_mode == 0){
-[e $ ! == -> _status_mode `i -> 0 `i 602  ]
-{
-"1094
-[; ;main.c: 1094:                     flag_menu_init_2 = 0;
+[; ;main.c: 1091:                     flag_menu_init_2 = 0;
 [e = _flag_menu_init_2 -> 0 `i ]
+"1093
+[; ;main.c: 1093:                     status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 2 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1094
+[; ;main.c: 1094:                     status_set_mode( 1, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1095
+[; ;main.c: 1095:                 }
+}
+[e :U 595 ]
 "1096
-[; ;main.c: 1096:                     PORTBbits.RB0 = 1;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 1096:             }else{
+}
+[e $U 596  ]
+[e :U 594 ]
+{
 "1097
-[; ;main.c: 1097:                     PORTBbits.RB1 = 1;
-[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 1097:                 status_value = (long long) avg_input[2] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 2 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
 "1098
-[; ;main.c: 1098:                     PORTBbits.RB2 = 1;
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 1098:             }
+}
+[e :U 596 ]
 "1099
-[; ;main.c: 1099:                     PORTBbits.RB4 = 1;
-[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+[; ;main.c: 1099:         }else if (current_menu == 5){
+}
+[e $U 597  ]
+[e :U 593 ]
+[e $ ! == _current_menu -> 5 `i 598  ]
+{
 "1100
-[; ;main.c: 1100:                     PORTBbits.RB5 = 1;
-[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 1100:            if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 599  ]
+{
 "1101
-[; ;main.c: 1101:                 }
-}
-[e :U 602 ]
+[; ;main.c: 1101:                 if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 600  ]
+{
 "1102
-[; ;main.c: 1102:             }
-}
-[e :U 601 ]
-"1103
-[; ;main.c: 1103:         }
+[; ;main.c: 1102:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
+"1104
+[; ;main.c: 1104:                     status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 3 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1105
+[; ;main.c: 1105:                     status_set_mode( 1, 0, -1);
+[e ( _status_set_mode (3 , , -> -> 1 `i `uc -> -> 0 `i `uc -> -U -> 1 `i `uc ]
+"1106
+[; ;main.c: 1106:                 }
 }
 [e :U 600 ]
-[e :U 595 ]
-[e :U 590 ]
-[e :U 587 ]
-[e :U 572 ]
-"1106
-[; ;main.c: 1106:         if (configure_mode == 0){
-[e $ ! == _configure_mode -> 0 `i 603  ]
-{
 "1107
-[; ;main.c: 1107:             if (single_click_evt[0]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 604  ]
+[; ;main.c: 1107:             }else{
+}
+[e $U 601  ]
+[e :U 599 ]
 {
 "1108
-[; ;main.c: 1108:                 single_click_evt[0] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1108:                 status_value = (long long) avg_input[3] * (long long) 1024 / (long long) 1000;
+[e = _status_value -> / * -> *U + &U _avg_input * -> -> -> 3 `i `ui `ux -> -> # *U &U _avg_input `ui `ux `o -> -> 1024 `i `o -> -> 1000 `i `o `i ]
+"1109
+[; ;main.c: 1109:             }
+}
+[e :U 601 ]
 "1110
-[; ;main.c: 1110:                 current_menu ++;
-[e ++ _current_menu -> 1 `i ]
+[; ;main.c: 1110:         }else{
+}
+[e $U 602  ]
+[e :U 598 ]
+{
 "1111
-[; ;main.c: 1111:                 if (current_menu >= 6){
-[e $ ! >= _current_menu -> 6 `i 605  ]
+[; ;main.c: 1111:             if (flag_menu_init_2){
+[e $ ! != _flag_menu_init_2 -> 0 `i 603  ]
 {
 "1112
-[; ;main.c: 1112:                     current_menu = 1;
-[e = _current_menu -> 1 `i ]
+[; ;main.c: 1112:                 if (status_mode == 0){
+[e $ ! == -> _status_mode `i -> 0 `i 604  ]
+{
 "1113
-[; ;main.c: 1113:                 }
-}
-[e :U 605 ]
-"1114
-[; ;main.c: 1114:                 flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
+[; ;main.c: 1113:                     flag_menu_init_2 = 0;
+[e = _flag_menu_init_2 -> 0 `i ]
 "1115
-[; ;main.c: 1115:             }
+[; ;main.c: 1115:                     PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"1116
+[; ;main.c: 1116:                     PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"1117
+[; ;main.c: 1117:                     PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"1118
+[; ;main.c: 1118:                     PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"1119
+[; ;main.c: 1119:                     PORTBbits.RB5 = 1;
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
+"1120
+[; ;main.c: 1120:                 }
 }
 [e :U 604 ]
-"1116
-[; ;main.c: 1116:             if (single_click_evt[1]){
-[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 606  ]
-{
-"1117
-[; ;main.c: 1117:                 single_click_evt[1] = 0;
-[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
-"1119
-[; ;main.c: 1119:                 current_menu --;
-[e -- _current_menu -> 1 `i ]
-"1120
-[; ;main.c: 1120:                 if (current_menu <= 0){
-[e $ ! <= _current_menu -> 0 `i 607  ]
-{
 "1121
-[; ;main.c: 1121:                     current_menu = 5;
-[e = _current_menu -> 5 `i ]
-"1122
-[; ;main.c: 1122:                 }
-}
-[e :U 607 ]
-"1123
-[; ;main.c: 1123:                 flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"1124
-[; ;main.c: 1124:             }
-}
-[e :U 606 ]
-"1125
-[; ;main.c: 1125:             if (double_click_evt[1]){
-[e $ ! != -> *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 608  ]
-{
-"1127
-[; ;main.c: 1127:                 robot_state = 2;
-[e = _robot_state -> 2 `i ]
-"1128
-[; ;main.c: 1128:                 flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"1129
-[; ;main.c: 1129:             }
-}
-[e :U 608 ]
-"1130
-[; ;main.c: 1130:         }
+[; ;main.c: 1121:             }
 }
 [e :U 603 ]
+"1122
+[; ;main.c: 1122:         }
+}
+[e :U 602 ]
+[e :U 597 ]
+[e :U 592 ]
+[e :U 589 ]
+[e :U 574 ]
+"1125
+[; ;main.c: 1125:         if (configure_mode == 0){
+[e $ ! == _configure_mode -> 0 `i 605  ]
+{
+"1126
+[; ;main.c: 1126:             if (single_click_evt[0]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 606  ]
+{
+"1127
+[; ;main.c: 1127:                 single_click_evt[0] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
+"1129
+[; ;main.c: 1129:                 current_menu ++;
+[e ++ _current_menu -> 1 `i ]
+"1130
+[; ;main.c: 1130:                 if (current_menu >= 6){
+[e $ ! >= _current_menu -> 6 `i 607  ]
+{
 "1131
-[; ;main.c: 1131:     }else if (robot_state == 2){
-}
-[e $U 609  ]
-[e :U 561 ]
-[e $ ! == _robot_state -> 2 `i 610  ]
-{
+[; ;main.c: 1131:                     current_menu = 1;
+[e = _current_menu -> 1 `i ]
 "1132
-[; ;main.c: 1132:         if (flag_menu_init){
-[e $ ! != _flag_menu_init -> 0 `i 611  ]
-{
+[; ;main.c: 1132:                 }
+}
+[e :U 607 ]
 "1133
-[; ;main.c: 1133:             counter[3] = 0;
-[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+[; ;main.c: 1133:                 flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
 "1134
-[; ;main.c: 1134:             counter[4] = 0;
-[e = *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+[; ;main.c: 1134:             }
+}
+[e :U 606 ]
 "1135
-[; ;main.c: 1135:             flag_menu_init = 0;
-[e = _flag_menu_init -> 0 `i ]
+[; ;main.c: 1135:             if (single_click_evt[1]){
+[e $ ! != -> *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux `i -> 0 `i 608  ]
+{
 "1136
-[; ;main.c: 1136:             flag_press = 0;
-[e = _flag_press -> 0 `i ]
-"1137
-[; ;main.c: 1137:         }else{
-}
-[e $U 612  ]
-[e :U 611 ]
-{
+[; ;main.c: 1136:                 single_click_evt[1] = 0;
+[e = *U + &U _single_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _single_click_evt `ui `ux -> -> 0 `i `uc ]
 "1138
-[; ;main.c: 1138:             if (flag_press == 0){
-[e $ ! == _flag_press -> 0 `i 613  ]
-{
+[; ;main.c: 1138:                 current_menu --;
+[e -- _current_menu -> 1 `i ]
 "1139
-[; ;main.c: 1139:                 status_mode = 0;
-[e = _status_mode -> -> 0 `i `uc ]
+[; ;main.c: 1139:                 if (current_menu <= 0){
+[e $ ! <= _current_menu -> 0 `i 609  ]
+{
 "1140
-[; ;main.c: 1140:                 PORTBbits.RB0 = counter[4] % 20 >= 10;
-[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+[; ;main.c: 1140:                     current_menu = 5;
+[e = _current_menu -> 5 `i ]
 "1141
-[; ;main.c: 1141:                 PORTBbits.RB1 = counter[4] % 20 < 10;
-[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+[; ;main.c: 1141:                 }
+}
+[e :U 609 ]
 "1142
-[; ;main.c: 1142:                 PORTBbits.RB2 = counter[4] % 20 >= 10;
-[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+[; ;main.c: 1142:                 flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
 "1143
-[; ;main.c: 1143:                 PORTBbits.RB4 = counter[4] % 20 < 10;
-[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+[; ;main.c: 1143:             }
+}
+[e :U 608 ]
 "1144
-[; ;main.c: 1144:                 PORTBbits.RB5 = counter[4] % 20 >= 10;
-[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+[; ;main.c: 1144:             if (double_click_evt[1]){
+[e $ ! != -> *U + &U _double_click_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _double_click_evt `ui `ux `i -> 0 `i 610  ]
+{
 "1146
-[; ;main.c: 1146:                 if (counter[4] >= 200){
-[e $ ! >= *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o 614  ]
-{
+[; ;main.c: 1146:                 robot_state = 2;
+[e = _robot_state -> 2 `i ]
 "1147
-[; ;main.c: 1147:                     flag_press = 1;
-[e = _flag_press -> 1 `i ]
+[; ;main.c: 1147:                 flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
 "1148
-[; ;main.c: 1148:                     counter[4] = 0;
-[e = *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+[; ;main.c: 1148:             }
+}
+[e :U 610 ]
 "1149
-[; ;main.c: 1149:                     counter[3] = 0;
-[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+[; ;main.c: 1149:         }
+}
+[e :U 605 ]
 "1150
-[; ;main.c: 1150:                     press_evt[0] = 0;
-[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1150:     }else if (robot_state == 2){
+}
+[e $U 611  ]
+[e :U 563 ]
+[e $ ! == _robot_state -> 2 `i 612  ]
+{
 "1151
-[; ;main.c: 1151:                     release_evt[0] = 0;
-[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1151:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 613  ]
+{
 "1152
-[; ;main.c: 1152:                     press_evt[1] = 0;
-[e = *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1152:             counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
 "1153
-[; ;main.c: 1153:                     release_evt[1] = 0;
-[e = *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
-"1157
-[; ;main.c: 1157:                 }
+[; ;main.c: 1153:             counter[4] = 0;
+[e = *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1154
+[; ;main.c: 1154:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"1155
+[; ;main.c: 1155:             flag_press = 0;
+[e = _flag_press -> 0 `i ]
+"1156
+[; ;main.c: 1156:         }else{
 }
-[e :U 614 ]
-"1158
-[; ;main.c: 1158:             }else if (flag_press == 1){
-}
-[e $U 615  ]
+[e $U 614  ]
 [e :U 613 ]
-[e $ ! == _flag_press -> 1 `i 616  ]
 {
-"1159
-[; ;main.c: 1159:                 if (counter[3] <= 100){
-[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 100 `i `o 617  ]
+"1157
+[; ;main.c: 1157:             if (flag_press == 0){
+[e $ ! == _flag_press -> 0 `i 615  ]
 {
-"1160
-[; ;main.c: 1160:                     status_mode = 0;
+"1158
+[; ;main.c: 1158:                 status_mode = 0;
 [e = _status_mode -> -> 0 `i `uc ]
+"1159
+[; ;main.c: 1159:                 PORTBbits.RB0 = counter[4] % 20 >= 10;
+[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
+"1160
+[; ;main.c: 1160:                 PORTBbits.RB1 = counter[4] % 20 < 10;
+[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
 "1161
-[; ;main.c: 1161:                     PORTBbits.RB0 = counter[3] % 10 >= 5;
-[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+[; ;main.c: 1161:                 PORTBbits.RB2 = counter[4] % 20 >= 10;
+[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
 "1162
-[; ;main.c: 1162:                     PORTBbits.RB1 = counter[3] % 10 < 5;
-[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+[; ;main.c: 1162:                 PORTBbits.RB4 = counter[4] % 20 < 10;
+[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
 "1163
-[; ;main.c: 1163:                     PORTBbits.RB2 = counter[3] % 10 >= 5;
-[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1164
-[; ;main.c: 1164:                     PORTBbits.RB4 = counter[3] % 10 < 5;
-[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+[; ;main.c: 1163:                 PORTBbits.RB5 = counter[4] % 20 >= 10;
+[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 20 `i `o -> -> 10 `i `o `i `uc ]
 "1165
-[; ;main.c: 1165:                     PORTBbits.RB5 = counter[3] % 10 >= 5;
-[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1166
-[; ;main.c: 1166:                 }else if(counter[3] <= 200){
-}
-[e $U 618  ]
-[e :U 617 ]
-[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o 619  ]
+[; ;main.c: 1165:                 if (counter[4] >= 200){
+[e $ ! >= *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o 616  ]
 {
+"1166
+[; ;main.c: 1166:                     flag_press = 1;
+[e = _flag_press -> 1 `i ]
+"1167
+[; ;main.c: 1167:                     counter[4] = 0;
+[e = *U + &U _counter * -> -> -> 4 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
 "1168
-[; ;main.c: 1168:                     status_mode = 1;
-[e = _status_mode -> -> 1 `i `uc ]
+[; ;main.c: 1168:                     counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
 "1169
-[; ;main.c: 1169:                     status_value = get_motor_speed();
-[e = _status_value -> ( _get_motor_speed ..  `i ]
+[; ;main.c: 1169:                     press_evt[0] = 0;
+[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
 "1170
-[; ;main.c: 1170:                 }else if(counter[3] <= 300){
+[; ;main.c: 1170:                     release_evt[0] = 0;
+[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1171
+[; ;main.c: 1171:                     press_evt[1] = 0;
+[e = *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"1172
+[; ;main.c: 1172:                     release_evt[1] = 0;
+[e = *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1176
+[; ;main.c: 1176:                 }
+}
+[e :U 616 ]
+"1177
+[; ;main.c: 1177:             }else if (flag_press == 1){
+}
+[e $U 617  ]
+[e :U 615 ]
+[e $ ! == _flag_press -> 1 `i 618  ]
+{
+"1178
+[; ;main.c: 1178:                 if (counter[3] <= 100){
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 100 `i `o 619  ]
+{
+"1179
+[; ;main.c: 1179:                     status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1180
+[; ;main.c: 1180:                     PORTBbits.RB0 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1181
+[; ;main.c: 1181:                     PORTBbits.RB1 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1182
+[; ;main.c: 1182:                     PORTBbits.RB2 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1183
+[; ;main.c: 1183:                     PORTBbits.RB4 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1184
+[; ;main.c: 1184:                     PORTBbits.RB5 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1185
+[; ;main.c: 1185:                 }else if(counter[3] <= 200){
 }
 [e $U 620  ]
 [e :U 619 ]
-[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 300 `i `o 621  ]
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o 621  ]
 {
-"1171
-[; ;main.c: 1171:                     status_mode = 0;
-[e = _status_mode -> -> 0 `i `uc ]
-"1172
-[; ;main.c: 1172:                     PORTBbits.RB0 = counter[3] % 10 >= 5;
-[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1173
-[; ;main.c: 1173:                     PORTBbits.RB1 = counter[3] % 10 < 5;
-[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1174
-[; ;main.c: 1174:                     PORTBbits.RB2 = counter[3] % 10 >= 5;
-[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1175
-[; ;main.c: 1175:                     PORTBbits.RB4 = counter[3] % 10 < 5;
-[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1176
-[; ;main.c: 1176:                     PORTBbits.RB5 = counter[3] % 10 >= 5;
-[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
-"1177
-[; ;main.c: 1177:                 }else if (counter[3] <= 400){
+"1187
+[; ;main.c: 1187:                     status_mode = 1;
+[e = _status_mode -> -> 1 `i `uc ]
+"1188
+[; ;main.c: 1188:                     status_value = get_motor_speed();
+[e = _status_value -> ( _get_motor_speed ..  `i ]
+"1189
+[; ;main.c: 1189:                 }else if(counter[3] <= 300){
 }
 [e $U 622  ]
 [e :U 621 ]
-[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 400 `i `o 623  ]
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 300 `i `o 623  ]
 {
-"1179
-[; ;main.c: 1179:                     status_mode = 7;
-[e = _status_mode -> -> 7 `i `uc ]
-"1180
-[; ;main.c: 1180:                     status_value = get_robot_program();
-[e = _status_value -> ( _get_robot_program ..  `i ]
-"1181
-[; ;main.c: 1181:                 }else{
+"1190
+[; ;main.c: 1190:                     status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
+"1191
+[; ;main.c: 1191:                     PORTBbits.RB0 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 0 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1192
+[; ;main.c: 1192:                     PORTBbits.RB1 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 1 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1193
+[; ;main.c: 1193:                     PORTBbits.RB2 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 2 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1194
+[; ;main.c: 1194:                     PORTBbits.RB4 = counter[3] % 10 < 5;
+[e = . . _PORTBbits 0 4 -> -> < % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1195
+[; ;main.c: 1195:                     PORTBbits.RB5 = counter[3] % 10 >= 5;
+[e = . . _PORTBbits 0 5 -> -> >= % *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 10 `i `o -> -> 5 `i `o `i `uc ]
+"1196
+[; ;main.c: 1196:                 }else if (counter[3] <= 400){
 }
 [e $U 624  ]
 [e :U 623 ]
+[e $ ! <= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 400 `i `o 625  ]
 {
-"1182
-[; ;main.c: 1182:                     counter[3] = 0;
-[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
-"1183
-[; ;main.c: 1183:                 }
+"1198
+[; ;main.c: 1198:                     status_mode = 7;
+[e = _status_mode -> -> 7 `i `uc ]
+"1199
+[; ;main.c: 1199:                     status_value = get_robot_program();
+[e = _status_value -> ( _get_robot_program ..  `i ]
+"1200
+[; ;main.c: 1200:                 }else{
 }
+[e $U 626  ]
+[e :U 625 ]
+{
+"1201
+[; ;main.c: 1201:                     counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
+"1202
+[; ;main.c: 1202:                 }
+}
+[e :U 626 ]
 [e :U 624 ]
 [e :U 622 ]
 [e :U 620 ]
-[e :U 618 ]
-"1184
-[; ;main.c: 1184:                 if (press_evt[0]){
-[e $ ! != -> *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 625  ]
-{
-"1185
-[; ;main.c: 1185:                     flag_press = 2;
-[e = _flag_press -> 2 `i ]
-"1186
-[; ;main.c: 1186:                     press_evt[0] = 0;
-[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
-"1187
-[; ;main.c: 1187:                 }
-}
-[e :U 625 ]
-"1188
-[; ;main.c: 1188:                 if (press_evt[1]){
-[e $ ! != -> *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 626  ]
-{
-"1189
-[; ;main.c: 1189:                     flag_press = 2;
-[e = _flag_press -> 2 `i ]
-"1190
-[; ;main.c: 1190:                     press_evt[1] = 0;
-[e = *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
-"1191
-[; ;main.c: 1191:                 }
-}
-[e :U 626 ]
-"1192
-[; ;main.c: 1192:             }else if (flag_press == 2){
-}
-[e $U 627  ]
-[e :U 616 ]
-[e $ ! == _flag_press -> 2 `i 628  ]
-{
-"1193
-[; ;main.c: 1193:                 status_mode = 0;
-[e = _status_mode -> -> 0 `i `uc ]
-"1194
-[; ;main.c: 1194:                 PORTBbits.RB0 = 1;
-[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
-"1195
-[; ;main.c: 1195:                 PORTBbits.RB1 = 1;
-[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
-"1196
-[; ;main.c: 1196:                 PORTBbits.RB2 = 1;
-[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"1197
-[; ;main.c: 1197:                 PORTBbits.RB4 = 1;
-[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
-"1198
-[; ;main.c: 1198:                 PORTBbits.RB5 = 1;
-[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
-"1199
-[; ;main.c: 1199:                 if (release_evt[0]){
-[e $ ! != -> *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 629  ]
-{
-"1200
-[; ;main.c: 1200:                     release_evt[0] = 0;
-[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
-"1201
-[; ;main.c: 1201:                     robot_state = 3;
-[e = _robot_state -> 3 `i ]
-"1202
-[; ;main.c: 1202:                     flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
 "1203
-[; ;main.c: 1203:                 }
-}
-[e :U 629 ]
-"1204
-[; ;main.c: 1204:                 if (release_evt[1]){
-[e $ ! != -> *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 630  ]
+[; ;main.c: 1203:                 if (press_evt[0]){
+[e $ ! != -> *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 627  ]
 {
+"1204
+[; ;main.c: 1204:                     flag_press = 2;
+[e = _flag_press -> 2 `i ]
 "1205
-[; ;main.c: 1205:                     release_evt[1] = 0;
-[e = *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 1205:                     press_evt[0] = 0;
+[e = *U + &U _press_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
 "1206
-[; ;main.c: 1206:                     robot_state = 3;
-[e = _robot_state -> 3 `i ]
-"1207
-[; ;main.c: 1207:                     flag_menu_init = 1;
-[e = _flag_menu_init -> 1 `i ]
-"1208
-[; ;main.c: 1208:                 }
+[; ;main.c: 1206:                 }
 }
-[e :U 630 ]
+[e :U 627 ]
+"1207
+[; ;main.c: 1207:                 if (press_evt[1]){
+[e $ ! != -> *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux `i -> 0 `i 628  ]
+{
+"1208
+[; ;main.c: 1208:                     flag_press = 2;
+[e = _flag_press -> 2 `i ]
 "1209
-[; ;main.c: 1209:             }
+[; ;main.c: 1209:                     press_evt[1] = 0;
+[e = *U + &U _press_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _press_evt `ui `ux -> -> 0 `i `uc ]
+"1210
+[; ;main.c: 1210:                 }
 }
 [e :U 628 ]
-[e :U 627 ]
-[e :U 615 ]
-"1210
-[; ;main.c: 1210:         }
+"1211
+[; ;main.c: 1211:             }else if (flag_press == 2){
 }
-[e :U 612 ]
+[e $U 629  ]
+[e :U 618 ]
+[e $ ! == _flag_press -> 2 `i 630  ]
+{
 "1212
-[; ;main.c: 1212:     }else if (robot_state == 3){
-}
-[e $U 631  ]
-[e :U 610 ]
-[e $ ! == _robot_state -> 3 `i 632  ]
-{
-"1213
-[; ;main.c: 1213:         if (flag_menu_init){
-[e $ ! != _flag_menu_init -> 0 `i 633  ]
-{
-"1214
-[; ;main.c: 1214:             counter[3] = 0;
-[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
-"1215
-[; ;main.c: 1215:             flag_menu_init = 0;
-[e = _flag_menu_init -> 0 `i ]
-"1216
-[; ;main.c: 1216:         }
-}
-[e :U 633 ]
-"1217
-[; ;main.c: 1217:         status_mode = 0;
+[; ;main.c: 1212:                 status_mode = 0;
 [e = _status_mode -> -> 0 `i `uc ]
+"1213
+[; ;main.c: 1213:                 PORTBbits.RB0 = 1;
+[e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"1214
+[; ;main.c: 1214:                 PORTBbits.RB1 = 1;
+[e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"1215
+[; ;main.c: 1215:                 PORTBbits.RB2 = 1;
+[e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
+"1216
+[; ;main.c: 1216:                 PORTBbits.RB4 = 1;
+[e = . . _PORTBbits 0 4 -> -> 1 `i `uc ]
+"1217
+[; ;main.c: 1217:                 PORTBbits.RB5 = 1;
+[e = . . _PORTBbits 0 5 -> -> 1 `i `uc ]
 "1218
-[; ;main.c: 1218:         PORTBbits.RB0 = counter[3] >= 100;
-[e = . . _PORTBbits 0 0 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 100 `i `o `i `uc ]
-"1219
-[; ;main.c: 1219:         PORTBbits.RB1 = counter[3] >= 200;
-[e = . . _PORTBbits 0 1 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o `i `uc ]
-"1220
-[; ;main.c: 1220:         PORTBbits.RB2 = counter[3] >= 300;
-[e = . . _PORTBbits 0 2 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 300 `i `o `i `uc ]
-"1221
-[; ;main.c: 1221:         PORTBbits.RB4 = counter[3] >= 400;
-[e = . . _PORTBbits 0 4 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 400 `i `o `i `uc ]
-"1222
-[; ;main.c: 1222:         PORTBbits.RB5 = counter[3] >= 500;
-[e = . . _PORTBbits 0 5 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 500 `i `o `i `uc ]
-"1224
-[; ;main.c: 1224:         if (counter[3] >= 500){
-[e $ ! >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 500 `i `o 634  ]
+[; ;main.c: 1218:                 if (release_evt[0]){
+[e $ ! != -> *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 631  ]
 {
+"1219
+[; ;main.c: 1219:                     release_evt[0] = 0;
+[e = *U + &U _release_evt * -> -> -> 0 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
+"1220
+[; ;main.c: 1220:                     robot_state = 3;
+[e = _robot_state -> 3 `i ]
+"1221
+[; ;main.c: 1221:                     flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1222
+[; ;main.c: 1222:                 }
+}
+[e :U 631 ]
+"1223
+[; ;main.c: 1223:                 if (release_evt[1]){
+[e $ ! != -> *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux `i -> 0 `i 632  ]
+{
+"1224
+[; ;main.c: 1224:                     release_evt[1] = 0;
+[e = *U + &U _release_evt * -> -> -> 1 `i `ui `ux -> -> # *U &U _release_evt `ui `ux -> -> 0 `i `uc ]
 "1225
-[; ;main.c: 1225:             robot_state = 4;
-[e = _robot_state -> 4 `i ]
+[; ;main.c: 1225:                     robot_state = 3;
+[e = _robot_state -> 3 `i ]
 "1226
-[; ;main.c: 1226:             flag_menu_init = 1;
+[; ;main.c: 1226:                     flag_menu_init = 1;
 [e = _flag_menu_init -> 1 `i ]
 "1227
-[; ;main.c: 1227:         }
+[; ;main.c: 1227:                 }
 }
-[e :U 634 ]
-"1228
-[; ;main.c: 1228:     }else if (robot_state == 4){
-}
-[e $U 635  ]
 [e :U 632 ]
-[e $ ! == _robot_state -> 4 `i 636  ]
-{
+"1228
+[; ;main.c: 1228:             }
+}
+[e :U 630 ]
+[e :U 629 ]
+[e :U 617 ]
 "1229
-[; ;main.c: 1229:         if (flag_menu_init){
-[e $ ! != _flag_menu_init -> 0 `i 637  ]
-{
-"1230
-[; ;main.c: 1230:             speed_aux = get_motor_speed();
-[e = _speed_aux -> ( _get_motor_speed ..  `i ]
+[; ;main.c: 1229:         }
+}
+[e :U 614 ]
 "1231
-[; ;main.c: 1231:             program_aux = get_robot_program();
-[e = _program_aux -> ( _get_robot_program ..  `i ]
+[; ;main.c: 1231:     }else if (robot_state == 3){
+}
+[e $U 633  ]
+[e :U 612 ]
+[e $ ! == _robot_state -> 3 `i 634  ]
+{
+"1232
+[; ;main.c: 1232:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 635  ]
+{
 "1233
-[; ;main.c: 1233:             init_routines[program_aux-1](speed_aux);
-[e ( *U *U + &U _init_routines * -> -> - _program_aux -> 1 `i `ui `ux -> -> # *U &U _init_routines `ui `ux (1 _speed_aux ]
+[; ;main.c: 1233:             counter[3] = 0;
+[e = *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 0 `i `o ]
 "1234
 [; ;main.c: 1234:             flag_menu_init = 0;
 [e = _flag_menu_init -> 0 `i ]
 "1235
 [; ;main.c: 1235:         }
 }
-[e :U 637 ]
+[e :U 635 ]
 "1236
-[; ;main.c: 1236:         loop_routines[program_aux-1](speed_aux);
-[e ( *U *U + &U _loop_routines * -> -> - _program_aux -> 1 `i `ui `ux -> -> # *U &U _loop_routines `ui `ux (1 _speed_aux ]
+[; ;main.c: 1236:         status_mode = 0;
+[e = _status_mode -> -> 0 `i `uc ]
 "1237
-[; ;main.c: 1237:     }
+[; ;main.c: 1237:         PORTBbits.RB0 = counter[3] >= 100;
+[e = . . _PORTBbits 0 0 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 100 `i `o `i `uc ]
+"1238
+[; ;main.c: 1238:         PORTBbits.RB1 = counter[3] >= 200;
+[e = . . _PORTBbits 0 1 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 200 `i `o `i `uc ]
+"1239
+[; ;main.c: 1239:         PORTBbits.RB2 = counter[3] >= 300;
+[e = . . _PORTBbits 0 2 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 300 `i `o `i `uc ]
+"1240
+[; ;main.c: 1240:         PORTBbits.RB4 = counter[3] >= 400;
+[e = . . _PORTBbits 0 4 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 400 `i `o `i `uc ]
+"1241
+[; ;main.c: 1241:         PORTBbits.RB5 = counter[3] >= 500;
+[e = . . _PORTBbits 0 5 -> -> >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 500 `i `o `i `uc ]
+"1243
+[; ;main.c: 1243:         if (counter[3] >= 500){
+[e $ ! >= *U + &U _counter * -> -> -> 3 `i `ui `ux -> -> # *U &U _counter `ui `ux -> -> 500 `i `o 636  ]
+{
+"1244
+[; ;main.c: 1244:             robot_state = 4;
+[e = _robot_state -> 4 `i ]
+"1245
+[; ;main.c: 1245:             flag_menu_init = 1;
+[e = _flag_menu_init -> 1 `i ]
+"1246
+[; ;main.c: 1246:         }
 }
 [e :U 636 ]
-[e :U 635 ]
-[e :U 631 ]
-[e :U 609 ]
-[e :U 560 ]
-[e :U 557 ]
-"1238
-[; ;main.c: 1238: }
-[e :UE 555 ]
+"1247
+[; ;main.c: 1247:     }else if (robot_state == 4){
+}
+[e $U 637  ]
+[e :U 634 ]
+[e $ ! == _robot_state -> 4 `i 638  ]
+{
+"1248
+[; ;main.c: 1248:         if (flag_menu_init){
+[e $ ! != _flag_menu_init -> 0 `i 639  ]
+{
+"1249
+[; ;main.c: 1249:             speed_aux = get_motor_speed();
+[e = _speed_aux -> ( _get_motor_speed ..  `i ]
+"1250
+[; ;main.c: 1250:             program_aux = get_robot_program();
+[e = _program_aux -> ( _get_robot_program ..  `i ]
+"1253
+[; ;main.c: 1253:             init_routine_aux = (init_routines[program_aux-1]);
+[e = _init_routine_aux *U + &U _init_routines * -> -> - _program_aux -> 1 `i `ui `ux -> -> # *U &U _init_routines `ui `ux ]
+"1254
+[; ;main.c: 1254:             loop_routine_aux = (loop_routines[program_aux-1]);
+[e = _loop_routine_aux *U + &U _loop_routines * -> -> - _program_aux -> 1 `i `ui `ux -> -> # *U &U _loop_routines `ui `ux ]
+"1256
+[; ;main.c: 1256:             flag_menu_init = 0;
+[e = _flag_menu_init -> 0 `i ]
+"1259
+[; ;main.c: 1259:             init_routine_aux(speed_aux);
+[e ( *U _init_routine_aux (1 _speed_aux ]
+"1260
+[; ;main.c: 1260:         }
+}
+[e :U 639 ]
+"1262
+[; ;main.c: 1262:         loop_routine_aux(speed_aux);
+[e ( *U _loop_routine_aux (1 _speed_aux ]
+"1264
+[; ;main.c: 1264:     }
+}
+[e :U 638 ]
+[e :U 637 ]
+[e :U 633 ]
+[e :U 611 ]
+[e :U 562 ]
+[e :U 559 ]
+"1265
+[; ;main.c: 1265: }
+[e :UE 557 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"1246
-[; ;main.c: 1246: void main(void) {
+"1274
+[; ;main.c: 1274: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"1247
-[; ;main.c: 1247:     config_micro();
+"1275
+[; ;main.c: 1275:     config_micro();
 [e ( _config_micro ..  ]
-"1248
-[; ;main.c: 1248:     init_vars();
+"1276
+[; ;main.c: 1276:     init_vars();
 [e ( _init_vars ..  ]
-"1249
-[; ;main.c: 1249:     buttons_init();
+"1277
+[; ;main.c: 1277:     buttons_init();
 [e ( _buttons_init ..  ]
-"1250
-[; ;main.c: 1250:     status_init();
+"1278
+[; ;main.c: 1278:     status_init();
 [e ( _status_init ..  ]
-"1251
-[; ;main.c: 1251:     init();
+"1279
+[; ;main.c: 1279:     init();
 [e ( _init ..  ]
-"1253
-[; ;main.c: 1253:     while (1){
-[e :U 640 ]
+"1281
+[; ;main.c: 1281:     while (1){
+[e :U 642 ]
 {
-"1254
-[; ;main.c: 1254:         update_pwm();
+"1282
+[; ;main.c: 1282:         update_pwm();
 [e ( _update_pwm ..  ]
-"1255
-[; ;main.c: 1255:         read_analog();
+"1283
+[; ;main.c: 1283:         read_analog();
 [e ( _read_analog ..  ]
-"1256
-[; ;main.c: 1256:         buttons_loop();
+"1284
+[; ;main.c: 1284:         buttons_loop();
 [e ( _buttons_loop ..  ]
-"1257
-[; ;main.c: 1257:         status_loop();
+"1285
+[; ;main.c: 1285:         status_loop();
 [e ( _status_loop ..  ]
-"1258
-[; ;main.c: 1258:         loop();
+"1286
+[; ;main.c: 1286:         loop();
 [e ( _loop ..  ]
-"1259
-[; ;main.c: 1259:     }
+"1287
+[; ;main.c: 1287:     }
 }
-[e :U 639 ]
-[e $U 640  ]
 [e :U 641 ]
-"1261
-[; ;main.c: 1261: }
-[e :UE 638 ]
+[e $U 642  ]
+[e :U 643 ]
+"1289
+[; ;main.c: 1289: }
+[e :UE 640 ]
 }

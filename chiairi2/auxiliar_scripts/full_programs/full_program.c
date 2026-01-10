@@ -7,11 +7,17 @@ void init1(int speed){
 }
 
 void loop1(int speed){
-    LED_1 = 1;
-    LED_2 = 0;
-    LED_3 = 0;
-    LED_4 = 0;
-    LED_5 = 0;
+    pwm[0] = speed;
+    pwm[1] = speed;
+
+    // if (S3 || S2){
+    //     pwm[0] = speed;
+    //     pwm[1] = speed;
+    // }else{
+    //     pwm[0] = speed;
+    //     pwm[1] = speed / 2;
+    // }
+
 }
 
 /** Routine 2 **/

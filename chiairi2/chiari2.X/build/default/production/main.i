@@ -6203,8 +6203,8 @@ void update_pwm(){
         pwm0 = pwm[0];
     }
 
-    PORTCbits.RC1 = pwm0 > 0 ? 0 : 1;
-    PORTCbits.RC0 = pwm0 < 0 ? 0 : 1;
+    PORTCbits.RC0 = pwm0 > 0 ? 0 : 1;
+    PORTCbits.RC1 = pwm0 < 0 ? 0 : 1;
     pwm0 = pwm0 > 0 ? pwm0 : (-pwm0);
 
     CCP1CONbits.DC1B = pwm0 % 4;
@@ -6218,8 +6218,8 @@ void update_pwm(){
         pwm1 = pwm[1];
     }
 
-    PORTDbits.RD1 = pwm1 > 0 ? 0 : 1;
-    PORTDbits.RD0 = pwm1 < 0 ? 0 : 1;
+    PORTDbits.RD0 = pwm1 > 0 ? 0 : 1;
+    PORTDbits.RD1 = pwm1 < 0 ? 0 : 1;
     pwm1 = pwm1 > 0 ? pwm1 : (-pwm1);
 
     CCP2CONbits.DC2B = pwm1 % 4;
@@ -6645,11 +6645,27 @@ void init1(int speed){
 }
 
 void loop1(int speed){
-    PORTBbits.RB0 = 1;
-    PORTBbits.RB1 = 0;
-    PORTBbits.RB2 = 0;
-    PORTBbits.RB4 = 0;
-    PORTBbits.RB5 = 0;
+
+
+
+    if (PORTDbits.RD6 || PORTDbits.RD5 || PORTDbits.RD4){
+         pwm[0] = speed;
+         pwm[1] = speed;
+         PORTBbits.RB0 = 1;
+         PORTBbits.RB1 = 1;
+         PORTBbits.RB2 = 1;
+         PORTBbits.RB4 = 1;
+         PORTBbits.RB5 = 1;
+     }else{
+         pwm[0] = speed;
+         pwm[1] = speed / 6;
+         PORTBbits.RB0 = 0;
+         PORTBbits.RB1 = 0;
+         PORTBbits.RB2 = 0;
+         PORTBbits.RB4 = 0;
+         PORTBbits.RB5 = 0;
+     }
+
 }
 
 
@@ -6694,9 +6710,12 @@ void loop4(int speed){
     PORTBbits.RB5 = 0;
 }
 
-void (*init_routines[4]) (int) = {init1, init2, init3, init4};
-void (*loop_routines[4]) (int) = {loop1, loop2, loop3, loop4};
-# 871 "main.c"
+void (*init_routines[4]) (int) = {&init1, &init2, &init3, &init4};
+void (*loop_routines[4]) (int) = {&loop1, &loop2, &loop3, &loop4};
+
+void (*init_routine_aux)(int);
+void (*loop_routine_aux)(int);
+# 890 "main.c"
 int flag_init;
 int current_menu;
 int flag_menu_init;
@@ -7059,19 +7078,21 @@ void loop(){
             speed_aux = get_motor_speed();
             program_aux = get_robot_program();
 
-            init_routines[program_aux-1](speed_aux);
+
+            init_routine_aux = (init_routines[program_aux-1]);
+            loop_routine_aux = (loop_routines[program_aux-1]);
+
             flag_menu_init = 0;
+
+
+            init_routine_aux(speed_aux);
         }
-        loop_routines[program_aux-1](speed_aux);
+
+        loop_routine_aux(speed_aux);
+
     }
 }
-
-
-
-
-
-
-
+# 1274 "main.c"
 void main(void) {
     config_micro();
     init_vars();

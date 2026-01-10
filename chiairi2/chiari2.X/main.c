@@ -54,10 +54,10 @@
 #define BUTTON_2 PORTDbits.RD3
 
 // Motors
-#define M2_A PORTDbits.RD1 // Invert motor pins (as pwm pins are inverted)
-#define M2_B PORTDbits.RD0
-#define M1_A PORTCbits.RC1
-#define M1_B PORTCbits.RC0
+#define M2_B PORTDbits.RD1 // Invert motor pins (as pwm pins are inverted)
+#define M2_A PORTDbits.RD0
+#define M1_B PORTCbits.RC1
+#define M1_A PORTCbits.RC0
 
 // Sensors
 #define S1 PORTDbits.RD7
@@ -799,11 +799,27 @@ void init1(int speed){
 }
 
 void loop1(int speed){
-    LED_1 = 1;
-    LED_2 = 0;
-    LED_3 = 0;
-    LED_4 = 0;
-    LED_5 = 0;
+    //pwm[0] = speed;
+    //pwm[1] = speed;
+
+    if (S2 || S3 || S4){
+         pwm[0] = speed;
+         pwm[1] = speed;
+         LED_1 = 1;
+         LED_2 = 1;
+         LED_3 = 1;
+         LED_4 = 1;
+         LED_5 = 1;
+     }else{
+         pwm[0] = speed;
+         pwm[1] = speed / 6;
+         LED_1 = 0;
+         LED_2 = 0;
+         LED_3 = 0;
+         LED_4 = 0;
+         LED_5 = 0;
+     }
+
 }
 
 /** Routine 2 **/
@@ -848,8 +864,11 @@ void loop4(int speed){
     LED_5 = 0;
 }
 
-void (*init_routines[4]) (int) = {init1, init2, init3, init4};
-void (*loop_routines[4]) (int) = {loop1, loop2, loop3, loop4};
+void (*init_routines[4]) (int) = {&init1, &init2, &init3, &init4};
+void (*loop_routines[4]) (int) = {&loop1, &loop2, &loop3, &loop4};
+
+void (*init_routine_aux)(int);
+void (*loop_routine_aux)(int);
 
 /*** End robot routines *** /
 
@@ -1230,14 +1249,23 @@ void loop(){
             speed_aux = get_motor_speed();
             program_aux = get_robot_program();
 
-            init_routines[program_aux-1](speed_aux);
+            /** Persist configured program routines **/
+            init_routine_aux = (init_routines[program_aux-1]);
+            loop_routine_aux = (loop_routines[program_aux-1]);
+            
             flag_menu_init = 0;
+               
+            /** Call init routine **/
+            init_routine_aux(speed_aux);
         }
-        loop_routines[program_aux-1](speed_aux);
+        
+        loop_routine_aux(speed_aux);
+        
     }
 }
 
 /** End full program */
+
 
 
 

@@ -1,7 +1,7 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o
+ C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o
  -Odist/default/production\chiari2.X.production.hex
  -logfile=dist/default/production\chiari2.X.production.hxl
  -addressing=1
@@ -9,21 +9,21 @@
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 3h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o)
-  8h - 11h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o)
-  800h - 40F3h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o)
-  200000h - 200007h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o)
-  300000h - 30000Dh		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o)
+  0h - 3h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o)
+  8h - 11h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o)
+  800h - 4155h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o)
+  200000h - 200007h		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o)
+  300000h - 30000Dh		(C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o)
  Unused ranges:
   4h - 7h
   12h - 7FFh
-  40F4h - 1FFFFFh
+  4156h - 1FFFFFh
   200008h - 2FFFFFh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\CHIARI~2\AppData\Local\Temp\xcAsk8g.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\CHIARI~2\AppData\Local\Temp\xcAsuc0.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -941,7 +941,13 @@
 000040C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000040D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000040E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000040F0 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
+000040F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00004100 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00004110 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00004120 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00004130 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00004140 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00004150 | H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00200000 | H1 H1 H1 H1 H1 H1 H1 H1 -- -- -- -- -- -- -- --
 ----------------------------------------------------------
